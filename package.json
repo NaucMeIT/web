@@ -1,0 +1,35 @@
+{
+    "name": "nauc-me-it",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "prepare": "husky install",
+        "postbuild": "next-sitemap"
+    },
+    "dependencies": {
+        "next": "11.1.0",
+        "next-pwa": "^5.3.1",
+        "react": "17.0.2",
+        "react-dom": "17.0.2"
+    },
+    "devDependencies": {
+        "@types/react": "17.0.19",
+        "autoprefixer": "^10.3.3",
+        "eslint": "7.32.0",
+        "eslint-config-next": "11.1.0",
+        "husky": "^7.0.2",
+        "lint-staged": "^11.1.2",
+        "next-sitemap": "^1.6.164",
+        "postcss": "^8.3.6",
+        "prettier": "2.3.2",
+        "tailwindcss": "^2.2.8",
+        "typescript": "latest"
+    },
+    "lint-staged": {
+        "**/*": "prettier --write --ignore-unknown"
+    }
+}
