@@ -123,7 +123,7 @@ const Preparation: React.FC = () => (
                     </text>
                 </g>
                 <g>
-                    <a href='mailto:info@naucme.it'>
+                    <a href='https://forms.gle/NJ6zygSCNwa4LRbD7'>
                         <rect
                             style={{ fill: "rgb(52, 208, 88)" }}
                             x='46.089'

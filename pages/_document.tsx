@@ -1,8 +1,7 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from "next/document"
 
+const APP_MAIN_COLOR = "#040d35"
 const APP_NAME = "Nauč mě IT"
-const APP_DESCRIPTION = "Nech si platit za to, že se učíš programovat! Nauč mě IT ti s tím pomůže."
-const APP_MAIN_COLOR = "#FFFFFF"
 
 class MyDocument extends Document {
     static async getInitialProps(ctx: DocumentContext) {
@@ -15,7 +14,6 @@ class MyDocument extends Document {
             <Html lang='cs'>
                 <Head>
                     <link href='https://fonts.googleapis.com/css2?family=Roboto&display=swap' rel='stylesheet'></link>
-                    <meta name='Description' content={APP_DESCRIPTION} />
                     <meta
                         name='Keywords'
                         content='IT, učení, školení, nauč mě, jak začít s IT, jak začít programovat, jak dělat web, jak psát web'
@@ -42,17 +40,11 @@ class MyDocument extends Document {
                     <link rel='shortcut icon' href='/favicon.ico' />
 
                     <meta name='twitter:card' content='summary' />
-                    <meta name='twitter:url' content='https://naucme.it' />
-                    <meta name='twitter:title' content={APP_NAME} />
-                    <meta name='twitter:description' content={APP_DESCRIPTION} />
-                    <meta name='twitter:image' content='https://naucme.it/android-chrome-192x192.png' />
-                    <meta name='twitter:creator' content='@DavidWShadow' />
+                    <meta name='twitter:title' key='tw:title' content={APP_NAME} />
+                    <meta name='twitter:creator' content='@NaucMeIT' />
                     <meta property='og:type' content='website' />
-                    <meta property='og:title' content={APP_NAME} />
-                    <meta property='og:description' content={APP_DESCRIPTION} />
+                    <meta property='og:title' key='og:title' content={APP_NAME} />
                     <meta property='og:site_name' content={APP_NAME} />
-                    <meta property='og:url' content='https://naucme.it' />
-                    <meta property='og:image' content='https://naucme.it/apple-touch-icon.png' />
                 </Head>
                 <body className='bg-main-blue'>
                     <Main />

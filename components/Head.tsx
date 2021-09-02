@@ -1,0 +1,23 @@
+import NextHead from "next/head"
+
+interface HeadProps {
+    desc: string
+    twImg: string
+    fbImg: string
+    url: string
+}
+
+const Head: React.FC<HeadProps> = (props) => (
+    <NextHead>
+        <meta name='Description' key='desc' content={props.desc} />
+        <meta name='twitter:description' key='tw:desc' content={props.desc} />
+        <meta property='og:description' key='og:desc' content={props.desc} />
+        <meta name='twitter:image' key='tw:image' content={props.twImg} />
+        <meta name='twitter:url' key='tw:url' content={props.url} />
+        <meta property='og:url' key='og:url' content={props.url} />
+        <meta property='og:image' key='og:image' content={props.fbImg} />
+        {props.children}
+    </NextHead>
+)
+
+export default Head
