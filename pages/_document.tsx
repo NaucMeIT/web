@@ -54,7 +54,7 @@ class MyDocument extends Document {
                     <meta property='og:url' content='https://naucme.it' />
                     <meta property='og:image' content='https://naucme.it/apple-touch-icon.png' />
                 </Head>
-                <body className='flex justify-center bg-main-blue'>
+                <body className='bg-main-blue'>
                     <Main />
                     <NextScript />
                 </body>
