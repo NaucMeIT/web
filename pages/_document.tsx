@@ -1,3 +1,4 @@
+// eslint-disable-next-line @next/next/no-document-import-in-page
 import Document, { Html, Head, Main, NextScript, DocumentContext } from "next/document"
 
 const APP_MAIN_COLOR = "#040d35"
@@ -46,7 +47,7 @@ class MyDocument extends Document {
                     <meta property='og:title' key='og:title' content={APP_NAME} />
                     <meta property='og:site_name' content={APP_NAME} />
                 </Head>
-                <body className='bg-main-blue'>
+                <body className='overflow-x-hidden bg-blue-main text-blue-highlight'>
                     <Main />
                     <NextScript />
                 </body>
