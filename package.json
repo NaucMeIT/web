@@ -36,7 +36,7 @@
         "typescript": "latest"
     },
     "lint-staged": {
-        "**/*": "prettier --write --ignore-unknown"
+        "**/*": "yarn prettier --write --ignore-unknown"
     },
     "packageManager": "yarn@3.1.0",
     "installConfig": {
