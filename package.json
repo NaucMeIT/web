@@ -38,5 +38,8 @@
     "lint-staged": {
         "**/*": "prettier --write --ignore-unknown"
     },
-    "packageManager": "yarn@3.1.0"
+    "packageManager": "yarn@3.1.0",
+    "installConfig": {
+        "pnp": true
+    }
 }
