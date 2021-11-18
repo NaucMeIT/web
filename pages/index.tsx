@@ -4,6 +4,7 @@ import React from "react"
 import { MainMenu } from "../components/MainMenu"
 import { SignUpContainer } from "../components/SignUpContainer"
 import { PathList } from "../components/PathList"
+import { ClipboardCheckIcon, CodeIcon, HomeIcon, InformationCircleIcon } from "@heroicons/react/outline"
 
 const Home: NextPage = () => {
     return (
@@ -22,13 +23,32 @@ const Home: NextPage = () => {
                 {/* <div className='absolute left-[-37.5vh] -bottom-1/3 -z-1 w-vh-75 h-vh-75 bg-gradient-rad-c from-green-off'></div> */}
                 <MainMenu
                     items={[
-                        { title: "⌂ Home", link: "#", active: true },
-                        { title: "★ About", link: "#" },
+                        {
+                            icon: (props: any) => <HomeIcon {...props} color={"#fff"} />,
+                            title: "Úvod",
+                            link: "#",
+                            active: true,
+                        },
+                        {
+                            icon: (props: any) => <InformationCircleIcon {...props} color={"#fff"} />,
+                            title: "O kurzu",
+                            link: "#",
+                        },
+                        {
+                            icon: (props: any) => <ClipboardCheckIcon {...props} color={"#fff"} />,
+                            title: "Tester",
+                            link: "#",
+                        },
+                        {
+                            icon: (props: any) => <CodeIcon {...props} color={"#fff"} />,
+                            title: "Vývojář",
+                            link: "#",
+                        },
                     ]}
                 />
                 <SignUpContainer />
             </header>
-            <main className='mt-10'>
+            <main>
                 <PathList />
             </main>
         </>

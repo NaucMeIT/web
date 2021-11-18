@@ -1,3 +1,16 @@
+/** @type {import('tailwindcss/tailwind-config').TailwindConfig} */
+
+const blueHue = 229
+const greenHue = 188
+const contrastGreentHue = 134
+
+const blueSat = 86
+const greenSat = 44
+const contrastGreenSat = 62
+
+const highlightLightness = 98
+const offLightness = 90
+
 module.exports = {
     plugins: [
         require("tailwindcss-fluid")({
@@ -34,10 +47,14 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                "blue-main": "#040d35",
-                "blue-highlight": "#f5f7fe",
-                "blue-off": "#cfd9fc",
-                "green-off": "#1B4046",
+                "blue-main": `hsl(${blueHue}, ${blueSat}%, 11%)`,
+                "blue-highlight": `hsl(${blueHue}, ${blueSat}%, ${highlightLightness}%)`,
+                "blue-off": `hsl(${blueHue},${blueSat}%, ${offLightness}%)`,
+                "green-main": `hsl(${greenHue}, ${greenSat}%, 19%)`,
+                "green-highlight": `hsl(${greenHue}, ${greenSat}%, ${highlightLightness}%)`,
+                "green-off": `hsl(${greenHue}, ${greenSat}%, ${offLightness}%)`,
+                "green-contrast": `hsl(${contrastGreentHue}, ${contrastGreenSat}%, 51%)`,
+                "green-contrast-highlight": `hsl(${contrastGreentHue}, ${contrastGreenSat}%, ${highlightLightness}%)`,
             },
             backgroundImage: {
                 "gradient-rad-t-r": "radial-gradient(circle at top right, var(--tw-gradient-stops) 70%);",

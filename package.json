@@ -14,20 +14,24 @@
         "@headlessui/react": "^1.4.1",
         "@heroicons/react": "^1.0.5",
         "classnames": "^2.3.1",
-        "next": "^11.1.2",
+        "next": "^12.0.1",
         "next-pwa": "^5.4.0",
         "react": "17.0.2",
         "react-dom": "17.0.2",
-        "react-responsive": "^9.0.0-beta.4"
+        "react-intersection-observer": "^8.32.2",
+        "react-responsive": "^9.0.0-beta.4",
+        "zustand": "^3.6.1"
     },
     "devDependencies": {
+        "@types/eslint": "^7",
         "@types/node": "^16.11.6",
-        "@types/react": "17.0.20",
-        "autoprefixer": "^10.3.7",
-        "eslint": "8.1.0",
-        "eslint-config-next": "11.1.2",
+        "@types/react": "17.0.33",
+        "@types/tailwindcss": "^2.2.4",
+        "autoprefixer": "^10.4.0",
+        "eslint": "^7.32.0",
+        "eslint-config-next": "12.0.1",
         "husky": "^7.0.4",
-        "lint-staged": "^11.1.4",
+        "lint-staged": "^11.2.6",
         "next-sitemap": "^1.6.192",
         "postcss": "^8.3.11",
         "prettier": "2.4.1",
@@ -38,8 +42,5 @@
     "lint-staged": {
         "**/*": "yarn prettier --write --ignore-unknown"
     },
-    "packageManager": "yarn@3.1.0",
-    "installConfig": {
-        "pnp": true
-    }
+    "packageManager": "yarn@3.1.0"
 }

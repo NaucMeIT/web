@@ -55,12 +55,9 @@ const Monitor: React.FC<MonitorProps> = ({ className }) => {
                                 ry='20'
                             />
                             <text
-                                className='font-bold uppercase whitespace-pre fill-current text-blue-highlight'
+                                className='text-4xl font-bold uppercase whitespace-pre fill-current text-green-contrast-highlight'
                                 x='52'
                                 y='218'
-                                style={{
-                                    fontSize: "35px",
-                                }}
                             >
                                 {"»"}
                             </text>
@@ -76,13 +73,8 @@ const Monitor: React.FC<MonitorProps> = ({ className }) => {
                                     ref={animateRef}
                                 />
                             </path>
-                            <text
-                                className='font-bold uppercase whitespace-pre fill-current text-blue-highlight'
-                                style={{
-                                    fontSize: "35px",
-                                }}
-                            >
-                                <textPath xlinkHref='#MyPath'>Chci programovat!</textPath>
+                            <text className='text-4xl font-bold uppercase whitespace-pre fill-current text-green-contrast-highlight'>
+                                <textPath xlinkHref='#MyPath'>Chci pracovat v IT!</textPath>
                             </text>
                         </a>
                     </g>
