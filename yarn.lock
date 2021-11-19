@@ -5326,7 +5326,6 @@ __metadata:
     prettier: 2.4.1
     react: beta
     react-dom: beta
-    react-intersection-observer: ^8.32.2
     react-responsive: ^9.0.0-beta.4
     tailwindcss: ^2.2.17
     tailwindcss-fluid: ^0.2.0
@@ -6254,15 +6253,6 @@ __metadata:
   peerDependencies:
     react: 18.0.0-beta-fdc1d617a-20211118
   checksum: 5c120b3b97c6a559d16c35ec783ee44f2cc0dc1c220062492824e67c68429cd40671fb2c4ed2cb1e3780877312b908be11af8e82cbae694799c64453bc742bb6
-  languageName: node
-  linkType: hard
-
-"react-intersection-observer@npm:^8.32.2":
-  version: 8.32.2
-  resolution: "react-intersection-observer@npm:8.32.2"
-  peerDependencies:
-    react: ^15.0.0 || ^16.0.0 || ^17.0.0|| ^18.0.0
-  checksum: d536ed70dff9930539472b745e24cba80048d6e47d0188dbda49bc7151b2e52dd5829744119b763f2e3cfd68025c2afe88826eb1b6c619df94001b2d87a8839c
   languageName: node
   linkType: hard
 

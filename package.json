@@ -18,7 +18,6 @@
         "next-pwa": "^5.4.0",
         "react": "beta",
         "react-dom": "beta",
-        "react-intersection-observer": "^8.32.2",
         "react-responsive": "^9.0.0-beta.4",
         "zustand": "^3.6.1"
     },
