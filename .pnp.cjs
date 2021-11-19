@@ -66,7 +66,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                                     ["lint-staged", "npm:11.2.6"],
                                     [
                                         "next",
-                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:12.0.1",
+                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:12.0.4",
                                     ],
                                     [
                                         "next-pwa",
@@ -78,10 +78,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                                     ],
                                     ["postcss", "npm:8.3.11"],
                                     ["prettier", "npm:2.4.1"],
-                                    ["react", "npm:17.0.2"],
+                                    ["react", "npm:18.0.0-beta-fdc1d617a-20211118"],
                                     [
                                         "react-dom",
-                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:17.0.2",
+                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:18.0.0-beta-fdc1d617a-20211118",
                                     ],
                                     [
                                         "react-intersection-observer",
@@ -1595,14 +1595,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                             },
                         ],
                         [
-                            "virtual:246515e91bc5d70ac1e053810e35f62037a67d84316685f749c1d985eada282bef2e2a195f77856dfbe690c51b56dc70012eb4c111e2792454729a15f6ff901a#npm:7.14.5",
+                            "virtual:48770b4c726171dbd811f328632432db1c38e322a751f675500eb3201c5244c1ccf39e3f13826321d0cc445f5df3301f4a2090b73f173f19d18965820653f0d8#npm:7.14.5",
                             {
                                 packageLocation:
-                                    "./.yarn/__virtual__/@babel-plugin-syntax-jsx-virtual-65a9eaa700/0/cache/@babel-plugin-syntax-jsx-npm-7.14.5-14192e29dd-3a2ba87534.zip/node_modules/@babel/plugin-syntax-jsx/",
+                                    "./.yarn/__virtual__/@babel-plugin-syntax-jsx-virtual-ee8900b247/0/cache/@babel-plugin-syntax-jsx-npm-7.14.5-14192e29dd-3a2ba87534.zip/node_modules/@babel/plugin-syntax-jsx/",
                                 packageDependencies: [
                                     [
                                         "@babel/plugin-syntax-jsx",
-                                        "virtual:246515e91bc5d70ac1e053810e35f62037a67d84316685f749c1d985eada282bef2e2a195f77856dfbe690c51b56dc70012eb4c111e2792454729a15f6ff901a#npm:7.14.5",
+                                        "virtual:48770b4c726171dbd811f328632432db1c38e322a751f675500eb3201c5244c1ccf39e3f13826321d0cc445f5df3301f4a2090b73f173f19d18965820653f0d8#npm:7.14.5",
                                     ],
                                     ["@babel/core", null],
                                     ["@babel/helper-plugin-utils", "npm:7.14.5"],
@@ -3528,10 +3528,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                                     ],
                                     ["@types/react", "npm:17.0.33"],
                                     ["@types/react-dom", null],
-                                    ["react", "npm:17.0.2"],
+                                    ["react", "npm:18.0.0-beta-fdc1d617a-20211118"],
                                     [
                                         "react-dom",
-                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:17.0.2",
+                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:18.0.0-beta-fdc1d617a-20211118",
                                     ],
                                 ],
                                 packagePeers: ["@types/react-dom", "@types/react", "react-dom", "react"],
@@ -3563,7 +3563,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                                         "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:1.0.5",
                                     ],
                                     ["@types/react", "npm:17.0.33"],
-                                    ["react", "npm:17.0.2"],
+                                    ["react", "npm:18.0.0-beta-fdc1d617a-20211118"],
                                 ],
                                 packagePeers: ["@types/react", "react"],
                                 linkType: "HARD",
@@ -3625,11 +3625,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     "@next/env",
                     [
                         [
-                            "npm:12.0.1",
+                            "npm:12.0.4",
                             {
                                 packageLocation:
-                                    "./.yarn/cache/@next-env-npm-12.0.1-c92b3168b6-396fb10684.zip/node_modules/@next/env/",
-                                packageDependencies: [["@next/env", "npm:12.0.1"]],
+                                    "./.yarn/cache/@next-env-npm-12.0.4-b971d79ae8-a7bb0bdff4.zip/node_modules/@next/env/",
+                                packageDependencies: [["@next/env", "npm:12.0.4"]],
                                 linkType: "HARD",
                             },
                         ],
@@ -3656,11 +3656,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     "@next/polyfill-module",
                     [
                         [
-                            "npm:12.0.1",
+                            "npm:12.0.4",
                             {
                                 packageLocation:
-                                    "./.yarn/cache/@next-polyfill-module-npm-12.0.1-c2cda49b55-ee494b1e7e.zip/node_modules/@next/polyfill-module/",
-                                packageDependencies: [["@next/polyfill-module", "npm:12.0.1"]],
+                                    "./.yarn/cache/@next-polyfill-module-npm-12.0.4-06677031c5-701f563ef8.zip/node_modules/@next/polyfill-module/",
+                                packageDependencies: [["@next/polyfill-module", "npm:12.0.4"]],
                                 linkType: "HARD",
                             },
                         ],
@@ -3670,23 +3670,23 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     "@next/react-dev-overlay",
                     [
                         [
-                            "npm:12.0.1",
+                            "npm:12.0.4",
                             {
                                 packageLocation:
-                                    "./.yarn/cache/@next-react-dev-overlay-npm-12.0.1-98b51bb10c-88f588443f.zip/node_modules/@next/react-dev-overlay/",
-                                packageDependencies: [["@next/react-dev-overlay", "npm:12.0.1"]],
+                                    "./.yarn/cache/@next-react-dev-overlay-npm-12.0.4-05495b4cf0-ac54baf041.zip/node_modules/@next/react-dev-overlay/",
+                                packageDependencies: [["@next/react-dev-overlay", "npm:12.0.4"]],
                                 linkType: "SOFT",
                             },
                         ],
                         [
-                            "virtual:4282c1f10b65efdab6d612934883eb0d3c79608b700a711fec13df4ceb1e82b0cc0f01ac2f5b200f03807351c13ab027f9fc529c060ec07cb749779caa99b57c#npm:12.0.1",
+                            "virtual:60b1357c5849828871b1b3f4c7989f5379ac652b356c4c492be21c9a18a0429ab291fd39000f77fc09342c1dc01023baa717001907cefe4a64b621808dd8474e#npm:12.0.4",
                             {
                                 packageLocation:
-                                    "./.yarn/__virtual__/@next-react-dev-overlay-virtual-d1515df691/0/cache/@next-react-dev-overlay-npm-12.0.1-98b51bb10c-88f588443f.zip/node_modules/@next/react-dev-overlay/",
+                                    "./.yarn/__virtual__/@next-react-dev-overlay-virtual-5aefb52ba7/0/cache/@next-react-dev-overlay-npm-12.0.4-05495b4cf0-ac54baf041.zip/node_modules/@next/react-dev-overlay/",
                                 packageDependencies: [
                                     [
                                         "@next/react-dev-overlay",
-                                        "virtual:4282c1f10b65efdab6d612934883eb0d3c79608b700a711fec13df4ceb1e82b0cc0f01ac2f5b200f03807351c13ab027f9fc529c060ec07cb749779caa99b57c#npm:12.0.1",
+                                        "virtual:60b1357c5849828871b1b3f4c7989f5379ac652b356c4c492be21c9a18a0429ab291fd39000f77fc09342c1dc01023baa717001907cefe4a64b621808dd8474e#npm:12.0.4",
                                     ],
                                     ["@babel/code-frame", "npm:7.12.11"],
                                     ["@types/react", "npm:17.0.33"],
@@ -3698,12 +3698,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                                     ["css.escape", "npm:1.5.1"],
                                     ["data-uri-to-buffer", "npm:3.0.1"],
                                     ["platform", "npm:1.3.6"],
-                                    ["react", "npm:17.0.2"],
+                                    ["react", "npm:18.0.0-beta-fdc1d617a-20211118"],
                                     [
                                         "react-dom",
-                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:17.0.2",
+                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:18.0.0-beta-fdc1d617a-20211118",
                                     ],
-                                    ["shell-quote", "npm:1.7.2"],
+                                    ["shell-quote", "npm:1.7.3"],
                                     ["source-map", "npm:0.8.0-beta.0"],
                                     ["stacktrace-parser", "npm:0.1.10"],
                                     ["strip-ansi", "npm:6.0.1"],
@@ -3726,23 +3726,23 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     "@next/react-refresh-utils",
                     [
                         [
-                            "npm:12.0.1",
+                            "npm:12.0.4",
                             {
                                 packageLocation:
-                                    "./.yarn/cache/@next-react-refresh-utils-npm-12.0.1-87a3d07f6a-a3094f9fa9.zip/node_modules/@next/react-refresh-utils/",
-                                packageDependencies: [["@next/react-refresh-utils", "npm:12.0.1"]],
+                                    "./.yarn/cache/@next-react-refresh-utils-npm-12.0.4-d8661f51f6-7c1c9c3284.zip/node_modules/@next/react-refresh-utils/",
+                                packageDependencies: [["@next/react-refresh-utils", "npm:12.0.4"]],
                                 linkType: "SOFT",
                             },
                         ],
                         [
-                            "virtual:4282c1f10b65efdab6d612934883eb0d3c79608b700a711fec13df4ceb1e82b0cc0f01ac2f5b200f03807351c13ab027f9fc529c060ec07cb749779caa99b57c#npm:12.0.1",
+                            "virtual:60b1357c5849828871b1b3f4c7989f5379ac652b356c4c492be21c9a18a0429ab291fd39000f77fc09342c1dc01023baa717001907cefe4a64b621808dd8474e#npm:12.0.4",
                             {
                                 packageLocation:
-                                    "./.yarn/__virtual__/@next-react-refresh-utils-virtual-60d567ae2d/0/cache/@next-react-refresh-utils-npm-12.0.1-87a3d07f6a-a3094f9fa9.zip/node_modules/@next/react-refresh-utils/",
+                                    "./.yarn/__virtual__/@next-react-refresh-utils-virtual-202a713df4/0/cache/@next-react-refresh-utils-npm-12.0.4-d8661f51f6-7c1c9c3284.zip/node_modules/@next/react-refresh-utils/",
                                 packageDependencies: [
                                     [
                                         "@next/react-refresh-utils",
-                                        "virtual:4282c1f10b65efdab6d612934883eb0d3c79608b700a711fec13df4ceb1e82b0cc0f01ac2f5b200f03807351c13ab027f9fc529c060ec07cb749779caa99b57c#npm:12.0.1",
+                                        "virtual:60b1357c5849828871b1b3f4c7989f5379ac652b356c4c492be21c9a18a0429ab291fd39000f77fc09342c1dc01023baa717001907cefe4a64b621808dd8474e#npm:12.0.4",
                                     ],
                                     ["@types/react-refresh", null],
                                     ["@types/webpack", null],
@@ -3759,11 +3759,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     "@next/swc-android-arm64",
                     [
                         [
-                            "npm:12.0.1",
+                            "npm:12.0.4",
                             {
                                 packageLocation:
-                                    "./.yarn/unplugged/@next-swc-android-arm64-npm-12.0.1-28a5448a98/node_modules/@next/swc-android-arm64/",
-                                packageDependencies: [["@next/swc-android-arm64", "npm:12.0.1"]],
+                                    "./.yarn/unplugged/@next-swc-android-arm64-npm-12.0.4-63be01a322/node_modules/@next/swc-android-arm64/",
+                                packageDependencies: [["@next/swc-android-arm64", "npm:12.0.4"]],
                                 linkType: "HARD",
                             },
                         ],
@@ -3773,11 +3773,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     "@next/swc-darwin-arm64",
                     [
                         [
-                            "npm:12.0.1",
+                            "npm:12.0.4",
                             {
                                 packageLocation:
-                                    "./.yarn/unplugged/@next-swc-darwin-arm64-npm-12.0.1-dde72f02ca/node_modules/@next/swc-darwin-arm64/",
-                                packageDependencies: [["@next/swc-darwin-arm64", "npm:12.0.1"]],
+                                    "./.yarn/unplugged/@next-swc-darwin-arm64-npm-12.0.4-de9bc202b0/node_modules/@next/swc-darwin-arm64/",
+                                packageDependencies: [["@next/swc-darwin-arm64", "npm:12.0.4"]],
                                 linkType: "HARD",
                             },
                         ],
@@ -3787,11 +3787,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     "@next/swc-darwin-x64",
                     [
                         [
-                            "npm:12.0.1",
+                            "npm:12.0.4",
                             {
                                 packageLocation:
-                                    "./.yarn/unplugged/@next-swc-darwin-x64-npm-12.0.1-b638da81e2/node_modules/@next/swc-darwin-x64/",
-                                packageDependencies: [["@next/swc-darwin-x64", "npm:12.0.1"]],
+                                    "./.yarn/unplugged/@next-swc-darwin-x64-npm-12.0.4-eafa248c5f/node_modules/@next/swc-darwin-x64/",
+                                packageDependencies: [["@next/swc-darwin-x64", "npm:12.0.4"]],
                                 linkType: "HARD",
                             },
                         ],
@@ -3801,11 +3801,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     "@next/swc-linux-arm-gnueabihf",
                     [
                         [
-                            "npm:12.0.1",
+                            "npm:12.0.4",
                             {
                                 packageLocation:
-                                    "./.yarn/unplugged/@next-swc-linux-arm-gnueabihf-npm-12.0.1-4bac5eae39/node_modules/@next/swc-linux-arm-gnueabihf/",
-                                packageDependencies: [["@next/swc-linux-arm-gnueabihf", "npm:12.0.1"]],
+                                    "./.yarn/unplugged/@next-swc-linux-arm-gnueabihf-npm-12.0.4-0358db762d/node_modules/@next/swc-linux-arm-gnueabihf/",
+                                packageDependencies: [["@next/swc-linux-arm-gnueabihf", "npm:12.0.4"]],
                                 linkType: "HARD",
                             },
                         ],
@@ -3815,11 +3815,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     "@next/swc-linux-arm64-gnu",
                     [
                         [
-                            "npm:12.0.1",
+                            "npm:12.0.4",
                             {
                                 packageLocation:
-                                    "./.yarn/unplugged/@next-swc-linux-arm64-gnu-npm-12.0.1-1c23200fdf/node_modules/@next/swc-linux-arm64-gnu/",
-                                packageDependencies: [["@next/swc-linux-arm64-gnu", "npm:12.0.1"]],
+                                    "./.yarn/unplugged/@next-swc-linux-arm64-gnu-npm-12.0.4-0720fb8150/node_modules/@next/swc-linux-arm64-gnu/",
+                                packageDependencies: [["@next/swc-linux-arm64-gnu", "npm:12.0.4"]],
                                 linkType: "HARD",
                             },
                         ],
@@ -3829,11 +3829,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     "@next/swc-linux-arm64-musl",
                     [
                         [
-                            "npm:12.0.1",
+                            "npm:12.0.4",
                             {
                                 packageLocation:
-                                    "./.yarn/unplugged/@next-swc-linux-arm64-musl-npm-12.0.1-d84cde223d/node_modules/@next/swc-linux-arm64-musl/",
-                                packageDependencies: [["@next/swc-linux-arm64-musl", "npm:12.0.1"]],
+                                    "./.yarn/unplugged/@next-swc-linux-arm64-musl-npm-12.0.4-cdee44dd87/node_modules/@next/swc-linux-arm64-musl/",
+                                packageDependencies: [["@next/swc-linux-arm64-musl", "npm:12.0.4"]],
                                 linkType: "HARD",
                             },
                         ],
@@ -3843,11 +3843,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     "@next/swc-linux-x64-gnu",
                     [
                         [
-                            "npm:12.0.1",
+                            "npm:12.0.4",
                             {
                                 packageLocation:
-                                    "./.yarn/unplugged/@next-swc-linux-x64-gnu-npm-12.0.1-ec4ca8e82f/node_modules/@next/swc-linux-x64-gnu/",
-                                packageDependencies: [["@next/swc-linux-x64-gnu", "npm:12.0.1"]],
+                                    "./.yarn/unplugged/@next-swc-linux-x64-gnu-npm-12.0.4-9fb12508a1/node_modules/@next/swc-linux-x64-gnu/",
+                                packageDependencies: [["@next/swc-linux-x64-gnu", "npm:12.0.4"]],
                                 linkType: "HARD",
                             },
                         ],
@@ -3857,11 +3857,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     "@next/swc-linux-x64-musl",
                     [
                         [
-                            "npm:12.0.1",
+                            "npm:12.0.4",
                             {
                                 packageLocation:
-                                    "./.yarn/unplugged/@next-swc-linux-x64-musl-npm-12.0.1-d3ba2e8da3/node_modules/@next/swc-linux-x64-musl/",
-                                packageDependencies: [["@next/swc-linux-x64-musl", "npm:12.0.1"]],
+                                    "./.yarn/unplugged/@next-swc-linux-x64-musl-npm-12.0.4-5ec01a7421/node_modules/@next/swc-linux-x64-musl/",
+                                packageDependencies: [["@next/swc-linux-x64-musl", "npm:12.0.4"]],
                                 linkType: "HARD",
                             },
                         ],
@@ -3871,11 +3871,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     "@next/swc-win32-arm64-msvc",
                     [
                         [
-                            "npm:12.0.1",
+                            "npm:12.0.4",
                             {
                                 packageLocation:
-                                    "./.yarn/unplugged/@next-swc-win32-arm64-msvc-npm-12.0.1-3a8eba3e1b/node_modules/@next/swc-win32-arm64-msvc/",
-                                packageDependencies: [["@next/swc-win32-arm64-msvc", "npm:12.0.1"]],
+                                    "./.yarn/unplugged/@next-swc-win32-arm64-msvc-npm-12.0.4-18592eb9ed/node_modules/@next/swc-win32-arm64-msvc/",
+                                packageDependencies: [["@next/swc-win32-arm64-msvc", "npm:12.0.4"]],
                                 linkType: "HARD",
                             },
                         ],
@@ -3885,11 +3885,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     "@next/swc-win32-ia32-msvc",
                     [
                         [
-                            "npm:12.0.1",
+                            "npm:12.0.4",
                             {
                                 packageLocation:
-                                    "./.yarn/unplugged/@next-swc-win32-ia32-msvc-npm-12.0.1-4ea2ad57c2/node_modules/@next/swc-win32-ia32-msvc/",
-                                packageDependencies: [["@next/swc-win32-ia32-msvc", "npm:12.0.1"]],
+                                    "./.yarn/unplugged/@next-swc-win32-ia32-msvc-npm-12.0.4-8eb4ad0bb1/node_modules/@next/swc-win32-ia32-msvc/",
+                                packageDependencies: [["@next/swc-win32-ia32-msvc", "npm:12.0.4"]],
                                 linkType: "HARD",
                             },
                         ],
@@ -3899,28 +3899,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     "@next/swc-win32-x64-msvc",
                     [
                         [
-                            "npm:12.0.1",
+                            "npm:12.0.4",
                             {
                                 packageLocation:
-                                    "./.yarn/unplugged/@next-swc-win32-x64-msvc-npm-12.0.1-8b7bf2a0a3/node_modules/@next/swc-win32-x64-msvc/",
-                                packageDependencies: [["@next/swc-win32-x64-msvc", "npm:12.0.1"]],
-                                linkType: "HARD",
-                            },
-                        ],
-                    ],
-                ],
-                [
-                    "@node-rs/helper",
-                    [
-                        [
-                            "npm:1.2.1",
-                            {
-                                packageLocation:
-                                    "./.yarn/cache/@node-rs-helper-npm-1.2.1-e25ffdc5ac-c7b96e46df.zip/node_modules/@node-rs/helper/",
-                                packageDependencies: [
-                                    ["@node-rs/helper", "npm:1.2.1"],
-                                    ["@napi-rs/triples", "npm:1.0.3"],
-                                ],
+                                    "./.yarn/unplugged/@next-swc-win32-x64-msvc-npm-12.0.4-99b245464a/node_modules/@next/swc-win32-x64-msvc/",
+                                packageDependencies: [["@next/swc-win32-x64-msvc", "npm:12.0.4"]],
                                 linkType: "HARD",
                             },
                         ],
@@ -4590,15 +4573,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                 [
                     "acorn",
                     [
-                        [
-                            "npm:6.4.2",
-                            {
-                                packageLocation:
-                                    "./.yarn/cache/acorn-npm-6.4.2-94943eb66c-44b0705372.zip/node_modules/acorn/",
-                                packageDependencies: [["acorn", "npm:6.4.2"]],
-                                linkType: "HARD",
-                            },
-                        ],
                         [
                             "npm:7.4.1",
                             {
@@ -6664,14 +6638,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                             },
                         ],
                         [
-                            "virtual:1890fd64ed40d9bc698b900f855a24c1f76f453e59767f15163d23ca05e66e88a5d39f68499bf8339205732dec95a60f20edf855b428efe0932d3493972eb5cf#npm:3.0.0",
+                            "virtual:3703ad4dd20a5db85218afaae690b92a20c84fd8466e22b1abf7e37b030013e180f57ee91609241c6f5025c55b14c7d74be07b365cbaec824338321542a90310#npm:3.0.0",
                             {
                                 packageLocation:
-                                    "./.yarn/__virtual__/cssnano-preset-simple-virtual-420bfde6d3/0/cache/cssnano-preset-simple-npm-3.0.0-42fae6d1e4-03ad717960.zip/node_modules/cssnano-preset-simple/",
+                                    "./.yarn/__virtual__/cssnano-preset-simple-virtual-3dcf6cee1f/0/cache/cssnano-preset-simple-npm-3.0.0-42fae6d1e4-03ad717960.zip/node_modules/cssnano-preset-simple/",
                                 packageDependencies: [
                                     [
                                         "cssnano-preset-simple",
-                                        "virtual:1890fd64ed40d9bc698b900f855a24c1f76f453e59767f15163d23ca05e66e88a5d39f68499bf8339205732dec95a60f20edf855b428efe0932d3493972eb5cf#npm:3.0.0",
+                                        "virtual:3703ad4dd20a5db85218afaae690b92a20c84fd8466e22b1abf7e37b030013e180f57ee91609241c6f5025c55b14c7d74be07b365cbaec824338321542a90310#npm:3.0.0",
                                     ],
                                     ["@types/postcss", null],
                                     ["caniuse-lite", "npm:1.0.30001271"],
@@ -6696,19 +6670,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                             },
                         ],
                         [
-                            "virtual:4282c1f10b65efdab6d612934883eb0d3c79608b700a711fec13df4ceb1e82b0cc0f01ac2f5b200f03807351c13ab027f9fc529c060ec07cb749779caa99b57c#npm:3.0.0",
+                            "virtual:60b1357c5849828871b1b3f4c7989f5379ac652b356c4c492be21c9a18a0429ab291fd39000f77fc09342c1dc01023baa717001907cefe4a64b621808dd8474e#npm:3.0.0",
                             {
                                 packageLocation:
-                                    "./.yarn/__virtual__/cssnano-simple-virtual-1890fd64ed/0/cache/cssnano-simple-npm-3.0.0-28645e9ae6-6d2410f912.zip/node_modules/cssnano-simple/",
+                                    "./.yarn/__virtual__/cssnano-simple-virtual-3703ad4dd2/0/cache/cssnano-simple-npm-3.0.0-28645e9ae6-6d2410f912.zip/node_modules/cssnano-simple/",
                                 packageDependencies: [
                                     [
                                         "cssnano-simple",
-                                        "virtual:4282c1f10b65efdab6d612934883eb0d3c79608b700a711fec13df4ceb1e82b0cc0f01ac2f5b200f03807351c13ab027f9fc529c060ec07cb749779caa99b57c#npm:3.0.0",
+                                        "virtual:60b1357c5849828871b1b3f4c7989f5379ac652b356c4c492be21c9a18a0429ab291fd39000f77fc09342c1dc01023baa717001907cefe4a64b621808dd8474e#npm:3.0.0",
                                     ],
                                     ["@types/postcss", null],
                                     [
                                         "cssnano-preset-simple",
-                                        "virtual:1890fd64ed40d9bc698b900f855a24c1f76f453e59767f15163d23ca05e66e88a5d39f68499bf8339205732dec95a60f20edf855b428efe0932d3493972eb5cf#npm:3.0.0",
+                                        "virtual:3703ad4dd20a5db85218afaae690b92a20c84fd8466e22b1abf7e37b030013e180f57ee91609241c6f5025c55b14c7d74be07b365cbaec824338321542a90310#npm:3.0.0",
                                     ],
                                     ["postcss", "npm:8.2.15"],
                                 ],
@@ -7513,7 +7487,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                                     ],
                                     [
                                         "next",
-                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:12.0.1",
+                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:12.0.4",
                                     ],
                                     [
                                         "typescript",
@@ -10992,7 +10966,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                                     ["lint-staged", "npm:11.2.6"],
                                     [
                                         "next",
-                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:12.0.1",
+                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:12.0.4",
                                     ],
                                     [
                                         "next-pwa",
@@ -11004,10 +10978,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                                     ],
                                     ["postcss", "npm:8.3.11"],
                                     ["prettier", "npm:2.4.1"],
-                                    ["react", "npm:17.0.2"],
+                                    ["react", "npm:18.0.0-beta-fdc1d617a-20211118"],
                                     [
                                         "react-dom",
-                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:17.0.2",
+                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:18.0.0-beta-fdc1d617a-20211118",
                                     ],
                                     [
                                         "react-intersection-observer",
@@ -11051,65 +11025,51 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     ],
                 ],
                 [
-                    "neo-async",
-                    [
-                        [
-                            "npm:2.6.2",
-                            {
-                                packageLocation:
-                                    "./.yarn/cache/neo-async-npm-2.6.2-75d6902586-deac9f8d00.zip/node_modules/neo-async/",
-                                packageDependencies: [["neo-async", "npm:2.6.2"]],
-                                linkType: "HARD",
-                            },
-                        ],
-                    ],
-                ],
-                [
                     "next",
                     [
                         [
-                            "npm:12.0.1",
+                            "npm:12.0.4",
                             {
                                 packageLocation:
-                                    "./.yarn/cache/next-npm-12.0.1-371c10b49d-0f00285251.zip/node_modules/next/",
-                                packageDependencies: [["next", "npm:12.0.1"]],
+                                    "./.yarn/cache/next-npm-12.0.4-fcbd6e5d3e-b9711e7d42.zip/node_modules/next/",
+                                packageDependencies: [["next", "npm:12.0.4"]],
                                 linkType: "SOFT",
                             },
                         ],
                         [
-                            "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:12.0.1",
+                            "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:12.0.4",
                             {
                                 packageLocation:
-                                    "./.yarn/__virtual__/next-virtual-4282c1f10b/0/cache/next-npm-12.0.1-371c10b49d-0f00285251.zip/node_modules/next/",
+                                    "./.yarn/__virtual__/next-virtual-60b1357c58/0/cache/next-npm-12.0.4-fcbd6e5d3e-b9711e7d42.zip/node_modules/next/",
                                 packageDependencies: [
                                     [
                                         "next",
-                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:12.0.1",
+                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:12.0.4",
                                     ],
                                     ["@babel/runtime", "npm:7.15.4"],
                                     ["@hapi/accept", "npm:5.0.2"],
-                                    ["@next/env", "npm:12.0.1"],
-                                    ["@next/polyfill-module", "npm:12.0.1"],
+                                    ["@napi-rs/triples", "npm:1.0.3"],
+                                    ["@next/env", "npm:12.0.4"],
+                                    ["@next/polyfill-module", "npm:12.0.4"],
                                     [
                                         "@next/react-dev-overlay",
-                                        "virtual:4282c1f10b65efdab6d612934883eb0d3c79608b700a711fec13df4ceb1e82b0cc0f01ac2f5b200f03807351c13ab027f9fc529c060ec07cb749779caa99b57c#npm:12.0.1",
+                                        "virtual:60b1357c5849828871b1b3f4c7989f5379ac652b356c4c492be21c9a18a0429ab291fd39000f77fc09342c1dc01023baa717001907cefe4a64b621808dd8474e#npm:12.0.4",
                                     ],
                                     [
                                         "@next/react-refresh-utils",
-                                        "virtual:4282c1f10b65efdab6d612934883eb0d3c79608b700a711fec13df4ceb1e82b0cc0f01ac2f5b200f03807351c13ab027f9fc529c060ec07cb749779caa99b57c#npm:12.0.1",
+                                        "virtual:60b1357c5849828871b1b3f4c7989f5379ac652b356c4c492be21c9a18a0429ab291fd39000f77fc09342c1dc01023baa717001907cefe4a64b621808dd8474e#npm:12.0.4",
                                     ],
-                                    ["@next/swc-android-arm64", "npm:12.0.1"],
-                                    ["@next/swc-darwin-arm64", "npm:12.0.1"],
-                                    ["@next/swc-darwin-x64", "npm:12.0.1"],
-                                    ["@next/swc-linux-arm-gnueabihf", "npm:12.0.1"],
-                                    ["@next/swc-linux-arm64-gnu", "npm:12.0.1"],
-                                    ["@next/swc-linux-arm64-musl", "npm:12.0.1"],
-                                    ["@next/swc-linux-x64-gnu", "npm:12.0.1"],
-                                    ["@next/swc-linux-x64-musl", "npm:12.0.1"],
-                                    ["@next/swc-win32-arm64-msvc", "npm:12.0.1"],
-                                    ["@next/swc-win32-ia32-msvc", "npm:12.0.1"],
-                                    ["@next/swc-win32-x64-msvc", "npm:12.0.1"],
-                                    ["@node-rs/helper", "npm:1.2.1"],
+                                    ["@next/swc-android-arm64", "npm:12.0.4"],
+                                    ["@next/swc-darwin-arm64", "npm:12.0.4"],
+                                    ["@next/swc-darwin-x64", "npm:12.0.4"],
+                                    ["@next/swc-linux-arm-gnueabihf", "npm:12.0.4"],
+                                    ["@next/swc-linux-arm64-gnu", "npm:12.0.4"],
+                                    ["@next/swc-linux-arm64-musl", "npm:12.0.4"],
+                                    ["@next/swc-linux-x64-gnu", "npm:12.0.4"],
+                                    ["@next/swc-linux-x64-musl", "npm:12.0.4"],
+                                    ["@next/swc-win32-arm64-msvc", "npm:12.0.4"],
+                                    ["@next/swc-win32-ia32-msvc", "npm:12.0.4"],
+                                    ["@next/swc-win32-x64-msvc", "npm:12.0.4"],
                                     ["@types/fibers", null],
                                     ["@types/node-sass", null],
                                     ["@types/react", "npm:17.0.33"],
@@ -11127,7 +11087,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                                     ["crypto-browserify", "npm:3.12.0"],
                                     [
                                         "cssnano-simple",
-                                        "virtual:4282c1f10b65efdab6d612934883eb0d3c79608b700a711fec13df4ceb1e82b0cc0f01ac2f5b200f03807351c13ab027f9fc529c060ec07cb749779caa99b57c#npm:3.0.0",
+                                        "virtual:60b1357c5849828871b1b3f4c7989f5379ac652b356c4c492be21c9a18a0429ab291fd39000f77fc09342c1dc01023baa717001907cefe4a64b621808dd8474e#npm:3.0.0",
                                     ],
                                     ["domain-browser", "npm:4.19.0"],
                                     ["encoding", "npm:0.1.13"],
@@ -11149,17 +11109,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                                     ["process", "npm:0.11.10"],
                                     ["querystring-es3", "npm:0.2.1"],
                                     ["raw-body", "npm:2.4.1"],
-                                    ["react", "npm:17.0.2"],
+                                    ["react", "npm:18.0.0-beta-fdc1d617a-20211118"],
                                     [
                                         "react-dom",
-                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:17.0.2",
+                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:18.0.0-beta-fdc1d617a-20211118",
                                     ],
                                     ["react-is", "npm:17.0.2"],
                                     ["react-refresh", "npm:0.8.3"],
-                                    [
-                                        "react-server-dom-webpack",
-                                        "virtual:4282c1f10b65efdab6d612934883eb0d3c79608b700a711fec13df4ceb1e82b0cc0f01ac2f5b200f03807351c13ab027f9fc529c060ec07cb749779caa99b57c#npm:0.0.0-experimental-3c4c1c470-20211021",
-                                    ],
                                     ["regenerator-runtime", "npm:0.13.4"],
                                     ["sass", null],
                                     ["stream-browserify", "npm:3.0.0"],
@@ -11167,18 +11123,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                                     ["string_decoder", "npm:1.3.0"],
                                     [
                                         "styled-jsx",
-                                        "virtual:4282c1f10b65efdab6d612934883eb0d3c79608b700a711fec13df4ceb1e82b0cc0f01ac2f5b200f03807351c13ab027f9fc529c060ec07cb749779caa99b57c#npm:5.0.0-beta.3",
+                                        "virtual:60b1357c5849828871b1b3f4c7989f5379ac652b356c4c492be21c9a18a0429ab291fd39000f77fc09342c1dc01023baa717001907cefe4a64b621808dd8474e#npm:5.0.0-beta.3",
                                     ],
                                     ["timers-browserify", "npm:2.0.12"],
                                     ["tty-browserify", "npm:0.0.1"],
                                     [
                                         "use-subscription",
-                                        "virtual:4282c1f10b65efdab6d612934883eb0d3c79608b700a711fec13df4ceb1e82b0cc0f01ac2f5b200f03807351c13ab027f9fc529c060ec07cb749779caa99b57c#npm:1.5.1",
+                                        "virtual:60b1357c5849828871b1b3f4c7989f5379ac652b356c4c492be21c9a18a0429ab291fd39000f77fc09342c1dc01023baa717001907cefe4a64b621808dd8474e#npm:1.5.1",
                                     ],
                                     ["util", "npm:0.12.4"],
                                     ["vm-browserify", "npm:1.1.2"],
                                     ["watchpack", "npm:2.1.1"],
-                                    ["web-streams-polyfill", "npm:3.0.3"],
                                 ],
                                 packagePeers: [
                                     "@types/fibers",
@@ -11231,7 +11186,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                                     ["globby", "npm:11.0.4"],
                                     [
                                         "next",
-                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:12.0.1",
+                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:12.0.4",
                                     ],
                                     [
                                         "terser-webpack-plugin",
@@ -11277,7 +11232,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                                     ["minimist", "npm:1.2.5"],
                                     [
                                         "next",
-                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:12.0.1",
+                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:12.0.4",
                                     ],
                                 ],
                                 packagePeers: ["@types/next", "next"],
@@ -12677,12 +12632,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     "react",
                     [
                         [
-                            "npm:17.0.2",
+                            "npm:18.0.0-beta-fdc1d617a-20211118",
                             {
                                 packageLocation:
-                                    "./.yarn/cache/react-npm-17.0.2-99ba37d931-b254cc17ce.zip/node_modules/react/",
+                                    "./.yarn/cache/react-npm-18.0.0-beta-fdc1d617a-20211118-621614de13-0b3837d4d9.zip/node_modules/react/",
                                 packageDependencies: [
-                                    ["react", "npm:17.0.2"],
+                                    ["react", "npm:18.0.0-beta-fdc1d617a-20211118"],
                                     ["loose-envify", "npm:1.4.0"],
                                     ["object-assign", "npm:4.1.1"],
                                 ],
@@ -12695,29 +12650,29 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     "react-dom",
                     [
                         [
-                            "npm:17.0.2",
+                            "npm:18.0.0-beta-fdc1d617a-20211118",
                             {
                                 packageLocation:
-                                    "./.yarn/cache/react-dom-npm-17.0.2-f551215af1-1c1eaa3bca.zip/node_modules/react-dom/",
-                                packageDependencies: [["react-dom", "npm:17.0.2"]],
+                                    "./.yarn/cache/react-dom-npm-18.0.0-beta-fdc1d617a-20211118-22f0b76755-5c120b3b97.zip/node_modules/react-dom/",
+                                packageDependencies: [["react-dom", "npm:18.0.0-beta-fdc1d617a-20211118"]],
                                 linkType: "SOFT",
                             },
                         ],
                         [
-                            "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:17.0.2",
+                            "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:18.0.0-beta-fdc1d617a-20211118",
                             {
                                 packageLocation:
-                                    "./.yarn/__virtual__/react-dom-virtual-a18ec73d75/0/cache/react-dom-npm-17.0.2-f551215af1-1c1eaa3bca.zip/node_modules/react-dom/",
+                                    "./.yarn/__virtual__/react-dom-virtual-cae3dcfa22/0/cache/react-dom-npm-18.0.0-beta-fdc1d617a-20211118-22f0b76755-5c120b3b97.zip/node_modules/react-dom/",
                                 packageDependencies: [
                                     [
                                         "react-dom",
-                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:17.0.2",
+                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:18.0.0-beta-fdc1d617a-20211118",
                                     ],
                                     ["@types/react", "npm:17.0.33"],
                                     ["loose-envify", "npm:1.4.0"],
                                     ["object-assign", "npm:4.1.1"],
-                                    ["react", "npm:17.0.2"],
-                                    ["scheduler", "npm:0.20.2"],
+                                    ["react", "npm:18.0.0-beta-fdc1d617a-20211118"],
+                                    ["scheduler", "npm:0.21.0-beta-fdc1d617a-20211118"],
                                 ],
                                 packagePeers: ["@types/react", "react"],
                                 linkType: "HARD",
@@ -12748,7 +12703,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                                         "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:8.32.2",
                                     ],
                                     ["@types/react", "npm:17.0.33"],
-                                    ["react", "npm:17.0.2"],
+                                    ["react", "npm:18.0.0-beta-fdc1d617a-20211118"],
                                 ],
                                 packagePeers: ["@types/react", "react"],
                                 linkType: "HARD",
@@ -12819,61 +12774,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                                     ["hyphenate-style-name", "npm:1.0.4"],
                                     ["matchmediaquery", "npm:0.3.1"],
                                     ["prop-types", "npm:15.7.2"],
-                                    ["react", "npm:17.0.2"],
+                                    ["react", "npm:18.0.0-beta-fdc1d617a-20211118"],
                                     ["shallow-equal", "npm:1.2.1"],
                                 ],
                                 packagePeers: ["@types/react", "react"],
-                                linkType: "HARD",
-                            },
-                        ],
-                    ],
-                ],
-                [
-                    "react-server-dom-webpack",
-                    [
-                        [
-                            "npm:0.0.0-experimental-3c4c1c470-20211021",
-                            {
-                                packageLocation:
-                                    "./.yarn/cache/react-server-dom-webpack-npm-0.0.0-experimental-3c4c1c470-20211021-527371ae86-536d9017b5.zip/node_modules/react-server-dom-webpack/",
-                                packageDependencies: [
-                                    ["react-server-dom-webpack", "npm:0.0.0-experimental-3c4c1c470-20211021"],
-                                ],
-                                linkType: "SOFT",
-                            },
-                        ],
-                        [
-                            "virtual:4282c1f10b65efdab6d612934883eb0d3c79608b700a711fec13df4ceb1e82b0cc0f01ac2f5b200f03807351c13ab027f9fc529c060ec07cb749779caa99b57c#npm:0.0.0-experimental-3c4c1c470-20211021",
-                            {
-                                packageLocation:
-                                    "./.yarn/__virtual__/react-server-dom-webpack-virtual-789d200a04/0/cache/react-server-dom-webpack-npm-0.0.0-experimental-3c4c1c470-20211021-527371ae86-536d9017b5.zip/node_modules/react-server-dom-webpack/",
-                                packageDependencies: [
-                                    [
-                                        "react-server-dom-webpack",
-                                        "virtual:4282c1f10b65efdab6d612934883eb0d3c79608b700a711fec13df4ceb1e82b0cc0f01ac2f5b200f03807351c13ab027f9fc529c060ec07cb749779caa99b57c#npm:0.0.0-experimental-3c4c1c470-20211021",
-                                    ],
-                                    ["@types/react", "npm:17.0.33"],
-                                    ["@types/react-dom", null],
-                                    ["@types/webpack", null],
-                                    ["acorn", "npm:6.4.2"],
-                                    ["loose-envify", "npm:1.4.0"],
-                                    ["neo-async", "npm:2.6.2"],
-                                    ["object-assign", "npm:4.1.1"],
-                                    ["react", "npm:17.0.2"],
-                                    [
-                                        "react-dom",
-                                        "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:17.0.2",
-                                    ],
-                                    ["webpack", null],
-                                ],
-                                packagePeers: [
-                                    "@types/react-dom",
-                                    "@types/react",
-                                    "@types/webpack",
-                                    "react-dom",
-                                    "react",
-                                    "webpack",
-                                ],
                                 linkType: "HARD",
                             },
                         ],
@@ -13444,12 +13348,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     "scheduler",
                     [
                         [
-                            "npm:0.20.2",
+                            "npm:0.21.0-beta-fdc1d617a-20211118",
                             {
                                 packageLocation:
-                                    "./.yarn/cache/scheduler-npm-0.20.2-90beaecfba-c4b35cf967.zip/node_modules/scheduler/",
+                                    "./.yarn/cache/scheduler-npm-0.21.0-beta-fdc1d617a-20211118-117498c20d-6094dc4bb2.zip/node_modules/scheduler/",
                                 packageDependencies: [
-                                    ["scheduler", "npm:0.20.2"],
+                                    ["scheduler", "npm:0.21.0-beta-fdc1d617a-20211118"],
                                     ["loose-envify", "npm:1.4.0"],
                                     ["object-assign", "npm:4.1.1"],
                                 ],
@@ -13684,11 +13588,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     "shell-quote",
                     [
                         [
-                            "npm:1.7.2",
+                            "npm:1.7.3",
                             {
                                 packageLocation:
-                                    "./.yarn/cache/shell-quote-npm-1.7.2-8e2768dbb0-efad426fb2.zip/node_modules/shell-quote/",
-                                packageDependencies: [["shell-quote", "npm:1.7.2"]],
+                                    "./.yarn/cache/shell-quote-npm-1.7.3-76a78a6d77-aca58e73a3.zip/node_modules/shell-quote/",
+                                packageDependencies: [["shell-quote", "npm:1.7.3"]],
                                 linkType: "HARD",
                             },
                         ],
@@ -14350,32 +14254,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                             },
                         ],
                         [
-                            "virtual:4282c1f10b65efdab6d612934883eb0d3c79608b700a711fec13df4ceb1e82b0cc0f01ac2f5b200f03807351c13ab027f9fc529c060ec07cb749779caa99b57c#npm:5.0.0-beta.3",
+                            "virtual:60b1357c5849828871b1b3f4c7989f5379ac652b356c4c492be21c9a18a0429ab291fd39000f77fc09342c1dc01023baa717001907cefe4a64b621808dd8474e#npm:5.0.0-beta.3",
                             {
                                 packageLocation:
-                                    "./.yarn/__virtual__/styled-jsx-virtual-246515e91b/0/cache/styled-jsx-npm-5.0.0-beta.3-7438ddd560-cc328a92b5.zip/node_modules/styled-jsx/",
+                                    "./.yarn/__virtual__/styled-jsx-virtual-48770b4c72/0/cache/styled-jsx-npm-5.0.0-beta.3-7438ddd560-cc328a92b5.zip/node_modules/styled-jsx/",
                                 packageDependencies: [
                                     [
                                         "styled-jsx",
-                                        "virtual:4282c1f10b65efdab6d612934883eb0d3c79608b700a711fec13df4ceb1e82b0cc0f01ac2f5b200f03807351c13ab027f9fc529c060ec07cb749779caa99b57c#npm:5.0.0-beta.3",
+                                        "virtual:60b1357c5849828871b1b3f4c7989f5379ac652b356c4c492be21c9a18a0429ab291fd39000f77fc09342c1dc01023baa717001907cefe4a64b621808dd8474e#npm:5.0.0-beta.3",
                                     ],
                                     ["@babel/core", null],
                                     [
                                         "@babel/plugin-syntax-jsx",
-                                        "virtual:246515e91bc5d70ac1e053810e35f62037a67d84316685f749c1d985eada282bef2e2a195f77856dfbe690c51b56dc70012eb4c111e2792454729a15f6ff901a#npm:7.14.5",
+                                        "virtual:48770b4c726171dbd811f328632432db1c38e322a751f675500eb3201c5244c1ccf39e3f13826321d0cc445f5df3301f4a2090b73f173f19d18965820653f0d8#npm:7.14.5",
                                     ],
                                     ["@babel/types", "npm:7.15.0"],
                                     ["@types/babel__core", null],
                                     ["@types/react", "npm:17.0.33"],
                                     ["convert-source-map", "npm:1.7.0"],
                                     ["loader-utils", "npm:1.2.3"],
-                                    ["react", "npm:17.0.2"],
+                                    ["react", "npm:18.0.0-beta-fdc1d617a-20211118"],
                                     ["source-map", "npm:0.7.3"],
                                     ["string-hash", "npm:1.1.3"],
                                     ["stylis", "npm:3.5.4"],
                                     [
                                         "stylis-rule-sheet",
-                                        "virtual:246515e91bc5d70ac1e053810e35f62037a67d84316685f749c1d985eada282bef2e2a195f77856dfbe690c51b56dc70012eb4c111e2792454729a15f6ff901a#npm:0.0.10",
+                                        "virtual:48770b4c726171dbd811f328632432db1c38e322a751f675500eb3201c5244c1ccf39e3f13826321d0cc445f5df3301f4a2090b73f173f19d18965820653f0d8#npm:0.0.10",
                                     ],
                                 ],
                                 packagePeers: ["@babel/core", "@types/babel__core", "@types/react", "react"],
@@ -14411,14 +14315,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                             },
                         ],
                         [
-                            "virtual:246515e91bc5d70ac1e053810e35f62037a67d84316685f749c1d985eada282bef2e2a195f77856dfbe690c51b56dc70012eb4c111e2792454729a15f6ff901a#npm:0.0.10",
+                            "virtual:48770b4c726171dbd811f328632432db1c38e322a751f675500eb3201c5244c1ccf39e3f13826321d0cc445f5df3301f4a2090b73f173f19d18965820653f0d8#npm:0.0.10",
                             {
                                 packageLocation:
-                                    "./.yarn/__virtual__/stylis-rule-sheet-virtual-162f856054/0/cache/stylis-rule-sheet-npm-0.0.10-bc7763b753-97ad016c64.zip/node_modules/stylis-rule-sheet/",
+                                    "./.yarn/__virtual__/stylis-rule-sheet-virtual-ab81b0c2b3/0/cache/stylis-rule-sheet-npm-0.0.10-bc7763b753-97ad016c64.zip/node_modules/stylis-rule-sheet/",
                                 packageDependencies: [
                                     [
                                         "stylis-rule-sheet",
-                                        "virtual:246515e91bc5d70ac1e053810e35f62037a67d84316685f749c1d985eada282bef2e2a195f77856dfbe690c51b56dc70012eb4c111e2792454729a15f6ff901a#npm:0.0.10",
+                                        "virtual:48770b4c726171dbd811f328632432db1c38e322a751f675500eb3201c5244c1ccf39e3f13826321d0cc445f5df3301f4a2090b73f173f19d18965820653f0d8#npm:0.0.10",
                                     ],
                                     ["@types/stylis", null],
                                     ["stylis", "npm:3.5.4"],
@@ -15197,18 +15101,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                             },
                         ],
                         [
-                            "virtual:4282c1f10b65efdab6d612934883eb0d3c79608b700a711fec13df4ceb1e82b0cc0f01ac2f5b200f03807351c13ab027f9fc529c060ec07cb749779caa99b57c#npm:1.5.1",
+                            "virtual:60b1357c5849828871b1b3f4c7989f5379ac652b356c4c492be21c9a18a0429ab291fd39000f77fc09342c1dc01023baa717001907cefe4a64b621808dd8474e#npm:1.5.1",
                             {
                                 packageLocation:
-                                    "./.yarn/__virtual__/use-subscription-virtual-a4f2563edd/0/cache/use-subscription-npm-1.5.1-d91d77edbb-96e64977a5.zip/node_modules/use-subscription/",
+                                    "./.yarn/__virtual__/use-subscription-virtual-880f5692f2/0/cache/use-subscription-npm-1.5.1-d91d77edbb-96e64977a5.zip/node_modules/use-subscription/",
                                 packageDependencies: [
                                     [
                                         "use-subscription",
-                                        "virtual:4282c1f10b65efdab6d612934883eb0d3c79608b700a711fec13df4ceb1e82b0cc0f01ac2f5b200f03807351c13ab027f9fc529c060ec07cb749779caa99b57c#npm:1.5.1",
+                                        "virtual:60b1357c5849828871b1b3f4c7989f5379ac652b356c4c492be21c9a18a0429ab291fd39000f77fc09342c1dc01023baa717001907cefe4a64b621808dd8474e#npm:1.5.1",
                                     ],
                                     ["@types/react", "npm:17.0.33"],
                                     ["object-assign", "npm:4.1.1"],
-                                    ["react", "npm:17.0.2"],
+                                    ["react", "npm:18.0.0-beta-fdc1d617a-20211118"],
                                 ],
                                 packagePeers: ["@types/react", "react"],
                                 linkType: "HARD",
@@ -15293,20 +15197,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                                     ["glob-to-regexp", "npm:0.4.1"],
                                     ["graceful-fs", "npm:4.2.8"],
                                 ],
-                                linkType: "HARD",
-                            },
-                        ],
-                    ],
-                ],
-                [
-                    "web-streams-polyfill",
-                    [
-                        [
-                            "npm:3.0.3",
-                            {
-                                packageLocation:
-                                    "./.yarn/cache/web-streams-polyfill-npm-3.0.3-f87d6c31a0-14299a9cbb.zip/node_modules/web-streams-polyfill/",
-                                packageDependencies: [["web-streams-polyfill", "npm:3.0.3"]],
                                 linkType: "HARD",
                             },
                         ],
@@ -15952,7 +15842,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                                         "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:3.6.1",
                                     ],
                                     ["@types/react", "npm:17.0.33"],
-                                    ["react", "npm:17.0.2"],
+                                    ["react", "npm:18.0.0-beta-fdc1d617a-20211118"],
                                 ],
                                 packagePeers: ["@types/react", "react"],
                                 linkType: "HARD",

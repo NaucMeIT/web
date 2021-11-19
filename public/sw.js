@@ -3,42 +3,42 @@ if (!self.define) {
             "require" !== e && (e += ".js")
             let s = Promise.resolve()
             return (
-                a[e] ||
+                n[e] ||
                     (s = new Promise(async (s) => {
                         if ("document" in self) {
-                            const a = document.createElement("script")
-                            ;(a.src = e), document.head.appendChild(a), (a.onload = s)
+                            const n = document.createElement("script")
+                            ;(n.src = e), document.head.appendChild(n), (n.onload = s)
                         } else importScripts(e), s()
                     })),
                 s.then(() => {
-                    if (!a[e]) throw new Error(`Module ${e} didn’t register its module`)
-                    return a[e]
+                    if (!n[e]) throw new Error(`Module ${e} didn’t register its module`)
+                    return n[e]
                 })
             )
         },
-        s = (s, a) => {
-            Promise.all(s.map(e)).then((e) => a(1 === e.length ? e[0] : e))
+        s = (s, n) => {
+            Promise.all(s.map(e)).then((e) => n(1 === e.length ? e[0] : e))
         },
-        a = { require: Promise.resolve(s) }
-    self.define = (s, n, t) => {
-        a[s] ||
-            (a[s] = Promise.resolve().then(() => {
-                let a = {}
-                const i = { uri: location.origin + s.slice(1) }
+        n = { require: Promise.resolve(s) }
+    self.define = (s, a, i) => {
+        n[s] ||
+            (n[s] = Promise.resolve().then(() => {
+                let n = {}
+                const t = { uri: location.origin + s.slice(1) }
                 return Promise.all(
-                    n.map((s) => {
+                    a.map((s) => {
                         switch (s) {
                             case "exports":
-                                return a
+                                return n
                             case "module":
-                                return i
+                                return t
                             default:
                                 return e(s)
                         }
                     }),
                 ).then((e) => {
-                    const s = t(...e)
-                    return a.default || (a.default = s), a
+                    const s = i(...e)
+                    return n.default || (n.default = s), n
                 })
             }))
     }
@@ -50,26 +50,25 @@ define("./sw.js", ["./workbox-adbd2882"], function (e) {
         e.clientsClaim(),
         e.precacheAndRoute(
             [
-                { url: "/_next/server/middleware-manifest.json", revision: "1dtssdNXa0Ey54rRTx5L5" },
-                { url: "/_next/static/1dtssdNXa0Ey54rRTx5L5/_buildManifest.js", revision: "1dtssdNXa0Ey54rRTx5L5" },
+                { url: "/_next/server/middleware-build-manifest.js", revision: "4SQK3fUB-NBDIYyI_r_0w" },
+                { url: "/_next/server/middleware-manifest.json", revision: "4SQK3fUB-NBDIYyI_r_0w" },
+                { url: "/_next/server/middleware-react-loadable-manifest.js", revision: "4SQK3fUB-NBDIYyI_r_0w" },
+                { url: "/_next/static/4SQK3fUB-NBDIYyI_r_0w/_buildManifest.js", revision: "4SQK3fUB-NBDIYyI_r_0w" },
                 {
-                    url: "/_next/static/1dtssdNXa0Ey54rRTx5L5/_middlewareManifest.js",
-                    revision: "1dtssdNXa0Ey54rRTx5L5",
+                    url: "/_next/static/4SQK3fUB-NBDIYyI_r_0w/_middlewareManifest.js",
+                    revision: "4SQK3fUB-NBDIYyI_r_0w",
                 },
-                { url: "/_next/static/1dtssdNXa0Ey54rRTx5L5/_ssgManifest.js", revision: "1dtssdNXa0Ey54rRTx5L5" },
-                { url: "/_next/static/chunks/764-b7ef6fc900540595.js", revision: "1dtssdNXa0Ey54rRTx5L5" },
-                { url: "/_next/static/chunks/framework-24afc89648b966c9.js", revision: "1dtssdNXa0Ey54rRTx5L5" },
-                { url: "/_next/static/chunks/main-5e5007affbea62db.js", revision: "1dtssdNXa0Ey54rRTx5L5" },
-                { url: "/_next/static/chunks/pages/_app-ff85e67dbea8d16a.js", revision: "1dtssdNXa0Ey54rRTx5L5" },
-                { url: "/_next/static/chunks/pages/_error-60be80bad6e51832.js", revision: "1dtssdNXa0Ey54rRTx5L5" },
-                { url: "/_next/static/chunks/pages/index-0fb08a314f00ab82.js", revision: "1dtssdNXa0Ey54rRTx5L5" },
-                { url: "/_next/static/chunks/pages/interested-2144acbdcd6e0819.js", revision: "1dtssdNXa0Ey54rRTx5L5" },
-                {
-                    url: "/_next/static/chunks/polyfills-a40ef1678bae11e696dba45124eadd70.js",
-                    revision: "1dtssdNXa0Ey54rRTx5L5",
-                },
-                { url: "/_next/static/chunks/webpack-2b99834efceef160.js", revision: "1dtssdNXa0Ey54rRTx5L5" },
-                { url: "/_next/static/css/2df3426ad4475f8b.css", revision: "1dtssdNXa0Ey54rRTx5L5" },
+                { url: "/_next/static/4SQK3fUB-NBDIYyI_r_0w/_ssgManifest.js", revision: "4SQK3fUB-NBDIYyI_r_0w" },
+                { url: "/_next/static/chunks/170-663c66710b99df2f.js", revision: "4SQK3fUB-NBDIYyI_r_0w" },
+                { url: "/_next/static/chunks/framework-e73cf9261908cde5.js", revision: "4SQK3fUB-NBDIYyI_r_0w" },
+                { url: "/_next/static/chunks/main-c2c0f059f4cfb858.js", revision: "4SQK3fUB-NBDIYyI_r_0w" },
+                { url: "/_next/static/chunks/pages/_app-59d592531357ac1b.js", revision: "4SQK3fUB-NBDIYyI_r_0w" },
+                { url: "/_next/static/chunks/pages/_error-6f3f7924a726ee9d.js", revision: "4SQK3fUB-NBDIYyI_r_0w" },
+                { url: "/_next/static/chunks/pages/index-e7353aa494541a40.js", revision: "4SQK3fUB-NBDIYyI_r_0w" },
+                { url: "/_next/static/chunks/pages/interested-d1a946d0fdfb05dc.js", revision: "4SQK3fUB-NBDIYyI_r_0w" },
+                { url: "/_next/static/chunks/polyfills-5cd94c89d3acac5f.js", revision: "4SQK3fUB-NBDIYyI_r_0w" },
+                { url: "/_next/static/chunks/webpack-2b99834efceef160.js", revision: "4SQK3fUB-NBDIYyI_r_0w" },
+                { url: "/_next/static/css/eda0e4edb14c2bb5.css", revision: "4SQK3fUB-NBDIYyI_r_0w" },
                 { url: "/android-chrome-192x192.png", revision: "6acd2ac6826c606ea4bac73ac55881cf" },
                 { url: "/android-chrome-512x512.png", revision: "0e5070c8bca65f1284e0df2b375b2580" },
                 { url: "/apple-touch-icon.png", revision: "a7c7c08ca08da51f9bd6a8645cc0ee83" },
@@ -93,7 +92,7 @@ define("./sw.js", ["./workbox-adbd2882"], function (e) {
                 cacheName: "start-url",
                 plugins: [
                     {
-                        cacheWillUpdate: async ({ request: e, response: s, event: a, state: n }) =>
+                        cacheWillUpdate: async ({ request: e, response: s, event: n, state: a }) =>
                             s && "opaqueredirect" === s.type
                                 ? new Response(s.body, { status: 200, statusText: "OK", headers: s.headers })
                                 : s,
