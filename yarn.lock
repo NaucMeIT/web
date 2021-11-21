@@ -1315,13 +1315,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@headlessui/react@npm:^1.4.1":
-  version: 1.4.1
-  resolution: "@headlessui/react@npm:1.4.1"
+"@headlessui/react@npm:^1.4.2":
+  version: 1.4.2
+  resolution: "@headlessui/react@npm:1.4.2"
   peerDependencies:
     react: ^16 || ^17 || ^18
     react-dom: ^16 || ^17 || ^18
-  checksum: e036941e31b02a17e8c27b018d40cced1e7165ec85ce00cddf74884349e86cb7ef75e3c645d7d0f133f63dfbac97ad4a5765d996db3b8f3cc4a678c84402ad6e
+  checksum: 28c36204430365190c05cbd48235f8239897360c8d55189583c03868fe640b171051238a8672a501b441de79281bb08285966105bfeb4534ca0e612382dcd41f
   languageName: node
   linkType: hard
 
@@ -5307,7 +5307,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "nauc-me-it@workspace:."
   dependencies:
-    "@headlessui/react": ^1.4.1
+    "@headlessui/react": ^1.4.2
     "@heroicons/react": ^1.0.5
     "@types/eslint": ^7
     "@types/node": ^16.11.6
@@ -5330,7 +5330,7 @@ __metadata:
     tailwindcss: ^2.2.17
     tailwindcss-fluid: ^0.2.0
     typescript: latest
-    zustand: ^3.6.1
+    zustand: ^3.6.5
   languageName: unknown
   linkType: soft
 
@@ -8012,14 +8012,14 @@ typescript@latest:
   languageName: node
   linkType: hard
 
-"zustand@npm:^3.6.1":
-  version: 3.6.1
-  resolution: "zustand@npm:3.6.1"
+"zustand@npm:^3.6.5":
+  version: 3.6.5
+  resolution: "zustand@npm:3.6.5"
   peerDependencies:
     react: ">=16.8"
   peerDependenciesMeta:
     react:
       optional: true
-  checksum: febd01e8b6a3ecb5baa015473a9939b2747d8b0945d82f20815d3079fb71022bf1b37519447ba2fdbc6751e4e39d03202c923bd21d4711c0210f2b9b8a34e726
+  checksum: 1c3eee75ba04c9ec2d9390bb5f8a9ef736f21f9b266cf39e578a359325b10db816f54783ae70a5ee69cd0846e4a504d460fe8e91fde57a276cd3e7ce2538caa3
   languageName: node
   linkType: hard

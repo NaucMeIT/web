@@ -112,7 +112,7 @@ export const MainMenu: React.FC<MenuProps> = ({ items }) => {
                         leaveFrom='transform opacity-100'
                         leaveTo='transform opacity-0'
                     >
-                        <Disclosure.Panel className='absolute right-0 z-20 w-screen bg-opacity-90 bg-green-off sm:hidden'>
+                        <Disclosure.Panel className='absolute right-0 z-20 w-screen bg-opacity-90 bg-green-main sm:hidden'>
                             <div className='px-2 pt-2 pb-3'>
                                 {items.map((item) => (
                                     <a
@@ -120,9 +120,9 @@ export const MainMenu: React.FC<MenuProps> = ({ items }) => {
                                         href={item.link}
                                         className={classNames(
                                             item.active
-                                                ? "text-blue-off font-black"
-                                                : "text-blue-highlight hover:text-blue-off",
-                                            "tracking-wide block px-3 py-2 rounded-md text-base font-medium leading-9 text-center align-middle first-letter:font-normal first-letter:text-3xl first-letter:mr-3",
+                                                ? "text-green-off font-black"
+                                                : "text-green-highlight hover:text-green-off",
+                                            "tracking-wide block px-3 py-2 rounded-md text-base font-medium leading-9 text-center align-middle",
                                         )}
                                         aria-current={item.active ? "page" : undefined}
                                     >

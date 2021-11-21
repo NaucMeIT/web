@@ -11,7 +11,7 @@
         "postbuild": "next-sitemap"
     },
     "dependencies": {
-        "@headlessui/react": "^1.4.1",
+        "@headlessui/react": "^1.4.2",
         "@heroicons/react": "^1.0.5",
         "classnames": "^2.3.1",
         "next": "latest",
@@ -19,7 +19,7 @@
         "react": "beta",
         "react-dom": "beta",
         "react-responsive": "^9.0.0-beta.4",
-        "zustand": "^3.6.1"
+        "zustand": "^3.6.5"
     },
     "devDependencies": {
         "@types/eslint": "^7",
