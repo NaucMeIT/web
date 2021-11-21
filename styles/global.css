@@ -38,6 +38,17 @@
     }
 }
 
+blockquote::before {
+    content: open-quote;
+}
+blockquote::after {
+    content: close-quote;
+}
+blockquote {
+    quotes: "„" "“" "‚" "'";
+}
+
+/*
 @layer utilities {
     .slanted::before {
         content: "";
@@ -55,3 +66,4 @@
         transform: skewY(3deg) translateY(-50%);
     }
 }
+*/

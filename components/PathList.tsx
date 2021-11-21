@@ -1,32 +1,29 @@
 import React from "react"
+import { Path } from "./Path"
 
 export const PathList: React.FC = () => (
     <section className='overflow-hidden'>
-        <article className='flex flex-col justify-center items-center bg-green-main px-[10vw] py-10'>
-            <h2 className='z-10 self-start ml-0 text-lg-fluid text-green-highlight'>Tester</h2>
-            <p className='z-10 pt-5 mx-auto my-0 text-md-fluid text-green-off'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in lacus lorem. Praesent dictum rutrum
-                augue ut scelerisque. Aenean vestibulum fermentum velit, sed porttitor ex dignissim vel. Quisque at erat
-                velit. Sed lacus lacus, efficitur et risus ut, gravida posuere lectus. Integer eleifend ligula vel
-                sodales vulputate. Nunc eu urna at elit rhoncus rutrum. Vestibulum consectetur massa dui, eget malesuada
-                augue aliquet et. Nam nec placerat risus, in congue eros. Donec vulputate et justo quis porttitor. Donec
-                aliquam at nisl et accumsan. Nunc est massa, tempor malesuada augue in, finibus rutrum eros. Proin
-                consectetur nibh tortor, sit amet dapibus tortor venenatis eu. Vivamus consectetur leo non massa
-                fermentum dictum.
-            </p>
-        </article>
-        <article className='flex flex-col justify-start items-center bg-blue-main px-[10vw] py-10'>
-            <h2 className='z-10 self-start ml-0 text-lg-fluid text-blue-highlight'>Programátor</h2>
-            <p className='z-10 py-5 mx-auto my-0 text-md-fluid text-blue-off'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in lacus lorem. Praesent dictum rutrum
-                augue ut scelerisque. Aenean vestibulum fermentum velit, sed porttitor ex dignissim vel. Quisque at erat
-                velit. Sed lacus lacus, efficitur et risus ut, gravida posuere lectus. Integer eleifend ligula vel
-                sodales vulputate. Nunc eu urna at elit rhoncus rutrum. Vestibulum consectetur massa dui, eget malesuada
-                augue aliquet et. Nam nec placerat risus, in congue eros. Donec vulputate et justo quis porttitor. Donec
-                aliquam at nisl et accumsan. Nunc est massa, tempor malesuada augue in, finibus rutrum eros. Proin
-                consectetur nibh tortor, sit amet dapibus tortor venenatis eu. Vivamus consectetur leo non massa
-                fermentum dictum.
-            </p>
-        </article>
+        <Path
+            mainColour='green'
+            title='Tester'
+            text={[
+                "Určitě bys nechtěl dostat hodinky, které rozbalíš a nebudou mít funkční minutovou ručičku. To samé platí i u software. Práce testera je hledání chyb a upozorňování na ně srozumitelnou formou. Proto abys mohl být tester, nepotřebuješ mnoho. Stačí kritické myšlení a základní znalosti testovaného programu. V případě webových aplikací, na které se kurz zaměřuje, je vhodné znát i nástroje, které usnadňují nejen testerům práci.",
+                "Kurz je složený z 10 kapitol, první část je zaměřená na rozvoj přemýšlení. Dále pokračujeme k praktickým znalostem z prostředí webového vývoje (základy HTML, CSS a Javascriptu). Jakmile rozumíš základům přesuneme se k nástrojům, které práci testera značně zjednodušují a urychlují. Vše je zakončeno praktickými úlohami, kde máš možnost ověřit nabyté znalosti.",
+            ]}
+            textQuote='Pokud někoho upozorníš na chybu, říká se tomu kritika, pokud to ale uděláš oficiální cestou, říká se tomu testing.'
+            icon={{
+                path: "/qa_bug.svg",
+                alt: "Lupa s broukem představující práci testera hledajícího chyby v programu.",
+            }}
+        />
+        <Path
+            mainColour='blue'
+            title='Programátor'
+            text={["Cesta je v přípravě."]}
+            icon={{
+                path: "/programmer.svg",
+                alt: "Symbol programování či programovacích jazyků",
+            }}
+        />
     </section>
 )
