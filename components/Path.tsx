@@ -8,13 +8,14 @@ interface IconProps {
 
 interface PathProps {
     mainColour: "blue" | "green"
+    id: string
     title: string
     text: string[]
     textQuote?: string
     icon?: IconProps
 }
 
-export const Path: React.FC<PathProps> = ({ mainColour, text, title, textQuote, icon }) => {
+export const Path: React.FC<PathProps> = ({ mainColour, text, title, textQuote, icon, id }) => {
     const textClasses = `
 		z-10 pt-5 mx-auto my-0 text-md-fluid ${mainColour === "green" ? "text-green-off" : "text-blue-off"}
 	`
@@ -26,6 +27,7 @@ export const Path: React.FC<PathProps> = ({ mainColour, text, title, textQuote, 
         >
             <div className='flex flex-col flex-wrap lg:flex-row'>
                 <h2
+                    id={id}
                     className={`lg:min-w-[80vw] z-10 self-start ml-0 text-lg-fluid ${
                         mainColour === "green" ? "text-green-highlight" : "text-blue-highlight"
                     }`}
@@ -34,7 +36,7 @@ export const Path: React.FC<PathProps> = ({ mainColour, text, title, textQuote, 
                 </h2>
                 <section className={`${icon && "lg:w-[65%]"}`}>
                     {text.map((t, i) => (
-                        <p key={title + i} className={textClasses}>
+                        <p key={id + i} className={textClasses}>
                             {t}
                         </p>
                     ))}

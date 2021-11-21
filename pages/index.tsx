@@ -27,23 +27,23 @@ const Home: NextPage = () => {
                         {
                             icon: (props: any) => <HomeIcon {...props} color={"#fff"} />,
                             title: "Úvod",
-                            link: "#",
+                            link: "#home",
                             active: true,
                         },
                         {
                             icon: (props: any) => <InformationCircleIcon {...props} color={"#fff"} />,
                             title: "O kurzu",
-                            link: "#",
+                            link: "#about",
                         },
                         {
                             icon: (props: any) => <ClipboardCheckIcon {...props} color={"#fff"} />,
                             title: "Tester",
-                            link: "#",
+                            link: "#qa",
                         },
                         {
                             icon: (props: any) => <CodeIcon {...props} color={"#fff"} />,
                             title: "Vývojář",
-                            link: "#",
+                            link: "#developer",
                         },
                     ]}
                 />

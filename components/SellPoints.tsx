@@ -7,7 +7,9 @@ export const SellPoints: React.FC = () => {
     return (
         <article className={`flex flex-col justify-center items-center bg-green-main px-[10vw] py-10`}>
             <div className='flex flex-col flex-wrap lg:flex-row text-md-fluid text-green-off'>
-                <h2 className={`lg:min-w-[80vw] z-10 self-start ml-0 text-lg-fluid text-green-highlight`}>O kurzu</h2>
+                <h2 id='about' className={`lg:min-w-[80vw] z-10 self-start ml-0 text-lg-fluid text-green-highlight`}>
+                    O kurzu
+                </h2>
                 <ul>
                     <li>
                         Cena kurzu <b>49 Kč</b>
