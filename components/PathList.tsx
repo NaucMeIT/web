@@ -4,7 +4,7 @@ import { Path } from "./Path"
 export const PathList: React.FC = () => (
     <section className='overflow-hidden'>
         <Path
-            mainColour='green'
+            mainColour='blue'
             title='Tester'
             text={[
                 "Určitě bys nechtěl dostat hodinky, které rozbalíš a nebudou mít funkční minutovou ručičku. To samé platí i u software. Práce testera je hledání chyb a upozorňování na ně srozumitelnou formou. Proto abys mohl být tester, nepotřebuješ mnoho. Stačí kritické myšlení a základní znalosti testovaného programu. V případě webových aplikací, na které se kurz zaměřuje, je vhodné znát i nástroje, které usnadňují nejen testerům práci.",
@@ -17,12 +17,16 @@ export const PathList: React.FC = () => (
             }}
         />
         <Path
-            mainColour='blue'
+            mainColour='green'
             title='Programátor'
-            text={["Cesta je v přípravě."]}
+            text={[
+                "Programátorem se člověk nerodí, je k tomu třeba praxe na reálných projektech. V tomto kurzu získáš praktické znalosti při vývoji několika projektů, na které dostaneš zpětnou vazbu od našich lektorů.",
+                "V kurzu se dozvíš, co vlastně programátor webových aplikací potřebuje. Konkrétně získáš praktické zkušenosti s HTML, CSS a JavaScriptem na pokročilejší úrovni.",
+                "Kurz je v přípravě.",
+            ]}
             icon={{
                 path: "/programmer.svg",
-                alt: "Symbol programování či programovacích jazyků",
+                alt: "Symbol programování či programovacích jazyků.",
             }}
         />
     </section>

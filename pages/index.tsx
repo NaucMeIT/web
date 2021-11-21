@@ -1,10 +1,11 @@
 import type { NextPage } from "next"
-import Head from "../components/Head"
 import React from "react"
+import { ClipboardCheckIcon, CodeIcon, HomeIcon, InformationCircleIcon } from "@heroicons/react/outline"
+import Head from "../components/Head"
 import { MainMenu } from "../components/MainMenu"
 import { SignUpContainer } from "../components/SignUpContainer"
 import { PathList } from "../components/PathList"
-import { ClipboardCheckIcon, CodeIcon, HomeIcon, InformationCircleIcon } from "@heroicons/react/outline"
+import { SellPoints } from "../components/SellPoints"
 
 const Home: NextPage = () => {
     return (
@@ -49,6 +50,7 @@ const Home: NextPage = () => {
                 <SignUpContainer />
             </header>
             <main>
+                <SellPoints />
                 <PathList />
             </main>
         </>
