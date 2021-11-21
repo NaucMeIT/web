@@ -25,23 +25,27 @@ const Home: NextPage = () => {
                 <MainMenu
                     items={[
                         {
-                            icon: (props: any) => <HomeIcon {...props} color={"#fff"} />,
+                            icon: (props: React.ComponentProps<"svg">) => <HomeIcon {...props} color={"#fff"} />,
                             title: "Úvod",
                             link: "#home",
                             active: true,
                         },
                         {
-                            icon: (props: any) => <InformationCircleIcon {...props} color={"#fff"} />,
+                            icon: (props: React.ComponentProps<"svg">) => (
+                                <InformationCircleIcon {...props} color={"#fff"} />
+                            ),
                             title: "O kurzu",
                             link: "#about",
                         },
                         {
-                            icon: (props: any) => <ClipboardCheckIcon {...props} color={"#fff"} />,
+                            icon: (props: React.ComponentProps<"svg">) => (
+                                <ClipboardCheckIcon {...props} color={"#fff"} />
+                            ),
                             title: "Tester",
                             link: "#qa",
                         },
                         {
-                            icon: (props: any) => <CodeIcon {...props} color={"#fff"} />,
+                            icon: (props: React.ComponentProps<"svg">) => <CodeIcon {...props} color={"#fff"} />,
                             title: "Vývojář",
                             link: "#developer",
                         },
