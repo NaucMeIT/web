@@ -27,7 +27,7 @@ export const MainMenu: React.FC<MenuProps> = ({ items }) => {
     const [showCTA, setShowCTA] = useState(true)
     return (
         <Disclosure as='nav' className='fixed top-0 z-20 w-screen bg-blue-main'>
-            {({ open }) => (
+            {({ open, close }) => (
                 <>
                     <div className='px-6 mx-auto max-w-7xl 2xl:max-w-[80vw] sm:px-6 lg:px-8'>
                         <div className='relative flex items-center justify-between h-16'>
@@ -87,12 +87,13 @@ export const MainMenu: React.FC<MenuProps> = ({ items }) => {
                                                     "px-3 py-2 rounded-md text-md-fluid font-medium",
                                                 )}
                                                 aria-current={item.active ? "page" : undefined}
+                                                onClick={() => close()}
                                             >
                                                 {item.icon &&
                                                     React.createElement(item.icon, {
                                                         width: 36,
                                                         height: 36,
-                                                        className: "inline-block pr-2 text-current",
+                                                        className: "inline-block pr-2 text-current -mt-2",
                                                     })}
                                                 {item.title}
                                             </a>
@@ -125,12 +126,13 @@ export const MainMenu: React.FC<MenuProps> = ({ items }) => {
                                             "tracking-wide block px-3 py-2 rounded-md text-base font-medium leading-9 text-center align-middle",
                                         )}
                                         aria-current={item.active ? "page" : undefined}
+                                        onClick={() => close()}
                                     >
                                         {item.icon &&
                                             React.createElement(item.icon, {
                                                 width: 24,
                                                 height: 24,
-                                                className: "inline-block pr-2 text-current",
+                                                className: "inline-block pr-2 text-current -mt-1",
                                             })}
                                         {item.title}
                                     </a>
