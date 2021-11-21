@@ -126,6 +126,12 @@ export const MainMenu: React.FC<MenuProps> = ({ items }) => {
                                         )}
                                         aria-current={item.active ? "page" : undefined}
                                     >
+                                        {item.icon &&
+                                            React.createElement(item.icon, {
+                                                width: 24,
+                                                height: 24,
+                                                className: "inline-block pr-2 text-current",
+                                            })}
                                         {item.title}
                                     </a>
                                 ))}
