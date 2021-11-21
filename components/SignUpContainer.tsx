@@ -14,7 +14,7 @@ export const SignUpContainer: React.FC = () => {
     return (
         <div className='flex flex-col justify-center flex-auto mx-5 lg:pt-5 lg:flex-row lg:items-center'>
             <div className='z-10 mt-30 lg:-mt-32 lg:max-w-[40vw]'>
-                <h1 id='home' className='mt-24 font-bold text-center lg:mt-12 text-vh-md-fluid lg:text-lg-fluid'>
+                <h1 className='mt-24 font-bold text-center lg:mt-12 text-vh-md-fluid lg:text-lg-fluid'>
                     Nauč se programovat a nech si za to platit!
                 </h1>
                 <p className='mt-4 text-center text-vh-sm-fluid text-blue-off lg:text-md-fluid'>

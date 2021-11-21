@@ -4,6 +4,7 @@
 
 * {
     font-family: Roboto, "Helvetica Neue";
+    scroll-behavior: smooth;
 }
 
 .text-vh-sm-fluid {

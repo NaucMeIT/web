@@ -41,7 +41,7 @@ export default function Document() {
                 <meta property='og:title' key='og:title' content={APP_NAME} />
                 <meta property='og:site_name' content={APP_NAME} />
             </Head>
-            <body className='overflow-x-hidden bg-blue-main text-blue-highlight'>
+            <body id='home' className='overflow-x-hidden bg-blue-main text-blue-highlight'>
                 <Main />
                 <NextScript />
             </body>
