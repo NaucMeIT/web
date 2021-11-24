@@ -19,10 +19,10 @@ export const PathList: React.FC = () => (
         />
         <Path
             mainColour='green'
-            title='Programátor'
+            title='Vývojář'
             id='developer'
             text={[
-                "Programátorem se člověk nerodí, je k tomu třeba praxe na reálných projektech. V tomto kurzu získáš praktické znalosti při vývoji několika projektů, na které dostaneš zpětnou vazbu od našich lektorů.",
+                "Vývojářem se člověk nerodí, je k tomu třeba praxe na reálných projektech. V tomto kurzu získáš praktické znalosti při vývoji několika projektů, na které dostaneš zpětnou vazbu od našich lektorů.",
                 "V kurzu se dozvíš, co vlastně programátor webových aplikací potřebuje. Konkrétně získáš praktické zkušenosti s HTML, CSS a JavaScriptem na pokročilejší úrovni.",
                 "Kurz je v přípravě.",
             ]}

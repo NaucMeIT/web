@@ -32,7 +32,7 @@ export const MainMenu: React.FC<MenuProps> = ({ items }) => {
                     <div className='px-6 mx-auto max-w-7xl 2xl:max-w-[80vw] sm:px-6 lg:px-8'>
                         <div className='relative flex items-center justify-between h-16'>
                             <div className='flex items-center justify-between flex-1 sm:items-stretch'>
-                                <div className='flex items-center flex-shrink-0'>
+                                <div className='flex items-center flex-shrink-0 invisible lg:hidden'>
                                     <img
                                         className='block w-auto h-8 lg:hidden'
                                         src='https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg'

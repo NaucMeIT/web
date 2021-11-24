@@ -1,6 +1,6 @@
 import type { NextPage } from "next"
 import React from "react"
-import { ClipboardCheckIcon, CodeIcon, HomeIcon, InformationCircleIcon } from "@heroicons/react/outline"
+import { AtSymbolIcon, ClipboardCheckIcon, CodeIcon, HomeIcon, InformationCircleIcon } from "@heroicons/react/outline"
 import Head from "../components/Head"
 import { MainMenu } from "../components/MainMenu"
 import { SignUpContainer } from "../components/SignUpContainer"
@@ -49,6 +49,11 @@ const Home: NextPage = () => {
                             title: "Vývojář",
                             link: "#developer",
                         },
+                        {
+                            icon: (props: React.ComponentProps<"svg">) => <AtSymbolIcon {...props} color={"#fff"} />,
+                            title: "Kontakt",
+                            link: "#contact",
+                        },
                     ]}
                 />
                 <SignUpContainer />
@@ -57,6 +62,25 @@ const Home: NextPage = () => {
                 <SellPoints />
                 <PathList />
             </main>
+            <footer id='contact'>
+                <div className='bg-blue-main px-[10vw] py-10'>
+                    <h2 className={`lg:min-w-[80vw] z-10 self-start ml-0 text-lg-fluid text-blue-highlight`}>
+                        Kontakt
+                    </h2>
+                    <h3 className='mt-5 text-md-fluid'>Přihlášky, informace</h3>{" "}
+                    <a className='text-sm-fluid text-blue-off' href='mailto:lydie.hemalova@naucme.it'>
+                        info@naucme.it
+                    </a>
+                    <h3 className='mt-5 text-md-fluid'>Petr Glaser - senior vývojář</h3>{" "}
+                    <a className='text-sm-fluid text-blue-off' href='mailto:petr.glaser@naucme.it'>
+                        petr.glaser@naucme.it
+                    </a>
+                    <h3 className='mt-5 text-md-fluid'>Lýdie Hemalová - tester</h3>{" "}
+                    <a className='text-sm-fluid text-blue-off' href='mailto:lydie.hemalova@naucme.it'>
+                        lydie.hemalova@naucme.it
+                    </a>
+                </div>
+            </footer>
         </>
     )
 }

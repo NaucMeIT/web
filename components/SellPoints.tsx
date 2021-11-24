@@ -10,9 +10,13 @@ export const SellPoints: React.FC = () => {
                 <h2 id='about' className={`lg:min-w-[80vw] z-10 self-start ml-0 text-lg-fluid text-green-highlight`}>
                     O kurzu
                 </h2>
-                <ul>
+                <ul className='list-disc list-inside'>
                     <li>
-                        Cena kurzu <b>49 Kč</b>
+                        Cena kurzu{" "}
+                        <b>
+                            <span className='line-through'>299 Kč</span>
+                            <span className='inline-block pl-3 transform scale-125 text-green-highlight'> 0 Kč</span>
+                        </b>
                     </li>
                     <li>Celý kurz online</li>
                     <li>Tempo samostudia si určuješ sám</li>
