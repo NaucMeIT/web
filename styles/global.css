@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    font-family: Roboto, "Helvetica Neue";
+    scroll-behavior: smooth;
+}
+
+.text-vh-sm-fluid {
+    font-size: 14px;
+}
+
+@media (min-height: 500px) {
+    .text-vh-sm-fluid {
+        font-size: calc(2.55vh + 6 * (100vh - 500px) / 1080);
+    }
+}
+
+@media (min-height: 900px) {
+    .text-vh-sm-fluid {
+        font-size: 22px;
+    }
+}
+
+.text-vh-md-fluid {
+    font-size: 22px;
+}
+
+@media (min-height: 500px) {
+    .text-vh-md-fluid {
+        font-size: calc(3.5vh + 6 * (100vh - 500px) / 1080);
+    }
+}
+
+@media (min-height: 900px) {
+    .text-vh-md-fluid {
+        font-size: 28px;
+    }
+}
+
+blockquote::before {
+    content: open-quote;
+}
+blockquote::after {
+    content: close-quote;
+}
+blockquote {
+    quotes: "„" "“" "‚" "'";
+}
+
+/*
+@layer utilities {
+    .slanted::before {
+        content: "";
+        width: 100vw;
+        height: 25%;
+        position: absolute;
+        background: inherit;
+        transform-origin: left top;
+    }
+    .slanted-left::before {
+        transform: skewY(-3deg) translateY(-50%);
+    }
+
+    .slanted-right::before {
+        transform: skewY(3deg) translateY(-50%);
+    }
+}
+*/
