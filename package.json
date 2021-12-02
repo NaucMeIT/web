@@ -43,8 +43,5 @@
         "tsutils": "^3.21.0",
         "typescript": "latest"
     },
-    "lint-staged": {
-        "**/*": "yarn prettier --write --ignore-unknown"
-    },
     "packageManager": "yarn@3.1.0"
 }
