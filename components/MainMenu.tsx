@@ -2,24 +2,25 @@ import { Disclosure, Transition } from "@headlessui/react"
 import { MenuIcon, XIcon } from "@heroicons/react/outline"
 import classNames from "classnames"
 import React, { Fragment, useState } from "react"
+import Image from "next/image"
 import { useStore } from "../hooks/useStore"
 
 interface IconTypeProps {
-    width: number
-    height: number
-    color?: string
-    className?: string
+    readonly width: number
+    readonly height: number
+    readonly color?: string
+    readonly className?: string
 }
 
 interface MenuItem {
-    icon?: (props: IconTypeProps) => JSX.Element
-    link: string
-    title: string
-    active?: boolean
+    readonly icon?: (props: IconTypeProps) => JSX.Element
+    readonly link: string
+    readonly title: string
+    readonly active?: boolean
 }
 
 interface MenuProps {
-    items: MenuItem[]
+    readonly items: readonly MenuItem[]
 }
 
 export const MainMenu: React.FC<MenuProps> = ({ items }) => {
@@ -33,12 +34,12 @@ export const MainMenu: React.FC<MenuProps> = ({ items }) => {
                         <div className='relative flex items-center justify-between h-16'>
                             <div className='flex items-center justify-between flex-1 sm:items-stretch'>
                                 <div className='flex items-center flex-shrink-0 invisible lg:hidden'>
-                                    <img
+                                    <Image
                                         className='block w-auto h-8 lg:hidden'
                                         src='https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg'
                                         alt='Workflow'
                                     />
-                                    <img
+                                    <Image
                                         className='hidden w-auto h-8 lg:block'
                                         src='https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg'
                                         alt='Workflow'

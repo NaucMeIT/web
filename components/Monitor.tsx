@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import { useMediaQuery } from "react-responsive"
 
 interface MonitorProps {
-    className?: string
+    readonly className?: string
 }
 
 const Monitor: React.FC<MonitorProps> = ({ className }) => {
@@ -16,11 +16,13 @@ const Monitor: React.FC<MonitorProps> = ({ className }) => {
     const [animDone, setAnimDone] = useState(false)
 
     // HACK: React does not know about onend event
-    const animateRef = useRef<SVGAnimateElement & { onend: Function }>(null)
+    // eslint-disable-next-line functional/prefer-readonly-type
+    const animateRef = useRef<SVGAnimateElement & { onend: unknown }>(null)
     useEffect(() => {
         if (prefersReducedMotion) {
             setAnimDone(true)
         } else if (animateRef.current) {
+            // eslint-disable-next-line functional/immutable-data
             animateRef.current.onend = () => {
                 setAnimDone(true)
             }

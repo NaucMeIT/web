@@ -2,17 +2,17 @@ import React from "react"
 import Image from "next/image"
 
 interface IconProps {
-    path: string
-    alt: string
+    readonly path: string
+    readonly alt: string
 }
 
 interface PathProps {
-    mainColour: "blue" | "green"
-    id: string
-    title: string
-    text: string[]
-    textQuote?: string
-    icon?: IconProps
+    readonly mainColour: "blue" | "green"
+    readonly id: string
+    readonly title: string
+    readonly text: readonly string[]
+    readonly textQuote?: string
+    readonly icon?: IconProps
 }
 
 export const Path: React.FC<PathProps> = ({ mainColour, text, title, textQuote, icon, id }) => {

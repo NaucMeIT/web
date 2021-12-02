@@ -7,6 +7,8 @@ import { SignUpContainer } from "../components/SignUpContainer"
 import { PathList } from "../components/PathList"
 import { SellPoints } from "../components/SellPoints"
 
+type IconProps = Readonly<React.ComponentProps<"svg">>
+
 const Home: NextPage = () => {
     return (
         <>
@@ -25,32 +27,28 @@ const Home: NextPage = () => {
                 <MainMenu
                     items={[
                         {
-                            icon: (props: React.ComponentProps<"svg">) => <HomeIcon {...props} color={"#fff"} />,
+                            icon: (props: IconProps) => <HomeIcon {...props} color={"#fff"} />,
                             title: "Úvod",
                             link: "#home",
                             active: true,
                         },
                         {
-                            icon: (props: React.ComponentProps<"svg">) => (
-                                <InformationCircleIcon {...props} color={"#fff"} />
-                            ),
+                            icon: (props: IconProps) => <InformationCircleIcon {...props} color={"#fff"} />,
                             title: "O kurzu",
                             link: "#about",
                         },
                         {
-                            icon: (props: React.ComponentProps<"svg">) => (
-                                <ClipboardCheckIcon {...props} color={"#fff"} />
-                            ),
+                            icon: (props: IconProps) => <ClipboardCheckIcon {...props} color={"#fff"} />,
                             title: "Tester",
                             link: "#qa",
                         },
                         {
-                            icon: (props: React.ComponentProps<"svg">) => <CodeIcon {...props} color={"#fff"} />,
+                            icon: (props: IconProps) => <CodeIcon {...props} color={"#fff"} />,
                             title: "Vývojář",
                             link: "#developer",
                         },
                         {
-                            icon: (props: React.ComponentProps<"svg">) => <AtSymbolIcon {...props} color={"#fff"} />,
+                            icon: (props: IconProps) => <AtSymbolIcon {...props} color={"#fff"} />,
                             title: "Kontakt",
                             link: "#contact",
                         },

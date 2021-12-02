@@ -26,9 +26,13 @@
         "@types/node": "^16.11.6",
         "@types/react": "17.0.33",
         "@types/tailwindcss": "^2.2.4",
+        "@typescript-eslint/eslint-plugin": "^5.5.0",
+        "@typescript-eslint/parser": "^5.5.0",
         "autoprefixer": "^10.4.0",
         "eslint": "^7.32.0",
         "eslint-config-next": "12.0.1",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-functional": "^4.0.2",
         "husky": "^7.0.4",
         "lint-staged": "^11.2.6",
         "next-sitemap": "^1.6.192",
@@ -36,6 +40,7 @@
         "prettier": "2.4.1",
         "tailwindcss": "^2.2.17",
         "tailwindcss-fluid": "^0.2.0",
+        "tsutils": "^3.21.0",
         "typescript": "latest"
     },
     "lint-staged": {
