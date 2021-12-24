@@ -8,21 +8,25 @@ const defaultIntersectionObserverInit: IntersectionObserverInit = {
 export const useVisible = <T extends Element, V = number>(
     cb?: (vi: number) => V,
     option: Partial<IntersectionObserverInit> = {},
-): [MutableRefObject<T | null>, V] => {
+): readonly [MutableRefObject<T | null>, V] => {
     const targetRef = useRef<T | null>(null)
     const observerRef = useRef<IntersectionObserver | null>(null)
     const [visible, setVisible] = useState<number>(0)
     // TODO: visible types refactor
     const status: V = typeof cb === "function" ? cb(visible) : (visible as any)
-    const observerCallback: IntersectionObserverCallback = useCallback((entries: IntersectionObserverEntry[]) => {
-        entries.forEach((entry: IntersectionObserverEntry) => {
-            setVisible(entry.intersectionRatio)
-        })
-    }, [])
+    const observerCallback: IntersectionObserverCallback = useCallback(
+        (entries: readonly IntersectionObserverEntry[]) => {
+            entries.forEach((entry: IntersectionObserverEntry) => {
+                setVisible(entry.intersectionRatio)
+            })
+        },
+        [],
+    )
 
     useEffect(() => {
         if (observerRef.current) return
         if (!targetRef.current) return
+        // eslint-disable-next-line functional/immutable-data
         observerRef.current = new IntersectionObserver(observerCallback, {
             ...defaultIntersectionObserverInit,
             ...option,

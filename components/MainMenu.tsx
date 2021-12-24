@@ -30,20 +30,11 @@ export const MainMenu: React.FC<MenuProps> = ({ items }) => {
         <Disclosure as='nav' className='fixed top-0 z-20 w-screen bg-blue-main'>
             {({ open, close }) => (
                 <>
-                    <div className='px-6 mx-auto max-w-7xl 2xl:max-w-[80vw] sm:px-6 lg:px-8'>
+                    <div className='px-6 mx-auto max-w-7xl 2xl:max-w-[80vw] lg:px-0'>
                         <div className='relative flex items-center justify-between h-16'>
                             <div className='flex items-center justify-between flex-1 sm:items-stretch'>
-                                <div className='flex items-center flex-shrink-0 invisible lg:hidden'>
-                                    <Image
-                                        className='block w-auto h-8 lg:hidden'
-                                        src='https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg'
-                                        alt='Workflow'
-                                    />
-                                    <Image
-                                        className='hidden w-auto h-8 lg:block'
-                                        src='https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg'
-                                        alt='Workflow'
-                                    />
+                                <div className='flex items-center flex-shrink-0 invisible w-10 h-10 lg:hidden'>
+                                    {/* TODO: Add logo once it is done. */}
                                 </div>
                                 <Transition
                                     appear={true}
@@ -75,7 +66,7 @@ export const MainMenu: React.FC<MenuProps> = ({ items }) => {
                                         )}
                                     </Disclosure.Button>
                                 </div>
-                                <div className='hidden sm:block sm:ml-6'>
+                                <div className='hidden sm:block'>
                                     <div className='flex space-x-4'>
                                         {items.map((item) => (
                                             <a
@@ -85,7 +76,7 @@ export const MainMenu: React.FC<MenuProps> = ({ items }) => {
                                                     item.active
                                                         ? "text-blue-highlight hover:text-blue-off"
                                                         : "text-blue-off font-bold hover:text-blue-highlight",
-                                                    "px-3 py-2 rounded-md text-md-fluid font-medium",
+                                                    "lg:px-3 py-2 rounded-md text-md-fluid font-medium",
                                                 )}
                                                 aria-current={item.active ? "page" : undefined}
                                                 onClick={() => close()}
