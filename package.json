@@ -8,7 +8,8 @@
         "start": "next start",
         "lint": "next lint",
         "prepare": "husky install",
-        "postbuild": "next-sitemap"
+        "postbuild": "next-sitemap",
+        "prettier": "prettier --write '**/*.{js,jsx,md,json,css,scss,ts,tsx}'"
     },
     "dependencies": {
         "@clerk/nextjs": "^2.4.4",
@@ -17,6 +18,7 @@
         "classnames": "^2.3.1",
         "next": "latest",
         "next-pwa": "^5.4.4",
+        "prettier-plugin-tailwindcss": "^0.1.4",
         "react": "beta",
         "react-dom": "beta",
         "react-responsive": "^9.0.0-beta.5",
