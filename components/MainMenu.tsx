@@ -99,11 +99,11 @@ export const MainMenu: React.FC<MenuProps> = ({ items }) => {
                     <Transition
                         as={Fragment}
                         enter='transition ease-out duration-250'
-                        enterFrom='transform opacity-0'
-                        enterTo='transform opacity-100'
+                        enterFrom='opacity-0'
+                        enterTo='opacity-100'
                         leave='transition ease-in duration-150'
-                        leaveFrom='transform opacity-100'
-                        leaveTo='transform opacity-0'
+                        leaveFrom='opacity-100'
+                        leaveTo='opacity-0'
                     >
                         <Disclosure.Panel className='absolute right-0 z-20 w-screen bg-opacity-90 bg-green-main sm:hidden'>
                             <div className='px-2 pt-2 pb-3'>

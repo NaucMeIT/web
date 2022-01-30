@@ -1,12 +1,8 @@
-const lintFiles = (filenames) => {
-    filenames.map((file) => console.log("File: ", process.cwd(), file, file.split(process.cwd().replace(/\\/g, "/"))))
-    return `yarn run lint --fix --file ${filenames
-        .map((file) => file.split(process.cwd().replace(/\\/g, "/"))[1])
-        .join(" --file ")}`
-}
+const path = require("path")
+
+const buildEslintCommand = (filenames) =>
+    `yarn run lint --fix --file ${filenames.map((f) => path.relative(process.cwd(), f)).join(" --file ")}`
 
 module.exports = {
-    "**/*.js?(x)": lintFiles,
-    "**/*.ts?(x)": lintFiles,
-    "**/*": "yarn prettier --write --ignore-unknown",
+    "*.{js,jsx,ts,tsx}": [buildEslintCommand],
 }

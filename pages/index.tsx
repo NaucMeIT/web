@@ -22,8 +22,6 @@ const Home: NextPage = () => {
             </Head>
 
             <header>
-                {/* <div className='absolute top-0 right-0 w-vw-50 lg:w-vw-25 h-vw-50 lg:h-vw-25 bg-gradient-rad-t-r from-green-off'></div> */}
-                {/* <div className='absolute left-[-37.5vh] -bottom-1/3 -z-1 w-vh-75 h-vh-75 bg-gradient-rad-c from-green-off'></div> */}
                 <MainMenu
                     items={[
                         {

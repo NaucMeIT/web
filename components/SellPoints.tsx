@@ -15,7 +15,7 @@ export const SellPoints: React.FC = () => {
                         Cena kurzu{" "}
                         <b>
                             <span className='line-through'>299 Kč</span>
-                            <span className='inline-block pl-3 transform scale-125 text-green-highlight'> 0 Kč</span>
+                            <span className='inline-block pl-3 scale-125 text-green-highlight'> 0 Kč</span>
                         </b>
                     </li>
                     <li>Celý kurz online</li>
