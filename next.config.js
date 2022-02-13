@@ -11,6 +11,6 @@ module.exports = withPWA({
         disable: process.env.NODE_ENV === "development",
     },
     experimental: {
-        concurrentFeatures: true,
+        concurrentFeatures: process.env.NODE_ENV === "development",
     },
 })
