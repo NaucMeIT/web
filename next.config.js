@@ -3,7 +3,6 @@ const withPWA = require("next-pwa")
 /** @type {import('next').NextConfig} */
 module.exports = withPWA({
     reactStrictMode: true,
-    optimizeFonts: false,
     eslint: {
         dirs: ["pages", "components", "hooks", "utils"],
     },
