@@ -1,10 +1,10 @@
 import NextHead from "next/head"
 
-interface HeadProps {
-    desc: string
-    twImg: string
-    fbImg: string
-    url: string
+type HeadProps = {
+    readonly desc: string
+    readonly twImg: string
+    readonly fbImg: string
+    readonly url: string
 }
 
 const Head: React.FC<HeadProps> = (props) => (

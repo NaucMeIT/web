@@ -2,24 +2,25 @@ import { Disclosure, Transition } from "@headlessui/react"
 import { MenuIcon, XIcon } from "@heroicons/react/outline"
 import classNames from "classnames"
 import React, { Fragment, useState } from "react"
+import Image from "next/image"
 import { useStore } from "../hooks/useStore"
 
 interface IconTypeProps {
-    width: number
-    height: number
-    color?: string
-    className?: string
+    readonly width: number
+    readonly height: number
+    readonly color?: string
+    readonly className?: string
 }
 
 interface MenuItem {
-    icon?: (props: IconTypeProps) => JSX.Element
-    link: string
-    title: string
-    active?: boolean
+    readonly icon?: (props: IconTypeProps) => JSX.Element
+    readonly link: string
+    readonly title: string
+    readonly active?: boolean
 }
 
 interface MenuProps {
-    items: MenuItem[]
+    readonly items: readonly MenuItem[]
 }
 
 export const MainMenu: React.FC<MenuProps> = ({ items }) => {
@@ -29,20 +30,11 @@ export const MainMenu: React.FC<MenuProps> = ({ items }) => {
         <Disclosure as='nav' className='fixed top-0 z-20 w-screen bg-blue-main'>
             {({ open, close }) => (
                 <>
-                    <div className='px-6 mx-auto max-w-7xl 2xl:max-w-[80vw] sm:px-6 lg:px-8'>
+                    <div className='px-6 mx-auto max-w-7xl 2xl:max-w-[80vw] lg:px-0'>
                         <div className='relative flex items-center justify-between h-16'>
                             <div className='flex items-center justify-between flex-1 sm:items-stretch'>
-                                <div className='flex items-center flex-shrink-0 invisible lg:hidden'>
-                                    <img
-                                        className='block w-auto h-8 lg:hidden'
-                                        src='https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg'
-                                        alt='Workflow'
-                                    />
-                                    <img
-                                        className='hidden w-auto h-8 lg:block'
-                                        src='https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg'
-                                        alt='Workflow'
-                                    />
+                                <div className='flex items-center flex-shrink-0 invisible w-10 h-10 lg:hidden'>
+                                    {/* TODO: Add logo once it is done. */}
                                 </div>
                                 <Transition
                                     appear={true}
@@ -74,7 +66,7 @@ export const MainMenu: React.FC<MenuProps> = ({ items }) => {
                                         )}
                                     </Disclosure.Button>
                                 </div>
-                                <div className='hidden sm:block sm:ml-6'>
+                                <div className='hidden sm:block'>
                                     <div className='flex space-x-4'>
                                         {items.map((item) => (
                                             <a
@@ -84,7 +76,7 @@ export const MainMenu: React.FC<MenuProps> = ({ items }) => {
                                                     item.active
                                                         ? "text-blue-highlight hover:text-blue-off"
                                                         : "text-blue-off font-bold hover:text-blue-highlight",
-                                                    "px-3 py-2 rounded-md text-md-fluid font-medium",
+                                                    "lg:px-3 py-2 rounded-md text-md-fluid font-medium",
                                                 )}
                                                 aria-current={item.active ? "page" : undefined}
                                                 onClick={() => close()}
@@ -107,11 +99,11 @@ export const MainMenu: React.FC<MenuProps> = ({ items }) => {
                     <Transition
                         as={Fragment}
                         enter='transition ease-out duration-250'
-                        enterFrom='transform opacity-0'
-                        enterTo='transform opacity-100'
+                        enterFrom='opacity-0'
+                        enterTo='opacity-100'
                         leave='transition ease-in duration-150'
-                        leaveFrom='transform opacity-100'
-                        leaveTo='transform opacity-0'
+                        leaveFrom='opacity-100'
+                        leaveTo='opacity-0'
                     >
                         <Disclosure.Panel className='absolute right-0 z-20 w-screen bg-opacity-90 bg-green-main sm:hidden'>
                             <div className='px-2 pt-2 pb-3'>

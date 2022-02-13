@@ -1,8 +1,9 @@
 import create from "zustand"
 
 interface AppState {
-    signUpVisible: boolean
-    setSignUpVisible: (visible: boolean) => void
+    readonly signUpVisible: boolean
+    // eslint-disable-next-line functional/no-return-void
+    readonly setSignUpVisible: (visible: boolean) => void
 }
 
 export const useStore = create<AppState>((set) => ({

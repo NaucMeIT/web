@@ -17,13 +17,8 @@ module.exports = {
             textSizes: true,
         }),
     ],
-    purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-    darkMode: false, // or 'media' or 'class'
-    variants: {
-        extend: {},
-    },
+    content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
     jit: true,
-    mode: "jit",
     textSizes: {
         sm: {
             min: "10px",
@@ -55,32 +50,6 @@ module.exports = {
                 "green-off": `hsl(${greenHue}, ${greenSat}%, ${offLightness}%)`,
                 "green-contrast": `hsl(${contrastGreentHue}, ${contrastGreenSat}%, 51%)`,
                 "green-contrast-highlight": `hsl(${contrastGreentHue}, ${contrastGreenSat}%, ${highlightLightness}%)`,
-            },
-            backgroundImage: {
-                "gradient-rad-t-r": "radial-gradient(circle at top right, var(--tw-gradient-stops) 70%);",
-                "gradient-rad-t-l": "radial-gradient(circle at top left, var(--tw-gradient-stops) 70%);",
-                "gradient-rad-b-r": "radial-gradient(circle at bottom right, var(--tw-gradient-stops) 70%);",
-                "gradient-rad-b-l": "radial-gradient(circle at bottom left, var(--tw-gradient-stops) 70%);",
-                "gradient-rad-c": "radial-gradient(circle at center, var(--tw-gradient-stops) 70%);",
-            },
-            width: {
-                "vw-25": "25vw",
-                "vw-50": "50vw",
-                "vw-75": "75vw",
-                "vh-25": "25vh",
-                "vh-50": "50vh",
-                "vh-75": "75vh",
-            },
-            height: {
-                "vw-25": "25vw",
-                "vw-50": "50vw",
-                "vw-75": "75vw",
-                "vh-25": "25vh",
-                "vh-50": "50vh",
-                "vh-75": "75vh",
-            },
-            zIndex: {
-                "-1": "-1",
             },
             screens: {
                 "reduce-motion": { raw: "(prefers-reduced-motion: reduce)" },
