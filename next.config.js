@@ -12,5 +12,11 @@ module.exports = withPWA({
     },
     experimental: {
         runtime: "experimental-edge",
+        images: {
+            allowFutureImage: true,
+        },
+    },
+    images: {
+        formats: ["image/avif", "image/webp"],
     },
 })

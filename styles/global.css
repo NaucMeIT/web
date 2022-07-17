@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
-    font-family: Roboto, "Helvetica Neue";
+    font-family: Roboto, "Helvetica Neue", sans-serif;
     scroll-behavior: smooth;
 }
 
