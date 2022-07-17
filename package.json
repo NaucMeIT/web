@@ -50,5 +50,5 @@
         "tsutils": "^3.21.0",
         "typescript": "latest"
     },
-    "packageManager": "yarn@3.1.0"
+    "packageManager": "yarn@3.2.1"
 }
