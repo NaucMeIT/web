@@ -3,7 +3,7 @@ import { useRef, useEffect, useCallback, MutableRefObject, useState } from "reac
 const defaultIntersectionObserverInit: IntersectionObserverInit = {
     root: null,
     rootMargin: "0px",
-    threshold: Array.from({ length: 100 }, (v: undefined, i: number) => i * 0.01),
+    threshold: Array.from({ length: 100 }, (_v: undefined, i: number) => i * 0.01),
 }
 export const useVisible = <T extends Element, V = number>(
     cb?: (vi: number) => V,
