@@ -28,7 +28,7 @@
         "zustand": "^4.0.0-rc.1"
     },
     "devDependencies": {
-        "@types/eslint": "^7.29.0",
+        "@types/eslint": "^8.4.5",
         "@types/mdx-js__react": "^1.5.5",
         "@types/node": "^18.0.5",
         "@types/react": "^18.0.15",
@@ -36,7 +36,7 @@
         "@typescript-eslint/eslint-plugin": "^5.30.6",
         "@typescript-eslint/parser": "^5.30.6",
         "autoprefixer": "^10.4.7",
-        "eslint": "^7.32.0",
+        "eslint": "^8.20.0",
         "eslint-config-next": "^12.2.2",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-functional": "^4.2.1",
