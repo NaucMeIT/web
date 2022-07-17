@@ -2,7 +2,6 @@ import { Disclosure, Transition } from "@headlessui/react"
 import { MenuIcon, XIcon } from "@heroicons/react/outline"
 import classNames from "classnames"
 import React, { Fragment, useState } from "react"
-import Image from "next/image"
 import { useStore } from "../hooks/useStore"
 
 interface IconTypeProps {
