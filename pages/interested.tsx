@@ -1,6 +1,6 @@
 import type { NextPage } from "next"
 import React, { useEffect } from "react"
-import Head from "../components/Head"
+import { Head } from "../components/Head"
 
 const Interested: NextPage = () => {
     useEffect(() => {

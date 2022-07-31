@@ -1,84 +1,107 @@
-import type { NextPage } from "next"
-import React from "react"
-import { AtSymbolIcon, ClipboardCheckIcon, CodeIcon, HomeIcon, InformationCircleIcon } from "@heroicons/react/outline"
-import Head from "../components/Head"
-import { MainMenu } from "../components/MainMenu"
-import { SignUpContainer } from "../components/SignUpContainer"
-import { PathList } from "../components/PathList"
-import { SellPoints } from "../components/SellPoints"
+import { AboutUs } from "../components/AboutUs"
+import { CompanyBox } from "../components/CompanyBox"
+import { ContactForm } from "../components/ContactForm"
+import { Menu } from "../components/Menu"
+import { DownArrow } from "../components/DownArrow"
+import { Footer } from "../components/Footer"
+import { Landing } from "../components/Landing"
+import { How } from "../components/How"
+import { Packages } from "../components/Packages"
+import { Courses } from "../components/Courses"
+import { Head } from "../components/Head"
 
-type IconProps = Readonly<React.ComponentProps<"svg">>
-
-const Home: NextPage = () => {
+export default function Playground() {
     return (
-        <>
+        <div className='bg-landing bg-cover bg-fixed pt-20'>
             <Head
                 desc='Mám zájem Naučit se IT a posunout se v kariéře dál!'
-                url='https://naucme.it/interested'
+                url='https://naucme.it/'
                 twImg='https://naucme.it/twitter.png'
                 fbImg='https://naucme.it/facebook.png'
             >
                 <title>Nauč mě IT - Úvodní strana</title>
             </Head>
+            <Menu
+                items={[
+                    {
+                        title: "Jak to funguje?",
+                        link: "#how",
+                    },
+                    {
+                        title: "Balíčky",
+                        link: "#packages",
+                    },
+                    {
+                        title: "Kurzy",
+                        link: "#courses",
+                    },
+                    {
+                        title: "O nás",
+                        link: "#about",
+                    },
+                    {
+                        title: "Pro firmy",
+                        link: "#company",
+                    },
+                    {
+                        title: "Kontakt",
+                        link: "#contact",
+                    },
+                    {
+                        title: "Přihlásit se",
+                        link: "#login",
+                        isImportant: true,
+                    },
+                ]}
+            />
+            <img
+                src='/images/left.svg'
+                className='fixed top-0 -left-20 hidden h-full 3xl:block'
+                alt=''
+                height='100vh'
+            />
+            <img
+                src='/images/right.svg'
+                className='fixed top-0 -right-20 hidden h-full 3xl:block'
+                alt=''
+                height='110vh'
+            />
 
-            <header>
-                <MainMenu
-                    items={[
-                        {
-                            icon: (props: IconProps) => <HomeIcon {...props} color={"#fff"} />,
-                            title: "Úvod",
-                            link: "#home",
-                            active: true,
-                        },
-                        {
-                            icon: (props: IconProps) => <InformationCircleIcon {...props} color={"#fff"} />,
-                            title: "O kurzu",
-                            link: "#about",
-                        },
-                        {
-                            icon: (props: IconProps) => <ClipboardCheckIcon {...props} color={"#fff"} />,
-                            title: "Tester",
-                            link: "#qa",
-                        },
-                        {
-                            icon: (props: IconProps) => <CodeIcon {...props} color={"#fff"} />,
-                            title: "Vývojář",
-                            link: "#developer",
-                        },
-                        {
-                            icon: (props: IconProps) => <AtSymbolIcon {...props} color={"#fff"} />,
-                            title: "Kontakt",
-                            link: "#contact",
-                        },
-                    ]}
-                />
-                <SignUpContainer />
-            </header>
-            <main>
-                <SellPoints />
-                <PathList />
-            </main>
-            <footer id='contact'>
-                <div className='bg-blue-main px-[10vw] py-10'>
-                    <h2 className={`lg:min-w-[80vw] z-10 self-start ml-0 text-lg-fluid text-blue-highlight`}>
-                        Kontakt
-                    </h2>
-                    <h3 className='mt-5 text-md-fluid'>Přihlášky, informace</h3>{" "}
-                    <a className='text-sm-fluid text-blue-off' href='mailto:lydie.hemalova@naucme.it'>
-                        info@naucme.it
-                    </a>
-                    <h3 className='mt-5 text-md-fluid'>Petr Glaser - senior vývojář</h3>{" "}
-                    <a className='text-sm-fluid text-blue-off' href='mailto:petr.glaser@naucme.it'>
-                        petr.glaser@naucme.it
-                    </a>
-                    <h3 className='mt-5 text-md-fluid'>Lýdie Hemalová - tester</h3>{" "}
-                    <a className='text-sm-fluid text-blue-off' href='mailto:lydie.hemalova@naucme.it'>
-                        lydie.hemalova@naucme.it
-                    </a>
-                </div>
-            </footer>
-        </>
+            <Landing />
+
+            <DownArrow
+                className='mx-auto mb-20 cursor-pointer'
+                onClick={() => window.scrollBy(0, document.documentElement.clientHeight * 0.8)}
+            />
+
+            <How />
+
+            <Packages />
+
+            <Courses />
+
+            <AboutUs
+                people={[
+                    {
+                        name: "Petr Glaser",
+                        email: "petr.glaser@naucme.it",
+                        position: "Staff Software Engineer",
+                        image: "/images/qa_illustration.svg",
+                    },
+                    {
+                        name: "Pavel Koudelka",
+                        email: "pavel.koudelka@naucme.it",
+                        position: "Sales",
+                        image: "/images/qa_illustration.svg",
+                    },
+                ]}
+            />
+
+            <CompanyBox />
+
+            <ContactForm />
+
+            <Footer />
+        </div>
     )
 }
-
-export default Home
