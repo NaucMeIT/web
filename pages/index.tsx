@@ -1,3 +1,4 @@
+import { NextPage } from "next"
 import { AboutUs } from "../components/AboutUs"
 import { CompanyBox } from "../components/CompanyBox"
 import { ContactForm } from "../components/ContactForm"
@@ -10,7 +11,7 @@ import { Packages } from "../components/Packages"
 import { Courses } from "../components/Courses"
 import { Head } from "../components/Head"
 
-export default function Playground() {
+const Home: NextPage = () => {
     return (
         <div className='bg-landing bg-cover bg-fixed pt-20'>
             <Head
@@ -105,3 +106,5 @@ export default function Playground() {
         </div>
     )
 }
+
+export default Home
