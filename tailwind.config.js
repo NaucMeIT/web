@@ -1,59 +1,97 @@
 /** @type {import('tailwindcss/tailwind-config').TailwindConfig} */
 
-const blueHue = 229
-const greenHue = 188
-const contrastGreentHue = 134
+function withOpacityValue(variable) {
+    return ({ opacityValue }) => {
+        if (opacityValue === undefined) {
+            return `rgb(var(${variable}))`
+        }
+        return `rgb(var(${variable}) / ${opacityValue})`
+    }
+}
 
-const blueSat = 86
-const greenSat = 44
-const contrastGreenSat = 62
-
-const highlightLightness = 98
-const offLightness = 90
-
+// eslint-disable-next-line functional/immutable-data
 module.exports = {
-    plugins: [
-        require("tailwindcss-fluid")({
-            textSizes: true,
-        }),
-    ],
     content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-    jit: true,
-    textSizes: {
-        sm: {
-            min: "10px",
-            max: "14px",
-            minvw: "320px",
-            maxvw: "1280px",
-        },
-        md: {
-            min: "14px",
-            max: "30px",
-            minvw: "320px",
-            maxvw: "1920px",
-        },
-        lg: {
-            min: "22px",
-            max: "60px",
-            minvw: "320px",
-            maxvw: "1920px",
-        },
-    },
     theme: {
+        colors: {
+            primary: withOpacityValue("--color-primary"),
+            secondary: withOpacityValue("--color-secondary"),
+            off: withOpacityValue("--color-off"),
+            background: withOpacityValue("--color-background"),
+            highlight: withOpacityValue("--color-highlight"),
+            form: withOpacityValue("--color-form"),
+        },
+        fontFamily: {
+            poppins: ["Poppins", "sans-serif"],
+            montserrat: ["Montserrat", "sans-serif"],
+        },
+        fontSize: {
+            xsDeviceBody: "0.75rem",
+            xs: "0.875rem",
+            sm: "1rem",
+            base: "1.125rem",
+            lg: "1.25rem",
+            xl: "1.875rem",
+            "2xl": "2.813rem",
+            "3xl": "3.5rem",
+            "4xl": "4.375rem",
+        },
+        letterSpacing: {
+            normal: "0",
+            wider: "0.019rem",
+            huge: "0.281rem",
+        },
         extend: {
-            colors: {
-                "blue-main": `hsl(${blueHue}, ${blueSat}%, 11%)`,
-                "blue-highlight": `hsl(${blueHue}, ${blueSat}%, ${highlightLightness}%)`,
-                "blue-off": `hsl(${blueHue},${blueSat}%, ${offLightness}%)`,
-                "green-main": `hsl(${greenHue}, ${greenSat}%, 19%)`,
-                "green-highlight": `hsl(${greenHue}, ${greenSat}%, ${highlightLightness}%)`,
-                "green-off": `hsl(${greenHue}, ${greenSat}%, ${offLightness}%)`,
-                "green-contrast": `hsl(${contrastGreentHue}, ${contrastGreenSat}%, 51%)`,
-                "green-contrast-highlight": `hsl(${contrastGreentHue}, ${contrastGreenSat}%, ${highlightLightness}%)`,
+            appearance: {
+                button: "button",
+            },
+            backgroundColor: {
+                transparent: "transparent",
+            },
+            backgroundSize: {
+                "100/100": "100% 100%",
+                "100/0": "100% 0%",
+            },
+            backgroundImage: {
+                landing: "image-set(url('/images/bg-landing.webp') 1x, url('/images/bg-landing.webp') 2x)",
+                animable: "linear-gradient(rgb(var(--color-primary)) 0 0)",
+                alt: "linear-gradient(90deg, rgb(17, 25, 58) 0%, rgb(54, 69, 122) 100%), linear-gradient(270deg, rgba(109,157,255,0.4) 0%, rgba(141,130,255,0.4) 54%, rgba(47,58,145,0.4) 87.9%, rgba(21,45,86,0.4) 100%)",
+            },
+            minHeight: {
+                28: "7rem",
+            },
+            maxWidth: {
+                xxs: "14rem",
+                xsProse: "41ch",
+                sProse: "45ch",
+                "screen-3xl": "1920px",
+            },
+            keyframes: {
+                wiggle: {
+                    "0%, 100%": { transform: "rotate(0deg)" },
+                    "25%": { transform: "rotate(-1deg)" },
+                    "75%": { transform: "rotate(1deg)" },
+                },
+                pulseDown: {
+                    "0%, 10%, 100%": { transform: "translateY(0)" },
+                    "5%": { transform: "translateY(11px)" },
+                },
+            },
+            animation: {
+                wiggle: "wiggle 1s ease-in-out 1",
+                pulseDown: "pulseDown 30s ease-in-out infinite",
+            },
+            transitionProperty: {
+                backgroundSize: "background-size",
+            },
+            listStyleType: {
+                dash: '"- "',
             },
             screens: {
-                "reduce-motion": { raw: "(prefers-reduced-motion: reduce)" },
+                xs: "360px",
+                "3xl": "1920px",
             },
         },
     },
+    plugins: [],
 }

@@ -4,9 +4,20 @@ import { Html, Head, Main, NextScript } from "next/document"
 const APP_MAIN_COLOR = "#040d35"
 const APP_NAME = "Nauč mě IT"
 
+const registerScript = `
+if (CSS.paintWorklet) {
+    CSS.paintWorklet.addModule('/registerPaint.js');
+} else {
+    alert("Your browser cannot run this demo. Consider Chrome or Edge instead")
+}
+`
+
 export default function Document() {
     return (
-        <Html lang='cs'>
+        <Html
+            lang='cs'
+            className='theme-dark h-full bg-background text-xsDeviceBody motion-safe:scroll-smooth xs:text-sm'
+        >
             <Head>
                 <link rel='preconnect' href='https://fonts.gstatic.com/' crossOrigin='true'></link>
                 <style
@@ -65,9 +76,10 @@ export default function Document() {
                 <meta property='og:title' key='og:title' content={APP_NAME} />
                 <meta property='og:site_name' content={APP_NAME} />
             </Head>
-            <body id='home' className='overflow-x-hidden bg-blue-main text-blue-highlight'>
+            <body id='home' className='h-full font-montserrat'>
                 <Main />
                 <NextScript />
+                <script type='text/javascript' dangerouslySetInnerHTML={{ __html: registerScript }} />
             </body>
         </Html>
     )

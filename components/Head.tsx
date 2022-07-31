@@ -9,7 +9,7 @@ type HeadProps = {
     readonly children: React.ReactNode
 }
 
-const Head = (props: HeadProps) => (
+export const Head = (props: HeadProps) => (
     <NextHead>
         <meta name='Description' key='desc' content={props.desc} />
         <meta name='twitter:description' key='tw:desc' content={props.desc} />
@@ -21,5 +21,3 @@ const Head = (props: HeadProps) => (
         {props.children}
     </NextHead>
 )
-
-export default Head
