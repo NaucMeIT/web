@@ -29,7 +29,7 @@ function MenuItem({
     return (
         <Typography
             variant={item.isActive ? "menuActive" : "menu"}
-            component={item.isImportant ? Button : "a"}
+            component={item.isImportant ? Button : Link}
             key={item.title}
             componentProps={{
                 href: item.link,
@@ -52,17 +52,10 @@ export function Menu({ items }: MenuProps) {
                 <>
                     <div className='mx-auto mt-4 max-w-screen-3xl px-6 lg:px-0'>
                         <div className='relative flex h-16 items-center justify-between'>
-                            <div className='flex flex-1 items-center justify-between lg:items-stretch'>
-                                <div className='ml-3 flex flex-shrink-0 items-center lg:ml-14 2xl:ml-56'>
-                                    <Link
-                                        href='#home'
-                                        passHref
-                                        className='flex items-center'
-                                        aria-label='Logo Nauč mě IT'
-                                    >
-                                        <a>
-                                            <Logo width={120} />
-                                        </a>
+                            <div className='flex flex-1 items-center justify-between lg:justify-around lg:items-stretch'>
+                                <div className='ml-3 flex flex-shrink-0 items-center'>
+                                    <Link href='#home' className='flex items-center' aria-label='Logo Nauč mě IT'>
+                                        <Logo width={120} />
                                     </Link>
                                 </div>
                                 <div className='inset-y-0 flex items-center xl:hidden'>

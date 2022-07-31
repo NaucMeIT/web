@@ -76,7 +76,7 @@ export default function Document() {
                 <meta property='og:title' key='og:title' content={APP_NAME} />
                 <meta property='og:site_name' content={APP_NAME} />
             </Head>
-            <body id='home' className='h-full font-montserrat'>
+            <body className='h-full font-montserrat'>
                 <Main />
                 <NextScript />
                 <script type='text/javascript' dangerouslySetInnerHTML={{ __html: registerScript }} />
