@@ -49,8 +49,8 @@ export function Button({ className, disabled, children, theme, size, ...rest }: 
 
     return "href" in rest ? (
         <button {...props} tabIndex={-1}>
-            <Link {...rest} passHref>
-                <a className={`pointer-events-auto inline-flex ${sizeClasses[size || "normal"]}`}>{children}</a>
+            <Link {...rest} className={`pointer-events-auto inline-flex ${sizeClasses[size || "normal"]}`}>
+                {children}
             </Link>
         </button>
     ) : (
@@ -72,10 +72,8 @@ export function SocialButton({ label, className, disabled, children, ...rest }: 
 
     return "href" in rest ? (
         <span {...props} tabIndex={-1}>
-            <Link {...rest}>
-                <a className='pointer-events-auto inline-flex py-2 px-5' aria-label={label}>
-                    {children}
-                </a>
+            <Link {...rest} className='pointer-events-auto inline-flex py-2 px-5' aria-label={label}>
+                {children}
             </Link>
         </span>
     ) : (

@@ -28,7 +28,7 @@ export function Landing() {
                     </CatchPoints>
                     <CatchPoints icon={<Worldwide />}>Celý kurz je online přístupný odkudkoliv</CatchPoints>
                 </div>
-                <Button theme='off' size='large' className='mx-auto mt-20 block xl:mx-0'>
+                <Button theme='off' size='large' className='mx-auto mb-10 xl:mb-0 xl:mt-20 block xl:mx-0'>
                     Vyzkoušej ZDARMA
                 </Button>
             </div>
