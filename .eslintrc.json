@@ -8,6 +8,7 @@
     "extends": ["next/core-web-vitals", "prettier", "plugin:functional/lite"],
     "rules": {
         "functional/no-return-void": ["error", { "ignoreImplicit": true }],
-        "functional/no-mixed-type": ["warn", { "checkInterfaces": false }]
+        "functional/no-mixed-type": ["warn", { "checkInterfaces": false }],
+        "functional/immutable-data": ["warn", { "ignorePattern": ["defaultProps"] }]
     }
 }
