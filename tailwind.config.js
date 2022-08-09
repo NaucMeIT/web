@@ -64,7 +64,7 @@ module.exports = {
                 xxs: "14rem",
                 xsProse: "41ch",
                 sProse: "45ch",
-                "screen-3xl": "1920px",
+                "screen-3xl": "1800px",
             },
             keyframes: {
                 wiggle: {
@@ -89,7 +89,7 @@ module.exports = {
             },
             screens: {
                 xs: "360px",
-                "3xl": "1920px",
+                "3xl": "1800px",
             },
         },
     },
