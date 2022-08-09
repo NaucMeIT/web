@@ -19,8 +19,8 @@ export default function Document() {
             className='theme-dark h-full bg-background text-xsDeviceBody motion-safe:scroll-smooth xs:text-sm'
         >
             <Head>
-                <link href='https://fonts.googleapis.com/css2?family=Poppins&display=fallback' rel='stylesheet' />
-                {/* Not yet used, dumb to load <link href='https://fonts.googleapis.com/css2?family=Montserrat&display=fallback' rel='stylesheet' /> */}
+                <link href='https://fonts.googleapis.com/css2?family=Poppins&display=optional' rel='stylesheet' />
+                {/* Not yet used, dumb to load <link href='https://fonts.googleapis.com/css2?family=Montserrat&display=optional' rel='stylesheet' /> */}
                 <meta
                     name='Keywords'
                     content='IT, učení, školení, nauč mě, jak začít s IT, jak začít programovat, jak dělat web, jak psát web'
