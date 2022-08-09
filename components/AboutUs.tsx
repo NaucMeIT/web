@@ -1,6 +1,7 @@
 import { Facebook, Instagram } from "./icons"
 import { SocialButton } from "./Button"
 import { Typography } from "./Typography"
+import Link from "next/link"
 
 type Props = {
     readonly people: readonly {
@@ -18,11 +19,11 @@ export function AboutUs({ people }: Props) {
                 <Typography variant='h2' component='h2' className='mb-8'>
                     O nás
                 </Typography>
-                <Typography variant='normal' className='mb-6 max-w-xsProse' component='p'>
+                <Typography className='mb-6 max-w-xsProse' component='p'>
                     Práce testera je hledání chyb a upozorňování na ně srozumitelnou formou. Proto abys mohl být tester,
                     nepotřebuješ mnoho. Práce testera je hledání chyb a upozorňování na ně srozumitelnou formou.
                 </Typography>
-                <Typography variant='normal' className='mb-10 max-w-xsProse' component='p'>
+                <Typography className='mb-10 max-w-xsProse' component='p'>
                     Proto abys mohl být tester, nepotřebuješ mnoho.
                 </Typography>
                 <div className='flex flex-row justify-center gap-x-10 xl:justify-start'>
@@ -48,10 +49,13 @@ export function AboutUs({ people }: Props) {
                         <Typography variant='h3' component='h3' className='text-center'>
                             {p.name}
                         </Typography>
-                        <Typography variant='normal' className='text-center'>
-                            {p.position}
-                        </Typography>
-                        <Typography variant='link' className='text-center'>
+                        <Typography className='text-center'>{p.position}</Typography>
+                        <Typography
+                            variant='link'
+                            component={Link}
+                            componentProps={{ href: `mailto:${p.email}?subject=Dotaz na Nauč mě IT` }}
+                            className='text-center underline'
+                        >
                             {p.email}
                         </Typography>
                     </div>

@@ -9,7 +9,7 @@ export function ContactForm() {
             <Typography variant='h2' component='h2' className='mx-auto mb-4'>
                 Napište nám
             </Typography>
-            <Typography variant='normal' component='p' className='mx-auto max-w-prose text-center'>
+            <Typography component='p' className='mx-auto max-w-prose text-center'>
                 Nejste si něčím jistí nebo máte další otázky? Nebojte se nám zavolat, poslat zprávu nebo napsat na
                 email: info@naucme.it.
             </Typography>

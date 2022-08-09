@@ -10,9 +10,7 @@ export function Footer() {
             <div className='flex flex-row flex-wrap items-center justify-center gap-y-10 gap-x-6 pb-12 md:gap-x-32'>
                 <Logo width={220} />
                 <div className='flex w-full flex-col gap-4 md:w-auto'>
-                    <Typography variant='normal' className='text-center'>
-                        Jsme na sociálních sítích!
-                    </Typography>
+                    <Typography className='text-center'>Jsme na sociálních sítích!</Typography>
                     <div className='flex flex-row justify-center gap-6'>
                         <SocialButton href='/' label='Facebook stránka - Nauč mě IT'>
                             <Facebook width={16} />
@@ -23,48 +21,40 @@ export function Footer() {
                     </div>
                 </div>
                 <div className='md:order-0 order-2 flex flex-col'>
-                    <Typography componentProps={{ href: "#home" }} component={"a"} variant='normal'>
+                    <Typography componentProps={{ href: "#home" }} component={Link} className='hover:text-primary'>
                         Úvod
                     </Typography>
-                    <Typography componentProps={{ href: "#how" }} component={"a"} variant='normal'>
+                    <Typography componentProps={{ href: "#how" }} component={Link} className='hover:text-primary'>
                         Jak to funguje
                     </Typography>
-                    <Typography componentProps={{ href: "#packages" }} component={"a"} variant='normal'>
+                    <Typography componentProps={{ href: "#packages" }} component={Link} className='hover:text-primary'>
                         Cenové balíčky
                     </Typography>
-                    <Typography componentProps={{ href: "#courses" }} component={"a"} variant='normal'>
+                    <Typography componentProps={{ href: "#courses" }} component={Link} className='hover:text-primary'>
                         Kurzy
                     </Typography>
-                    <Typography componentProps={{ href: "#about" }} component={"a"} variant='normal'>
+                    <Typography componentProps={{ href: "#about" }} component={Link} className='hover:text-primary'>
                         O nás
                     </Typography>
-                    <Typography componentProps={{ href: "#company" }} component={"a"} variant='normal'>
+                    <Typography componentProps={{ href: "#company" }} component={Link} className='hover:text-primary'>
                         Pro firmy
                     </Typography>
-                    <Typography componentProps={{ href: "#contact" }} component={"a"} variant='normal'>
+                    <Typography componentProps={{ href: "#contact" }} component={Link} className='hover:text-primary'>
                         Kontakt
                     </Typography>
-                    <Typography componentProps={{ href: "#login" }} component={"a"} variant='normal'>
+                    <Typography componentProps={{ href: "#login" }} component={Link} className='hover:text-primary'>
                         Registrovat
                     </Typography>
                 </div>
                 <div className='flex flex-col gap-3'>
                     <Typography variant='step'>Kontakt</Typography>
                     <p>
-                        <Typography variant='normal' className='block'>
-                            Pavel Koudelka
-                        </Typography>
-                        <Typography variant='normal' className='block'>
-                            735 42 Český Těšín
-                        </Typography>
+                        <Typography className='block'>Pavel Koudelka</Typography>
+                        <Typography className='block'>735 42 Český Těšín</Typography>
                     </p>
                     <p>
-                        <Typography variant='normal' className='block'>
-                            +420 705 099 099
-                        </Typography>
-                        <Typography variant='normal' className='block'>
-                            info@naucme.it
-                        </Typography>
+                        <Typography className='block'>+420 705 099 099</Typography>
+                        <Typography className='block'>info@naucme.it</Typography>
                     </p>
                 </div>
             </div>
