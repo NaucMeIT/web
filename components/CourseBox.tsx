@@ -21,9 +21,7 @@ export function CourseBox({ image, side, title, children, link }: Props) {
                 <Typography variant='h3' component='h3' className='mb-8'>
                     {title}
                 </Typography>
-                <Typography variant='normal' className='max-w-xsProse'>
-                    {children}
-                </Typography>
+                <Typography className='max-w-xsProse'>{children}</Typography>
                 {link ? (
                     <Typography
                         variant='link'

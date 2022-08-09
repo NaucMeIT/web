@@ -9,9 +9,7 @@ export function CatchPoints({ icon, children }: Props) {
     return (
         <div className='flex flex-row items-center justify-between'>
             {icon}
-            <Typography variant='normal' className='max-w-xxs w-full'>
-                {children}
-            </Typography>
+            <Typography className='max-w-xxs w-full'>{children}</Typography>
         </div>
     )
 }

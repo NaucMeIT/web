@@ -14,7 +14,7 @@ export function Landing() {
                 <Typography variant='h1' component='h1' className='uppercase'>
                     a nech si za to platit!
                 </Typography>
-                <Typography variant='normal' component='p' className='max-w-xsProse'>
+                <Typography component='p' className='max-w-xsProse'>
                     Klademe si za cíl pomoci komukoliv získat dovednosti a{"\u00A0"}znalosti vhodné pro práci v IT. To
                     vše bez časových limitací a za cenu dostupnou pro každého.
                 </Typography>
