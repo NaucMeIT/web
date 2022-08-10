@@ -5,7 +5,7 @@ import { Typography } from "./Typography"
 
 export function Landing() {
     return (
-        <main className='flex flex-row flex-wrap items-center justify-center px-5'>
+        <header className='flex flex-row flex-wrap items-center justify-center px-5'>
             <div>
                 <span id='home'>&nbsp;</span>
                 <Typography variant='h2' component='h1'>
@@ -39,6 +39,6 @@ export function Landing() {
                 alt='Ilustrační úvodní obrázek'
                 className='order-first w-3/4 lg:w-1/2 2xl:order-1'
             />
-        </main>
+        </header>
     )
 }

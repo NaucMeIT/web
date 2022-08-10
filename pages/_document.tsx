@@ -50,7 +50,7 @@ export default function Document() {
                 <meta property='og:title' key='og:title' content={APP_NAME} />
                 <meta property='og:site_name' content={APP_NAME} />
             </Head>
-            <body className='h-full font-poppins'>
+            <body className='h-full font-poppins accent-primary caret-primary'>
                 <Main />
                 <NextScript />
                 <script type='text/javascript' dangerouslySetInnerHTML={{ __html: registerScript }} />

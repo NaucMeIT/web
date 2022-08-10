@@ -7,7 +7,7 @@ export function Footer() {
     return (
         <>
             <Horizontal className='mx-auto my-16 max-w-full' />
-            <div className='flex flex-row flex-wrap items-center justify-center gap-y-10 gap-x-6 pb-12 md:gap-x-32'>
+            <footer className='flex flex-row flex-wrap items-center justify-center gap-y-10 gap-x-6 pb-12 md:gap-x-32'>
                 <Logo width={220} />
                 <div className='flex w-full flex-col gap-4 md:w-auto'>
                     <Typography className='text-center'>Jsme na sociálních sítích!</Typography>
@@ -46,18 +46,30 @@ export function Footer() {
                         Registrovat
                     </Typography>
                 </div>
-                <div className='flex flex-col gap-3'>
+                <address className='flex flex-col gap-3 not-italic'>
                     <Typography variant='step'>Kontakt</Typography>
                     <p>
                         <Typography className='block'>Pavel Koudelka</Typography>
                         <Typography className='block'>735 42 Český Těšín</Typography>
                     </p>
                     <p>
-                        <Typography className='block'>+420 705 099 099</Typography>
-                        <Typography className='block'>info@naucme.it</Typography>
+                        <Typography
+                            className='block hover:text-primary'
+                            component={Link}
+                            componentProps={{ href: "tel:+420705099099" }}
+                        >
+                            +420 705 099 099
+                        </Typography>
+                        <Typography
+                            className='block hover:text-primary'
+                            component={Link}
+                            componentProps={{ href: "mailto:info@naucme.it?subject=Dotaz na Nauč mě IT" }}
+                        >
+                            info@naucme.it
+                        </Typography>
                     </p>
-                </div>
-            </div>
+                </address>
+            </footer>
         </>
     )
 }
