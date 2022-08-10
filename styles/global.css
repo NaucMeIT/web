@@ -59,6 +59,11 @@ blockquote {
     --color-form: 166 177 187;
 }
 
+*::selection {
+    background-color: rgb(var(--color-off));
+    color: white;
+}
+
 @layer utilities {
     .polygon-path {
         clip-path: polygon(var(--path));

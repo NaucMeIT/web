@@ -55,47 +55,56 @@ const Home: NextPage = () => {
                     },
                 ]}
             />
-            <img src='/images/left.svg' className='fixed top-0 hidden h-full 3xl:block' alt='' height='110vh' />
             <img
+                aria-hidden
+                src='/images/left.svg'
+                className='fixed top-0 hidden h-full 3xl:block'
+                alt=''
+                height='110vh'
+            />
+            <img
+                aria-hidden
                 src='/images/right.svg'
                 className='fixed top-0 right-0 hidden h-full 3xl:block'
                 alt=''
                 height='110vh'
             />
 
-            <Landing />
+            <main>
+                <Landing />
 
-            <DownArrow
-                className='mx-auto mb-20 cursor-pointer hidden md:block'
-                onClick={() => window.scrollBy(0, document.documentElement.clientHeight * 0.8)}
-            />
+                <DownArrow
+                    className='mx-auto mb-20 cursor-pointer hidden md:block'
+                    onClick={() => window.scrollBy(0, document.documentElement.clientHeight * 0.8)}
+                />
 
-            <How />
+                <How />
 
-            <Packages />
+                <Packages />
 
-            <Courses />
+                <Courses />
 
-            <AboutUs
-                people={[
-                    {
-                        name: "Petr Glaser",
-                        email: "petr.glaser@naucme.it",
-                        position: "Staff Software Engineer",
-                        image: "/images/qa_illustration.svg",
-                    },
-                    {
-                        name: "Pavel Koudelka",
-                        email: "pavel.koudelka@naucme.it",
-                        position: "Sales",
-                        image: "/images/qa_illustration.svg",
-                    },
-                ]}
-            />
+                <AboutUs
+                    people={[
+                        {
+                            name: "Petr Glaser",
+                            email: "petr.glaser@naucme.it",
+                            position: "Staff Software Engineer",
+                            image: "/images/qa_illustration.svg",
+                        },
+                        {
+                            name: "Pavel Koudelka",
+                            email: "pavel.koudelka@naucme.it",
+                            position: "Sales",
+                            image: "/images/qa_illustration.svg",
+                        },
+                    ]}
+                />
 
-            <CompanyBox />
+                <CompanyBox />
 
-            <ContactForm />
+                <ContactForm />
+            </main>
 
             <Footer />
         </div>

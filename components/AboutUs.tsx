@@ -13,7 +13,7 @@ type Props = {
 }
 export function AboutUs({ people }: Props) {
     return (
-        <div className={`mt-10 flex flex-col items-center justify-center gap-x-36 gap-y-4 px-5 xl:flex-row`}>
+        <section className={`mt-10 flex flex-col items-center justify-center gap-x-36 gap-y-4 px-5 xl:flex-row`}>
             <div className='flex w-fit max-w-xl flex-col'>
                 <span id='about'>&nbsp;</span>
                 <Typography variant='h2' component='h2' className='mb-8'>
@@ -61,6 +61,6 @@ export function AboutUs({ people }: Props) {
                     </div>
                 ))}
             </div>
-        </div>
+        </section>
     )
 }
