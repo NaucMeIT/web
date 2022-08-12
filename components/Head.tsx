@@ -7,6 +7,7 @@ type HeadProps = {
     readonly fbImg: string
     readonly url: string
     readonly children: React.ReactNode
+    readonly structuredData?: Record<string, string | Record<string, string>>
 }
 
 export const Head = (props: HeadProps) => (
@@ -19,5 +20,6 @@ export const Head = (props: HeadProps) => (
         <meta property='og:url' key='og:url' content={props.url} />
         <meta property='og:image' key='og:image' content={props.fbImg} />
         {props.children}
+        <script type='application/ld+json'>{JSON.stringify(props.structuredData)}</script>
     </NextHead>
 )

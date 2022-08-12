@@ -19,6 +19,18 @@ const Home: NextPage = () => {
                 url='https://naucme.it/'
                 twImg='https://naucme.it/twitter.png'
                 fbImg='https://naucme.it/facebook.png'
+                structuredData={{
+                    "@context": "https://schema.org",
+                    "@type": "Course",
+                    name: "Úvod do testování a webových technologií",
+                    description:
+                        "Kurzy pro kohokoliv, kdo se chce dostat do světa IT, zejména testování a webového vývoje.",
+                    provider: {
+                        "@type": "Organization",
+                        name: "Nauč mě IT",
+                        sameAs: "https://naucme.it",
+                    },
+                }}
             >
                 <title>Nauč mě IT - Úvodní strana</title>
             </Head>
