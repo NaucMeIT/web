@@ -1,4 +1,5 @@
 import { Form, useFormSubmit } from "next-runtime/form"
+import Link from "next/link"
 import { Button } from "./Button"
 import { DecoratedInput } from "./DecoratedInput"
 import { Typography } from "./Typography"
@@ -27,8 +28,15 @@ export function ContactForm() {
                 componentProps={{ role: isError ? "alert" : "" }}
             >
                 {isError
-                    ? "Email se nepodařilo odeslat, zkuste to prosím znovu. Případně nám neváhejte zavolat či napsat na email info@naucme.it."
-                    : "Nejste si něčím jistí nebo máte další otázky? Nebojte se nám zavolat, poslat zprávu nebo napsat na email: info@naucme.it."}
+                    ? "Email se nepodařilo odeslat, zkuste to prosím znovu. Případně nám neváhejte zavolat či napsat na email: "
+                    : "Nejste si něčím jistí nebo máte další otázky? Nebojte se nám zavolat, poslat zprávu nebo napsat na email: "}
+                <Typography
+                    className='hover:text-primary'
+                    component={Link}
+                    componentProps={{ href: "mailto:info@naucme.it?subject=Dotaz na Nauč mě IT" }}
+                >
+                    info@naucme.it
+                </Typography>
             </Typography>
             <DecoratedInput name='name' type='text' label='Vaše jméno' placeholder='Zadejte své jméno' required />
             <div className='flex flex-col gap-9 md:flex-row'>
