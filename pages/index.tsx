@@ -44,9 +44,9 @@ export const getServerSideProps = handle<PageProps, UrlQuery, FormData>({
                 Telefon: ${body.phone}
             `,
             })
-            return json({ success: true })
+            return json({ status: "success" })
         } catch (e) {
-            return json({ success: false, error: e })
+            return json({ status: "error", error: e }, 500)
         }
     },
 })
