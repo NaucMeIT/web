@@ -8,7 +8,7 @@ const registerScript = `
 if (CSS.paintWorklet) {
     CSS.paintWorklet.addModule('/registerPaint.js');
 } else {
-    alert("Your browser cannot run this demo. Consider Chrome or Edge instead")
+    console.error("Paint worklet is not supported");
 }
 `
 
