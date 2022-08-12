@@ -56,9 +56,9 @@ export function Footer() {
                         <Typography
                             className='block hover:text-primary'
                             component={Link}
-                            componentProps={{ href: "tel:+420705099099" }}
+                            componentProps={{ href: "tel:+420731472822" }}
                         >
-                            +420 705 099 099
+                            +420 731 472 822
                         </Typography>
                         <Typography
                             className='block hover:text-primary'
