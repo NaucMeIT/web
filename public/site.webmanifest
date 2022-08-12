@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Nau\u010d m\u011b IT",
+    "short_name": "Nau\u010d m\u011b IT",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#090c28",
+    "background_color": "#090c28",
     "display": "standalone"
 }
