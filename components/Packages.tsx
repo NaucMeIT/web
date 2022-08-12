@@ -16,7 +16,7 @@ export function Packages() {
                 <PackageBox
                     title='Core'
                     benefits={["Základní kurz testera", "Přístup na Discord", "5 konzultací"]}
-                    price={899}
+                    price={1249}
                 />
                 <PackageBox
                     title='Standard'
@@ -26,7 +26,8 @@ export function Packages() {
                         "10 konzultací",
                         "Privátní skupina na Discordu",
                     ]}
-                    price={1699}
+                    price={2299}
+                    priority
                 />
                 <PackageBox
                     title='Ultimate'
@@ -37,7 +38,7 @@ export function Packages() {
                         "Privátní skupina na Discordu",
                         "Prioritní schůzky",
                     ]}
-                    price={2199}
+                    price={3999}
                 />
             </div>
         </section>
