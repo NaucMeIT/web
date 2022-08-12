@@ -1,4 +1,6 @@
 import { NextPage } from "next"
+import { handle, json } from "next-runtime"
+import sendgrid from "@sendgrid/mail"
 import { AboutUs } from "../components/AboutUs"
 import { CompanyBox } from "../components/CompanyBox"
 import { ContactForm } from "../components/ContactForm"
@@ -10,6 +12,44 @@ import { How } from "../components/How"
 import { Packages } from "../components/Packages"
 import { Courses } from "../components/Courses"
 import { Head } from "../components/Head"
+
+type PageProps = {}
+type UrlQuery = {}
+type FormData = {
+    readonly name: string
+    readonly email: string
+    readonly phone: string
+    readonly message: string
+}
+
+export const getServerSideProps = handle<PageProps, UrlQuery, FormData>({
+    async get() {
+        return json({})
+    },
+    async post({ req: { body } }) {
+        try {
+            await sendgrid.setApiKey(process.env.SENDGRID_API_KEY || "")
+            await sendgrid.send({
+                to: "info@naucme.it",
+                from: "info@naucme.it",
+                replyTo: body.email,
+                subject: "Dotaz z naucme.it",
+                text: `
+                ${body.message}
+
+------------------------------------------------------
+
+                Od: ${body.name}
+                Email: ${body.email}
+                Telefon: ${body.phone}
+            `,
+            })
+            return json({ success: true })
+        } catch (e) {
+            return json({ success: false, error: e })
+        }
+    },
+})
 
 const Home: NextPage = () => {
     return (

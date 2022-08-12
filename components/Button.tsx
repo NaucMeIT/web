@@ -18,11 +18,19 @@ type SocialButtonProps = (Omit<NormalButtonProps, "theme"> | Omit<LinkButtonProp
     readonly label: string
 }
 
+const disabledClasses = "cursor-not-allowed pointer-events-none opacity-80"
+const enabledClasses = "cursor-pointer hover:animate-wiggle"
 const mainClasses =
     "border-none polygon-path focus-visible:outline-none before:bg-primary focus:before:bg-secondary text-center appearance-button"
 const themeClasses = {
-    main: "bg-primary",
-    off: "bg-scroll bg-animable bg-clip-border bg-origin-padding bg-transparent bg-100/0 bg-bottom bg-no-repeat transition-backgroundSize duration-1000 hover:duration-500 ease hover:bg-100/100",
+    enabled: {
+        main: `bg-primary ${enabledClasses}`,
+        off: `bg-scroll bg-animable bg-clip-border bg-origin-padding bg-transparent bg-100/0 bg-bottom bg-no-repeat transition-backgroundSize duration-1000 hover:duration-500 ease hover:bg-100/100 ${enabledClasses}`,
+    },
+    disabled: {
+        main: `bg-primary ${disabledClasses}`,
+        off: `bg-scroll bg-animable bg-clip-border bg-origin-padding bg-transparent bg-100/0 bg-bottom bg-no-repeat ${disabledClasses}`,
+    },
 }
 const sizeClasses = {
     large: "pt-6 pb-5 pl-11 pr-12",
@@ -39,20 +47,18 @@ const hexagonBorderVars = {
 
 export function Button({ className, disabled, children, theme, size, ...rest }: ButtonProps) {
     const props = {
-        className: `${mainClasses} ${themeClasses[theme]} ${
-            disabled ? "cursor-not-allowed opacity-80" : "cursor-pointer hover:animate-wiggle"
-        } ${"href" in rest ? "pointer-events-none" : sizeClasses[size || "normal"]} ${typographyClasses.normal} ${
-            className ?? ""
-        }`,
+        className: `${mainClasses} ${disabled ? themeClasses.disabled[theme] : themeClasses.enabled[theme]} ${
+            "href" in rest ? "pointer-events-none" : sizeClasses[size || "normal"]
+        } ${typographyClasses.normal} ${className ?? ""}`,
         style: polygonBorderVars,
     }
 
     return "href" in rest ? (
-        <button {...props} tabIndex={-1}>
+        <span {...props} tabIndex={-1}>
             <Link {...rest} className={`pointer-events-auto inline-flex ${sizeClasses[size || "normal"]}`}>
                 {children}
             </Link>
-        </button>
+        </span>
     ) : (
         <button {...props} {...rest}>
             {children}
@@ -62,11 +68,9 @@ export function Button({ className, disabled, children, theme, size, ...rest }: 
 
 export function SocialButton({ label, className, disabled, children, ...rest }: SocialButtonProps) {
     const props = {
-        className: `${mainClasses} ${themeClasses.off} ${
-            disabled ? "cursor-not-allowed opacity-80" : "cursor-pointer hover:animate-wiggle"
-        } ${"href" in rest ? "pointer-events-none" : "py-2 px-5"} ${typographyClasses.normal} ${
-            className ?? ""
-        } inline-flex items-center aspect-square`,
+        className: `${mainClasses} ${disabled ? themeClasses.disabled.off : themeClasses.enabled.off} ${
+            "href" in rest ? "pointer-events-none" : sizeClasses.normal
+        } ${className ?? ""} inline-flex items-center aspect-square`,
         style: hexagonBorderVars,
     }
 
