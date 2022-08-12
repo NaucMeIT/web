@@ -58,7 +58,7 @@ const Home: NextPage = () => {
                 desc='Mám zájem Naučit se IT a posunout se v kariéře dál!'
                 url='https://naucme.it/'
                 twImg='https://naucme.it/twitter.png'
-                fbImg='https://naucme.it/facebook.png'
+                fbImg='https://naucme.it/og.png'
                 structuredData={{
                     "@context": "https://schema.org",
                     "@type": "Course",

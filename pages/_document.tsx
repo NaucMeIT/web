@@ -26,8 +26,14 @@ export default function Document() {
                     content='IT, učení, školení, nauč mě, jak začít s IT, jak začít programovat, jak dělat web, jak psát web'
                 />
                 <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
-                <link rel='manifest' href='/manifest.json' />
+                <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
+                <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
+                <link rel='manifest' href='/site.webmanifest' />
+                <link rel='mask-icon' href='/safari-pinned-tab.svg' color={APP_MAIN_COLOR} />
+                <meta name='msapplication-TileColor' content={APP_MAIN_COLOR} />
+                <meta name='theme-color' content={APP_MAIN_COLOR} />
                 <link rel='shortcut icon' href='/favicon.ico' />
+
                 <meta name='application-name' content={APP_NAME} />
                 <meta name='apple-mobile-web-app-capable' content='yes' />
                 <meta name='apple-mobile-web-app-status-bar-style' content='default' />
@@ -35,14 +41,7 @@ export default function Document() {
                 <meta name='format-detection' content='telephone=no' />
                 <meta name='mobile-web-app-capable' content='yes' />
                 <meta name='msapplication-config' content='/browserconfig.xml' />
-                <meta name='msapplication-TileColor' content={APP_MAIN_COLOR} />
                 <meta name='msapplication-tap-highlight' content='no' />
-                <meta name='theme-color' content={APP_MAIN_COLOR} />
-                <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
-                <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
-                <link rel='manifest' href='/manifest.json' />
-                <link rel='mask-icon' href='/safari-pinned-tab.svg' color={APP_MAIN_COLOR} />
-                <link rel='shortcut icon' href='/favicon.ico' />
                 <meta name='twitter:card' content='summary' />
                 <meta name='twitter:title' key='tw:title' content={APP_NAME} />
                 <meta name='twitter:creator' content='@NaucMeIT' />
