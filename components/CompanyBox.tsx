@@ -10,7 +10,7 @@ export function CompanyBox() {
             <Typography className='mb-6 text-center' component='p'>
                 Hledáte zaměstnance a chcete se s námi spolupracovat?
             </Typography>
-            <Button theme='off' size='large' className='mx-auto block' onClick={() => undefined}>
+            <Button theme='off' size='large' className='w-max mx-auto block' href='/companies'>
                 Chci zaměstnance
             </Button>
         </section>

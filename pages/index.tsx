@@ -12,6 +12,7 @@ import { How } from "../components/How"
 import { Packages } from "../components/Packages"
 import { Courses } from "../components/Courses"
 import { Head } from "../components/Head"
+import img from "../images/petr_border.png"
 
 type PageProps = {}
 type UrlQuery = {}
@@ -94,7 +95,7 @@ const Home: NextPage = () => {
                     },
                     {
                         title: "Pro firmy",
-                        link: "#company",
+                        link: "/companies",
                     },
                     {
                         title: "Kontakt",
@@ -130,7 +131,15 @@ const Home: NextPage = () => {
                     onClick={() => window.scrollBy(0, document.documentElement.clientHeight * 0.8)}
                 />
 
-                <How />
+                <How
+                    steps={[
+                        "Zaregistruj se ZDARMA",
+                        "Vyber si jeden z kurzů",
+                        "Načerpej z něj znalosti",
+                        "Ověř si je v praxi",
+                        "Získej svůj první job v IT",
+                    ]}
+                />
 
                 <Packages />
 
@@ -142,13 +151,17 @@ const Home: NextPage = () => {
                             name: "Petr Glaser",
                             email: "petr.glaser@naucme.it",
                             position: "Staff Software Engineer",
-                            image: "/images/qa_illustration.svg",
+                            image: img,
                         },
                         {
                             name: "Pavel Koudelka",
                             email: "pavel.koudelka@naucme.it",
                             position: "Sales",
-                            image: "/images/qa_illustration.svg",
+                        },
+                        {
+                            name: "Lýdie Hemalová",
+                            email: "lydie.hemalova@naucme.it",
+                            position: "QA Engineer",
                         },
                     ]}
                 />

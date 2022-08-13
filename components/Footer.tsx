@@ -1,7 +1,9 @@
-import { Horizontal, Logo, Facebook, Instagram } from "./icons"
+import { Horizontal, Logo, Facebook } from "./icons"
 import { Typography } from "./Typography"
 import { SocialButton } from "./Button"
 import Link from "next/link"
+import Image from "next/image"
+import LinkedIn from "../images/linkedin.svg"
 
 export function Footer() {
     return (
@@ -12,11 +14,14 @@ export function Footer() {
                 <div className='flex w-full flex-col gap-4 md:w-auto'>
                     <Typography className='text-center'>Jsme na sociálních sítích!</Typography>
                     <div className='flex flex-row justify-center gap-6'>
-                        <SocialButton href='/' label='Facebook stránka - Nauč mě IT'>
+                        <SocialButton href='https://www.facebook.com/NaucMeIT' label='Facebook stránka - Nauč mě IT'>
                             <Facebook width={16} />
                         </SocialButton>
-                        <SocialButton href='/' label='Instagram stránka - Nauč mě IT'>
-                            <Instagram width={16} />
+                        <SocialButton
+                            href='https://www.linkedin.com/company/nauc-me-it/'
+                            label='LinkedIn stránka - Nauč mě IT'
+                        >
+                            <Image src={LinkedIn} width={16} height={16} />
                         </SocialButton>
                     </div>
                 </div>
@@ -36,7 +41,7 @@ export function Footer() {
                     <Typography componentProps={{ href: "#about" }} component={Link} className='hover:text-primary'>
                         O nás
                     </Typography>
-                    <Typography componentProps={{ href: "#company" }} component={Link} className='hover:text-primary'>
+                    <Typography componentProps={{ href: "/companies" }} component={Link} className='hover:text-primary'>
                         Pro firmy
                     </Typography>
                     <Typography componentProps={{ href: "#contact" }} component={Link} className='hover:text-primary'>

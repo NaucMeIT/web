@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Typography } from "./Typography"
 type Props = {
-    readonly order: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+    readonly order: number
     readonly children: React.ReactNode
 }
 
