@@ -1,4 +1,5 @@
 import Link, { LinkProps } from "next/link"
+import { isExternalUrl } from "../utils/string"
 import { typographyClasses } from "./Typography"
 
 type Props = {
@@ -6,7 +7,6 @@ type Props = {
     readonly disabled?: boolean
     readonly className?: string
 }
-// eslint-disable-next-line functional/no-return-void
 type NormalButtonProps = Props & JSX.IntrinsicElements["button"]
 type LinkButtonProps = Props & LinkProps
 type ButtonProps = (LinkButtonProps | NormalButtonProps) & {
@@ -55,7 +55,11 @@ export function Button({ className, disabled, children, theme, size, ...rest }: 
 
     return "href" in rest ? (
         <span {...props} tabIndex={-1}>
-            <Link {...rest} className={`pointer-events-auto inline-flex ${sizeClasses[size || "normal"]}`}>
+            <Link
+                {...rest}
+                className={`pointer-events-auto inline-flex ${sizeClasses[size || "normal"]}`}
+                target={isExternalUrl(rest.href) ? "_blank" : "_self"}
+            >
                 {children}
             </Link>
         </span>
@@ -76,7 +80,12 @@ export function SocialButton({ label, className, disabled, children, ...rest }: 
 
     return "href" in rest ? (
         <span {...props} tabIndex={-1}>
-            <Link {...rest} className='pointer-events-auto inline-flex py-2 px-5' aria-label={label}>
+            <Link
+                {...rest}
+                className='pointer-events-auto inline-flex py-2 px-5'
+                aria-label={label}
+                target={isExternalUrl(rest.href) ? "_blank" : "_self"}
+            >
                 {children}
             </Link>
         </span>

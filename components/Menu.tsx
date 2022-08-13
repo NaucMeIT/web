@@ -54,7 +54,7 @@ export function Menu({ items }: MenuProps) {
                         <div className='relative flex h-16 items-center justify-between'>
                             <div className='flex flex-1 items-center justify-between lg:justify-around lg:items-stretch'>
                                 <div className='ml-3 flex flex-shrink-0 items-center'>
-                                    <Link href='#home' className='flex items-center' aria-label='Logo Nauč mě IT'>
+                                    <Link href='#' className='flex items-center' aria-label='Logo Nauč mě IT'>
                                         <Logo width={120} />
                                     </Link>
                                 </div>

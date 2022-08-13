@@ -6,10 +6,10 @@ export function Packages() {
         <section className='flex flex-col items-center justify-center gap-4 bg-alt px-5 pt-20 pb-28'>
             <span id='packages'>&nbsp;</span>
             <Typography variant='h2' component='h2' className='mb-8 text-center'>
-                Začni se učit programovat ještě dnes!
+                Začni se učit ještě dnes!
             </Typography>
             <Typography className='mb-6 text-center' component='p'>
-                Vyber si jeden z našich výhodných balíčků a ušetři pro začátek pár kaček
+                Vyber si jeden z našich výhodných balíčků a ušetři pro začátek pár kaček.
             </Typography>
             <div className='flex flex-row flex-wrap justify-center gap-8'>
                 <PackageBox title='Basic' benefits={["Základní kurz testera", "Přístup na Discord"]} price={0} />

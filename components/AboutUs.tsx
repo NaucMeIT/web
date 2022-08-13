@@ -1,51 +1,64 @@
-import { Facebook, Instagram } from "./icons"
+import { Facebook } from "./icons"
 import { SocialButton } from "./Button"
 import { Typography } from "./Typography"
 import Link from "next/link"
+import Image, { StaticImageData } from "next/image"
+import LinkedIn from "../images/linkedin.svg"
+
+type Person = {
+    readonly name: string
+    readonly position: string
+    readonly email: string
+    readonly image?: string | StaticImageData
+}
 
 type Props = {
-    readonly people: readonly {
-        readonly name: string
-        readonly position: string
-        readonly email: string
-        readonly image: string
-    }[]
+    readonly people: readonly Person[]
 }
+
 export function AboutUs({ people }: Props) {
     return (
-        <section className={`mt-10 flex flex-col items-center justify-center gap-x-36 gap-y-4 px-5 xl:flex-row`}>
+        <section className={`mt-20 flex flex-col items-center justify-center gap-x-36 gap-y-4 px-5 xl:flex-row`}>
             <div className='flex w-fit max-w-xl flex-col'>
                 <span id='about'>&nbsp;</span>
                 <Typography variant='h2' component='h2' className='mb-8'>
                     O nás
                 </Typography>
-                <Typography className='mb-6 max-w-xsProse' component='p'>
-                    Práce testera je hledání chyb a upozorňování na ně srozumitelnou formou. Proto abys mohl být tester,
-                    nepotřebuješ mnoho. Práce testera je hledání chyb a upozorňování na ně srozumitelnou formou.
-                </Typography>
-                <Typography className='mb-10 max-w-xsProse' component='p'>
-                    Proto abys mohl být tester, nepotřebuješ mnoho.
+                <Typography className='mb-6 max-w-xsProse' component='div'>
+                    <p className='mb-4'>
+                        Nápad založit Nauč mě IT nám vnukli naši přátelé. Chtěli začít v IT, ale ztratili se v množství
+                        informací, které jim Google vyhodil. Kde začít? Jaký programovací jazyk si vybrat? Kdo mi dá
+                        aktuální informace? Proč mi někdo doporučil Javu?! Toto vše jsme slyšeli.
+                    </p>
+                    <figure>
+                        <blockquote className='italic'>
+                            Bylo mi jasné, že tuto vizi nedokážu naplnit sám. Požádal jsem tedy o pomoc Lýdii Hemalovou
+                            a Pavla Koudelku. Díky nim jsme do projektu konečně kopli a spatřil tak světlo světa. S
+                            jasnou vizí a posláním pomoct komukoliv dostat se do IT.
+                        </blockquote>
+                        <figcaption>- Petr Glaser</figcaption>
+                    </figure>
                 </Typography>
                 <div className='flex flex-row justify-center gap-x-10 xl:justify-start'>
-                    <SocialButton href='/' label='Facebook stránka - Nauč mě IT'>
+                    <SocialButton href='https://www.facebook.com/NaucMeIT' label='Facebook stránka - Nauč mě IT'>
                         <Facebook width={16} />
                     </SocialButton>
-                    <SocialButton href='/' label='Instagram stránka - Nauč mě IT'>
-                        <Instagram width={16} />
+                    <SocialButton
+                        href='https://www.linkedin.com/company/nauc-me-it/'
+                        label='LinkedIn stránka - Nauč mě IT'
+                    >
+                        <Image src={LinkedIn} width={16} height={16} />
                     </SocialButton>
                 </div>
             </div>
-            <div className='flex flex-col justify-center gap-x-20 md:flex-row'>
+            <div className='grid grid-rows-4 gap-20 md:grid-rows-3 md:grid-cols-2'>
                 {people.map((p) => (
-                    <div className='flex flex-col gap-y-2' key={p.email}>
-                        <img
-                            src={p.image}
-                            className='w-full'
-                            width={"245px"}
-                            height={"264px"}
-                            alt={`Profilová fotka - ${p.name}`}
-                            loading='lazy'
-                        />
+                    <div className={`flex flex-col gap-y-2 ${p.image && "col-span-2 row-span-2"}`} key={p.email}>
+                        {p.image && (
+                            <div className='px-40'>
+                                <Image src={p.image} alt={`Profilová fotka - ${p.name}`} sizes='100vw' loading='lazy' />
+                            </div>
+                        )}
                         <Typography variant='h3' component='h3' className='text-center'>
                             {p.name}
                         </Typography>
