@@ -15,7 +15,9 @@ export function How({ steps }: HowProps) {
             </Typography>
             <div className='mx-auto flex max-w-6xl flex-row flex-wrap items-center justify-center gap-12'>
                 {steps.map((step, index) => (
-                    <Step order={index + 1}>{step}</Step>
+                    <Step key={`step-${index}`} order={index + 1}>
+                        {step}
+                    </Step>
                 ))}
             </div>
             <Button theme='off' size='large' className='mx-auto my-20 block'>
