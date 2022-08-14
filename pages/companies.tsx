@@ -1,4 +1,4 @@
-import { NextPage } from "next"
+import { GetServerSideProps, NextPage } from "next"
 import { Menu } from "../components/Menu"
 import { DownArrow } from "../components/DownArrow"
 import { Footer } from "../components/Footer"
@@ -18,7 +18,7 @@ type FormData = {
     readonly message: string
 }
 
-export const getServerSideProps = handleEmail<FormData>()
+export const getServerSideProps: GetServerSideProps = handleEmail
 
 const Home: NextPage = () => {
     return (
