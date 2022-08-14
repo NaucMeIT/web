@@ -27,7 +27,9 @@ export function Landing({ title, subtitle, text, catchPoints, buttonText }: Land
                 </Typography>
                 <div className='mt-20 grid grid-rows-4 md:grid-cols-2 md:grid-rows-2'>
                     {catchPoints.map(({ icon, children }) => (
-                        <CatchPoints icon={icon}>{children}</CatchPoints>
+                        <CatchPoints key={children?.toString()} icon={icon}>
+                            {children}
+                        </CatchPoints>
                     ))}
                 </div>
                 <Button theme='off' size='large' className='mx-auto mb-10 xl:mb-0 xl:mt-20 block xl:mx-0'>
