@@ -1,20 +1,15 @@
 import { NextPage } from "next"
 import { handle, json } from "next-runtime"
 import sendgrid from "@sendgrid/mail"
-import { AboutUs } from "../components/AboutUs"
-import { CompanyBox } from "../components/CompanyBox"
-import { ContactForm } from "../components/ContactForm"
 import { Menu } from "../components/Menu"
 import { DownArrow } from "../components/DownArrow"
 import { Footer } from "../components/Footer"
 import { Landing } from "../components/Landing"
 import { How } from "../components/How"
-import { Packages } from "../components/Packages"
-import { Courses } from "../components/Courses"
 import { Head } from "../components/Head"
-import img from "../images/petr_border.png"
 import { LearnEarn, PayConsultancy, Time, Worldwide } from "../components/icons"
 import { CompanyCatch } from "../components/CompanyCatch"
+import { sendEmail } from "../utils/email"
 
 type PageProps = {}
 type UrlQuery = {}
@@ -31,22 +26,8 @@ export const getServerSideProps = handle<PageProps, UrlQuery, FormData>({
     },
     async post({ req: { body } }) {
         try {
-            await sendgrid.setApiKey(process.env.SENDGRID_API_KEY || "")
-            await sendgrid.send({
-                to: "info@naucme.it",
-                from: "info@naucme.it",
-                replyTo: body.email,
-                subject: "B2B Nauč mě IT",
-                text: `
-                ${body.message}
-
-------------------------------------------------------
-
-                Od: ${body.name}
-                Email: ${body.email}
-                Telefon: ${body.phone}
-            `,
-            })
+            const { email, message, ...rest } = body
+            sendEmail(email, message, rest)
             return json({ status: "success" })
         } catch (e) {
             return json({ status: "error", error: e }, 500)
@@ -103,7 +84,7 @@ const Home: NextPage = () => {
             <main>
                 <Landing
                     title='Junior s praxí?'
-                    subtitle='Školí je profíci!'
+                    subtitle='Dodáme vám ho!'
                     text={
                         <>
                             U nás vychováváme budoucí testery, developery i kodéry. Také zajišťujeme praxi, takže ani

@@ -14,6 +14,7 @@ import { Courses } from "../components/Courses"
 import { Head } from "../components/Head"
 import img from "../images/petr_border.png"
 import { LearnEarn, PayConsultancy, Time, Worldwide } from "../components/icons"
+import { sendEmail } from "../utils/email"
 
 type PageProps = {}
 type UrlQuery = {}
@@ -30,22 +31,8 @@ export const getServerSideProps = handle<PageProps, UrlQuery, FormData>({
     },
     async post({ req: { body } }) {
         try {
-            await sendgrid.setApiKey(process.env.SENDGRID_API_KEY || "")
-            await sendgrid.send({
-                to: "info@naucme.it",
-                from: "info@naucme.it",
-                replyTo: body.email,
-                subject: "Dotaz z naucme.it",
-                text: `
-                ${body.message}
-
-------------------------------------------------------
-
-                Od: ${body.name}
-                Email: ${body.email}
-                Telefon: ${body.phone}
-            `,
-            })
+            const { email, message, ...rest } = body
+            sendEmail(email, message, rest)
             return json({ status: "success" })
         } catch (e) {
             return json({ status: "error", error: e }, 500)
