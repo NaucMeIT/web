@@ -35,7 +35,7 @@ export const getServerSideProps = handle<PageProps, UrlQuery, FormData>({
                 to: "info@naucme.it",
                 from: "info@naucme.it",
                 replyTo: body.email,
-                subject: "Dotaz z naucme.it",
+                subject: "B2B Nauč mě IT",
                 text: `
                 ${body.message}
 
@@ -57,24 +57,12 @@ const Home: NextPage = () => {
     return (
         <div className='bg-landing bg-cover bg-fixed pt-20'>
             <Head
-                desc='Mám zájem Naučit se IT a posunout se v kariéře dál!'
-                url='https://naucme.it/'
+                desc='Mám zájem o juniory připravené profesionály z Nauč mě IT!'
+                url='https://naucme.it/companies'
                 twImg='https://naucme.it/twitter.png'
                 fbImg='https://naucme.it/og.png'
-                structuredData={{
-                    "@context": "https://schema.org",
-                    "@type": "Course",
-                    name: "Úvod do testování a webových technologií",
-                    description:
-                        "Kurzy pro kohokoliv, kdo se chce dostat do světa IT, zejména testování a webového vývoje.",
-                    provider: {
-                        "@type": "Organization",
-                        name: "Nauč mě IT",
-                        sameAs: "https://naucme.it",
-                    },
-                }}
             >
-                <title>Nauč mě IT - Úvodní strana</title>
+                <title>Nauč mě IT - Firmy</title>
             </Head>
             <Menu
                 items={[
@@ -126,31 +114,27 @@ const Home: NextPage = () => {
 
             <main>
                 <Landing
-                    title='Nauč se programovat'
-                    subtitle='a nech si za to platit!'
+                    title='Junior s praxí?'
+                    subtitle='Školí je profíci!'
                     text={
                         <>
-                            Klademe si za cíl pomoci komukoliv získat dovednosti a{"\u00A0"}znalosti vhodné pro práci v
-                            IT. To vše bez časových limitací a za cenu dostupnou pro každého.
+                            U nás vychováváme budoucí testery, developery i kodéry. Také zajišťujeme praxi, takže ani
+                            úplný junior není bez zkušeností!
                         </>
                     }
                     catchPoints={[
-                        { icon: <LearnEarn />, children: <>Učíš se a zároveň vyděláváš</> },
+                        { icon: <LearnEarn />, children: <>Ušetři za výuku juniora, školí ho naši profesionálové</> },
                         {
                             icon: <PayConsultancy />,
-                            children: <>Platíš pouze za konzultace s{"\u00A0"}odborníkem z oboru</>,
+                            children: <>Platíš pouze za odvedenou práci a zaměstnance</>,
                         },
                         {
                             icon: <Time />,
-                            children: (
-                                <>
-                                    Rychlost kurzu si{"\u00A0"}určuješ{"\u00A0"}sám
-                                </>
-                            ),
+                            children: <>Sami určíte, kdy zaměstnance potřebujete</>,
                         },
-                        { icon: <Worldwide />, children: <>Celý kurz je online přístupný odkudkoliv</> },
+                        { icon: <Worldwide />, children: <>Školíme plně online a není třeba žadných prostor</> },
                     ]}
-                    buttonText='Vyzkoušej ZDARMA'
+                    buttonText='Chci zaměstnance!'
                 />
 
                 <DownArrow
@@ -160,11 +144,11 @@ const Home: NextPage = () => {
 
                 <How
                     steps={[
-                        "Zaregistruj se ZDARMA",
-                        "Vyber si jeden z kurzů",
-                        "Načerpej z něj znalosti",
-                        "Ověř si je v praxi",
-                        "Získej svůj první job v IT",
+                        "Určení zadání a požadavků",
+                        "Úprava materiálů na míru",
+                        "Zařazení a školení studentů",
+                        "Placená stáž s dozorem",
+                        "Nástup do firmy",
                     ]}
                 />
 
