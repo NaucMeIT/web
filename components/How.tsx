@@ -4,9 +4,10 @@ import { Typography } from "./Typography"
 
 type HowProps = {
     readonly steps: readonly string[]
+    readonly buttonText: string
 }
 
-export function How({ steps }: HowProps) {
+export function How({ steps, buttonText }: HowProps) {
     return (
         <section>
             <span id='how'>&nbsp;</span>
@@ -21,7 +22,7 @@ export function How({ steps }: HowProps) {
                 ))}
             </div>
             <Button theme='off' size='large' className='mx-auto my-20 block'>
-                Chci se přidat!
+                {buttonText}
             </Button>
         </section>
     )
