@@ -1,6 +1,4 @@
 import { NextPage } from "next"
-import { handle, json } from "next-runtime"
-import sendgrid from "@sendgrid/mail"
 import { Menu } from "../components/Menu"
 import { DownArrow } from "../components/DownArrow"
 import { Footer } from "../components/Footer"
@@ -9,31 +7,18 @@ import { How } from "../components/How"
 import { Head } from "../components/Head"
 import { LearnEarn, PayConsultancy, Time, Worldwide } from "../components/icons"
 import { CompanyCatch } from "../components/CompanyCatch"
-import { sendEmail } from "../utils/email"
+import { handleEmail } from "../utils/email"
 
-type PageProps = {}
-type UrlQuery = {}
 type FormData = {
     readonly name: string
     readonly email: string
     readonly phone: string
+    readonly company: string
+    readonly request: string
     readonly message: string
 }
 
-export const getServerSideProps = handle<PageProps, UrlQuery, FormData>({
-    async get() {
-        return json({})
-    },
-    async post({ req: { body } }) {
-        try {
-            const { email, message, ...rest } = body
-            sendEmail(email, message, rest)
-            return json({ status: "success" })
-        } catch (e) {
-            return json({ status: "error", error: e }, 500)
-        }
-    },
-})
+export const getServerSideProps = handleEmail<FormData>()
 
 const Home: NextPage = () => {
     return (
