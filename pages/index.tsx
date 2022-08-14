@@ -1,6 +1,4 @@
 import { NextPage } from "next"
-import { handle, json } from "next-runtime"
-import sendgrid from "@sendgrid/mail"
 import { AboutUs } from "../components/AboutUs"
 import { CompanyBox } from "../components/CompanyBox"
 import { ContactForm } from "../components/ContactForm"
@@ -14,10 +12,8 @@ import { Courses } from "../components/Courses"
 import { Head } from "../components/Head"
 import img from "../images/petr_border.png"
 import { LearnEarn, PayConsultancy, Time, Worldwide } from "../components/icons"
-import { sendEmail } from "../utils/email"
+import { handleEmail } from "../utils/email"
 
-type PageProps = {}
-type UrlQuery = {}
 type FormData = {
     readonly name: string
     readonly email: string
@@ -25,20 +21,7 @@ type FormData = {
     readonly message: string
 }
 
-export const getServerSideProps = handle<PageProps, UrlQuery, FormData>({
-    async get() {
-        return json({})
-    },
-    async post({ req: { body } }) {
-        try {
-            const { email, message, ...rest } = body
-            sendEmail(email, message, rest)
-            return json({ status: "success" })
-        } catch (e) {
-            return json({ status: "error", error: e }, 500)
-        }
-    },
-})
+export const getServerSideProps = handleEmail<FormData>()
 
 const Home: NextPage = () => {
     return (
