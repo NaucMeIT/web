@@ -2,7 +2,7 @@ import { Facebook } from "./icons"
 import { SocialButton } from "./Button"
 import { Typography } from "./Typography"
 import Link from "next/link"
-import Image, { StaticImageData } from "next/image"
+import Image, { StaticImageData } from "next/future/image"
 import LinkedIn from "../images/linkedin.svg"
 
 type Person = {
@@ -51,13 +51,20 @@ export function AboutUs({ people }: Props) {
                     </SocialButton>
                 </div>
             </div>
-            <div className='grid grid-rows-4 gap-20 md:grid-rows-3 md:grid-cols-2'>
+            <div className='flex flex-col gap-4 md:grid lg:gap-20 md:grid-rows-3 md:grid-cols-2'>
                 {people.map((p) => (
-                    <div className={`flex flex-col gap-y-2 ${p.image && "col-span-2 row-span-2"}`} key={p.email}>
+                    <div
+                        className={`flex flex-col gap-y-2 ${p.image ? "mx-auto md:col-span-2 md:row-span-2" : ""}`}
+                        key={p.email}
+                    >
                         {p.image && (
-                            <div className='px-40'>
-                                <Image src={p.image} alt={`Profilová fotka - ${p.name}`} sizes='100vw' loading='lazy' />
-                            </div>
+                            <Image
+                                src={p.image}
+                                alt={`Profilová fotka - ${p.name}`}
+                                sizes='100vw'
+                                loading='lazy'
+                                className='px-16'
+                            />
                         )}
                         <Typography variant='h3' component='h3' className='text-center'>
                             {p.name}

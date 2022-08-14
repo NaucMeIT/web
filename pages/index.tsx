@@ -57,7 +57,7 @@ const Home: NextPage = () => {
     return (
         <div className='bg-landing bg-cover bg-fixed pt-20'>
             <Head
-                desc='Mám zájem Naučit se IT a posunout se v kariéře dál!'
+                desc='Chceš získat práci v IT a nevíš, jak začít? Právě proto jsme tu my! Na naší platformě poskytujeme kurzy, díky kterým získáš práci v IT dřív než řekneš Java.'
                 url='https://naucme.it/'
                 twImg='https://naucme.it/twitter.png'
                 fbImg='https://naucme.it/og.png'
@@ -166,6 +166,7 @@ const Home: NextPage = () => {
                         "Ověř si je v praxi",
                         "Získej svůj první job v IT",
                     ]}
+                    buttonText='Chci se přidat!'
                 />
 
                 <Packages />

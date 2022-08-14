@@ -14,6 +14,7 @@ import { Courses } from "../components/Courses"
 import { Head } from "../components/Head"
 import img from "../images/petr_border.png"
 import { LearnEarn, PayConsultancy, Time, Worldwide } from "../components/icons"
+import { CompanyCatch } from "../components/CompanyCatch"
 
 type PageProps = {}
 type UrlQuery = {}
@@ -57,7 +58,7 @@ const Home: NextPage = () => {
     return (
         <div className='bg-landing bg-cover bg-fixed pt-20'>
             <Head
-                desc='Mám zájem o juniory připravené profesionály z Nauč mě IT!'
+                desc='Chybí vám zaměstnanci? Chcete začít od píky, ale nemáte čas na přípravu juniorů? Jsme tu pro vás. Připravíme juniora na míru!'
                 url='https://naucme.it/companies'
                 twImg='https://naucme.it/twitter.png'
                 fbImg='https://naucme.it/og.png'
@@ -71,29 +72,16 @@ const Home: NextPage = () => {
                         link: "#how",
                     },
                     {
-                        title: "Balíčky",
-                        link: "#packages",
+                        title: "Informace",
+                        link: "#company",
                     },
                     {
-                        title: "Kurzy",
-                        link: "#courses",
-                    },
-                    {
-                        title: "O nás",
-                        link: "#about",
-                    },
-                    {
-                        title: "Pro firmy",
-                        link: "/companies",
+                        title: "Specializace",
+                        link: "#deliver",
                     },
                     {
                         title: "Kontakt",
                         link: "#contact",
-                    },
-                    {
-                        title: "Přihlásit se",
-                        link: "#login",
-                        isImportant: true,
                     },
                 ]}
             />
@@ -123,10 +111,10 @@ const Home: NextPage = () => {
                         </>
                     }
                     catchPoints={[
-                        { icon: <LearnEarn />, children: <>Ušetři za výuku juniora, školí ho naši profesionálové</> },
+                        { icon: <LearnEarn />, children: <>Ušetříte za výuku juniora, školí ho naši profesionálové</> },
                         {
                             icon: <PayConsultancy />,
-                            children: <>Platíš pouze za odvedenou práci a zaměstnance</>,
+                            children: <>Platíte pouze za odvedenou práci a zaměstnance</>,
                         },
                         {
                             icon: <Time />,
@@ -150,36 +138,10 @@ const Home: NextPage = () => {
                         "Placená stáž s dozorem",
                         "Nástup do firmy",
                     ]}
+                    buttonText='Chci zaměstnance!'
                 />
 
-                <Packages />
-
-                <Courses />
-
-                <AboutUs
-                    people={[
-                        {
-                            name: "Petr Glaser",
-                            email: "petr.glaser@naucme.it",
-                            position: "Staff Software Engineer",
-                            image: img,
-                        },
-                        {
-                            name: "Pavel Koudelka",
-                            email: "pavel.koudelka@naucme.it",
-                            position: "Sales",
-                        },
-                        {
-                            name: "Lýdie Hemalová",
-                            email: "lydie.hemalova@naucme.it",
-                            position: "QA Engineer",
-                        },
-                    ]}
-                />
-
-                <CompanyBox />
-
-                <ContactForm />
+                <CompanyCatch />
             </main>
 
             <Footer />
