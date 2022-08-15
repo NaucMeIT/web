@@ -10,7 +10,8 @@
         "prepare": "husky install",
         "postbuild": "next-sitemap --config next-sitemap.config.mjs",
         "prettier": "prettier --write '**/*.{js,jsx,md,json,css,scss,ts,tsx}'",
-        "cypress:open": "cypress open"
+        "cypress:open": "cypress open",
+        "cypress": "yarn run build && npm-run-all --parallel start cypress:open "
     },
     "dependencies": {
         "@clerk/nextjs": "^3.8.1",

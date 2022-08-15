@@ -2187,9 +2187,9 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:^14.14.31":
-  version: 14.18.23
-  resolution: "@types/node@npm:14.18.23"
-  checksum: da3e2bf4b6ccb7922ebda543ca724c21e8708902586246340de3ff7002ff11b44ca170af0aa428c52c14fb89846cd19d54da067ba91a759464d581e01f5cd0cf
+  version: 14.18.24
+  resolution: "@types/node@npm:14.18.24"
+  checksum: 98a43ea044b5298591cab9f0ed91af0f1a375147a75d18eb51b4958c6df73dcfa7eea222c97781b471dc831472b5de612faa219a2ff427946bd87c51ba58dea9
   languageName: node
   linkType: hard
 
@@ -3905,9 +3905,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.202":
-  version: 1.4.217
-  resolution: "electron-to-chromium@npm:1.4.217"
-  checksum: dedfccd776e250d4d0b25f87d6aa34f601d96ad6b82dc82e376ae125ddc8bdee5c8f3e0a2ac7544ce3307fffe035be32db734d242eba999a9d8d11db953375b7
+  version: 1.4.218
+  resolution: "electron-to-chromium@npm:1.4.218"
+  checksum: 794400fae5ceba94d1659f49a1e9bb980885c63e893441d3c1a80c656fd52cfbef19be9b0041d9c77e70f76f5209d6c4a40b2ebca78b2b9e4d234124ed593b3d
   languageName: node
   linkType: hard
 
@@ -4485,17 +4485,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"extsprintf@npm:1.3.0":
+"extsprintf@npm:1.3.0, extsprintf@npm:^1.2.0":
   version: 1.3.0
   resolution: "extsprintf@npm:1.3.0"
   checksum: afdc88aaa7ad260bd3a4aeabc087aa03de8eaf6346a59685a97943549d8ca54c312b2353e8a4fbe234e59eb202b5b45274a6d959f1309b750bf2a15852ca7485
-  languageName: node
-  linkType: hard
-
-"extsprintf@npm:^1.2.0":
-  version: 1.4.1
-  resolution: "extsprintf@npm:1.4.1"
-  checksum: 376d6b312a7196c0f4547afd2e9741c40bd173f8b507155366e8b94dd8f4efe61be424c65e95ad71e0525acb26bc16c39414c147b449649c39d46ba6e356fa83
   languageName: node
   linkType: hard
 
