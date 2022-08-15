@@ -24,7 +24,7 @@ function MenuItem({
     readonly item: MenuItemProps
     readonly className?: string
     // eslint-disable-next-line functional/no-return-void
-    readonly close: () => void
+    readonly close?: () => void
 }) {
     return (
         <Typography
@@ -34,7 +34,7 @@ function MenuItem({
             componentProps={{
                 href: item.link,
                 "aria-current": item.isActive ? "page" : undefined,
-                onClick: () => close(),
+                onClick: () => close?.(),
                 theme: item.isImportant ? "main" : undefined,
                 size: "normal",
                 className: `${className || ""} ${!item.isImportant ? "hover:text-primary" : ""}`,
@@ -54,7 +54,12 @@ export function Menu({ items }: MenuProps) {
                         <div className='relative flex h-16 items-center justify-between'>
                             <div className='flex flex-1 items-center justify-between lg:justify-around lg:items-stretch'>
                                 <div className='ml-3 flex flex-shrink-0 items-center'>
-                                    <Link href='#' className='flex items-center' aria-label='Logo Nauč mě IT'>
+                                    <Link
+                                        data-cy='logo'
+                                        href='#'
+                                        className='flex items-center'
+                                        aria-label='Logo Nauč mě IT'
+                                    >
                                         <Logo width={120} />
                                     </Link>
                                 </div>
@@ -70,9 +75,9 @@ export function Menu({ items }: MenuProps) {
                                     </Disclosure.Button>
                                 </div>
                                 <div className='mr-10 hidden xl:block'>
-                                    <div className='flex items-center gap-x-12'>
+                                    <div className='flex items-center gap-x-12' data-cy='menu'>
                                         {items.map((item) => (
-                                            <MenuItem close={close} key={item.title} item={item} />
+                                            <MenuItem key={item.title} item={item} />
                                         ))}
                                     </div>
                                 </div>
@@ -89,7 +94,7 @@ export function Menu({ items }: MenuProps) {
                         leaveTo='opacity-0'
                     >
                         <Disclosure.Panel className='absolute w-screen bg-background/90 xl:hidden'>
-                            <div className='flex flex-col items-center gap-y-6 px-2 pt-2 pb-3'>
+                            <div className='flex flex-col items-center gap-y-6 px-2 pt-2 pb-3' data-cy='mobile-menu'>
                                 {items.map((item) => (
                                     <MenuItem
                                         close={close}
