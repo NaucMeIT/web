@@ -1,3 +1,5 @@
 tailwind.config.js
 next.config.js
 public/*
+cypress
+cypress.config.js

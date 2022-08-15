@@ -9,7 +9,8 @@
         "lint": "next lint",
         "prepare": "husky install",
         "postbuild": "next-sitemap --config next-sitemap.config.mjs",
-        "prettier": "prettier --write '**/*.{js,jsx,md,json,css,scss,ts,tsx}'"
+        "prettier": "prettier --write '**/*.{js,jsx,md,json,css,scss,ts,tsx}'",
+        "cypress:open": "cypress open"
     },
     "dependencies": {
         "@clerk/nextjs": "^3.8.1",
@@ -38,6 +39,7 @@
         "@typescript-eslint/eslint-plugin": "^5.31.0",
         "@typescript-eslint/parser": "^5.31.0",
         "autoprefixer": "^10.4.8",
+        "cypress": "^10.4.0",
         "eslint": "^8.20.0",
         "eslint-config-next": "^12.2.3",
         "eslint-config-prettier": "^8.5.0",
