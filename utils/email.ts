@@ -23,21 +23,19 @@ ${JSON.stringify(data)}`,
     return { status: "success" }
 }
 
-export const handleEmail: GetServerSideProps = handle<
-    PageProps,
-    UrlQuery,
-    { readonly email: string; readonly message: string }
->({
-    async get() {
-        return json({})
-    },
-    async post({ req: { body } }) {
-        try {
-            const { email, message, ...rest } = body
-            sendEmail(email, message, rest)
-            return json({ status: "success" })
-        } catch (e) {
-            return json({ status: "error", error: e }, 500)
-        }
-    },
-})
+export function handleEmail<T extends { readonly email: string; readonly message: string }>(): GetServerSideProps {
+    return handle<PageProps, UrlQuery, T>({
+        async get() {
+            return json({})
+        },
+        async post({ req: { body } }) {
+            try {
+                const { email, message, ...rest } = body
+                sendEmail(email, message, rest)
+                return json({ status: "success" })
+            } catch (e) {
+                return json({ status: "error", error: e }, 500)
+            }
+        },
+    })
+}

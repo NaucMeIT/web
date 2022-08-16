@@ -18,7 +18,7 @@ type FormData = {
     readonly message: string
 }
 
-export const getServerSideProps: GetServerSideProps = handleEmail
+export const getServerSideProps: GetServerSideProps = handleEmail<FormData>()
 
 const Home: NextPage = () => {
     return (
@@ -48,6 +48,11 @@ const Home: NextPage = () => {
                     {
                         title: "Kontakt",
                         link: "#contact",
+                    },
+                    {
+                        title: "Chci zaměstnance",
+                        link: "#",
+                        isImportant: true,
                     },
                 ]}
             />
