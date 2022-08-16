@@ -24,6 +24,16 @@ type FormData = {
 
 export const getServerSideProps: GetServerSideProps = handleEmail<FormData>()
 
+const links = [
+    { title: "Jak to funguje?", link: "#how" },
+    { title: "Cenové balíčky", link: "#packages" },
+    { title: "Kurzy", link: "#courses" },
+    { title: "O nás", link: "#about" },
+    { title: "Pro firmy", link: "/companies" },
+    { title: "Kontakt", link: "#contact" },
+    { title: "Registrovat", link: "/register" },
+]
+
 const Home: NextPage = () => {
     return (
         <div className='bg-landing bg-cover bg-fixed pt-20'>
@@ -170,7 +180,7 @@ const Home: NextPage = () => {
                 <ContactForm />
             </main>
 
-            <Footer />
+            <Footer links={links} />
         </div>
     )
 }

@@ -4,8 +4,17 @@ import { SocialButton } from "./Button"
 import Link from "next/link"
 import Image from "next/image"
 import LinkedIn from "../images/linkedin.svg"
+import { EmailLink } from "./EmailLink"
 
-export function Footer() {
+type FooterProps = {
+    readonly links: readonly {
+        readonly title: string
+        readonly link: string
+    }[]
+}
+
+export function Footer({ links }: FooterProps) {
+    const footerLinks = [{ title: "Úvod", link: "/" }, ...links]
     return (
         <>
             <Horizontal className='mx-auto my-16 max-w-full' />
@@ -26,30 +35,16 @@ export function Footer() {
                     </div>
                 </div>
                 <div className='md:order-0 order-2 flex flex-col'>
-                    <Typography componentProps={{ href: "#home" }} component={Link} className='hover:text-primary'>
-                        Úvod
-                    </Typography>
-                    <Typography componentProps={{ href: "#how" }} component={Link} className='hover:text-primary'>
-                        Jak to funguje
-                    </Typography>
-                    <Typography componentProps={{ href: "#packages" }} component={Link} className='hover:text-primary'>
-                        Cenové balíčky
-                    </Typography>
-                    <Typography componentProps={{ href: "#courses" }} component={Link} className='hover:text-primary'>
-                        Kurzy
-                    </Typography>
-                    <Typography componentProps={{ href: "#about" }} component={Link} className='hover:text-primary'>
-                        O nás
-                    </Typography>
-                    <Typography componentProps={{ href: "/companies" }} component={Link} className='hover:text-primary'>
-                        Pro firmy
-                    </Typography>
-                    <Typography componentProps={{ href: "#contact" }} component={Link} className='hover:text-primary'>
-                        Kontakt
-                    </Typography>
-                    <Typography componentProps={{ href: "#login" }} component={Link} className='hover:text-primary'>
-                        Registrovat
-                    </Typography>
+                    {footerLinks.map(({ title, link }) => (
+                        <Typography
+                            key={link}
+                            componentProps={{ href: link }}
+                            component={Link}
+                            className='hover:text-primary'
+                        >
+                            {title}
+                        </Typography>
+                    ))}
                 </div>
                 <address className='flex flex-col gap-3 not-italic'>
                     <Typography variant='step'>Kontakt</Typography>
@@ -65,13 +60,7 @@ export function Footer() {
                         >
                             +420 731 472 822
                         </Typography>
-                        <Typography
-                            className='block hover:text-primary'
-                            component={Link}
-                            componentProps={{ href: "mailto:info@naucme.it?subject=Dotaz na Nauč mě IT" }}
-                        >
-                            info@naucme.it
-                        </Typography>
+                        <EmailLink email='info@naucme.it' />
                     </p>
                 </address>
             </footer>

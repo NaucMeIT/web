@@ -21,6 +21,14 @@ type FormData = {
 
 export const getServerSideProps: GetServerSideProps = handleEmail<FormData>()
 
+const links = [
+    { title: "Jak to funguje?", link: "#how" },
+    { title: "Informace", link: "#company" },
+    { title: "Specializace", link: "#deliver" },
+    { title: "Kontakt", link: "#contact" },
+    { title: "Chci zaměstnance", link: "#", isImportant: true },
+]
+
 const Home: NextPage = () => {
     return (
         <div className='bg-landing bg-cover bg-fixed pt-20'>
@@ -32,31 +40,7 @@ const Home: NextPage = () => {
             >
                 <title>Nauč mě IT - Firmy</title>
             </Head>
-            <Menu
-                items={[
-                    {
-                        title: "Jak to funguje?",
-                        link: "#how",
-                    },
-                    {
-                        title: "Informace",
-                        link: "#company",
-                    },
-                    {
-                        title: "Specializace",
-                        link: "#deliver",
-                    },
-                    {
-                        title: "Kontakt",
-                        link: "#contact",
-                    },
-                    {
-                        title: "Chci zaměstnance",
-                        link: "#",
-                        isImportant: true,
-                    },
-                ]}
-            />
+            <Menu items={links} />
             <img
                 aria-hidden
                 src='/images/left.svg'
@@ -116,7 +100,7 @@ const Home: NextPage = () => {
                 <CompanyCatch />
             </main>
 
-            <Footer />
+            <Footer links={links} />
         </div>
     )
 }
