@@ -30,7 +30,7 @@ export function Footer({ links }: FooterProps) {
                             href='https://www.linkedin.com/company/nauc-me-it/'
                             label='LinkedIn stránka - Nauč mě IT'
                         >
-                            <Image src={LinkedIn} width={16} height={16} />
+                            <Image src={LinkedIn} width={16} height={16} alt='LinkedIn' />
                         </SocialButton>
                     </div>
                 </div>
