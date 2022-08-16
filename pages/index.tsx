@@ -21,7 +21,7 @@ type FormData = {
     readonly message: string
 }
 
-export const getServerSideProps: GetServerSideProps = handleEmail
+export const getServerSideProps: GetServerSideProps = handleEmail<FormData>()
 
 const Home: NextPage = () => {
     return (
