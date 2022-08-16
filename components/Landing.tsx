@@ -8,10 +8,10 @@ type LandingProps = {
     readonly text: React.ReactNode
     readonly catchPoints: readonly CatchPointProps[]
     readonly buttonText: string
-    readonly buttonProps?: ButtonProps
+    readonly buttonProps?: Partial<ButtonProps>
 }
 
-export function Landing({ title, subtitle, text, catchPoints, buttonText }: LandingProps) {
+export function Landing({ title, subtitle, text, catchPoints, buttonText, buttonProps }: LandingProps) {
     return (
         <header className='flex flex-row flex-wrap items-center justify-center px-5'>
             <div>
@@ -32,7 +32,12 @@ export function Landing({ title, subtitle, text, catchPoints, buttonText }: Land
                         </CatchPoints>
                     ))}
                 </div>
-                <Button theme='off' size='large' className='mx-auto mb-10 xl:mb-0 xl:mt-20 block xl:mx-0'>
+                <Button
+                    theme='off'
+                    size='large'
+                    className='mx-auto mb-10 xl:mb-0 xl:mt-20 block xl:mx-0'
+                    {...buttonProps}
+                >
                     {buttonText}
                 </Button>
             </div>

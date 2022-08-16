@@ -2,7 +2,7 @@ import { Button } from "./Button"
 import { Typography } from "./Typography"
 export function CompanyBox() {
     return (
-        <section className='my-36 bg-alt py-16'>
+        <section className='my-36 bg-alt py-16 flex flex-col'>
             <span id='company'>&nbsp;</span>
             <Typography variant='h2' className='mb-11 block text-center' component='h2'>
                 Chcete s námi spolupracovat?

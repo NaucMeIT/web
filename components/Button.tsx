@@ -21,7 +21,7 @@ type SocialButtonProps = (Omit<NormalButtonProps, "theme"> | Omit<LinkButtonProp
 const disabledClasses = "cursor-not-allowed pointer-events-none opacity-80"
 const enabledClasses = "cursor-pointer hover:animate-wiggle"
 const mainClasses =
-    "border-none polygon-path focus-visible:outline-none before:bg-primary focus:before:bg-secondary text-center appearance-button"
+    "inline-flex border-none polygon-path focus-visible:outline-none before:bg-primary focus:before:bg-secondary text-center appearance-button"
 const themeClasses = {
     enabled: {
         main: `bg-primary ${enabledClasses}`,
@@ -57,7 +57,7 @@ export function Button({ className, disabled, children, theme, size, ...rest }: 
         <span {...props} tabIndex={-1}>
             <Link
                 {...rest}
-                className={`pointer-events-auto inline-flex ${sizeClasses[size || "normal"]}`}
+                className={`pointer-events-auto ${sizeClasses[size || "normal"]}`}
                 target={isExternalUrl(rest.href) ? "_blank" : "_self"}
             >
                 {children}
@@ -74,7 +74,7 @@ export function SocialButton({ label, className, disabled, children, ...rest }: 
     const props = {
         className: `${mainClasses} ${disabled ? themeClasses.disabled.off : themeClasses.enabled.off} ${
             "href" in rest ? "pointer-events-none" : sizeClasses.normal
-        } ${className ?? ""} inline-flex items-center aspect-square`,
+        } ${className ?? ""} items-center aspect-square`,
         style: hexagonBorderVars,
     }
 
