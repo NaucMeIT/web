@@ -4,18 +4,14 @@ import { DecoratedInput } from "./DecoratedInput"
 import { Typography } from "./Typography"
 import { EmailLink } from "./EmailLink"
 import { useRecaptcha } from "../hooks/useRecaptcha"
+import { EmailThanks } from "./EmailThanks"
 
 export function ContactForm() {
     const { isSubmitting, isSuccess, isError } = useFormSubmit()
     const token = useRecaptcha()
 
     if (isSuccess) {
-        return (
-            <div className='flex flex-col items-center justify-center gap-4'>
-                <Typography variant='h2'>Děkujeme za zprávu!</Typography>
-                <Typography variant='normal'>Budeme Vás kontaktovat co nejdříve.</Typography>
-            </div>
-        )
+        return <EmailThanks />
     }
 
     return (
