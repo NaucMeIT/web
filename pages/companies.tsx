@@ -16,6 +16,7 @@ type FormData = {
     readonly company: string
     readonly request: string
     readonly message: string
+    readonly recaptcha: string
 }
 
 export const getServerSideProps: GetServerSideProps = handleEmail<FormData>()
