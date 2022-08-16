@@ -90,6 +90,11 @@ export function ContactForm() {
                 className='resize-vertical min-h-28'
             />
             <input type='hidden' id='recaptcha' name='recaptcha' value={token} />
+            <Typography variant='form' className='text-center'>
+                Tato stránka je chráněna reCAPTCHA, platí
+                <a href='https://policies.google.com/privacy'> zásady ochrany osobních údajů</a> a
+                <a href='https://policies.google.com/terms'> smluvní podmínky</a> společnosti Google.
+            </Typography>
             <Button size='large' type='submit' theme='off' className='w-fit self-end' disabled={isSubmitting}>
                 {isSubmitting ? "Odesílám" : "Odeslat zprávu"}
             </Button>
