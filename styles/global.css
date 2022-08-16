@@ -57,6 +57,7 @@ blockquote {
     --color-background: 9 12 40;
     --color-highlight: 255 255 255;
     --color-form: 166 177 187;
+    --color-error: 255 0 0;
 }
 
 *::selection {
