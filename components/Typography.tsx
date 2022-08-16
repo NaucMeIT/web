@@ -5,6 +5,7 @@ export const typographyClasses = {
     step: "font-light text-lg text-secondary",
     important: "font-light text-base text-highlight",
     normal: "font-light text-sm text-highlight",
+    error: "font-light text-sm text-error",
     // subtitle: "font-montserrat italic font-normal text-sm text-primary",
     link: "font-medium text-sm text-primary",
     form: "italic font-light text-xs text-form",

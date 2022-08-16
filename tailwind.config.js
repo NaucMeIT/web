@@ -20,6 +20,7 @@ module.exports = {
             background: withOpacityValue("--color-background"),
             highlight: withOpacityValue("--color-highlight"),
             form: withOpacityValue("--color-form"),
+            error: withOpacityValue("--color-error"),
         },
         fontFamily: {
             poppins: ["Poppins", "sans-serif"],

@@ -1,32 +1,13 @@
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import { Form, useFormSubmit } from "next-runtime/form"
-import Link from "next/link"
 import { Button } from "./Button"
 import { DecoratedInput } from "./DecoratedInput"
 import { Typography } from "./Typography"
-import { useCallback, useEffect, useState } from "react"
+import { EmailLink } from "./EmailLink"
+import { useRecaptcha } from "../hooks/useRecaptcha"
 
 export function ContactForm() {
     const { isSubmitting, isSuccess, isError } = useFormSubmit()
-    const [token, setToken] = useState("")
-
-    const { executeRecaptcha } = useGoogleReCaptcha()
-
-    // Create an event handler so you can call the verification on button click event or form submit
-    const handleReCaptchaVerify = useCallback(async () => {
-        if (!executeRecaptcha) {
-            console.log("Execute recaptcha not yet available")
-            return
-        }
-
-        const token = await executeRecaptcha("submit")
-        setToken(token)
-    }, [executeRecaptcha])
-
-    // You can use useEffect to trigger the verification as soon as the component being loaded
-    useEffect(() => {
-        handleReCaptchaVerify()
-    }, [handleReCaptchaVerify])
+    const token = useRecaptcha()
 
     if (isSuccess) {
         return (
@@ -38,31 +19,28 @@ export function ContactForm() {
     }
 
     return (
-        <Form
-            className='mx-auto flex w-10/12 flex-col gap-y-4 md:w-6/12'
-            method='post'
-            onSubmit={handleReCaptchaVerify}
-        >
+        <Form className='mx-auto flex w-10/12 flex-col gap-y-4 md:w-6/12' method='post'>
             <span id='contact'>&nbsp;</span>
             <Typography variant='h2' component='h2' className='mx-auto mb-4'>
                 Napište nám
             </Typography>
-            <Typography
-                component='p'
-                className='mx-auto max-w-prose text-center'
-                componentProps={{ role: isError ? "alert" : "" }}
-            >
-                {isError
-                    ? "Email se nepodařilo odeslat, zkuste to prosím znovu. Případně nám neváhejte zavolat či napsat na email: "
-                    : "Nejste si něčím jistí nebo máte další otázky? Nebojte se nám zavolat, poslat zprávu nebo napsat na email: "}
+            {isError && (
                 <Typography
-                    className='hover:text-primary'
-                    component={Link}
-                    componentProps={{ href: "mailto:info@naucme.it?subject=Dotaz na Nauč mě IT" }}
+                    component='p'
+                    variant='error'
+                    className='mx-auto max-w-prose text-center'
+                    componentProps={{ role: "alert" }}
                 >
-                    info@naucme.it
+                    Email se nepodařilo odeslat, zkuste to prosím znovu. Případně nám neváhejte zavolat či napsat na
+                    email: <EmailLink email='info@naucme.it' />
                 </Typography>
-            </Typography>
+            )}
+            {!isError && (
+                <Typography component='p' className='mx-auto max-w-prose text-center'>
+                    Nejste si něčím jistí nebo máte další otázky? Nebojte se nám zavolat, poslat zprávu nebo napsat na
+                    email: <EmailLink email='info@naucme.it' />
+                </Typography>
+            )}
             <DecoratedInput name='name' type='text' label='Vaše jméno' placeholder='Zadejte své jméno' required />
             <div className='flex flex-col gap-9 md:flex-row'>
                 <DecoratedInput
