@@ -26,6 +26,7 @@
         "next-runtime": "^2.4.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-google-recaptcha-v3": "^1.10.0",
         "react-responsive": "^9.0.0-beta.10",
         "zustand": "^4.0.0"
     },

@@ -1,11 +1,32 @@
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import { Form, useFormSubmit } from "next-runtime/form"
 import Link from "next/link"
 import { Button } from "./Button"
 import { DecoratedInput } from "./DecoratedInput"
 import { Typography } from "./Typography"
+import { useCallback, useEffect, useState } from "react"
 
 export function ContactForm() {
     const { isSubmitting, isSuccess, isError } = useFormSubmit()
+    const [token, setToken] = useState("")
+
+    const { executeRecaptcha } = useGoogleReCaptcha()
+
+    // Create an event handler so you can call the verification on button click event or form submit
+    const handleReCaptchaVerify = useCallback(async () => {
+        if (!executeRecaptcha) {
+            console.log("Execute recaptcha not yet available")
+            return
+        }
+
+        const token = await executeRecaptcha("submit")
+        setToken(token)
+    }, [executeRecaptcha])
+
+    // You can use useEffect to trigger the verification as soon as the component being loaded
+    useEffect(() => {
+        handleReCaptchaVerify()
+    }, [handleReCaptchaVerify])
 
     if (isSuccess) {
         return (
@@ -17,7 +38,11 @@ export function ContactForm() {
     }
 
     return (
-        <Form className='mx-auto flex w-10/12 flex-col gap-y-4 md:w-6/12' method='post'>
+        <Form
+            className='mx-auto flex w-10/12 flex-col gap-y-4 md:w-6/12'
+            method='post'
+            onSubmit={handleReCaptchaVerify}
+        >
             <span id='contact'>&nbsp;</span>
             <Typography variant='h2' component='h2' className='mx-auto mb-4'>
                 Napište nám
@@ -64,6 +89,7 @@ export function ContactForm() {
                 required
                 className='resize-vertical min-h-28'
             />
+            <input type='hidden' id='recaptcha' name='recaptcha' value={token} />
             <Button size='large' type='submit' theme='off' className='w-fit self-end' disabled={isSubmitting}>
                 {isSubmitting ? "Odesílám" : "Odeslat zprávu"}
             </Button>
