@@ -2,9 +2,9 @@ import { Button } from "./Button"
 import { Problem } from "./Problem"
 import { Typography } from "./Typography"
 
-export function CompanyCatch() {
+export function CompanyCatch({ employeeLink }: { readonly employeeLink: string }) {
     return (
-        <section className='my-36 bg-alt py-16'>
+        <section className='my-36 bg-alt py-16 flex flex-col'>
             <span id='company'>&nbsp;</span>
             <Typography variant='h2' className='mb-11 block text-center' component='h2'>
                 Potřebujete zaměstnance na míru?
@@ -30,7 +30,7 @@ export function CompanyCatch() {
                     a jeho prostředí, bude mnohem efektivnější ihned po nástupu.
                 </Problem>
             </div>
-            <Button theme='off' size='large' className='w-max mx-auto block' href='/companies'>
+            <Button theme='off' size='large' className='w-max mx-auto block' href={employeeLink}>
                 Chci zaměstnance
             </Button>
         </section>

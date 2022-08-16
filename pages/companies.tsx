@@ -8,25 +8,29 @@ import { Head } from "../components/Head"
 import { LearnEarn, PayConsultancy, Time, Worldwide } from "../components/icons"
 import { CompanyCatch } from "../components/CompanyCatch"
 import { handleEmail } from "../utils/email"
+import { CompanyForm } from "../components/CompanyForm"
+import { Employees } from "../components/Employees"
+import { SideDecoration } from "../components/SideDecoration"
 
 type FormData = {
     readonly name: string
     readonly email: string
     readonly phone: string
     readonly company: string
-    readonly request: string
+    readonly employee: string
     readonly message: string
     readonly recaptcha: string
 }
 
 export const getServerSideProps: GetServerSideProps = handleEmail<FormData>()
 
+const employeeFormLink = "https://forms.gle/tSnwjVUnvovQy9NL8"
 const links = [
     { title: "Jak to funguje?", link: "#how" },
     { title: "Informace", link: "#company" },
-    { title: "Specializace", link: "#deliver" },
+    { title: "Specializace", link: "#employees" },
     { title: "Kontakt", link: "#contact" },
-    { title: "Chci zaměstnance", link: "#", isImportant: true },
+    { title: "Chci zaměstnance", link: employeeFormLink, isImportant: true },
 ]
 
 const Home: NextPage = () => {
@@ -41,20 +45,7 @@ const Home: NextPage = () => {
                 <title>Nauč mě IT - Firmy</title>
             </Head>
             <Menu items={links} />
-            <img
-                aria-hidden
-                src='/images/left.svg'
-                className='fixed top-0 hidden h-full 3xl:block'
-                alt=''
-                height='110vh'
-            />
-            <img
-                aria-hidden
-                src='/images/right.svg'
-                className='fixed top-0 right-0 hidden h-full 3xl:block'
-                alt=''
-                height='110vh'
-            />
+            <SideDecoration />
 
             <main>
                 <Landing
@@ -79,6 +70,7 @@ const Home: NextPage = () => {
                         { icon: <Worldwide />, children: <>Školíme plně online a není třeba žadných prostor</> },
                     ]}
                     buttonText='Chci zaměstnance!'
+                    buttonProps={{ href: employeeFormLink }}
                 />
 
                 <DownArrow
@@ -95,9 +87,14 @@ const Home: NextPage = () => {
                         "Nástup do firmy",
                     ]}
                     buttonText='Chci zaměstnance!'
+                    buttonProps={{ href: employeeFormLink }}
                 />
 
-                <CompanyCatch />
+                <CompanyCatch employeeLink={employeeFormLink} />
+
+                <Employees link={employeeFormLink} />
+
+                <CompanyForm />
             </main>
 
             <Footer links={links} />

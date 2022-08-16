@@ -1,15 +1,16 @@
-import { Button } from "./Button"
+import { Button, ButtonProps } from "./Button"
 import { Step } from "./Step"
 import { Typography } from "./Typography"
 
 type HowProps = {
     readonly steps: readonly string[]
     readonly buttonText: string
+    readonly buttonProps?: Partial<ButtonProps>
 }
 
-export function How({ steps, buttonText }: HowProps) {
+export function How({ steps, buttonText, buttonProps }: HowProps) {
     return (
-        <section>
+        <section className='flex flex-col'>
             <span id='how'>&nbsp;</span>
             <Typography variant='h2' component='h2' className='mb-8 text-center'>
                 Jak to funguje?
@@ -21,7 +22,7 @@ export function How({ steps, buttonText }: HowProps) {
                     </Step>
                 ))}
             </div>
-            <Button theme='off' size='large' className='mx-auto my-20 block'>
+            <Button theme='off' size='large' className='mx-auto my-20 block' {...buttonProps}>
                 {buttonText}
             </Button>
         </section>
