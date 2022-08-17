@@ -12,18 +12,10 @@ import { Courses } from "../components/Courses"
 import { Head } from "../components/Head"
 import img from "../images/petr_border.png"
 import { LearnEarn, PayConsultancy, Time, Worldwide } from "../components/icons"
-import { handleEmail } from "../utils/email"
+import { ContactFormData, handleEmail, formatContactForm } from "../utils/email"
 import { SideDecoration } from "../components/SideDecoration"
 
-type FormData = {
-    readonly name: string
-    readonly email: string
-    readonly phone?: string
-    readonly message: string
-    readonly recaptcha: string
-}
-
-export const getServerSideProps: GetServerSideProps = handleEmail<FormData>()
+export const getServerSideProps: GetServerSideProps = handleEmail<ContactFormData>(formatContactForm)
 
 const links = [
     { title: "Jak to funguje?", link: "#how" },

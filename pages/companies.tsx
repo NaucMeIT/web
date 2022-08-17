@@ -7,22 +7,12 @@ import { How } from "../components/How"
 import { Head } from "../components/Head"
 import { LearnEarn, PayConsultancy, Time, Worldwide } from "../components/icons"
 import { CompanyCatch } from "../components/CompanyCatch"
-import { handleEmail } from "../utils/email"
+import { CompanyFormData, handleEmail, formatCompanyForm } from "../utils/email"
 import { CompanyForm } from "../components/CompanyForm"
 import { Employees } from "../components/Employees"
 import { SideDecoration } from "../components/SideDecoration"
 
-type FormData = {
-    readonly name: string
-    readonly email: string
-    readonly phone: string
-    readonly company: string
-    readonly employee: string
-    readonly message: string | undefined
-    readonly recaptcha: string
-}
-
-export const getServerSideProps: GetServerSideProps = handleEmail<FormData>()
+export const getServerSideProps: GetServerSideProps = handleEmail<CompanyFormData>(formatCompanyForm)
 
 const employeeFormLink = "https://forms.gle/tSnwjVUnvovQy9NL8"
 const links = [
