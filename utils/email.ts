@@ -5,7 +5,7 @@ import { handle, json } from "next-runtime"
 type PageProps = {}
 type UrlQuery = {}
 
-async function sendEmail(email: string, message: string, data: Record<string, any>) {
+async function sendEmail(email: string, message: string | undefined, data: Record<string, any>) {
     if (!data.recaptcha) {
         // eslint-disable-next-line functional/no-throw-statement
         throw new Error("No recaptcha")
@@ -37,7 +37,7 @@ ${JSON.stringify(data)}`,
 }
 
 export function handleEmail<
-    T extends { readonly email: string; readonly message: string; readonly recaptcha: string },
+    T extends { readonly email: string; readonly message: string | undefined; readonly recaptcha: string },
 >(): GetServerSideProps {
     return handle<PageProps, UrlQuery, T>({
         async get() {

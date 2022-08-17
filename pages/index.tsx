@@ -18,7 +18,7 @@ import { SideDecoration } from "../components/SideDecoration"
 type FormData = {
     readonly name: string
     readonly email: string
-    readonly phone: string
+    readonly phone?: string
     readonly message: string
     readonly recaptcha: string
 }

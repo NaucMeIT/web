@@ -18,7 +18,7 @@ type FormData = {
     readonly phone: string
     readonly company: string
     readonly employee: string
-    readonly message: string
+    readonly message: string | undefined
     readonly recaptcha: string
 }
 
