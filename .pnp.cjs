@@ -33,7 +33,6 @@ const RAW_RUNTIME_STATE =
       [null, {\
         "packageLocation": "./",\
         "packageDependencies": [\
-          ["@builder.io/partytown", "npm:0.6.4"],\
           ["@clerk/nextjs", "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:3.8.3"],\
           ["@headlessui/react", "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:1.6.6"],\
           ["@heroicons/react", "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:1.0.6"],\
@@ -2247,15 +2246,6 @@ const RAW_RUNTIME_STATE =
           ["@babel/helper-string-parser", "npm:7.18.10"],\
           ["@babel/helper-validator-identifier", "npm:7.18.6"],\
           ["to-fast-properties", "npm:2.0.0"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["@builder.io/partytown", [\
-      ["npm:0.6.4", {\
-        "packageLocation": "../../../C:/Users/pegak/AppData/Local/Yarn/Berry/cache/@builder.io-partytown-npm-0.6.4-4819959e7b-9.zip/node_modules/@builder.io/partytown/",\
-        "packageDependencies": [\
-          ["@builder.io/partytown", "npm:0.6.4"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -8477,7 +8467,6 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["nauc-me-it", "workspace:."],\
-          ["@builder.io/partytown", "npm:0.6.4"],\
           ["@clerk/nextjs", "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:3.8.3"],\
           ["@headlessui/react", "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:1.6.6"],\
           ["@heroicons/react", "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:1.0.6"],\
