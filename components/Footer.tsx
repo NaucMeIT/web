@@ -14,7 +14,7 @@ type FooterProps = {
 }
 
 export function Footer({ links }: FooterProps) {
-    const footerLinks = [{ title: "Úvod", link: "/" }, ...links]
+    const footerLinks = [{ title: "Nahoru", link: "#" }, ...links]
     return (
         <>
             <Horizontal className='mx-auto my-16 max-w-full' />

@@ -20,6 +20,7 @@ export function CompanyForm() {
                     pattern='^[+]?[()/0-9. -]{9,}$'
                     label='Vaše telefonní číslo'
                     placeholder='Zadejte svoje číslo (např. +420 705 123 456)'
+                    required
                 />
             </div>
             <DecoratedInput
@@ -35,7 +36,6 @@ export function CompanyForm() {
                 rows={5}
                 label='Vaše zpráva'
                 placeholder='Zadejte svoji zprávu...'
-                required
                 className='resize-vertical min-h-28'
             />
         </FormWrapper>
