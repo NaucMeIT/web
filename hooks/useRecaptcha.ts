@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useState } from "react"
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
+import { useCallback, useState } from "react"
+import { useReCaptcha } from "next-recaptcha-v3"
 
-export const useRecaptcha = () => {
+export const useRecaptcha = (): readonly [string, () => Promise<void>] => {
     const [token, setToken] = useState("")
 
-    const { executeRecaptcha } = useGoogleReCaptcha()
+    const { executeRecaptcha } = useReCaptcha()
 
     const handleReCaptchaVerify = useCallback(async () => {
         if (!executeRecaptcha) {
@@ -12,13 +12,11 @@ export const useRecaptcha = () => {
             return
         }
 
-        const token = await executeRecaptcha("submit")
-        setToken(token)
+        if (!token) {
+            const token = await executeRecaptcha("submit")
+            setToken(token)
+        }
     }, [executeRecaptcha])
 
-    useEffect(() => {
-        handleReCaptchaVerify()
-    }, [handleReCaptchaVerify])
-
-    return token
+    return [token, handleReCaptchaVerify]
 }

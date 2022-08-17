@@ -4619,15 +4619,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hoist-non-react-statics@npm:^3.3.2":
-  version: 3.3.2
-  resolution: "hoist-non-react-statics@npm:3.3.2"
-  dependencies:
-    react-is: "npm:^16.7.0"
-  checksum: fb03b1e426696928dfbae467baf12bdf123fccb051d92fd677c4f290d43dea52ebe7a555c3afc6f3babc657961df2ab50a70bb13739be72904f893598b98b8d7
-  languageName: node
-  linkType: hard
-
 "http-cache-semantics@npm:^4.1.0":
   version: 4.1.0
   resolution: "http-cache-semantics@npm:4.1.0"
@@ -6400,6 +6391,7 @@ __metadata:
     next: "npm:^12.2.3"
     next-axiom: "npm:^0.13.0"
     next-pwa: "npm:^5.5.5"
+    next-recaptcha-v3: "npm:^1.0.3"
     next-runtime: "npm:^2.4.1"
     next-sitemap: "npm:^3.1.15"
     postcss: "npm:^8.4.14"
@@ -6407,7 +6399,6 @@ __metadata:
     prettier-plugin-tailwindcss: "npm:^0.1.13"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
-    react-google-recaptcha-v3: "npm:^1.10.0"
     react-responsive: "npm:^9.0.0-beta.10"
     tailwindcss: "npm:^3.1.7"
     tailwindcss-fluid: "npm:^0.2.0"
@@ -6448,6 +6439,21 @@ __metadata:
   peerDependencies:
     next: ">=9.0.0"
   checksum: b17ea96d7b41487ccca949235d27b716c9a8ea8e81d8c721af543326b5c752325e6bafc267cd68842eabe03761e072af241b7a83119ed57e8a271cca7950b579
+  languageName: node
+  linkType: hard
+
+"next-recaptcha-v3@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "next-recaptcha-v3@npm:1.0.3"
+  dependencies:
+    next: "npm:^12.2.5"
+    react: "npm:^18.2.0"
+    react-dom: "npm:^18.2.0"
+  peerDependencies:
+    next: ">=11.0.0"
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: feaddd4b3094103c9a2ca2cb31b8d0a3c4f30be4fd3814b750ac18b1957fe41701cea16d26df85392af81b028f1e5467d4552cef50c657619e773b6a780fb38f
   languageName: node
   linkType: hard
 
@@ -6499,7 +6505,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^12.2.0, next@npm:^12.2.3":
+"next@npm:^12.2.0, next@npm:^12.2.3, next@npm:^12.2.5":
   version: 12.2.5
   resolution: "next@npm:12.2.5"
   dependencies:
@@ -7276,19 +7282,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-google-recaptcha-v3@npm:^1.10.0":
-  version: 1.10.0
-  resolution: "react-google-recaptcha-v3@npm:1.10.0"
-  dependencies:
-    hoist-non-react-statics: "npm:^3.3.2"
-  peerDependencies:
-    react: ^17.0 || ^18.0
-    react-dom: ^17.0 || ^18.0
-  checksum: 438b081c4b4381f7b5bc5cf4b7044aaaa2cb69cd68e98940e55627a82550feff523955228d5208c5b4daeb3cbb9244ee67ddd16f76725d59bc6fe79e41c3f4c2
-  languageName: node
-  linkType: hard
-
-"react-is@npm:^16.13.1, react-is@npm:^16.7.0":
+"react-is@npm:^16.13.1":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: 0c9adc5d984db733fb1dd298f3e94cdec66bc328d27fb11df65971d2cc9a299008bc64baab8fe8e79943df85b445a1008b2cc9e270825d0fd056e5a0d2df8de6
