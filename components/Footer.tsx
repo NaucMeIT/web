@@ -19,7 +19,7 @@ export function Footer({ links }: FooterProps) {
         <>
             <Horizontal className='mx-auto my-16 max-w-full' />
             <footer className='flex flex-row flex-wrap items-center justify-center gap-y-10 gap-x-6 pb-12 md:gap-x-32'>
-                <Link href='/'>
+                <Link href='/' aria-label='Logo Nauč mě IT'>
                     <Logo width={220} />
                 </Link>
                 <div className='flex w-full flex-col gap-4 md:w-auto'>
