@@ -5,15 +5,57 @@ import { log } from "next-axiom"
 
 type PageProps = {}
 type UrlQuery = {}
+export type ContactFormData = {
+    readonly name: string
+    readonly email: string
+    readonly phone?: string
+    readonly message: string
+    readonly recaptcha: string
+}
+export type CompanyFormData = {
+    readonly name: string
+    readonly email: string
+    readonly phone: string
+    readonly company: string
+    readonly employee: string
+    readonly message: string | undefined
+    readonly recaptcha: string
+}
 
-async function sendEmail(email: string, message: string | undefined, data: Record<string, any>) {
-    if (!data.recaptcha) {
+export function formatContactForm(data: ContactFormData) {
+    return `
+${data.message}
+
+------------------------------------------------------
+
+Jméno: ${data.name}
+Email: ${data.email}
+${data.phone && `Telefon: ${data.phone}`}
+`
+}
+
+export function formatCompanyForm(data: CompanyFormData) {
+    return `
+Jméno: ${data.name}
+Firma: ${data.company}
+Telefon: ${data.phone}
+Typ zaměstnance: ${data.employee}
+${data.message && `Zpráva: ${data.message}`}
+
+------------------------------------------------------
+
+Email: ${data.email}
+`
+}
+
+async function sendEmail(email: string, message: string, recaptcha: string) {
+    if (!recaptcha) {
         log.error("No recaptcha token")
         // eslint-disable-next-line functional/no-throw-statement
         throw new Error("No recaptcha")
     }
     const verify = await fetch(
-        `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_BACKEND}&response=${data.recaptcha}`,
+        `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_BACKEND}&response=${recaptcha}`,
         {
             method: "POST",
         },
@@ -29,30 +71,27 @@ async function sendEmail(email: string, message: string | undefined, data: Recor
         from: "info@naucme.it",
         replyTo: email,
         subject: "B2B Nauč mě IT",
-        text: `
-${message}
-
-------------------------------------------------------
-
-${JSON.stringify(data)}`,
+        text: message,
     })
 }
 
 export function handleEmail<
     T extends { readonly email: string; readonly message: string | undefined; readonly recaptcha: string },
->(): GetServerSideProps {
+>(formatFunction: (data: T) => string): GetServerSideProps {
     return handle<PageProps, UrlQuery, T>({
         async get() {
             return json({})
         },
         async post({ req: { body } }) {
             try {
-                const { email, message, ...rest } = body
-                await sendEmail(email, message, rest)
-                log.info("Email sent", JSON.stringify(body))
+                const message = formatFunction(body)
+                const { email, recaptcha } = body
+                await sendEmail(email, message, recaptcha)
+                log.info("Email sent", body)
                 return json({ status: "success" })
-            } catch (error) {
-                log.error("Email error", JSON.stringify({ error, ...body }))
+            } catch (e) {
+                const error = typeof e === "string" ? e : JSON.stringify(e)
+                log.error("Email error", { error: error, ...body })
                 return json({ status: "error", error }, 500)
             }
         },
