@@ -1,5 +1,6 @@
 // eslint-disable-next-line @next/next/no-document-import-in-page
 import { Html, Head, Main, NextScript } from "next/document"
+import Script from "next/script"
 
 const APP_MAIN_COLOR = "#090c28"
 const APP_NAME = "Nauč mě IT"
@@ -52,7 +53,12 @@ export default function Document() {
             <body className='h-full font-poppins accent-primary caret-primary'>
                 <Main />
                 <NextScript />
-                <script type='text/javascript' dangerouslySetInnerHTML={{ __html: registerScript }} />
+                <Script
+                    id='registerPaint'
+                    type='text/javascript'
+                    dangerouslySetInnerHTML={{ __html: registerScript }}
+                    strategy='lazyOnload'
+                />
             </body>
         </Html>
     )

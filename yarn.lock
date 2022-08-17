@@ -1276,6 +1276,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@builder.io/partytown@npm:^0.6.4":
+  version: 0.6.4
+  resolution: "@builder.io/partytown@npm:0.6.4"
+  bin:
+    partytown: bin/partytown.cjs
+  checksum: 757fcdb8a6b553cc98eebd61f0fcfbdafd9637a658cdb70d0cbf452642519d79ed1466ab75f73de92dba1b132ba3dab347b04aa4b501cec87e26317f995a5cdf
+  languageName: node
+  linkType: hard
+
 "@clerk/backend-core@npm:^1.14.2":
   version: 1.14.2
   resolution: "@clerk/backend-core@npm:1.14.2"
@@ -6374,6 +6383,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "nauc-me-it@workspace:."
   dependencies:
+    "@builder.io/partytown": "npm:^0.6.4"
     "@clerk/nextjs": "npm:^3.8.1"
     "@headlessui/react": "npm:^1.6.6"
     "@heroicons/react": "npm:^1.0.6"
