@@ -1,4 +1,4 @@
-const withPWA = require("next-pwa")
+const { withAxiom } = require("next-axiom")
 
 const withMDX = require("@next/mdx")({
     extension: /\.mdx?$/,
@@ -11,14 +11,10 @@ const withMDX = require("@next/mdx")({
 
 /** @type {import('next').NextConfig} */
 module.exports = withMDX(
-    withPWA({
+    withAxiom({
         reactStrictMode: true,
         eslint: {
             dirs: ["pages", "components", "hooks", "utils"],
-        },
-        pwa: {
-            dest: "public",
-            disable: process.env.NODE_ENV === "development",
         },
         experimental: {
             runtime: "experimental-edge",

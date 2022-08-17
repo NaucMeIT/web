@@ -6398,6 +6398,7 @@ __metadata:
     husky: "npm:^8.0.1"
     lint-staged: "npm:^13.0.3"
     next: "npm:^12.2.3"
+    next-axiom: "npm:^0.13.0"
     next-pwa: "npm:^5.5.5"
     next-runtime: "npm:^2.4.1"
     next-sitemap: "npm:^3.1.15"
@@ -6420,6 +6421,17 @@ __metadata:
   version: 0.6.3
   resolution: "negotiator@npm:0.6.3"
   checksum: d8e3b42d99638b1f363ce114c98e6906ade395c230058e50644417bd398b01381133dbca4bc49f30f6b1c93254e4b5a2d50cc47adcdabf2a8476b6f16311ad5d
+  languageName: node
+  linkType: hard
+
+"next-axiom@npm:^0.13.0":
+  version: 0.13.0
+  resolution: "next-axiom@npm:0.13.0"
+  dependencies:
+    whatwg-fetch: "npm:^3.6.2"
+  peerDependencies:
+    next: ^12.1.4
+  checksum: bb92f20caf19831f3fbe10c55913e99553cefe4580054c34156d859262315176eef80db0fddb8c07b48712dd4e2f6b28ea927bcf7bb725808e7db1d14f331177
   languageName: node
   linkType: hard
 
@@ -8838,6 +8850,13 @@ __metadata:
     source-list-map: "npm:^2.0.0"
     source-map: "npm:~0.6.1"
   checksum: 1119600f0fa6e0e7b3e12804d93401dd87011fa38ee10ae05988fb200a82166687116f13415934424f4372f6431955a1725ecb48fc06f2e77d0c380542c5e72a
+  languageName: node
+  linkType: hard
+
+"whatwg-fetch@npm:^3.6.2":
+  version: 3.6.2
+  resolution: "whatwg-fetch@npm:3.6.2"
+  checksum: 2752427eba29acff1469071044c3006d2a8800f45a2290a451b6c9dab762bd36767a571f15bfddcd1d6f86f27f7fd87364ed8dea7785cbf4782b70e263590cb9
   languageName: node
   linkType: hard
 

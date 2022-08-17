@@ -1,12 +1,14 @@
 import sendgrid from "@sendgrid/mail"
 import { GetServerSideProps } from "next"
 import { handle, json } from "next-runtime"
+import { log } from "next-axiom"
 
 type PageProps = {}
 type UrlQuery = {}
 
 async function sendEmail(email: string, message: string | undefined, data: Record<string, any>) {
     if (!data.recaptcha) {
+        log.error("No recaptcha token")
         // eslint-disable-next-line functional/no-throw-statement
         throw new Error("No recaptcha")
     }
@@ -47,9 +49,11 @@ export function handleEmail<
             try {
                 const { email, message, ...rest } = body
                 await sendEmail(email, message, rest)
+                log.info("Email sent", JSON.stringify(body))
                 return json({ status: "success" })
-            } catch (e) {
-                return json({ status: "error", error: e }, 500)
+            } catch (error) {
+                log.error("Email error", JSON.stringify({ error, ...body }))
+                return json({ status: "error", error }, 500)
             }
         },
     })

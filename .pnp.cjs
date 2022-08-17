@@ -57,6 +57,7 @@ const RAW_RUNTIME_STATE =
           ["husky", "npm:8.0.1"],\
           ["lint-staged", "npm:13.0.3"],\
           ["next", "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:12.2.5"],\
+          ["next-axiom", "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:0.13.0"],\
           ["next-pwa", "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:5.5.5"],\
           ["next-runtime", "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:2.4.1"],\
           ["next-sitemap", "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:3.1.17"],\
@@ -8490,6 +8491,7 @@ const RAW_RUNTIME_STATE =
           ["husky", "npm:8.0.1"],\
           ["lint-staged", "npm:13.0.3"],\
           ["next", "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:12.2.5"],\
+          ["next-axiom", "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:0.13.0"],\
           ["next-pwa", "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:5.5.5"],\
           ["next-runtime", "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:2.4.1"],\
           ["next-sitemap", "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:3.1.17"],\
@@ -8619,6 +8621,29 @@ const RAW_RUNTIME_STATE =
           "react-dom",\
           "react",\
           "sass"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["next-axiom", [\
+      ["npm:0.13.0", {\
+        "packageLocation": "../../../C:/Users/pegak/AppData/Local/Yarn/Berry/cache/next-axiom-npm-0.13.0-8db9ffb1d1-9.zip/node_modules/next-axiom/",\
+        "packageDependencies": [\
+          ["next-axiom", "npm:0.13.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:0.13.0", {\
+        "packageLocation": "./.yarn/__virtual__/next-axiom-virtual-b8d3daefd2/4/C:/Users/pegak/AppData/Local/Yarn/Berry/cache/next-axiom-npm-0.13.0-8db9ffb1d1-9.zip/node_modules/next-axiom/",\
+        "packageDependencies": [\
+          ["next-axiom", "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:0.13.0"],\
+          ["@types/next", null],\
+          ["next", "virtual:50e9723171b44227201ce5b9e05a053041aaeb78e2dc1e7cc8074768f286f058d06537a12f78114b2bb6c2213521d488b4d726a2433cef7335bb1fdcf45d6fd4#npm:12.2.5"],\
+          ["whatwg-fetch", "npm:3.6.2"]\
+        ],\
+        "packagePeers": [\
+          "@types/next",\
+          "next"\
         ],\
         "linkType": "HARD"\
       }]\
@@ -11464,6 +11489,15 @@ const RAW_RUNTIME_STATE =
           ["webpack-sources", "npm:1.4.3"],\
           ["source-list-map", "npm:2.0.1"],\
           ["source-map", "npm:0.6.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["whatwg-fetch", [\
+      ["npm:3.6.2", {\
+        "packageLocation": "../../../C:/Users/pegak/AppData/Local/Yarn/Berry/cache/whatwg-fetch-npm-3.6.2-4bdf324792-9.zip/node_modules/whatwg-fetch/",\
+        "packageDependencies": [\
+          ["whatwg-fetch", "npm:3.6.2"]\
         ],\
         "linkType": "HARD"\
       }]\
