@@ -22,6 +22,7 @@ module.exports = withMDX(
                 allowFutureImage: true,
             },
             newNextLinkBehavior: true,
+            nextScriptWorkers: true,
         },
         images: {
             formats: ["image/avif", "image/webp"],
