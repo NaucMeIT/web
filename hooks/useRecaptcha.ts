@@ -16,7 +16,7 @@ export const useRecaptcha = (): readonly [string, () => Promise<void>] => {
             const token = await executeRecaptcha("submit")
             setToken(token)
         }
-    }, [executeRecaptcha])
+    }, [executeRecaptcha, token])
 
     return [token, handleReCaptchaVerify]
 }
