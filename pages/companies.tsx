@@ -12,7 +12,7 @@ import { CompanyForm } from "../components/CompanyForm"
 import { Employees } from "../components/Employees"
 import { SideDecoration } from "../components/SideDecoration"
 
-export const getServerSideProps: GetServerSideProps = handleEmail<CompanyFormData>(formatCompanyForm)
+export const getServerSideProps: GetServerSideProps = handleEmail<CompanyFormData>(formatCompanyForm, "B2B Nauč mě IT")
 
 const employeeFormLink = "https://forms.gle/tSnwjVUnvovQy9NL8"
 const links = [
