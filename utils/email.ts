@@ -48,7 +48,7 @@ Email: ${data.email}
 `
 }
 
-async function sendEmail(email: string, message: string, recaptcha: string) {
+async function sendEmail(replyTo: string, text: string, subject: string, recaptcha: string) {
     if (!recaptcha) {
         log.error("No recaptcha token")
         // eslint-disable-next-line functional/no-throw-statement
@@ -69,15 +69,15 @@ async function sendEmail(email: string, message: string, recaptcha: string) {
     await sendgrid.send({
         to: "info@naucme.it",
         from: "info@naucme.it",
-        replyTo: email,
-        subject: "B2B Nauč mě IT",
-        text: message,
+        replyTo,
+        subject,
+        text,
     })
 }
 
 export function handleEmail<
     T extends { readonly email: string; readonly message: string | undefined; readonly recaptcha: string },
->(formatFunction: (data: T) => string): GetServerSideProps {
+>(formatFunction: (data: T) => string, subject: string): GetServerSideProps {
     return handle<PageProps, UrlQuery, T>({
         async get() {
             return json({})
@@ -86,7 +86,7 @@ export function handleEmail<
             try {
                 const message = formatFunction(body)
                 const { email, recaptcha } = body
-                await sendEmail(email, message, recaptcha)
+                await sendEmail(email, message, subject, recaptcha)
                 log.info("Email sent", body)
                 return json({ status: "success" })
             } catch (e) {

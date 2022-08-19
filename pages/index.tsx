@@ -15,7 +15,10 @@ import { LearnEarn, PayConsultancy, Time, Worldwide } from "../components/icons"
 import { ContactFormData, handleEmail, formatContactForm } from "../utils/email"
 import { SideDecoration } from "../components/SideDecoration"
 
-export const getServerSideProps: GetServerSideProps = handleEmail<ContactFormData>(formatContactForm)
+export const getServerSideProps: GetServerSideProps = handleEmail<ContactFormData>(
+    formatContactForm,
+    "Dotaz na Nauč mě IT",
+)
 
 const links = [
     { title: "Jak to funguje?", link: "#how" },
