@@ -81,7 +81,7 @@ const Home: NextPage = () => {
                     },
                     {
                         title: "Přihlásit se",
-                        link: "#login",
+                        link: "/login",
                         isImportant: true,
                     },
                 ]}
