@@ -57,7 +57,7 @@ export function Button({ className, disabled, children, theme, size, ...rest }: 
         <span {...props} tabIndex={-1}>
             <Link
                 {...rest}
-                className={`pointer-events-auto ${sizeClasses[size || "normal"]}`}
+                className={`pointer-events-auto h-full items-center ${sizeClasses[size || "normal"]}`}
                 target={isExternalUrl(rest.href) ? "_blank" : "_self"}
             >
                 {children}
@@ -82,7 +82,7 @@ export function SocialButton({ label, className, disabled, children, ...rest }: 
         <span {...props} tabIndex={-1}>
             <Link
                 {...rest}
-                className='pointer-events-auto inline-flex py-2 px-5'
+                className='pointer-events-auto h-full items-center inline-flex py-2 px-5'
                 aria-label={label}
                 target={isExternalUrl(rest.href) ? "_blank" : "_self"}
             >
