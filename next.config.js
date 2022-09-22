@@ -27,5 +27,6 @@ module.exports = withMDX(
             formats: ["image/avif", "image/webp"],
         },
         pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+        swcMinify: true,
     }),
 )
