@@ -15,7 +15,7 @@ import { prisma } from "../../../utils/prisma"
     secure: true,
 }) */
 
-export default NextAuth({
+export const authOptions = {
     providers: [
         EmailProvider({
             server: {
@@ -35,4 +35,6 @@ export default NextAuth({
         }),
     ],
     adapter: PrismaAdapter(prisma),
-})
+}
+
+export default NextAuth(authOptions)
