@@ -13,7 +13,7 @@ type LandingProps = {
 
 export function Landing({ title, subtitle, text, catchPoints, buttonText, buttonProps }: LandingProps) {
     return (
-        <header className='flex flex-row flex-wrap items-center justify-center px-5'>
+        <header className='flex flex-row flex-wrap items-center justify-center justify-items-center ml-10 mr-20 lg:grid lg:grid-cols-2 px-5'>
             <div>
                 <span id='home'>&nbsp;</span>
                 <Typography variant='h2' component='h1'>
@@ -46,7 +46,7 @@ export function Landing({ title, subtitle, text, catchPoints, buttonText, button
                 width='870px'
                 height='726px'
                 alt='Ilustrační úvodní obrázek'
-                className='order-first w-3/4 lg:w-1/2 2xl:order-1'
+                className='order-first w-3/4 lg:w-full 2xl:order-1'
             />
         </header>
     )
