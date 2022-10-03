@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextPage } from "next"
+import { NextPage } from "next"
 import { Menu } from "../components/Menu"
 import { DownArrow } from "../components/DownArrow"
 import { Footer } from "../components/Footer"
@@ -7,12 +7,9 @@ import { How } from "../components/How"
 import { Head } from "../components/Head"
 import { LearnEarn, PayConsultancy, Time, Worldwide } from "../components/icons"
 import { CompanyCatch } from "../components/CompanyCatch"
-import { CompanyFormData, handleEmail, formatCompanyForm } from "../utils/email"
 import { CompanyForm } from "../components/CompanyForm"
 import { Employees } from "../components/Employees"
 import { SideDecoration } from "../components/SideDecoration"
-
-export const getServerSideProps: GetServerSideProps = handleEmail<CompanyFormData>(formatCompanyForm, "B2B Nauč mě IT")
 
 const employeeFormLink = "https://forms.gle/tSnwjVUnvovQy9NL8"
 const links = [
