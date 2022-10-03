@@ -11,7 +11,7 @@ type NormalButtonProps = Props & JSX.IntrinsicElements["button"]
 type LinkButtonProps = Props & LinkProps
 export type ButtonProps = (LinkButtonProps | NormalButtonProps) & {
     readonly children: string
-    readonly size?: "large" | "normal"
+    readonly size?: keyof typeof sizeClasses
 }
 type SocialButtonProps = (Omit<NormalButtonProps, "theme"> | Omit<LinkButtonProps, "theme">) & {
     readonly children: React.ReactElement
@@ -34,7 +34,9 @@ const themeClasses = {
 }
 const sizeClasses = {
     large: "pt-6 pb-5 pl-11 pr-12",
+    medium: "pt-4 pb-4 pl-11 pr-12",
     normal: "pt-2 pb-2 pl-7 pr-8",
+    icon: "p-4",
 }
 const polygonBorderVars = {
     "--path": "20% 0%, 90% 0%, 100% 20%, 100% 50%, 80% 100%, 20% 100%, 10% 100%, 0% 70%, 0% 40%",
@@ -70,10 +72,14 @@ export function Button({ className, disabled, children, theme, size, ...rest }: 
     )
 }
 
+Button.defaultProps = {
+    type: "button",
+}
+
 export function SocialButton({ label, className, disabled, children, ...rest }: SocialButtonProps) {
     const props = {
         className: `${mainClasses} ${disabled ? themeClasses.disabled.off : themeClasses.enabled.off} ${
-            "href" in rest ? "pointer-events-none" : sizeClasses.normal
+            "href" in rest ? "pointer-events-none" : sizeClasses.icon
         } ${className ?? ""} items-center aspect-square`,
         style: hexagonBorderVars,
     }
@@ -94,4 +100,8 @@ export function SocialButton({ label, className, disabled, children, ...rest }: 
             {children}
         </button>
     )
+}
+
+SocialButton.defaultProps = {
+    type: "button",
 }
