@@ -7,7 +7,11 @@ import { Session } from "next-auth"
 function MyApp({ Component, pageProps }: AppProps<{ readonly session: Session }>) {
     return (
         <SessionProvider session={pageProps.session}>
-            <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_API_KEY || ""} language='cs'>
+            <ReCaptchaProvider
+                strategy='lazyOnload'
+                reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_API_KEY || ""}
+                language='cs'
+            >
                 <Component {...pageProps} />
             </ReCaptchaProvider>
         </SessionProvider>
