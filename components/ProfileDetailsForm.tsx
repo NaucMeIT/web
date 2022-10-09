@@ -15,7 +15,8 @@ export function ProfileDetailsForm({ buttonText }: Props) {
     const { isSubmitting } = useFormSubmit()
 
     return (
-        <Form
+        // Can't be <Form> because it doesn't follow redirect, see https://github.com/smeijer/next-runtime/issues/51
+        <form
             method='post'
             action={`/register?startPlan=${startPlan}`}
             className='mx-auto flex flex-col items-center justify-center gap-4 group mb-8 mt-8'
@@ -35,6 +36,6 @@ export function ProfileDetailsForm({ buttonText }: Props) {
             >
                 {buttonText}
             </Button>
-        </Form>
+        </form>
     )
 }
