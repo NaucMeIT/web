@@ -33,6 +33,7 @@ const themeClasses = {
     },
 }
 const sizeClasses = {
+    huge: "pt-6 pb-5 pl-14 pr-16 text-xl",
     large: "pt-6 pb-5 pl-11 pr-12",
     medium: "pt-4 pb-4 pl-11 pr-12",
     normal: "pt-2 pb-2 pl-7 pr-8",
@@ -50,12 +51,12 @@ const hexagonBorderVars = {
 export function Button({ className, disabled, children, theme, size, ...rest }: ButtonProps) {
     const props = {
         className: `${mainClasses} ${disabled ? themeClasses.disabled[theme] : themeClasses.enabled[theme]} ${
-            "href" in rest ? "pointer-events-none" : sizeClasses[size || "normal"]
-        } ${typographyClasses.normal} ${className ?? ""}`,
+            typographyClasses.normal
+        } ${className ?? ""} ${"href" in rest && !!rest.href ? "pointer-events-none" : sizeClasses[size || "normal"]}`,
         style: polygonBorderVars,
     }
 
-    return "href" in rest ? (
+    return "href" in rest && !!rest.href ? (
         <span {...props} tabIndex={-1}>
             <Link
                 {...rest}
@@ -84,7 +85,7 @@ export function SocialButton({ label, className, disabled, children, ...rest }: 
         style: hexagonBorderVars,
     }
 
-    return "href" in rest ? (
+    return "href" in rest && !!rest.href ? (
         <span {...props} tabIndex={-1}>
             <Link
                 {...rest}

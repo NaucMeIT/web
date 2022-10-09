@@ -115,6 +115,9 @@ const Home: NextPage = () => {
                         { icon: <Worldwide />, children: <>Celý kurz je online přístupný odkudkoliv</> },
                     ]}
                     buttonText='Vyzkoušej ZDARMA'
+                    buttonProps={{
+                        href: "/sign?startPlan=Basic",
+                    }}
                 />
 
                 <DownArrow

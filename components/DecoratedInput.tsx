@@ -2,10 +2,11 @@ import type { DetailedHTMLProps, InputHTMLAttributes } from "react"
 import { useId } from "react"
 import { Typography, typographyClasses } from "./Typography"
 
-type InputProps = { readonly width?: string; readonly label: string; readonly component?: "input" } & DetailedHTMLProps<
-    InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
->
+type InputProps = {
+    readonly width?: string
+    readonly label?: string
+    readonly component?: "input"
+} & DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 type TextareaProps = {
     readonly width?: string
     readonly label: string

@@ -1,48 +1,89 @@
-import Image from "next/image"
-import type { NextPage } from "next"
-import { Form, useFormSubmit } from "next-runtime/form"
-import { Button, SocialButton } from "../components/Button"
-import { DecoratedInput } from "../components/DecoratedInput"
-import Google from "../images/google.svg"
-import { Facebook } from "../components/icons"
-import { signIn } from "next-auth/react"
+import { NextPage } from "next"
+import { Session, unstable_getServerSession } from "next-auth"
+import { log } from "next-axiom"
+import { handle, json, redirect } from "next-runtime"
+import { Head } from "../components/Head"
+import { ProfileDetailsForm } from "../components/ProfileDetailsForm"
+import { authOptions } from "./api/auth/[...nextauth]"
+import { prisma } from "../utils/prisma"
 
-const Login: NextPage = () => {
-    const { isSubmitting } = useFormSubmit()
+type PageProps = {}
+type UrlQuery = {
+    readonly startPlan: string
+}
 
-    const signInWithFacebook = () => {
-        signIn("facebook", {
-            callbackUrl: window.location.href,
-        })
+const skipIfUserInfo = async (session: Session | null) => {
+    if (!session?.user) {
+        return {
+            redirect: {
+                destination: "/sign",
+                permanent: false,
+            },
+        }
     }
 
-    const signInWithGoogle = () => {
-        signIn("google", {
-            callbackUrl: window.location.href,
-        })
+    const user = await prisma.user.findUnique({
+        where: {
+            email: session.user.email || "",
+        },
+        select: {
+            plan: true,
+        },
+    })
+
+    if (session.user?.name && user?.plan) {
+        return {
+            redirect: {
+                destination: "/protected",
+                permanent: false,
+            },
+        }
     }
 
+    return {
+        props: {
+            session,
+            user,
+        },
+    }
+}
+
+export const getServerSideProps = handle<PageProps, UrlQuery, PageProps>({
+    async get(context) {
+        const session = await unstable_getServerSession(context.req, context.res, authOptions)
+        return skipIfUserInfo(session)
+    },
+    async post({ req: { body, url, headers } }) {
+        try {
+            const parsedUrl = new URL(url || "", `https://${headers.host}`)
+            const plan = parsedUrl.searchParams.get("startPlan")
+            if (!["Basic", "Core", "Standard", "Ultimate"].includes(plan || "")) {
+                // eslint-disable-next-line functional/no-throw-statement
+                throw new Error("Tento plán neexistuje")
+            }
+            return redirect("/protected")
+        } catch (e) {
+            const error = typeof e === "string" ? e : JSON.stringify(e)
+            log.error("Email error", { error: error, ...body })
+            return json({ status: "error", error }, 500)
+        }
+    },
+})
+
+const Register: NextPage = () => {
     return (
-        <div>
-            <Form method='post' className='w-1/2 mx-auto flex flex-col gap-4'>
-                <DecoratedInput name='name' type='text' label='Vaše jméno' placeholder='Zadejte své jméno' required />
-                <DecoratedInput name='email' type='email' label='Váš email' placeholder='Zadejte svůj email' required />
-
-                <div className='flex justify-between'>
-                    <Button size='medium' type='submit' theme='off' className='w-fit self-end' disabled={isSubmitting}>
-                        {isSubmitting ? "Registruji..." : "Registrovat"}
-                    </Button>
-                    <span className='border-2 border-primary opacity-50'></span>
-                    <SocialButton onClick={signInWithFacebook} label='Registrovat pomocí Facebooku'>
-                        <Facebook width={24} />
-                    </SocialButton>
-                    <SocialButton onClick={signInWithGoogle} label='Registrovat pomocí Google'>
-                        <Image src={Google} width={24} height={24} alt='LinkedIn' />
-                    </SocialButton>
-                </div>
-            </Form>
+        <div className='flex gap-6 flex-col justify-center min-h-screen'>
+            <Head
+                desc='Chceš získat práci v IT a nevíš, jak začít? Právě proto jsme tu my! Na naší platformě poskytujeme kurzy, díky kterým získáš práci v IT dřív než řekneš Java.'
+                url='https://naucme.it/'
+                twImg='https://naucme.it/twitter.png'
+                fbImg='https://naucme.it/og.png'
+            >
+                <title>Nauč mě IT - Registrace - krok 2</title>
+            </Head>
+            <ProfileDetailsForm buttonText='Uložit' />
         </div>
     )
 }
 
-export default Login
+export default Register
