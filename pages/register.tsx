@@ -59,12 +59,12 @@ export const getServerSideProps = handle<PageProps, UrlQuery, PageProps>({
             const plan = parsedUrl.searchParams.get("startPlan")
             if (!["Basic", "Core", "Standard", "Ultimate"].includes(plan || "")) {
                 // eslint-disable-next-line functional/no-throw-statement
-                throw new Error("Tento plán neexistuje")
+                throw new Error("Tento plán neexistuje.")
             }
             return redirect("/protected")
         } catch (e) {
             const error = typeof e === "string" ? e : JSON.stringify(e)
-            log.error("Email error", { error: error, ...body })
+            log.error("Register error", { error: error, ...body })
             return json({ status: "error", error }, 500)
         }
     },
