@@ -4,6 +4,7 @@ import { Typography } from "./Typography"
 type EmployeesProps = {
     readonly link: string
 }
+
 export function Employees({ link }: EmployeesProps) {
     return (
         <section>
@@ -11,7 +12,14 @@ export function Employees({ link }: EmployeesProps) {
             <Typography variant='h2' component='h2' className='text-center'>
                 Možní zaměstnanci
             </Typography>
-            <CourseBox image='/images/qa_illustration.svg' side='right' title='Tester' link={link}>
+            <CourseBox
+                image='/images/qa_illustration.svg'
+                width={320}
+                height={291}
+                side='right'
+                title='Tester'
+                link={link}
+            >
                 <p className='mb-4'>
                     Chyby stojí nemálo peněz. Jedna z těch nejdražších bylo vozidlo Mars Climate Orbiter, kterému se
                     nepovedlo přistát na Marsu. Důvod? Řídící software od NASA očekával metrické jednotky, ale naváděcí
