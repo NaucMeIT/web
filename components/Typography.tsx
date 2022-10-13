@@ -16,7 +16,7 @@ export const typographyClasses = {
 export const types = Object.keys(typographyClasses) as readonly (keyof typeof typographyClasses)[]
 
 type TypographyProps<D extends React.ElementType> = {
-    readonly children: React.ReactNode
+    readonly children?: React.ReactNode
     readonly variant: keyof typeof typographyClasses
     readonly component?: D
     readonly className?: string
