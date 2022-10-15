@@ -6,13 +6,22 @@ import { Head } from "../components/Head"
 import { ProfileDetailsForm } from "../components/ProfileDetailsForm"
 import { authOptions } from "./api/auth/[...nextauth]"
 import { prisma } from "../utils/prisma"
+import { Plan } from "@prisma/client"
 
-type PageProps = {}
+type PageProps = {
+    readonly session: Session
+    readonly user: {
+        readonly plan: Plan | null
+    }
+}
 type UrlQuery = {
     readonly startPlan: string
 }
+type FormData = {
+    readonly name: string
+}
 
-const skipIfUserInfo = async (session: Session | null) => {
+const skipIfUserInfo = async (session: Session | null, startPlan: string | readonly string[] | undefined) => {
     if (!session?.user) {
         return {
             redirect: {
@@ -40,6 +49,13 @@ const skipIfUserInfo = async (session: Session | null) => {
         }
     }
 
+    if (!startPlan) {
+        return redirect("?startPlan=Basic")
+    }
+    if (Array.isArray(startPlan)) {
+        return redirect(`?startPlan=${startPlan[0]}`)
+    }
+
     return {
         props: {
             session,
@@ -48,19 +64,30 @@ const skipIfUserInfo = async (session: Session | null) => {
     }
 }
 
-export const getServerSideProps = handle<PageProps, UrlQuery, PageProps>({
+export const getServerSideProps = handle<{}, UrlQuery, FormData>({
     async get(context) {
         const session = await unstable_getServerSession(context.req, context.res, authOptions)
-        return skipIfUserInfo(session)
+        return skipIfUserInfo(session, context.query?.startPlan)
     },
-    async post({ req: { body, url, headers } }) {
+    async post(context) {
+        const {
+            req: { body, url, headers },
+        } = context
         try {
             const parsedUrl = new URL(url || "", `https://${headers.host}`)
-            const plan = parsedUrl.searchParams.get("startPlan")
-            if (!["Basic", "Core", "Standard", "Ultimate"].includes(plan || "")) {
+            const plan = parsedUrl.searchParams.get("startPlan") || ""
+            const dbPlan = await prisma.plan.findFirst({ where: { name: plan } })
+            if (!dbPlan) {
                 // eslint-disable-next-line functional/no-throw-statement
                 throw new Error("Tento plán neexistuje.")
             }
+
+            const session = await unstable_getServerSession(context.req, context.res, authOptions)
+            await prisma.user.update({
+                where: { email: session?.user?.email || "" },
+                data: { planId: dbPlan.id, name: body.name },
+            })
+
             return redirect("/protected")
         } catch (e) {
             const error = typeof e === "string" ? e : JSON.stringify(e)
@@ -70,7 +97,7 @@ export const getServerSideProps = handle<PageProps, UrlQuery, PageProps>({
     },
 })
 
-const Register: NextPage = () => {
+const Register: NextPage<PageProps> = ({ session }) => {
     return (
         <div className='flex gap-6 flex-col justify-center min-h-screen'>
             <Head
@@ -81,7 +108,7 @@ const Register: NextPage = () => {
             >
                 <title>Nauč mě IT - Registrace - krok 2</title>
             </Head>
-            <ProfileDetailsForm buttonText='Uložit' />
+            <ProfileDetailsForm name={session.user?.name || ""} />
         </div>
     )
 }
