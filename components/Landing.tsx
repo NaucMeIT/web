@@ -1,3 +1,4 @@
+import Image from "next/future/image"
 import { Button, ButtonProps } from "./Button"
 import { CatchPointProps, CatchPoints } from "./CatchPoints"
 import { Typography } from "./Typography"
@@ -41,12 +42,13 @@ export function Landing({ title, subtitle, text, catchPoints, buttonText, button
                     {buttonText}
                 </Button>
             </div>
-            <img
+            <Image
                 src='/images/main_illustration.svg'
-                width='870px'
-                height='726px'
+                width={873}
+                height={810}
                 alt='Ilustrační úvodní obrázek'
                 className='order-first w-3/4 lg:w-full 2xl:order-1'
+                priority
             />
         </header>
     )
