@@ -63,6 +63,6 @@ model Plan {
   id        String   @id @default(cuid())
   name      String
   price     Int
-  content   String[]
+  benefits  String[]
   pickedBy  User[]
 }

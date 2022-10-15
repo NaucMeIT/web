@@ -1,4 +1,4 @@
-import { Form, useFormSubmit } from "next-runtime/form"
+import { useFormSubmit } from "next-runtime/form"
 import { useRouter } from "next/router"
 import { Button } from "./Button"
 import { DecoratedInput } from "./DecoratedInput"

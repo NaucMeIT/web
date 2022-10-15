@@ -22,12 +22,12 @@ export const getServerSideProps: GetServerSideProps = handleEmail<ContactFormDat
 
 const links = [
     { title: "Jak to funguje?", link: "#how" },
-    { title: "Cenové balíčky", link: "#packages" },
+    { title: "Balíčky", link: "#packages" },
     { title: "Kurzy", link: "#courses" },
     { title: "O nás", link: "#about" },
     { title: "Pro firmy", link: "/companies" },
     { title: "Kontakt", link: "#contact" },
-    { title: "Registrovat", link: "/register" },
+    { title: "Přihlásit se", link: "/sign", isImportant: true },
 ]
 
 const Home: NextPage = () => {
@@ -53,39 +53,7 @@ const Home: NextPage = () => {
             >
                 <title>Nauč mě IT - Úvodní strana</title>
             </Head>
-            <Menu
-                items={[
-                    {
-                        title: "Jak to funguje?",
-                        link: "#how",
-                    },
-                    {
-                        title: "Balíčky",
-                        link: "#packages",
-                    },
-                    {
-                        title: "Kurzy",
-                        link: "#courses",
-                    },
-                    {
-                        title: "O nás",
-                        link: "#about",
-                    },
-                    {
-                        title: "Pro firmy",
-                        link: "/companies",
-                    },
-                    {
-                        title: "Kontakt",
-                        link: "#contact",
-                    },
-                    {
-                        title: "Přihlásit se",
-                        link: "/login",
-                        isImportant: true,
-                    },
-                ]}
-            />
+            <Menu items={links} />
             <SideDecoration />
 
             <main>
