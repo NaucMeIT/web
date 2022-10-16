@@ -39,7 +39,7 @@ export const authOptions = {
             clientSecret: process.env.FACEBOOK_CLIENT_SECRET || "",
         }),
     ],
-    adapter: PrismaAdapter(prisma),
+    adapter: PrismaAdapter(prisma) as any,
 }
 
 export default NextAuth(authOptions)

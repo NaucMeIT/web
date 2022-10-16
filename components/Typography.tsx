@@ -4,10 +4,10 @@ export const typographyClasses = {
     h3: "font-light text-xl text-secondary tracking-wider",
     step: "font-light text-lg text-secondary",
     important: "font-light text-base text-highlight",
-    normal: "font-light text-sm text-highlight",
-    error: "font-light text-sm text-error",
-    // subtitle: "font-montserrat italic font-normal text-sm text-primary",
-    link: "font-medium text-sm text-primary",
+    normal: "font-light text-highlight",
+    error: "font-light text-error",
+    // subtitle: "font-montserrat italic font-normal text-primary",
+    link: "font-medium text-primary",
     form: "italic font-light text-xs text-form",
     eyeCatch: "font-semibold text-4xl uppercase text-secondary tracking-huge",
     menu: "font-medium text-base text-highlight",
@@ -16,7 +16,7 @@ export const typographyClasses = {
 export const types = Object.keys(typographyClasses) as readonly (keyof typeof typographyClasses)[]
 
 type TypographyProps<D extends React.ElementType> = {
-    readonly children: React.ReactNode
+    readonly children?: React.ReactNode
     readonly variant: keyof typeof typographyClasses
     readonly component?: D
     readonly className?: string

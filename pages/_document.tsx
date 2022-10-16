@@ -17,7 +17,7 @@ export default function Document() {
     return (
         <Html
             lang='cs'
-            className='theme-dark h-full bg-background text-xsDeviceBody motion-safe:scroll-smooth xs:text-sm'
+            className='theme-dark h-full bg-background text-xsDeviceBody motion-safe:scroll-smooth xs:text-sm text-highlight'
         >
             <Head>
                 <link href='https://fonts.googleapis.com/css2?family=Poppins&display=optional' rel='stylesheet' />

@@ -4,10 +4,12 @@ import { DetailedHTMLProps, HTMLAttributes } from "react"
 import { EmailLink } from "./EmailLink"
 import Link from "next/link"
 
-const H1 = (props: any) => <Typography className='py-4' variant='h2' component='h1' {...props} />
-const H2 = (props: any) => <Typography className='pt-4' variant='h3' component='h2' {...props} />
-const H3 = (props: any) => <Typography className='pt-4' variant='step' component='h3' {...props} />
-const Text = (props: any) => <Typography className='pt-1' variant='normal' component='p' {...props} />
+type MdxTypographyProps = Omit<React.ComponentProps<typeof Typography>, "className" | "variant" | "component">
+
+const H1 = (props: MdxTypographyProps) => <Typography className='py-4' variant='h2' component='h1' {...props} />
+const H2 = (props: MdxTypographyProps) => <Typography className='pt-4' variant='h3' component='h2' {...props} />
+const H3 = (props: MdxTypographyProps) => <Typography className='pt-4' variant='step' component='h3' {...props} />
+const Text = (props: MdxTypographyProps) => <Typography className='pt-1' variant='normal' component='p' {...props} />
 const EmailLinkMdx = (props: any) => (
     <EmailLink subject='Dotaz na Zpracování údajů či obchodní podmínky' email={props.children}></EmailLink>
 )
