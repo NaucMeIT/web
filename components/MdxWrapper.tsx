@@ -3,6 +3,10 @@ import { Typography } from "./Typography"
 import { DetailedHTMLProps, HTMLAttributes } from "react"
 import { EmailLink } from "./EmailLink"
 import Link from "next/link"
+import { Drawer } from "./Drawer"
+import { Menu } from "./Menu"
+import { SideMenu } from "./SideMenu"
+import { Footer } from "./Footer"
 
 type MdxTypographyProps = Omit<React.ComponentProps<typeof Typography>, "className" | "variant" | "component">
 
@@ -39,6 +43,23 @@ export function MdxWrapper(props: DetailedHTMLProps<HTMLAttributes<HTMLElement>,
     return (
         <MDXProvider components={components}>
             <main {...props} className='px-8 pt-3 pb-10' />
+        </MDXProvider>
+    )
+}
+
+export function MdxChapterWrapper(props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>) {
+    return (
+        <MDXProvider components={components}>
+            <Menu items={[]} />
+            <div className='grid grid-cols-12 auto-rows-auto h-screen'>
+                <div className='row-end-7 row-span-full col-span-2 col-start-1 mt-20 bg-secondary/5 overflow-hidden'>
+                    <SideMenu>Test</SideMenu>
+                </div>
+                <main
+                    {...props}
+                    className='row-end-7 col-start-3 col-span-full row-span-full overflow-auto px-10 mt-20 pb-2 overscroll-none'
+                />
+            </div>
         </MDXProvider>
     )
 }
