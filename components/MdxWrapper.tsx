@@ -3,10 +3,8 @@ import { Typography } from "./Typography"
 import { DetailedHTMLProps, HTMLAttributes } from "react"
 import { EmailLink } from "./EmailLink"
 import Link from "next/link"
-import { Drawer } from "./Drawer"
 import { Menu } from "./Menu"
 import { SideMenu } from "./SideMenu"
-import { Footer } from "./Footer"
 
 type MdxTypographyProps = Omit<React.ComponentProps<typeof Typography>, "className" | "variant" | "component">
 
