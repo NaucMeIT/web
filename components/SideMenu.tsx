@@ -1,7 +1,3 @@
-import { DownArrow } from "./DownArrow"
-import { Horizontal } from "./icons"
-
-// eslint-disable-next-line functional/no-mixed-type
 type DrawerProps = {
     readonly children: React.ReactNode
 }
