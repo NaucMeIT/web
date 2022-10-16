@@ -8,7 +8,7 @@ type Props = {
     readonly className?: string
 }
 type NormalButtonProps = Props & JSX.IntrinsicElements["button"]
-type LinkButtonProps = Props & LinkProps
+export type LinkButtonProps = Props & LinkProps
 export type ButtonProps = (LinkButtonProps | NormalButtonProps) & {
     readonly children: string
     readonly size?: keyof typeof sizeClasses

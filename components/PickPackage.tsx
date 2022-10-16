@@ -22,7 +22,7 @@ export function PickPackage({ selectedPackage }: Props) {
                         key={p.title}
                         {...p}
                         radioInput
-                        href={`/register?startPlan=${p.title}`}
+                        buttonProps={{ href: `/register?startPlan=${p.title}`, replace: true, scroll: false }}
                         priority={selectedPackage === p.title}
                     />
                 ))}

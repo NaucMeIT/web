@@ -17,7 +17,7 @@ export function Packages() {
                     <PackageBox
                         key={p.title}
                         {...p}
-                        href={`/sign?startPlan=${p.title}`}
+                        buttonProps={{ href: `/sign?startPlan=${p.title}` }}
                         priority={p.title === "Standard"}
                     />
                 ))}
