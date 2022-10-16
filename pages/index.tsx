@@ -102,6 +102,9 @@ const Home: NextPage = () => {
                         "Získej svůj první job v IT",
                     ]}
                     buttonText='Chci se přidat!'
+                    buttonProps={{
+                        href: "/sign?startPlan=Basic",
+                    }}
                 />
 
                 <Packages />
