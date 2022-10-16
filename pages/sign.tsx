@@ -10,8 +10,21 @@ import { Typography } from "../components/Typography"
 import { EmailLink } from "../components/EmailLink"
 import { useRouter } from "next/router"
 import { Head } from "../components/Head"
+import { handle, json, redirect } from "next-runtime"
+import { unstable_getServerSession } from "next-auth"
+import { authOptions } from "./api/auth/[...nextauth]"
 
 type Status = "idle" | "signing" | "error" | "send"
+
+export const getServerSideProps = handle<{}, {}, {}>({
+    async get(context) {
+        const session = await unstable_getServerSession(context.req, context.res, authOptions)
+        if (session) {
+            return redirect("/protected")
+        }
+        return json({})
+    },
+})
 
 const Sign: NextPage = () => {
     const router = useRouter()
