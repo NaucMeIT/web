@@ -52,27 +52,3 @@ export function MdxWrapper(props: DetailedHTMLProps<HTMLAttributes<HTMLElement>,
         </MDXProvider>
     )
 }
-
-export function MdxChapterWrapper(props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>) {
-    const anchors = Children.toArray(props.children)
-        .filter((child: any) => child.props?.mdxType && ["h1", "h2", "h3"].includes(child.props.mdxType))
-        .map((child: any) => ({
-            url: "#" + child.props.id,
-            depth: (child.props?.mdxType && parseInt(child.props.mdxType.replace("h", ""), 0)) ?? 0,
-            text: child.props.children,
-        }))
-    return (
-        <MDXProvider components={components}>
-            <Menu items={[]} />
-            <div className='grid grid-cols-12 auto-rows-auto h-screen'>
-                <div className='row-end-7 row-span-full col-span-2 col-start-1 mt-20 bg-secondary/5 overflow-hidden'>
-                    <SideMenu>Test</SideMenu>
-                </div>
-                <main
-                    {...props}
-                    className='row-end-7 col-start-3 col-span-full row-span-full overflow-auto px-10 mt-20 pb-2 overscroll-none'
-                />
-            </div>
-        </MDXProvider>
-    )
-}
