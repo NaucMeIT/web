@@ -1,6 +1,7 @@
-const { withAxiom } = require("next-axiom")
+import createMDX from "@next/mdx"
+import { withAxiom } from "next-axiom"
 
-const withMDX = require("@next/mdx")({
+const withMDX = createMDX({
     extension: /\.mdx?$/,
     options: {
         remarkPlugins: [],
@@ -10,7 +11,7 @@ const withMDX = require("@next/mdx")({
 })
 
 /** @type {import('next').NextConfig} */
-module.exports = withMDX(
+export default withMDX(
     withAxiom({
         reactStrictMode: true,
         eslint: {
