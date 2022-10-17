@@ -45,7 +45,7 @@ const TableOfContents = ({ headings }: { readonly headings: HeadingsType }) => {
                         component={Link}
                         componentProps={{ href: heading.href }}
                         key={heading.href}
-                        className={`block ${heading.level === 1 ? "mt-2" : "ml-4"}`}
+                        className={`block hover:text-secondary ${heading.level === 1 ? "mt-2" : "ml-4"}`}
                     >
                         {heading.text}
                     </Typography>
