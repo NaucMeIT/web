@@ -13,12 +13,13 @@ type Props = {
 const packageBoxBorderVars = {
     "--path": "30px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 30px",
     "--border": "2px",
+    contain: "strict",
 } as React.CSSProperties
 
 export function PackageBox({ priority, title, benefits, price, radioInput, buttonProps }: Props) {
     return (
         <div
-            className={`polygon-path flex h-full w-80 flex-col items-center justify-between gap-4 p-8 ${
+            className={`polygon-path flex w-80 h-[414px] flex-col items-center justify-between gap-4 p-8 ${
                 priority ? "before:bg-primary" : "before:bg-form [&:has(input:checked)]:before:bg-primary"
             }`}
             style={packageBoxBorderVars}
