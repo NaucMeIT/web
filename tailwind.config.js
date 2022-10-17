@@ -49,6 +49,9 @@ module.exports = {
             backgroundColor: {
                 transparent: "transparent",
             },
+            backgroundPosition: {
+                rightCut: "120%",
+            },
             backgroundSize: {
                 "100/100": "100% 100%",
                 "100/0": "100% 0%",
@@ -57,6 +60,7 @@ module.exports = {
                 landing: "image-set(url('/images/bg-landing.webp') 1x, url('/images/bg-landing.avif') 2x)",
                 animable: "linear-gradient(rgb(var(--color-primary)) 0 0)",
                 alt: "linear-gradient(90deg, rgb(17, 25, 58) 0%, rgb(54, 69, 122) 100%), linear-gradient(270deg, rgba(109,157,255,0.4) 0%, rgba(141,130,255,0.4) 54%, rgba(47,58,145,0.4) 87.9%, rgba(21,45,86,0.4) 100%)",
+                rightSide: "url('/images/right.svg')",
             },
             minHeight: {
                 28: "7rem",
