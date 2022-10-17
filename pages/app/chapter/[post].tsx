@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from "next"
 import Link from "next/link"
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote"
 import { serialize } from "next-mdx-remote/serialize"
-import matter from "gray-matter"
+import matter, { GrayMatterFile } from "gray-matter"
 import fs from "fs"
 import path from "path"
 import { components } from "../../../components/MdxWrapper"
@@ -11,7 +11,7 @@ import { SideMenu } from "../../../components/SideMenu"
 import { Typography } from "../../../components/Typography"
 import { Head } from "../../../components/Head"
 
-type HeadingsType = readonly { readonly text: string; readonly level: number }[]
+type HeadingsType = readonly { readonly text: string; readonly level: number; readonly href: string }[]
 
 type PostProps = {
     readonly mdx: MDXRemoteSerializeResult<Record<string, unknown>, Record<string, string>>
@@ -19,7 +19,9 @@ type PostProps = {
     readonly metaInformation: Record<string, string>
 }
 
-export function getHeadings(source: string): HeadingsType {
+const getSourceId = (source: string) => source.toLocaleLowerCase().replaceAll(" ", "-")
+
+export function getHeadings(source: string, path: string): HeadingsType {
     const headingLines = source.split("\n").filter((line) => {
         return line.match(/^##*\s/)
     })
@@ -29,7 +31,7 @@ export function getHeadings(source: string): HeadingsType {
         .map((raw) => {
             const text = raw.replace(/^##*\s/, "")
 
-            return { text, level: 2 }
+            return { text, level: 2, href: `/app/chapter/${path}#${getSourceId(text)}` }
         })
 }
 
@@ -39,11 +41,11 @@ const TableOfContents = ({ headings }: { readonly headings: HeadingsType }) => {
             {headings.map((heading) => {
                 return (
                     <Typography
-                        variant='normal'
+                        variant={heading.level === 1 ? "important" : "normal"}
                         component={Link}
-                        componentProps={{ href: `#${heading.text.replaceAll(" ", "-")}` }}
-                        key={heading.text}
-                        className='block'
+                        componentProps={{ href: heading.href }}
+                        key={heading.href}
+                        className={`block ${heading.level === 1 ? "mt-2" : "ml-4"}`}
                     >
                         {heading.text}
                     </Typography>
@@ -79,18 +81,36 @@ const Post: React.FC<PostProps> = ({ headings, mdx, metaInformation }) => {
 
 export const getStaticProps: GetStaticProps = async (props) => {
     const folderPath = path.join(process.cwd(), "chapters")
-    const filePath = path.join(folderPath, `${props?.params?.post}.mdx`)
-    const rawFileSource = fs.readFileSync(filePath)
 
-    const { content, data: metaInformation } = matter(rawFileSource)
-    const headings = getHeadings(content)
-    const mdx = await serialize(content)
+    const menuData = Object.fromEntries(
+        fs
+            .readdirSync(folderPath, { withFileTypes: true })
+            .filter((item) => !item.isDirectory() && item.name.endsWith(".mdx"))
+            .map(
+                (mdxPath) =>
+                    [
+                        mdxPath.name.replace(".mdx", ""),
+                        matter(fs.readFileSync(path.join(folderPath, mdxPath.name))),
+                    ] as readonly [string, GrayMatterFile<Buffer>],
+            )
+            .map(([mdxPath, { content, data }]) => [
+                mdxPath,
+                {
+                    headings: [{ text: data.title, level: 1, href: mdxPath }, ...getHeadings(content, mdxPath)],
+                    content,
+                    data,
+                },
+            ]),
+    )
+    const currentPost = menuData[props?.params?.post as string]
+    const mdx = await serialize(currentPost.content)
 
     return {
         props: {
             mdx,
-            metaInformation,
-            headings,
+            metaInformation: currentPost.data,
+            headings: Object.entries(menuData).flatMap(([_, d]) => d.headings),
+            menuData,
         },
     }
 }
