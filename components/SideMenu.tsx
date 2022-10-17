@@ -3,15 +3,5 @@ type DrawerProps = {
 }
 
 export function SideMenu({ children }: DrawerProps) {
-    return (
-        <nav className='h-full flex flex-row justify-between'>
-            <section className='h-full shadow-xl'>
-                <article className='relative flex h-full flex-col overflow-y-auto p-10'>{children}</article>
-            </section>
-            <picture>
-                <source srcSet='/images/right.svg' media='(min-width: 1280px)' />
-                <img height='110vh' aria-hidden srcSet='' alt='' loading='lazy' className='h-full hidden xl:block' />
-            </picture>
-        </nav>
-    )
+    return <nav className='h-full bg-rightSide bg-no-repeat bg-contain bg-rightCut pl-4 pr-20 py-4'>{children}</nav>
 }

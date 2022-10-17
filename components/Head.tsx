@@ -23,3 +23,8 @@ export const Head = (props: HeadProps) => (
         <script type='application/ld+json'>{JSON.stringify(props.structuredData)}</script>
     </NextHead>
 )
+
+Head.defaultProps = {
+    twImg: "https://naucme.it/twitter.png",
+    fbImg: "https://naucme.it/og.png",
+}
