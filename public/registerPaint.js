@@ -13,6 +13,8 @@ registerPaint(
         id = Math.random().toString(36).substring(2, 7)
 
         paint(ctx, size, properties) {
+            ctx.imageSmoothingEnabled = false
+            ctx.shadowColor = "rgb(0,0,0)"
             console.count(this.id)
 
             const points = properties.get("--path").toString().split(",")
