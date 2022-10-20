@@ -18,6 +18,7 @@ export function ProfileDetailsForm({ name }: Props) {
             method='post'
             action={`/register?startPlan=${startPlan}`}
             className='mx-auto flex flex-col items-center justify-center gap-4 group mb-8 mt-8'
+            data-splitbee-event='Register form'
         >
             <PickPackage selectedPackage={startPlan} />
             <Typography variant='h2' component='h2' className='mt-8 text-center'>
