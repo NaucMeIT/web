@@ -53,7 +53,7 @@ const Home: NextPage = () => {
             >
                 <title>Nauč mě IT - Úvodní strana</title>
             </Head>
-            <Menu items={links} />
+            <Menu items={links} logoLink='/' />
             <SideDecoration />
 
             <main>
