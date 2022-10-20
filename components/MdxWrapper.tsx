@@ -1,10 +1,8 @@
 import { MDXProvider } from "@mdx-js/react"
 import { Typography } from "./Typography"
-import { Children, DetailedHTMLProps, HTMLAttributes } from "react"
+import { DetailedHTMLProps, HTMLAttributes } from "react"
 import { EmailLink } from "./EmailLink"
 import Link from "next/link"
-import { Menu } from "./Menu"
-import { SideMenu } from "./SideMenu"
 
 type MdxTypographyProps = Omit<React.ComponentProps<typeof Typography>, "className" | "variant" | "component">
 

@@ -46,7 +46,7 @@ export function getAndParseMdx(folderPath: string, filePath: string) {
 
 export function getDataFromParsedMdx<T extends { readonly title: string }>(mdxPath: string, content: string, data: T) {
     return {
-        headings: [{ text: data.title as string, level: 1, href: mdxPath }, ...getHeadings(content, mdxPath)],
+        headings: [{ text: data.title, level: 1, href: mdxPath }, ...getHeadings(content, mdxPath)],
         content,
         data,
     }
