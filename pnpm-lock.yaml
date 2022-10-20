@@ -10,6 +10,7 @@ specifiers:
   '@next/mdx': ^12.2.5
   '@prisma/client': ^4.4.0
   '@sendgrid/mail': ^7.7.0
+  '@splitbee/web': ^0.3.0
   '@types/eslint': ^8.4.6
   '@types/mdx-js__react': ^1.5.5
   '@types/node': ^18.7.18
@@ -58,6 +59,7 @@ dependencies:
   '@next/mdx': 12.2.5_hbo3tj2k5fhsh63l2ltjrymaq4
   '@prisma/client': 4.4.0_prisma@4.4.0
   '@sendgrid/mail': 7.7.0
+  '@splitbee/web': 0.3.0
   classnames: 2.3.2
   gray-matter: 4.0.3
   next: 12.2.5_biqbaboplfbrettd7655fr4n2y
@@ -1680,6 +1682,10 @@ packages:
       '@sendgrid/helpers': 7.7.0
     transitivePeerDependencies:
       - debug
+    dev: false
+
+  /@splitbee/web/0.3.0:
+    resolution: {integrity: sha512-jNPDKg0GQGa4jCaBc6JQsv0NHmBA80WCwZE49nFyhcbo32WF0GyqXeice7ZApy7OUHI16bAUAzm4MOQw3gvxfQ==}
     dev: false
 
   /@surma/rollup-plugin-off-main-thread/2.2.3:

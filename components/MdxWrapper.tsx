@@ -25,10 +25,14 @@ const LinkMdx = (props: any) => (
     <Typography
         variant='link'
         component={Link}
-        componentProps={{
-            href: props.href,
-            className: "text-highlight hover:text-primary",
-        }}
+        componentProps={
+            {
+                href: props.href,
+                className: "text-highlight hover:text-primary",
+                "data-splitbee-event": "External Link",
+                "data-splitbee-event-destination": `${props.children}`,
+            } as any
+        }
     >
         {props.children}
     </Typography>
