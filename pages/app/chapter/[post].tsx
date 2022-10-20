@@ -10,30 +10,17 @@ import { Typography } from "../../../components/Typography"
 import { Head } from "../../../components/Head"
 import { TableOfContents } from "../../../components/TableOfContents"
 
-type MenuData = Record<
-    string,
-    {
-        readonly headings: readonly {
-            readonly text: string
-            readonly level: number
-            readonly href: string
-        }[]
-        readonly content: string
-        readonly data: {
-            readonly title: string
-        }
-    }
->
-
 type PostProps = {
     readonly mdx: MDXRemoteProps
-    readonly menuData: MenuData
     readonly metaInformation: Record<string, string>
+    readonly headings: readonly {
+        readonly text: string
+        readonly level: number
+        readonly href: string
+    }[]
 }
 
-const Post: React.FC<PostProps> = ({ mdx, metaInformation, menuData }) => {
-    const headings = Object.entries(menuData).flatMap(([_, d]) => d.headings)
-
+const Post: React.FC<PostProps> = ({ mdx, metaInformation, headings }) => {
     return (
         <>
             <Head desc={metaInformation.abstract} url=''>
@@ -68,12 +55,13 @@ export const getStaticProps: GetStaticProps<PostProps> = async (props) => {
     )
     const currentPost = menuData[props?.params?.post as string]
     const mdx = await serialize(currentPost.content)
+    const headings = Object.entries(menuData).flatMap(([_, d]) => d.headings)
 
     return {
         props: {
             mdx,
             metaInformation: currentPost.data,
-            menuData,
+            headings,
         },
     }
 }
