@@ -13,7 +13,12 @@ function assert(parsedMdx: any): asserts parsedMdx is { readonly data: { readonl
     }
 }
 
-const getSourceId = (source: string) => source.toLocaleLowerCase().replaceAll(" ", "-")
+const getSourceId = (source: string) =>
+    source
+        .toLowerCase()
+        .replaceAll(" ", "-")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
 
 function getHeadings(source: string, path: string): HeadingsType {
     const headingLines = source.split("\n").filter((line) => {
