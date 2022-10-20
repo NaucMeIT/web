@@ -19,7 +19,12 @@ export function FormWrapper({ children, text }: FormWrapperProps) {
     }
 
     return (
-        <Form className='mx-auto flex w-10/12 flex-col gap-y-4 md:w-6/12 mt-36' method='post' onFocus={generateToken}>
+        <Form
+            data-splitbee-event='Contact us form'
+            className='mx-auto flex w-10/12 flex-col gap-y-4 md:w-6/12 mt-36'
+            method='post'
+            onFocus={generateToken}
+        >
             <span id='contact'>&nbsp;</span>
             <Typography variant='h2' component='h2' className='mx-auto mb-4'>
                 Napište nám
