@@ -14,6 +14,7 @@ interface MenuItemProps {
 
 interface MenuProps {
     readonly items: readonly MenuItemProps[]
+    readonly logoLink: string
 }
 
 function MenuItem({
@@ -45,7 +46,7 @@ function MenuItem({
     )
 }
 
-export function Menu({ items }: MenuProps) {
+export function Menu({ items, logoLink }: MenuProps) {
     return (
         <Disclosure as='nav' className='fixed top-0 z-20 w-screen bg-background/90 transition-all'>
             {({ open, close }) => (
@@ -54,7 +55,7 @@ export function Menu({ items }: MenuProps) {
                         <div className='relative flex h-16 items-center justify-between'>
                             <div className='flex flex-1 items-center justify-between lg:justify-around lg:items-stretch'>
                                 <div className='ml-3 flex flex-shrink-0 items-center'>
-                                    <Link href='#' className='flex items-center' aria-label='Logo Nauč mě IT'>
+                                    <Link href={logoLink} className='flex items-center' aria-label='Logo Nauč mě IT'>
                                         <Logo width={120} />
                                     </Link>
                                 </div>

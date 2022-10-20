@@ -34,7 +34,7 @@ const Home: NextPage = () => {
             >
                 <title>Nauč mě IT - Firmy</title>
             </Head>
-            <Menu items={links} />
+            <Menu items={links} logoLink='/' />
             <SideDecoration />
 
             <main>
