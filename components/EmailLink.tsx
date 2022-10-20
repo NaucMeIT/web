@@ -12,7 +12,13 @@ export function EmailLink({ email, className, subject }: EmailLinkProps) {
         <Typography
             className={`hover:text-primary ${className || ""}`}
             component={Link}
-            componentProps={{ href: `mailto:${email}?subject=${subject}` }}
+            componentProps={
+                {
+                    href: `mailto:${email}?subject=${subject}`,
+                    "data-splitbee-event": "External Link",
+                    "data-splitbee-event-destination": `${email}-${subject}`,
+                } as any
+            }
         >
             {email}
         </Typography>

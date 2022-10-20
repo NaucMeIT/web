@@ -55,13 +55,22 @@ export function Button({ className, disabled, children, theme, size, ...rest }: 
         } ${className ?? ""} ${"href" in rest && !!rest.href ? "pointer-events-none" : sizeClasses[size || "normal"]}`,
         style: polygonBorderVars,
     }
+    const hasHref = "href" in rest && !!rest.href
+    const splitBeeProps =
+        hasHref && isExternalUrl(rest.href)
+            ? {
+                  "data-splitbee-event": "External Link",
+                  "data-splitbee-event-destination": `${children}`,
+              }
+            : {}
 
-    return "href" in rest && !!rest.href ? (
+    return hasHref ? (
         <span {...props} tabIndex={-1}>
             <Link
                 {...rest}
                 className={`pointer-events-auto h-full items-center ${sizeClasses[size || "normal"]}`}
                 target={isExternalUrl(rest.href) ? "_blank" : "_self"}
+                {...splitBeeProps}
             >
                 {children}
             </Link>
@@ -84,14 +93,23 @@ export function SocialButton({ label, className, disabled, children, ...rest }: 
         } ${className ?? ""} items-center aspect-square`,
         style: hexagonBorderVars,
     }
+    const hasHref = "href" in rest && !!rest.href
+    const splitBeeProps =
+        hasHref && isExternalUrl(rest.href)
+            ? {
+                  "data-splitbee-event": "External Link",
+                  "data-splitbee-event-destination": `${children}`,
+              }
+            : {}
 
-    return "href" in rest && !!rest.href ? (
+    return hasHref ? (
         <span {...props} tabIndex={-1}>
             <Link
                 {...rest}
                 className='pointer-events-auto h-full items-center inline-flex py-2 px-5'
                 aria-label={label}
                 target={isExternalUrl(rest.href) ? "_blank" : "_self"}
+                {...splitBeeProps}
             >
                 {children}
             </Link>
