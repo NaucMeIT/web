@@ -2,7 +2,9 @@ import Link from "next/link"
 import { HeadingsType } from "../utils/mdx"
 import { Typography } from "./Typography"
 
-export function TableOfContents({ headings }: { readonly headings: HeadingsType }) {
+type Props = { readonly headings: HeadingsType }
+
+export function TableOfContents({ headings }: Props) {
     return (
         <>
             {headings.map((heading) => {
