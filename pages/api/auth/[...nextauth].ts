@@ -1,10 +1,11 @@
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
-import NextAuth from "next-auth"
+import NextAuth, { User } from "next-auth"
 import FacebookProvider from "next-auth/providers/facebook"
 import GoogleProvider from "next-auth/providers/google"
 import EmailProvider from "next-auth/providers/email"
 // import nodemailer from "nodemailer"
 import { prisma } from "../../../utils/prisma"
+import { Session } from "next-auth"
 
 /* const transporter = nodemailer.createTransport({
     host: process.env.EMAIL_SERVER_HOST,
@@ -39,7 +40,21 @@ export const authOptions = {
             clientSecret: process.env.FACEBOOK_CLIENT_SECRET || "",
         }),
     ],
-    adapter: PrismaAdapter(prisma) as any,
+    adapter: PrismaAdapter(prisma),
+    callbacks: {
+        async session({ session, user }: { readonly session: Session; readonly user: User }) {
+            const { planId } = user
+            const enhancedSession = {
+                ...session,
+                user: {
+                    ...session.user,
+                    planId,
+                },
+            }
+
+            return enhancedSession
+        },
+    },
 }
 
 export default NextAuth(authOptions)
