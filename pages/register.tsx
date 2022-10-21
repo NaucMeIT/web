@@ -31,16 +31,7 @@ const skipIfUserInfo = async (session: Session | null, startPlan: string | reado
         }
     }
 
-    const user = await prisma.user.findUnique({
-        where: {
-            email: session.user.email || "",
-        },
-        select: {
-            plan: true,
-        },
-    })
-
-    if (session.user?.name && user?.plan) {
+    if (session.user?.name && session.user?.planId) {
         return {
             redirect: {
                 destination: "/protected",
@@ -59,7 +50,6 @@ const skipIfUserInfo = async (session: Session | null, startPlan: string | reado
     return {
         props: {
             session,
-            user,
         },
     }
 }

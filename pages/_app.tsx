@@ -13,11 +13,7 @@ function MyApp({ Component, pageProps }: AppProps<{ readonly session: Session }>
             apiUrl: "/_hive",
         })
         splitbee.enableCookie()
-        // TODO: Move to custom hook, so that we can identify users if they are logged in
-        if (pageProps.session?.user?.email) {
-            splitbee.user.set({ userId: pageProps.session.user.email })
-        }
-    }, [pageProps.session?.user?.email])
+    })
 
     return (
         <SessionProvider session={pageProps.session}>
