@@ -62,6 +62,8 @@ export function Button({ className, disabled, children, theme, size, ...rest }: 
                   "data-splitbee-event": "External Link",
                   "data-splitbee-event-destination": rest.href,
               }
+            : hasHref
+            ? {}
             : {
                   "data-splitbee-event": "Button",
                   "data-splitbee-event-destination": `${children}`,
@@ -103,6 +105,8 @@ export function SocialButton({ label, className, disabled, children, ...rest }: 
                   "data-splitbee-event": "External Link",
                   "data-splitbee-event-destination": rest.href,
               }
+            : hasHref
+            ? {}
             : {
                   "data-splitbee-event": "Button",
                   "data-splitbee-event-destination": label,
