@@ -4,17 +4,14 @@ import { Button, SocialButton } from "../components/Button"
 import { DecoratedInput } from "../components/DecoratedInput"
 import Google from "../images/google.svg"
 import { Facebook } from "../components/icons"
-import { signIn } from "next-auth/react"
-import { FormEvent, useState } from "react"
+import { FormEvent } from "react"
 import { Typography } from "../components/Typography"
 import { EmailLink } from "../components/EmailLink"
-import { useRouter } from "next/router"
 import { Head } from "../components/Head"
 import { handle, json, redirect } from "next-runtime"
 import { unstable_getServerSession } from "next-auth"
 import { authOptions } from "./api/auth/[...nextauth]"
-
-type Status = "idle" | "signing" | "error" | "send"
+import { useTrackedUser } from "../hooks/useTrackedUser"
 
 export const getServerSideProps = handle<{}, {}, {}>({
     async get(context) {
@@ -27,39 +24,15 @@ export const getServerSideProps = handle<{}, {}, {}>({
 })
 
 const Sign: NextPage = () => {
-    const router = useRouter()
-    const startPlan = router.query.startPlan || "Basic"
-    const callbackUrl = `/register?startPlan=${startPlan}`
+    const [_, { sign, status }] = useTrackedUser()
 
-    const [status, setStatus] = useState<Status>("idle")
-    const signInWithFacebook = () => {
-        signIn("facebook", {
-            callbackUrl,
-        })
-    }
-
-    const signInWithGoogle = () => {
-        signIn("google", {
-            callbackUrl,
-        })
-    }
-
-    const signInWithEmail = async (e: FormEvent<HTMLFormElement>) => {
-        try {
-            setStatus("signing")
-            e.preventDefault()
-            // Typescript doesn't infer elements correctly
-            const email = (e.currentTarget.elements as Record<string, any>).email?.value
-            await signIn("email", {
-                callbackUrl,
-                email,
-                redirect: false,
-            })
-            setStatus("send")
-        } catch (e) {
-            console.error(e)
-            setStatus("error")
-        }
+    const signInWithFacebook = () => sign("facebook")
+    const signInWithGoogle = () => sign("google")
+    const signInWithEmail = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        // Typescript doesn't infer elements correctly
+        const email = (e.currentTarget.elements as Record<string, any>).email?.value
+        sign("email", email)
     }
 
     return (
@@ -67,8 +40,6 @@ const Sign: NextPage = () => {
             <Head
                 desc='Chceš získat práci v IT a nevíš, jak začít? Právě proto jsme tu my! Na naší platformě poskytujeme kurzy, díky kterým získáš práci v IT dřív než řekneš Java.'
                 url='https://naucme.it/'
-                twImg='https://naucme.it/twitter.png'
-                fbImg='https://naucme.it/og.png'
             >
                 <title>Nauč mě IT - Přihlášení</title>
             </Head>
