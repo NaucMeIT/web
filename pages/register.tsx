@@ -40,18 +40,17 @@ const skipIfUserInfo = async (session: Session | null, startPlan: string | reado
         }
     }
 
-    if (!startPlan) {
-        return {
-            redirect: {
-                destination: "?startPlan=Basic",
-                permanent: false,
-            },
-        }
-    }
     if (Array.isArray(startPlan)) {
         return {
             redirect: {
                 destination: `?startPlan=${startPlan[0]}`,
+                permanent: false,
+            },
+        }
+    } else if (!startPlan || !["Basic", "Core", "Standard", "Ultimate"].includes(startPlan as string)) {
+        return {
+            redirect: {
+                destination: "?startPlan=Basic",
                 permanent: false,
             },
         }
