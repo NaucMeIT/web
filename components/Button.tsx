@@ -60,9 +60,12 @@ export function Button({ className, disabled, children, theme, size, ...rest }: 
         hasHref && isExternalUrl(rest.href)
             ? {
                   "data-splitbee-event": "External Link",
+                  "data-splitbee-event-destination": rest.href,
+              }
+            : {
+                  "data-splitbee-event": "Button",
                   "data-splitbee-event-destination": `${children}`,
               }
-            : {}
 
     return hasHref ? (
         <span {...props} tabIndex={-1}>
@@ -76,7 +79,7 @@ export function Button({ className, disabled, children, theme, size, ...rest }: 
             </Link>
         </span>
     ) : (
-        <button {...props} {...rest}>
+        <button {...props} {...rest} {...splitBeeProps}>
             {children}
         </button>
     )
@@ -98,9 +101,12 @@ export function SocialButton({ label, className, disabled, children, ...rest }: 
         hasHref && isExternalUrl(rest.href)
             ? {
                   "data-splitbee-event": "External Link",
-                  "data-splitbee-event-destination": `${children}`,
+                  "data-splitbee-event-destination": rest.href,
               }
-            : {}
+            : {
+                  "data-splitbee-event": "Button",
+                  "data-splitbee-event-destination": label,
+              }
 
     return hasHref ? (
         <span {...props} tabIndex={-1}>
