@@ -1,7 +1,7 @@
 import { NextPage } from "next"
 import { Session, unstable_getServerSession } from "next-auth"
 import { log } from "next-axiom"
-import { handle, json, redirect } from "next-runtime"
+import { handle, json } from "next-runtime"
 import { Head } from "../components/Head"
 import { ProfileDetailsForm } from "../components/ProfileDetailsForm"
 import { authOptions } from "./api/auth/[...nextauth]"
@@ -41,10 +41,20 @@ const skipIfUserInfo = async (session: Session | null, startPlan: string | reado
     }
 
     if (!startPlan) {
-        return redirect("?startPlan=Basic")
+        return {
+            redirect: {
+                destination: "?startPlan=Basic",
+                permanent: false,
+            },
+        }
     }
     if (Array.isArray(startPlan)) {
-        return redirect(`?startPlan=${startPlan[0]}`)
+        return {
+            redirect: {
+                destination: `?startPlan=${startPlan[0]}`,
+                permanent: false,
+            },
+        }
     }
 
     return {
@@ -78,7 +88,12 @@ export const getServerSideProps = handle<{}, UrlQuery, FormData>({
                 data: { planId: dbPlan.id, name: body.name },
             })
 
-            return redirect("/protected")
+            return {
+                redirect: {
+                    destination: "/protected",
+                    permanent: false,
+                },
+            }
         } catch (e) {
             const error = typeof e === "string" ? e : JSON.stringify(e)
             log.error("Register error", { error: error, ...body })
