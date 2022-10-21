@@ -16,10 +16,12 @@ import { useTrackedUser } from "../hooks/useTrackedUser"
 export const getServerSideProps = handle<{}, {}, {}>({
     async get(context) {
         const session = await unstable_getServerSession(context.req, context.res, authOptions)
+        const startPlan = context.query?.startPlan
         if (session) {
             return {
                 redirect: {
-                    destination: "/protected",
+                    destination:
+                        session.user.planId && session.user.name ? "/protected" : `/register?startPlan=${startPlan}`,
                     permanent: false,
                 },
             }
