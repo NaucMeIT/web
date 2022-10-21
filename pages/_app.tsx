@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps<{ readonly session: Session }>
             apiUrl: "/_hive",
         })
         splitbee.enableCookie()
-    })
+    }, [])
 
     return (
         <SessionProvider session={pageProps.session}>
