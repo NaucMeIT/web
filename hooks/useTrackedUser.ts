@@ -25,6 +25,7 @@ export const useTrackedUser = () => {
     async function sign(provider: AllowedOauth): Promise<void>
     async function sign(provider: AllowedProviders, email?: string): Promise<void> {
         try {
+            splitbee.track(`${provider} sign attempt`)
             const isEmail = provider === "email"
             setSignStatus("signing")
             const signInStatus = await signIn(provider, {
@@ -38,7 +39,7 @@ export const useTrackedUser = () => {
             }
             setSignStatus(isEmail ? "send" : "oauth")
         } catch (e) {
-            typeof e === "string" && splitbee.track("Sign error", { signError: e, email })
+            typeof e === "string" && splitbee.track("Sign error", { signError: e, email, provider })
             setSignStatus("error")
         }
     }
