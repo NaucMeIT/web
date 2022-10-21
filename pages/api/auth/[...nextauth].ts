@@ -55,6 +55,12 @@ export const authOptions = {
             return enhancedSession
         },
     },
+    pages: {
+        signIn: "/sign",
+        signOut: "/",
+        error: "/sign", // Error code passed in query string as ?error=
+        verifyRequest: "/sign", // (used for check email message)
+    },
 }
 
 export default NextAuth(authOptions)

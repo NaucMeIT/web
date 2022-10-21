@@ -24,12 +24,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 
 const Protected: NextPage = () => {
-    const router = useRouter()
-    const logout = async () => {
-        const data = await signOut({ redirect: false, callbackUrl: "/sign" })
-        router.push(data.url)
-    }
-    const [user] = useTrackedUser()
+    const [user, { logout }] = useTrackedUser()
 
     return (
         <div>
