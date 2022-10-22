@@ -53,7 +53,9 @@ export const useTrackedUser = () => {
                 planId: data.user.planId,
             })
         }
-    }, [status, data?.user.email, data?.user.name, data?.user.planId])
+        // If status changes, we are sure that user data exist, should prevent duplicate calls
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [status])
 
     return [data?.user, { logout, sign, status: signStatus }] as const
 }
