@@ -1,8 +1,8 @@
 import { packages } from "../utils/packages"
 import { PackageBox } from "./PackageBox"
 import { Typography } from "./Typography"
+import splitbee from "@splitbee/web"
 
-// eslint-disable-next-line functional/no-mixed-type
 type Props = {
     readonly selectedPackage: string
 }
@@ -22,7 +22,12 @@ export function PickPackage({ selectedPackage }: Props) {
                         key={p.title}
                         {...p}
                         radioInput
-                        buttonProps={{ href: `/register?startPlan=${p.title}`, replace: true, scroll: false }}
+                        buttonProps={{
+                            href: `/register?startPlan=${p.title}`,
+                            replace: true,
+                            scroll: false,
+                            onClick: () => splitbee.track("Package change", { package: p.title }),
+                        }}
                         priority={selectedPackage === p.title}
                     />
                 ))}
