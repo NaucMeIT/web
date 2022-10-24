@@ -21,7 +21,9 @@ export const getServerSideProps = handle<{}, {}, {}>({
             return {
                 redirect: {
                     destination:
-                        session.user.planId && session.user.name ? "/protected" : `/register?startPlan=${startPlan}`,
+                        session.user.planId && session.user.name
+                            ? "/app/chapter/qa-0"
+                            : `/register?startPlan=${startPlan}`,
                     permanent: false,
                 },
             }

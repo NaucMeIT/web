@@ -1,8 +1,9 @@
 import { MDXProvider } from "@mdx-js/react"
+import Link from "next/link"
 import { Typography } from "./Typography"
 import { DetailedHTMLProps, HTMLAttributes } from "react"
 import { EmailLink } from "./EmailLink"
-import Link from "next/link"
+import { LinkedInBtn, FacebookBtn } from "./Button"
 
 type MdxTypographyProps = Omit<React.ComponentProps<typeof Typography>, "className" | "variant" | "component">
 
@@ -45,6 +46,8 @@ export const components = {
     p: Text,
     em: EmailLinkMdx,
     a: LinkMdx,
+    LinkedInBtn,
+    FacebookBtn,
 }
 
 export function MdxWrapper(props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>) {

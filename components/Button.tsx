@@ -1,6 +1,9 @@
 import Link, { LinkProps } from "next/link"
 import { isExternalUrl } from "../utils/string"
 import { typographyClasses } from "./Typography"
+import Image from "next/image"
+import LinkedIn from "../images/linkedin.svg"
+import { Facebook } from "./icons"
 
 type Props = {
     readonly theme: "main" | "off"
@@ -134,3 +137,15 @@ export function SocialButton({ label, className, disabled, children, ...rest }: 
 SocialButton.defaultProps = {
     type: "button",
 }
+
+export const LinkedInBtn = (props: { readonly href: string; readonly label: string }) => (
+    <SocialButton {...props}>
+        <Image src={LinkedIn} width={16} height={16} alt='LinkedIn' />
+    </SocialButton>
+)
+
+export const FacebookBtn = (props: { readonly href: string; readonly label: string }) => (
+    <SocialButton {...props}>
+        <Facebook width={16} />
+    </SocialButton>
+)
