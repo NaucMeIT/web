@@ -1,6 +1,6 @@
-import { Horizontal, Logo, Facebook } from "./icons"
+import { Horizontal, Logo } from "./icons"
 import { Typography } from "./Typography"
-import { FacebookBtn, LinkedInBtn, SocialButton } from "./Button"
+import { FacebookBtn, LinkedInBtn } from "./Button"
 import Link from "next/link"
 import { EmailLink } from "./EmailLink"
 
