@@ -1,9 +1,7 @@
 import { Horizontal, Logo, Facebook } from "./icons"
 import { Typography } from "./Typography"
-import { SocialButton } from "./Button"
+import { FacebookBtn, LinkedInBtn, SocialButton } from "./Button"
 import Link from "next/link"
-import Image from "next/image"
-import LinkedIn from "../images/linkedin.svg"
 import { EmailLink } from "./EmailLink"
 
 type FooterProps = {
@@ -25,15 +23,11 @@ export function Footer({ links }: FooterProps) {
                 <div className='flex w-full flex-col gap-4 md:w-auto'>
                     <Typography className='text-center'>Jsme na sociálních sítích!</Typography>
                     <div className='flex flex-row justify-center gap-6'>
-                        <SocialButton href='https://www.facebook.com/NaucMeIT' label='Facebook stránka - Nauč mě IT'>
-                            <Facebook width={16} />
-                        </SocialButton>
-                        <SocialButton
+                        <FacebookBtn href='https://www.facebook.com/NaucMeIT' label='Facebook stránka - Nauč mě IT' />
+                        <LinkedInBtn
                             href='https://www.linkedin.com/company/nauc-me-it/'
                             label='LinkedIn stránka - Nauč mě IT'
-                        >
-                            <Image src={LinkedIn} width={16} height={16} alt='LinkedIn' />
-                        </SocialButton>
+                        />
                     </div>
                 </div>
                 <div className='md:order-0 order-2 flex flex-col'>

@@ -1,9 +1,7 @@
-import { Facebook } from "./icons"
-import { SocialButton } from "./Button"
+import { FacebookBtn, LinkedInBtn } from "./Button"
 import { Typography } from "./Typography"
 import Link from "next/link"
 import Image, { StaticImageData } from "next/future/image"
-import LinkedIn from "../images/linkedin.svg"
 
 type Person = {
     readonly name: string
@@ -40,15 +38,11 @@ export function AboutUs({ people }: Props) {
                     </figure>
                 </Typography>
                 <div className='flex flex-row justify-center gap-x-10 xl:justify-start'>
-                    <SocialButton href='https://www.facebook.com/NaucMeIT' label='Facebook stránka - Nauč mě IT'>
-                        <Facebook width={16} />
-                    </SocialButton>
-                    <SocialButton
+                    <FacebookBtn href='https://www.facebook.com/NaucMeIT' label='Facebook stránka - Nauč mě IT' />
+                    <LinkedInBtn
                         href='https://www.linkedin.com/company/nauc-me-it/'
                         label='LinkedIn stránka - Nauč mě IT'
-                    >
-                        <Image src={LinkedIn} width={16} height={16} alt='LinkedIn' />
-                    </SocialButton>
+                    />
                 </div>
             </div>
             <div className='flex flex-col gap-4 md:grid lg:gap-20 md:grid-rows-3 md:grid-cols-2'>
