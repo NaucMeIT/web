@@ -34,7 +34,7 @@ const skipIfUserInfo = async (session: Session | null, startPlan: string | reado
     if (session.user?.name && session.user?.planId) {
         return {
             redirect: {
-                destination: "/protected",
+                destination: "/app/chapter/qa-0",
                 permanent: false,
             },
         }
@@ -89,7 +89,7 @@ export const getServerSideProps = handle<{}, UrlQuery, FormData>({
 
             return {
                 redirect: {
-                    destination: "/protected",
+                    destination: "/app/chapter/qa-0",
                     permanent: false,
                 },
             }

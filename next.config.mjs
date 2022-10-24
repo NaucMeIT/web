@@ -15,7 +15,7 @@ export default withMDX(
     withAxiom({
         reactStrictMode: true,
         eslint: {
-            dirs: ["pages", "components", "hooks", "utils"],
+            dirs: ["pages", "components", "hooks", "utils", "chapters", "types"],
         },
         experimental: {
             runtime: "experimental-edge",
