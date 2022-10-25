@@ -3,7 +3,11 @@ import { FormWrapper } from "./FormWrapper"
 
 export function ContactForm() {
     return (
-        <FormWrapper text='Nejste si něčím jistí nebo máte další otázky? Nebojte se nám zavolat, poslat zprávu nebo napsat na email:'>
+        <FormWrapper
+            className='w-10/12 md:w-6/12 mt-36'
+            type='index'
+            text='Nejste si něčím jistí nebo máte další otázky? Nebojte se nám zavolat, poslat zprávu nebo napsat na email:'
+        >
             <DecoratedInput name='name' type='text' label='Vaše jméno' placeholder='Zadejte své jméno' required />
             <div className='flex flex-col gap-9 md:flex-row'>
                 <DecoratedInput

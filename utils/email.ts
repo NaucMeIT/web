@@ -21,6 +21,26 @@ export type CompanyFormData = {
     readonly message: string | undefined
     readonly recaptcha: string
 }
+export type ErrorFormData = {
+    readonly email: string
+    readonly name: string
+    readonly message: string
+    readonly chapter: string
+    readonly recaptcha: string
+}
+
+export function formatErrorForm(data: ErrorFormData) {
+    return `
+Kapitola: ${data.chapter}
+
+${data.message}
+
+------------------------------------------------------
+
+Jméno: ${data.name}
+Email: ${data.email}
+    `
+}
 
 export function formatContactForm(data: ContactFormData) {
     return `
@@ -48,7 +68,7 @@ Email: ${data.email}
 `
 }
 
-async function sendEmail(replyTo: string, text: string, subject: string, recaptcha: string) {
+async function sendEmail(replyTo: string, text: string, subject: string, recaptcha: string, to: string) {
     if (!recaptcha) {
         log.error("No recaptcha token")
         // eslint-disable-next-line functional/no-throw-statement
@@ -67,7 +87,7 @@ async function sendEmail(replyTo: string, text: string, subject: string, recaptc
 
     await sendgrid.setApiKey(process.env.SENDGRID_API_KEY || "")
     await sendgrid.send({
-        to: "info@naucme.it",
+        to,
         from: "info@naucme.it",
         replyTo,
         subject,
@@ -77,7 +97,7 @@ async function sendEmail(replyTo: string, text: string, subject: string, recaptc
 
 export function handleEmail<
     T extends { readonly email: string; readonly message: string | undefined; readonly recaptcha: string },
->(formatFunction: (data: T) => string, subject: string): GetServerSideProps {
+>(formatFunction: (data: T) => string, subject: string, to = "info@naucme.it"): GetServerSideProps {
     return handle<PageProps, UrlQuery, T>({
         async get() {
             return json({})
@@ -86,12 +106,12 @@ export function handleEmail<
             try {
                 const message = formatFunction(body)
                 const { email, recaptcha } = body
-                await sendEmail(email, message, subject, recaptcha)
+                await sendEmail(email, message, subject, recaptcha, to)
                 log.info("Email sent", body)
                 return json({ status: "success" })
             } catch (e) {
-                const error = typeof e === "string" ? e : JSON.stringify(e)
-                log.error("Email error", { error: error, ...body })
+                const error = typeof e === "string" ? e : e instanceof Error ? e.message : JSON.stringify(e)
+                log.error("Email error", { error, ...body })
                 return json({ status: "error", error }, 500)
             }
         },
