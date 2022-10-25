@@ -18,10 +18,6 @@ export default withMDX(
             dirs: ["pages", "components", "hooks", "utils", "chapters", "types"],
         },
         experimental: {
-            runtime: "experimental-edge",
-            images: {
-                allowFutureImage: true,
-            },
             newNextLinkBehavior: true,
         },
         images: {
