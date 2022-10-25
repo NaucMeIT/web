@@ -1,7 +1,7 @@
 import { FacebookBtn, LinkedInBtn } from "./Button"
 import { Typography } from "./Typography"
 import Link from "next/link"
-import Image, { StaticImageData } from "next/future/image"
+import Image, { StaticImageData } from "next/image"
 
 type Person = {
     readonly name: string
