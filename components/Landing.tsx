@@ -1,4 +1,4 @@
-import Image from "next/future/image"
+import Image from "next/image"
 import { Button, ButtonProps } from "./Button"
 import { CatchPointProps, CatchPoints } from "./CatchPoints"
 import { Typography } from "./Typography"
