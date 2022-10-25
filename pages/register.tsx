@@ -90,7 +90,7 @@ export const getServerSideProps = handle<{}, UrlQuery, FormData>({
             return {
                 redirect: {
                     destination: "/app/chapter/qa-0",
-                    permanent: false,
+                    statusCode: 302,
                 },
             }
         } catch (e) {
