@@ -9,6 +9,7 @@ import { SideMenu } from "../../../components/SideMenu"
 import { Typography } from "../../../components/Typography"
 import { Head } from "../../../components/Head"
 import { TableOfContents } from "../../../components/TableOfContents"
+import { ReportErrorDialog } from "../../../components/ReportErrorDialog"
 
 type PostProps = {
     readonly mdx: MDXRemoteProps
@@ -33,11 +34,14 @@ const Post: React.FC<PostProps> = ({ mdx, metaInformation, headings }) => {
                         <TableOfContents headings={headings} />
                     </SideMenu>
                 </div>
-                <main className='row-end-7 xl:col-start-3 col-span-full row-start-3 xl:row-start-1 row-span-full overflow-auto px-10 xl:mt-20 pb-2 overscroll-none'>
-                    <Typography className='py-4' variant='h2' component='h1'>
-                        {metaInformation.title}
-                    </Typography>
-                    <MDXRemote {...mdx} components={components} />
+                <main className='flex flex-row justify-start items-start row-end-7 xl:col-start-3 col-span-full row-start-3 xl:row-start-1 row-span-full overflow-auto px-10 xl:mt-20 pb-2 overscroll-none'>
+                    <article className='max-w-prose'>
+                        <Typography className='py-4' variant='h2' component='h1'>
+                            {metaInformation.title}
+                        </Typography>
+                        <MDXRemote {...mdx} components={components} />
+                    </article>
+                    <ReportErrorDialog />
                 </main>
             </div>
         </>

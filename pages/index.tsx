@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextPage } from "next"
+import { NextPage } from "next"
 import { AboutUs } from "../components/AboutUs"
 import { CompanyBox } from "../components/CompanyBox"
 import { ContactForm } from "../components/ContactForm"
@@ -12,13 +12,7 @@ import { Courses } from "../components/Courses"
 import { Head } from "../components/Head"
 import img from "../images/petr_border.png"
 import { LearnEarn, PayConsultancy, Time, Worldwide } from "../components/icons"
-import { ContactFormData, handleEmail, formatContactForm } from "../utils/email"
 import { SideDecoration } from "../components/SideDecoration"
-
-export const getServerSideProps: GetServerSideProps = handleEmail<ContactFormData>(
-    formatContactForm,
-    "Dotaz na Nauč mě IT",
-)
 
 const links = [
     { title: "Jak to funguje?", link: "#how" },

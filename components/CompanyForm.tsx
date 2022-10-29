@@ -3,7 +3,11 @@ import { FormWrapper } from "./FormWrapper"
 
 export function CompanyForm() {
     return (
-        <FormWrapper text='Máte zájem o zaměstnance? Rádi byste si domluvili schůzku a zjistili podrobnosti? Zanechte nám na sebe kontakt případně napište na email:'>
+        <FormWrapper
+            className='w-10/12 md:w-6/12 mt-36'
+            type='company'
+            text='Máte zájem o zaměstnance? Rádi byste si domluvili schůzku a zjistili podrobnosti? Zanechte nám na sebe kontakt případně napište na email:'
+        >
             <DecoratedInput name='name' type='text' label='Vaše jméno' placeholder='Zadejte své jméno' required />
             <DecoratedInput name='company' type='text' label='Firma' placeholder='Zadejte jméno firmy' required />
             <div className='flex flex-col gap-9 md:flex-row'>
