@@ -10,7 +10,8 @@
         "prepare": "husky install",
         "postbuild": "next-sitemap --config next-sitemap.config.mjs",
         "prettier": "prettier --write '**/*.{js,jsx,md,json,css,scss,ts,tsx}'",
-        "preinstall": "npx only-allow pnpm"
+        "preinstall": "npx only-allow pnpm",
+        "postinstall": "npx prisma generate"
     },
     "dependencies": {
         "@headlessui/react": "^1.7.3",
