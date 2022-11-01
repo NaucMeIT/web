@@ -7,6 +7,7 @@ import { ProfileDetailsForm } from "../components/ProfileDetailsForm"
 import { authOptions } from "./api/auth/[...nextauth]"
 import { prisma } from "../utils/prisma"
 import { PaymentStatus, Plan } from "@prisma/client"
+import { allowedStatus } from "../utils/stripe"
 
 type PageProps = {
     readonly session: Session
@@ -22,7 +23,7 @@ type FormData = {
     readonly wantsToPay: "skip" | "pay"
 }
 
-const skipIfUserInfo = async (session: Session | null, startPlan: string | readonly string[] | undefined) => {
+const redirectToCorrectPage = async (session: Session | null, startPlan: string | readonly string[] | undefined) => {
     if (!session?.user) {
         return {
             redirect: {
@@ -35,7 +36,7 @@ const skipIfUserInfo = async (session: Session | null, startPlan: string | reado
     if (session.user?.name && session.user?.planId) {
         return {
             redirect: {
-                destination: "/app/chapter/qa-0",
+                destination: allowedStatus.includes(session.user.paymentStatus) ? "/app/chapter/qa-0" : "/pay",
                 permanent: false,
             },
         }
@@ -67,7 +68,7 @@ const skipIfUserInfo = async (session: Session | null, startPlan: string | reado
 export const getServerSideProps = handle<{}, UrlQuery, FormData>({
     async get(context) {
         const session = await unstable_getServerSession(context.req, context.res, authOptions)
-        return skipIfUserInfo(session, context.query?.startPlan)
+        return redirectToCorrectPage(session, context.query?.startPlan)
     },
     async post(context) {
         const {

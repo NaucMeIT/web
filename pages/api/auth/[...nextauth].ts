@@ -31,12 +31,13 @@ export const authOptions = {
     adapter: PrismaAdapter(prisma),
     callbacks: {
         async session({ session, user }: { readonly session: Session; readonly user: User }) {
-            const { planId } = user
+            const { planId, paymentStatus } = user
             const enhancedSession = {
                 ...session,
                 user: {
                     ...session.user,
                     planId,
+                    paymentStatus,
                 },
             }
 

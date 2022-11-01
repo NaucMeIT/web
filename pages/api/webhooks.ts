@@ -44,12 +44,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
                 console.log(`PaymentIntent for ${JSON.stringify(amount)} was successful!`)
                 handlePaymentIntentSucceeded(planId, userEmail)
                 break
-            case "payment_intent.created":
-                console.log(`PaymentIntent for ${JSON.stringify(amount)} was created!`)
+            case "payment_intent.processing":
+                console.log(`PaymentIntent for ${JSON.stringify(amount)} is in process!`)
                 handlePaymentIntentInProgress(userEmail)
                 break
-            case "charge.succeeded":
-                console.log(`Charge for ${JSON.stringify(amount)} succeeded!`)
+            case "payment_intent.payment_failed":
+                console.log(`PaymentIntent for ${JSON.stringify(amount)} failed!`)
+                handlePaymentIntentFailed(userEmail)
                 break
             default:
                 // Unexpected event type
@@ -80,5 +81,15 @@ async function handlePaymentIntentInProgress(email: string) {
     await prisma.user.update({
         where: { email },
         data: { paymentStatus: PaymentStatus.InProgress },
+    })
+}
+
+async function handlePaymentIntentFailed(email: string) {
+    const user = await prisma.user.findFirst({ where: { email } })
+    if (!user) return
+
+    await prisma.user.update({
+        where: { email },
+        data: { paymentStatus: PaymentStatus.Failed },
     })
 }
