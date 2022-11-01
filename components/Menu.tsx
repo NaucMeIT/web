@@ -1,5 +1,5 @@
 import { Disclosure, Transition } from "@headlessui/react"
-import { MenuIcon, XIcon } from "@heroicons/react/outline"
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
 import Link from "next/link"
 import { Typography } from "./Typography"
 import { Button } from "./Button"
@@ -64,9 +64,9 @@ export function Menu({ items, logoLink }: MenuProps) {
                                     <Disclosure.Button className='focus:ring-white z-10 inline-flex items-center justify-center p-2 text-highlight hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset'>
                                         <span className='sr-only'>Otevřít menu</span>
                                         {open ? (
-                                            <XIcon className='block h-10 w-10' aria-hidden='true' />
+                                            <XMarkIcon className='block h-10 w-10' aria-hidden='true' />
                                         ) : (
-                                            <MenuIcon className='block h-10 w-10' aria-hidden='true' />
+                                            <Bars3Icon className='block h-10 w-10' aria-hidden='true' />
                                         )}
                                     </Disclosure.Button>
                                 </div>
