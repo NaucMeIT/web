@@ -1,28 +1,34 @@
 import Image from "next/image"
 import type { NextPage } from "next"
+import { PaymentStatus } from "@prisma/client"
+import { handle, json } from "next-runtime"
+import { unstable_getServerSession } from "next-auth"
+import { FormEvent } from "react"
 import { Button, SocialButton } from "../components/Button"
 import { DecoratedInput } from "../components/DecoratedInput"
 import Google from "../images/google.svg"
 import { Facebook } from "../components/icons"
-import { FormEvent } from "react"
 import { Typography } from "../components/Typography"
 import { EmailLink } from "../components/EmailLink"
 import { Head } from "../components/Head"
-import { handle, json } from "next-runtime"
-import { unstable_getServerSession } from "next-auth"
-import { authOptions } from "./api/auth/[...nextauth]"
 import { useTrackedUser } from "../hooks/useTrackedUser"
+import { authOptions } from "./api/auth/[...nextauth]"
+import { allowedStatus } from "../utils/stripe"
 
 export const getServerSideProps = handle<{}, {}, {}>({
     async get(context) {
         const session = await unstable_getServerSession(context.req, context.res, authOptions)
         const startPlan = context.query?.startPlan
         if (session) {
+            const { planId, name, paymentStatus } = session.user
+
             return {
                 redirect: {
                     destination:
-                        session.user.planId && session.user.name
-                            ? "/app/chapter/qa-0"
+                        planId && name
+                            ? allowedStatus.includes(paymentStatus)
+                                ? "/app/chapter/qa-0"
+                                : "/pay"
                             : `/register?startPlan=${startPlan}`,
                     permanent: false,
                 },

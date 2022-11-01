@@ -10,6 +10,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum PaymentStatus {
+  NotNecessary
+  Awaiting
+  InProgress
+  Done
+  Failed
+}
+
 model Account {
   id                 String  @id @default(cuid())
   userId             String
@@ -40,15 +48,17 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String          @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?         @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
-  plan          Plan? @relation(fields: [planId], references: [id])
+  plan          Plan?           @relation(fields: [planId], references: [id])
   planId        String?
+  credits       Int             @default(0)
+  paymentStatus PaymentStatus   @default(NotNecessary)
 }
 
 model VerificationToken {
@@ -65,4 +75,5 @@ model Plan {
   price     Int
   benefits  String[]
   pickedBy  User[]
+  credits   Int      @default(0)
 }

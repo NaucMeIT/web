@@ -6,7 +6,8 @@ import { Head } from "../components/Head"
 import { ProfileDetailsForm } from "../components/ProfileDetailsForm"
 import { authOptions } from "./api/auth/[...nextauth]"
 import { prisma } from "../utils/prisma"
-import { Plan } from "@prisma/client"
+import { PaymentStatus, Plan } from "@prisma/client"
+import { allowedStatus } from "../utils/stripe"
 
 type PageProps = {
     readonly session: Session
@@ -19,9 +20,10 @@ type UrlQuery = {
 }
 type FormData = {
     readonly name: string
+    readonly wantsToPay: "skip" | "pay"
 }
 
-const skipIfUserInfo = async (session: Session | null, startPlan: string | readonly string[] | undefined) => {
+const redirectToCorrectPage = async (session: Session | null, startPlan: string | readonly string[] | undefined) => {
     if (!session?.user) {
         return {
             redirect: {
@@ -34,7 +36,7 @@ const skipIfUserInfo = async (session: Session | null, startPlan: string | reado
     if (session.user?.name && session.user?.planId) {
         return {
             redirect: {
-                destination: "/app/chapter/qa-0",
+                destination: allowedStatus.includes(session.user.paymentStatus) ? "/app/chapter/qa-0" : "/pay",
                 permanent: false,
             },
         }
@@ -66,7 +68,7 @@ const skipIfUserInfo = async (session: Session | null, startPlan: string | reado
 export const getServerSideProps = handle<{}, UrlQuery, FormData>({
     async get(context) {
         const session = await unstable_getServerSession(context.req, context.res, authOptions)
-        return skipIfUserInfo(session, context.query?.startPlan)
+        return redirectToCorrectPage(session, context.query?.startPlan)
     },
     async post(context) {
         const {
@@ -82,14 +84,19 @@ export const getServerSideProps = handle<{}, UrlQuery, FormData>({
             }
 
             const session = await unstable_getServerSession(context.req, context.res, authOptions)
+            const isPaidPlan = dbPlan.price !== 0
             await prisma.user.update({
                 where: { email: session?.user?.email || "" },
-                data: { planId: dbPlan.id, name: body.name },
+                data: {
+                    planId: dbPlan.id,
+                    name: body.name,
+                    paymentStatus: isPaidPlan ? PaymentStatus.Awaiting : PaymentStatus.NotNecessary,
+                },
             })
 
             return {
                 redirect: {
-                    destination: "/app/chapter/qa-0",
+                    destination: body.wantsToPay === "skip" ? "/app/chapter/qa-0" : "/pay",
                     statusCode: 302,
                 },
             }
