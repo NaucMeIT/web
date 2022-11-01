@@ -38,8 +38,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const stripe = new createStripe(process.env.STRIPE_SECRET_KEY || "", { apiVersion: "2022-08-01", typescript: true })
     const session = await unstable_getServerSession(context.req, context.res, authOptions)
     const planId = session?.user.planId
+    const userEmail = session?.user.email
 
-    if (!planId) {
+    if (!planId || !userEmail) {
         return registerRedirect
     }
 
@@ -56,6 +57,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         currency: "czk",
         automatic_payment_methods: {
             enabled: true,
+        },
+        receipt_email: userEmail,
+        metadata: {
+            planId,
+            userEmail,
         },
     })
 
