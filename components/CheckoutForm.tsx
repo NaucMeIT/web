@@ -52,8 +52,7 @@ export default function CheckoutForm() {
         const { error } = await stripe.confirmPayment({
             elements,
             confirmParams: {
-                // Make sure to change this to your payment completion page
-                return_url: "/app/chapter/qa-0",
+                return_url: `${window.location.origin}/app/chapter/qa-0`,
             },
         })
 
@@ -73,7 +72,7 @@ export default function CheckoutForm() {
 
     return (
         <form id='payment-form' className='group' onSubmit={handleSubmit}>
-            <PaymentElement id='payment-element' className='h-72' />
+            <PaymentElement id='payment-element' />
             <div className='flex flex-row-reverse gap-4 justify-between mt-4'>
                 <Button
                     disabled={isLoading || !stripe || !elements}
