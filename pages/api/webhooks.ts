@@ -41,16 +41,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
         switch (event.type) {
             case "payment_intent.succeeded":
-                console.log(`PaymentIntent for ${JSON.stringify(amount)} was successful!`)
                 handlePaymentIntentSucceeded(planId, userEmail)
+                console.log(`PaymentIntent for ${amount} was successful!`)
                 break
             case "payment_intent.processing":
-                console.log(`PaymentIntent for ${JSON.stringify(amount)} is in process!`)
                 handlePaymentIntentInProgress(userEmail)
+                console.log(`PaymentIntent for ${amount} is in process!`)
                 break
             case "payment_intent.payment_failed":
-                console.log(`PaymentIntent for ${JSON.stringify(amount)} failed!`)
                 handlePaymentIntentFailed(userEmail)
+                console.log(`PaymentIntent for ${amount} failed!`)
                 break
             default:
                 // Unexpected event type

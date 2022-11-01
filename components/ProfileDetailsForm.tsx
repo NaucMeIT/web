@@ -11,6 +11,7 @@ type Props = {
 export function ProfileDetailsForm({ name }: Props) {
     const router = useRouter()
     const startPlan = router.query.startPlan as string
+    const isUnpaid = startPlan === "Basic"
 
     return (
         // Can't be <Form> because it doesn't follow redirect, see https://github.com/smeijer/next-runtime/issues/51
@@ -34,6 +35,8 @@ export function ProfileDetailsForm({ name }: Props) {
                     name='wantsToPay'
                     value='pay'
                     className='w-fit group-invalid:opacity-50 group-invalid:pointer-events-none'
+                    disabled={isUnpaid}
+                    tabIndex={isUnpaid ? -1 : 0}
                 >
                     Zaplatit
                 </Button>

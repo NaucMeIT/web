@@ -35,9 +35,9 @@ const registerRedirect = {
         statusCode: 302,
     },
 } as const
-const payRedirect = {
+const appRedirect = {
     redirect: {
-        destination: "/pay",
+        destination: "/app/chapter/qa-0",
         statusCode: 302,
     },
 } as const
@@ -54,7 +54,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
 
     if (paymentStatus !== PaymentStatus.Awaiting) {
-        return payRedirect
+        return appRedirect
     }
 
     const plan = await getPlan(planId)
