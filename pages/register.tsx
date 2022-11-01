@@ -6,7 +6,7 @@ import { Head } from "../components/Head"
 import { ProfileDetailsForm } from "../components/ProfileDetailsForm"
 import { authOptions } from "./api/auth/[...nextauth]"
 import { prisma } from "../utils/prisma"
-import { Plan } from "@prisma/client"
+import { PaymentStatus, Plan } from "@prisma/client"
 
 type PageProps = {
     readonly session: Session
@@ -82,9 +82,14 @@ export const getServerSideProps = handle<{}, UrlQuery, FormData>({
             }
 
             const session = await unstable_getServerSession(context.req, context.res, authOptions)
+            const isPaidPlan = dbPlan.price !== 0
             await prisma.user.update({
                 where: { email: session?.user?.email || "" },
-                data: { planId: dbPlan.id, name: body.name },
+                data: {
+                    planId: dbPlan.id,
+                    name: body.name,
+                    paymentStatus: isPaidPlan ? PaymentStatus.Awaiting : PaymentStatus.NotNecessary,
+                },
             })
 
             return {
