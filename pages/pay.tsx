@@ -24,7 +24,7 @@ const getPlan = async (planId: string) => {
 }
 
 const calculatePlanPrice = async (plan: Plan) => {
-    return plan.price
+    return plan.price * 100
 }
 
 const registerRedirect = {
@@ -79,11 +79,9 @@ const Pay: NextPage<{ readonly plan: Plan; readonly clientSecret: string }> = ({
             fontFamily: "Poppins, system-ui, sans-serif",
             spacingUnit: "0.3rem",
             borderRadius: "0px",
-            borderColor: "#eb48f7",
             colorIconCardCvc: "#eb48f7",
             colorIconCardCvcError: "#df1b41",
             colorIcon: "#eb48f7",
-            colorIconSelectArrow: "#eb48f7",
         },
     } as const
     const options = {
