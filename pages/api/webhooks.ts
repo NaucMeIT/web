@@ -32,27 +32,27 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         const signature = req.headers["stripe-signature"]
 
         const event = await stripe.webhooks.constructEventAsync(req.body, signature as string, endpointSecret)
-        const paymentIntent = event.data.object as { readonly amount: number }
-        const { planId, userEmail } = (event.data as Record<string, any>).metadata
+        const paymentIntent = event.data.object as Record<string, any>
+        const { planId, userEmail, amount } = paymentIntent
 
         switch (event.type) {
             case "payment_intent.succeeded":
-                console.log(`PaymentIntent for ${JSON.stringify(paymentIntent.amount)} was successful!`)
+                console.log(`PaymentIntent for ${JSON.stringify(amount)} was successful!`)
                 handlePaymentIntentSucceeded(planId, userEmail)
                 break
             case "payment_intent.created":
-                console.log(`PaymentIntent for ${JSON.stringify(paymentIntent.amount)} was created!`)
+                console.log(`PaymentIntent for ${JSON.stringify(amount)} was created!`)
                 handlePaymentIntentInProgress(userEmail)
                 break
             case "charge.succeeded":
-                console.log(`Charge for ${JSON.stringify(paymentIntent.amount)} succeeded!`)
+                console.log(`Charge for ${JSON.stringify(amount)} succeeded!`)
                 break
             default:
                 // Unexpected event type
                 log.error(`Unexpected Stripe event type ${event.type}.`)
         }
-    } catch (e) {
-        return res.status(400).json({ error: "Webhook error" })
+    } catch (error) {
+        return res.status(400).json({ error })
     }
 
     res.status(200).json({})
