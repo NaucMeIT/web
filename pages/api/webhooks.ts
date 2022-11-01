@@ -41,15 +41,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
         switch (event.type) {
             case "payment_intent.succeeded":
-                handlePaymentIntentSucceeded(planId, userEmail)
+                await handlePaymentIntentSucceeded(planId, userEmail)
                 console.log(`PaymentIntent for ${amount} was successful!`)
                 break
             case "payment_intent.processing":
-                handlePaymentIntentInProgress(userEmail)
+                await handlePaymentIntentInProgress(userEmail)
                 console.log(`PaymentIntent for ${amount} is in process!`)
                 break
             case "payment_intent.payment_failed":
-                handlePaymentIntentFailed(userEmail)
+                await handlePaymentIntentFailed(userEmail)
                 console.log(`PaymentIntent for ${amount} failed!`)
                 break
             default:
