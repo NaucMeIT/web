@@ -6,11 +6,12 @@ import CheckoutForm from "../components/CheckoutForm"
 import { NextPage } from "next"
 import { Typography } from "../components/Typography"
 import type { GetServerSideProps } from "next"
-import { Plan } from "@prisma/client"
+import { PaymentStatus, Plan } from "@prisma/client"
 import { prisma } from "../utils/prisma"
 import { unstable_getServerSession } from "next-auth"
 import { authOptions } from "./api/auth/[...nextauth]"
 import { Head } from "../components/Head"
+import { allowedStatus } from "../utils/stripe"
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "")
 
@@ -34,15 +35,26 @@ const registerRedirect = {
         statusCode: 302,
     },
 } as const
+const payRedirect = {
+    redirect: {
+        destination: "/pay",
+        statusCode: 302,
+    },
+} as const
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const stripe = new createStripe(process.env.STRIPE_SECRET_KEY || "", { apiVersion: "2022-08-01", typescript: true })
     const session = await unstable_getServerSession(context.req, context.res, authOptions)
     const planId = session?.user.planId
     const userEmail = session?.user.email
+    const paymentStatus = session?.user.paymentStatus
 
-    if (!planId || !userEmail) {
+    if (!planId || !userEmail || !paymentStatus) {
         return registerRedirect
+    }
+
+    if (paymentStatus !== PaymentStatus.Awaiting) {
+        return payRedirect
     }
 
     const plan = await getPlan(planId)
