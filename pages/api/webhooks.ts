@@ -34,7 +34,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
         const event = stripe.webhooks.constructEvent(req.body, signature as string, endpointSecret)
         const paymentIntent = event.data.object as Record<string, any>
-        const { planId, userEmail, amount } = paymentIntent
+        const {
+            metadata: { planId, userEmail },
+            amount,
+        } = paymentIntent
 
         switch (event.type) {
             case "payment_intent.succeeded":
