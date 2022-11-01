@@ -31,7 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     try {
         const signature = req.headers["stripe-signature"]
 
-        const event = await stripe.webhooks.constructEventAsync(req.body, signature as string, endpointSecret)
+        const event = stripe.webhooks.constructEvent(req.body, signature as string, endpointSecret)
         const paymentIntent = event.data.object as Record<string, any>
         const { planId, userEmail, amount } = paymentIntent
 

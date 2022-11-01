@@ -10,6 +10,7 @@ import { Plan } from "@prisma/client"
 import { prisma } from "../utils/prisma"
 import { unstable_getServerSession } from "next-auth"
 import { authOptions } from "./api/auth/[...nextauth]"
+import { Head } from "../components/Head"
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "")
 
@@ -97,6 +98,14 @@ const Pay: NextPage<{ readonly plan: Plan; readonly clientSecret: string }> = ({
 
     return (
         <div className='w-full max-w-lg mx-auto px-4 min-h-screen flex flex-col justify-center'>
+            <Head
+                desc='Chceš získat práci v IT a nevíš, jak začít? Právě proto jsme tu my! Na naší platformě poskytujeme kurzy, díky kterým získáš práci v IT dřív než řekneš Java.'
+                url='https://naucme.it/'
+                twImg='https://naucme.it/twitter.png'
+                fbImg='https://naucme.it/og.png'
+            >
+                <title>Nauč mě IT - Platba</title>
+            </Head>
             <Typography variant='h3' className='mb-4 text-center'>
                 Vybrán plán {plan.name}
             </Typography>

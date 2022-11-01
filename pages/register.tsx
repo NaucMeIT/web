@@ -19,6 +19,7 @@ type UrlQuery = {
 }
 type FormData = {
     readonly name: string
+    readonly wantsToPay: "skip" | "pay"
 }
 
 const skipIfUserInfo = async (session: Session | null, startPlan: string | readonly string[] | undefined) => {
@@ -94,7 +95,7 @@ export const getServerSideProps = handle<{}, UrlQuery, FormData>({
 
             return {
                 redirect: {
-                    destination: "/app/chapter/qa-0",
+                    destination: body.wantsToPay === "skip" ? "/app/chapter/qa-0" : "/pay",
                     statusCode: 302,
                 },
             }
