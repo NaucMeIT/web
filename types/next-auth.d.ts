@@ -1,4 +1,5 @@
 import NextAuth from "next-auth"
+import { PaymentStatus } from "@prisma/client"
 
 declare module "next-auth" {
     /**
@@ -9,9 +10,11 @@ declare module "next-auth" {
             readonly planId: string | null
             readonly email: string | null
             readonly name: string | null
+            readonly paymentStatus: PaymentStatus
         }
     }
     interface User {
         readonly planId: string
+        readonly paymentStatus: PaymentStatus
     }
 }

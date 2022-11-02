@@ -10,7 +10,8 @@
         "prepare": "husky install",
         "postbuild": "next-sitemap --config next-sitemap.config.mjs",
         "prettier": "prettier --write '**/*.{js,jsx,md,json,css,scss,ts,tsx}'",
-        "preinstall": "npx only-allow pnpm"
+        "preinstall": "npx only-allow pnpm",
+        "postinstall": "npx prisma generate"
     },
     "dependencies": {
         "@headlessui/react": "^1.7.3",
@@ -24,6 +25,9 @@
         "@radix-ui/react-dialog": "^1.0.2",
         "@sendgrid/mail": "^7.7.0",
         "@splitbee/web": "^0.3.0",
+        "@stripe/react-stripe-js": "^1.14.1",
+        "@stripe/stripe-js": "^1.42.0",
+        "body-parser": "^1.20.1",
         "gray-matter": "^4.0.3",
         "next": "canary",
         "next-auth": "^4.15.0",
@@ -33,9 +37,11 @@
         "next-runtime": "^2.4.1",
         "nodemailer": "^6.8.0",
         "react": "^18.2.0",
-        "react-dom": "^18.2.0"
+        "react-dom": "^18.2.0",
+        "stripe": "^10.15.0"
     },
     "devDependencies": {
+        "@types/body-parser": "^1.19.2",
         "@types/eslint": "^8.4.8",
         "@types/mdx-js__react": "^1.5.5",
         "@types/node": "^18.11.7",
