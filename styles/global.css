@@ -89,7 +89,3 @@ span[id] {
     position: relative;
     z-index: -1;
 }
-
-.grecaptcha-badge {
-    visibility: hidden;
-}

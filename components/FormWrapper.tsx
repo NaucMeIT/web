@@ -2,9 +2,9 @@ import { Form, useFormSubmit } from "next-runtime/form"
 import { Button } from "./Button"
 import { Typography } from "./Typography"
 import { EmailLink } from "./EmailLink"
-import { useRecaptcha } from "../hooks/useRecaptcha"
 import { EmailThanks } from "./EmailThanks"
 import { useId } from "react"
+import Turnstile from "react-turnstile"
 
 // eslint-disable-next-line functional/no-mixed-type
 type FormWrapperProps = {
@@ -20,7 +20,6 @@ export function FormWrapper({ children, text, type, className, onSuccess }: Form
     const formId = useId()
     const formName = `${type}-${formId}`
     const { isSubmitting, isSuccess, isError } = useFormSubmit(formName)
-    const [token, generateToken] = useRecaptcha()
 
     return (
         <Form
@@ -28,8 +27,11 @@ export function FormWrapper({ children, text, type, className, onSuccess }: Form
             className={`mx-auto flex flex-col gap-y-4 ${className || ""}`}
             method='post'
             action={`/email/${type}`}
-            onFocus={generateToken}
-            onSuccess={() => onSuccess?.()}
+            onSuccess={() => {
+                // Reset can be empty, needs fix PR for npm package
+                ;(window.turnstile.reset as () => unknown)()
+                onSuccess?.()
+            }}
             name={formName}
         >
             {isSuccess ? (
@@ -60,15 +62,18 @@ export function FormWrapper({ children, text, type, className, onSuccess }: Form
             )}
             {children}
 
-            <input type='hidden' id='recaptcha' name='recaptcha' value={token} />
-            <Typography variant='form' className='text-center'>
-                Tato stránka je chráněna reCAPTCHA, platí
-                <a href='https://policies.google.com/privacy'> zásady ochrany osobních údajů</a> a
-                <a href='https://policies.google.com/terms'> smluvní podmínky</a> společnosti Google.
-            </Typography>
-            <Button size='large' type='submit' theme='off' className='w-fit self-end' disabled={isSubmitting}>
-                {isSubmitting ? "Odesílám" : "Odeslat zprávu"}
-            </Button>
+            <div className='flex flex-row justify-between'>
+                <Turnstile
+                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_API_KEY || ""}
+                    responseFieldName='recaptcha'
+                    onVerify={() => undefined}
+                    theme='dark'
+                    action={type}
+                />
+                <Button size='large' type='submit' theme='off' className='w-fit self-end' disabled={isSubmitting}>
+                    {isSubmitting ? "Odesílám" : "Odeslat zprávu"}
+                </Button>
+            </div>
         </Form>
     )
 }

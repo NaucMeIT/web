@@ -10,7 +10,7 @@ type Props = {
 
 export function ProfileDetailsForm({ name }: Props) {
     const router = useRouter()
-    const startPlan = router.query.startPlan as string
+    const startPlan = router?.query.startPlan as string
     const isUnpaid = startPlan === "Basic"
 
     return (
