@@ -62,14 +62,19 @@ export function FormWrapper({ children, text, type, className, onSuccess }: Form
             )}
             {children}
 
-            <Turnstile
-                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_API_KEY || ""}
-                responseFieldName='recaptcha'
-                onVerify={() => undefined}
-            />
-            <Button size='large' type='submit' theme='off' className='w-fit self-end' disabled={isSubmitting}>
-                {isSubmitting ? "Odesílám" : "Odeslat zprávu"}
-            </Button>
+            <div className='flex flex-row justify-between'>
+                <Turnstile
+                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_API_KEY || ""}
+                    responseFieldName='recaptcha'
+                    onVerify={() => undefined}
+                    theme='dark'
+                    action={type}
+                    className=''
+                />
+                <Button size='large' type='submit' theme='off' className='w-fit self-end' disabled={isSubmitting}>
+                    {isSubmitting ? "Odesílám" : "Odeslat zprávu"}
+                </Button>
+            </div>
         </Form>
     )
 }
