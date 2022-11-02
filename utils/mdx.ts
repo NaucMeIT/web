@@ -1,6 +1,7 @@
 import path from "path"
 import fs from "fs"
 import matter from "gray-matter"
+import { getSourceId } from "./string"
 
 type Ext = string
 type Extension = `.${Ext}`
@@ -12,13 +13,6 @@ function assert(parsedMdx: any): asserts parsedMdx is { readonly data: { readonl
         throw new Error("Title is missing in ", parsedMdx)
     }
 }
-
-const getSourceId = (source: string) =>
-    source
-        .toLowerCase()
-        .replaceAll(" ", "-")
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
 
 function getHeadings(source: string, path: string): HeadingsType {
     const headingLines = source.split("\n").filter((line) => {
@@ -51,7 +45,10 @@ export function getAndParseMdx(folderPath: string, filePath: string) {
 
 export function getDataFromParsedMdx<T extends { readonly title: string }>(mdxPath: string, content: string, data: T) {
     return {
-        headings: [{ text: data.title, level: 1, href: mdxPath }, ...getHeadings(content, mdxPath)],
+        headings: [
+            { text: data.title, level: 1, href: `${mdxPath}#${getSourceId(data.title)}` },
+            ...getHeadings(content, mdxPath),
+        ],
         content,
         data,
     }
