@@ -28,6 +28,7 @@
         "@stripe/react-stripe-js": "^1.14.1",
         "@stripe/stripe-js": "^1.42.1",
         "body-parser": "^1.20.1",
+        "form-data": "^4.0.0",
         "gray-matter": "^4.0.3",
         "next": "canary",
         "next-auth": "^4.15.0",

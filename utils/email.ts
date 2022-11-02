@@ -2,6 +2,7 @@ import sendgrid from "@sendgrid/mail"
 import { GetServerSideProps } from "next"
 import { handle, json } from "next-runtime"
 import { log } from "next-axiom"
+import FormData from "form-data"
 
 type PageProps = {}
 type UrlQuery = {}
@@ -81,7 +82,7 @@ async function sendEmail(replyTo: string, text: string, subject: string, recaptc
 
     const verify = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
         method: "POST",
-        body: formData,
+        body: formData as unknown as BodyInit,
     }).then((res) => res.json())
     if (!verify.success) {
         // eslint-disable-next-line functional/no-throw-statement

@@ -28,6 +28,7 @@ specifiers:
   eslint-config-next: canary
   eslint-config-prettier: ^8.5.0
   eslint-plugin-functional: ^4.4.1
+  form-data: ^4.0.0
   gray-matter: ^4.0.3
   husky: ^8.0.1
   lint-staged: ^13.0.3
@@ -66,6 +67,7 @@ dependencies:
   '@stripe/react-stripe-js': 1.14.1_3dz37hcayidfnx3wdev33ig6pe
   '@stripe/stripe-js': 1.42.1
   body-parser: 1.20.1
+  form-data: 4.0.0
   gray-matter: 4.0.3
   next: 13.0.2-canary.0_biqbaboplfbrettd7655fr4n2y
   next-auth: 4.15.0_kqa3lruwyoxjmlllppxacfbmua
@@ -2193,6 +2195,15 @@ packages:
 
   /form-data/3.0.1:
     resolution: {integrity: sha512-RHkBKtLWUVwd7SqRIvCZMEvAMoGUp0XU+seQiZejj0COz3RI3hWP4sCv3gZWWLjJTd7rGwcsF5eKZGii0r/hbg==}
+    engines: {node: '>= 6'}
+    dependencies:
+      asynckit: 0.4.0
+      combined-stream: 1.0.8
+      mime-types: 2.1.35
+    dev: false
+
+  /form-data/4.0.0:
+    resolution: {integrity: sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==}
     engines: {node: '>= 6'}
     dependencies:
       asynckit: 0.4.0
