@@ -1,0 +1,240 @@
+---
+title: Základy programování
+abstract: Že tester nemusí umět programovat? Měl by. Jen jinak než vývojáři. Ulehčí mu to práci a bude na míle daleko před ostatními!
+---
+
+V této kapitole zabrousíme do tajů programování. Možná si říkáš: „musí tester umět programovat?” Můžeš se setkat s názorem, že ne. Ale dle nás by manuální tester webových aplikací měl znát alespoň základy programování. Nemusí nutně umět „dělat” aplikace. Ale měl by pochopit základní pojmy. Zaprvé nakoukne pod pokličku vývojářům, což může usnadnit komunikaci. Za druhé mu to může usnadnit práci - v DevTools bude moct využít potenciál záložky console nebo si vytvářet snippety, malé scriptíky v DevTools. Samozřejmě to může ovlivnit i testerův další osobní rozvoj. Například automatické testy se programují. Existují nástroje, ve kterých můžeš testy naklikat a ony kód poté vygenerují. Nejsou ale příliš rozšířené. Proto ber tuto kapitolu s nadhledem. Když shledáš, že již chápeš podstatu a další cvičení jsou náročná například po matematické stránce, tak je neváhej přeskočit a jdi k dalšímu tématu. Nemá smysl se trápit, když chápeš pojem.
+
+Slovo programování zní složitě samo osobě. Začít s ním už tuplem vypadá jako věda. Existuje spousta programovacích jazyků, které se liší v syntaxi (zápisu kódu), v přístupu k řešení problémů nebo využití. Na stránce Gymnázia Vlašim se můše podívat na [rozdělení jazyků](http://www.ivt.mzf.cz/seminar/14-programovaci-jazyky/). Rozdíl mezi vyššími a nižšími jazyky zkráceně popisuje platforma [Microsoft Learn](https://learn.microsoft.com/cs-cz/training/modules/web-development-101-introduction-programming/3-programming-languages?ns-enrollment-type=learningpath&ns-enrollment-id=learn.student-evangelism.web-development-101) (platforma je strojově překládáná, takže některé některé věty můžou znít vtipně).
+
+Pro začátek je důležité pochopení základních konceptů. Pojmy jsou napříč různými jazyky vesměs stejné, třeba jen jinak zapsané. Jinak řečeno: učení programování není jen o tom naučit se používat jazyk, ale i o tom naučit se přemýšlet nad řešením problému.
+
+Algoritmus je přesný návod, jak vyřešit úlohu. Představ si, že jsi kuchař a právě jsi vymyslel neuvěřitelný recept na dort. Našel jsi kombinaci ingrediencí a postup, jak dort uplácat a upéct. Protože ho všichni chválí, chceš ho upéct znovu. Pokud sis recept nenapsal, může se ti stát, že když ho chceš znovu upéct, zapomeneš na důležitou ingredienci. Proto si ho pro jistotu napíšeš. Přesně to je programování. Psaní receptu pro počítač. Program se obvykle skládá z více různých algoritmů, které různě spolupracují. U receptů je to to samé => můžeš mít recept na výrobu koření, které použiješ v receptu na krkovičku.
+
+My se budeme zabývat základy Javascriptu, což je nejrozšířenější jazyk pro vývoj webových aplikací v prohlížeči - dlouho dobu byl jediný. Prohlížeče mu rozumí. Na práci s javascriptem můžeme použít editor, který je pro všechny snadno dostupný - DevTools konzoli (jak se k ní dostat již víš). Má to jednu nevýhodu, po zavření prohlížeče či aktualizaci stránky vše zmizí. Proto se píší takzvané scripty - soubory s příponou <sup>\*</sup>.js, které obsahují javacript. Pokud je chceme použít na webových stránkách psaných v HTML přidávají se podobně jako se přidávají soubory se styly, jen značka se liší.
+
+V html se použije `<script src="cesta_k_souboru"></script>`. V některých materiálech se můžeš setkat s psaním scriptů přímo v html souboru - stačí napsat kód mezi značky `<script></script>` v dokumentu. Poslední varianta obvykle není vhodná.
+
+V lekci budeme kombinovat:
+
+-   **Materiály a cvičení, která využívají přístup udělej si jednoduchou stránku se scriptem**
+    Změň script a koukej, co prohlížeč udělá nebo co se vypíše do konzole. Takové příklady může většinou psát rovnout do konzole DevTools. Kdybys jsi ji chtěl vyčistit stačí zmáčknout **Ctrl+L**. Nevyčistí ti, ale uložené proměnné jen ti dá nový prostor na psaní bez zbytečného nepořádku. (pokud chceš vyčistit i proměnné, obnov stránku)
+-   **Cvičení s želvou, která umí podle jednoduchých příkazů kreslit obrazce**
+    Možné příkazy (jdi dopředu určitý počet kroků, zatoč doleva, zatoč doprava, zvedni tužku, polož tužku). Želva se používá i pro výuku jiných jazyků. Například Python želva se používá pro výuku na Masarykově univerzitě, kde se s ní můžete setkat několikrát během studia. Zní to strašlivě ale neboj se, želva je intuitivní. Přesto kdyby sis nevěděl rady třeba s úhly, vezmi si papír a tužku a nakresli si to. Papír a tužka (whiteboard a fixa) jsou dobří kamarádi vývojáře i testera. Občas pomůžou utřídit myšlenky. **[ODKAZ BRZY PŘIDÁME]**
+
+## Proměnné
+
+Nastal čas na trochu čtení o základech programování a jeho nezbytných konstrukcích, začneme proměnnými. Představ si, že máš misku na bonbony. Teď jsi do ní vysypal balíček bonbonů. Dejme tomu, že je jich v misce 15. Postupně z ní ty a tvoje okolí ujídáte. Může se ti stát, že přijdeš k misce a nic v ní není nebo že je plná, protože ji někdo zrovna doplnil. Miska a její obsah je proměnná. Podívej se na video [Co je proměnná](https://www.youtube.com/watch?v=bcH6dZYUYtA).
+
+Další představou může být, že proměná je drát spojující jméno a hodnotu. Na straně jména je připoután pevně. Podle druhu proměnné může být k hodnotě připoutám pevně nebo slabě - tedy může se snadno změnit. Myšlenka drátů pochází od Dana Abramova - jednoho z vývojářů ve Facebooku. Zaměřuje se správné přemýšlení o kódu - hodně nás ovlivnil jeho kurz [Just Javascript](https://justjavascript.com/). Na gifu níže se drát, který propojuje proměnou pet (mazlíček) změní, jakmile proměnné přiřadíme novou hodnotu.
+
+![Znázornění přiřazení do proměnné](/images/chapter/qa-3-1.gif "Animované znázornění přiřazení do proměnné, autorka Maggie Appleton a Dan Abramov")
+
+Drát nikdy nespojuje dvě jména pokud napíšeš, že nějaká proměnná se rovná jiné, tak jejich drát **momentálně** vede ke stejné hodnotě. Podobně jako neřešíš u misek na bonbony, jestli se rovná jejich barva, ale kolik bonbonu mají.
+
+```javascript
+let x = 10
+let y = x
+let x = 0
+```
+
+![Znázornění změny hodnoty v proměnné](/images/chapter/qa-3-2.gif "Animované znázornění přiřazení do proměnné, autorka Maggie Appleton a Dan Abramov")
+
+V JavaScriptu se všechny proměnné musí deklarovat - musíme uvést, jakou proměnnou chceme vytvořit. Máme několik možností. Aktuálně je nejlepší používat **const** a v omezených případech **let**, které ti umožní měnit, kam proměnná odkazuje - jak jsi viděl v gifu výše. Tato změna snadno vytvoří matoucí kód, můžeš dokonce změnit kompletně typ hodnoty a pak se budeš divit, proč se děje něco úplně jiného. **V minulosti** se používalo i **var**, ale to přinášelo mnoho problémů - je to zastaralé řešení, se kterým se snadno střelíš do nohy. Spousta návodů je v tomhle ohledu neaktuálních, to neznamená, že nemají ostatní koncepty správně. Na Zdrojáku nalezneš [příklady problémů](https://zdrojak.cz/clanky/rozdil-mezi-var-a-let-v-javascriptu/). Jinak pojaté je vysvětlení na [Interval.cz](https://www.interval.cz/clanky/promenne-v-javascriptu/), kde se také popisují rezervovaná slova - tedy ta jež nesmí být použita jako název proměnné ani funkce.
+
+Když už jsme u těch názvů - správně pojmenovaná proměnná zjednodušuje čtení kódu.Pokud se ke kódu vrátíme po čase, tak nemusíme dlouho luštit, co všechny ty [názvy proměnných](https://www.itnetwork.cz/javascript/zaklady/nejcastejsi-chyby-js-zacatecniku-umis-pojmenovat-promenne) znamenají.
+
+## Porovnávání, spojky a jejich vyhodnocení
+
+“Venku prší”, ”tři je menší než čtyři”, “rajče je ovoce” jsi schopný vyhodnotit tyto **výroky**? Ano, ale pro všechny potřebuješ jistou znalost (třeba kouknout se z okna) To stejné je schopen i počítač. Jen mu to musíme říct v jazyce, který chápe a dát mu potřebnou znalost pro vyhodnocení (počítač se z okna sám nepodívá). Výroky zapsané v JavaScriptu jsou vyhodnoceny jako pravda (**true**) nebo nepravda (**false**).
+
+Představ si, že bychom v běžném jazyce používali jednoduché výroky o jednom rozhodnutí. Mluvili bychom velice vtipně. Proto máme spojky, kterými výroky spojujeme. Například “Slunce je hvězda a Mars je planeta” zní trochu přirozeněji než říct “Slunce je hvězda. Mars je planeta.”
+
+Všechny spojky, které počítač potřebuje jsou: **a**, **nebo**, **negace**. Pro spojku **a** platí, že musí být pravdivé obě části výroku, aby byl pravdivý. **Negace** jak název napovídá obrátí pravdivost. S **nebo** je to komplikovanější. V českém jazyce rozlišujeme spojku ve [dvou poměrech](https://prirucka.ujc.cas.cz/?id=155), ale počítač zná jen jeden z nich a to poměr slučovací.
+
+Poměr slučovací: ”Podejte nám zprávu písemně nebo telefonicky”
+
+<table>
+    <tr>
+        <td>Podejte nám zprávu písemně</td>
+        <td>Podejte nám zprávu telefonicky</td>
+        <td>Podejte nám zprávu písemně nebo telefonicky</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>1 (true, pravda)</td>
+        <td>1 (true, pravda)</td>
+        <td>1 (true, pravda)</td>
+        <td>Zprávu můžu podat oběma způsoby</td>
+    </tr>
+    <tr>
+        <td>1 (true, pravda)</td>
+        <td>0 (false,nepravda)</td>
+        <td>1 (true, pravda)</td>
+        <td>Zprávu můžu podat jen písemně</td>
+    </tr>
+    <tr>
+        <td>0 (false,nepravda)</td>
+        <td>1 (true, pravda)</td>
+        <td>1 (true, pravda)</td>
+        <td>Zprávu můžu podat jen telefonicky.</td>
+    </tr>
+    <tr>
+        <td>0 (false,nepravda)</td>
+        <td>0 (false,nepravda)</td>
+        <td>0 (false,nepravda)</td>
+        <td>Pokud podáš zprávu jinak než písemně nebo telefonicky, tak nebude přijata.</td>
+    </tr>
+</table>
+
+Poměr vylučovací: “Počítač je zapnutý, nebo vypnutý.”
+
+<table>
+    <tr>
+        <td>Počítač je zapnutý</td>
+        <td>Počítač je vypnutý</td>
+        <td>Počítač je zapnutý, nebo vypnutý.</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>1 (true, pravda)</td>
+        <td>1 (true, pravda)</td>
+        <td>0 (false,nepravda)</td>
+        <td>Počítač nemůže být vypnutý nebo zapnutý zároveň</td>
+    </tr>
+    <tr>
+        <td>1 (true, pravda)</td>
+        <td>0 (false,nepravda)</td>
+        <td>1 (true, pravda)</td>
+        <td>Zapnutí vylučuje, že je vypnutý</td>
+    </tr>
+    <tr>
+        <td>0 (False,nepravda)</td>
+        <td>1 (True, pravda)</td>
+        <td>1 (True, pravda)</td>
+        <td>Vypnutí vylučuje, že je zapnutý</td>
+    </tr>
+    <tr>
+        <td>0 (False,nepravda)</td>
+        <td>0 (False,nepravda)</td>
+        <td>0 (False,nepravda)</td>
+        <td>Počítač nemůže být zároveň nezapnutý a nevypnutý.</td>
+    </tr>
+</table>
+
+Vidíš rozdíl? Druhá věta odpovídá spojce XOR, která se dá rozepsat pomocí **a**, **nebo**, **negace** takhle: “Počítač je zapnutý **a** **ne**vypnutý **nebo** počítač je **ne**zapnutý **a** vypnutý.”
+
+Můžeš se také dočíst, že jde o tzv. [logický perátor](http://puvodni.maszskt.cz/predmety/informatika/programy/u02/kap_03/text.htm#:~:text=10000%20%2D%20tedy%2016.-,Logick%C3%A9%20oper%C3%A1tory,-Logick%C3%A9%20oper%C3%A1tory%20o%C4%8Dek%C3%A1vaj%C3%AD). Existuje celá řada další operátorů, nejsou jen ty logické.
+
+## Podmínky
+
+Na logických výrazech jsou založeny [podmínky](http://javascript.jecool.net/podminky.html). O podmínkách si můžeš přečíst v článku od [ITNetworku](https://www.itnetwork.cz/javascript/zaklady/javascript-tutorial-podminky). V článku zmiňují typy - konkrétně u striktního porovnávání a typ Boolean(to jsou výše zmíněné dvě hodnoty true, false) - každá proměnná má svůj typ, podle toho s ní můžeme pracovat. Více budeme typy řešit v další kapitole.
+
+Podmínky umí kvůli [logickým výrazům](http://www.nabla.cz/obsah/matematika/vyrokova-logika-vyrok-negace-konjunkce-disjunkce-implikace-ekvivalence.php?fbclid=IwAR1LXdZx9zz6SrwdC6-zs26U3gzmwvfSxdCVENU0G5fEROK-7lC_WTv2ewU) potrápit pisatele. Zadáním špatného výrazu vznikají třeba nekonečné smyčky nebo kód, který se nikdy neprovede. Pokud se někdy v podmínkách ztratíš, je dobré použít tužku a papír (tabuli a fixu), které jsou dobrými kamarády lidé pracujících v IT. \*\*Nebo je ještě vhodná metoda kachničky. Zkus kachničce vysvětlit, co děláš. Kachničkou může být tvoje oblíbená kytka, medvídek, gumová kachnička do koupele, pes nebo třeba i přítel/přítelkyně. Je jedno komu/čemu danou věc vysvětluješ, ale hlavně, že říkáš nahlas svoje myšlenky. Metoda kachničky je reálně využívaná. Třeba my býváme jeden pro druhého často kachničkou. Více o metodě se dočteš zde [Ladění gumové kachny - Rubber duck debugging](https://cs.qaz.wiki/wiki/Rubber_duck_debugging). Metodu nemusíš používat jen pro psaní kódu, je vhodná kdykoliv se ztratíš ve svých myšlenkách.
+
+## Cykly
+
+Podmínky neslouží pouze pro větvení v **if**, ale můžeme je využít také v **cyklech** pro kontrolu, zda se má kód [provádět opakovaně](https://www.jakpsatweb.cz/javascript/vetveni.html). Cyklus je zápis opakující se činnosti. Představ si, že potřebuješ opakovat stejný příkaz desetkrát například `console.log("x")`. Chtělo by se ti ho psát pořád dokola? Navíc takový kód by nebyl dobře čitelný a byl by dlouhý. Posuď sám (zkus si to napsat do konzole v DevTools):
+
+```javascript
+console.log("x")
+console.log("x")
+console.log("x")
+console.log("x")
+console.log("x")
+console.log("x")
+console.log("x")
+console.log("x")
+console.log("x")
+console.log("x")
+```
+
+Cyklům se věnuje článek [Lekce 5 - Cykly v JavaScriptu](https://www.itnetwork.cz/javascript/zaklady/javascript-tutorial-cykly-for-while). Procvič si získané informace na **želvě** pod článkem. Ještě jeden malý tip k želvě: vnitřní úhel pravidelného n-úhelníku je 360/n stupňů.
+
+### Cyklus for x cyklus while
+
+Cyklus _for_ se používá pokud známe počet opakování. Ale co když chceme říct počítači opakuj dokud proměnná x nebude menší než nula. Takový cyklus může mít jedno, mnoho nebo žádné opakování záleží na hodnotě proměnné. Předem nevíme kolik opakování se vykoná, takže cyklus for nepřipadá k úvahu. V takovém případě se používá cyklus _while_. **Pomocí while cyklu se dá napsat jakýkoliv cyklus, i ten pro který známe počet opakování. Jinak řečeno každý for cyklus lze zapsat jako while cyklus**, ale ne obráceně. \
+Pokud chceš, můžeš zkusit vymyslet, jak použít _while_ cyklus místo* for* cyklu na některém z příkladů ze cvičení s želvou pro for cyklus.
+
+### Nekonečná smyčka
+
+**(upozornění: pokud si chceš další úkol zkusit v DevTools, tak si otevři nové okno prohlížeče. Ne tab, ale okno! Okno můžeš zavřít a neovlivní ti to tvoje další otevřené taby.)**
+
+Cyklus while umí být i zrádný, pokud napíšeš špatně podmínku nemusí se nikdy vykonat nebo se naopak může vykonávat donekonečna. Takovému jevu se říká nekonečná smyčka.
+
+Představ si, že chceš několikrát, ale ne víckrát jak desetkrátotevřelo okno na tisknutí. Kolikrát danou okno otevřít by ti určil uživatel a jeho odpoveď by se uložila do proměnné counter. Cyklus chceš napsat jako while.
+
+```javascript
+let counter = 5
+
+while (counter <= 10 && counter >= 0) {
+    print()
+}
+```
+
+Všiml sis chyby? Kolikrát si odklikl okno pro tisk pokud counter=5? Pětkrát? Ne, bude na tebe vyskakovat po zavření stále znovu do nekonečna, protože proměnná counter se nesnižuje ani nezvyšuje.
+
+```javascript
+let counter = 5
+
+while (counter <= 10 && counter >= 0) {
+    print()
+    counter -= 1
+}
+```
+
+### Vnořený cyklus
+
+Cykly můžeme do sebe vnořovat. Vnořením dvou for cyklů do sebe, lze vypsat například tabulku. Jak vypsat tabulku o pěti řádcích a třech sloupcích, která se bude vypisovat po řádcích? Vypsat 3 x do řádku nebo 5 x do slopce není složité, stačí jeden for cyklus.
+
+<table>
+  <tr>
+   <td>Vypsání řádku</td>
+   <td>Vypsání sloupce</td>
+  </tr>
+  <tr>
+		<td>
+
+```javascript
+let s = ""
+
+for (let i = 3; i > 0; i--) {
+    s += "x "
+}
+
+console.log(s)
+```
+
+    	</td>
+    	<td>
+
+```javacript
+for(let i=5; i>0; i--){
+		console.log("x")
+}
+```
+
+    	</td>
+
+  </tr>
+</table>
+
+Pro vytvoření tabulky je potřeba oba postupy zkombinovat - vnořit cykly do sebe. Tabulka se vypisuje po řádcích, takže nejprve se vypíše třikrát x do řádku a to celé se zopakuje pětkrát. Jak si můžeš všimnout níže, postupuje se zvrchu dolů. Nejprve se deklaruje proměnná s, poté se přesuneme do vnitřního for cyklu, jakmile skončí, vykonají se ostatní příkazy ve vnějším cyklu (zde vypsání řetězce s novým řádkem na konci) a jede se od začátku.
+
+```javascript
+for (let i = 5; i > 0; i--) {
+    let s = ""
+    for (let j = 3; j > 0; j--) {
+        s += "x "
+    }
+    console.log(s)
+}
+```
+
+Pozor, pokud spustíš tento kód v konzoli, může se stát, že se ti řádky seskupí. Je potřeba změnit nastavení konzole a deaktivovat seskupení stejných výrazů. Pokud ti naše vysvětlení nestačilo, podívej se na [vysvětlení zanořených cyklů na Khan Academy](https://cs.khanacademy.org/computing/computer-programming/programming/looping/pt/nested-for-loops). Kromě tabulek se tímto způsobem dá procházet i obrázek pixel po pixelu a celkově vše co má dvourozměrný souřadnicový systém. Videa o zanořených forech jsou součástí větší série, která jde hlouběji do programování v JavaScriptu, prozatím v ní nepokračuj.
+
+### Funkce
+
+Proměnné, cykly, podmínky - s jejich pomocí lze vytvářet pro jednotlivé úkoly opakovatelné kusy kódu - **funkce**. Přečti si článek od [ITNetwork](https://www.itnetwork.cz/javascript/zaklady/tutorial-javascript-funkce). Můžeš si zkusit jak pomocí želvy vykreslit n-úhelníky a obrazce, které se z nich skládají. Možná to u některých úkolů nevypadá, ale schovávají se tam. Navíc se opakují. Pokud je na první pohled nevidíš, zkus najít pravidelné trojúhelníky, když je nenajdeš jdi na čtverce, pětiúhelníky a tak dále. Třeba ve cvičení diamant je schovaný pětiúhelník
+
+Třetí kapitolu už máš skoro za sebou a umíš základní konstrukce. Zvládneš napsat kus kódu sám. Zamysli se nad nějakým problémem, který tě trápí. Není nic lepšího než si zlepšit život pomocí svých nových schopností!

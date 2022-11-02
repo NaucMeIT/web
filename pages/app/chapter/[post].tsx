@@ -3,13 +3,13 @@ import { MDXRemote, MDXRemoteProps } from "next-mdx-remote"
 import { serialize } from "next-mdx-remote/serialize"
 import path from "path"
 import { getAndParseMdx, getDataFromParsedMdx, getFilesAt } from "../../../utils/mdx"
-import { components } from "../../../components/MdxWrapper"
 import { Menu } from "../../../components/Menu"
 import { SideMenu } from "../../../components/SideMenu"
 import { Typography } from "../../../components/Typography"
 import { Head } from "../../../components/Head"
 import { TableOfContents } from "../../../components/TableOfContents"
 import { ReportErrorDialog } from "../../../components/ReportErrorDialog"
+import { components } from "../../../components/MdxComponents"
 
 type PostProps = {
     readonly mdx: MDXRemoteProps
