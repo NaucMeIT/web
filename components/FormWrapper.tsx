@@ -69,7 +69,6 @@ export function FormWrapper({ children, text, type, className, onSuccess }: Form
                     onVerify={() => undefined}
                     theme='dark'
                     action={type}
-                    className=''
                 />
                 <Button size='large' type='submit' theme='off' className='w-fit self-end' disabled={isSubmitting}>
                     {isSubmitting ? "Odesílám" : "Odeslat zprávu"}
