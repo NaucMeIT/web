@@ -1,14 +1,23 @@
 import Link from "next/link"
+import { getSourceId } from "../utils/string"
 import { FacebookBtn, LinkedInBtn } from "./Button"
 import { EmailLink } from "./EmailLink"
 import { Typography } from "./Typography"
 
 type MdxTypographyProps = Omit<React.ComponentProps<typeof Typography>, "className" | "variant" | "component">
 
-const H1 = (props: MdxTypographyProps) => <Typography className='py-4' variant='h2' component='h1' {...props} />
+const H1 = (props: MdxTypographyProps) => (
+    <Typography
+        componentProps={{ id: getSourceId(props.children?.toString() || "") }}
+        className='py-4'
+        variant='h2'
+        component='h1'
+        {...props}
+    />
+)
 const H2 = (props: MdxTypographyProps) => (
     <Typography
-        componentProps={{ id: props.children?.toString().replaceAll(" ", "-") }}
+        componentProps={{ id: getSourceId(props.children?.toString() || "") }}
         className='pt-4'
         variant='h3'
         component='h2'
