@@ -74,12 +74,15 @@ async function sendEmail(replyTo: string, text: string, subject: string, recaptc
         // eslint-disable-next-line functional/no-throw-statement
         throw new Error("No recaptcha")
     }
-    const verify = await fetch(
-        `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_BACKEND}&response=${recaptcha}`,
-        {
-            method: "POST",
-        },
-    ).then((res) => res.json())
+
+    const formData = new FormData()
+    formData.append("secret", process.env.RECAPTCHA_BACKEND || "")
+    formData.append("response", recaptcha)
+
+    const verify = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+        method: "POST",
+        body: formData,
+    }).then((res) => res.json())
     if (!verify.success) {
         // eslint-disable-next-line functional/no-throw-statement
         throw new Error("Recaptcha failed")
