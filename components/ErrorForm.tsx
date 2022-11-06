@@ -15,7 +15,7 @@ export function ErrorForm({ user, onSuccess }: Props) {
 
     return (
         <FormWrapper onSuccess={onSuccess} type='error' text='Našli jste chybu? Neváhejte nám ji nahlásit!'>
-            <input type='hidden' id='chapter' name='chapter' value={router.query.post || ""} />
+            <input type='hidden' id='chapter' name='chapter' value={router?.query.post || ""} />
             <input type='hidden' id='name' name='name' value={user?.name || ""} />
             <input type='hidden' id='email' name='email' value={user?.email || ""} />
             <DecoratedInput

@@ -10,7 +10,8 @@ type Props = {
 
 export function ProfileDetailsForm({ name }: Props) {
     const router = useRouter()
-    const startPlan = router.query.startPlan as string
+    const startPlan = router?.query.startPlan as string
+    const isUnpaid = startPlan === "Basic"
 
     return (
         // Can't be <Form> because it doesn't follow redirect, see https://github.com/smeijer/next-runtime/issues/51
@@ -26,14 +27,30 @@ export function ProfileDetailsForm({ name }: Props) {
             </Typography>
             <DecoratedInput name='name' type='text' placeholder='Zadejte své jméno' defaultValue={name} required />
 
-            <Button
-                size='huge'
-                type='submit'
-                theme='main'
-                className='w-fit group-invalid:opacity-50 group-invalid:pointer-events-none'
-            >
-                Uložit
-            </Button>
+            <div className='flex flex-row-reverse gap-4 justify-between mt-4'>
+                <Button
+                    size='huge'
+                    type='submit'
+                    theme='main'
+                    name='wantsToPay'
+                    value='pay'
+                    className='w-fit group-invalid:opacity-50 group-invalid:pointer-events-none'
+                    disabled={isUnpaid}
+                    tabIndex={isUnpaid ? -1 : 0}
+                >
+                    Zaplatit
+                </Button>
+                <Button
+                    size='huge'
+                    type='submit'
+                    theme='off'
+                    name='wantsToPay'
+                    value='skip'
+                    className='w-fit group-invalid:opacity-50 group-invalid:pointer-events-none'
+                >
+                    Uložit
+                </Button>
+            </div>
         </form>
     )
 }

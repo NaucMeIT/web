@@ -8,7 +8,7 @@ export const useTrackedUser = () => {
     const [signStatus, setSignStatus] = useState<SignStatus>("idle")
     const { data, status } = useSession()
     const router = useRouter()
-    const startPlan = router.query.startPlan || "Basic"
+    const startPlan = router?.query.startPlan || "Basic"
     const regUrl = `/register?startPlan=${startPlan}`
     const signUrl = "/"
 
@@ -16,7 +16,7 @@ export const useTrackedUser = () => {
         const data = await signOut({ redirect: false, callbackUrl: signUrl })
         splitbee.track("Sign out")
         splitbee.reset()
-        if (shouldRedirect(router.asPath)) {
+        if (router && shouldRedirect(router.asPath)) {
             router.push(data.url)
         }
     }

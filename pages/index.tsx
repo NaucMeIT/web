@@ -10,7 +10,7 @@ import { How } from "../components/How"
 import { Packages } from "../components/Packages"
 import { Courses } from "../components/Courses"
 import { Head } from "../components/Head"
-import img from "../images/petr_border.png"
+import img from "../images/petr_border.webp"
 import { LearnEarn, PayConsultancy, Time, Worldwide } from "../components/icons"
 import { SideDecoration } from "../components/SideDecoration"
 
