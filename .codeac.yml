@@ -1,0 +1,8 @@
+---
+
+version: '1'
+tools:
+    eslint:
+        ext: '.js,.jsx,.ts,.tsx'
+    tslint:
+        enabled: false
