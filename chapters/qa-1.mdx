@@ -9,11 +9,11 @@ S počítačem se musí mluvit jasně v příkazech. Přesně mu dávat pokyny. 
 
 Pojďme ale postupně - HTML (HyperText markup language) patří do skupiny [Značkovacích jazyků](https://www.gjszlin.cz/ivt/esf/ostatni-sin/znackovaci-jazyky.php), protože s jeho pomocí nevytváříme program, ale upravujeme text do podoby, kterou zvládnou zpracovat prohlížeče. Představ si, že píšeš knihu ve Wordu nebo v Google dokumentech. Klidně si svůj oblíbený editor otevři. Píšeš první kapitolu. Taková kapitola potřebuje nadpis, který by měl být zvýrazněný. Jak to uděláš? Wordu to prostě řekneš. Označíš daný text a použiješ vhodnou funkci. Podobně je tomu v HTML, jen místo kliknutí na tlačítko nadpis dáš daný text do vhodných značek:
 
-```
+```html
 <h1>Učím se na Nauč mě IT</h1>
 <ul>
-  <li>První položka seznamu</li>
-  <li><img src="/obrazek.jpg"> Druhá položka s obrázkem</li>
+    <li>První položka seznamu</li>
+    <li><img src="/obrazek.jpg" /> Druhá položka s obrázkem</li>
 </ul>
 Obyčejný text, který obsahuje <a href="https://naucme.it">odkaz</a>
 ```
@@ -26,10 +26,11 @@ Této struktuře se říká [DOM](https://jecas.cz/dom) (objektový model dokume
 
 HTML prohlížeči říká, co chceme zobrazit (nadpis, obrázek), ale neříká, jak to chceme zobrazit (barva, odsazení od okolí, barva pozadí atd.). Pro úpravu vzhledu se používají [Kaskádové styly - CSS](https://www.itnetwork.cz/html-css/webove-stranky/jak-psat-moderni-web-html-tutorial-uvod-do-css) (Cascading Style Sheet). Pomocí CSS můžeme definovat celý vzhled dokumentu, mimojiné třeba barvu textu a pozadí, fontebo také prostor mezi HTML prvky. Jednoduché CSS vypadá takto:
 
-```
-h1, h2 {
-	text-align: center;
-	color: #0a294b;
+```css
+h1,
+h2 {
+    text-align: center;
+    color: #0a294b;
 }
 ```
 
@@ -59,7 +60,7 @@ Na závěr kurzu na Khan Academy je projekt [blog](https://cs.khanacademy.org/co
 
 ### O čem takový blog psát
 
-Můžeš psát o sobě - své cestě a učení, nebo koníčcích. Nebo udělej kuchařku, seznam pokémonů, cokoliv. Inspirovat se můžeš i naším cvičným cestovatelským blogem. Jsou v něm použity nové HTML tagy, které dodávají obsahu sémantiku - označují “typ” obsahu, např. tag `<nav>` obsahuje navigaci, jinak také menu. Jejich popis nalezneš na Zdrojáku v článcích [Webdesignérův průvodce po HTML5 – nová sémantika](https://zdrojak.cz/clanky/webdesigneruv-pruvodce-po-html5-nova-semantika/) a [Webdesignérův průvodce po HTML5 – nová sémantika II](https://zdrojak.cz/clanky/webdesigneruv-pruvodce-po-html5-nova-semantika-ii/).
+Můžeš psát o sobě - své cestě a učení, nebo koníčcích. Nebo udělej kuchařku, seznam pokémonů, cokoliv. Inspirovat se můžeš i naším cvičným [cestovatelským blogem](https://nauc-me-it.github.io/ukazkovy-blog/), jehož kód stáhneš [zde](https://github.com/Nauc-me-IT/ukazkovy-blog/archive/refs/heads/main.zip). Jsou v něm použity nové HTML tagy, které dodávají obsahu sémantiku - označují “typ” obsahu, např. tag `<nav>` obsahuje navigaci, jinak také menu. Jejich popis nalezneš na Zdrojáku v článcích [Webdesignérův průvodce po HTML5 – nová sémantika](https://zdrojak.cz/clanky/webdesigneruv-pruvodce-po-html5-nova-semantika/) a [Webdesignérův průvodce po HTML5 – nová sémantika II](https://zdrojak.cz/clanky/webdesigneruv-pruvodce-po-html5-nova-semantika-ii/).
 
 ### Začni tvořit
 
@@ -73,7 +74,7 @@ Možná struktura je tato:
 
 ![Ukázkový blog pro kurz](/images/chapter/qa-1-3.png "Ukázka editoru a výsledného blogu pro kurz")
 
-Náš cvičný blog není jen o tom ukázat ti, jak to může vypadat. Když se podíváš do kódu, uvidíš v něm nové značky, které jsme popsali v taháku spolu s CSS vlastnostmi, které jsme použili. V blogu se nachází flexbox, což je soubor css vlastností, které ti umožní určit umístění obsahu v jednom směru (vertikálně / horizontálně). Pro bližší porozumnění si zkus umístit všechny žabičky na lekníny ve **[Flexbox froggy](https://flexboxfroggy.com/#cs)**. Hezká ukázka je i na [css-tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/), ale tento materiál je pouze v angličtině.
+Náš cvičný blog není jen o tom ukázat ti, jak to může vypadat. Když se podíváš do kódu, uvidíš v něm nové značky, které jsme popsali [v taháku](https://docs.google.com/spreadsheets/d/e/2PACX-1vTDlg49baGZN9OjApjGlXb4ND9biVc2E2ppfk20iSSPUn6hVlQh1wXSTpG6Dyq_FE-UpmcsmSvdSRmb/pubhtml) spolu s CSS vlastnostmi, které jsme použili. V blogu se nachází flexbox, což je soubor css vlastností, které ti umožní určit umístění obsahu v jednom směru (vertikálně / horizontálně). Pro bližší porozumnění si zkus umístit všechny žabičky na lekníny ve **[Flexbox froggy](https://flexboxfroggy.com/#cs)**. Hezká ukázka je i na [css-tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/), ale tento materiál je pouze v angličtině.
 
 ---
 
