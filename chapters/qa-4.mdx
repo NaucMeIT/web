@@ -256,7 +256,8 @@ Teoreticky můžeš zapsat náš vláček jako objekt.
 `let vlacek2 = {"0": 15, "1": 4, "2": 24}`. Umíš si představit, že to takhle pokaždé vypisuješ? Co když zapomeneš na nějaký vagónek? Proto existuje pole. Zároveň má i vlastní metody, např. _.join()_ spojí pole do jednoho stringu - můžeš také definovat jaký znak hodnoty spojí:
 
 ```javascript
-;[1, 2, 3].join(", ") // vrátí "1, 2, 3"
+const willBeJoined = [1, 2, 3]
+willBeJoined.join(", ") // vrátí "1, 2, 3"
 ```
 
 Můžeš se setkat ještě s výrazem seznam (list v angličtině). Seznam je datová struktura podobná jako pole. Tyto pojmy se podle teorie liší v přístupu k paměti atd. Ale na úrovni jako je JavaScript něco takového řešit nemusíš a pojmy pole a seznam v IT docela stírají.
