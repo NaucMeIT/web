@@ -13,6 +13,7 @@ import { ReportErrorDialog } from "../../../components/ReportErrorDialog"
 import { components } from "../../../components/MdxComponents"
 import { getSourceId } from "../../../utils/string"
 import { CodeHighlight } from "../../../components/CodeHighlight"
+import remarkGfm from "remark-gfm"
 
 type PostProps = {
     readonly mdx: MDXRemoteProps
@@ -67,7 +68,7 @@ export const getStaticProps: GetStaticProps<PostProps> = async (props) => {
             .map(([mdxPath, { content, data }]) => [mdxPath, getDataFromParsedMdx(mdxPath, content, data)]),
     )
     const currentPost = menuData[props?.params?.post as string]
-    const mdx = await serialize(currentPost.content, { mdxOptions: { remarkPlugins: [remarkPrism] } })
+    const mdx = await serialize(currentPost.content, { mdxOptions: { remarkPlugins: [remarkPrism, remarkGfm] } })
     const headings = Object.entries(menuData).flatMap(([_, d]) => d.headings)
 
     return {
