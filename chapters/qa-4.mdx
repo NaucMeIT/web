@@ -15,7 +15,7 @@ Co se stane? Proměnné se prostě sečtou. Javascript je převede na stejný ty
 
 Co se stane když si podobný kód - lehce upravený - zkusíme v Pythonu. Jdi na [Platformu Repl.it](https://replit.com/languages/python3), zadej do levého rámečku tento kód
 
-```python3
+```python
 x = 5
 text = "ahoj"
 x + text
@@ -55,10 +55,10 @@ S **pravdivostní hodnotou** ses již setkal u rozhodování a podmínek. V Java
 
 Zkus si zjistit typ:
 
-```javacript
-console.log(typeof(true))
-console.log(typeof(false))
-console.log(typeof("a"==5))
+```javascript
+console.log(typeof true)
+console.log(typeof false)
+console.log(typeof ("a" == 5))
 ```
 
 V posledním případě je nutné si uvědomit, že se vyhodnocuje celý výraz v závorkách.
@@ -147,9 +147,9 @@ Null a undefined můžeš používat záměrně, ale jsou lidé, kteří se jim 
 
 Symbol byl do JavaScriptu přidán poměrně nedávno a je to pokročilý koncept, který je složité vysvětlit, aniž bychom se dostali hlouběji do teorie. Pro teď asi stačí vědět, že existuje.
 
-```javacript
+```javascript
 let magic = Symbol()
-console.log(typeof(magic))
+console.log(typeof magic)
 ```
 
 ## Složité datové typy
@@ -160,9 +160,9 @@ Dostáváme se k zábavné části JavaScriptu. Objekt je všechno, co není jed
 
 Objekt si můžeš představit jako překladatelský slovník - pod nějakým klíčem nalezneš nějakou hodnotu. Klíč musí být primitivní typ, konkrétně string, number nebo symbol. Jiné hodnoty nejsou validní. Zároveň vše co není string je na string převedeno. Nejlépe uděláš, když budou tvé klíče vždy string bez speciálních znaků a budou vždy začínat písmenem. Naopak hodnota může být jakákoliv - string, další objekt, funkce.
 
-```javacript
+```javascript
 const objekt = {
-    mujKlic: 7
+    mujKlic: 7,
 }
 ```
 
@@ -225,14 +225,18 @@ getFullName({ jmeno: "Petr", prijmeni: "Glaser" }) // Vrátí "Petr Glaser"
 
 Pole již není v JavaScriptu samostatný datový typ - k tomu se ještě vrátíme. Představ si, že si hraješ s dětským vláčkem. Vláček má vagónky, které jsou číslované od nuly. Kolik vagónků má je na tobě, můžeš je přidávat nebo odebírat, či rozdělit napříkad na dva spoje. Co je ve vagónkách? To záleží na jejich typu, ve vagónku nula může být třeba 15 cestujících, ve vagónku 1 například 4, ve vagónku 2 třeba 24 atd. Zapisovat to takhle slovně by nebylo zrovna dobře čitelné proto náš vláček o třech vagónkách zapíšeme
 
-```javacript
+```javascript
 let vlacek = [15, 4, 24]
 ```
 
 Ve vagoncích můžeš vézt všechny datové typy a třeba i jiné vagónky (zní to komicky, ale představ si, že je vrstvíš na sebe. Když jdou dělat [auta na auta](https://www.youtube.com/watch?v=go-TIIcTUcU), tak proč ne vláčky na vláčky?). Představ si, že si zaznamenáváš, dvě informace o vagónku - počet lidí a zavazadel, což jde uložit do dvojice.
 
-```javacript
-let passengersWithSuitcases = [ [15,24], [4,2], [24,25] ]
+```javascript
+let passengersWithSuitcases = [
+    [15, 24],
+    [4, 2],
+    [24, 25],
+]
 ```
 
 Pamatuješ si, že vagónky jsou číslované? Proto k jednotlivým údajům můžeš přistupovat pomocí číselné reference. Kolik je ve vláčku lidí v nultém (prvním) vagónku zjistíš tím, že si vypíšeš vlacek[0]. Více o tom jak pracovat s poli si můžeš přečíst na [ITNetworku](https://www.itnetwork.cz/javascript/zaklady/javascript-tutorial-zaciname-s-javascriptem-podminky-cykly-pole-svatky) nebo [Czechitas](https://www.czechitas.cz/lekce-online-kurzu/javascript-lekce-4). Web [Tvorba webu](https://www.tvorba-webu.cz/javascript/pole.php) popisuje jednoduchou práci s polem, pouze metoda `.toSource()` neexistuje.
@@ -252,7 +256,8 @@ Teoreticky můžeš zapsat náš vláček jako objekt.
 `let vlacek2 = {"0": 15, "1": 4, "2": 24}`. Umíš si představit, že to takhle pokaždé vypisuješ? Co když zapomeneš na nějaký vagónek? Proto existuje pole. Zároveň má i vlastní metody, např. _.join()_ spojí pole do jednoho stringu - můžeš také definovat jaký znak hodnoty spojí:
 
 ```javascript
-;[1, 2, 3].join(", ") // vrátí "1, 2, 3"
+const willBeJoined = [1, 2, 3]
+willBeJoined.join(", ") // vrátí "1, 2, 3"
 ```
 
 Můžeš se setkat ještě s výrazem seznam (list v angličtině). Seznam je datová struktura podobná jako pole. Tyto pojmy se podle teorie liší v přístupu k paměti atd. Ale na úrovni jako je JavaScript něco takového řešit nemusíš a pojmy pole a seznam v IT docela stírají.

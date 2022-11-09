@@ -1,3 +1,4 @@
+import remarkPrism from "remark-prism"
 import { GetStaticPaths, GetStaticProps } from "next"
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote"
 import { serialize } from "next-mdx-remote/serialize"
@@ -11,6 +12,8 @@ import { TableOfContents } from "../../../components/TableOfContents"
 import { ReportErrorDialog } from "../../../components/ReportErrorDialog"
 import { components } from "../../../components/MdxComponents"
 import { getSourceId } from "../../../utils/string"
+import { CodeHighlight } from "../../../components/CodeHighlight"
+import remarkGfm from "remark-gfm"
 
 type PostProps = {
     readonly mdx: MDXRemoteProps
@@ -49,6 +52,7 @@ const Post: React.FC<PostProps> = ({ mdx, metaInformation, headings }) => {
                     </article>
                     <ReportErrorDialog />
                 </main>
+                <CodeHighlight />
             </div>
         </>
     )
@@ -64,7 +68,7 @@ export const getStaticProps: GetStaticProps<PostProps> = async (props) => {
             .map(([mdxPath, { content, data }]) => [mdxPath, getDataFromParsedMdx(mdxPath, content, data)]),
     )
     const currentPost = menuData[props?.params?.post as string]
-    const mdx = await serialize(currentPost.content)
+    const mdx = await serialize(currentPost.content, { mdxOptions: { remarkPlugins: [remarkPrism, remarkGfm] } })
     const headings = Object.entries(menuData).flatMap(([_, d]) => d.headings)
 
     return {

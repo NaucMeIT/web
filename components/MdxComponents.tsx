@@ -50,6 +50,13 @@ const LinkMdx = (props: any) => (
 )
 const Ol = (props: any) => <ol className='list-decimal pl-6 py-2' {...props}></ol>
 const Ul = (props: any) => <ul className='list-disc pl-6 py-2' {...props}></ul>
+const Table = (props: any) => (
+    <div className='overflow-auto my-3'>
+        <table className='w-max lg:max-w-3xl' {...props}></table>
+    </div>
+)
+const Td = (props: any) => <td className='border border-solid border-highlight p-2' {...props}></td>
+const Th = (props: any) => <th className='border border-solid border-highlight p-1' {...props}></th>
 const Hr = (props: any) => <hr className='my-3' {...props} />
 const Img = (props: any) => (
     <Link href={props.src}>
@@ -71,4 +78,7 @@ export const components = {
     ul: Ul,
     hr: Hr,
     img: Img,
+    table: Table,
+    td: Td,
+    th: Th,
 }
