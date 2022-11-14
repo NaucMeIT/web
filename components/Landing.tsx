@@ -16,6 +16,7 @@ export function Landing({ title, subtitle, text, catchPoints, buttonText, button
     return (
         <header className='mt-12 flex flex-row flex-wrap items-center justify-center px-5 lg:ml-10 lg:mr-20 lg:grid lg:grid-cols-2'>
             <div className='px-16'>
+                <span id='home'>&nbsp;</span>
                 <Typography variant='h2' component='h1'>
                     {title}
                 </Typography>
