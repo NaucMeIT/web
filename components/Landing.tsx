@@ -14,19 +14,19 @@ type LandingProps = {
 
 export function Landing({ title, subtitle, text, catchPoints, buttonText, buttonProps }: LandingProps) {
     return (
-        <header className='flex flex-row flex-wrap items-center justify-center justify-items-center lg:ml-10 lg:mr-20 lg:grid lg:grid-cols-2 px-5'>
-            <div>
+        <header className='mt-12 flex flex-row flex-wrap items-center justify-center px-5 lg:ml-10 lg:mr-20 lg:grid lg:grid-cols-2'>
+            <div className='px-16'>
                 <span id='home'>&nbsp;</span>
                 <Typography variant='h2' component='h1'>
                     {title}
                 </Typography>
-                <Typography variant='h1' component='h1' className='uppercase'>
+                <Typography variant='h1' component='h1' className='leading-tight'>
                     {subtitle}
                 </Typography>
                 <Typography component='p' className='max-w-xsProse'>
                     {text}
                 </Typography>
-                <div className='mt-20 grid grid-rows-4 md:grid-cols-2 md:grid-rows-2'>
+                <div className='mt-12 grid grid-rows-4 md:grid-cols-2 md:grid-rows-2'>
                     {catchPoints.map(({ icon, children }, index) => (
                         <CatchPoints key={`catch-point-${index}`} icon={icon}>
                             {children}
@@ -36,7 +36,7 @@ export function Landing({ title, subtitle, text, catchPoints, buttonText, button
                 <Button
                     theme='off'
                     size='large'
-                    className='mx-auto mb-10 xl:mb-0 xl:mt-20 block xl:mx-0'
+                    className='mx-auto mb-10 block xl:mx-0 xl:mb-0 xl:mt-20'
                     {...buttonProps}
                 >
                     {buttonText}
