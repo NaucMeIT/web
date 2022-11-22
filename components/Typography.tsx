@@ -11,7 +11,7 @@ export const typographyClasses = {
     link: "font-semibold text-primary hover:text-secondary",
     form: "italic text-xs text-form",
     eyeCatch: "font-semibold text-4xl uppercase text-secondary tracking-huge",
-    menu: "font-medium text-base text-highlight",
+    menu: "font-medium text-base text-highlight hover:text-primary",
     menuActive: "font-bold text-base text-primary",
 } as const
 export const types = Object.keys(typographyClasses) as readonly (keyof typeof typographyClasses)[]
