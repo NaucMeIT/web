@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from "./Button"
+import { Button } from "./Button"
 import { Step } from "./Step"
 import { Typography } from "./Typography"
 

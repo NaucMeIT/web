@@ -1,4 +1,4 @@
-import { Button, LinkButtonProps } from "./Button"
+import { Button } from "./Button"
 import { Typography } from "./Typography"
 
 type Props = {
