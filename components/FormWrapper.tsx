@@ -62,7 +62,7 @@ export function FormWrapper({ children, text, type, className, onSuccess }: Form
             )}
             {children}
 
-            <div className='flex flex-row justify-between'>
+            <div className='flex flex-row flex-wrap justify-between'>
                 <Turnstile
                     sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_API_KEY || ""}
                     responseFieldName='recaptcha'
