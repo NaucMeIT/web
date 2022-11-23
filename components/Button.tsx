@@ -84,7 +84,7 @@ export function Button({ className, disabled, children, theme, size, ...rest }: 
             </Link>
         </span>
     ) : (
-        <button {...props} {...rest} {...splitBeeProps}>
+        <button {...props} {...(rest as NormalButtonProps)} {...splitBeeProps}>
             {children}
         </button>
     )
@@ -128,7 +128,7 @@ export function SocialButton({ label, className, disabled, children, ...rest }: 
             </Link>
         </span>
     ) : (
-        <button {...props} {...rest} aria-label={label}>
+        <button {...props} {...(rest as NormalButtonProps)} aria-label={label}>
             {children}
         </button>
     )

@@ -7,7 +7,7 @@ type Props = {
     readonly benefits: readonly string[]
     readonly priority?: boolean
     readonly radioInput?: boolean
-    readonly buttonProps?: Omit<LinkButtonProps, "theme" | "size" | "className">
+    readonly buttonProps?: any // Omit<LinkButtonProps, "theme" | "size" | "className">
 }
 
 const packageBoxBorderVars = {

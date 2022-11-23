@@ -10,7 +10,7 @@ type Props = {
     readonly side: "right" | "left"
     readonly title: string
     readonly children: React.ReactNode
-    readonly link?: any
+    readonly link?: string
 }
 
 export function CourseBox({ image, width, height, side, title, children, link }: Props) {
