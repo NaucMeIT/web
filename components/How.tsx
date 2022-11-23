@@ -1,11 +1,11 @@
-import { Button, ButtonProps } from "./Button"
+import { Button } from "./Button"
 import { Step } from "./Step"
 import { Typography } from "./Typography"
 
 type HowProps = {
     readonly steps: readonly string[]
     readonly buttonText: string
-    readonly buttonProps?: Partial<ButtonProps>
+    readonly buttonProps?: any // Partial<ButtonProps>
 }
 
 export function How({ steps, buttonText, buttonProps }: HowProps) {

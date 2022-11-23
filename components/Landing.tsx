@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { Button, ButtonProps } from "./Button"
+import { Button } from "./Button"
 import { CatchPointProps, CatchPoints } from "./CatchPoints"
 import { Typography } from "./Typography"
 
@@ -9,7 +9,7 @@ type LandingProps = {
     readonly text: React.ReactNode
     readonly catchPoints: readonly CatchPointProps[]
     readonly buttonText: string
-    readonly buttonProps?: Partial<ButtonProps>
+    readonly buttonProps?: any // Partial<ButtonProps>
 }
 
 export function Landing({ title, subtitle, text, catchPoints, buttonText, buttonProps }: LandingProps) {
