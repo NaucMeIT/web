@@ -5,7 +5,7 @@ import { log } from "next-axiom"
 import { PaymentStatus } from "@prisma/client"
 import { prisma } from "../../utils/prisma"
 
-const stripe = new createStripe(process.env.STRIPE_SECRET_KEY || "", { apiVersion: "2022-08-01", typescript: true })
+const stripe = new createStripe(process.env.STRIPE_SECRET_KEY || "", { apiVersion: "2022-11-15", typescript: true })
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET || ""
 
 function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: Function) {

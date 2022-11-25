@@ -11,7 +11,7 @@ import { SideMenu } from "../../../components/SideMenu"
 import { Typography } from "../../../components/Typography"
 import { Head } from "../../../components/Head"
 import { TableOfContents } from "../../../components/TableOfContents"
-import { ReportErrorDialog } from "../../../components/ReportErrorDialog"
+import { ActionSidebar } from "../../../components/ActionSidebar"
 import { components } from "../../../components/MdxComponents"
 import { CodeHighlight } from "../../../components/CodeHighlight"
 
@@ -48,9 +48,9 @@ const Post: React.FC<PostProps> = ({ mdx, metaInformation, headings }) => {
                         >
                             {metaInformation.title}
                         </Typography>
-                        <MDXRemote {...mdx} components={components} />
+                        <MDXRemote {...mdx} components={components} lazy />
                     </article>
-                    <ReportErrorDialog />
+                    <ActionSidebar />
                 </main>
                 <CodeHighlight />
             </div>
