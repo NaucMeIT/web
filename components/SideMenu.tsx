@@ -1,3 +1,7 @@
+import * as Separator from "@radix-ui/react-separator"
+import Link from "next/link"
+import { Typography } from "./Typography"
+
 type Props = {
     readonly children: React.ReactNode
 }
@@ -5,7 +9,18 @@ type Props = {
 export function SideMenu({ children }: Props) {
     return (
         <nav className='h-full flex flex-col justify-between bg-rightSide bg-no-repeat bg-contain bg-rightCut pl-4 pr-20 py-4'>
-            <div>{children}</div>
+            <div>
+                <Typography
+                    variant='normal'
+                    component={Link}
+                    componentProps={{ href: "/app" }}
+                    className='block hover:text-secondary'
+                >
+                    Dashboard
+                </Typography>
+                <Separator.Root className='my-4 h-px w-full bg-highlight' />
+                {children}
+            </div>
         </nav>
     )
 }

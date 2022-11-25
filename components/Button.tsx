@@ -6,7 +6,7 @@ import LinkedIn from "../images/linkedin.svg"
 import { Facebook } from "./icons"
 
 type Props = {
-    readonly theme: "main" | "off"
+    readonly theme: "main" | "off" | "naked"
     readonly disabled?: boolean
     readonly className?: string
 }
@@ -19,6 +19,7 @@ export type ButtonProps = (LinkButtonProps | NormalButtonProps) & {
 type SocialButtonProps = (Omit<NormalButtonProps, "theme"> | Omit<LinkButtonProps, "theme">) & {
     readonly children: React.ReactElement
     readonly label: string
+    readonly naked?: boolean
 }
 
 const disabledClasses = "cursor-not-allowed pointer-events-none opacity-80"
@@ -27,10 +28,12 @@ const mainClasses =
     "inline-flex border-none polygon-path focus-visible:outline-none before:bg-primary focus:before:bg-secondary text-center appearance-button"
 const themeClasses = {
     enabled: {
-        main: `bg-primary ${enabledClasses}`,
+        naked: "",
+        main: `bg-primary ${enabledClasses} hover:text-highlight`,
         off: `bg-scroll bg-animable bg-clip-border bg-origin-padding bg-transparent bg-100/0 bg-bottom bg-no-repeat transition-backgroundSize duration-1000 hover:duration-500 ease hover:bg-100/100 ${enabledClasses}`,
     },
     disabled: {
+        naked: "",
         main: `bg-primary ${disabledClasses}`,
         off: `bg-scroll bg-animable bg-clip-border bg-origin-padding bg-transparent bg-100/0 bg-bottom bg-no-repeat ${disabledClasses}`,
     },
@@ -40,6 +43,7 @@ const sizeClasses = {
     large: "pt-6 pb-5 pl-11 pr-12",
     medium: "pt-4 pb-4 pl-11 pr-12",
     normal: "pt-2 pb-2 pl-7 pr-8",
+    none: "",
     icon: "p-4",
 }
 const polygonBorderVars = {
@@ -53,9 +57,11 @@ const hexagonBorderVars = {
 
 export function Button({ className, disabled, children, theme, size, ...rest }: ButtonProps) {
     const props = {
-        className: `${mainClasses} ${disabled ? themeClasses.disabled[theme] : themeClasses.enabled[theme]} ${
-            typographyClasses.normal
-        } ${className ?? ""} ${"href" in rest && !!rest.href ? "pointer-events-none" : sizeClasses[size || "normal"]}`,
+        className: `${theme !== "naked" && mainClasses} ${
+            disabled ? themeClasses.disabled[theme] : themeClasses.enabled[theme]
+        } ${typographyClasses.normal} ${className ?? ""} ${
+            "href" in rest && !!rest.href ? "pointer-events-none" : sizeClasses[size || "normal"]
+        }`,
         style: polygonBorderVars,
     }
     const hasHref = "href" in rest && !!rest.href
@@ -94,11 +100,14 @@ Button.defaultProps = {
     type: "button",
 }
 
-export function SocialButton({ label, className, disabled, children, ...rest }: SocialButtonProps) {
+export function SocialButton({ naked, label, className, disabled, children, ...rest }: SocialButtonProps) {
+    const theme = naked ? "naked" : "off"
     const props = {
-        className: `${mainClasses} ${disabled ? themeClasses.disabled.off : themeClasses.enabled.off} ${
-            "href" in rest ? "pointer-events-none" : sizeClasses.icon
-        } ${className ?? ""} items-center aspect-square`,
+        className: `${naked ? "" : mainClasses} ${
+            disabled ? themeClasses.disabled[theme] : themeClasses.enabled[theme]
+        } ${"href" in rest ? "pointer-events-none" : ""} ${sizeClasses.icon} ${
+            className ?? ""
+        } items-center aspect-square`,
         style: hexagonBorderVars,
     }
     const hasHref = "href" in rest && !!rest.href
