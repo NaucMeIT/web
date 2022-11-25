@@ -40,7 +40,7 @@ function MenuItem({
                 onClick: () => close(),
                 theme: item.isImportant ? "main" : undefined,
                 size: "normal",
-                className: `${className || ""} ${!item.isImportant ? "hover:text-primary" : ""}`,
+                className,
             }}
         >
             {item.title}

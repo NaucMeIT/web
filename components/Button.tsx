@@ -29,7 +29,7 @@ const mainClasses =
 const themeClasses = {
     enabled: {
         naked: "",
-        main: `bg-primary ${enabledClasses}`,
+        main: `bg-primary ${enabledClasses} hover:text-highlight`,
         off: `bg-scroll bg-animable bg-clip-border bg-origin-padding bg-transparent bg-100/0 bg-bottom bg-no-repeat transition-backgroundSize duration-1000 hover:duration-500 ease hover:bg-100/100 ${enabledClasses}`,
     },
     disabled: {
