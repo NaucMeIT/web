@@ -1,3 +1,4 @@
+import * as Separator from "@radix-ui/react-separator"
 import Link from "next/link"
 import { Typography } from "./Typography"
 
@@ -12,12 +13,12 @@ export function SideMenu({ children }: Props) {
                 <Typography
                     variant='normal'
                     component={Link}
-                    componentProps={{ href: "/" }}
+                    componentProps={{ href: "/app" }}
                     className='block hover:text-secondary'
                 >
-                    Hlavní strana
+                    Dashboard
                 </Typography>
-                <hr className='my-4' />
+                <Separator.Root className='my-4 h-px w-full bg-highlight' />
                 {children}
             </div>
         </nav>

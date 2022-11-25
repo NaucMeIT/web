@@ -36,12 +36,12 @@ const Post: React.FC<PostProps> = ({ mdx, metaInformation, headings }) => {
             <Head desc={metaInformation.abstract} url=''>
                 <title>{metaInformation.title}</title>
             </Head>
-            <Menu items={[]} logoLink='#' inApp>
+            <Menu items={[]} logoLink='/' inApp>
                 {!!user ? (
                     <SocialButton
                         label='Odhlásit se'
                         naked
-                        className='hover:text-secondary aspect-auto'
+                        className='hover:text-secondary !aspect-auto'
                         onClick={logout}
                     >
                         <>
