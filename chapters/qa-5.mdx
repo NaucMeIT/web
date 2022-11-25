@@ -1,0 +1,69 @@
+---
+title: JavaScript práce s DOMem
+abstract: Nedílnou součástí práce testera i vývojáře je práce s konzolí. Tu si lze velmi ulehčit JavaScriptem. Podíváme se na něj zblízka, zejména na práci s DOMem.
+---
+
+V předchozích kapitolách jsme HTML, CSS a JavaScript řešili odděleně. Když se to spojí dohromady můžou z toho vzniknout interaktivní webové aplikace. V tomto kurzu se je nebudeme učit vytvářet, i když některé z odkazovaných materiálů se na to zaměřují. Podíváme se na to, jak pomocí JavaScriptu o aplikacích zjistit v prohlížeči víc věcí. Ukážeme, jak je upravit v prohlížeči aniž bychom museli upravovat uložený kód. Což se může hodit, když si chceme ověřit myšlenku a například nemáme ke kódu přístup. Nejprve si musíme ujasnit terminologii.
+
+## Webová stránka x webová aplikace
+
+[Webová stránka](https://cs.wikipedia.org/wiki/Webov%C3%A1_str%C3%A1nka) primárně předává obsah, proto typickým příkladem mohou být prezentační weby. Jakákoliv stránka může obsahovat jednoduché interaktivní prvky, například kontaktní formulář. Ukázkou webových stránek je web [jakpsatweb.cz](https://www.jakpsatweb.cz/).
+
+Webová aplikace bez interaktivních prvků neexistuje - je to její alfa a omega. Obsahuje dynamický obsah, interaktivní prvky. Více o tom, co je to webová aplikace se můžeš dozvědět na stránkách Adobe - [Co jsou to webové aplikace a dynamické webové stránky?](https://helpx.adobe.com/cz/dreamweaver/using/web-applications.html), jednodušší a méně technicky založený popis najdeš v článku a videu od CZ.NIC na stránce [Jak na internet - Webové aplikace](https://www.jaknainternet.cz/page/1262/webove-aplikace/). Zcela určitě ses setkal s webovou stránkou i aplikací. Facebook, Gmail nebo vyhledávač od Google jsou dobrým příkladem aplikace. Podrobnější informace o různých typech aplikací se dozvíš v článku [Weby versus aplikace](https://zdrojak.cz/clanky/weby-versus-aplikace/) na Zdrojáku. Je rovněž důležité chápat, kdy se vyplatí mít webovou stránku i aplikaci a vnímat rozdíl mezi webovou a mobilní aplikací, což se dozvíš v článku také.
+
+### Práce s DOMem
+
+Co je DOM a jak ho prozkoumat pomocí záložky Elements v DevTools již víš. V této kapitole se podíváme na záložku console. S DOMem můžeme pracovat v JavaScriptu jako s objektem. Odpovídá mu objekt _document_. Jak s ním pracovat se můžeš dočíst v [Lekce 8 - Základy práce s DOM a události v Javascriptu](https://www.itnetwork.cz/javascript/zaklady/javascript-tutorial-dom-a-udalosti) a [Lekce 9 - Manipulace s DOM v JavaScriptu](https://www.itnetwork.cz/javascript/zaklady/javascript-tutorial-manipulace-s-dom). V článku se mluví o nemixování jazyků - je důležité si uvědomit, že svět se vyvíjí a nyní již neplatí, že je špatně míchat jazyky. Naopak jejich spojení do jednoho souboru je častá praktika.
+
+Podívej na video od [Czechitas](https://www.czechitas.cz/lekce-online-kurzu/javascript-lekce-2) a článek pod ním. Vše, co je ve videu zmíněno, lze dělat přímo z konzole prohlížeče, podobně jako jsi pracoval s Javascriptem v předchozí kapitolách. Kód se ukládá do samostatných souborů, pokud s ním chceme dále pracovat, mít ho funkční i po obnovení stránky či sdílet s kolegy.
+
+Všechny příkazy, uvedené v materiálech výše, můžeš používat v konzoli v prohlížeči a měnit si stránky pod rukama. Jdi na náš [cestovatelský blog](https://nauc-me-it.github.io/ukazkovy-blog/index.html), otevři si konzoli a zkus:
+
+-   Přepsat titulek stránky (to, co vidíš nahoře v prohlížeči - název záložky)
+-   Přepsat hlavní nadpis v hlavičce stránky
+-   Změň barvu všech odkazů, které jsou podkategorií (např. Dánsko či Švédsko)
+
+![Detail na podmenu k úkolu](/images/chapter/qa-5-1.png "Obrázek z blogu, kde je zvýrazněno, jakou část chceme abys změnil.")
+
+-   Přidej obrázek na pozadí článku
+-   Přidej nový odstavec s tebou vybraným obsahem před první odstavec článku
+
+Pokud si nevíš rady, zkus se zeptat na Discordu v kanále #dotazy. Řešení je také na [Discordu](https://discord.gg/QbYswwYUPU). Stačí zadat příkaz _/faq blog-devtools-console_ v kanále #dotazy.
+
+### Další práce s konzolí
+
+Do konzole se dají vypisovat různé druhy informací. Příkaz _console.log() \_v podstatě zaloguje do objektu \_console \_nějakou zprávu. Objekt console má i další funkce. Dají se do něj například vypisovat informace - \_info, warning, error._ Otevři si konzoli a zkus si:
+
+-   console.log(“jsem info”)
+-   console.warn(“jsem varování”)
+-   console.error(“jsem error”)
+
+Více o využití objektu console se můžeš dozvědět v článku [JavaScript: nejen console.log()](https://pepa.holla.cz/2018/11/13/javascript-nejen-console-log/) a [console.log() pro frontendisty](https://pepa.holla.cz/2018/11/19/console-log-pro-frontendisty/). Druhý článek je už spíše hračičkování.
+
+Sám Google má kanál na youtube, kde prezentuje novinky a užitečné tipy v DevTools. Podívej se na video o tom [jak logovat zprávy do konzole](https://www.youtube.com/watch?v=76U0gtuV9AY). Kanál je v angličtině. Když už jsi přepl do angličtiny, zde je [další článek](https://medium.com/nmc-techblog/advanced-console-log-tips-tricks-fa3762930bca). Najdeš tam podobné funkce pro práci s objektem console jako v předchozích článcích a videu.
+
+Na kanále Googlu se dá najít spoustu užitečných věcí o DevTools. Doporučujeme například tato videa:
+
+-   [Rychlejší práce s konzolí a užitečná nástroje v ní](https://www.youtube.com/watch?v=hdRDTj6ObiE)
+-   [Klávesové zkratky pro zapnutí konzole](https://www.youtube.com/watch?v=xHusjrb_34A)
+-   V předchozích kapitolách jsme se dotkli CSS vlastnosti flexbox. Podívej se [jak s ním pracovat v DevTools](https://www.youtube.com/watch?v=J5n2aS37rpE).
+
+---
+
+Pokud máš problém s anglickým videem, zapni si titulky s automatickým překladem. Jak na to? Postupuj podle obrázku. Nejprve zmáčkni tlačítko CC. Poté klikni na ozubené kolečko. Vyber možnost Subtitles> Auto-translate a vyber Czech. Nezapomeň, že to je automatický překlad, takže některé věty mohou znít vtipně.
+
+![Automatické titulky YT](/images/chapter/qa-5-2.png "Jak nastavit automatické titulky na YouTube.")
+
+---
+
+Další triky s konzolí najdeš v našem [videu](https://youtu.be/knAylCNZt2A). Mluvíme v něm i o regulárních výrazech, které ti umožní snadno filtrovat text podle jednoduchých pravidel. Jejich praktickou aplikaci si můžeš vyzkoušet [zde](https://regex101.com/r/t6g4aj/1). Jejich popis v češtině nalezneš [zde](https://miroslavpecka.cz/blog/regularni-vyrazy-zaklady/) a pokud tě zaujmou, neváhej jít [více do hloubky](https://www.regularnivyrazy.info/serial-javascript-regexp.html). Můžeš je pak aplikovat třeba v živém výrazu, jež je důležitou funkcionalitou, která může zjednodušit práci při hledání chyby. Představ si, že potřebuješ sledovat hodnotu nějaké proměnné či vlastnost nějakého elementu. Můžeš při každé změně zavolat console.log, ale někdy nemáš snadný přístup ke kódu nebo k elementu z kódu. Tehdy se hodí živý výraz (live expression). Regulární výrazy se dají využít například při automatizovaných testech. Pozor - na konci videa tvrdíme, že se v dalším (čtvrtém) videu podíváme na Javascript. Vzhledem k detailnímu rozebrání ve čtvrté kapitole jsme se rozhodli toto video prozatím přeskočit.
+
+### Události
+
+Na úvodní stránce naucme.it máme na konci stránky formulář s tlačítkem Odeslat zprávu. Když na něj najedeš, zaplní se. Když ho zmáčkneš, pokusí se stránka odeslat formulář. Výsledek záleží na tom, zda je vyplněný správně či nikoliv. To znamená, že jsi schopný s tlačítkem interagovat. Pro tebe to znamená zmáčknout tlačítko myši, nebo pohnout myší, abys na tlačítko najel. Ale jak tlačítko pozná, že jsi ho zmáčkl?
+
+![Interaktivní tlačítko](/images/chapter/qa-5-3.png "Tlačítko z našeho webu, které má efekt po najetí.")
+
+Tlačítko poslouchá, jestli se stane událost, kterou spustíš tím, že klikneš na tlačítko myši. Můžeš sám určit, na jaké události bude jaký prvek naslouchat. Krásně o tom mluví na [Czechitas](https://www.czechitas.cz/lekce-online-kurzu/javascript-lekce-3). S událostmi ses setkal i v jednom z předchozích odkazovaných materiálů na IT Networku.
+
+Události si můžeš vyzkoušet na [tvorba-webu.cz](https://www.tvorba-webu.cz/javascript/udalosti.php). Je důležité být na počítači - mobil má trošku jiné události a některé by ti nemusely fungovat. Ve sloupci test je pokyn, který máš udělat, aby se událost vyvolala. Lze také poslouchat na [události na celém dokumentu](https://jecas.cz/event-target) a až později se rozhodnout podle afektovaného elementu. Nemiň [praktickou ukázku](http://kod.djpw.cz/jvjb).
