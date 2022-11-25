@@ -48,7 +48,7 @@ const Post: React.FC<PostProps> = ({ mdx, metaInformation, headings }) => {
                         >
                             {metaInformation.title}
                         </Typography>
-                        <MDXRemote {...mdx} components={components} />
+                        <MDXRemote {...mdx} components={components} lazy />
                     </article>
                     <ActionSidebar />
                 </main>
