@@ -15,6 +15,8 @@ interface MenuItemProps {
 interface MenuProps {
     readonly items: readonly MenuItemProps[]
     readonly logoLink: string
+    readonly children?: React.ReactElement
+    readonly inApp?: boolean
 }
 
 function MenuItem({
@@ -46,14 +48,18 @@ function MenuItem({
     )
 }
 
-export function Menu({ items, logoLink }: MenuProps) {
+export function Menu({ items, logoLink, children, inApp }: MenuProps) {
     return (
         <Disclosure as='nav' className='fixed top-0 z-20 w-screen bg-background/90 transition-all'>
             {({ open, close }) => (
                 <>
                     <div className='mx-auto mt-4 max-w-screen-3xl px-6 lg:px-0'>
                         <div className='relative flex h-16 items-center justify-between'>
-                            <div className='flex flex-1 items-center justify-between lg:justify-around lg:items-stretch'>
+                            <div
+                                className={`flex flex-1 items-center justify-between ${
+                                    inApp ? "lg:justify-between" : "lg:justify-around"
+                                } lg:items-stretch`}
+                            >
                                 <div className='ml-3 flex flex-shrink-0 items-center'>
                                     <Link href={logoLink} className='flex items-center' aria-label='Logo Nauč mě IT'>
                                         <Logo width={120} />
@@ -75,6 +81,7 @@ export function Menu({ items, logoLink }: MenuProps) {
                                         {items.map((item) => (
                                             <MenuItem close={close} key={item.title} item={item} />
                                         ))}
+                                        {children}
                                     </div>
                                 </div>
                             </div>
@@ -99,6 +106,7 @@ export function Menu({ items, logoLink }: MenuProps) {
                                         className='block w-fit text-center'
                                     />
                                 ))}
+                                {children}
                             </div>
                         </Disclosure.Panel>
                     </Transition>

@@ -14,6 +14,9 @@ import { TableOfContents } from "../../../components/TableOfContents"
 import { ReportErrorDialog } from "../../../components/ReportErrorDialog"
 import { components } from "../../../components/MdxComponents"
 import { CodeHighlight } from "../../../components/CodeHighlight"
+import { useTrackedUser } from "../../../hooks/useTrackedUser"
+import { SocialButton } from "../../../components/Button"
+import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline"
 
 type PostProps = {
     readonly mdx: MDXRemoteProps
@@ -26,12 +29,27 @@ type PostProps = {
 }
 
 const Post: React.FC<PostProps> = ({ mdx, metaInformation, headings }) => {
+    const [user, { logout }] = useTrackedUser()
+
     return (
         <>
             <Head desc={metaInformation.abstract} url=''>
                 <title>{metaInformation.title}</title>
             </Head>
-            <Menu items={[]} logoLink='#' />
+            <Menu items={[]} logoLink='#' inApp>
+                {!!user ? (
+                    <SocialButton
+                        label='Odhlásit se'
+                        naked
+                        className='hover:text-secondary aspect-auto'
+                        onClick={logout}
+                    >
+                        <>
+                            <ArrowLeftOnRectangleIcon className='inline h-6 w-6' aria-hidden='true' /> Odhlásit se
+                        </>
+                    </SocialButton>
+                ) : undefined}
+            </Menu>
             <div className='grid grid-cols-12 auto-rows-auto h-screen'>
                 <div className='row-start-1 row-end-2 xl:row-end-7 xl:row-span-full col-span-full xl:col-span-2 mt-20 bg-secondary/5 overflow-auto'>
                     <SideMenu>
