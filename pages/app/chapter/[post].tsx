@@ -16,7 +16,7 @@ import { components } from "../../../components/MdxComponents"
 import { CodeHighlight } from "../../../components/CodeHighlight"
 import { useTrackedUser } from "../../../hooks/useTrackedUser"
 import { SocialButton } from "../../../components/Button"
-import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline"
+import { ArrowLeftOnRectangleIcon, ArrowRightOnRectangleIcon } from "@heroicons/react/24/outline"
 
 type PostProps = {
     readonly mdx: MDXRemoteProps
@@ -41,14 +41,25 @@ const Post: React.FC<PostProps> = ({ mdx, metaInformation, headings }) => {
                     <SocialButton
                         label='Odhlásit se'
                         naked
-                        className='hover:text-secondary !aspect-auto'
+                        className='hover:text-secondary !aspect-auto flex'
                         onClick={logout}
                     >
                         <>
-                            <ArrowLeftOnRectangleIcon className='inline h-6 w-6' aria-hidden='true' /> Odhlásit se
+                            <ArrowLeftOnRectangleIcon className='h-6 w-6 mr-2' aria-hidden='true' /> Odhlásit se
                         </>
                     </SocialButton>
-                ) : undefined}
+                ) : (
+                    <SocialButton
+                        label='Přihlásit se'
+                        naked
+                        className='hover:text-secondary !aspect-auto flex'
+                        href='/sign'
+                    >
+                        <>
+                            <ArrowRightOnRectangleIcon className='h-6 w-6 mr-2' aria-hidden='true' /> Přihlásit se
+                        </>
+                    </SocialButton>
+                )}
             </Menu>
             <div className='grid grid-cols-12 auto-rows-auto h-screen'>
                 <div className='row-start-1 row-end-2 xl:row-end-7 xl:row-span-full col-span-full xl:col-span-2 mt-20 bg-secondary/5 overflow-auto'>
