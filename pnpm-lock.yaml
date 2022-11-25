@@ -45,6 +45,7 @@ specifiers:
   prettier-plugin-tailwindcss: ^0.1.13
   prisma: ^4.5.0
   react: ^18.2.0
+  react-calendly: ^4.1.0
   react-dom: ^18.2.0
   react-turnstile: ^1.0.5
   remark-gfm: ^3.0.1
@@ -79,6 +80,7 @@ dependencies:
   next-runtime: 2.4.1_dcors23iqtgxrhrwosgnnc4xji
   nodemailer: 6.8.0
   react: 18.2.0
+  react-calendly: 4.1.0_biqbaboplfbrettd7655fr4n2y
   react-dom: 18.2.0_react@18.2.0
   react-turnstile: 1.0.5_biqbaboplfbrettd7655fr4n2y
   remark-gfm: 3.0.1
@@ -4412,6 +4414,17 @@ packages:
       http-errors: 2.0.0
       iconv-lite: 0.4.24
       unpipe: 1.0.0
+    dev: false
+
+  /react-calendly/4.1.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-a4/yHZwwmuEgUZOfRh0Hs5lt96WSlWI3GQ0fNWWUnKN11YjR5E0fq4YZSMZ3Cas8FVcdoM88JSnNPbZoeLzbtQ==}
+    engines: {node: '>=8', npm: '>=5'}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react-dom/18.2.0_react@18.2.0:
