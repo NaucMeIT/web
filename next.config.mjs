@@ -19,6 +19,7 @@ export default withMDX(
         },
         experimental: {
             newNextLinkBehavior: true,
+            mdxRs: true,
         },
         images: {
             formats: ["image/avif", "image/webp"],
