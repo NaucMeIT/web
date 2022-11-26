@@ -1,4 +1,4 @@
-export const PROTECTED_PAGES = ["/protected", "/register"]
+export const PROTECTED_PAGES = ["/protected", "/profile/edit"]
 
 export function shouldRedirect(page: string) {
     return PROTECTED_PAGES.includes(page)

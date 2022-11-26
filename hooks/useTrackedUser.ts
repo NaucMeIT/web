@@ -9,7 +9,7 @@ export const useTrackedUser = () => {
     const { data, status } = useSession()
     const router = useRouter()
     const startPlan = router?.query.startPlan || "Basic"
-    const regUrl = `/register?startPlan=${startPlan}`
+    const regUrl = `/profile/edit?startPlan=${startPlan}`
     const signUrl = "/"
 
     const logout = async () => {
