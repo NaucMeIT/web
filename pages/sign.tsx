@@ -27,9 +27,9 @@ export const getServerSideProps = handle<{}, {}, {}>({
                     destination:
                         planId && name
                             ? allowedStatus.includes(paymentStatus)
-                                ? "/app/chapter/qa-0"
+                                ? "/dashboard"
                                 : "/pay"
-                            : `/register?startPlan=${startPlan}`,
+                            : `/profile/edit?startPlan=${startPlan}`,
                     permanent: false,
                 },
             }

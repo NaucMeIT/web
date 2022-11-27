@@ -11,10 +11,12 @@ declare module "next-auth" {
             readonly email: string | null
             readonly name: string | null
             readonly paymentStatus: PaymentStatus
+            readonly credits: number
         }
     }
     interface User {
         readonly planId: string
         readonly paymentStatus: PaymentStatus
+        readonly credits: number
     }
 }

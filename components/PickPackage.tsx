@@ -5,9 +5,12 @@ import splitbee from "@splitbee/web"
 
 type Props = {
     readonly selectedPackage: string
+    readonly isEdit: boolean
 }
 
-export function PickPackage({ selectedPackage }: Props) {
+export function PickPackage({ selectedPackage, isEdit }: Props) {
+    const editParam = isEdit ? "&isEdit=true" : ""
+
     return (
         <section className='flex flex-col items-center justify-center gap-4'>
             <Typography variant='h2' component='h2' className='mb-8 text-center'>
@@ -23,7 +26,7 @@ export function PickPackage({ selectedPackage }: Props) {
                         {...p}
                         radioInput
                         buttonProps={{
-                            href: `/register?startPlan=${p.title}`,
+                            href: `/profile/edit?startPlan=${p.title}${editParam}`,
                             replace: true,
                             scroll: false,
                             onClick: () => splitbee.track("Package change", { package: p.title }),

@@ -30,13 +30,13 @@ const calculatePlanPrice = async (plan: Plan) => {
 
 const registerRedirect = {
     redirect: {
-        destination: "/register",
+        destination: "/profile/edit",
         statusCode: 302,
     },
 } as const
 const appRedirect = {
     redirect: {
-        destination: "/app/chapter/qa-0",
+        destination: "/dashboard",
         statusCode: 302,
     },
 } as const

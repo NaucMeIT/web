@@ -4,19 +4,16 @@ import { GetStaticPaths, GetStaticProps } from "next"
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote"
 import { serialize } from "next-mdx-remote/serialize"
 import path from "path"
-import { getAndParseMdx, getDataFromParsedMdx, getFilesAt } from "../../../utils/mdx"
-import { getSourceId } from "../../../utils/string"
-import { Menu } from "../../../components/Menu"
-import { SideMenu } from "../../../components/SideMenu"
-import { Typography } from "../../../components/Typography"
-import { Head } from "../../../components/Head"
-import { TableOfContents } from "../../../components/TableOfContents"
-import { ActionSidebar } from "../../../components/ActionSidebar"
-import { components } from "../../../components/MdxComponents"
-import { CodeHighlight } from "../../../components/CodeHighlight"
-import { useTrackedUser } from "../../../hooks/useTrackedUser"
-import { SocialButton } from "../../../components/Button"
-import { ArrowLeftOnRectangleIcon, ArrowRightOnRectangleIcon } from "@heroicons/react/24/outline"
+import { getAndParseMdx, getDataFromParsedMdx, getFilesAt } from "../../utils/mdx"
+import { getSourceId } from "../../utils/string"
+import { SideMenu } from "../../components/SideMenu"
+import { Typography } from "../../components/Typography"
+import { Head } from "../../components/Head"
+import { TableOfContents } from "../../components/TableOfContents"
+import { ActionSidebar } from "../../components/ActionSidebar"
+import { components } from "../../components/MdxComponents"
+import { CodeHighlight } from "../../components/CodeHighlight"
+import { InAppMenu } from "../../components/InAppMenu"
 
 type PostProps = {
     readonly mdx: MDXRemoteProps
@@ -29,38 +26,12 @@ type PostProps = {
 }
 
 const Post: React.FC<PostProps> = ({ mdx, metaInformation, headings }) => {
-    const [user, { logout }] = useTrackedUser()
-
     return (
         <>
             <Head desc={metaInformation.abstract} url=''>
                 <title>{metaInformation.title}</title>
             </Head>
-            <Menu items={[]} logoLink='/' inApp>
-                {!!user ? (
-                    <SocialButton
-                        label='Odhlásit se'
-                        naked
-                        className='hover:text-secondary !aspect-auto flex'
-                        onClick={logout}
-                    >
-                        <>
-                            <ArrowLeftOnRectangleIcon className='h-6 w-6 mr-2' aria-hidden='true' /> Odhlásit se
-                        </>
-                    </SocialButton>
-                ) : (
-                    <SocialButton
-                        label='Přihlásit se'
-                        naked
-                        className='hover:text-secondary !aspect-auto flex'
-                        href='/sign'
-                    >
-                        <>
-                            <ArrowRightOnRectangleIcon className='h-6 w-6 mr-2' aria-hidden='true' /> Přihlásit se
-                        </>
-                    </SocialButton>
-                )}
-            </Menu>
+            <InAppMenu />
             <div className='grid grid-cols-12 auto-rows-auto h-screen'>
                 <div className='row-start-1 row-end-2 xl:row-end-7 xl:row-span-full col-span-full xl:col-span-2 mt-20 bg-secondary/5 overflow-auto'>
                     <SideMenu>
