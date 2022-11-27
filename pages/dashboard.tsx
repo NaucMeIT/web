@@ -62,7 +62,7 @@ const Dashboard: React.FC<DashboardProps> = ({ headings }) => {
                     <section className='flex flex-col items-center mt-5 gap-8'>
                         <Typography variant='h3'>Externí zdroje</Typography>
                         <div className='flex flex-col lg:flex-row justify-center items-center lg:items-start gap-10'>
-                            <ContentCard small title='Vzhůru dolů' phrase='Učit se' href='/chapter/qa-0'>
+                            <ContentCard small title='Vzhůru dolů' phrase='Učit se' href='https://vzhurudolu.cz'>
                                 <Image
                                     src='/images/vzhuru.svg'
                                     width={100}
@@ -71,7 +71,7 @@ const Dashboard: React.FC<DashboardProps> = ({ headings }) => {
                                     loading='lazy'
                                 />
                             </ContentCard>
-                            <ContentCard small title='Junior Guru' phrase='Navštívit' href='/chapter/qa-0'>
+                            <ContentCard small title='Junior Guru' phrase='Navštívit' href='https://junior.guru/'>
                                 <Image
                                     src='/images/junior-guru.svg'
                                     width={200}
@@ -80,7 +80,12 @@ const Dashboard: React.FC<DashboardProps> = ({ headings }) => {
                                     loading='lazy'
                                 />
                             </ContentCard>
-                            <ContentCard small title='Videa DevTools' phrase='Koukat' href='/chapter/qa-0'>
+                            <ContentCard
+                                small
+                                title='Videa DevTools'
+                                phrase='Koukat'
+                                href='https://www.youtube.com/@ChromeDevs'
+                            >
                                 <Image
                                     src='/images/devtools.svg'
                                     width={100}
