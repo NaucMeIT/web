@@ -24,7 +24,7 @@ function getHeadings(source: string, path: string): HeadingsType {
         .map((raw) => {
             const text = raw.replace(/^##*\s/, "")
 
-            return { text, level: 2, href: `/app/chapter/${path}#${getSourceId(text)}` }
+            return { text, level: 2, href: `/chapter/${path}#${getSourceId(text)}` }
         })
 }
 
@@ -46,7 +46,7 @@ export function getAndParseMdx(folderPath: string, filePath: string) {
 export function getDataFromParsedMdx<T extends { readonly title: string }>(mdxPath: string, content: string, data: T) {
     return {
         headings: [
-            { text: data.title, level: 1, href: `${mdxPath}#${getSourceId(data.title)}` },
+            { text: data.title, level: 1, href: `/chapter/${mdxPath}#${getSourceId(data.title)}` },
             ...getHeadings(content, mdxPath),
         ],
         content,

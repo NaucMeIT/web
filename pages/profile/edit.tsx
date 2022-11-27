@@ -2,12 +2,13 @@ import { NextPage } from "next"
 import { Session, unstable_getServerSession } from "next-auth"
 import { log } from "next-axiom"
 import { handle, json } from "next-runtime"
-import { Head } from "../components/Head"
-import { ProfileDetailsForm } from "../components/ProfileDetailsForm"
-import { authOptions } from "./api/auth/[...nextauth]"
-import { prisma } from "../utils/prisma"
+import { useRouter } from "next/router"
+import { authOptions } from "../api/auth/[...nextauth]"
+import { Head } from "../../components/Head"
+import { ProfileDetailsForm } from "../../components/ProfileDetailsForm"
+import { prisma } from "../../utils/prisma"
 import { PaymentStatus, Plan } from "@prisma/client"
-import { allowedStatus } from "../utils/stripe"
+import { allowedStatus } from "../../utils/stripe"
 
 type PageProps = {
     readonly session: Session
@@ -17,13 +18,18 @@ type PageProps = {
 }
 type UrlQuery = {
     readonly startPlan: string
+    readonly isEdit: string
 }
 type FormData = {
     readonly name: string
     readonly wantsToPay: "skip" | "pay"
 }
 
-const redirectToCorrectPage = async (session: Session | null, startPlan: string | readonly string[] | undefined) => {
+const redirectToCorrectPage = async (
+    session: Session | null,
+    startPlan: string | readonly string[] | undefined,
+    isEdit: string | readonly string[] | undefined,
+) => {
     if (!session?.user) {
         return {
             redirect: {
@@ -33,10 +39,10 @@ const redirectToCorrectPage = async (session: Session | null, startPlan: string 
         }
     }
 
-    if (session.user?.name && session.user?.planId) {
+    if (session.user?.name && session.user?.planId && !isEdit) {
         return {
             redirect: {
-                destination: allowedStatus.includes(session.user.paymentStatus) ? "/app/chapter/qa-0" : "/pay",
+                destination: allowedStatus.includes(session.user.paymentStatus) ? "/dashboard" : "/pay",
                 permanent: false,
             },
         }
@@ -68,7 +74,7 @@ const redirectToCorrectPage = async (session: Session | null, startPlan: string 
 export const getServerSideProps = handle<{}, UrlQuery, FormData>({
     async get(context) {
         const session = await unstable_getServerSession(context.req, context.res, authOptions)
-        return redirectToCorrectPage(session, context.query?.startPlan)
+        return redirectToCorrectPage(session, context.query?.startPlan, context.query?.isEdit)
     },
     async post(context) {
         const {
@@ -96,7 +102,7 @@ export const getServerSideProps = handle<{}, UrlQuery, FormData>({
 
             return {
                 redirect: {
-                    destination: body.wantsToPay === "skip" ? "/app/chapter/qa-0" : "/pay",
+                    destination: body.wantsToPay === "skip" ? "/dashboard" : "/pay",
                     statusCode: 302,
                 },
             }
@@ -109,6 +115,10 @@ export const getServerSideProps = handle<{}, UrlQuery, FormData>({
 })
 
 const Register: NextPage<PageProps> = ({ session }) => {
+    const router = useRouter()
+    const startPlan = router?.query.startPlan as string
+    const isEdit = !!router?.query.isEdit
+
     return (
         <div className='flex gap-6 flex-col justify-center min-h-screen'>
             <Head
@@ -119,7 +129,7 @@ const Register: NextPage<PageProps> = ({ session }) => {
             >
                 <title>Nauč mě IT - Registrace - krok 2</title>
             </Head>
-            <ProfileDetailsForm name={session.user?.name || ""} />
+            <ProfileDetailsForm name={session.user?.name || ""} startPlan={startPlan} isEdit={isEdit} />
         </div>
     )
 }

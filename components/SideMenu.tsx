@@ -13,7 +13,7 @@ export function SideMenu({ children }: Props) {
                 <Typography
                     variant='normal'
                     component={Link}
-                    componentProps={{ href: "/app" }}
+                    componentProps={{ href: "/dashboard" }}
                     className='block hover:text-secondary'
                 >
                     Dashboard

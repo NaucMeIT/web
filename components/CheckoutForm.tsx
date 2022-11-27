@@ -52,7 +52,7 @@ export default function CheckoutForm() {
         const { error } = await stripe.confirmPayment({
             elements,
             confirmParams: {
-                return_url: `${window.location.origin}/app/chapter/qa-0`,
+                return_url: `${window.location.origin}/dashboard`,
             },
         })
 
@@ -84,7 +84,7 @@ export default function CheckoutForm() {
                 >
                     {isLoading ? "Probíhá placení" : "Zaplatit"}
                 </Button>
-                <Button size='large' theme='off' className='w-fit' href='/app/chapter/qa-0'>
+                <Button size='large' theme='off' className='w-fit' href='/chapter/qa-0'>
                     Přeskočit
                 </Button>
             </div>
