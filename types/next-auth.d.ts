@@ -8,7 +8,7 @@ declare module "next-auth" {
     interface Session {
         readonly user: {
             readonly planId: string | null
-            readonly email: string
+            readonly email: string | null
             readonly name: string | null
             readonly paymentStatus: PaymentStatus
             readonly credits: number
