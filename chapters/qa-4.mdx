@@ -3,7 +3,7 @@ title: Datové typy
 abstract: Tester, který zná datové typy, umí lépe a rychleji najít chyby v aplikaci, protože ví, jak funguje.
 ---
 
-V minulé kapitole ses seznámil s proměnnými. Dozvěděl ses, jak psát jejich jména. Ale jaká data můžeme do proměnné uložit? Ukládaná data se dají rozdělit do datových typů. S každým datovým typem se pracuje trochu jinak. Představ si, že máš dvě proměnné, první pojmenuješ num a uložíš do ní číslo 5 a do druhé proměnné s jménem text uložíš řetězec "ahoj". Co se stane, když se je pokusíme sečíst? (Otevři si konzoli v DevTools a zkus si to.)
+V minulé kapitole ses seznámil s proměnnými. Dozvěděl ses, jak psát jejich jména. Ale jaká data můžeme do proměnné uložit? Ukládaná data se dají rozdělit do datových typů. S každým datovým typem se pracuje trochu jinak. Představ si, že máš dvě proměnné, první pojmenuješ num a uložíš do ní číslo 5 a do druhé proměnné s jménem text uložíš řetězec „ahoj“. Co se stane, když se je pokusíme sečíst? (Otevři si konzoli v DevTools a zkus si to.)
 
 ```javascript
 let num = 5
@@ -11,9 +11,9 @@ let text = "ahoj"
 num + text
 ```
 
-Co se stane? Proměnné se prostě sečtou. Javascript je převede na stejný typ, konktrétně textový řetězec, a udělá s nimi operaci sčítání pro textové řetězce. Tedy jeden řetezec přidá za druhý => "5ahoj"
+Co se stane? Proměnné se prostě sečtou. Javascript je převede na stejný typ, konkrétně textový řetězec, a udělá s nimi operaci sčítání pro textové řetězce. Tedy jeden řetězec přidá za druhý => „5ahoj“
 
-Co se stane když si podobný kód - lehce upravený - zkusíme v Pythonu. Jdi na [Platformu Repl.it](https://replit.com/languages/python3), zadej do levého rámečku tento kód
+Co se stane, když si podobný kód - lehce upravený - zkusíme v Pythonu. Jdi na [Platformu Repl.it](https://replit.com/languages/python3), zadej do levého rámečku tento kód
 
 ```python
 x = 5
@@ -27,7 +27,7 @@ Hláška vypadá nějak takto:
 
 ![Chybová hláška Python](/images/chapter/qa-4-1.png "Chybová hláška vypsaná Pythonem při sčítání čísla a řetězce.")
 
-JavaScript má také své typy. Ty jsou důležité hlavně pro prohlížeč. Jak jsme si ukázali výše, tak JavaScript často neupozorní na chybu, pokud se používá špatný typ. Představ si, že máš funkci, která podle zadaného číselného parametru, tolikrát vypíše do konzole písmenko "X". A ty jí místo čísla zadáš text. Co se stane? Otevři konzoli a zkus to si:
+JavaScript má také své typy. Ty jsou důležité hlavně pro prohlížeč. Jak jsme si ukázali výše, tak JavaScript často neupozorní na chybu, pokud se používá špatný typ. Představ si, že máš funkci, která podle zadaného číselného parametru, tolikrát vypíše do konzole písmenko „X“. A ty jí místo čísla zadáš text. Co se stane? Otevři konzoli a zkus to si:
 
 ```javascript
 function priklad(cislo) {
@@ -39,13 +39,13 @@ priklad(5)
 priklad("ahoj")
 ```
 
-V první případě se vypsalo pět X pod sebou. V druhém se nic nestalo, proč? Zkus si zadat "ahoj">0. Co je výsledkem výrazu? JavaScript zkusí převést text na číslo, pokud to nejde, výsledkem je NaN (Not a Number). To nemůže být větší než nebo menší než nějaké číslo. Podle čeho bys jinak porovnával text a číslo? Napadla tě délka textu, tak to musíš jasně říct - "ahoj".length>0 - prohlížeč to sám nezjistí. Na [anglickém webu W3C](https://www.w3schools.com/js/js_comparisons.asp#:~:text=Comparing%20Different%20Types) se dozvíš více.
+V první případě se vypsalo pět X pod sebou. V druhém se nic nestalo proč? Zkus si zadat "ahoj">0. Co je výsledkem výrazu? JavaScript zkusí převést text na číslo, pokud to nejde, výsledkem je NaN (Not a Number). To nemůže být větší než nebo menší než nějaké číslo. Podle čeho bys jinak porovnával text a číslo? Napadla tě délka textu, tak to musíš jasně říct - "ahoj".length>0 - prohlížeč to sám nezjistí. Na [anglickém webu W3C](https://www.w3schools.com/js/js_comparisons.asp#:~:text=Comparing%20Different%20Types) se dozvíš více.
 
 Tohle chování JavaScritu může vývojářům přinést spoustu problémů. Rozhodně se můžou stát horší věci než, že se něco nevypíše. Proto často vývojáři přecházejí na TypeScript, který jim zaručí jistou formu bezpečnosti navíc.
 
 Je hned několik aspektů, ve kterých se mohou programovací jazyky lišit. Velmi dobře je to popsáno na [blogu Lempera.cz](https://blog.lempera.cz/2017/10/programovaci-jazyky-typy.html). Zvládneš určit, co je JavaScript zač? Správně, jde o slabě dynamicky typovaný jazyk. V případě Typescriptu jde o silně staticky typovaný jazyk.
 
-Javascriptové typy jsou Boolean, String, Number, BigInt, Symbol, Null, Undefined, Object a Function. Dále v textu se na ně podíváme podrobněji. Sedm prvních jsou primitivní, to znamená, že nejsou objekt a nemají metody nebo vlastnosti. Všechny primitivní datové typy jsou immutable - nelze je změnit. To neznamená, že nelze změnit hodnota v proměnné (to lze pokud nejsou definované pomocí _const_), ale znamená to, že nelze měnit je změnit způsoby jako objekt.
+Javascriptové typy jsou Boolean, String, Number, BigInt, Symbol, Null, Undefined, Object a Function. Dále v textu se na ně podíváme podrobněji. Sedm prvních jsou primitivní, to znamená, že nejsou objekt a nemají metody nebo vlastnosti. Všechny primitivní datové typy jsou immutable - nelze je změnit. To neznamená, že nelze změnit hodnota v proměnné (to lze, pokud nejsou definované pomocí _const_), ale znamená to, že je nelze měnit stejnými způsoby jako objekt.
 
 ## Primitivní datové typy
 
@@ -79,11 +79,11 @@ Všiml sis, že každý z výše uvedených stringů je zapsaný v jiných znač
 
 ---
 
-Poznámka: Programovací jazyky jsou přizpůsobené angličtině a mohou obsahovat znaky, které se na české klávesnici hůře píšou. Máš dvě možnosti, buď přepnout na anglickou nebo si klávesové zkratky zapamatuješ, např. složené závorky {} napíšeš se stiskem **alt gr + b** a **alt gr + n**, $ je **alt gr + ů**.
+Poznámka: Programovací jazyky jsou přizpůsobené angličtině a mohou obsahovat znaky, které se na české klávesnici hůře píšou. Máš dvě možnosti, buď přepnout na anglickou, nebo si klávesové zkratky zapamatuješ, např. složené závorky {} napíšeš se stiskem **alt gr + b** a **alt gr + n**, $ je **alt gr + ů**.
 
 ---
 
-Poslední typ úvozovek je speciální v tom, že do stringu můžeš psát části kódu, když ho zapíšeš do `${}`. To se například hodí, když chceš vypsat nějakou proměnou. Jednoduchým příkladem může být funkce, která vypíše pozdrav.
+Poslední typ uvozovek je speciální v tom, že do stringu můžeš psát části kódu, když ho zapíšeš do `${}`. To se například hodí, když chceš vypsat nějakou proměnou. Jednoduchým příkladem může být funkce, která vypíše pozdrav.
 
 ```javascript
 function greeting(name) {
@@ -93,7 +93,7 @@ function greeting(name) {
 greeting("Princezno Consuelo Banana Hammock")
 ```
 
-Vypíše ti to Ahoj Princezno Consuelo Banana Hammock. Schválně co se stane, když ve funkci greeting v příkazu `console.log()` prohodíš úvozovky například za ""?
+Vypíše ti to Ahoj Princezno Consuelo Banana Hammock. Schválně, co se stane, když ve funkci greeting v příkazu `console.log()` prohodíš uvozovky například za ""?
 
 Do `${}` můžeš napsat jakýkoliv validní javascriptový výraz, to jest kód i funkce, které se vyhodnotí do jedné hodnoty, např. `3 + 4`, `"ahoj" === true`, `pozdrav("Karel")` z článku na IT Networku v minulé kapitole. Tomuto se říká interpolace a je to popsáno v již zmíněném článku [Lekce 3 - Základní datové typy v JavaScriptu](https://www.itnetwork.cz/javascript/zaklady/javascript-js-tutorial-datove-typy-retezce-cisla-funkce#_interpolace-retezcu), stejně jako další práce s řetězci.
 
@@ -111,7 +111,7 @@ To však vedlo k přesažení maximální možné velikosti typu **number**. Vzn
 
 ### Undefined
 
-Tento typ má pouze jednu hodnotu a to _undefined _- nedefinováno. Je to hodnota, kterou JavaScript používá, když neví jaký typ určit. Například když zapomeneš přiřadit do proměnné hodnotu a on neumí určit typ.
+Tento typ má pouze jednu hodnotu a to _undefined_ - nedefinováno. Je to hodnota, kterou JavaScript používá, když neví, jaký typ určit. Například když zapomeneš přiřadit do proměnné hodnotu a on neumí určit typ.
 
 ```javascript
 let nothing
@@ -137,7 +137,7 @@ V konzoli sis mohl všimnout, že když tam napíšeš nějaký výraz či při�
 
 ### Null
 
-Typ null má také jen jednu hodnotu a to null, které se používá pro záměrně chybějící hodnotu. Například máš profilový obrázek a rozhodneš se jej smazat. Proměnná obrazek pak rozhodně není undefined, protože to byla záměrná akce. Neznamená to ani vyhození chyby (to uvádíme pro případ, že jsi se dostal k videům o JavaScriptu od Davida Šetka na něhož odkazujeme v kapitole o HTML).
+Typ null má také jen jednu hodnotu, a to null, které se používá pro záměrně chybějící hodnotu. Například máš profilový obrázek a rozhodneš se jej smazat. Proměnná obrazek pak rozhodně není undefined, protože to byla záměrná akce. Neznamená to ani vyhození chyby (to uvádíme pro případ, že jsi se dostal k videům o JavaScriptu od Davida Šetka, na něhož odkazujeme v kapitole o HTML).
 
 Null a undefined můžeš používat záměrně, ale jsou lidé, kteří se jim vyhýbají jak čert kříži. My k nim patříme. Ale to neznamená, že je to špatně, jen se nám nelíbí jejich koncept. I sám autor se za existenci null (nulová reference) proklíná:
 
@@ -158,7 +158,7 @@ console.log(typeof magic)
 
 Dostáváme se k zábavné části JavaScriptu. Objekt je všechno, co není jeden z primitivních typů. Můžeš narazit na _typeof null === "object"_, což je dáno historicky a jde o chybu, kterou nelze napravit, protože by se rozbil internet.
 
-Objekt si můžeš představit jako překladatelský slovník - pod nějakým klíčem nalezneš nějakou hodnotu. Klíč musí být primitivní typ, konkrétně string, number nebo symbol. Jiné hodnoty nejsou validní. Zároveň vše co není string je na string převedeno. Nejlépe uděláš, když budou tvé klíče vždy string bez speciálních znaků a budou vždy začínat písmenem. Naopak hodnota může být jakákoliv - string, další objekt, funkce.
+Objekt si můžeš představit jako překladatelský slovník - pod nějakým klíčem nalezneš nějakou hodnotu. Klíč musí být primitivní typ, konkrétně string, number nebo symbol. Jiné hodnoty nejsou validní. Zároveň vše, co není string, je na string převedeno. Nejlépe uděláš, když budou tvé klíče vždy string bez speciálních znaků a budou vždy začínat písmenem. Naopak hodnota může být jakákoliv - string, další objekt, funkce.
 
 ```javascript
 const objekt = {
@@ -184,7 +184,7 @@ Poznámky k videu od Czechitas:
 
 #### Tečková notace
 
-K vlastnostem a metodám objektu můžeš přistupovat přes [tečkovou notaci](https://portal.matematickabiologie.cz/index.php?pg=zaklady-informatiky-pro-biology--algoritmizace-a-programovani--programovani-v-javascriptu-i--promenne--vlastnosti-promennych). Co to znamená? Nadefinujeme si prvně objekt osoba, který bude mít jméno, věk a metodu jsem plnotletý
+K vlastnostem a metodám objektu můžeš přistupovat přes [tečkovou notaci](https://portal.matematickabiologie.cz/index.php?pg=zaklady-informatiky-pro-biology--algoritmizace-a-programovani--programovani-v-javascriptu-i--promenne--vlastnosti-promennych). Co to znamená? Nadefinujeme si prvně objekt osoba, který bude mít jméno, věk a metodu jsem plnoletý
 
 ```javascript
 let osoba = {
@@ -200,11 +200,11 @@ let osoba = {
 }
 ```
 
-Pokud chceme zjistit věk naší osoby, musíme to udělat přes tečkovou notaci a napsat osoba.age. Pokud chceme zjistit jestli je osoba plnoletá, použijeme také tečkovou notaci, ale protože je to funkce přidáme závorky (musíme funkci zavolat - to platí u jakékoliv funkce, nikoliv těch, které patří do nějakého objektu) => osoba.isAdult().
+Pokud chceme zjistit věk naší osoby, musíme to udělat přes tečkovou notaci a napsat osoba.age. Pokud chceme zjistit, jestli je osoba plnoletá, použijeme také tečkovou notaci, ale protože je to funkce, přidáme závorky (musíme funkci zavolat - to platí u jakékoliv funkce, nikoliv těch, které patří do nějakého objektu) => osoba.isAdult().
 
 ### Funkce
 
-Co ti vrátí příkaz `console.log(typeof(function(){}))`? Typ function. Jedná se v JavaScriptu v podstatě o další převlečený objekt. Jak už bylo vedeno výše, vše co není primitivní datový typ je v JavaScriptu objekt.
+Co ti vrátí příkaz `console.log(typeof(function(){}))`? Typ function. Jedná se v JavaScriptu v podstatě o další převlečený objekt. Jak už bylo vedeno výše, vše, co není primitivní datový typ, je v JavaScriptu objekt.
 
 Protože **this** může přinést potíže, zkus napsat dvě funkce definované mimo objekt (budou brát objekt osoba jako parametr) z videa od Czechitas:
 
@@ -223,7 +223,7 @@ getFullName({ jmeno: "Petr", prijmeni: "Glaser" }) // Vrátí "Petr Glaser"
 
 ### Pole - Array
 
-Pole již není v JavaScriptu samostatný datový typ - k tomu se ještě vrátíme. Představ si, že si hraješ s dětským vláčkem. Vláček má vagónky, které jsou číslované od nuly. Kolik vagónků má je na tobě, můžeš je přidávat nebo odebírat, či rozdělit napříkad na dva spoje. Co je ve vagónkách? To záleží na jejich typu, ve vagónku nula může být třeba 15 cestujících, ve vagónku 1 například 4, ve vagónku 2 třeba 24 atd. Zapisovat to takhle slovně by nebylo zrovna dobře čitelné proto náš vláček o třech vagónkách zapíšeme
+Pole již není v JavaScriptu samostatný datový typ - k tomu se ještě vrátíme. Představ si, že si hraješ s dětským vláčkem. Vláček má vagónky, které jsou číslované od nuly. Kolik vagónků má je na tobě, můžeš je přidávat nebo odebírat, či rozdělit například na dva spoje. Co je ve vagónkách? To záleží na jejich typu, ve vagónku nula může být třeba 15 cestujících, ve vagónku 1 například 4, ve vagónku 2 třeba 24 atd. Zapisovat to takhle slovně by nebylo zrovna dobře čitelné proto náš vláček o třech vagónkách zapíšeme
 
 ```javascript
 let vlacek = [15, 4, 24]
@@ -245,7 +245,7 @@ Pamatuješ si, že vagónky jsou číslované? Proto k jednotlivým údajům mů
 
 Poznámka k videu Czechitas:
 
-V 10:44 se objeví chybová hláška. Všimni si, že v pravo nahoře je napsáno array.js:20. To říká, že chyba nastala v soubotu array.js na řádku 20.
+V 10:44 se objeví chybová hláška. Všimni si, že v pravo nahoře je napsáno array.js:20. To říká, že chyba nastala v souboru array.js na řádku 20.
 
 ---
 
@@ -253,14 +253,14 @@ Vraťme se k tomu, proč pole není samostatný datový typ. Z pohledu JavaScrip
 
 Teoreticky můžeš zapsat náš vláček jako objekt.
 
-`let vlacek2 = {"0": 15, "1": 4, "2": 24}`. Umíš si představit, že to takhle pokaždé vypisuješ? Co když zapomeneš na nějaký vagónek? Proto existuje pole. Zároveň má i vlastní metody, např. _.join()_ spojí pole do jednoho stringu - můžeš také definovat jaký znak hodnoty spojí:
+`let vlacek2 = {"0": 15, "1": 4, "2": 24}`. Umíš si představit, že to takhle pokaždé vypisuješ? Co když zapomeneš na nějaký vagónek? Proto existuje pole. Zároveň má i vlastní metody, např. _.join()_ spojí pole do jednoho stringu - můžeš také definovat, jaký znak hodnoty spojí:
 
 ```javascript
 const willBeJoined = [1, 2, 3]
 willBeJoined.join(", ") // vrátí "1, 2, 3"
 ```
 
-Můžeš se setkat ještě s výrazem seznam (list v angličtině). Seznam je datová struktura podobná jako pole. Tyto pojmy se podle teorie liší v přístupu k paměti atd. Ale na úrovni jako je JavaScript něco takového řešit nemusíš a pojmy pole a seznam v IT docela stírají.
+Můžeš se setkat ještě s výrazem seznam (list v angličtině). Seznam je datová struktura podobná jako pole. Tyto pojmy se podle teorie liší v přístupu k paměti atd. Ale na úrovni, jako je JavaScript něco takového řešit nemusíš a pojmy pole a seznam v IT docela stírají.
 
 ### Immutable
 
