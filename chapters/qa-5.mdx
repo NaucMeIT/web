@@ -11,7 +11,7 @@ V předchozích kapitolách jsme HTML, CSS a JavaScript řešili odděleně. K
 
 Webová aplikace bez interaktivních prvků neexistuje - je to její alfa a omega. Obsahuje dynamický obsah, interaktivní prvky. Více o tom, co je to webová aplikace se můžeš dozvědět na stránkách Adobe - [Co jsou to webové aplikace a dynamické webové stránky?](https://helpx.adobe.com/cz/dreamweaver/using/web-applications.html), jednodušší a méně technicky založený popis najdeš v článku a videu od CZ.NIC na stránce [Jak na internet - Webové aplikace](https://www.jaknainternet.cz/page/1262/webove-aplikace/). Zcela určitě ses setkal s webovou stránkou i aplikací. Facebook, Gmail nebo vyhledávač od Google jsou dobrým příkladem aplikace. Podrobnější informace o různých typech aplikací se dozvíš v článku [Weby versus aplikace](https://zdrojak.cz/clanky/weby-versus-aplikace/) na Zdrojáku. Je rovněž důležité chápat, kdy se vyplatí mít webovou stránku i aplikaci a vnímat rozdíl mezi webovou a mobilní aplikací, což se dozvíš v článku také.
 
-### Práce s DOMem
+## Práce s DOMem
 
 Co je DOM a jak ho prozkoumat pomocí záložky Elements v DevTools již víš. V této kapitole se podíváme na záložku console. S DOMem můžeme pracovat v JavaScriptu jako s objektem. Odpovídá mu objekt _document_. Jak s ním pracovat se můžeš dočíst v [Lekce 8 - Základy práce s DOM a události v Javascriptu](https://www.itnetwork.cz/javascript/zaklady/javascript-tutorial-dom-a-udalosti) a [Lekce 9 - Manipulace s DOM v JavaScriptu](https://www.itnetwork.cz/javascript/zaklady/javascript-tutorial-manipulace-s-dom). V článku se mluví o nemixování jazyků - je důležité si uvědomit, že svět se vyvíjí a nyní již neplatí, že je špatně míchat jazyky. Naopak jejich spojení do jednoho souboru je častá praktika.
 
@@ -30,7 +30,7 @@ Všechny příkazy, uvedené v materiálech výše, můžeš používat v konzol
 
 Pokud si nevíš rady, zkus se zeptat na Discordu v kanále #dotazy. Řešení je také na [Discordu](https://discord.gg/QbYswwYUPU). Stačí zadat příkaz _/faq blog-devtools-console_ v kanále #dotazy.
 
-### Další práce s konzolí
+## Další práce s konzolí
 
 Do konzole se dají vypisovat různé druhy informací. Příkaz _console.log() \_v podstatě zaloguje do objektu \_console \_nějakou zprávu. Objekt console má i další funkce. Dají se do něj například vypisovat informace - \_info, warning, error._ Otevři si konzoli a zkus si:
 
@@ -58,7 +58,7 @@ Pokud máš problém s anglickým videem, zapni si titulky s automatickým př
 
 Další triky s konzolí najdeš v našem [videu](https://youtu.be/knAylCNZt2A). Mluvíme v něm i o regulárních výrazech, které ti umožní snadno filtrovat text podle jednoduchých pravidel. Jejich praktickou aplikaci si můžeš vyzkoušet [zde](https://regex101.com/r/t6g4aj/1). Jejich popis v češtině nalezneš [zde](https://miroslavpecka.cz/blog/regularni-vyrazy-zaklady/) a pokud tě zaujmou, neváhej jít [více do hloubky](https://www.regularnivyrazy.info/serial-javascript-regexp.html). Můžeš je pak aplikovat třeba v živém výrazu, jež je důležitou funkcionalitou, která může zjednodušit práci při hledání chyby. Představ si, že potřebuješ sledovat hodnotu nějaké proměnné či vlastnost nějakého elementu. Můžeš při každé změně zavolat console.log, ale někdy nemáš snadný přístup ke kódu nebo k elementu z kódu. Tehdy se hodí živý výraz (live expression). Regulární výrazy se dají využít například při automatizovaných testech. Pozor - na konci videa tvrdíme, že se v dalším (čtvrtém) videu podíváme na Javascript. Vzhledem k detailnímu rozebrání ve čtvrté kapitole jsme se rozhodli toto video prozatím přeskočit.
 
-### Události
+## Události
 
 Na úvodní stránce naucme.it máme na konci stránky formulář s tlačítkem Odeslat zprávu. Když na něj najedeš, zaplní se. Když ho zmáčkneš, pokusí se stránka odeslat formulář. Výsledek záleží na tom, zda je vyplněný správně či nikoliv. To znamená, že jsi schopný s tlačítkem interagovat. Pro tebe to znamená zmáčknout tlačítko myši, nebo pohnout myší, abys na tlačítko najel. Ale jak tlačítko pozná, že jsi ho zmáčkl?
 
