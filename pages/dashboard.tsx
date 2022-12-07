@@ -1,16 +1,16 @@
+import path from "path"
 import Image from "next/image"
 import { GetStaticProps } from "next"
+import { Root } from "@radix-ui/react-separator"
+import { getFilesAt, HeadingsType, getMenuData, getHeadings } from "../utils/mdx"
 import { Head } from "../components/Head"
 import { InAppMenu } from "../components/InAppMenu"
 import { SideMenu } from "../components/SideMenu"
 import { TreeToC } from "../components/TreeToC"
-import path from "path"
-import { getAndParseMdx, getDataFromParsedMdx, getFilesAt, HeadingsType, getMenuData, getHeadings } from "../utils/mdx"
-import { getSourceId } from "../utils/string"
 import { MissingBanner } from "../components/MissingBanner"
 import { ContentCard } from "../components/ContentCard"
-import { Root } from "@radix-ui/react-separator"
 import { Typography } from "../components/Typography"
+import { ActionSidebar } from "../components/ActionSidebar"
 
 type DashboardProps = {
     readonly headings: HeadingsType
@@ -52,6 +52,11 @@ const Dashboard: React.FC<DashboardProps> = ({ headings }) => {
                                 alt='Ilustrace ke kurzu QA'
                                 loading='lazy'
                             />
+                        </ContentCard>
+                        <ContentCard title='Další'>
+                            <div className='w-full h-full'>
+                                <ActionSidebar />
+                            </div>
                         </ContentCard>
                     </section>
                     <Root className='my-8 h-px w-11/12 mx-auto bg-secondary' />
