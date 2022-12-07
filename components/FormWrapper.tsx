@@ -28,8 +28,7 @@ export function FormWrapper({ children, text, type, className, onSuccess }: Form
             method='post'
             action={`/email/${type}`}
             onSuccess={() => {
-                // Reset can be empty, needs fix PR for npm package
-                ;(window.turnstile.reset as () => unknown)()
+                window.turnstile.reset()
                 onSuccess?.()
             }}
             name={formName}
