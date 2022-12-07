@@ -60,6 +60,8 @@ const Th = (props: any) => <th className='border border-solid border-highlight p
 const Hr = (props: any) => <hr className='my-3' {...props} />
 const Img = (props: any) => (
     <Link href={props.src}>
+        {/* We don't know enough info to use next/image component */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img alt='Obrázek uvnitř MDX' loading='lazy' {...props} />
     </Link>
 )
