@@ -3,9 +3,9 @@ import { GetStaticProps } from "next"
 import { Head } from "../components/Head"
 import { InAppMenu } from "../components/InAppMenu"
 import { SideMenu } from "../components/SideMenu"
-import { TableOfContents } from "../components/TableOfContents"
+import { TreeToC } from "../components/TreeToC"
 import path from "path"
-import { getAndParseMdx, getFilesAt } from "../utils/mdx"
+import { getAndParseMdx, getDataFromParsedMdx, getFilesAt, HeadingsType, getMenuData, getHeadings } from "../utils/mdx"
 import { getSourceId } from "../utils/string"
 import { MissingBanner } from "../components/MissingBanner"
 import { ContentCard } from "../components/ContentCard"
@@ -13,11 +13,7 @@ import { Root } from "@radix-ui/react-separator"
 import { Typography } from "../components/Typography"
 
 type DashboardProps = {
-    readonly headings: readonly {
-        readonly text: string
-        readonly level: number
-        readonly href: string
-    }[]
+    readonly headings: HeadingsType
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ headings }) => {
@@ -33,7 +29,7 @@ const Dashboard: React.FC<DashboardProps> = ({ headings }) => {
             <div className='grid grid-cols-12 auto-rows-auto h-screen'>
                 <div className='row-start-1 row-end-2 xl:row-end-7 xl:row-span-full col-span-full xl:col-span-2 mt-20 bg-secondary/5 overflow-auto'>
                     <SideMenu>
-                        <TableOfContents headings={headings} />
+                        <TreeToC headings={headings} />
                     </SideMenu>
                 </div>
                 <main className='row-end-7 xl:col-start-3 col-span-full row-start-3 xl:row-start-1 row-span-full overflow-auto xl:mt-20 pb-2 overscroll-none'>
@@ -105,11 +101,8 @@ const Dashboard: React.FC<DashboardProps> = ({ headings }) => {
 export const getStaticProps: GetStaticProps<{}> = async () => {
     const folderPath = path.join(process.cwd(), "chapters")
     const paths = getFilesAt(folderPath, ".mdx")
-
-    const headings = paths.flatMap((mdxName) => {
-        const { data } = getAndParseMdx(folderPath, mdxName)
-        return { text: data.title, level: 1, href: `/chapter/${mdxName}#${getSourceId(data.title)}` }
-    })
+    const menuData = getMenuData(paths, folderPath)
+    const headings = getHeadings(menuData)
 
     return {
         props: {

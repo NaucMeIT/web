@@ -13,6 +13,10 @@ function withOpacityValue(variable) {
 module.exports = {
     content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
     theme: {
+        data: {
+            open: 'state~="open"',
+            close: 'state~="closed"',
+        },
         colors: {
             primary: withOpacityValue("--color-primary"),
             secondary: withOpacityValue("--color-secondary"),
@@ -81,10 +85,28 @@ module.exports = {
                     "0%, 10%, 100%": { transform: "translateY(0)" },
                     "5%": { transform: "translateY(11px)" },
                 },
+                slideDown: {
+                    "0%": {
+                        height: 0,
+                    },
+                    "100%": {
+                        height: "var(--radix-accordion-content-height)",
+                    },
+                },
+                slideUp: {
+                    "0%": {
+                        height: "var(--radix-accordion-content-height)",
+                    },
+                    "100%": {
+                        height: 0,
+                    },
+                },
             },
             animation: {
                 wiggle: "wiggle 1s ease-in-out 1",
                 pulseDown: "pulseDown 30s ease-in-out infinite",
+                open: "slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1)",
+                close: "slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1)",
             },
             transitionProperty: {
                 backgroundSize: "background-size",

@@ -5,7 +5,11 @@ import { getSourceId } from "./string"
 
 type Ext = string
 type Extension = `.${Ext}`
-export type HeadingsType = readonly { readonly text: string; readonly level: number; readonly href: string }[]
+type Heading = { readonly text: string; readonly level: number; readonly href: string }
+type Headings = readonly Heading[]
+export type HeadingsType = readonly (Heading & {
+    readonly children: readonly Heading[]
+})[]
 
 function assert(parsedMdx: any): asserts parsedMdx is { readonly data: { readonly title: string } } {
     if (!parsedMdx.data.title) {
@@ -14,7 +18,7 @@ function assert(parsedMdx: any): asserts parsedMdx is { readonly data: { readonl
     }
 }
 
-function getHeadings(source: string, path: string): HeadingsType {
+function getHeadingsFromMdx(source: string, path: string): Headings {
     const headingLines = source.split("\n").filter((line) => {
         return line.match(/^##*\s/)
     })
@@ -46,8 +50,12 @@ export function getAndParseMdx(folderPath: string, filePath: string) {
 export function getDataFromParsedMdx<T extends { readonly title: string }>(mdxPath: string, content: string, data: T) {
     return {
         headings: [
-            { text: data.title, level: 1, href: `/chapter/${mdxPath}#${getSourceId(data.title)}` },
-            ...getHeadings(content, mdxPath),
+            {
+                text: data.title,
+                level: 1,
+                href: `/chapter/${mdxPath}#${getSourceId(data.title)}`,
+                children: [...getHeadingsFromMdx(content, mdxPath)],
+            },
         ],
         content,
         data,
@@ -56,4 +64,16 @@ export function getDataFromParsedMdx<T extends { readonly title: string }>(mdxPa
 
 export function dataHasTitle(data: Record<string, unknown>): data is { readonly title: string } {
     return !!data.title
+}
+
+export function getMenuData(paths: readonly string[], folderPath: string) {
+    return Object.fromEntries(
+        paths
+            .map((mdxName) => [mdxName, getAndParseMdx(folderPath, mdxName)] as const)
+            .map(([mdxPath, { content, data }]) => [mdxPath, getDataFromParsedMdx(mdxPath, content, data)]),
+    )
+}
+
+export function getHeadings(menuData: ReturnType<typeof getMenuData>): HeadingsType {
+    return Object.values(menuData).flatMap((d) => d.headings)
 }
