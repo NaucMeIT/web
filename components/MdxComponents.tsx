@@ -39,6 +39,7 @@ const LinkMdx = (props: any) => (
         componentProps={
             {
                 href: props.href,
+                target: "_blank",
                 className: "text-highlight hover:text-primary",
                 "data-splitbee-event": "External Link",
                 "data-splitbee-event-destination": `${props.children}`,
@@ -48,10 +49,10 @@ const LinkMdx = (props: any) => (
         {props.children}
     </Typography>
 )
-const Ol = (props: any) => <ol className='list-decimal pl-6 py-2' {...props}></ol>
-const Ul = (props: any) => <ul className='list-disc pl-6 py-2' {...props}></ul>
+const Ol = (props: any) => <ol className='list-decimal pl-6 py-2 print:text-print' {...props}></ol>
+const Ul = (props: any) => <ul className='list-disc pl-6 py-2 print:text-print' {...props}></ul>
 const Table = (props: any) => (
-    <div className='overflow-auto my-3'>
+    <div className='overflow-auto print:overflow-visible print:text-xsDeviceBody print:text-print my-3'>
         <table className='w-max lg:max-w-3xl' {...props}></table>
     </div>
 )

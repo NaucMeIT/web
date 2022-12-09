@@ -23,6 +23,7 @@ module.exports = {
             off: withOpacityValue("--color-off"),
             background: withOpacityValue("--color-background"),
             highlight: withOpacityValue("--color-highlight"),
+            print: withOpacityValue("--color-print"),
             form: withOpacityValue("--color-form"),
             error: withOpacityValue("--color-error"),
         },

@@ -56,6 +56,7 @@ blockquote {
     --color-off: 227 0 213;
     --color-background: 9 12 40;
     --color-highlight: 255 255 255;
+    --color-print: 0 0 0;
     --color-form: 166 177 187;
     --color-error: 255 0 0;
 }
