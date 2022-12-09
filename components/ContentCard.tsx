@@ -3,8 +3,8 @@ import { Typography } from "./Typography"
 
 type Props = {
     readonly title: string
-    readonly phrase: string
-    readonly href: string
+    readonly phrase?: string
+    readonly href?: string
     readonly children?: React.ReactElement
     readonly priority?: boolean
     readonly small?: boolean
@@ -27,9 +27,11 @@ export function ContentCard({ title, children, phrase, href, priority, small }: 
         >
             <Typography variant='h3'>{title}</Typography>
             {children}
-            <Button href={href} theme={priority ? "main" : "off"} className='mx-auto w-fit'>
-                {phrase}
-            </Button>
+            {!!href && !!phrase && (
+                <Button href={href} theme={priority ? "main" : "off"} className='mx-auto w-fit'>
+                    {phrase}
+                </Button>
+            )}
         </div>
     )
 }
