@@ -12,7 +12,6 @@ import { Head } from "../../components/Head"
 import { TreeToC } from "../../components/TreeToC"
 import { ActionSidebar } from "../../components/ActionSidebar"
 import { components } from "../../components/MdxComponents"
-import { CodeHighlight } from "../../components/CodeHighlight"
 import { InAppMenu } from "../../components/InAppMenu"
 
 type PostProps = {
@@ -48,7 +47,6 @@ const Post: React.FC<PostProps> = ({ mdx, metaInformation, headings }) => {
                     </article>
                     <ActionSidebar />
                 </main>
-                <CodeHighlight />
             </div>
         </>
     )
