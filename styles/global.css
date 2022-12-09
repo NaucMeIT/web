@@ -89,3 +89,22 @@ span[id] {
     position: relative;
     z-index: -1;
 }
+
+[data-rehype-pretty-code-fragment] > pre {
+    padding: 1em;
+    margin: 0.5em 0;
+    border-radius: 0.5em;
+    overflow: auto;
+
+    background: rgb(30 30 30 / 0.5);
+    color: #ffffff;
+}
+
+[data-rehype-pretty-code-fragment] > code {
+    padding: 0 0.3rem;
+    border-radius: 0.5em;
+    overflow: auto;
+
+    background: rgb(30 30 30 / 0.5);
+    color: #ffffff;
+}

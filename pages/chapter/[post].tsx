@@ -1,17 +1,11 @@
-import remarkPrism from "remark-prism"
+import rehypeShiki from "rehype-pretty-code"
 import remarkGfm from "remark-gfm"
 import { GetStaticPaths, GetStaticProps } from "next"
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote"
 import { serialize } from "next-mdx-remote/serialize"
 import path from "path"
-import {
-    getAndParseMdx,
-    getDataFromParsedMdx,
-    getFilesAt,
-    HeadingsType,
-    getMenuData,
-    getHeadings,
-} from "../../utils/mdx"
+import fs from "fs"
+import { getFilesAt, HeadingsType, getMenuData, getHeadings } from "../../utils/mdx"
 import { getSourceId } from "../../utils/string"
 import { SideMenu } from "../../components/SideMenu"
 import { Typography } from "../../components/Typography"
@@ -61,13 +55,35 @@ const Post: React.FC<PostProps> = ({ mdx, metaInformation, headings }) => {
     )
 }
 
+type Node = Record<string, any>
 export const getStaticProps: GetStaticProps<PostProps> = async (props) => {
+    const options = {
+        // Use one of Shiki's packaged themes
+        theme: "one-dark-pro",
+        onVisitLine(node: Node) {
+            // Prevent lines from collapsing in `display: grid` mode, and
+            // allow empty lines to be copy/pasted
+            if (node.children.length === 0) {
+                node.children = [{ type: "text", value: " " }]
+            }
+        },
+        // Feel free to add classNames that suit your docs
+        onVisitHighlightedLine(node: Node) {
+            node.properties.className.push("highlighted")
+        },
+        onVisitHighlightedWord(node: Node) {
+            node.properties.className = ["word"]
+        },
+    }
+
     const folderPath = path.join(process.cwd(), "chapters")
     const paths = getFilesAt(folderPath, ".mdx")
     const menuData = getMenuData(paths, folderPath)
 
     const currentPost = menuData[props?.params?.post as string]
-    const mdx = await serialize(currentPost.content, { mdxOptions: { remarkPlugins: [remarkPrism, remarkGfm] } })
+    const mdx = await serialize(currentPost.content, {
+        mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [[rehypeShiki, options]] },
+    })
     const headings = getHeadings(menuData)
 
     return {
