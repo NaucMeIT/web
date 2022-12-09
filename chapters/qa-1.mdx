@@ -9,7 +9,7 @@ S počítačem se musí mluvit jasně v příkazech. Přesně mu dávat pokyny
 
 Pojďme ale postupně - HTML (HyperText markup language) patří do skupiny [Značkovacích jazyků](https://www.gjszlin.cz/ivt/esf/ostatni-sin/znackovaci-jazyky.php), protože s jeho pomocí nevytváříme program, ale upravujeme text do podoby, kterou zvládnou zpracovat prohlížeče. Představ si, že píšeš knihu ve Wordu nebo v Google dokumentech. Klidně si svůj oblíbený editor otevři. Píšeš první kapitolu. Taková kapitola potřebuje nadpis, který by měl být zvýrazněný. Jak to uděláš? Wordu to prostě řekneš. Označíš daný text a použiješ vhodnou funkci. Podobně je tomu v HTML, jen místo kliknutí na tlačítko nadpis dáš daný text do vhodných značek:
 
-```html
+```html showLineNumbers
 <h1>Učím se na Nauč mě IT</h1>
 <ul>
     <li>První položka seznamu</li>
@@ -26,7 +26,7 @@ Této struktuře se říká [DOM](https://jecas.cz/dom) (objektový model dokume
 
 HTML prohlížeči říká, co chceme zobrazit (nadpis, obrázek), ale neříká, jak to chceme zobrazit (barva, odsazení od okolí, barva pozadí atd.). Pro úpravu vzhledu se používají [Kaskádové styly - CSS](https://www.itnetwork.cz/html-css/webove-stranky/jak-psat-moderni-web-html-tutorial-uvod-do-css) (Cascading Style Sheet). Pomocí CSS můžeme definovat celý vzhled dokumentu, mimojiné třeba barvu textu a pozadí, font, nebo také prostor mezi HTML prvky. Jednoduché CSS vypadá takto:
 
-```css
+```css showLineNumbers
 h1,
 h2 {
     text-align: center;

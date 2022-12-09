@@ -108,3 +108,18 @@ span[id] {
     background: rgb(30 30 30 / 0.5);
     color: #ffffff;
 }
+
+[data-rehype-pretty-code-fragment] > pre > code {
+    counter-reset: line;
+}
+[data-rehype-pretty-code-fragment] > pre > code > .line::before {
+    counter-increment: line;
+    content: counter(line);
+
+    /* Other styling */
+    display: inline-block;
+    width: 1rem;
+    margin-right: 2rem;
+    text-align: right;
+    color: gray;
+}
