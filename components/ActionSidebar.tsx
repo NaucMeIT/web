@@ -1,5 +1,6 @@
-import { XMarkIcon, BugAntIcon, CalendarIcon } from "@heroicons/react/24/outline"
+import { XMarkIcon, BugAntIcon, CalendarIcon, PrinterIcon } from "@heroicons/react/24/outline"
 import * as Dialog from "@radix-ui/react-dialog"
+import { useRouter } from "next/router"
 import React, { useState } from "react"
 import { PopupModal } from "react-calendly"
 import { useTrackedUser } from "../hooks/useTrackedUser"
@@ -10,6 +11,7 @@ export function ActionSidebar() {
     const [user] = useTrackedUser()
     const [openError, setOpenError] = useState(false)
     const [openCalendly, setOpenCalendly] = useState(false)
+    const isChapter = useRouter().pathname.includes("post")
 
     if (!user || !user.name || !user.email) return null
 
@@ -36,6 +38,18 @@ export function ActionSidebar() {
                     <CalendarIcon className='block h-10 w-10' aria-hidden='true' /> Domluvit konzultaci
                 </>
             </SocialButton>
+            {isChapter && (
+                <SocialButton
+                    naked
+                    className='right-44 flex hover:text-secondary gap-x-2 !aspect-auto'
+                    label='Uložit jako PDF'
+                    onClick={print}
+                >
+                    <>
+                        <PrinterIcon className='block h-10 w-10' aria-hidden='true' /> Uložit jako PDF
+                    </>
+                </SocialButton>
+            )}
             <PopupModal
                 url='https://calendly.com/syreanis/konzultace-nauc-me-it?hide_gdpr_banner=1'
                 rootElement={document.getElementById("calendly")!}
