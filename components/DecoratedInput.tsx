@@ -40,6 +40,7 @@ function DecoratedInput(props: InputProps | TextareaProps): JSX.Element {
                     } w-full bg-transparent px-6 pt-5 pb-4 outline-none transition-colors duration-150 focus:text-highlight ${
                         props.className || ""
                     }`}
+                    aria-label={props.label}
                 />
             </div>
         </div>

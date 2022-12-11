@@ -31,7 +31,7 @@ function MenuItem({
 }) {
     return (
         <Typography
-            variant={item.isActive ? "menuActive" : "menu"}
+            variant={item.isImportant ? "menuBtn" : "menu"}
             component={item.isImportant ? Button : Link}
             key={item.title}
             componentProps={{

@@ -128,7 +128,7 @@ export function SocialButton({ naked, label, className, disabled, children, ...r
         <span {...props} tabIndex={-1}>
             <Link
                 {...rest}
-                className='pointer-events-auto h-full items-center inline-flex py-2 px-5'
+                className='pointer-events-auto h-full items-center inline-flex p-2'
                 aria-label={label}
                 target={isExternalUrl(rest.href) ? "_blank" : "_self"}
                 {...splitBeeProps}
