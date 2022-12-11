@@ -68,7 +68,7 @@ export function AboutUs({ people }: Props) {
                             variant='link'
                             component={Link}
                             componentProps={{ href: `mailto:${p.email}?subject=Dotaz na Nauč mě IT` }}
-                            className='text-center underline'
+                            className='text-center'
                         >
                             {p.email}
                         </Typography>

@@ -31,7 +31,7 @@ function MenuItem({
 }) {
     return (
         <Typography
-            variant={item.isActive ? "menuActive" : "menu"}
+            variant={item.isImportant ? "menuBtn" : "menu"}
             component={item.isImportant ? Button : Link}
             key={item.title}
             componentProps={{
@@ -40,7 +40,7 @@ function MenuItem({
                 onClick: () => close(),
                 theme: item.isImportant ? "main" : undefined,
                 size: "normal",
-                className,
+                className: item.isImportant ? `!hover:text-highlight` : className,
             }}
         >
             {item.title}
