@@ -1,0 +1,178 @@
+---
+title: Testerská teorie
+abstract: Často se říká, že testování je dobrá startovní pozice v IT. Je tomu tak, ale to neznamená, že není potřeba teorie. Díky ní jsme schopni testovat efektivně, rychle a hlavně odhalit chyby.
+---
+
+Prošli jsme technologické základy, ke kterým přidáme teorii o testování - základní termíny. Protože i trocha je komplexnější téma, bude kapitola obsáhlejší.
+
+## Dynamické a statické testování
+
+Slovo **dynamický** znamená pohyblivost, živost. V podstatě to vystihuje, že software musí být **spuštěn**. Pod dynamickým testováním si můžeš představit testování her, manuální testování e-shopu nebo automatizované end-to-end testy. Oproti tomu **statické testování nevyžaduje spuštěný software**. Příklady statického testování jsou:
+
+-   **Revize** - předmětem revize může být vše, co se dá přečíst. Může to být kód, specifikace, harmonogram práce, návrh, uživatelské scénáře, webové stránky, smlouvy, rozpočet, atd. Revize mají svá pravidla podle míry formálnosti a rozsahu. V kapitole 8 o Gitu jsme zmínili **code review**. Pokud si jen projdeš kolegův kód a nespustíš si ho, jedná se o revizi. S kolegou můžete prodiskutovat případná vylepšení mezi sebou a není k tomu třeba žádný formální proces. Taková revize by se dala označit za neformální. Naopak za formální revizi se dá označit audit projektu - konkrétním příkladem je [bezpečnostní audit programu](https://www.root.cz/zpravicky/truecrypt-je-bezpecny-potvrzuje-i-druha-cast-auditu/), kde je potřeba formální dokumentace.
+-   **Statická analýza** - je prováděna nějakým nástrojem. Testované objekty musí mít nějakou strukturu a pravidla, která tento nástroj může zkoumat. Všiml sis, že když píšeš v textovém editoru, tak se ti podtrhávají chybná slova červeně? Důvodem je na pozadí spuštěný nástroj na statickou analýzu využívající jako svá pravidla česká slova a pravopis. Statickou analýzu používá i [nástroj opravidlo](https://www.opravidlo.cz/), který jsme použili pro korekci chyb. Podobná analýza může být i u kódu, anglický termín, pod kterým ji najdete, je [linting](https://it-slovnik.cz/pojem/linting). Pravidla mohou vypadat [takto](https://github.com/xhemalov/astronauts/blob/main/.eslintrc.js) či mohou mít [modernější podobu](https://github.com/pegak/nauc-me-it/blob/9f7324ac9f7ab3d06d6bc62df3e6764683769d8d/.eslintrc.json), kde se stále častěji využívají standardizované varianty bez větších úprav. Obojí může vypadat magicky, ale zaručuje to vyšší kvalitu kódu.
+
+**Statické a dynamické testování se doplňují.** V rámci statického testování jsme schopni nalézt jiné typy defektů než u dynamického testování. Můžeme defekty odhalit dřív a tím ušetřit čas i peníze. Statické testování může odhalit nesrovnalosti, duplicity v požadavcích, problémy v návrhu či kódu, bezpečnostní zranitelnosti nebo problémy ve specifikaci rozhraní. Neodhalení těchto defektů včas může stát spoustu peněz a v případě dvou posledních může znamenat vážné problémy.
+
+Například letadla Boeing 787 se potýkala s bezpečnostní zranitelností přetečení, která způsobovala ztrátu kontroly nad letadlem, pokud se stroj nerestartuje každých 248 dní. Více o události si můžeš přečíst na [Idnes](https://www.idnes.cz/technet/technika/boeing-restart-integer-overflow.A150504_154332_tec_technika_pka). Umíš si představit jak nákladné by bylo tohle nasimulovat dynamickým testováním? Hlavně, kde by byla ta stopka, kdy pošleme letadla létat? Další chybou, která stála mnoho milionů a znalostí, je chyba týkající se [kosmonautiky](https://tech.instory.cz/179-miliony-dolaru-shorely-v-atmosfere-chyba-ktera-v-kosmonautice-nema-obdoby.html). Sonda, která letěla prozkoumat Mars, shořela v atmosféře. Dva systémy používané během vývoje měly nekompatibilní jednotky. Jeden systém používal libry a druhý metrické jednotky. Taková chyba se těžko odhalí dynamickým testováním.
+
+Chyby jsou staré jak lidstvo samo. Nemusí mít tak drastické následky jako je případný pád letadla. Pro firmy mohou defekty znamenat finanční ztráty či poškození jména. Některé se nás přímo dotýkají a ovlivní naše plány.
+
+-   [Výpadek Alzy](https://www.idnes.cz/ekonomika/domaci/alza-obchod-internet-vypadek.A211217_161248_domaci_maka) týden před vánoci
+-   [O2 blokující přístup](https://www.lupa.cz/aktuality/cast-zakazniku-o2-hlasi-problem-s-nacitanim-nekterych-webu/#:~:text=Podle%20zku%C5%A1enost%C3%AD%20redakce%20Lupy%20se,v%C4%9Bt%C5%A1inou%20se%20na%20web%20dostanou) na některé weby
+-   [Výpadek Facebooku](https://www.idnes.cz/technet/internet/vypadek-facebook-instagram-whatsapp-messenger.A190314_074556_sw_internet_nyv) na 6 hodin + [blokace přístupu](https://blog.cloudflare.com/october-2021-facebook-outage/) do budov
+-   Další velice zajímavé chyby nalezneš [zde](https://www.fi.muni.cz/usr/jkucera/pv109/2005/xobsivac.htm)
+
+## Testovací činnosti
+
+**Plánování** - plánování je činnost, kterou spíše dělá ve velkých firmách manager než běžný tester. V malých firmách může mít tester více rolí. Jedná se o naplánování, co, kdy, kde, kým, jak a proč se bude testovat.
+
+**Monitoring a řízení testování** - během testování se mohou zaznamenávat nějaké metriky. Podle nich se pak může upravovat plán. Typicky se o metriky zajímá management.
+
+**Analýza, návrh a implementace testu** - Analýza dává odpověď na to otázku, co se má testovat - jaká data. Návrh zase na otázku, jak se má testovat. Po vyřešení obou otázek jsme schopni vytvořit test. Určit kroky, které se mají dělat během testu, a jaká data se mají testovat.
+
+**Provádění testů** - Jak již název napovídá, vykonávají se jednotlivé kroky testů.
+
+**Dokončení** - Záznam jednotlivých výsledků testování, příprava výstupu.
+
+## Úrovně testování
+
+Testovací úrovně jsou skupiny testovacích činností, které jsou prováděny společně podle fáze vývoje softwaru. Takhle to je podle teorie, termíny probírané v téhle části si většina lidí představí jako druhy testů pro automatizaci.
+
+-   **Unit testing** (jednotkové testování nebo testování komponent) - Zabývá se malými samostatně testovatelnými jednotkami.
+
+        Může se jednat o komponentu, kterou simulujeme funkcionalitu tlačítka, nebo i o kus kódu jako je funkce. V rámci testu se může zkoumat, jestli je návrh jednotky správně. Jestli jednotka odpovídá zadané specifikaci. Nebo jestli je funkčně a logicky v pořádku.
+
+
+        Unit testy jsou často psané vývojáři a jsou vhodné pro automatizaci. Jsou nedílnou součástí tzv. regresních testů, o kterých se dozvíš níže. \
+
+    Na ukázku automatického unit testu se můžeš podívat na webu [Ponořme se do Pythonu](http://diveintopython3.py.cz/unit-testing.html) (v ukázkách kódu se může vyskytovat tobě neznámá syntaxe Pythonu, ale pro tebe je důležitý text kolem). Hlouběji pochopíš unit testy také v článku [Co je testování jednotek a proč je důležité?](https://www.tremplin-numerique.org/cs/quest-ce-que-le-test-unitaire-et-pourquoi-est-ce-important-cloudsavvy-it) - poslední část článku se věnuje spouštění automatických testů a je příliš technická, tak se tomu nemusíš tolik věnovat. V kariérním postupu se můžeš setkat s pozicí automatického testera, nyní však potřebujeme položit pevné základy.
+
+-   **Integrační testování** - Zabývá se interakcemi mezi komponentami nebo systémy. Jinak řečeno, jak se komponenty nebo systémy kamarádí mezi sebou. Rozhodně se tady neřeší funkcionalita komponent (unit testing) nebo systému (systémové testování).
+
+    -   Integrační testování komponent - Zabývá se testováním rozhraním mezi komponentami a interakce mezi nimi. Následuje po unit testech a obvykle se automatizuje. Tlačítko kliká je unit test, ale zobrazení přihlašovací formuláře v modálním okně je integrační.
+    -   Systémové integrační testování - Zabývá se testováním rozhraní mezi dvěma a více systémy. Může se jednat i o rozhraní mezi naším softwarem a službou třetí strany, nebo také mezi různými našimi systémy. Na webu máme integrované služby třetí strany. Konkrétně my používáme Stripe, díky kterému lze snadno zaplatit kartou za konzultace, kdybys potřeboval pomoct. :) Není potřeba testovat jejich funkcionalitu, protože to už udělal někdo jiný. Ale je potřeba otestovat jak se chovají s naším webem. Když nám přijde potvrzení o zaplacení, skutečně ti přidáme kredity? Nebudeme po tobě chtít platbu znovu?
+
+    Více se o integračních (ale i jiných) testech dozvíš na [SW Testování](http://test.swtestovani.cz/index.php?option=com_content&view=article&id=29:systemove-a-integrani-testy&catid=3:zaklady&Itemid=11).
+
+-   **Systémové testování** - Zabývá se testováním schopností a chování celého systému. Můžeme řešit [funkční a nefunkční](http://testovanisoftwaru.cz/metodika-testovani/druhy-typy-a-kategorie-testu/funkcni-a-nefunkcni-testy/). Zde máš krátké shrnutí od nás:
+    -   **Funkcionální** - Můžeme testovat například podle uživatelské příručky nebo specifikace, jestli aplikace dělá to co má. Je logicky správně. Příkladem takového testování může být převod peněz z účtu na účet. Nejde jen o odečtení z jednoho a přidání na druhý účet, ale je nutné otestovat i kontrolu existence účtu, kontrolu stavu financí - aby se negenerovaly peníze ze vzduchu - a spoustu dalšího. Do této kategorie spadají end-to-end testy (**E2E**). Velice dobře o E2E testech mluví na [Heurece](https://www.heurekadevs.cz/jak-nezesilet-z-end-to-end-testu).
+    -   **Nefunkcionální** - Můžeme například testovat bezpečnostnost aplikace, výkon, rychlost nebo přístupnost. V DevTools se nachází nástroj Lighthouse, který řeší nefunkční systémové testování webových aplikací. Je poměrně univerzální a testuje “od každého něco” - bezpečnost, rychlost i přístupnost. Probrání Lighthouse a testování nefunkčních požadavků nespadá do toho kurzu. Dopočujeme [WebPerf trénink](https://webperf.canarytrace.com/) od [Radima Pánka](https://www.linkedin.com/in/rdpanek/). Je velice aktivní v testerské komunitě a z velké části díky němu se testování posouvá mílovými kroky kupředu.
+-   **Akceptační testování** - Je podobné systémovému testování. Slouží k tomu, aby se posoudilo, zda software může jít do provozu. Pokud v rámci testování najdeme spoustu chyb, jedná se o závažný problém. Protože čím později najdeme během vývoje chybu, tím víc peněz a času stojí její odstranění. Může také zabránit produktu jít do provozu… a nebo také ne, pokud zrovna vydáváš nový Assassins Creed či Cyberpunk před vánoci. Akceptačních testů je řada druhů podle toho na co se zaměřují, podíváme se pouze na některé:
+    _ **Provozní** - Častěji známé pod názvem Uživatelské akceptační testování (UAT). Provádí jej uživatelé systému - ať už jde o administrátory či pouhé uživatele tohoto systému. To se může lišit produkt od produktu. \
+    Mohou testovat instalaci, upgrade nebo odinstalování softwaru. Například co se stane, když systém spadne? V nejlepší případě je vše zálohované a může se to obnovit. Pokud aplikace projde UAT, znamená to, že funkcionalitu zběžně otestovali, ale není to omluvou pro absenci jiného testování.
+    _ **Alfa a beta testování** - oba pojmy jsou relativně známé. Obojí je prováděno koncovými uživateli. Rozdíl je jen v místě, kde se koná. Alfa testování se provádí na pracovišti vývojové organizace. Beta testování se provádí na vlastním pracovišti. Například pokud bys testoval novou hru od svého oblíbeného herního studia u sebe doma na své konzoli jedná se beta testování. Pokud bys testoval danou hru v herním studiu na jejich konzoli je to alfa testování.
+
+        Více o akceptačním testování nalezneš na [Wikipedii](https://www.wikiwand.com/cs/U%C5%BEivatelsk%C3%A9_akcepta%C4%8Dn%C3%AD_testov%C3%A1n%C3%AD) nebo na [Blueghost](https://www.blueghost.cz/clanek/akceptacni-testovani-weby/).
+
+-   **Údržbové testování** - Pamatuješ si na přirovnání životního cyklu k domu z nulté kapitoly? Software se musí udržovat stejně jako dům, aby nezchátral. Přidávat, ubírat funkctionality nebo opravovat chyby. Při těchto operacích je žádoucí ověřit, že vše funguje jak má. Ověřovat jestli vše funguje bys neměl jen jednou za čas, ale pořád. Testy, které zkoumají, jestli se nezměnila funkčnost, se jmenují [regresní](https://www.wikiwand.com/cs/Regresn%C3%AD_testov%C3%A1n%C3%AD).
+
+Testům se věnují na stránce [Testování softwaru](http://testovanisoftwaru.cz/tag/integracni-testovani/). Najdeš zde jejich vlastní shrnutí, které ti může pomoci pochopit probíranou tématiku slovy někoho jiného.
+
+## Typy testů
+
+Testovací úrovně jsou skupina testovacích aktivit seskupených podle fáze vývoje. Typy testů jsou také skupina testovacích aktivit, ale dělení je podle testovaných vlastností nebo cílů. Všechny typy testů se mohou použít v každé úrovni. Kromě testování bílé skříňky lze u všech typů použít techniky černé skříňky (více testovací techniky). Rozlišujeme:
+
+-   **Funkcionální testování** - u systémového testování jsme už k funkcionálnímu testování trošku zabrousili. Funkční testy se zaměřují na funkčnost, logiku testovaného objektu. Tedy jestli to dělá správně to co to má dělat.
+-   **Nefunkcionální testování** - testy odpovídají na otázku, jak se testovaný objekt chová. Například jestli je rychlý, pomalý či bezpečný.
+-   **Test související se změnami** - během vývoje nastane chvíle, kdy se testovaný objekt poupraví. Třeba se v něm našla chyba nebo je mu přidaná funkcionalita. V takovém případě je potřeba znovu ověřit jeho kvalitu. Může se jednat o konfirmační nebo automatické regresní testy. Pod konfirmačními testy si můžeš představit manuální ověření funkce.
+-   **Testování struktury softwaru** - testování podle úrovně znalosti struktury programu
+    ![Ilustrační obrázek pro znázornění různých úrovní struktury znalosti programu při testování](/images/chapter/qa-9-1.png "Testování - Struktura znalosti programu")
+
+    -   **[Testování bílé (skleněné) skříňky](http://test.swtestovani.cz/index.php?option=com_content&view=article&id=42:testovani-kodu&catid=13:testovaci-techniky&Itemid=29)** - jedná se o testy u nichž máme k dispozici celý kód. V rámci těchto testů se může testovat kód nebo vnitřní struktura. Představ si krabici, do které vidíš, co je v ní. Třeba je ze skla s otevřeným víkem. Takže můžeš testovat i vnitřní strukturu.
+    -   **[Testování šedé skříňky](https://www.cleverandsmart.cz/grey-box-test/)** - Krabice lehce zneprůhlední, ale ještě trošku jde do ní vidět. Už nemáme přístup k celé struktuře.
+    -   **[Testování černé skříňky](https://www.cleverandsmart.cz/black-box-test/)** - při testech nemáme přístup ke kódu, ke struktuře. Nevidíme, co je v krabici. Ale můžeme ověřit, jak krabice vypadá a jak se chová. Typicky když se tester dostane testovací prostředí a nemá přístup ke kódu.
+
+Dobré příklady funkčního a nefunkčního testování nalezneš v článku o typech testování na [Clever and Smart](https://www.cleverandsmart.cz/typy-testu/), avšak nenech se zmást trochu jiný rozdělením u integračních testů, setkáš se s různými způsoby i napříč firmami.
+
+## Testovací techniky
+
+Jak takový test udělat? Jak určit jaká data se mají testovat a za jakých podmínek? Jaké akce mají být provedeny? S podobnými otázkami mohou pomoci testovací techniky, kterých je mnoho druhů. Testeři často kombinují různé testovací techniky, aby dosáhli nejlepších výsledků. Zvolení vhodné techniky závisí na mnoha faktorech jako jsou například čas, složitost testovaného objektu, znalosti či dovednosti testera. Hezký přehled včetně obrázků nalezneš na [blogu Lucie Žolté](http://lucie.zolta.cz/index.php/statnice-vsb/170-testovaci-techniky).
+
+-   **Techniky černé skříňky** - techniky zaměřené na chování, mohou být funkcionální nebo nefunkcionální. Během technik černé skříňky testujeme objekt bez hlubší znalosti vnitřní struktury. Jako základ pro testy můžeme použít specifikaci nebo uživatelské scénáře. Je nám jedno jaký kód je za tlačítkem, hlavně že kliká. Nebo co se děje na pozadí inputu, hlavně že do něj můžu napsat text. Jaký text je potřeba do něj vložit, můžeš zjisti podle níže uvedených metod:
+    -   [Třídy ekvivalence](http://test.swtestovani.cz/index.php?option=com_content&view=article&id=28:testovani-ekvivalence&catid=13:testovaci-techniky&Itemid=29)
+    -   [Hraniční body](http://test.swtestovani.cz/index.php?option=com_content&view=article&id=27:testovani-hraninich-hodnot&catid=13:testovaci-techniky&Itemid=29)
+    -   [Rozhodovací tabulka](http://test.swtestovani.cz/index.php?option=com_content&view=article&id=39:testovani-rozhodovacich-tabulek&catid=13:testovaci-techniky&Itemid=29)
+    -   [Testování přechodů stavů](http://test.swtestovani.cz/index.php?option=com_content&view=article&id=37:testovani-pechod-stav&catid=13:testovaci-techniky&Itemid=29)
+    -   [Testování případů užití](http://test.swtestovani.cz/index.php?option=com_content&view=article&id=34:testovani-usecase&catid=13:testovaci-techniky&Itemid=29)
+-   [Techniky bílé skříňky](http://test.swtestovani.cz/index.php?option=com_content&view=article&id=42:testovani-kodu&catid=13:testovaci-techniky&Itemid=29) - techniky zaměřené na strukturu testovaného objektu. Problematice se věnují i na [Clever and Smart](https://www.cleverandsmart.cz/white-box-test/), může ti to pomoci vše pochopit.
+    -   **Testování pokrytí příkazů**
+    -   **Testování pokrytí rozhodnutí**
+-   **Techniky založené na zkušenostech** - čím více máš zkušenosti, tím lepší máš předpoklad, kde se může nacházet chyba a jak k ní dojít.
+    -   **Odhadování chyb** - zde mohou pomoci znalosti z předchozího projektu, současného projektu nebo i znalost vývojářů. I vývojáři mají své mouchy, může se ti stát, že časem objevíš, že daný výjář zapomíná často na nějakou věc.
+    -   [Průzkumné testování](http://metodikamezitest.asp2.cz/Metodika_testovani/guidances/guidelines/pruzkumne_testovani_AD696237.html)- exploratory testing - bez předem zadaných postupů prozkoumáváš aplikaci a snažíš se najít chyby.
+    -   **Kontrolní seznamy** - jde o seznam věcí, které je třeba projít, ale není vhodné projít pouze tyto kroky, ale je třeba kontrolovat i okolní stav aplikace, často se kombinuje s průzkumným testováním.
+
+Je nutné si uvědomit, že testování s sebou nese i rizika, zejména pakliže využíváme externích dodavatelů. O těchto rizicích se dozvíš [zde](https://www.cleverandsmart.cz/zpusoby-testovani/). Na přehled testovacích technik se můžeš podívat na webu [Kitner](https://kitner.cz/testovani_softwaru/prehled-testovacich-technik/).
+
+Testovací techniky založené na zkušenostech jsou jeden z hlavních důvodů, proč se na testery u pohovorů klade jiný typ nároků než na vývojáře. Tester by měl mít obecný přehled o možných chybách a principech testování, což je hodně založené na zkušenostech. Vývojáři si často nejsou vědomi všech edge cases, a proto jsou tu testeři. Oba by měli umět používat Google a nemusí umět vše. Stačí, když získají doménovou znalost. Naučí se termíny produktu a jak funguje a kdo ho používá.
+
+## Test plan - test suite - test case
+
+[Testovací plán](https://www.cleverandsmart.cz/plan-testovani/) neboli test plán je dokument, který říká, co se kdy má testovat a jak. Testovací plán většinou vytváří manažer testování, případně celý tým testerů - záleží na mnoha věcech - nastavení firmy, projektu, životním cyklu softwaru. Tester může do testovacího plánu přispívat a to vytvářením [testovacích scénářů](https://www.cleverandsmart.cz/testovaci-scenar/) (test suite) a jednotlivých [testovacích případů ](https://www.cleverandsmart.cz/testovaci-pripad/)(test case). Testovací případ popisuje jak otestovat danou věc. Ve dříve zmíněném [testování převodu z a na římská čísla](http://diveintopython3.py.cz/unit-testing.html) byly přesně dané limity. Rozsah římských čísel je od 1 do 3999. Máme tedy nejméně 3 testovací případy.
+
+-   Čísla 1 až 3999
+-   Čísla menší než 1
+-   Čísla větší 3999
+
+V článku byla dále zmíněná reálná čísla, která v římském zápisu nelze reprezentovat.
+
+Každá z uvedených možností je jeden testovací případ. Tři testovací případy nevalidní a jeden validní. Celé to tvoří testovací scénář pro převod na římské číslice.
+
+## Definice hotového
+
+[Definice hotového](https://www.cerebra.cz/clanky-definition-of-done.html) (anglicky Definition of Done či DoD) stanovuje, kdy je daná věc považovaná za hotovou. Co vše musí splňovat.
+
+Jednou z variant DoD je, že tester uzavírá tickety po svých kolezích po kontrole všech bodů v DoD. V tomto případě je možné označení ticketu za hotový pouze testerem, nikoliv vývojářem. Tato definice se může lišit projekt od projektu, firmu od firmy.
+
+V rámci různých definic se můžeš často setkat s pojmy [SCRUM](https://www.wikiwand.com/cs/Scrum) či [Kanban](https://www.wikiwand.com/cs/Kanban), nezalekni se jich - jedná se o životní cykly softwaru, určitě se s nimi v pracovním životě setkáš. Jak je spojené testování se SCRUMem se dočteš opět na SW Testování v článku [Testování a SCRUM](http://test.swtestovani.cz/index.php?option=com_content&view=article&id=57:testovani-a-scrum&catid=3:zaklady&Itemid=11).
+
+## Základní principy testování
+
+Existuje mnoho principů testování, ale uvedeme si zde 7:
+
+1.  **Testování ukazuje přítomnost defektů, nikoli jejich nepřítomnost**
+
+    Otestováním aplikace můžeme snížit pravděpodobnost výskytu chyby. Ale nejsme schopni říct, že žádné chyby **nejsou** přítomny. Protože testováním chyby pouze nacházíme.
+
+2.  **Kompletní testování není možné**
+
+    Představ si, že testuješ input kam můžeš dávat čísla určitého intervalu. Pokud je interval malý například 5 čísel. Jsi schopný otestovat všechny číslice. Pokud je velký třeba 1000000 číslic, nemá smysl testovat všechny. Nejspíše aplikuješ testovací techniky, zvolíš priority nebo najdeš kritické případy. Pokud by ses rozhodl testovat všechny, zabralo by to nejen hodně času a prostředků, ale mohl bys ztrácet koncentraci z opakující se práce.
+
+3.  **Včasné testování šetří čas a peníze**
+
+    Co může způsobit chyba v pozdější fázi vývoje jsme si ukázali výše. Je dobré zapojit testování do vývoje, co nejdříve.
+
+4.  **Shlukování defektů**
+
+    Tam, kde se vyskytuje jedna chyba, jich s velkou pravděpodobností bude více. To je principem tohoto shlukování. Může se stát, že je nějaká část aplikace výrazně náročnější na implementaci a je zde vyšší riziko chyby. S tím se dá bojovat třeba preciznějším testováním kritických částí.
+
+5.  **Vyvarování se pesticidního paradoxu**
+
+        Opakováním testů nenajdeme nové chyby. Představ si, že se přidala funkcionalita a pokud nepřidáme testy, které by ji testovaly, tak staré ji nepokryjí. Proto je důležité udržovat testovací sady aktuální. Měnit staré testy, testovací data a přidávat nové testy dle potřeby. Je to jako s pesticidy, po čase přestanou na hmyz účinkovat. Nebo jako s léky. Nemoci začnou být proti starým lékům odolné. \
+
+    Výjimkou jsou regresní testy, které mají za úkol zkontrolovat starou funkcionalitu, tedy že se nerozbily již v minulosti dokončené a otestované funkce.
+
+6.  **Testování je závislé na kontextu**
+
+    Přizpůsobit testování kontextu aplikace je důležité. Každý projekt má své určité téma (bezpečnostní systém záchranných služeb, webový e-shop, aplikace pro banku), může na něj být použitý jiný životní cyklus vývoje. To jsou faktory, které ovlivňují i testování daného systému. Těmto faktorům je třeba se přizpůsobit.
+
+7.  **Nepřítomnost chyb je klam**
+
+    Nenalezení chyby neznamená, že tester odvádí špatnou práci. Ba naopak je to známkou zdraví celého týmu. Vývojáři jsou naladěni na stejnou vlnu jako testeři, a tak přesně ví, na co je potřeba se zaměřit, co se od nich očekává. Spolupráce pak neskřípe. Někteří by ale mohli nabýt dojmu, že tester vlastně nic nedělá, nicméně dříve nebo později přijde chvíle, kdy za něj budou vděční, protože ušetří klidně statisíce či miliony.
+
+## Psychologické hledisko testování
+
+Podívejme se ještě na závěr na vztah vývojář - tester. Základní premisou je, že tester a vývojář **nejsou** soupeři. **Jde jim o stejnou věc - kvalitní software.** Můžeš se setkat s tím, že testování je vnímáno jako kritika. Může k tomu docházet kvůli kognitivním zkreslením, chybám v myšlenkových procesech, na jejichž základě může být vyvozován nelogický závěr v uvažování.
+
+Více o kognitivním zkreslení a jeho druzích se můžete dozvědět na [Wikipedii](https://cs.wikipedia.org/wiki/Kognitivn%C3%AD_zkreslen%C3%AD), [Bezfaulu](https://bezfaulu.net/kognitivni-zkresleni/) a [Jak se rychle naučit](https://jakserychlenaucit.cz/7-kognitivnich-zkresleni/).
+
+Pro nás je z kognitivních zkreslení zajímavé **konfirmační zkreslení**, kvůli kterému obtížně vnímáme a přijímáme odlišné názory. Například může být pro vývojáře obtížné přijmout, že v jeho kódu byla nalezena chyba. Z jeho pohledu je vše správně. Nás může vnímat jako ty špatné šťouraly. Proto je důležité komunikovat neutrálně, mít připravena fakta a svá zjištění pro jistotu ověřit. Defekty reportovat jasně, objektivně a věcně. Můžeš se na situaci podívat z jeho pohledu, pochopit jeho pocity a chápání problematiky. Může vám to například usnadnit komunikaci a zmírnit jeho negativní pohled. Hlavně se nezapomeň ujistit, že bylo pochopeno tvoje sdělení.
+
+Je možné, že jako nadšený nový tester se zastavíš na nějakou událost, kde budou i vývojáři. Díky špatným zkušenostem s testery, se kterými si hází balíčky přes pomyslnou zeď, a také jisté namyšlenosti tě mohou vývojáři brát negativně a pohrdat tebou. To je způsobeno i tím, že nechápou, co práce testera obnáší a že máte vlastně společný cíl - kvalitní aplikaci. Nenech se tím odradit, situace se neustále zlepšuje.
+
+---
+
+Při psaní kapitoly jsme se inspirovali osnovami pro zkoušku na Certifikovaného testera základní úrovně (Certified Tester Foundation Level - CTFL) od organizace [ISTQB](https://www.istqb.org/) (International Software Testing Qualifications Board), která sdružuje lidi z oblasti testování software po celém světě. ISTQB určuje požadované znalosti pro zisk certifikace, čímž standardizují úroveň testerů napříč státy. Pro Českou Republiku a Slovensko má ISTQB lokální skupinu [CaSTB](https://castb.org/cz).
+
+[Materiály](https://castb.org/cz/ke-stazeni/) pro CTFL jsou přeloženy. Pokud si na to troufáš, můžeš se na ně podívat. Momentálně se ti mohou zdát složité, protože obsahují mnoho technických termínů bez podrobného vysvětlení vhodného pro začátečníky - jde spíše o osnovu ke zkoušce. Samo ISTQB doporučuje alespoň rok zkušeností s procesem vývoje softwaru. Doporučují i přípravné kurzy od certifikovaných pracovišť, jejichž seznam pro Slovenskou a Českou Republiku je uveden na stránkách CaSTB.
