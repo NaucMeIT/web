@@ -1,0 +1,135 @@
+---
+title: Git
+abstract:
+---
+
+Verzovací systémy jsou vhodné pro správu verzí souborů. Představ si, že píšeš knihu. Napsal jsi kapitolu, kterou teď upravuješ, změníš tamhle slovo, tamhle umažeš větu či odstavec. Když si to po sobě přečteš, zjistíš, že se ti to tolik nelíbí a předchozí verze byla lepší. Co s tím? **Ctrl+Z?** Ale vracení funguje jen do určité vzdálenosti v historii. Navíc jsi mezi tím možná vypnul počítač. Verzovací systém slouží k tomu, aby sis mohl zaznamenat verzi souboru. Ke které se v případě chyby můžeš vracet. Verzovací systémy mívají většinou přidružené cloudové úložiště. Když se něco stane s tvým počítačem, máš zálohu na nějakém serveru. V článku [Cloud](https://www.jaknait.cz/co-je/cloud/) na webu Jak na IT se dozvíš víc o konceptu poskytování služeb na webu. S cloudovým úložištěm ses možná setkal, a aniž si to uvědomuješ, například Google disk, Dropbox nebo OneDrive, který Microsoft integroval do Windows.
+
+## Verzovací systém Git
+
+Ale zpět k naší fiktivní knize, kterou píšeš. Dostal ses v psaní do bodu, kdy by bylo vhodné přizvat k práci kamaráda. On se v problematice, o níž píšeš, vážně vyzná. Požádáš ho o spolupráci. Kamarád připíše odstavec, ale zároveň změní část tvého textu, na který jsi byl pyšný. Bylo by skvělé si neměnit práci pod rukama. Co teď s tím? Nejlépe vrátit se ke staré verzi a přidat kamarádův odstavec. To vše zvládnou verzovací systémy. V IT světě se často setkáš s verzovacím systémem [Git](https://www.youtube.com/watch?v=GcZsboL_xIs&list=PLNAMH_0HgWT-ey31hQqrmi_Rgr4OVWgH3&index=2), kterému se budeme věnovat po zbytek kapitoly. [Git](https://www.youtube.com/watch?v=_qSB6jN4A3s&list=PLQ8x_VWW6AkuVs1oyWth3lXA4D4jxD_7F&index=1) nepoužívají [jen programátoři](https://www.youtube.com/watch?v=mHQGuQseZFE&list=PLQ8x_VWW6AkuVs1oyWth3lXA4D4jxD_7F&index=2), ale i další odvětví pro správu souborů, jako jsou například grafici, designeři, testeři, vlády…
+
+Přečti si něco málo o fungování a historii Gitu na webu ITnetwork v článku [Lekce 1 - Git - Historie a principy](https://www.itnetwork.cz/programovani/git/git-tutorial-historie-a-principy). Git si vytváří pro kontrolu, jestli se jednotlivé soubor změnily, **hash**, kterým soubory porovnává. Hash je unikátní kód, který vzniká použitím hašovací funkce. Více se můžeš dozvědět na [Wikipedii](https://cs.wikipedia.org/wiki/Ha%C5%A1ovac%C3%AD_funkce). Nemusíš se tím ale zabývat do podrobna. Důležité je uvědomit si, že Git přiřadí každé verzi souboru unikátní řetězec.
+
+Na konci článku od IT Networku byly zmíněny cloudové aplikace Bitbucket, GitLab a [GitHub](https://www.youtube.com/watch?v=WD92wrsiwsI&list=PLQ8x_VWW6AkuVs1oyWth3lXA4D4jxD_7F&index=3), které jsou schopné pracovat s Gitem. Na jejich pozadí jsou servery, kam můžeš ukládat svoje soubory. Můžeš nastavit práva přístupu, aby ti na super tajnou věc nemohl koukat každý. Tím že nahraješ soubor do cloudu se z něj nestává veřejný soubor. Pokud to tak nebudeš chtít. Firmy si občas dělají vlastní server, který používají jako úložiště. Je to náročné na údržbu hardwaru a na implementaci. Jednoduší je pro firmy si zaplatit účet na nějakém cloudu.
+
+## Instalace Gitu
+
+Git je potřeba nainstalovat. Jak na to se můžeš dozvědět na kanálu [Informatika s Mišom](https://www.youtube.com/watch?v=qoyisFQgku4&list=PLNAMH_0HgWT-ey31hQqrmi_Rgr4OVWgH3&index=3) nebo ve videu [Davida Šetka](https://www.youtube.com/watch?v=Px4SzsEUjzI&list=PLQ8x_VWW6AkuVs1oyWth3lXA4D4jxD_7F&index=4), či v článku na [ITNetworku](https://www.itnetwork.cz/programovani/git/git-tutorial-instalace-a-stazeni-repositare).
+
+V článku je zmíněn program Git Bash, což je aplikace, která se chová jako unixový příkazový řádek. Proto nastal čas seznámit se s jednoduchými základní příkazy pro příkazový řádek jako je například příkaz **cd** pro přechod mezi adresáři. Více o příkazech se můžeš dozvědět v článku [Příkazová řádka ](https://naucse.python.cz/lessons/beginners/cmdline/)na webu **Nauč se Python**! Jak je používat si můžeš ujasnit ve čtyřech [videích](https://www.youtube.com/watch?v=k1UndHXyvLA&list=PLQ8x_VWW6AkuVs1oyWth3lXA4D4jxD_7F&index=5) od Šetka. Příkazy, které jsou v článku uvedeny můžeš zkoušet i v Git Bashi. Nedoporučujeme jej používat - nese s sebou víc problémů než užitku. Výchozí varianta v mnoha verzích Windows byl příkazový řádek. Místo něj doporučujeme používat Powershell - je to moderní alternativa, která lze používat na všech operačních systémech. Příkazy se mohou lišit podle operačního systému, proto ti na začátku pomůže mít jednotné prostředí. Všechny příkazy, které zná unixový Bash nemusí znát Windows příkazový řádek.
+
+Příkazový řádek a příkazová řádka je to stejné. Můžeš se setkat v mluvené podobě i s výrazem [komandlajna] nebo [céemdéčko] (čenglismus => počeštěné anglické výrazy jsou v IT běžné).
+
+## Základní příkazy
+
+Jak Git funguje bylo nastíněno výše. Git není programovací jazyk, ale ovládá se pomocí příkazů, které zadáváš do příkazového řádku. Nejprve je vhodné [Gitu](https://www.youtube.com/watch?v=xSittyBMq98&list=PLQ8x_VWW6AkuVs1oyWth3lXA4D4jxD_7F&index=9) říct [základní informace](https://www.youtube.com/watch?v=H7Z1GDONXiA&list=PLNAMH_0HgWT-ey31hQqrmi_Rgr4OVWgH3&index=6) o sobě a pak už můžeš začít pracovat. Mezi základní příkazy, které můžete používat i bez cloudového serveru, patří například:
+
+-   git init - pro vytvoření repozitáře
+-   git add - pro přidání souboru do stage (virtuální složky, kterou chceme verzovat)
+-   git commit - vytvoření záznamu verze - základní stavební kámen gitu
+-   git status - informace o repozitáři - změněné soubory, soubory ve stage
+-   git log - informace o commitech
+-   git checkout - přepínání mezi commity a větvemi
+-   git rm - mazání souborů z gitu
+-   git mv - přesouvání a přejmenování souborů a složek
+-   git --version - zjištění nainstalované verze gitu
+-   git show - ukazuje změny - co se stalo v commitu, jak se změnil soubor atd.
+
+Pro bližší seznámení s těmito příkazy se podívej na kanál [Informatika s Mišom](https://www.youtube.com/watch?v=H7Z1GDONXiA&list=PLNAMH_0HgWT-ey31hQqrmi_Rgr4OVWgH3&index=6) na videa 6-9 nebo na videa 10-19 od [Davida Šetka](https://www.youtube.com/watch?v=VnEztRwGtOU&list=PLQ8x_VWW6AkuVs1oyWth3lXA4D4jxD_7F&index=10) nebo si přečti článek na [ITNetworku](https://www.itnetwork.cz/programovani/git/git-tutorial-zaklady).
+
+---
+
+V Informatice s Mišom je git ukázán na projektu v Pythonu. Nelekni se toho. Je úplně jedno s jakými soubory pracujeme. Git všechny textové soubory bere stejně, je mu jedno jestli obsah je v Pythonu nebo JavaScriptu, či jako čistý text. Slovo priečinok je slovensky složka.
+
+Ve videích jsou zmíněny commity. Doporučujeme psát v angličtině, stejně jako komentáře, názvy proměnných a funkcí. Angličtina je ve firmách používaná jako hlavní jazyk. Představ si, že píšeš bez diakritiky, vytváříš funkci pro načítání něčeho a chceš ji pojmenovat načíst. A teď si představ, že tvůj kolega je pouze anglicky mluvící a uvidí slovo načíst bez diakritiky. Nebude zrovna nadšený.
+
+Pro psaní commitů má každá firma jiný přístup. Před první commitem se zeptej. Třeba my používáme standardní formát [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/).
+
+---
+
+## Větvení
+
+Co jsou to větve a jak s nimi pracovat se můžeš dozvědět v článku na [IT Networku](https://www.itnetwork.cz/programovani/git/git-tutorial-vetve), ve videu 10 a 11 na kanálu [Informatika s Mišom](https://www.youtube.com/watch?v=jpQ3G5sCrEk&list=PLNAMH_0HgWT-ey31hQqrmi_Rgr4OVWgH3&index=10) nebo na videích 20-42 od [Davida Šetka](https://www.youtube.com/watch?v=rSpDJvD-jLk&list=PLQ8x_VWW6AkuVs1oyWth3lXA4D4jxD_7F&index=20).
+
+Mezi základní příkazy pro větvení patří například:
+
+-   git branch - správa větví - tvorba, přejmenování, mazání atd.
+-   git merge - sloučí větve dohromady
+-   git switch - změna větví
+-   git checkout - přepínání mezi commity a větvemi
+
+Příkaz git checkout je univerzální a starší. Nováčky i zkušené mate svým rozsahem použití. Proto byly přidány příkazy git switch (slouží **pouze** pro přepínání mezi větvemi) a git restore (slouží **pouze** pro obnovu souborů) - obojí lze dosáhnout pomocí git checkout.
+
+![Ilustrační obrázek pro znázornění větvění v Gitu](/images/chapter/qa-8-1.png "Větvení v Gitu")
+
+V IT firmách to často chodí tak, že produkt je rozdělený do několika větví. V jedné větvi (branch anglicky), která může být pojmenovaná například **develop/main/master**, se vyvíjí. Jednou za určitou dobu (hodinu, den, měsíc, rok) se nasazuje. Přístupy jsou různé - může se vytvořit nová větev, může se ke commitu přidat značka znamenající vydání, tzv. tag… záleží na projektu. Vývojáři pracují hlavně s větví, do které se vyvíjí. Ale aby si vývojáři nepřepisovali kód pod rukama a nerozbombardovávali kolegům jejich práci, vytvoří si svou větev. V té udělají svou práci. Když jsou hotovi, tak svou práci sloučí do hlavní větve zpět. Tohle je jen ilustrační příklad. Každá firma má vlastní strategii a některé se mohou lišit zásadně od zde popsaného přístupu.
+
+Vysvětlení některých z nich je na webu [Skoumal.com - Git a jeho workflows](https://www.skoumal.com/cs/skoumal-insight-2-git-a-jeho-workflows/). Nelekni se, že některým pojmům a strategiím nerozumíš - firmy mají strategie již zvolené a rozhodně nebude tvojí prací znovu objevovat kolo. Prostě tě ve firmě naučí, jak zmáknout tu jejich strategii. Pro tebe to znamená jen naučení základních příkazů. Kdyby tě přece jen problematika zajímala, nalezneš v angličtině další [strategie](https://www.flagship.io/git-branching-strategies/).
+
+## Práce se vzdáleným repozitářem
+
+Hlavní výhodou Gitu jako nástroje pro verzování je distribuce. To znamená, že nemáš pouze jednu centrální verzi, ale každý má svou vlastní a také je nějaká na serveru či v cloudu. To je vzdálený repozitář. Obsahuje to všechno, co jste do něj uložili a lze si jej kdykoliv naklonovat k sobě. Poskytovatelé cloudových repozitářů používají stejné příkazy, protože všechny jsou založené na gitu. Ale mohou se lišit ve webové aplikaci, dalších službách a ceně. Pro základní použití jsou zdarma. My se podíváme na [GitHub](https://www.youtube.com/watch?v=j1ak76QXAKg&list=PLNAMH_0HgWT-ey31hQqrmi_Rgr4OVWgH3&index=12). Proč? Je nejpoužívanější a v češtině pro něj existuje několik [návodů](https://www.youtube.com/watch?v=2TWkp5v07jU&list=PLQ8x_VWW6AkuVs1oyWth3lXA4D4jxD_7F&index=43), které ho popisují.
+
+Jak pracovat se vzdálenými repozitáři se můžeš dozvědět ve videích 12 - 20 [Informatika s Mišom](https://www.youtube.com/watch?v=j1ak76QXAKg&list=PLNAMH_0HgWT-ey31hQqrmi_Rgr4OVWgH3&index=12) nebo 43-55 od [Davida Šetka](https://www.youtube.com/watch?v=2TWkp5v07jU&list=PLQ8x_VWW6AkuVs1oyWth3lXA4D4jxD_7F&index=43) a také v článku na [IT Networku](https://www.itnetwork.cz/programovani/git/git-prace-se-vzdalenym-repositarem). Při vytváření účtu si uvědom, že je hezké mít přezdívku, ale je důležité, aby byla trochu reprezentativní. Svůj účet můžeš například používat i v budoucí práci. Zvol si nickname, za který se v budoucnu nemusíš stydět.
+
+Ve videích je zmíněný SSH klíč. Doporučujeme si ho nastavit. Zaprvé s tím vytvoříš větší důvěru v tvé commity a za druhé nebudeš muset zadávat při každém commitu heslo. Pokud bys s tím bojoval, zeptej se na [Discordu](https://discord.gg/QbYswwYUPU).
+
+Mezi základní příkazy pro větvení patří například:
+
+-   git clone - stáhne repozitář ze vzdáleného uložiště
+-   git push - pošle data do vzdáleného repozitáře
+-   git pull - stáhne data ze vzdáleného repozitáře a mergne je s tvojí větví - mohou vzniknout konflikty
+-   git fetch - stáhne data ze vzdáleného repozitáře - merge si můžeš udělat sám, když uznáš za vhodné
+
+## Další zdroje
+
+Pokud bys chtěl skutečně proniknout do tajů Gitu, existuje téměř kompletně přeložená kniha o Gitu, plně dostupná online. Slouží jako dokumentace Gitu a do budoucna vám může být velmi užitečná. Naleznete ji na oficiálních [stránkách Gitu](https://git-scm.com/book/cs/v2). Nebojte se však pročítat ji jen tak, tyto znalosti se vám určitě budou hodit, ať už bude systém v práci jakýkoliv. Díky CZ.NIC je plně přeložená kniha [Pro Git](https://knihy.nic.cz/files/edice/pro_git.pdf)! Vyšlo již nové vydání, to je prozatím pouze v angličtině.
+
+Na GitHubu Michala Hucka z Informatiky s Misom můžeš najít jednoduchý [cheat sheet](https://github.com/misohu/git-tutorial/blob/main/git-commands/commands.md) s příkazy. Pokud si chceš zopakovat výše uvedené informace v jedné přednášce podívej se na video od [yablka](https://www.youtube.com/watch?v=0v5K4GvK4Gs). Chceš být pořádný pařmen a nevadí ti angličtina? Vrhni se na [Oh My Git](https://ohmygit.org/), což je počítačová hra vysvětlující Git včetně mnoha tajemných zákoutí!
+
+## Sloučení kódu a code review
+
+Jakmile má vývojář svou práci hotovou je potřeba změny sloučit. K tomu slouží **Pull Request**, díky kterému dojde ke sloučení. Ale ne jen tak. Tady se liší postup firma od firmy a občas projekt od projektu.
+
+Nejprve musí projít všechny statické analýzy kódu. Například prettier - formátuje kód podle pravidel (každý máme různé způsoby psaní a je důležité být jednotný) nebo linter (kontroluje dodržení různých pravidel - ne nutně stylistických, ale také funkčních - třeba, že má každý obrázek popisek).
+
+Vývojář potřebuje před sloučením code review - schválení od dalšího vývojáře či dvou, kteří si projdou jeho kód, jestli v něm nejsou blbosti, a případně napíšou své poznámky.
+
+V některých firmách potřebuje vývojář před mergem schválení i od testera. Vývojáři si práci svých kolegů většinou nespouští. Proto v některých firmách chtějí, aby si tester stáhl vývojářovu větev. Spustil projekt a otestoval ho před spojením s hlavní větví. Další přístup je testovat až po sloučení. V takovém případě se může stát, že tester nemusí pracovat vůbec s gitem. Může dostat testovací prostředí, kde běží větev, kterou je potřeba otestovat.
+
+Každý z přístupů má své výhody i nevýhody. V prvním případě, pokud tester odhalí chybu před sloučením, tak může vývojářovi vrátit práci a nic se nestalo. Ale může to vést k většímu lajdáctví vývojářů. Navíc by měl tester v ideálním případě otestovat, jestli se kód zaintegroval správně do hlavní větve, což přináší práci navíc.
+
+Druhý přístup - testování po sloučení - má jedno hlavní úskalí. Jak se postavit k tomu když tester nalezne chybu? Vrátit celý merge, či chtít opravy v rámci zadání než bude považována za hotovou nebo práci schválit a jen vytvořit navazující úkol pro vývojáře. To záleží na závažnosti chyby a jestli chyba souvisí se zadáním. V každém případě to znamená další režii a to ne jen pro vývojáře, kterému by tester vrátil jeho práci.
+
+## Projekty
+
+Získané vědomosti si procvičíme na Githubu. Účet už nejspíš máš. Ale kdyby ne vytvoř si účet na stránkách [GitHub.com](https://github.com/) a vpravo nahoře klikni na Sign up a vyplň požadované údaje.
+
+### Zveřejnění blogu na Githubu
+
+Pamatuješ na první úkol z kapitoly 1, kde jsi měl vytvořit blog? Nabádali jsme tě, ať si ho uložíš. Teď ho ukážeme světu - nemusíš se stydět, každý někdy začínal a o to více bude vidět tvůj postup v čase.
+
+Jak na to?
+
+1. Vytvoř si repozitář na Gitbubu
+2. Naklonuj ho na svůj počítač (lokálně) - můžeš zvolit i cestu, propojení lokálního repozitáře s tím na Githubu. V takovém případě postupuj podle návodu na GitHubu.
+3. Přejdi do složky s projektem
+4. Zkopíruj do ní svůj blog
+5. Změny přidej a commitni
+6. Pushni změny - zde po tobě bude Github chtít přístupové údaje k účtu, pokud nemáš nastavený SSH klíč (vysvětleno výše)
+7. Zveřejni své stránky:
+       1. Otevři svůj repozitář na webové stránce GitHub a přejděte na záložku "Settings" (Nastavení).
+       2. V sekci "Pages" (Stránky GitHub) zvol výchozí větev pro tvé stránky a klikni na tlačítko "Save" (Uložit).
+       3. Ve výchozí větvi tvého repozitáře (nejčastěji "master" nebo "main") již nejspíš máš soubor "index.html" s obsahem tvých stránek. Pokud ne, úvodní strana by se tak měla jmenovat.
+       4. Přidej, commitni a pushni změny do tvého repozitáře na GitHubu pomocí příkazů git add, git commit a git push.
+       5. Po chvíli by se měly stránky zobrazit na adrese: https://&lt;tve_jmeno>.github.io/&lt;jmeno_repozitare>.
+
+### Asociace
+
+Jdi do [repozitáře](https://github.com/Nauc-me-IT/asociace), kde je cvičení, které jsme vytvořili. Cvičení je trochu složitější - obsahuje i **fork**. Fork vytvoří kopii našeho repozitáře na tvém účtu. Do cvičení byl přidán, abys nemusel čekat než tě přidáme jako přispěvatele. Je to běžná praxe. Celé cvičení si budeš moct vyzkoušet u sebe a pak můžeš svou práci přidat k nám do repozitáře. V takovém případě bude tvůj commit čekat na schválení.
+
+O čem cvičení je? Skládá se ze dvou částí.
+
+1. Znáš hru asociace? Je to jako slovní fotbal jen místo koncového písmenka napíšeš slovo, které tě napadlo jako první. V rámci cvičení si zahrajeme asociace. Jak na to zjistíš, když si v repozitáři otevřeš soubor README.md s návodem.
+2. Abychom si procvičili znalosti Gitu, je zde i soubor preLog, kam je potřeba uvést hash předchozího commitu. Popisek je opět v README.md.
