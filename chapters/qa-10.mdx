@@ -1,0 +1,318 @@
+---
+title: Cvičení
+abstract: Vyzkoušej si na vlastní kůži, jak vypadá testování projektu. Zde najdeš popis grafického rozhraní naší testovací aplikace o astronautech ze cvičení 10.
+---
+
+Poslední lekce se liší od ostatních. Zúročíš v ní všechny nabyté znalosti a vyzkoušíš si, jak může vypadat taková práce testera. Ukážeme si ji na cvičné aplikaci.
+
+## Popis testované aplikace
+
+Když si jedna naše lektorka hledala první práci v oblasti webového vývoje, dostala za úkol naprogramovat jednoduchou aplikaci. A jak už to u začátečníků bývá nevychytala v aplikaci všechny mouchy. Proto se aplikace skvěle hodí pro naše účely. Navíc se do ní pro účely kurzu jednoduše přidávaly další defekty.
+
+Zadání bylo jednoduché. Vytvořit aplikaci sloužící jako databáze nejskvělejších a nejúžasnějších astronautů. Zadání úkolu lze považovat za jednoduchou specifikaci.
+
+-   Aplikace řeší evidenci astronautů a jejich správu
+-   Aplikace umožňuje vložit nového astronauta
+-   Aplikace umožňuje editovat a smazat astronauta
+-   Aplikace umožňuje zobrazit astronauta
+-   Aplikace zaznamenává jméno, příjmení, datum narození a superschopnost astronauta.
+
+Specifikované jsou pouze funkcionální požadavky, tedy co má aplikace umět. Žádné nefunkcionální ani grafické požadavky nebyly určeny. Ale pro naše účely si zvolíme alespoň grafické požadavky. Vzhledem k tomu, že při vytváření aplikace bylo vše řešeno pomocí tužky a papíru, vytvořili jsme detailnější popis pomocí obrázků. Tento popis nalezneš v [QA - Kapitola 10 - design](/chapter/qa-11).
+
+Prozatím máš k dispozici jen materiály, které by se daly použít při statickém testování. Samozřejmě si je projdi, zvýší to tvou znalost domény. Doménová znalost značí, jak moc znáš produkt, na kterém pracuješ - spadá do ní nejen technická znalost, ale také znalost zákazníků a jejich práce s produktem. Při procházení naší jednoduché specifikace buď pozorný. Představ si, že jsi uživatel aplikace. Klaď si otázky, jestli by to bylo vhodné pro použití, nebo co bys jako uživatel chtěl dělat. Pokud máš nějaké otázky na zadání aplikace, neváhej napsat na [Discord](https://discord.gg/QbYswwYUPU). Svoje všechny nabité znalosti/postřehy si zapiš. Takto bys měl postupovat u každého projektu.
+
+Přejdeme k dynamickému testování. Rozpohybujeme astronauty a přidáme testovací prostředí. Aplikace je dostupná na adrese [https://astronauts.vercel.app/](https://astronauts.vercel.app/). Pokud si chceš aplikaci spustit lokálně, budeš potřebovat [Node.js a NPM](https://www.parse-error.cz/nodejs-tutorial/1/co-je-to-nodejs-instalace) - stačí si přečíst instalaci, další kroky jsou pro programátory. Aplikaci najdeš na [Githubu](https://github.com/xhemalov/astronauts). V **README.md** je návod, jak ji spustit. Pro lokální spuštění budeš potřebovat nastavit takzvané environment variables - proměnné pro prostředí. Tyto proměnné se nedávají veřejně na GitHub, protože můžou obsahovat klíče k věcem jako databáze. To je nebezpečné - útočník by mohl měnit data neočekávaným způsobem - třeba si vyčarovat peníze na bankovním účtu. Naše aplikace potřebuje pracovat s databází a musíš si tedy nastavit tyto proměnné. Pokud si ji chceš spustit, vytvoř si v repozitáři soubor .env. Zajdi na [Discord](https://discord.com/channels/996169548845830394/1029364359622828073/1033405609195876423), kde dostaneš více informací.
+
+Poté, co jsi ověřil, že ti funguje testovací prostředí, případně sis spustil vše lokálně, můžeme přistoupit k představení hlavní práce manuálního testera. Probereme psaní testovacích případů, reportování chyb, otestování aplikace podle seznamu, exploratory testing. Ukážeme si, jak může tester postupovat při testování nově vytvořené funkce aplikace. A na závěr si představíme druhou naši aplikaci, na které si můžeš zkusit exploratory testing. Aplikace má stejné zadání jen jiný grafický kabátek a nejspíše méně defektů, vytvářel ji někdo jiný. Ale to už bude na tobě zjistit, v čem se liší.
+
+## Psaní testovacích případů
+
+Ukážeme si zjednodušený test plán, zjednodušený, protože nebude obsahovat všechny náležitosti, například nebude obsahovat strategii testování. Zaměříme se pouze na vytváření testovacích sad a testovacích případů. Protože to je to, s čím se můžeš setkat. Buď budeš vytvářet jednotlivé testovací případy, nebo je budeš následovat.
+
+Testovací případ je scénář, který popisuje způsoby, jak ověřit, že aplikace funguje správně. Může být použit pro automatizované nebo manuální testování a je důležitým nástrojem pro zajištění kvality a spolehlivosti softwaru. Co takový testovací příklad musí obsahovat?
+
+-   Unikátní identifikátor - kvůli trasovatelnosti a organizaci testů
+-   Popis toho, co testovací případ testuje a proč je důležitý
+-   Seznam kroků, které je nutné udělat pro provedení testu
+-   Očekávaný výsledek pro každý krok
+-   Jasně stanovené podmínky, za kterých je test považován za úspěšný.
+-   Případné poznámky nebo důležité informace, které se týkají testovacího případu. Třeba zda jsou potřeba prerekvizity.
+
+Všechny výše zmíněné položky by měli být stručné a jasné. Není potřeba psát rozsáhlé romány.
+
+Ale než se vrhneš na psaní test casů, je rozumné zapřemýšlet nad tím, co je vlastně potřeba testovat. Probereme možnosti scénářů, které by mohly být jednotlivými testovacími případy pro pole Birthday. To, co budeme probírat,by se dalo použít jako nadpisy pro jednotlivé testovací případy. Formálně s přesným seznamem kroků rozepíšeme jen pár scénářů. Tobě ale nic nebrání pokračovat sám.
+
+### Pole Birthday
+
+Pole Birthday má dva módy edit a view. Ve view modu se pole nachází na úvodní stránce v záznamu astronauta. V Edit módu se nachází ve formuláři při vytváření či editaci astronauta.
+
+![Pole Birthday - View mode](/images/chapter/qa-10-1.png "Políčko Birthday zobrazené ve view mode.")
+
+![Pole Birthday - Edit mode](/images/chapter/qa-10-2.png "Políčko Birthday zobrazené v edit mode.")
+
+Začneme jednodušším view modem, který složí jen k prohlížení. Pole nelze upravovat. Takže se nabízí testovací scénář: zkus něco napsat do pole ve view modu.
+
+Přejdeme do edit módu. V edit módu je datum unikátní záležitost. Ve světě se nepoužívá jen [formát](https://www.wikiwand.com/cs/Datum), na který jsme zvyklí - DD. MM. YYYY (Den. Měsíc. Rok). V aplikaci je použitý formát typický pro USA - MM/DD/YYYY (Měsíc/Den/Rok). Vezmi si tužku a papír a zkus zapřemýšlet, co tě napadá za možnosti, které bys testoval. Poté pokračuj ve čtení. Budeme postupně možnosti postupně rozepisovat. Pokud jsi našel nějaké, které jsme neuvedli, tak nám napiš na [Discord](https://discord.gg/QbYswwYUPU).
+
+Rozebereme si datum po částech. Nejprve máme část MM tedy měsíce. Měsíců máme dvanáct. MM znamená, že jednočíselné měsíce mají na začátku nulu. Lze zadat pouze kladná celá čísla. Využijeme metodu hraničních bodů a ekvivalence. Validní interval je 01-12. A nevalidní je interval -nekonečno až 00, a také 13 až plus nekonečno. Podle metody hraničních bodů má smysl otestovat body 00, 01,12,13. V případě nevalidních případů by se pole mělo podtrhnout červeně a objevit se hláška: Invalid Date Format.
+
+![Nevalidní formát datumu](/images/chapter/qa-10-3.png "Nevalidní formát datumu pro políčko Birthday.")
+
+Počet dnů v měsíci se liší. Máme sedm měsíců o 31 dnech, čtyři o 30 dnech a pak je tu únor. Únor má 28 dní a jen jednou za 4 roky 29. Jde zadat pouze kladná celá čísla. To svádí k tomu testovat všechny možnosti, ale uvědom si, že některé jsou stejné. Jaké tedy budou třídy ekvivalence - které testovací případy testují stejnou věc?
+
+-   Měsíce o 30 dnech
+-   Měsíce o 31 dnech
+-   Únory v nepřestupný rok
+-   Únory v přestupný rok
+
+Vem si tužku a papír a k jednotlivým třídám si napiš měsíce. Teď u jednotlivých tříd najdi hraniční hodnoty, které chceš otestovat. Chceš otestovat i možnosti, které by aplikace neměla dovolit. Nezapomněli jsme na nějakou třídu ekvivalence? Na nějaký interval, třeba kolem začátku měsíce? Tam je to jednoduché. Na začátku měsíce se nachází dvě hodnoty, 01 je ve validním intervalu a 00 v nevalidním.
+
+Na letech není zase nic tak složitého, naše pole akceptuje data od 1. 1 . Nemělo by povolit datum pozdější, než je dnešní den. Jde zadat pouze celá čísla. Opět je tu zcela jednoduchý interval a hraniční body.
+
+-   Pokud zadáš datum, které je před 1. 1. 1900, měla by se ti objevit hláška: Date should not be before minimal date.
+-   Pokud zadáš datum, které je po dnešním datu, měla by se objevit hláška: Date should not be after minimal date.
+
+![Datum před povoleným minimem](/images/chapter/qa-10-4.png "Chyba zobrazená při zadání datumu před zvoleným minimem.")
+
+![Datum po povoleném maximu](/images/chapter/qa-10-5.png "Chyba zobrazená při zadání datumu po zvoleném maximu.")
+
+Další testovací případ se týká date pickeru. Z výše uvedených případů má pomocí date pickeru smysl testovat rozsah, jestli jde zadat něco před rokem 1900 a po dnešním datu. Samozřejmě můžeš otestovat všechny funkce. Ale prozradíme ti: při vytváření aplikace byla využita dostupná komponenta, kterou někdo otestoval (je součástí veřejně dostupné knihovny, kterou programují desítky lidí). Ale určitě neotestovali, jestli splňuje naše limity na data.
+
+Všiml sis poznámek: jde zadat pouze celá kladná čísla? Co se stane, když do pole zadáš písmeno? Určitě by se to mělo otestovat a napsat k tomu testovací případ. Psal sis vše na papír? Kolik testovacích případů jsi zaznamenal? Pochlub se na Discordu!
+
+Už víš, co testovat, ale je to potřeba zapsat tak, aby se to v budoucnu dalo zreprodukovat - manuálně nebo zautomatizovat. Takhle by mohl vypadat formálně zapsaný testovací případ pro poslední zmíněnou možnost:
+
+**Identifikátor testovacího případu**: TC-1
+
+**Popis**: Napsání nenumerického znaku do pole Birthday v edit modu
+
+| Kroky                                    | Očekávaný výsledek                           |
+| ---------------------------------------- | -------------------------------------------- |
+| Klikni na tlačítko ADD                   | Objeví se formulář pro vytvoření astronauta  |
+| Klikni do pole Birthday                  | Pole zmodrá a lze do něj psát                |
+| Zadej nenumerický znak, např: písmeno a  | Znak nelze zadat                             |
+
+**Podmínky úspěšného testu:** Test je považován za úspěšný, pokud aplikace splní všechny kroky a dosáhne očekávaných výsledků bez chyb.
+
+Test neobsahuje žádné poznámky. Testovací případ začíná na úvodní stránce. Pokud bychom chtěli začít rovnou testovat ve formuláři a vynechat krok 1. Klikni na tlačítko ADD, musíme to uvést v poznámce. Například jako prerekvizita: Otevřený formulář pro záznam astronauta.
+
+Testovací případ může obsahovat i další podrobnosti - je automatizovaný, status (prošel, selhal) a další. Protože je toho hodně, je vhodné používat nástroj na správu a management testování. Je jich celá řada. My jsme si pro ukázku vybrali TestRail. S jeho pomocí jsme vygenerovali soubor [QA - Kapitola 10 - Test plán](/assets/qa-10-test-plan.pdf), který obsahuje popsané testovací případy pro pole Birthday a editaci záznamu s astronautem, jež se budeme věnovat v další části. Jednotlivé případy jsou v dokumentu psané pro ukázkové účely v angličtině i češtině. Ve firmách je zvykem, že se veškerá dokumentace píše v angličtině. Nebudeme probírat TestRail nebo jiný nástroj dopodrobna. Každá firma používá jiný. Důležité je vědět, co je potřeba napsat. Pro naučení nástroje většinou stačí tak hodina nebo dvě na proklikání. Můžeš si to zkusit. TestRail má trial verzi - zdarma na pár dní na vyzkoušení.
+
+### Editace záznamu s astronautem
+
+Pokud chceš, napiš si testovací případy pro další políčka. Společně se podíváme na komplexnější případ, a to editování astronauta. Abychom mohli něco editovat, tak je potřeba, aby to bylo vytvořeno. Proto do poznámky můžeme napsat: předpoklad je, že máme alespoň jeden záznam. Jakmile máme prerekvizitu splněnou, můžeme pokračovat na jednotlivé kroky. Záznam lze editovat kliknutím na políčko tužky. První věc na otestování - jde se dostat do editačního módu?
+
+V editačním módu jsou ve formuláři čtyři políčka a tlačítka SAVE a BACK. Tlačítko BACK vrátí záznam bez rozepsaných změn. Tlačítko SAVE uloží změny. Změnit můžeme jedno, dvě nebo klidně všechna políčka. Některá pole jsou povinná - ta s hvězdičkou - bez nich by neměl jít formulář uložit. Vidíš? Vzniknout může mnoho kombinací a testovat je všechny by bylo náročné. Upozorňujeme, že zde se neřeší jednotlivé komponenty, ale jejich propojení v něco většího. Testování jednotlivých komponent jsme řešili výše. Když se podíváš na počet testovací případů pro datum, chce se ti je psát znovu? Asi ne. Navíc nás to v tenhle moment nezajímá. Než si uvedeme jednotlivé případy, zapřemýšlej, co nás vlastně zajímá. Které případy mají smysl? Klidně si pět vezmi tužku a papír a rozepiš si to.
+
+Nás napadly případy:
+
+-   Lze se dostat do módu editace: Klikni na tlačítko s tužkou -> dostaneš se na stránku s formulářem.
+-   Změň pokaždé 1 pole na validní hodnotu (tedy celkem 4x), ulož formulář pomocí tlačítka SAVE -> Jsi přesměrován na úvodní stránku. V záznamu s astronautem je změněná hodnota, ostatní hodnoty se nezměnily.
+-   Vymaž jedno required pole (to s hvězdičkou) a klikni na tlačítko SAVE -> formulář nelze uložit.
+-   Napiš nevalidní datum a klikni na tlačítko SAVE -> formulář nelze uložit.
+-   Vymaž nepovinné pole ability a klikni na tlačítko Save -> formulář je uložen, jsi přesměřován na úvodní stránku. Záznam s astronautem nemá vyplněnou ability.
+-   Změň hodnotu v nějakém poli a klikni natlačítko BACK -> jsi přesměřován na úvodní stránku, záznam s astronautem je beze změny.
+-   Občas se testuje i zabezpečení aplikace -> to je komplexní problematika, na kterou je samostatné odvětví, kterému se říká security či penetration testing. Připravujeme článek na toto téma.
+
+**Identifikátor testovacího případu**: TC-2
+
+**Popis**: Tlačítko BACK zruší editaci
+
+**Poznámky:** Prerekvizitou je jeden záznam s astronautem.
+
+| Kroky                               | Očekávaný výsledek                                                           |
+| ----------------------------------- | ---------------------------------------------------------------------------- |
+| Klikni na tlačítko tužky u záznamu  | Objeví se formulář pro editaci                                               |
+| Změň hodnotu nějakého pole          | V poli se objeví zadaná hodnota                                              |
+| Klikni na tlačítko Back             | Objeví se úvodní stránka\. Záznam není změněn\. Zadaná hodnota není uložena  |
+
+**Podmínky úspěšného testu:** Test je považován za úspěšný, pokud aplikace splní všechny kroky a dosáhne očekávaných výsledků bez chyb.
+
+## Reportování chyb
+
+Určitě jsi již našel nějakou chybu. Pokud ne, projdi si pozorněji editaci, která je popsaná výše. Co s takovou chybou. Nejlépe ji reportovat - nahlásit. Nejde jen tak napsat: „hej kámo vývojáři máš tam chybu.“ Zaprvé by to mohlo zapadnout a na opravu by se nedostalo. Za druhé ty a vývojáři máte stejný cíl - doručit kvalitní aplikaci. Nechceš se posmívat kolegům. Každá organizace má systém, jak reportovat. Náš systém využívá Github.
+
+V kapitole 8 ses naučil princip Gitu, včetně webu Github a forkování. Bude tedy nutné si projekt forknout k sobě a přidat „spolupracovníky“, to uděláš v Settings -> Collaborators -> Add people -> xhemalov. To zopakuješ znovu, akorát přidáš uživatele pegak. Na začátku by tvá obrazovka měla vypadat podobně:
+
+![Přidání uživatele do repozitáře](/images/chapter/qa-10-6.png "První krok přidání lektora do repozitáře")
+
+Poté bude potřeba počkat, než přijmeme pozvání. Než se tak stane, bude obrazovka vypadat takto:
+
+![Čekání na přijetí pozvání do repozitáře](/images/chapter/qa-10-7.png "Druhý krok přidání lektora do repozitáře")
+
+Jakmile pozvání přijmeme, zmizí text „Pending invite“ a obrazovka bude vypadat takto:
+
+![Úspěšně přijaté pozvání do repozitáře](/images/chapter/qa-10-8.png "Třetí krok přidání lektora do repozitáře")
+
+Poté vytvoříš issue ve **svém** repozitáři a označíš nás v textu pomocí zavináče, konkrétně @xhemalov či @pegak. Druhou variantou je nás přiřadit k této issue - to uděláš v pravém sloupci, sekce Assignees.
+
+Report o chybě by měl obsahovat podrobný popis chyby, včetně informací o tom, kdy se chyba objevila a jaké jsou její projevy. Jaká jsou možná řešení. Dále by měl report obsahovat informace o tom, jaký vliv má chyba na fungování systému nebo aplikace a jaké jsou možné důsledky pro uživatele nebo společnost.
+
+Toho, co by měl report formálně obsahovat je hodně. Na jejich seznam se můžeš podívat do osnov ISTQB CTFL kapitola 5.6 Management defektů. Základní věci jako kdo záznam vytvořil nebo jedinečný identifikátor pro trasovatelnost za tebe bude řešit nástroj na management a správu reportů. Společně probereme věci, které musíš vyplnit ty, a to nadpis, popis prostředí, reprostepy, aktuální výsledek, předpokládaný výsledek.
+
+-   **Titulek (Title)** - krátký výstižný titulek, který vypovídá o čem je chyba.
+-   **Prostředí** **(Environment)** - pro vývojáře je důležité mít informace o prostředí, kde nastala chyba. Uvést můžeš: _Prohlížeč, verze prohlížeče, operační systém, verze aplikace (popřípadě prostředí - záleží na projektu), rozlišení, případně mobilní zařízení._ \
+        Hodně záleží na firmě a projektu, tyto požadavky se mohou dosti lišit, ale neuškodí, když je nahlásíš - vývojáři tě budou mít ještě raději.
+-   **Reprostepy (Steps)** - Je důležité vědět, jak ses k chybě dostal. Zda jsi klikl na levé či pravé tlačítko nebo napsal do Inputu _Ahoj_ nebo _4545Dsad#_. Do reprostepů se píšou jasné kroky, které jsi udělal.
+-   **Aktuální výsledek (Actual result)** - Co je vlastně špatně? Jak to vypadá, když nastane chyba? Popsat ji můžeš slovně, obrázkově nebo nebo natočit video. Častým kamarádem testera je screen obrazovky (na windows klávesová zkratka Win + Shift + s). Pokud se jedná o například o vizuální efekt, např. špatná animace, je vhodné natočit video, při kterém se snímá aplikace, ve které nastal problém. Jednoduchý záznam můžeš vytvořit programem [ScreenToGif](https://www.screentogif.com/). [Gif](https://www.interval.cz/clanky/gif-jpeg-a-png-jak-a-kdy-je-pouzit/) je [obrazový formát](https://cs.wikipedia.org/wiki/GIF) umožňující i animace.
+-   **Předpokládaný výsledek (Expected result)** - Popiš, jaký má být výsledek po opravení chyby. Neboj nemusíš se zde pouštět do žádných technických detailů. Vzhledem k tomu, že víš, že je daná věc chyba, tak bys měl mít představu, jak vypadá výsledek. Pokud jdeš podle ukázaného test casu, tak je to jasné. Popíšeš zde výsledek test casu. Pokud by se třeba jednalo o chybu animace, stačí zde napsat např. “_Animace funguje podle designu._” Pamatuješ si na **Definition of Done**? Tahle položka je zde také kvůli ní.
+
+Výše zmíněné informace by měl obsahovat každý report. V našem systému na GitHubu je rozhodně požadujeme. Ukázkou, jak napsat takový report může být následující příklad.
+
+Při vytváření astronauta nefunguje tlačítko random, které by mělo předvyplnit vytvářecí formulář. Na Githubu si můžeš prohlédnout Github Issue s nahlášenou chybou v [češtině](https://github.com/xhemalov/astronauts/issues/9) a v [angličtině](https://github.com/xhemalov/astronauts/issues/10).
+
+### Severita x priorita
+
+V našem reportu jsme opomenuli důležité pojmy, které budeš řešit při vytváření. Severita a priorita chyby. Opomenuli jsme to, protože u naší aplikace nemáme nastavené úrovně a jejich význam. Jsou to dvě různé vlastnosti, které se používají při řešení chyb nebo problémů. Toto striktní dělení a škatulkování je časté v korporátech.
+
+Severita se týká toho, jak vážný je problém nebo chyba pro uživatele. Například chyba, která způsobí, že celý systém přestane fungovat, je považována za velmi vážnou, zatímco chyba, která se projeví pouze drobným nežádoucím efektem, je považována za méně vážnou.
+
+Priorita se zase týká toho, jak rychle by měl být problém nebo chyba vyřešena. Například chyba, která způsobuje velké zpoždění nebo ztrátu dat, by měla mít vysokou prioritu a měla by být co nejdříve vyřešena, zatímco chyba, která se projeví jen drobným nežádoucím efektem, by mohla mít nižší prioritu a mohla by být vyřešena později. Priorita se nemusí řešit jen u chyb. Nastavuje se i u vyvíjených věcí, aby vývojáři věděli, na co se mají soustředit.
+
+Je důležité rozlišovat mezi severitou a prioritou, protože to pomůže při rozhodování o tom, jakým způsobem a v jakém pořadí budou problémy nebo chyby řešeny.V zásadě tedy lze říct, že severita a priorita jsou dvě různé věci, které se liší v tom, jaký dopad má problém na uživatele (severita) a jak důležité je problém řešit co nejdříve (priorita).
+
+Představ si, že zítra odevzdáváte výkaz práce klientovi a odhalí se v něm drobná chyba v počtu hodin. To nezní jako nic hrozného, že? Problém tkví v tom, že odevzdání je zítra. Jméno firmy by utrpělo, kdyby nebyla sjednána náprava co nejdříve. Proto má tento problém nízkou severitu, ale vysokou prioritu. Na uživatele to má malý dopad, ale je nutné to urgentně vyřešit.
+
+## Přebírání externě nahlášených chyb
+
+Může se stát, že budeš přebírat chyby od zákazníka, které následně budeš muset ověřit a založit report. Můžeš se podívat na ukázky nahlášení stejného problému. Určitě uznáš, že čím víc informací zákazník uvedl, tím líp se ti bude pracovat. Ale s tím nemůžeš počítat. Ukázka tří chyb nahlášených zákazníkem:
+
+1. Klikl jsem na tlačítko random u přidávání astronauta a nic se nestalo.
+2. Po kliknutí na tlačítko random se nic nestalo. Otevřel jsem si konzoli, abych zjistil, kde by mohl být problém. Žádnou chybu jsem neviděl, zkusil jsem znovu kliknout na tlačítko a objevila se chyba Uncaught Error: Function not found (viz přiložený screen), která vede k metodě onClick v komponentě. Pravděpodobně není definována funkce na obsluhu. \
+      Prohlížeč: Chrome Beta, 102.0.1220.1 (Official build) Dev(x86_64) \
+      OS: Mac OS 12.3
+
+![Nahlášení chyby včetně výpisu z konzole](/images/chapter/qa-10-9.png "Vzorové nahlášení chyby uživatelem, který se zjevně vyzná ve vývoji")
+
+3. Nefungují mi tlačítka u astronauta!!!!
+
+## Exploratory testing
+
+Exploratory testing je druh testování software, při kterém se testovací tým nebo tester snaží najít chyby a nedostatky v systému prostřednictvím neformálního a interaktivního zkoumání a hraní se systémem. Exploratory testing se snaží využít testerovy schopnosti a zkušenosti k hledání chyb a nedostatků, aniž by byl omezen předem stanovenými testovacími scénáři. Tester se snaží zjistit, jak systém funguje, a hledá chyby a nedostatky, přičemž se může inspirovat různými situacemi a scénáři, které se mu zdají relevantní. Tento přístup je obzvláště užitečný pro zjišťování chyb a nedostatků, které nejsou předem očekávané nebo které nejsou zahrnuty v předem stanovených testovacích scénářích.
+
+Protože už víš, jak reportovat nalezené chyby, nastal čas se pustit do otestování aplikace. Zkus si exploratory testing bez pravidel a svazujících seznamů a testovacích scénářů. V podstatě můžeš proklikat celou aplikaci. Hrát si s ní. Už o ní víš dost. Máš zadání, které by měla splňovat. Máš snímky, jak by měla vypadat. Máš znalosti z předchozích kapitol. Tak není nic jednoduššího než otevřít DevTools a začít klikat. Když najdeš chybu, tak ji zaznamenej - vytvoř report na Githubu.
+
+Malý tip: Když prozkoumáváš a najdeš chybu, nezapínej hned formulář na její reportování. Zaznamenej si ji na papír a pokračuj dál v prozkoumávání. Pak můžeš vše sepsat formálně. Je to hlavně o zachování flow, abys nepřepínal kontext. Ale je to jen na tobě, jak se ti bude lépe pracovat.
+
+## Testování podle seznamu
+
+Kromě exploratory testingu, může nastat situace, kdy budeš testovat podle seznamu. Je to technika, která se používá ke zjištění, zda software splňuje požadavky uvedené v seznamu testů. Tento seznam obsahuje konkrétní úlohy, které software musí splnit. Pokud je software schopen úspěšně vykonat všechny úlohy ze seznamu, je považován za plně funkční a schopný běžet bez chyb.
+
+Seznam testů při technice podle seznamu obvykle obsahuje kroky jednotlivých testovacích případů. Tyto kroky popisují, co má být provedeno během testu a jaké výsledky se očekávají. Díky těmto krokům mohou testeři přesně replikovat testy a zajistit, že software plní požadavky, které jsou v seznamu uvedeny. Kroky testovacích případů mohou být popsány ve formě textu nebo pomocí diagramů, v závislosti na tom, jaký druh testování se provádí. Rozhodně to ale neznamená, že ti přesně řeknou: zadej do políčka slovo ahoj. Stále je na tobě, jak dopodrobna jednotlivékroku budeš zkoumat. Jde jen o to, aby se na nic nezapomnělo. Ale jak se k tomu kdo postaví,je už druhá věc.
+
+Příklad, jak by mohl vypadat seznam pro techniku testování podle seznamu:
+
+1. Ověř, text vybízející k přidání astronauta
+    - Prerekvizita: Prázná databáze
+    - Ověř text pod nadpisem Awesome Astronauts
+    - Očekávaný výsledek: Pod nadpisem je text: You currently do not have astronauts. Please add some.
+2. Přidání astronauta vyplněním údajů
+    - Jdi na úvodní stránku aplikace
+    - Klikni na modré tlačítko + ADD
+    - Zadej požadované informace
+    - Klikni na tlačítko ADD
+    - Očekávaný výsledek: Záznam je úspěšně vytvořen
+3. Přidání astronauta s náhodně vyplněnými údaji
+    - Jdi na úvodní stránku aplikace
+    - Klikni na modré tlačítko + ADD
+    - Klikni na tlačítko RANDOM
+    - Klikni na tlačítko ADD
+    - Očekávaný výsledek: Záznam je úspěšně vytvořen s náhodnými údaji
+4. Zrušení přidání astronauta
+    - Jdi na úvodní stránku aplikace
+    - Klikni na modré tlačítko + ADD
+    - Zadej požadované informace
+    - Klikni na tlačítko BACK
+    - Očekávaný výsledek: Záznam se nevytvoří
+5. Editace astronauta
+    - Prekvizita: jeden záznam s astronautem
+    - Klikni na ikonu tužky u záznamu
+    - Změň hodnotu
+    - Klikni na tlačítku SAVE
+    - Očekávaný výsledek: Záznam je změněn
+6. Zrušení editace astronauta
+    - Prekvizita: jeden záznam s astronautem
+    - Klikni na ikonu tužky u záznamu
+    - Změň hodnotu
+    - Klikni na tlačítku BACK
+    - Očekávaný výsledek: Záznam se nezmění
+7. Smazání záznamu s astronautem
+    - Prekvizita: jeden záznam s astronautem
+    - Jdi na úvodní stránku aplikace
+    - Klikni u záznamu na ikonu koše
+    - Klikni na tlačítko DELETE
+    - Očekávaný výsledek: Záznam je smazán
+8. Zrušení mazání záznamu s astronautem
+    - Prekvizita: jeden záznam s astronautem
+    - Jdi na úvodní stránku aplikace
+    - Klikni u záznamu na ikonu koše
+    - Klikni na tlačítko CANCEL
+    - Očekávaný výsledek: Záznam není smazán
+9. Ověř responsibilitu záznamů
+    - Prekvizita: alespoň 4 záznamy s astronautem
+    - Zkontroluj rozložení záznamů na jiných zařízeních
+    - Očekávaný výsledek: Počet zobrazených záznamů v jedné řadě je maximálně 3, minimum je 1. Záznamy mají stejné rozměry.
+
+## Verifikace nové funkce (feature)
+
+Další náplní práce testera může být verifikace práce kolegy. Vývojář chce přidat nebo přidal novou funkci do systému a ty musíš ověřit, jestli je správně. Téma jsme již lehce nakousli v kapitole o Gitu. Ale nezaškodí se o tom pobavit znovu.
+
+Jak to funguje? Vývojář vytvoří Pull request (chce přidat svou větev k hlavní). Teď záleží na přístupu firmy. Ale jsou dvě nejčastěji používané možnosti.
+
+1. Než vývojář mergne svou větev musí dostat schválení od testera. V takové případě si tester nastuduje zadání. Připraví si požadované prostředí se změnami od vývojáře. Například si musí podle návodu lokálně pustit projekt na vývojářově větvi. Ověřit funkčnost podle zadání. Pokud usoudí tester, že je vše v pořádku, dá svolení k mergi. Pokud ne, napíše vývojáři, co je potřeba opravit. \
+      Bavili jsme se v kapitole o Gitu, že tohle je i moment, kdy dělají review (kontrolu/revizi) kódu vývojáře i další kolegové vývojáři. Přístup vývojáře a testera se liší. Vývojář projde kód, přidá své poznámky. Většinou si změnu nepouští. Od toho je tester. To ale neznamená, že tester nemůže projít i kód a mít k němu připomínky. \
+      Po zamergování tester může ověřit funkcionalitu v hlavní větvi, do které vývojář mergoval.
+2. Vývojář dostal review od kolegů vývojářů a spojil svůj kód s hlavní větví. V takovém případě si tester nastuduje zadání. Většinou si nemusí připravovat prostředí, protože již běží někde na serveru s vývojářovou změnou. Pokud najde chybu, může chtít revertovat (vrátit zpět) práci vývojáře a nebo může vytvořit nový report o chybě.
+
+Práci testera, který verifikuje vývojářovu práci, si můžeš vyzkoušet. Do naší aplikace jsme přidali novou funkci - kopírování existujícího astronauta. Níže na obrázku si můžeš prohlédnout, jak může takové zadání úkolu (tasku) pro vývojáře vypadat. Se stejným zadáním pracuje následně tester. Jedná se o ukázku z online nástroje Jira, který se používá pro správu projektů. [Jira](https://www.atlassian.com/software/jira) má na měsíc licenci na vyzkoušení. Doporučujeme si založit účet a zkusit si ji proklikat. V nastavení by měla jít vybrat čeština. Neuvádíme zde návod, jak ji používat, protože je to intuitivní a vždy je potřeba si nechat od týmu vysvětlit, jak přesně ji používají, protože názvosloví se může lišit. Existují i jiné nástroje, např. YouTrack, ClickUp, Linear. Toto není exkluzivní výčet, nástrojů je celá řada a v mnohém se liší. Pokud si vyzkoušel proklikat Jiru, můžeš zkusit například i [Linear](https://linear.app/), který je zdarma. Nauč mě IT používá Linear, ale mnoho firem je spíše konzervativních a používá Jiru.
+
+Na obrázku si můžeš prohlédnout zadání problému (issue) v Jire. Pro ukázku je zadání v češtině i angličtině.
+
+![Jira - Ukázka zadání ticketu v češtině](/images/chapter/qa-10-10.png "Ukázka ze software Jira na správu projektů - zadání ticketu v češtině")
+
+![Jira - Ukázka zadání ticketu v angličtině](/images/chapter/qa-10-11.png "Ukázka ze software Jira na správu projektů - zadání ticketu v angličtině")
+
+Pro zajímavost přidáváme i obrázek z Linearu. Můžeš porovnat, že v podstatě vypadají podobně:
+
+![Linear - Ukázka zadání ticketu v angličtině](/images/chapter/qa-10-12.png "Ukázka ze software Linear na správu projektů - zadání ticketu v angličtině")
+
+Vývojář ti předal práci a nyní je na tobě ověřit, že jeho práce dělá, co má. Za prvé si přečti zadání úkolu (ticketu, tasku, issue - je spoustu jmen pro podobnou věc). Protože obrázky mohou být hůř čitelné, uvedeme ho zde, ale jen v české verzi:
+
+**Karta astronauta > Kopírování astronauta**
+
+Popis: Jako uživatel chci zkopírovat astronauta, abych nemusel tvořit nového, který se liší jen v jedné věci
+
+Kritéria pro přijetí:
+
+-   V kartě astronauta je tlačítko na kopírování. Tlačítko je umístěno mezi tlačítka Edit a Delete.
+-   Tlačítko má podobu file copy icon z knihovny Material Icons
+-   Po najetí na tlačítko se zobrací text: Copy
+-   Po kliknutí na tlačítko se vytvoří navý astronaut, který je kopií vybraného astronauta
+-   Změna kopie nebo originálního astronauta nezpůsobí změnu jiné kartičky s astronautem
+
+V zadání chybí grafický návrh. Který by měl být součástí. Zde je obrázek, jak by měl záznam vypadat.
+
+![Karta astronauta s přidanou funkcí kopírování](/images/chapter/qa-10-13.png "Vzorová ukázka karty astronauta, kterému byla přidána možnost vytvořit kopii")
+
+Dále v zadání je pojem file copy icon z knihovny Material Icons, který ti je nejspíš cizí. Material Icons je součást Material Design, což je styl typický zejména pro aplikace od Google. Jde o soubor ikonek v podobném stylu, aby projekt nevypadal jako dort od pejska a kočičky. Ukázku Material Icons najdeš [zde](https://mui.com/material-ui/material-icons/).
+
+Přečti si zadání znovu, rozeber si věci, které znáš a zapřemýšlet nad tím, co bys mohl testovat. Pak můžeš pokračovat. Můžeš se podívat na kód, který vývojář upravil. To najdeš na [GitHubu](https://github.com/xhemalov/astronauts/pull/8/files) v daném pull requestu. Nezoufej, pokud tomu nerozumíš, nevadí to. Tvůj hlavní úkol je prověřit, že funguje přidaná funkcionalita. Buď můžeš jít na [prostředí](https://astronauts-git-addcopyicon-xhemalov.vercel.app/), kde je daná změna nasazená, nebo si můžeš zvolit složitější, kterým si procvičíš práci s gitem. Na začátku lekce je odkaz na GitHub repozitář, stáhni si ho. Změny jsou provedeny ve větvi **addCopyIcon.** Stačí se do ní přepnout (nápověda - _git switch_) a pak postupovat podle návodu v souboru README.md.
+
+Ověř vše, co tě napadá. Pokud by nová funkce nefungovala podle zadání, máš právo pull request neschválit a požadovat změny. Můžeš to udělat tak, že pokud sedíte ve stejném kanclu, tak za ním přijdeš a rozebereš to. Nebo mu to můžeš napsat na Slack. Případně to můžeš napsat do pull requestu. Nejlepší je vše vysvětlit osobně a ujistit se, že tvoje postřehy jsou pochopeny nebo vyvráceny.
+
+Nevíš si rady co testovat?
+
+Postupuj podle zadaní, které předpokládá, že máš vytvořeného alespoň jednoho astronauta. Plus si otevři DevTools.
+
+1. Ověř pozici tlačítka. Můžeš použít i nástroje záložce elements
+2. Můžeš ověřit, že v knihovně má ikona tuto podobu
+3. Najeď na tlačítko -> zobrazí se text?
+4. Přejdi do záložky Console a klikni na tlačítko? Proběhlo to správně, vytvořil se nový záznam se stejnými hodnotami. Nezobrazila se žádná chyba.
+5. Uprav kopii a ulož ji. Nezměnil se původní ani jiný záznam?
+6. Můžeš ověřit, že ostatní funkce aplikace se nezměnily.
+
+## Další testovací prostředí
+
+Stejné zadání aplikace s astronauty, vypracoval i náš další lektor. K zadání přistupoval jinak. Vzhledem k tomu, že nebyly zadány grafické požadavky aplikace vypadá úplně jinak. Navíc nemá online prostředí a připojení na cloudovou databázi. Proto si aplikaci budeš muset pustit lokálně. Jdi do repozitáře a postupuj podle README.md. Jakmile budeš mít aplikaci spuštěnou, můžeš začít s exploratory testingem. Zkoumej, klikej, hraj si. Nezapomeň na DevTools. Pokud si uděláš fork, podobně jako u předchozí aplikace, můžeš zakládat reporty s nalezenými chybami. Nebo se svými nálezy můžeš pochlubit na Discordu.
+
+Na závěr můžeš zkusit otestovat web [automationexercise](https://www.automationexercise.com/). Na webu se nacházejí jednotlivé test casy, kterých se můžeš držet. Ale samozřejmě můžeš zkoumat sám.
