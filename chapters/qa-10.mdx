@@ -46,9 +46,9 @@ Ale než se vrhneš na psaní test casů, je rozumné zapřemýšlet nad tím, c
 
 Pole Birthday má dva módy edit a view. Ve view modu se pole nachází na úvodní stránce v záznamu astronauta. V Edit módu se nachází ve formuláři při vytváření či editaci astronauta.
 
-![alt_text](/images/chapter/qa-10-1.png "image_tooltip")
+![Pole Birthday - View mode](/images/chapter/qa-10-1.png "Políčko Birthday zobrazené ve view mode.")
 
-![alt_text](/images/chapter/qa-10-2.png "image_tooltip")
+![Pole Birthday - Edit mode](/images/chapter/qa-10-2.png "Políčko Birthday zobrazené v edit mode.")
 
 Začneme jednodušším view modem, který složí jen k prohlížení. Pole nelze upravovat. Takže se nabízí testovací scénář: zkus něco napsat do pole ve view modu.
 
@@ -56,7 +56,7 @@ Přejdeme do edit módu. V edit módu je datum unikátní záležitost. Ve svět
 
 Rozebereme si datum po částech. Nejprve máme část MM tedy měsíce. Měsíců máme dvanáct. MM znamená, že jednočíselné měsíce mají na začátku nulu. Lze zadat pouze kladná celá čísla. Využijeme metodu hraničních bodů a ekvivalence. Validní interval je 01-12. A nevalidní je interval -nekonečno až 00, a také 13 až plus nekonečno. Podle metody hraničních bodů má smysl otestovat body 00, 01,12,13. V případě nevalidních případů by se pole mělo podtrhnout červeně a objevit se hláška: Invalid Date Format.
 
-![alt_text](/images/chapter/qa-10-3.png "image_tooltip")
+![Nevalidní formát datumu](/images/chapter/qa-10-3.png "Nevalidní formát datumu pro políčko Birthday.")
 
 Počet dnů v měsíci se liší. Máme sedm měsíců o 31 dnech, čtyři o 30 dnech a pak je tu únor. Únor má 28 dní a jen jednou za 4 roky 29. Jde zadat pouze kladná celá čísla. To svádí k tomu testovat všechny možnosti, ale uvědom si, že některé jsou stejné. Jaké tedy budou třídy ekvivalence - které testovací případy testují stejnou věc?
 
@@ -72,9 +72,9 @@ Na letech není zase nic tak složitého, naše pole akceptuje data od 1. 1 . 
 -   Pokud zadáš datum, které je před 1. 1. 1900, měla by se ti objevit hláška: Date should not be before minimal date.
 -   Pokud zadáš datum, které je po dnešním datu, měla by se objevit hláška: Date should not be after minimal date.
 
-![alt_text](/images/chapter/qa-10-4.png "image_tooltip")
+![Datum před povoleným minimem](/images/chapter/qa-10-4.png "Chyba zobrazená při zadání datumu před zvoleným minimem.")
 
-![alt_text](/images/chapter/qa-10-5.png "image_tooltip")
+![Datum po povoleném maximu](/images/chapter/qa-10-5.png "Chyba zobrazená při zadání datumu po zvoleném maximu.")
 
 Další testovací případ se týká date pickeru. Z výše uvedených případů má pomocí date pickeru smysl testovat rozsah, jestli jde zadat něco před rokem 1900 a po dnešním datu. Samozřejmě můžeš otestovat všechny funkce. Ale prozradíme ti: při vytváření aplikace byla využita dostupná komponenta, kterou někdo otestoval (je součástí veřejně dostupné knihovny, kterou programují desítky lidí). Ale určitě neotestovali, jestli splňuje naše limity na data.
 
@@ -134,15 +134,15 @@ Určitě jsi již našel nějakou chybu. Pokud ne, projdi si pozorněji editaci,
 
 V kapitole 8 ses naučil princip Gitu, včetně webu Github a forkování. Bude tedy nutné si projekt forknout k sobě a přidat „spolupracovníky“, to uděláš v Settings -> Collaborators -> Add people -> xhemalov. To zopakuješ znovu, akorát přidáš uživatele pegak. Na začátku by tvá obrazovka měla vypadat podobně:
 
-![alt_text](/images/chapter/qa-10-6.png "image_tooltip")
+![Přidání uživatele do repozitáře](/images/chapter/qa-10-6.png "První krok přidání lektora do repozitáře")
 
 Poté bude potřeba počkat, než přijmeme pozvání. Než se tak stane, bude obrazovka vypadat takto:
 
-![alt_text](/images/chapter/qa-10-7.png "image_tooltip")
+![Čekání na přijetí pozvání do repozitáře](/images/chapter/qa-10-7.png "Druhý krok přidání lektora do repozitáře")
 
 Jakmile pozvání přijmeme, zmizí text „Pending invite“ a obrazovka bude vypadat takto:
 
-![alt_text](/images/chapter/qa-10-8.png "image_tooltip")
+![Úspěšně přijaté pozvání do repozitáře](/images/chapter/qa-10-8.png "Třetí krok přidání lektora do repozitáře")
 
 Poté vytvoříš issue ve **svém** repozitáři a označíš nás v textu pomocí zavináče, konkrétně @xhemalov či @pegak. Druhou variantou je nás přiřadit k této issue - to uděláš v pravém sloupci, sekce Assignees.
 
@@ -182,7 +182,7 @@ Může se stát, že budeš přebírat chyby od zákazníka, které následně b
       Prohlížeč: Chrome Beta, 102.0.1220.1 (Official build) Dev(x86_64) \
       OS: Mac OS 12.3
 
-![alt_text](/images/chapter/qa-10-9.png "image_tooltip")
+![Nahlášení chyby včetně výpisu z konzole](/images/chapter/qa-10-9.png "Vzorové nahlášení chyby uživatelem, který se zjevně vyzná ve vývoji")
 
 3. Nefungují mi tlačítka u astronauta!!!!
 
@@ -268,13 +268,13 @@ Práci testera, který verifikuje vývojářovu práci, si můžeš vyzkoušet. 
 
 Na obrázku si můžeš prohlédnout zadání problému (issue) v Jire. Pro ukázku je zadání v češtině i angličtině.
 
-![alt_text](/images/chapter/qa-10-10.png "image_tooltip")
+![Jira - Ukázka zadání ticketu v češtině](/images/chapter/qa-10-10.png "Ukázka ze software Jira na správu projektů - zadání ticketu v češtině")
 
-![alt_text](/images/chapter/qa-10-11.png "image_tooltip")
+![Jira - Ukázka zadání ticketu v angličtině](/images/chapter/qa-10-11.png "Ukázka ze software Jira na správu projektů - zadání ticketu v angličtině")
 
 Pro zajímavost přidáváme i obrázek z Linearu. Můžeš porovnat, že v podstatě vypadají podobně:
 
-![alt_text](/images/chapter/qa-10-12.png "image_tooltip")
+![Linear - Ukázka zadání ticketu v angličtině](/images/chapter/qa-10-12.png "Ukázka ze software Linear na správu projektů - zadání ticketu v angličtině")
 
 Vývojář ti předal práci a nyní je na tobě ověřit, že jeho práce dělá, co má. Za prvé si přečti zadání úkolu (ticketu, tasku, issue - je spoustu jmen pro podobnou věc). Protože obrázky mohou být hůř čitelné, uvedeme ho zde, ale jen v české verzi:
 
@@ -292,7 +292,7 @@ Kritéria pro přijetí:
 
 V zadání chybí grafický návrh. Který by měl být součástí. Zde je obrázek, jak by měl záznam vypadat.
 
-![alt_text](/images/chapter/qa-10-13.png "image_tooltip")
+![Karta astronauta s přidanou funkcí kopírování](/images/chapter/qa-10-13.png "Vzorová ukázka karty astronauta, kterému byla přidána možnost vytvořit kopii")
 
 Dále v zadání je pojem file copy icon z knihovny Material Icons, který ti je nejspíš cizí. Material Icons je součást Material Design, což je styl typický zejména pro aplikace od Google. Jde o soubor ikonek v podobném stylu, aby projekt nevypadal jako dort od pejska a kočičky. Ukázku Material Icons najdeš [zde](https://mui.com/material-ui/material-icons/).
 
