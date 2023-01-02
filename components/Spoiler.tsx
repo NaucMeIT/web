@@ -1,22 +1,24 @@
 import { Button } from "./Button"
-import { useState } from "react"
+import { ReactNode, useState } from "react"
 
 type Props = {
-    readonly hiddenText: string
+    readonly children: ReactNode
     readonly textButton: string
 }
 
-export function Spoiler({ hiddenText, textButton }: Props) {
+export function Spoiler({ children, textButton }: Props) {
     const [showHiddenText, setShowHiddenText] = useState<boolean>(true)
 
     return (
         <>
             {showHiddenText && (
-                <Button theme='main' onClick={() => setShowHiddenText(false)}>
+                <Button theme='off' onClick={() => setShowHiddenText(false)}>
                     {textButton}
                 </Button>
             )}
-            <div className={`mt-2 ${showHiddenText && "blur-sm"}`}>{hiddenText}</div>
+            <div className={`mt-2 cursor-not-allowed pointer-events-none select-none ${showHiddenText && "blur-sm"}`}>
+                {children}
+            </div>
         </>
     )
 }
