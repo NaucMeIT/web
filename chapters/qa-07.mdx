@@ -3,23 +3,23 @@ title: Vývojářské nástroje
 abstract: Pro testování je důležité znát verzi prohlížeče a umět pracovat s vývojářskými nástroji. Zde se naučíš pracovat s vyvojářskými nástroji, konktrétně s panely Source a Application.
 ---
 
-V předchozích kapitolách ses seznámil s prvky potřebnými pro práci s webovými stránkami nebo aplikacemi. Naučil ses základy DevTools. Určitě sis všiml, že DevTools mají více tabů než jen Elements, Console a Network. V této kapitole se podíváme na další kouzla s prohlížečem a DevTools - jak zmrazit prohlížeč, přidat snippet, smazat cache nebo spustit DevTools pro připojené mobilní zařízení.
+V předchozích kapitolách ses seznámil s prvky potřebnými pro práci s webovými stránkami nebo aplikacemi. Naučil ses základy DevTools. Určitě sis všiml, že DevTools mají více tabů než jen Elements, Console a Network. V této kapitole se podíváme na další kouzla s prohlížečem a DevTools - jak zmrazit prohlížeč, přidat snippet, smazat cache nebo spustit DevTools pro připojené mobilní zařízení.
 
-Vývojářské nástroje se vyvíjejí neskutečně rychlým tempem. V každé verzi prohlížeče dojde k nějakému vylepšení či přidání nové funkcionality. I pro testování je důležité znát svou verzi prohlížeče.
+Vývojářské nástroje se vyvíjejí neskutečně rychlým tempem. V každé verzi prohlížeče dojde k nějakému vylepšení či přidání nové funkcionality. I pro testování je důležité znát svou verzi prohlížeče.
 
 ## Verze prohlížeče
 
-Je vhodné mít aktuální verzi prohlížeče pro testování. Novější verze prohlížečů obvykle obsahují opravy chyb a vylepšení, která mohou ovlivnit chování stránek. Pokud používáš starší verzi prohlížeče, může se stát, že některé stránky nebudou fungovat správně nebo se budou chovat jinak, než je očekáváno. Na webu [Can I use](https://caniuse.com/) můžeš zjistit, které prohlížeče podporují jakou technologii.
+Je vhodné mít aktuální verzi prohlížeče pro testování. Novější verze prohlížečů obvykle obsahují opravy chyb a vylepšení, která mohou ovlivnit chování stránek. Pokud používáš starší verzi prohlížeče, může se stát, že některé stránky nebudou fungovat správně nebo se budou chovat jinak, než je očekáváno. Na webu [Can I use](https://caniuse.com/) můžeš zjistit, které prohlížeče podporují jakou technologii.
 
 Zjistit verzi prohlížeče můžeš několika způsoby:
 
-1. Otevři prohlížeč a klikni na tlačítko tři tečky vpravo nahoře. V menu Nápovědy bys měl najít položku "O prohlížeči" (About browser, About &lt;jméno prohlížeče>) nebo "O aplikaci". Po kliknutí by se měla zobrazit informace o verzi prohlížeče.
+1. Otevři prohlížeč a klikni na tlačítko tři tečky vpravo nahoře. V menu Nápovědy bys měl najít položku „O prohlížeči“ (About browser, About <jméno prohlížeče>) nebo „O aplikaci“. Po kliknutí by se měla zobrazit informace o verzi prohlížeče.če.
 
 -   Chrome: v pravém horním rohu tři tečky -> Help -> About Google Chrome
 -   Edge: v pravém horním rohu tři tečky -> Help and feedback -> About Microsoft Edge
 -   Firefox: v pravém horním rohu hamburger -> Help -> About Firefox
 
-    Hezky popsané je to v [Nápovědě Seznam.cz](https://napoveda.seznam.cz/cz/email/jak-zjistit-verzi-internetoveho-prohlizece/)
+Hezky popsané je to v [Nápovědě Seznam.cz](https://napoveda.seznam.cz/cz/email/jak-zjistit-verzi-internetoveho-prohlizece/)
 
 2. Můžeš také zadat do adresního řádku prohlížeče (tam kam píšeš url stránek) následující odkazy, které ti zobrazí informace o verzi prohlížeče:
     - Chrome: chrome://settings/help
@@ -27,32 +27,32 @@ Zjistit verzi prohlížeče můžeš několika způsoby:
     - Safari: about:version
     - Edge: edge://settings/help
 
-Pokud chceš zjistit verzi prohlížeče používaného na mobilním zařízení, je postup podobný. Vpravo nahoře se bude skrývat tlačítko tři tečky, kde se ukrývá (nejen) nápověda. Poté stačí najít položku "O prohlížeči" (About browser, About &lt;jméno prohlížeče>) nebo "O aplikaci". Po kliknutí na tuto položku by se měla zobrazit informace o verzi prohlížeče.
+Pokud chceš zjistit verzi prohlížeče používaného na mobilním zařízení, je postup podobný. Vpravo nahoře se bude skrývat tlačítko tři tečky, kde se ukrývá (nejen) nápověda. Poté stačí najít položku „O prohlížeči“ (About browser, About <jméno prohlížeče>) nebo „O aplikaci“. Po kliknutí na tuto položku by se měla zobrazit informace o verzi prohlížeče.
 
-Poté, co zjistíš svou verzi prohlížeče, by ses měl přesvědčit, jestli máš nejnovější stabilní verzi. To znamená verzi, která byla plně otestována a je považována za spolehlivou a bezpečnou pro použití. Tedy může být používána běžnými uživateli. Vývoj prohlížeče obvykle probíhá ve více fázích, přičemž nejdříve jsou vytvářeny experimentální verze prohlížeče, které se nazývají "beta" verze. Beta verze nedoporučujeme pro testování, pokud chceš mít prostředí jako běžný uživatel. Ale může se ti stát, že budeš testovat něco, co bude v další verzi, než to bude zahrnuto do stabilní verze prohlížeče.
+Poté, co zjistíš svou verzi prohlížeče, by ses měl přesvědčit, jestli máš nejnovější stabilní verzi. To znamená verzi, která byla plně otestována a je považována za spolehlivou a bezpečnou pro použití. Tedy může být používána běžnými uživateli. Vývoj prohlížeče obvykle probíhá ve více fázích, přičemž nejdříve jsou vytvářeny experimentální verze prohlížeče, které se nazývají „beta“ verze. Beta verze nedoporučujeme pro testování, pokud chceš mít prostředí jako běžný uživatel. Ale může se ti stát, že budeš testovat něco, co bude v další verzi, než to bude zahrnuto do stabilní verze prohlížeče.
 
-Existuje mnoho variant prohlížečů. Každý má jiný vývojový cyklus. Ale všechny mají stabilní a nestabilní verze. Většina uživatelů používá stabilní verzi svého oblíbeného prohlížeče. Proto pokud testuješ nějakou běžnou věc, chovej se jako běžný uživatel a měj stabilní verzi. Nicméně existuje pár důvodů, proč nemít stabilní verzi:
+Existuje mnoho variant prohlížečů. Každý má jiný vývojový cyklus. Ale všechny mají stabilní a nestabilní verze. Většina uživatelů používá stabilní verzi svého oblíbeného prohlížeče. Proto pokud testuješ nějakou běžnou věc, chovej se jako běžný uživatel a měj stabilní verzi. Nicméně existuje pár důvodů, proč nemít stabilní verzi:
 
 -   Rychlejší přístup k novým funkcím
 -   Otestování změn, které přijdou v nové verzi
 -   Sebemrskačství (nestabilní verze se mohou chovat neočekávaně a smazat tvou práci)
 
-Nestabilních “beta” verzí může být více - liší se podle toho, jak často se mění. Různé prohlížeče mají různě pojmenované verze. V případě Chrome je to Stable (stabilní), Beta (4 až 6 týdnů náhled do budoucnosti), Dev (9 až 12 týdnů náhled do budoucnosti) a Canary (experimentální verze, mění se téměř každý den). V nestabilních verzích se můžeš setkat se spoustou zajímavých chyb - nám například spadl prohlížeč vždy, když jsme spustili Netflix.
+Nestabilních „beta“ verzí může být více - liší se podle toho, jak často se mění. Různé prohlížeče mají různě pojmenované verze. V případě Chrome je to Stable (stabilní), Beta (4 až 6 týdnů náhled do budoucnosti), Dev (9 až 12 týdnů náhled do budoucnosti) a Canary (experimentální verze, mění se téměř každý den). V nestabilních verzích se můžeš setkat se spoustou zajímavých chyb - nám například spadl prohlížeč vždy, když jsme spustili Netflix.
 
-Nejnovější stabilní verze prohlížečů je obvykle k dispozici na webových stránkách daného prohlížeče:
+Nejnovější stabilní verze prohlížečů je obvykle k dispozici na webových stránkách daného prohlížeče:
 
 -   Chrome: [https://www.google.com/chrome/](https://www.google.com/chrome/)
 -   Firefox: [https://www.mozilla.org/en-US/firefox/new/](https://www.mozilla.org/en-US/firefox/new/)
 -   Safari: [https://www.apple.com/safari/](https://www.apple.com/safari/)
 -   Edge: [https://www.microsoft.com/edge/](https://www.microsoft.com/edge/)
 
-Existují i stránky, kde jsou plány, která verze prohlížeče kdy vyjde. Kdy bude v betě, kdy stabilní. Například pro Chrome to najdeš [zde](https://chromiumdash.appspot.com/schedule).
+Existují i stránky, kde jsou plány, která verze prohlížeče, kdy vyjde. Kdy bude v betě, kdy stabilní. Například pro Chrome to najdeš [zde](https://chromiumdash.appspot.com/schedule).
 
-Pokud pokaždé nechceš řešit jakou máš verzi. Můžeš využít funkci automatických aktualizací, která je obvykle ve výchozím nastavení povolena. Můžeš ji zapnout nebo vypnout v nastavení prohlížeče. Pokud je zapnutá, prohlížeč se automaticky aktualizuje na nejnovější stabilní verzi, když je k dispozici. Musí však dojít k vypnutí prohlížeče. Pokud téměř nevypínáš prohlížeč, objeví se ti po čase zelená šipka vpravo nahoře. V případě důležitějších updatů žlutá a v případě, že neaktualizuješ opravdu dlouho, bude na tebe křičet agresivní červený vykřičník či šipka.
+Pokud pokaždé nechceš řešit, jakou máš verzi. Můžeš využít funkci automatických aktualizací, která je obvykle ve výchozím nastavení povolena. Můžeš ji zapnout nebo vypnout v nastavení prohlížeče. Pokud je zapnutá, prohlížeč se automaticky aktualizuje na nejnovější stabilní verzi, když je k dispozici. Musí však dojít k vypnutí prohlížeče. Pokud téměř nevypínáš prohlížeč, objeví se ti po čase zelená šipka vpravo nahoře. V případě důležitějších updatů žlutá a v případě, že neaktualizuješ opravdu dlouho, bude na tebe křičet agresivní červený vykřičník či šipka.
 
 ## Tab Sources
 
-Tab Sources (Zdroje) umožňuje zobrazit a upravovat zdrojové kódy stránek, které prohlížíš. Tento tab obsahuje několik nástrojů a funkcí, které pomáhájí analyzovat a ladit stránky.
+Tab Sources (Zdroje) umožňuje zobrazit a upravovat zdrojové kódy stránek, které prohlížíš. Tento tab obsahuje několik nástrojů a funkcí, které pomáhají analyzovat a ladit stránky.
 
 Podíváme se na:
 
@@ -66,15 +66,15 @@ Podíváme se na:
 
 ### Page
 
-V Page lze pracovat se všemi zdroji, které stránka načetla. Tyto zdroje jsou obvykle zmenšené (aby se přeneslo méně dat po síti) a tím pádem velmi nepřehledné. Situaci výrazně komplikuje i načítání dalších zdrojů mimo stránku (téměř každé prohlížečové rozšíření aktivní pro danou stránku je zde uvedeno, protože může mít dopad na její fungování). V této části se nejčastěji objevíš při trasování chyby zobrazené v konzoli. Když si soubor rozklikneš, dostaneš se do editoru.
+V Page lze pracovat se všemi zdroji, které stránka načetla. Tyto zdroje jsou obvykle zmenšené (aby se přeneslo méně dat po síti) a tím pádem velmi nepřehledné. Situaci výrazně komplikuje i načítání dalších zdrojů mimo stránku (téměř každé prohlížečové rozšíření aktivní pro danou stránku je zde uvedeno, protože může mít dopad na její fungování). V této části se nejčastěji objevíš při trasování chyby zobrazené v konzoli. Když si soubor rozklikneš, dostaneš se do editoru.
 
 ### Editor
 
-V editoru lze upravovat kód (v případě textových souborů) či vidět náhled zdroje v případě, že editaci nelze dělat v rámci DevTools. Nalevo od editoru je strom zdrojů a nejčastěji je to tab Page. Vzhledem k tomu, že kód je často zmenšený na jeden řádek, nachází se vlevo dole složené závorky, které ti umožní zdroj zkrášlit do alespoň trochu čitelné podoby. Můžeš zde upravovat kód, ten však po obnovení stránky zmizí. Pokud chceš změny zachovat, můžeš si své změny uložit za použití tabu Overrides.
+V editoru lze upravovat kód (v případě textových souborů) či vidět náhled zdroje v případě, že editaci nelze dělat v rámci DevTools. Nalevo od editoru je strom zdrojů a nejčastěji je to tab Page. Vzhledem k tomu, že kód je často zmenšený na jeden řádek, nachází se vlevo dole složené závorky, které ti umožní zdroj zkrášlit do alespoň trochu čitelné podoby. Můžeš zde upravovat kód, ten však po obnovení stránky zmizí. Pokud chceš změny zachovat, můžeš si své změny uložit za použití tabu Overrides.
 
 ### Overrides
 
-Jak bylo zmíněno výše, můžeš si změny trvale uložit - k tomu slouží tento tab. Hodí se to v několika případech:
+Jak bylo zmíněno výše, můžeš si změny trvale uložit - k tomu slouží tento tab. Hodí se to v několika případech:
 
 -   Chceš ukázat svoje změny bez toho, abys měnil stránky všem uživatelům
 -   Potřebuješ upravit stránku pro své potřeby (například se vždy zobrazí okno, které nelze zavřít)
@@ -83,31 +83,33 @@ Důležité upozornění - overrides fungují pouze v případě, že máš otev
 
 Pokud bys někdy Overrides potřeboval, zde je [článek](https://medium.com/globant/local-overrides-a-smart-add-on-to-chrome-fee3f6993ea0), který je doplněný názorným [videem](https://youtu.be/nhY-FXdn_d8).
 
-### Debugging a breakpointy
+### Debugging a breakpointy
 
-Sources souvisí s tématem debbugingu a ladění. O co se jedná? Představ si, že jsi našel chybu nebo program nefunguje - otestoval jsi aplikaci. Teď jsi to předal vývojáři a ten se snaží identifikovat, kde přesně v kódu je chyba, a odstranit ji. Může třeba krokovat kód - dávat si breakpointy. Více se o debuggingu dozvíš v článku [Lekce 1 - Debugging: Úvod a terminologie - Online kurz](https://www.itnetwork.cz/javascript/debugging-vscode-webstorm/debugging-uvod-a-terminologie) na IT Networku. Určitě si zapamatuj rozdíl mezi syntaktickou a logickou chybou. V dnešní době existují nástroje, které brání vzniku syntaktických chyb. Oproti tomu logické chyby jsou mnohem náročnější na odhalení. S tím pomůže zejména testování, které chybu odhalí. Debuggingem je možné najít její přesnou příčinu v kódu a odstranit ji. Debugging se nerovná testování, testování není debugging. Ten následuje až po odhalení chyby.
+Sources souvisí s tématem debuggingu a ladění. O co se jedná? Představ si, že jsi našel chybu nebo program nefunguje - otestoval jsi aplikaci. Teď jsi to předal vývojáři a ten se snaží identifikovat, kde přesně v kódu je chyba, a odstranit ji. Může třeba krokovat kód - dávat si breakpointy. Více se o debuggingu dozvíš v článku [Lekce 1 - Debugging: Úvod a terminologie - Online kurz](https://www.itnetwork.cz/javascript/debugging-vscode-webstorm/debugging-uvod-a-terminologie) na IT Networku. Určitě si zapamatuj rozdíl mezi syntaktickou a logickou chybou. V dnešní době existují nástroje, které brání vzniku syntaktických chyb. Oproti tomu logické chyby jsou mnohem náročnější na odhalení. S tím pomůže zejména testování, které chybu odhalí. Debuggingem je možné najít její přesnou příčinu v kódu a odstranit ji. Debugging se nerovná testování, testování není debugging. Ten následuje až po odhalení chyby.
 
-Debugging můžeš provádět i mimo tab Sources. V článku [Lekce 2 - Nástroje pro debugging a internetové prohlížeče](https://www.itnetwork.cz/javascript/debugging-vscode-webstorm/nastroje-pro-debugging-a-internetove-prohlizece) se dozvíš, jak debugovat pomocí console.log() v tabu Console. Ale o tom už jsme se bavili. Proto se podíváme na možnost ladění v tabu Sources. Pomocí **breakpointů** a **debuggeru** můžeš rychleji opravit chybu. Více se o tom dozvíš v článku [Lekce 3 - Ladění programu a breakpointy](https://www.itnetwork.cz/javascript/debugging-vscode-webstorm/ladeni-programu-a-breakpointy). Nabyté informace vyzkoušej. Otevři si konzoli na svých oblíbených stránkách a podívej se, zda najdeš nějaké chyby vypsané do konzole. Při práci se neboj, pokud chybě nerozumíš a nevíš, jak ji prozkoumat, stačí když nahlásíš, že tam je chyba, vývojář si s tím již poradí, případně tě kontaktuje a chybu proberete společně.
+Debugging můžeš provádět i mimo tab Sources. V článku [Lekce 2 - Nástroje pro debugging a internetové prohlížeče](https://www.itnetwork.cz/javascript/debugging-vscode-webstorm/nastroje-pro-debugging-a-internetove-prohlizece) se dozvíš, jak debugovat pomocí console.log() v tabu Console. Ale o tom už jsme se bavili. Proto se podíváme na možnost ladění v tabu Sources. Pomocí **breakpointů** a **debuggeru** můžeš rychleji opravit chybu. Více se o tom dozvíš v článku [Lekce 3 - Ladění programu a breakpointy](https://www.itnetwork.cz/javascript/debugging-vscode-webstorm/ladeni-programu-a-breakpointy). Nabyté informace vyzkoušej. Otevři si konzoli na svých oblíbených stránkách a podívej se, zda najdeš nějaké chyby vypsané do konzole. Při práci se neboj, pokud chybě nerozumíš a nevíš, jak ji prozkoumat, stačí, když nahlásíš, že tam je chyba, vývojář si s tím již poradí, případně tě kontaktuje a chybu proberete společně.
 
 ### Snippety
 
-Tab Sources obsahuje nástroj Snippets (Kusy kódu), který umožňuje vytvářet a spouštět snippety JavaScriptu přímo v prohlížeči. Můžeš použít tento nástroj například pro opakované úkoly nebo pro rychlejší úpravu stránky (například měření rychlosti zpracování prohlížečem).
+Tab Sources obsahuje nástroj Snippets (Kusy kódu), který umožňuje vytvářet a spouštět snippety JavaScriptu přímo v prohlížeči. Můžeš použít tento nástroj například pro opakované úkoly nebo pro rychlejší úpravu stránky (například měření rychlosti zpracování prohlížečem).
 
-Jak vytvořit Snippet: Otevři DevTools a přejdi do tabu Sources. Klikni na tlačítko Snippets v levém menu (pokud tlačítko nevidíš, zkus zmáčknout šipky). Klikni na tlačítko New snippet (Nový kus kódu) a zadej název snippetu. V editoru kódu vpravo zadej kód snippetu. Můžeš použít jakýkoli JavaScriptový kód. Klikni na tlačítko "Run" (Spustit) nebo stiskni klávesovou zkratku (obvykle Ctrl + Enter) pro spuštění snippetu.
+Jak vytvořit Snippet: Otevři DevTools a přejdi do tabu Sources. Klikni na tlačítko Snippets v levém menu (pokud tlačítko nevidíš, zkus zmáčknout šipky). Klikni na tlačítko New snippet (Nový kus kódu) a zadej název snippetu. V editoru kódu vpravo zadej kód snippetu. Můžeš použít jakýkoli JavaScriptový kód. Klikni na tlačítko „Run“ (Spustit) nebo stiskni klávesovou zkratku (obvykle Ctrl + Enter) pro spuštění snippetu.
 
 ![DevTools panel Sources s nástorjem pro psaní snippetů](/images/chapter/qa-7-2.png "Panel Sources s otevřeným editorem pro psaní snippetů")
 
-Vytvoř si svůj první snippet. Pokračuj podle návodu a editoru napiš:
+Vytvoř si svůj první snippet. Pokračuj podle návodu a editoru napiš:
 
+```js
 alert("Hello")
+```
 
 Spusť snippet. Vyskočilo ti okno s textem Hello?
 
-Snippety si můžeš ukládat pro pozdější použití nebo je upravovat a opět spouštět. Snippety jsou ukládány v prohlížeči, takže je můžeš používat na různých stránkách bez nutnosti je znovu vytvářet. Můžeš také sdílet snippety s ostatními vývojáři nebo je ukládat do souborů pro snadnější správu a použití v budoucnosti. Snippety jsou užitečným nástrojem, můžeš je použít pro ladění a analýzu stránek, pro testování nového kódu nebo pro vytváření vlastních nástrojů a skriptů pro automatizaci úkolů. Snippety umožňují experimentovat s kódem a zkoumat jeho chování přímo v prohlížeči. Inspirovat se můžeš například na [zde](https://bgrins.github.io/devtools-snippets/).
+Snippety si můžeš ukládat pro pozdější použití nebo je upravovat a opět spouštět. Snippety jsou ukládány v prohlížeči, takže je můžeš používat na různých stránkách bez nutnosti je znovu vytvářet. Můžeš také sdílet snippety s ostatními vývojáři nebo je ukládat do souborů pro snadnější správu a použití v budoucnosti. Snippety jsou užitečným nástrojem, můžeš je použít pro ladění a analýzu stránek, pro testování nového kódu nebo pro vytváření vlastních nástrojů a skriptů pro automatizaci úkolů. Snippety umožňují experimentovat s kódem a zkoumat jeho chování přímo v prohlížeči. Inspirovat se můžeš například na [zde](https://bgrins.github.io/devtools-snippets/).
 
 ### Freeze prohlížeče
 
-Občas se ti může stát, že potřebuješ zastavit prohlížeč. Představ si, že máš pole, které po najetí myší vypíše nějakou hlášku. Nebo datepicker, který se zobrazí po kliknutí do pole. Jakmile zapneš DevTools, zmizí. Ale ty chceš prozkoumat jeho HTML a CSS. Takže zkusíš přejít do tabu Elements a klikneš do pole. Objeví se datepicker. DOM se přerenderuje a ty ho chceš prozkoumat. Klikneš zpět do DevTools a datepicker zmizí a DOM se opět změní. V takových případech je dobré si zastavit prohlížeč. Jak na to? Jdi do tabu Sources v DevTools, klikni na input ve stránce, aby se ti zobrazila hláška a zmáčkni F8.
+Občas se ti může stát, že potřebuješ zastavit prohlížeč. Představ si, že máš pole, které po najetí myší vypíše nějakou hlášku. Nebo datepicker, který se zobrazí po kliknutí do pole. Jakmile zapneš DevTools, zmizí. Ale ty chceš prozkoumat jeho HTML a CSS. Takže zkusíš přejít do tabu Elements a klikneš do pole. Objeví se datepicker. DOM se přerenderuje a ty ho chceš prozkoumat. Klikneš zpět do DevTools a datepicker zmizí a DOM se opět změní. V takových případech je dobré si zastavit prohlížeč. Jak na to? Jdi do tabu Sources v DevTools, klikni na input ve stránce, aby se ti zobrazila hláška a zmáčkni F8.
 
 ## Tab Application
 
@@ -115,33 +117,33 @@ V tomto tabu můžeš procházet data, která si aplikace ukládá a dále s nim
 
 ### Application
 
-Zde se nachází 3 položky. První dvě úzce souvisejí s možností mít webovou aplikaci rovnou nativní aplikaci (taková, která lze nainstalovat na plochu telefonu a mít ji uloženou). Poslední je Storage. Zde vidíš, kolik dat má aplikace uložených. Jakého typu data jsou. Můžeš je vyčistit kliknutím na tlačítko **Clear site data**. Pod ním jsou možnosti, co vše můžeš smazat
+Zde se nachází 3 položky. První dvě úzce souvisejí s možností mít webovou aplikaci rovnou nativní aplikaci (taková, která lze nainstalovat na plochu telefonu a mít ji uloženou). Poslední je Storage. Zde vidíš, kolik dat má aplikace uložených. Jakého typu data jsou. Můžeš je vyčistit kliknutím na tlačítko **Clear site data**. Pod ním jsou možnosti, co vše můžeš smazat
 
 ![DevTools panel Application otevřený na Storage](/images/chapter/qa-7-3.png "Ukázka, kde se v Application nachází možnost smazat cache a dat")
 .
 
 ### Storage
 
-V položce Storage lze do detailu pracovat s daty uloženými aplikací. Každá aplikace může ukládat data jinak. Některá aplikace nemusí data ukládat vůbec (to je velice nepravděpodobné, minimálně cookies používá dnes téměř každá stránka). Jaké jsou mezi nimi rozdíly?
+V položce Storage lze do detailu pracovat s daty uloženými aplikací. Každá aplikace může ukládat data jinak. Některá aplikace nemusí data ukládat vůbec (to je velice nepravděpodobné, minimálně cookies používá dnes téměř každá stránka). Jaké jsou mezi nimi rozdíly?
 
 1. **Local storage** a **session storage**: Local storage a session storage jsou oba typy klíč-hodnota úložiště, které jsou dostupné prostřednictvím objektu window.sessionStorage a window.localStorage v JavaScriptu. Rozdíl mezi nimi je v tom, že data uložená v místním úložišti jsou uchovávána trvale. Data uložená v session jsou uchovávána pouze do doby, než je prohlížeč zavřen.
 2. **indexedDB**: indexedDB je NoSQL databáze, která je dostupná prostřednictvím objektu window.indexedDB v JavaScriptu. Je určena pro ukládání velkého množství strukturovaných dat v prohlížeči a umožňuje vyhledávání a filtrování dat pomocí indexů.
 3. **Web SQL**: Web SQL je SQL databáze, která byla dříve dostupná v některých prohlížečích, ale je už zastaralá a většina prohlížečů ji nepodporuje.
 4. **Cookies**: Cookies jsou malé soubory, které jsou ukládány v prohlížeči. Slouží k ukládání informací o návštěvnících a jejich nastavení. Cookies jsou zpravidla tvořeny na straně serveru a jsou přenášeny mezi prohlížečem a serverem při každém požadavku.
 
-Pro přístup k uloženým datům je potřeba položku v menu rozbalit a vybrat kontext, kde jsou data uložená (typicky stránka, na které jsi, ale data mohou být uložena pomocí reklam a dalšími způsoby). Poté se ti vpravo zobrazí seznam uložených dat (nemusí být žádná). Můžeš s nimi pracovat, lze měnit klíče, hodnoty, smazat vše či jednotlivé řádky. Jak mazat data? Můžeš smazat vše, když klikneš pravým tlačítkem na kontext a dáš **Clear**. Rovněž lze mazat jednotlivé řádky - opět pravým tlačítkem a **Delete**. Můžeš i řádek vybrat kliknutím a zmáčknout klávesu **Delete**.
+Pro přístup k uloženým datům je potřeba položku v menu rozbalit a vybrat kontext, kde jsou data uložená (typicky stránka, na které jsi, ale data mohou být uložena pomocí reklam a dalšími způsoby). Poté se ti vpravo zobrazí seznam uložených dat (nemusí být žádná). Můžeš s nimi pracovat, lze měnit klíče, hodnoty, smazat vše či jednotlivé řádky. Jak mazat data? Můžeš smazat vše, když klikneš pravým tlačítkem na kontext a dáš **Clear**. Rovněž lze mazat jednotlivé řádky - opět pravým tlačítkem a **Delete**. Můžeš i řádek vybrat kliknutím a zmáčknout klávesu **Delete**.
 
-Evropská unie posledních letech utáhla šrouby ohledně ukládání dat o uživatelích, pokud nejsou nezbytně nutná pro fungování aplikace. Je to složitá problematika, na kterou jsou celá právnická oddělení ve velkých firmách. Může se stát, že budeš testovat neukládání dat, dokud to uživatel nepovolí. Právě k tomu se ti bude hodit tento tab. A taky kvůli těmto zákonům musíš povolovat cookies všude, kam si přišel poprvé.
+Evropská unie posledních letech utáhla šrouby ohledně ukládání dat o uživatelích, pokud nejsou nezbytně nutná pro fungování aplikace. Je to složitá problematika, na kterou jsou celá právnická oddělení ve velkých firmách. Může se stát, že budeš testovat neukládání dat, dokud to uživatel nepovolí. Právě k tomu se ti bude hodit tento tab. A taky kvůli těmto zákonům musíš povolovat cookies všude, kam si přišel poprvé.
 
-V menu jsou další položky, které ale nemají velké využití u většiny aplikací a nebudeme se jimi zabývat.
+V menu jsou další položky, které ale nemají velké využití u většiny aplikací a nebudeme se jimi zabývat.
 
 ### Cache
 
-Zde se nacházejí hlavně bližší informace o fungování cache. Je zde možnost automaticky otestovat [back/forward cache](https://web.dev/bfcache/) - tedy to, jak se stránka chová, když jdeš zpět/vpřed - v ideálním případě by se neměla změnit a vše by mělo být velice rychlé.
+Zde se nacházejí hlavně bližší informace o fungování cache. Je zde možnost automaticky otestovat [back/forward cache](https://web.dev/bfcache/) - tedy to, jak se stránka chová, když jdeš zpět/vpřed - v ideálním případě by se neměla změnit a vše by mělo být velice rychlé.
 
 ### Background services
 
-Zde se nacházejí různé služby, které běží mimo hlavní stránku. Tyto služby mohou stránku ovlivňovat nebo ji přidávat funkce. Nejčastěji se setkáš s notifikacemi. Určitě na tebe už někde vyskočila žádost o zobrazování notifikací - dělá to Gmail nebo Facebook. Pokud je povolíš, budou se ti zobrazovat notifikace, i když stránka nebude aktivní. Někdy to může být docela otravné, ale jindy lze s jejich pomocí docílit takřka totožného chování jako u nativních aplikací. Tyto služby jsou velice specifické. Záleží na aplikaci, kterou budeš testovat, zda je vůbec využiješ.
+Zde se nacházejí různé služby, které běží mimo hlavní stránku. Tyto služby mohou stránku ovlivňovat nebo ji přidávat funkce. Nejčastěji se setkáš s notifikacemi. Určitě na tebe už někde vyskočila žádost o zobrazování notifikací - dělá to Gmail nebo Facebook. Pokud je povolíš, budou se ti zobrazovat notifikace, i když stránka nebude aktivní. Někdy to může být docela otravné, ale jindy lze s jejich pomocí docílit takřka totožného chování jako u nativních aplikací. Tyto služby jsou velice specifické. Záleží na aplikaci, kterou budeš testovat, zda je vůbec využiješ.
 
 ### Frames
 
@@ -149,13 +151,13 @@ Vzpomínáš si na záložku sources, kde jsme řešili různé kontexty, kdy ka
 
 ## Devtools a mobilní zařízení
 
-V předchozích kapitolách jsme řešili jak se podívat na rozložení stránky pro jiné zařízení. Stačí k tomu použít tlačítko v DevTools a vybrat si zařízení nebo nastavit rozložení.
+V předchozích kapitolách jsme řešili, jak se podívat na rozložení stránky pro jiné zařízení. Stačí k tomu použít tlačítko v DevTools a vybrat si zařízení nebo nastavit rozložení.
 
 ![DevTools záhlaví tlačítko zapnutí responzivního režimu](/images/chapter/qa-7-4.png "Ukázka, kde se v DevTools záhlaví nachází tlačítko zapnutí responzivního režimu")
 
-Důležité je uvědomit si, že tohle můžeš používat pro kontrolu rozložení stránky. K ničemu jinému to nepoužívej.
+Důležité je uvědomit si, že tohle můžeš používat pro kontrolu rozložení stránky. K ničemu jinému to nepoužívej.
 
-Proč ne? To, že změníš rozlišení, ještě neznamená, že se tvůj prohlížeč bude chovat stejně jako ten na mobilu. Mobilní prohlížeče například nemají rozšíření (AdBlock a další) a typicky nemají myš. Toto se tedy hodí pouze pro kontrolu responzivity, nikoliv skutečného fungování na mobilu.
+Proč ne? To, že změníš rozlišení, ještě neznamená, že se tvůj prohlížeč bude chovat stejně jako ten na mobilu. Mobilní prohlížeče například nemají rozšíření (AdBlock a další) a typicky nemají myš. Toto se tedy hodí pouze pro kontrolu responzivity, nikoliv skutečného fungování na mobilu.
 
 Ukážeme si, jak používat DevTools v Chrome na jiném Android zařízení. Budeš k tomu potřebovat počítač, mobilní zařízení s Androidem a kabel pro spojení. Jak na to?
 
@@ -167,7 +169,7 @@ Ukážeme si, jak používat DevTools v Chrome na jiném Android zařízení. Bu
 6. Zaškrtněte Discover USB devices a povol notifikaci na mobilním zařízení
 7. V Chrome bys měl vidět svoje otevřené stránky v mobilním prohlížeči.
 
-Více o tom jak propojit mobilní zařízení s počítačem se můžeš dozvědět [zde](https://blog.medio.cz/vzdalene-ladeni-mereni-na-mobilnim-webu).
+Více o tom, jak propojit mobilní zařízení s počítačem se můžeš dozvědět [zde](https://blog.medio.cz/vzdalene-ladeni-mereni-na-mobilnim-webu).
 
 ![Výběr otevřené stránky na vzdáleném zařízení pro napojení DevTools na mobilní zařízení](/images/chapter/qa-7-5.png "Ukázka, jak vypadá DevTools pro připojené vzdálené zařízení.")
 
@@ -183,14 +185,14 @@ Na obrázku můžeš vidět ukázku propojení mobilního zařízení s počíta
 
 ## Command menu
 
-Není třeba si vše pamatovat a znát každou pozici nástroje v DevTools. Existuje něco mnohem lepšího na jejich používání! Command menu ti umožňuje vyhledávat v DevTools. Přesouvat se v nich tam, kam potřebuješ či přejít na část, která je jinak skrytá hluboko uvnitř.
+Není třeba si vše pamatovat a znát každou pozici nástroje v DevTools. Existuje něco mnohem lepšího na jejich používání! Command menu ti umožňuje vyhledávat v DevTools. Přesouvat se v nich tam, kam potřebuješ či přejít na část, která je jinak skrytá hluboko uvnitř.
 
-Jak se k němu dostaneš? Ctrl + Shift + P ti zobrazí command menu, do kterého pak můžeš psát. Všimni si znaku >. Když nic nemáš v menu nic napsaného a smažeš znak >, zobrazí se ti navigace skrze soubory, které stránka načítá (to již znáš ze sources). Pokud si chceš rovnou otevřít navigaci skrze soubory, použij klávesovou zkratku Ctrl + P.
+Jak se k němu dostaneš? Ctrl + Shift + P ti zobrazí command menu, do kterého pak můžeš psát. Všimni si znaku >. Když nic nemáš v menu nic napsaného a smažeš znak >, zobrazí se ti navigace skrze soubory, které stránka načítá (to již znáš ze sources). Pokud si chceš rovnou otevřít navigaci skrze soubory, použij klávesovou zkratku Ctrl + P.
 
 ![Vyhledávač funkcí přes Command menu DevTools](/images/chapter/qa-7-7.png "Ukázka jak vypadá vyhledávač funkcí.")
 
 ![Vyhledávač souboru přes Command menu v DevTools](/images/chapter/qa-7-8.png "Ukázka jak vypadá vyhledávač souborů.")
 
-Velice užitečnou funkcí DevTools je zpomalení animací. Může se stát, že ti "něco nesedí" na animaci. Ale nevíš co, protože je moc rychlá. Takže si ji chceš zpomalit. Jak na to? Zobrazíš si Command menu (to s >), napíšeš Animation a potvrdíš. Otevře se ti nový panel v DevTools, kde můžeš animace zpomalit na 25 % nebo dokonce 10 %. Díky tomu snadno zachytíš chyby v animaci.
+Velice užitečnou funkcí DevTools je zpomalení animací. Může se stát, že ti "něco nesedí" na animaci. Ale nevíš, co, protože je moc rychlá. Takže si ji chceš zpomalit. Jak na to? Zobrazíš si Command menu (to s >), napíšeš Animation a potvrdíš. Otevře se ti nový panel v DevTools, kde můžeš animace zpomalit na 25 %, nebo dokonce 10 %. Díky tomu snadno zachytíš chyby v animaci.
 
 Command menu ti ukazuje nápovědu, které funkce můžeš chtít hledat. Můžeš je prozkoumat. Například když napíše javascript, tak si můžeš zakázat javascript. To pak většina stránek funguje velice podivně.
