@@ -1,22 +1,36 @@
 import React from "react"
 import { NextPage } from "next"
 import { Spoiler } from "../components/Spoiler"
+import { Head } from "../components/Head"
 
-const PlayGround: NextPage = () => {
+const Interested: NextPage = () => {
     return (
         <>
-            <Spoiler textButton='Zobrazit odpověď'>
-                This is text in outer div! Really long text, so that it should be hidden below the centered text. This
-                is text in outer div! Really long text, so that it should be hidden below the centered text. This is
-                text in outer div! Really long text, so that it should be hidden below the centered text. This is text
-                in outer div! Really long text, so that it should be hidden below the centered text. This is text in
-                outer div! Really long text, so that it should be hidden below the centered text. This is text in outer
-                div! Really long text, so that it should be hidden below the centered text. This is text in outer div!
-                Really long text, so that it should be hidden below the centered text. This is text in outer div! Really
-                long text, so that it should be hidden below the centered text. This is text in outer div! Really long
-                text, so that it should be hidden below the centered text.
-            </Spoiler>
+            <Head
+                desc='Mám zájem Naučit se IT a posunout se v kariéře dál!'
+                url='https://naucme.it/interested'
+                twImg='https://naucme.it/twitter.png'
+                fbImg='https://naucme.it/facebook.png'
+            >
+                <title>Mám zájem Naučit se IT!</title>
+            </Head>
+
+            <main>
+                <Spoiler textButton='Ukaž řešení!'>
+                    Toto je strašně dlouhý text, který musíme skrýt, aby student neviděl cvičení. Toto je strašně dlouhý
+                    text, který musíme skrýt, aby student neviděl cvičení. Toto je strašně dlouhý text, který musíme
+                    skrýt, aby student neviděl cvičení. Toto je strašně dlouhý text, který musíme skrýt, aby student
+                    neviděl cvičení. Toto je strašně dlouhý text, který musíme skrýt, aby student neviděl cvičení. Toto
+                    je strašně dlouhý text, který musíme skrýt, aby student neviděl cvičení. Toto je strašně dlouhý
+                    text, který musíme skrýt, aby student neviděl cvičení. lov Toto je strašně dlouhý text, který musíme
+                    skrýt, aby student neviděl cvičení. Toto je strašně dlouhý text, který musíme skrýt, aby student
+                    neviděl cvičení. Toto je strašně dlouhý text, který musíme skrýt, aby student neviděl cvičení. Toto
+                    je strašně dlouhý text, který musíme skrýt, aby student neviděl cvičení. Toto je strašně dlouhý
+                    text, který musíme skrýt, aby student neviděl cvičení.
+                </Spoiler>
+            </main>
         </>
     )
 }
-export default PlayGround
+
+export default Interested

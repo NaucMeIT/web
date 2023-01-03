@@ -1,9 +1,8 @@
 import { Button } from "./Button"
-import { useState } from "react"
-import * as React from "react"
+import { ReactNode, useState } from "react"
 
 type Props = {
-    readonly children: React.ReactNode
+    readonly children: ReactNode
     readonly textButton: string
 }
 
@@ -14,7 +13,7 @@ export function Spoiler({ children, textButton }: Props) {
         <>
             <div className='z-10 absolute my-14 ml-4 sm:ml-8 md:ml-12 lg:ml-20 xl:ml-32 2xl:ml-64'>
                 {showHiddenText && (
-                    <Button theme='main' onClick={() => setShowHiddenText(false)}>
+                    <Button theme='off' onClick={() => setShowHiddenText(false)}>
                         {textButton}
                     </Button>
                 )}
