@@ -1,0 +1,43 @@
+---
+title: Cvičení - design
+abstract: Vyzkoušej si na vlastní kůži, jak vypadá testování projektu. Zde najdeš popis grafického rozhraní naší testovací aplikace o astronautech ze cvičení 10.
+---
+
+Představ si, že jsi dostal požadavky od zákazníka. Dáš je vývojáři a řekneš mu: „Tak a teď programuj.“ On to udělá podle sebe. Může s tím bojovat, ale nějak to udělá. Takhle nějak vznikal náš první vzhled webu. Můžeš ho vidět na videích o DevTools. Pak to vývojář předá testerovi, který to otestuje podle sebe. Ale co když se jejich názory nesetkají v tom, jak to má vypadat?
+
+Takový model nefunguje. Z vývojářovy strany může být web technologicky nadupaný, ale vizuálně nemusí být nic moc. Navíc to, že umíš „dělat weby“ neznamená, že máš grafické cítění. Proto je dobré mít v týmu grafika nebo tým grafiků, kteří vytváří design. Grafici spolupracují jak s vývojáři, tak i testery, kteří jim pomáhají ujasnit, jestli by jejich supr troopr návrh fungoval. Navíc se poté nestane, že by vývojář a tester měli jiné představy. Protože oba mají jasné zadání.
+
+Designer potřebuje nástroje, aby mohl podle představ zákazníka vytvořit grafickou podobu. Existuje jich [celá řada](https://www.itnetwork.cz/html-css/user-experience/ux-navrhovy-a-prototypovaci-software). Ze začátku postačí tužka a papír na vytvoření skici. Pro profesionálnější grafický návrh je vhodné mít nějaký [checklist](https://www.lqd.cz/clanek/jak-spravne-zhodnotit-graficky-navrh-webu) a vědět, co a jak hodnotit. Samotný [wireframe](https://www.rascasone.com/cs/blog/co-je-wireframe-predstavujeme-5-duvodu-proc-je-pro-klienty-drateny-model-dulezity) (další čtení [zde](https://www.simonjun.cz/blog/co-je-to-wireframe-prototyp-mockup)) nestačí a naopak střihnout si rovnou [web design](https://www.rascasone.com/cs/blog/webdesign-tipy-pravidla-trendy) obvykle není dobrý nápad.
+
+Nástrojů existuje celá řada. Mezi nejznámější patří rozhodně [Figma](http://figma.com/), [Zeplin](https://zeplin.io/) a také [Adobe XD](https://helpx.adobe.com/xd/get-started.html). Návrh našeho webu byl vytvořen právě v Adobe XD. Pokud tě zajímá, jak vypadal první grafický návrh našeho webu od grafika, můžeš se podívat [zde](https://xd.adobe.com/view/597f1c3c-0b0b-40a9-a2f5-d04530e36939-0c2c/specs/).
+
+V případě naší jednoduché aplikace o astronautech dostaneš její celou specifikaci a obrázky z funkční aplikace. Obrázky v lepší kvalitě jsou dostupné na Githubu ve složce pictures. Při vytváření aplikace nevznikl žádný pořádný grafický návrh, vše se řešilo pomocí tužky a papíru. Nejedná se o grafický návrh, jak jsi již mohl pochopit, ale spíše o detailnější popis s obrázky. Standardně je návrh interaktivní. Umožňuje použít například části CSS, aby se ti web tvořil snáze. Je vytvořen před vytvářením aplikace či před vytvářením dané funkcionality. Proč? Aplikace nevzniká naráz, ale iteruje se její vývoj - funkce se přidávají, mění či odebírají. To úzce souvisí s [agilním vývojem](https://www.rascasone.com/cs/blog/co-je-agilni-vyvoj). Je to v dnešní době **standard**.
+
+## Detailnější popis aplikace s obrázky
+
+Aplikace slouží k zaznamenávání astronautů. Na úvodní stránce si může uživatel prohlédnout všechny záznamy o astronautech. V případě, že v databázi není žádný záznam, je uživatel vyzván k vytvoření záznamu. Pokud je v aplikaci více záznamů, lze aplikací scrollovat. Uživatel může přidat astronauta, mazat a editovat jakýkoliv záznam. Astronaut musí obsahovat jméno a příjmení. Dále má datum narození astronauta, které nesmí být v budoucnu, a nepovinnou superschopnost astronauta. Uživatel může vytvořit i astronauta s náhodnými údaji. V patičce se nachází odkaz na informace o autorovi.
+
+Ukázka úvodní stránky
+
+-   bez záznamu
+-   se záznamy
+
+![Úvodní prázdná strana](/images/chapter/qa-exe-10-1.png "Úvodní strana testovací aplikace na správu Astronautů - žádný astronaut nebyl vytvořen")
+
+Po kliknutí na tlačítko ADD, je uživatel přesměrován na stránku s formulářem.
+
+![Úvodní strana s astronauty](/images/chapter/qa-exe-10-2.png "Úvodní strana testovací aplikace na správu Astronautů - výpis existujících astronautů")
+
+Po kliknutí na tlačítko RANDOM se formulář předvyplní náhodnými informacemi o astronautovi. Tlačítko BACK vrátí uživatele zpět na úvodní stránku. Tlačítko ADD přidá astronauta, pokud záznam splňuje požadavky uvedené výše. Datum lze napsat nebo vybrat z datepickeru.
+
+![Přidání astronauta](/images/chapter/qa-exe-10-3.png "Stránka pro přidání astronautů")
+
+Jednotlivý záznam je editovatelný po kliknutí na ikonu tužky v pravém dolním rohu záznamu. Poté je uživatel přesměrován na editační formulář. Jeden záznam má vždy stejné ID - to se nemění - znamenalo by to v našem případě jiného astronauta.
+
+![Výběr datumu na stránce přidání astronauta](/images/chapter/qa-exe-10-4.png "Výběr datumu na stránce přidání astronauta")
+
+Tlačítko BACK neuloží změny a vrátí uživatele zpět na úvodní stránku. Tlačítko SAVE uloží záznam, pokud splňuje požadavky a vrátí uživatele na úvodní stránku. Informace v záznamu jsou aktualizované. Podobně jako ve vytvářecím formuláři, datum lze vybrat.
+
+Záznam lze smazat, kliknutím na ikonu koše v levém dolním rohu záznamu. Po kliknutí na ikonu je uživatel dotázán, jestli chce opravdu záznam smazat. Kliknutím na tlačítko CANCEL se uživatel vrátí na úvodní stránku. Záznam není smazaný. Po kliknutí na tlačítko DELETE je záznam smazán. Uživatel se uživatel vrátí na úvodní stránku a záznam je smazán.
+
+![Úprava astronauta](/images/chapter/qa-exe-10-5.png "Úprava stávajícího astronauta")
