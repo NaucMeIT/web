@@ -31,7 +31,7 @@ function MenuItem({
 }) {
     return (
         <Typography
-            variant={item.isActive ? "menuActive" : "menu"}
+            variant={item.isImportant ? "menuBtn" : "menu"}
             component={item.isImportant ? Button : Link}
             key={item.title}
             componentProps={{
@@ -50,7 +50,7 @@ function MenuItem({
 
 export function Menu({ items, logoLink, children, inApp }: MenuProps) {
     return (
-        <Disclosure as='nav' className='fixed top-0 z-20 w-screen bg-background/90 transition-all'>
+        <Disclosure as='nav' className='fixed top-0 z-20 w-screen bg-background/90 transition-all print:hidden'>
             {({ open, close }) => (
                 <>
                     <div className='mx-auto mt-4 max-w-screen-3xl px-6 lg:px-0'>

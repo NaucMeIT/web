@@ -5,7 +5,7 @@ abstract: Tester, který zná datové typy, umí lépe a rychleji najít chyby v
 
 V minulé kapitole ses seznámil s proměnnými. Dozvěděl ses, jak psát jejich jména. Ale jaká data můžeme do proměnné uložit? Ukládaná data se dají rozdělit do datových typů. S každým datovým typem se pracuje trochu jinak. Představ si, že máš dvě proměnné, první pojmenuješ num a uložíš do ní číslo 5 a do druhé proměnné s jménem text uložíš řetězec „ahoj“. Co se stane, když se je pokusíme sečíst? (Otevři si konzoli v DevTools a zkus si to.)
 
-```javascript
+```javascript showLineNumbers
 let num = 5
 let text = "ahoj"
 num + text
@@ -15,7 +15,7 @@ Co se stane? Proměnné se prostě sečtou. Javascript je převede na stejný ty
 
 Co se stane, když si podobný kód - lehce upravený - zkusíme v Pythonu. Jdi na [Platformu Repl.it](https://replit.com/languages/python3), zadej do levého rámečku tento kód
 
-```python
+```python showLineNumbers
 x = 5
 text = "ahoj"
 x + text
@@ -29,7 +29,7 @@ Hláška vypadá nějak takto:
 
 JavaScript má také své typy. Ty jsou důležité hlavně pro prohlížeč. Jak jsme si ukázali výše, tak JavaScript často neupozorní na chybu, pokud se používá špatný typ. Představ si, že máš funkci, která podle zadaného číselného parametru, tolikrát vypíše do konzole písmenko „X“. A ty jí místo čísla zadáš text. Co se stane? Otevři konzoli a zkus to si:
 
-```javascript
+```javascript showLineNumbers
 function priklad(cislo) {
     for (i = cislo; i > 0; i--) {
         console.log("x")
@@ -55,7 +55,7 @@ S **pravdivostní hodnotou** ses již setkal u rozhodování a podmínek. V Java
 
 Zkus si zjistit typ:
 
-```javascript
+```javascript showLineNumbers
 console.log(typeof true)
 console.log(typeof false)
 console.log(typeof ("a" == 5))
@@ -83,9 +83,9 @@ Poznámka: Programovací jazyky jsou přizpůsobené angličtině a mohou obsaho
 
 ---
 
-Poslední typ uvozovek je speciální v tom, že do stringu můžeš psát části kódu, když ho zapíšeš do `${}`. To se například hodí, když chceš vypsat nějakou proměnou. Jednoduchým příkladem může být funkce, která vypíše pozdrav.
+Poslední typ uvozovek je speciální v tom, že do stringu můžeš psát části kódu, když ho zapíšeš do `${}{:js}`. To se například hodí, když chceš vypsat nějakou proměnou. Jednoduchým příkladem může být funkce, která vypíše pozdrav.
 
-```javascript
+```javascript showLineNumbers
 function greeting(name) {
     console.log(`Ahoj ${name}`)
 }
@@ -93,15 +93,15 @@ function greeting(name) {
 greeting("Princezno Consuelo Banana Hammock")
 ```
 
-Vypíše ti to Ahoj Princezno Consuelo Banana Hammock. Schválně, co se stane, když ve funkci greeting v příkazu `console.log()` prohodíš uvozovky například za ""?
+Vypíše ti to Ahoj Princezno Consuelo Banana Hammock. Schválně, co se stane, když ve funkci greeting v příkazu `console.log(){:js}` prohodíš uvozovky například za ""?
 
-Do `${}` můžeš napsat jakýkoliv validní javascriptový výraz, to jest kód i funkce, které se vyhodnotí do jedné hodnoty, např. `3 + 4`, `"ahoj" === true`, `pozdrav("Karel")` z článku na IT Networku v minulé kapitole. Tomuto se říká interpolace a je to popsáno v již zmíněném článku [Lekce 3 - Základní datové typy v JavaScriptu](https://www.itnetwork.cz/javascript/zaklady/javascript-js-tutorial-datove-typy-retezce-cisla-funkce#_interpolace-retezcu), stejně jako další práce s řetězci.
+Do `${}{:js}` můžeš napsat jakýkoliv validní javascriptový výraz, to jest kód i funkce, které se vyhodnotí do jedné hodnoty, např. `3 + 4{:js}`, `"ahoj" === true{:js}`, `pozdrav("Karel"){:js}` z článku na IT Networku v minulé kapitole. Tomuto se říká interpolace a je to popsáno v již zmíněném článku [Lekce 3 - Základní datové typy v JavaScriptu](https://www.itnetwork.cz/javascript/zaklady/javascript-js-tutorial-datove-typy-retezce-cisla-funkce#_interpolace-retezcu), stejně jako další práce s řetězci.
 
 ### Number a BigInt
 
 JavaScript má dva datové typy pro čísla - number a BigInt. Většina programovacích jazyků má problém s desetinnými čísly. Je to také jeden z důvodů, proč vznikl BigInt. Pro přesné finanční operace si nemůžeš dovolit jakékoliv nepřesnosti. Proto se desetinná čísla uváděla jako celá a dělila se koeficientem, který určoval jejich finální podobu, například:
 
-```javascript
+```javascript showLineNumbers
 const koeficient = 1000000
 const brzyDesetinneCislo = 8767766
 const desetinneCislo = brzyDesetinneCislo / koeficient
@@ -113,7 +113,7 @@ To však vedlo k přesažení maximální možné velikosti typu **number**. Vzn
 
 Tento typ má pouze jednu hodnotu a to _undefined_ - nedefinováno. Je to hodnota, kterou JavaScript používá, když neví, jaký typ určit. Například když zapomeneš přiřadit do proměnné hodnotu a on neumí určit typ.
 
-```javascript
+```javascript showLineNumbers
 let nothing
 
 console.log(typeof nothing)
@@ -121,13 +121,13 @@ console.log(typeof nothing)
 
 Tuto hodnotu můžeš přiřadit i ty explicitně, tedy:
 
-```javascript
+```javascript showLineNumbers
 let nothing = undefined
 
 console.log(typeof nothing)
 ```
 
-Název tohoto typu je lehce zavádějící. Zkus do `console.log()` napsat nějaký název proměnné, kterou jsi předtím nedefinoval. Třeba: `console.log(nedefinovano)`, co se stalo? Vyskočila ti chybová hláška:
+Název tohoto typu je lehce zavádějící. Zkus do `console.log(){:js}` napsat nějaký název proměnné, kterou jsi předtím nedefinoval. Třeba: `console.log(nedefinovano){:js}`, co se stalo? Vyskočila ti chybová hláška:
 
 `Uncaught ReferenceError: nedefinovano is not defined`
 
@@ -147,7 +147,7 @@ Null a undefined můžeš používat záměrně, ale jsou lidé, kteří se jim 
 
 Symbol byl do JavaScriptu přidán poměrně nedávno a je to pokročilý koncept, který je složité vysvětlit, aniž bychom se dostali hlouběji do teorie. Pro teď asi stačí vědět, že existuje.
 
-```javascript
+```javascript showLineNumbers
 let magic = Symbol()
 console.log(typeof magic)
 ```
@@ -160,7 +160,7 @@ Dostáváme se k zábavné části JavaScriptu. Objekt je všechno, co není jed
 
 Objekt si můžeš představit jako překladatelský slovník - pod nějakým klíčem nalezneš nějakou hodnotu. Klíč musí být primitivní typ, konkrétně string, number nebo symbol. Jiné hodnoty nejsou validní. Zároveň vše, co není string, je na string převedeno. Nejlépe uděláš, když budou tvé klíče vždy string bez speciálních znaků a budou vždy začínat písmenem. Naopak hodnota může být jakákoliv - string, další objekt, funkce.
 
-```javascript
+```javascript showLineNumbers
 const objekt = {
     mujKlic: 7,
 }
@@ -186,7 +186,7 @@ Poznámky k videu od Czechitas:
 
 K vlastnostem a metodám objektu můžeš přistupovat přes [tečkovou notaci](https://portal.matematickabiologie.cz/index.php?pg=zaklady-informatiky-pro-biology--algoritmizace-a-programovani--programovani-v-javascriptu-i--promenne--vlastnosti-promennych). Co to znamená? Nadefinujeme si prvně objekt osoba, který bude mít jméno, věk a metodu jsem plnoletý
 
-```javascript
+```javascript showLineNumbers
 let osoba = {
     name: "Jožin",
     age: 19,
@@ -204,7 +204,7 @@ Pokud chceme zjistit věk naší osoby, musíme to udělat přes tečkovou notac
 
 ### Funkce
 
-Co ti vrátí příkaz `console.log(typeof(function(){}))`? Typ function. Jedná se v JavaScriptu v podstatě o další převlečený objekt. Jak už bylo vedeno výše, vše, co není primitivní datový typ, je v JavaScriptu objekt.
+Co ti vrátí příkaz `console.log(typeof(function(){})){:js}`? Typ function. Jedná se v JavaScriptu v podstatě o další převlečený objekt. Jak už bylo vedeno výše, vše, co není primitivní datový typ, je v JavaScriptu objekt.
 
 Protože **this** může přinést potíže, zkus napsat dvě funkce definované mimo objekt (budou brát objekt osoba jako parametr) z videa od Czechitas:
 
@@ -213,7 +213,7 @@ Protože **this** může přinést potíže, zkus napsat dvě funkce definované
 
 Ani v jedné funkci nepoužívej this, využij tečkovou notaci pro přístup k datům v objektu. Zde máš příklad funkce, která vrátí celé jméno osoby:
 
-```javascript
+```javascript showLineNumbers
 function getFullName(osoba) {
     return `${osoba.jmeno} ${osoba.prijmeni}`
 }
@@ -225,13 +225,13 @@ getFullName({ jmeno: "Petr", prijmeni: "Glaser" }) // Vrátí "Petr Glaser"
 
 Pole již není v JavaScriptu samostatný datový typ - k tomu se ještě vrátíme. Představ si, že si hraješ s dětským vláčkem. Vláček má vagónky, které jsou číslované od nuly. Kolik vagónků má je na tobě, můžeš je přidávat nebo odebírat, či rozdělit například na dva spoje. Co je ve vagónkách? To záleží na jejich typu, ve vagónku nula může být třeba 15 cestujících, ve vagónku 1 například 4, ve vagónku 2 třeba 24 atd. Zapisovat to takhle slovně by nebylo zrovna dobře čitelné proto náš vláček o třech vagónkách zapíšeme
 
-```javascript
+```javascript showLineNumbers
 let vlacek = [15, 4, 24]
 ```
 
 Ve vagoncích můžeš vézt všechny datové typy a třeba i jiné vagónky (zní to komicky, ale představ si, že je vrstvíš na sebe. Když jdou dělat [auta na auta](https://www.youtube.com/watch?v=go-TIIcTUcU), tak proč ne vláčky na vláčky?). Představ si, že si zaznamenáváš, dvě informace o vagónku - počet lidí a zavazadel, což jde uložit do dvojice.
 
-```javascript
+```javascript showLineNumbers
 let passengersWithSuitcases = [
     [15, 24],
     [4, 2],
@@ -239,7 +239,7 @@ let passengersWithSuitcases = [
 ]
 ```
 
-Pamatuješ si, že vagónky jsou číslované? Proto k jednotlivým údajům můžeš přistupovat pomocí číselné reference. Kolik je ve vláčku lidí v nultém (prvním) vagónku zjistíš tím, že si vypíšeš vlacek[0]. Více o tom jak pracovat s poli si můžeš přečíst na [ITNetworku](https://www.itnetwork.cz/javascript/zaklady/javascript-tutorial-zaciname-s-javascriptem-podminky-cykly-pole-svatky) nebo [Czechitas](https://www.czechitas.cz/lekce-online-kurzu/javascript-lekce-4). Web [Tvorba webu](https://www.tvorba-webu.cz/javascript/pole.php) popisuje jednoduchou práci s polem, pouze metoda `.toSource()` neexistuje.
+Pamatuješ si, že vagónky jsou číslované? Proto k jednotlivým údajům můžeš přistupovat pomocí číselné reference. Kolik je ve vláčku lidí v nultém (prvním) vagónku zjistíš tím, že si vypíšeš vlacek[0]. Více o tom jak pracovat s poli si můžeš přečíst na [ITNetworku](https://www.itnetwork.cz/javascript/zaklady/javascript-tutorial-zaciname-s-javascriptem-podminky-cykly-pole-svatky) nebo [Czechitas](https://www.czechitas.cz/lekce-online-kurzu/javascript-lekce-4). Web [Tvorba webu](https://www.tvorba-webu.cz/javascript/pole.php) popisuje jednoduchou práci s polem, pouze metoda `.toSource(){:js}` neexistuje.
 
 ---
 
@@ -249,13 +249,13 @@ V 10:44 se objeví chybová hláška. Všimni si, že v pravo nahoře je napsán
 
 ---
 
-Vraťme se k tomu, proč pole není samostatný datový typ. Z pohledu JavaScriptu je pole rovněž objekt. Zkus si `console.log(typeof(vlacek))`.
+Vraťme se k tomu, proč pole není samostatný datový typ. Z pohledu JavaScriptu je pole rovněž objekt. Zkus si `console.log(typeof(vlacek)){:js}`.
 
 Teoreticky můžeš zapsat náš vláček jako objekt.
 
-`let vlacek2 = {"0": 15, "1": 4, "2": 24}`. Umíš si představit, že to takhle pokaždé vypisuješ? Co když zapomeneš na nějaký vagónek? Proto existuje pole. Zároveň má i vlastní metody, např. _.join()_ spojí pole do jednoho stringu - můžeš také definovat, jaký znak hodnoty spojí:
+`let vlacek2 = {"0": 15, "1": 4, "2": 24}{:js}`. Umíš si představit, že to takhle pokaždé vypisuješ? Co když zapomeneš na nějaký vagónek? Proto existuje pole. Zároveň má i vlastní metody, např. _.join()_ spojí pole do jednoho stringu - můžeš také definovat, jaký znak hodnoty spojí:
 
-```javascript
+```javascript showLineNumbers
 const willBeJoined = [1, 2, 3]
 willBeJoined.join(", ") // vrátí "1, 2, 3"
 ```
@@ -266,12 +266,12 @@ Můžeš se setkat ještě s výrazem seznam (list v angličtině). Seznam je da
 
 Výše jsme zmínili, že primitivní datové typy jsou immutable. Podíváme se na to blíže, protože občas se můžeš setkat třeba s tím, že se vypisuje konkrétní prvek stringu.
 
-```javascript
+```javascript showLineNumbers
 let text = "ahoj"
 console.log(text[1]) // vypíše "h"
 text[1] = "e"
 ```
 
-Co vypíše `console.log(text)`?
+Co vypíše `console.log(text){:js}`?
 
-String se nezměnil, museli bychom změnit obsah celé proměnné jako `text="pac"` a to protože řetězec je immutable. Můžeš se setkat s tím, že string má metody a vlastnosti, ale to je z toho důvodu, že se obalí objektem. Proto můžeš zavolat `text.length` nebo `text.split("a")`. Těchto metod je [celá řada](https://www.jakpsatweb.cz/javascript/objekt-string.html), neustále se vyvíjejí a některé [již neplatí](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), což zjistíš podle červené ikonky koše vedle dané metody. Doporučujeme se s MDN naučit, je to jeden z největších přátel pro webové aplikace!
+String se nezměnil, museli bychom změnit obsah celé proměnné jako `text="pac"{:js}` a to protože řetězec je immutable. Můžeš se setkat s tím, že string má metody a vlastnosti, ale to je z toho důvodu, že se obalí objektem. Proto můžeš zavolat `text.length{:js}` nebo `text.split("a"){:js}`. Těchto metod je [celá řada](https://www.jakpsatweb.cz/javascript/objekt-string.html), neustále se vyvíjejí a některé [již neplatí](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), což zjistíš podle červené ikonky koše vedle dané metody. Doporučujeme se s MDN naučit, je to jeden z největších přátel pro webové aplikace!

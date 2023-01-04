@@ -46,7 +46,7 @@ export function Footer({ links }: FooterProps) {
                     <Typography variant='step'>Kontakt</Typography>
                     <p>
                         <Typography className='block'>Pavel Koudelka</Typography>
-                        <Typography className='block'>735 42 Český Těšín</Typography>
+                        <Typography className='block'>735 62 Český Těšín</Typography>
                     </p>
                     <p>
                         <Typography

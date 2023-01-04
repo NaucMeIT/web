@@ -13,7 +13,7 @@ Algoritmus je přesný návod, jak vyřešit úlohu. Představ si, že jsi kucha
 
 My se budeme zabývat základy Javascriptu, což je nejrozšířenější jazyk pro vývoj webových aplikací v prohlížeči - dlouho dobu byl jediný. Prohlížeče mu rozumí. Na práci s javascriptem můžeme použít editor, který je pro všechny snadno dostupný - DevTools konzoli (jak se k ní dostat již víš). Má to jednu nevýhodu, po zavření prohlížeče či aktualizaci stránky vše zmizí. Proto se píší takzvané scripty - soubory s příponou <sup>\*</sup>.js, které obsahují javascript. Pokud je chceme použít na webových stránkách psaných v HTML přidávají se podobně jako se přidávají soubory se styly, jen značka se liší.
 
-V html se použije `<script src="cesta_k_souboru"></script>`. V některých materiálech se můžeš setkat s psaním scriptů přímo v html souboru - stačí napsat kód mezi značky `<script></script>` v dokumentu. Poslední varianta obvykle není vhodná.
+V html se použije `<script src="cesta_k_souboru"></script>{:html}`. V některých materiálech se můžeš setkat s psaním scriptů přímo v html souboru - stačí napsat kód mezi značky `<script></script>{:html}` v dokumentu. Poslední varianta obvykle není vhodná.
 
 V lekci budeme kombinovat:
 
@@ -32,7 +32,7 @@ Další představou může být, že proměnná je drát spojující jméno a h
 
 Drát nikdy nespojuje dvě jména, pokud napíšeš, že nějaká proměnná se rovná jiné, tak jejich drát **momentálně** vede ke stejné hodnotě. Podobně jako neřešíš u misek na bonbony, jestli se rovná jejich barva, ale kolik bonbonu mají.
 
-```javascript
+```javascript showLineNumbers
 let x = 10
 let y = x
 let x = 0
@@ -82,9 +82,9 @@ Podmínky umí kvůli [logickým výrazům](http://www.nabla.cz/obsah/matematika
 
 ## Cykly
 
-Podmínky neslouží pouze pro větvení v **if**, ale můžeme je využít také v **cyklech** pro kontrolu, zda se má kód [provádět opakovaně](https://www.jakpsatweb.cz/javascript/vetveni.html). Cyklus je zápis opakující se činnosti. Představ si, že potřebuješ opakovat stejný příkaz desetkrát například `console.log("x")`. Chtělo by se ti ho psát pořád dokola? Navíc takový kód by nebyl dobře čitelný a byl by dlouhý. Posuď sám (zkus si to napsat do konzole v DevTools):
+Podmínky neslouží pouze pro větvení v **if**, ale můžeme je využít také v **cyklech** pro kontrolu, zda se má kód [provádět opakovaně](https://www.jakpsatweb.cz/javascript/vetveni.html). Cyklus je zápis opakující se činnosti. Představ si, že potřebuješ opakovat stejný příkaz desetkrát například `console.log("x"){:js}`. Chtělo by se ti ho psát pořád dokola? Navíc takový kód by nebyl dobře čitelný a byl by dlouhý. Posuď sám (zkus si to napsat do konzole v DevTools):
 
-```javascript
+```javascript showLineNumbers
 console.log("x")
 console.log("x")
 console.log("x")
@@ -112,7 +112,7 @@ Cyklus while umí být i zrádný, pokud napíšeš špatně podmínku, nemusí
 
 Představ si, že chceš několikrát, ale ne víckrát, jak desetkrát otevřelo okno na tisknutí. Kolikrát danou okno otevřít by ti určil uživatel a jeho odpověď by se uložila do proměnné counter. Cyklus chceš napsat jako while.
 
-```javascript
+```javascript showLineNumbers
 let counter = 5
 
 while (counter <= 10 && counter >= 0) {
@@ -122,7 +122,7 @@ while (counter <= 10 && counter >= 0) {
 
 Všiml sis chyby? Kolikrát si odklikl okno pro tisk, pokud counter=5? Pětkrát? Ne, bude na tebe vyskakovat po zavření stále znovu do nekonečna, protože proměnná counter se nesnižuje ani nezvyšuje.
 
-```javascript
+```javascript showLineNumbers
 let counter = 5
 
 while (counter <= 10 && counter >= 0) {
@@ -137,7 +137,7 @@ Cykly můžeme do sebe vnořovat. Vnořením dvou for cyklů do sebe, lze vypsat
 
 **Vypsání řádku**
 
-```javascript
+```javascript showLineNumbers
 let s = ""
 
 for (let i = 3; i > 0; i--) {
@@ -149,7 +149,7 @@ console.log(s)
 
 **Vypsání sloupce**
 
-```javascript
+```javascript showLineNumbers
 for (let i = 5; i > 0; i--) {
     console.log("x")
 }
@@ -157,7 +157,7 @@ for (let i = 5; i > 0; i--) {
 
 Pro vytvoření tabulky je potřeba oba postupy zkombinovat - vnořit cykly do sebe. Tabulka se vypisuje po řádcích, takže nejprve se vypíše třikrát x do řádku, a to celé se zopakuje pětkrát. Jak si můžeš všimnout níže, postupuje se svrchu dolů. Nejprve se deklaruje proměnná s, poté se přesuneme do vnitřního for cyklu, jakmile skončí, vykonají se ostatní příkazy ve vnějším cyklu (zde vypsání řetězce s novým řádkem na konci) a jede se od začátku.
 
-```javascript
+```javascript showLineNumbers
 for (let i = 5; i > 0; i--) {
     let s = ""
     for (let j = 3; j > 0; j--) {
