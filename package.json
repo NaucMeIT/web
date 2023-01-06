@@ -1,7 +1,10 @@
 {
     "name": "nauc-me-it",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "private": false,
+    "prisma": {
+        "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} utils/seed.ts"
+    },
     "scripts": {
         "dev": "next dev",
         "build": "next build",
@@ -11,7 +14,9 @@
         "postbuild": "next-sitemap --config next-sitemap.config.mjs",
         "prettier": "prettier --write '**/*.{js,jsx,md,json,css,scss,ts,tsx}'",
         "preinstall": "npx only-allow pnpm",
-        "postinstall": "npx prisma generate"
+        "postinstall": "prisma generate",
+        "prisma": "prisma",
+        "supabase": "supabase"
     },
     "dependencies": {
         "@headlessui/react": "^1.7.7",
@@ -74,6 +79,7 @@
         "supabase": "^1.28.1",
         "tailwindcss": "^3.2.4",
         "tailwindcss-fluid": "^0.2.0",
+        "ts-node": "^10.9.1",
         "tsutils": "^3.21.0",
         "typescript": "^4.9.4"
     }
