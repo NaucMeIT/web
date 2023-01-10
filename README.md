@@ -19,8 +19,8 @@ To run the app with testing database, follow these steps:
 
 #### Prerequisities
 
--   [Node.js](https://nodejs.org/en/)
--   [pnpm](https://pnpm.io/)
+-   [Node.js](https://nodejs.org/en/) - you can install it from [here](https://nodejs.org/en/download/), we always use latest version.
+-   [pnpm](https://pnpm.io/) - please follow [this guide](https://pnpm.io/installation) to install pnpm (**it is different from npm shipped with Node.js**)
 
 #### Steps
 
@@ -36,9 +36,9 @@ To run the app with local database, follow these steps:
 
 #### Prerequisities
 
--   [Node.js](https://nodejs.org/en/)
--   [pnpm](https://pnpm.io/)
--   [Docker](https://www.docker.com/)
+-   [Node.js](https://nodejs.org/en/) - you can install it from [here](https://nodejs.org/en/download/), we always use latest version.
+-   [pnpm](https://pnpm.io/) - please follow [this guide](https://pnpm.io/installation) to install pnpm (**it is different from npm shipped with Node.js**)
+-   [Docker](https://www.docker.com/) - please follow [this guide](https://docs.docker.com/get-docker/) to install Docker
 -   Make sure your Docker is running
 
 #### Steps

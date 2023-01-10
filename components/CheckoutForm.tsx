@@ -84,7 +84,7 @@ export default function CheckoutForm() {
                 >
                     {isLoading ? "Probíhá placení" : "Zaplatit"}
                 </Button>
-                <Button size='large' theme='off' className='w-fit' href='/chapter/qa-0'>
+                <Button size='large' theme='off' className='w-fit' href='/chapter/qa-00'>
                     Přeskočit
                 </Button>
             </div>
