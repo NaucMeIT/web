@@ -18,7 +18,7 @@ export function Spoiler({ children, textButton }: Props) {
                     </Button>
                 </div>
             )}
-            <div className={`m-4 cursor-not-allowed pointer-events-none select-none ${showHiddenText && "blur-sm"}`}>
+            <div className={`m-4 ${showHiddenText && "cursor-not-allowed pointer-events-none select-none blur-sm"}`}>
                 {children}
             </div>
         </div>
