@@ -9,87 +9,87 @@ const stripe = new createStripe(process.env.STRIPE_SECRET_KEY || "", { apiVersio
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET || ""
 
 function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: Function) {
-    return new Promise((resolve, reject) => {
-        fn(req, res, (result: Object) => {
-            if (result instanceof Error) {
-                return reject(result)
-            }
+	return new Promise((resolve, reject) => {
+		fn(req, res, (result: Object) => {
+			if (result instanceof Error) {
+				return reject(result)
+			}
 
-            return resolve(result)
-        })
-    })
+			return resolve(result)
+		})
+	})
 }
 
 export const config = {
-    api: {
-        bodyParser: false,
-    },
+	api: {
+		bodyParser: false,
+	},
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<{}>) {
-    await runMiddleware(req, res, bodyParser.raw({ type: "application/json" }))
+	await runMiddleware(req, res, bodyParser.raw({ type: "application/json" }))
 
-    try {
-        const signature = req.headers["stripe-signature"]
+	try {
+		const signature = req.headers["stripe-signature"]
 
-        const event = stripe.webhooks.constructEvent(req.body, signature as string, endpointSecret)
-        const paymentIntent = event.data.object as Record<string, any>
-        const {
-            metadata: { planId, userEmail },
-            amount,
-        } = paymentIntent
+		const event = stripe.webhooks.constructEvent(req.body, signature as string, endpointSecret)
+		const paymentIntent = event.data.object as Record<string, any>
+		const {
+			metadata: { planId, userEmail },
+			amount,
+		} = paymentIntent
 
-        switch (event.type) {
-            case "payment_intent.succeeded":
-                await handlePaymentIntentSucceeded(planId, userEmail)
-                console.log(`PaymentIntent for ${amount} was successful!`)
-                break
-            case "payment_intent.processing":
-                await handlePaymentIntentInProgress(userEmail)
-                console.log(`PaymentIntent for ${amount} is in process!`)
-                break
-            case "payment_intent.payment_failed":
-                await handlePaymentIntentFailed(userEmail)
-                console.log(`PaymentIntent for ${amount} failed!`)
-                break
-            default:
-                // Unexpected event type
-                log.error(`Unexpected Stripe event type ${event.type}.`)
-        }
-    } catch (error) {
-        return res.status(400).json({ error })
-    }
+		switch (event.type) {
+			case "payment_intent.succeeded":
+				await handlePaymentIntentSucceeded(planId, userEmail)
+				console.log(`PaymentIntent for ${amount} was successful!`)
+				break
+			case "payment_intent.processing":
+				await handlePaymentIntentInProgress(userEmail)
+				console.log(`PaymentIntent for ${amount} is in process!`)
+				break
+			case "payment_intent.payment_failed":
+				await handlePaymentIntentFailed(userEmail)
+				console.log(`PaymentIntent for ${amount} failed!`)
+				break
+			default:
+				// Unexpected event type
+				log.error(`Unexpected Stripe event type ${event.type}.`)
+		}
+	} catch (error) {
+		return res.status(400).json({ error })
+	}
 
-    res.status(200).json({})
+	res.status(200).json({})
 }
 
 async function handlePaymentIntentSucceeded(id: string, email: string) {
-    const plan = await prisma.plan.findFirst({ where: { id } })
-    const user = await prisma.user.findFirst({ where: { email } })
-    if (!(plan && user)) return
+	const plan = await prisma.plan.findFirst({ where: { id } })
+	const user = await prisma.user.findFirst({ where: { email } })
+	if (!(plan && user)) return
 
-    await prisma.user.update({
-        where: { email },
-        data: { credits: user.credits + plan.credits, paymentStatus: PaymentStatus.Done },
-    })
+	await prisma.user.update({
+		where: { email },
+		data: { credits: user.credits + plan.credits, paymentStatus: PaymentStatus.Done },
+	})
 }
 
 async function handlePaymentIntentInProgress(email: string) {
-    const user = await prisma.user.findFirst({ where: { email } })
-    if (!user) return
+	const user = await prisma.user.findFirst({ where: { email } })
+	if (!user) return
 
-    await prisma.user.update({
-        where: { email },
-        data: { paymentStatus: PaymentStatus.InProgress },
-    })
+	await prisma.user.update({
+		where: { email },
+		data: { paymentStatus: PaymentStatus.InProgress },
+	})
 }
 
 async function handlePaymentIntentFailed(email: string) {
-    const user = await prisma.user.findFirst({ where: { email } })
-    if (!user) return
+	const user = await prisma.user.findFirst({ where: { email } })
+	if (!user) return
 
-    await prisma.user.update({
-        where: { email },
-        data: { paymentStatus: PaymentStatus.Failed },
-    })
+	await prisma.user.update({
+		where: { email },
+		data: { paymentStatus: PaymentStatus.Failed },
+	})
 }

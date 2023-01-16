@@ -15,8 +15,6 @@
   },
   "formatter": {
     "enabled": true,
-    "indentStyle": "tab",
-    "indentSize": 2,
     "lineWidth": 120,
     "ignore": [
       "node_modules",
@@ -25,5 +23,10 @@
       "*.svg",
       "public"
     ]
+  },
+  "javascript": {
+    "formatter": {
+      "semicolons": "asNeeded"
+    }
   }
 }

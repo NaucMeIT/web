@@ -6,20 +6,20 @@ import splitbee from "@splitbee/web"
 import { useEffect } from "react"
 
 function MyApp({ Component, pageProps }: AppProps<{ readonly session: Session }>) {
-    useEffect(() => {
-        splitbee.init({
-            scriptUrl: "/bee.js",
-            apiUrl: "/_hive",
-        })
-        splitbee.enableCookie()
-    }, [])
+	useEffect(() => {
+		splitbee.init({
+			scriptUrl: "/bee.js",
+			apiUrl: "/_hive",
+		})
+		splitbee.enableCookie()
+	}, [])
 
-    return (
-        <SessionProvider session={pageProps.session}>
-            <Component {...pageProps} />
-            <div id='calendly' />
-        </SessionProvider>
-    )
+	return (
+		<SessionProvider session={pageProps.session}>
+			<Component {...pageProps} />
+			<div id='calendly' />
+		</SessionProvider>
+	)
 }
 export default MyApp
 export { reportWebVitals } from "next-axiom"
