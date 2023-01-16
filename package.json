@@ -16,7 +16,9 @@
         "preinstall": "npx only-allow pnpm",
         "postinstall": "prisma generate",
         "prisma": "prisma",
-        "supabase": "supabase"
+        "supabase": "supabase",
+        "rome:format": "rome format --write",
+        "rome:lint": "rome check --apply-suggested"
     },
     "dependencies": {
         "@headlessui/react": "^1.7.7",
@@ -76,6 +78,7 @@
         "prettier": "^2.8.1",
         "prettier-plugin-tailwindcss": "^0.1.13",
         "prisma": "^4.8.1",
+        "rome": "^11.0.0",
         "supabase": "^1.28.4",
         "tailwindcss": "^3.2.4",
         "tailwindcss-fluid": "^0.2.0",

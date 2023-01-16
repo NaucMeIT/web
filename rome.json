@@ -1,0 +1,29 @@
+{
+  "$schema": "./node_modules/rome/configuration_schema.json",
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    },
+    "ignore": [
+      "node_modules",
+      ".next",
+      ".vscode",
+      "*.svg",
+      "public"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "tab",
+    "indentSize": 2,
+    "lineWidth": 120,
+    "ignore": [
+      "node_modules",
+      ".next",
+      ".vscode",
+      "*.svg",
+      "public"
+    ]
+  }
+}
