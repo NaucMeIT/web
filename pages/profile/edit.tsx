@@ -55,7 +55,7 @@ const redirectToCorrectPage = async (
                 permanent: false,
             },
         }
-    } else if (!startPlan || !["Basic", "Core", "Standard", "Ultimate"].includes(startPlan as string)) {
+    } else if (!(startPlan && ["Basic", "Core", "Standard", "Ultimate"].includes(startPlan as string))) {
         return {
             redirect: {
                 destination: "?startPlan=Basic",

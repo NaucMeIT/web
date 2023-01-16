@@ -82,7 +82,7 @@ const Sign: NextPage = () => {
                     >
                         {status === "signing" ? "Přihlašuji..." : "Přihlásit"}
                     </Button>
-                    <span className='w-full border-2 border-primary opacity-50'></span>
+                    <span className='w-full border-2 border-primary opacity-50' />
                     <SocialButton onClick={signInWithFacebook} label='Registrovat pomocí Facebooku'>
                         <Facebook width={24} />
                     </SocialButton>

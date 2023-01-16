@@ -66,7 +66,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 async function handlePaymentIntentSucceeded(id: string, email: string) {
     const plan = await prisma.plan.findFirst({ where: { id } })
     const user = await prisma.user.findFirst({ where: { email } })
-    if (!plan || !user) return
+    if (!(plan && user)) return
 
     await prisma.user.update({
         where: { email },

@@ -35,7 +35,7 @@ export function Drawer({ children, isOpen, setIsOpen }: DrawerProps) {
                 onClick={() => {
                     setIsOpen(false)
                 }}
-            ></section>
+            />
         </nav>
     )
 }

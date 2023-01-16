@@ -30,7 +30,7 @@ const Strong = (props: MdxTypographyProps) => (
     <Typography className='pt-1' variant='strong' component='strong' {...props} />
 )
 const EmailLinkMdx = (props: any) => (
-    <EmailLink subject='Dotaz na Zpracování údajů či obchodní podmínky' email={props.children}></EmailLink>
+    <EmailLink subject='Dotaz na Zpracování údajů či obchodní podmínky' email={props.children} />
 )
 const LinkMdx = (props: any) => (
     <Typography
@@ -49,15 +49,15 @@ const LinkMdx = (props: any) => (
         {props.children}
     </Typography>
 )
-const Ol = (props: any) => <ol className='list-decimal pl-6 py-2 print:text-print' {...props}></ol>
-const Ul = (props: any) => <ul className='list-disc pl-6 py-2 print:text-print' {...props}></ul>
+const Ol = (props: any) => <ol className='list-decimal pl-6 py-2 print:text-print' {...props} />
+const Ul = (props: any) => <ul className='list-disc pl-6 py-2 print:text-print' {...props} />
 const Table = (props: any) => (
     <div className='overflow-auto print:overflow-visible print:text-xsDeviceBody print:text-print my-3'>
-        <table className='w-max lg:max-w-3xl' {...props}></table>
+        <table className='w-max lg:max-w-3xl' {...props} />
     </div>
 )
-const Td = (props: any) => <td className='border border-solid border-highlight p-2' {...props}></td>
-const Th = (props: any) => <th className='border border-solid border-highlight p-1' {...props}></th>
+const Td = (props: any) => <td className='border border-solid border-highlight p-2' {...props} />
+const Th = (props: any) => <th className='border border-solid border-highlight p-1' {...props} />
 const Hr = (props: any) => <hr className='my-3' {...props} />
 const Img = (props: any) => (
     <Link href={props.src}>

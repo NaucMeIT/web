@@ -8,7 +8,7 @@ export function InAppMenu() {
 
     return (
         <Menu items={[]} logoLink='/' inApp>
-            {!!user ? (
+            {user ? (
                 <SocialButton
                     label='Odhlásit se'
                     naked

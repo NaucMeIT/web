@@ -48,7 +48,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const userEmail = session?.user.email
     const paymentStatus = session?.user.paymentStatus
 
-    if (!planId || !userEmail || !paymentStatus) {
+    if (!((planId && userEmail ) && paymentStatus)) {
         return registerRedirect
     }
 

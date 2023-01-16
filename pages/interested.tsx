@@ -5,7 +5,7 @@ import { Head } from "../components/Head"
 const Interested: NextPage = () => {
     useEffect(() => {
         setTimeout(() => {
-            window && window?.location.replace("https://forms.gle/NJ6zygSCNwa4LRbD7")
+            window?.location.replace("https://forms.gle/NJ6zygSCNwa4LRbD7")
         }, 3000)
     }, [])
 

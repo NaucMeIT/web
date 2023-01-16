@@ -13,7 +13,7 @@ export function ActionSidebar() {
     const [openCalendly, setOpenCalendly] = useState(false)
     const isChapter = useRouter().pathname.includes("post")
 
-    if (!user || !user.name || !user.email) return null
+    if (!((user?.name ) && user.email)) return null
 
     return (
         <Dialog.Root modal={false} open={openError} onOpenChange={setOpenError}>
