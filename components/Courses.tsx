@@ -8,7 +8,14 @@ export function Courses() {
             <Typography variant='h2' component='h2' className='text-center'>
                 Nabízené kurzy
             </Typography>
-            <CourseBox image='/images/qa_illustration.svg' width={320} height={291} side='right' title='Tester'>
+            <CourseBox
+                image='/images/qa_illustration.svg'
+                width={320}
+                height={291}
+                side='right'
+                title='Tester'
+                link='/chapter/qa-00'
+            >
                 Práce testera je ověřování kvality produktu. Na&nbsp;nalezené chyby upozorňuje srozumitelnou formou.
                 Práce testera není příliš složitá. Vše potřebné se naučíš v našem kurzu.
             </CourseBox>
