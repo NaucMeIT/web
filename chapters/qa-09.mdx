@@ -106,7 +106,7 @@ Testovací techniky založené na zkušenostech jsou jeden z hlavních důvodů,
 
 ## Test plan - test suite - test case
 
-[Testovací plán](https://www.cleverandsmart.cz/plan-testovani/) neboli test plán je dokument, který říká, co se kdy má testovat a jak. Testovací plán většinou vytváří manažer testování, případně celý tým testerů - záleží na mnoha věcech - nastavení firmy, projektu, životním cyklu softwaru. Tester může do testovacího plánu přispívat a to vytvářením [testovacích scénářů](https://www.cleverandsmart.cz/testovaci-scenar/) (test suite) a jednotlivých [testovacích případů ](https://www.cleverandsmart.cz/testovaci-pripad/)(test case). Testovací případ popisuje jak otestovat danou věc. Ve dříve zmíněném [testování převodu z a na římská čísla](http://diveintopython3.py.cz/unit-testing.html) byly přesně dané limity. Rozsah římských čísel je od 1 do 3999. Máme tedy nejméně 3 testovací případy.
+[Testovací plán](https://www.cleverandsmart.cz/plan-testovani/) neboli test plán je dokument, který říká, co se kdy má testovat a jak. Testovací plán většinou vytváří manažer testování, případně celý tým testerů - záleží na mnoha věcech - nastavení firmy, projektu, životním cyklu softwaru. Tester může do testovacího plánu přispívat a to vytvářením testovacích sad (test suite) a jednotlivých [testovacích případů ](https://www.cleverandsmart.cz/testovaci-pripad/)(test case). Testovací sada obsahuje kolekci testovacích případů, seskupené podle toho jestli se mají vykonat společně. Obvykle se jedná o testovací případy, které jsou spojené tématem. Testovací případ popisuje jak otestovat danou věc krok po kroku a za jakých podmínek. Ve dříve zmíněném [testování převodu z a na římská čísla](http://diveintopython3.py.cz/unit-testing.html) byly přesně dané limity. Rozsah římských čísel je od 1 do 3999. Máme tedy nejméně 3 testovací scénáře (test scenario):
 
 -   Čísla 1 až 3999
 -   Čísla menší než 1
@@ -114,7 +114,7 @@ Testovací techniky založené na zkušenostech jsou jeden z hlavních důvodů,
 
 V článku byla dále zmíněná reálná čísla, která v římském zápisu nelze reprezentovat.
 
-Každá z uvedených možností je jeden testovací případ. Tři testovací případy nevalidní a jeden validní. Celé to tvoří testovací scénář pro převod na římské číslice.
+Každá z uvedených možností scénáře lze rozepsat jako jeden testovací případ. Tři testovací případy nevalidní a jeden validní. Celé to tvoří testovací sadu pro převod na římské číslice.
 
 ## Definice hotového
 
