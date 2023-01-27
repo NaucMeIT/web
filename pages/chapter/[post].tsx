@@ -4,6 +4,7 @@ import { GetStaticPaths, GetStaticProps } from "next"
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote"
 import { serialize } from "next-mdx-remote/serialize"
 import path from "path"
+import LightGallery from "lightgallery/react"
 import { getFilesAt, HeadingsType, getMenuData, getHeadings } from "../../utils/mdx"
 import { getSourceId } from "../../utils/string"
 import { SideMenu } from "../../components/SideMenu"
@@ -15,6 +16,10 @@ import { components } from "../../components/MdxComponents"
 import { InAppMenu } from "../../components/InAppMenu"
 import { Logo } from "../../components/icons"
 
+import "lightgallery/css/lightgallery.css"
+import { useCallback, useRef } from "react"
+import { InitDetail } from "lightgallery/lg-events"
+
 type PostProps = {
     readonly mdx: MDXRemoteProps
     readonly metaInformation: Record<string, string>
@@ -22,6 +27,17 @@ type PostProps = {
 }
 
 const Post: React.FC<PostProps> = ({ mdx, metaInformation, headings }) => {
+    const lightGallery = useRef<any>(null)
+
+    const onInit = useCallback((detail: InitDetail) => {
+        if (detail) {
+            lightGallery.current = detail.instance
+            setTimeout(() => {
+                lightGallery.current.refresh()
+            }, 500)
+        }
+    }, [])
+
     return (
         <>
             <Head desc={metaInformation.abstract} url=''>
@@ -45,7 +61,9 @@ const Post: React.FC<PostProps> = ({ mdx, metaInformation, headings }) => {
                         >
                             {metaInformation.title}
                         </Typography>
-                        <MDXRemote {...mdx} components={components} lazy />
+                        <LightGallery onInit={onInit} selector='.gallery-item' mode='lg-fade'>
+                            <MDXRemote {...mdx} components={components} lazy />
+                        </LightGallery>
                     </article>
                     <aside className='print:hidden'>
                         <ActionSidebar />

@@ -35,7 +35,7 @@ const EmailLinkMdx = (props: any) => (
 const LinkMdx = (props: any) => (
     <Typography
         variant='link'
-        component={Link}
+        component='a'
         componentProps={
             {
                 href: props.href,
@@ -60,11 +60,9 @@ const Td = (props: any) => <td className='border border-solid border-highlight p
 const Th = (props: any) => <th className='border border-solid border-highlight p-1' {...props}></th>
 const Hr = (props: any) => <hr className='my-3' {...props} />
 const Img = (props: any) => (
-    <Link href={props.src}>
-        {/* We don't know enough info to use next/image component */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img alt='Obrázek uvnitř MDX' loading='lazy' {...props} />
-    </Link>
+    <a href={props.src}>
+        <img alt='Obrázek uvnitř MDX' loading='lazy' className='gallery-item' {...props} />
+    </a>
 )
 
 export const components = {

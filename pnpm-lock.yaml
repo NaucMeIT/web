@@ -35,6 +35,7 @@ specifiers:
   form-data: ^4.0.0
   gray-matter: ^4.0.3
   husky: ^8.0.3
+  lightgallery: ^2.7.1
   lint-staged: ^13.1.0
   next: ^13.1.5
   next-auth: ^4.18.10
@@ -83,6 +84,7 @@ dependencies:
   body-parser: 1.20.1
   form-data: 4.0.0
   gray-matter: 4.0.3
+  lightgallery: 2.7.1
   next: 13.1.5_biqbaboplfbrettd7655fr4n2y
   next-auth: 4.18.10_lg7p6ay63mjy2htdrpjxoag3yy
   next-axiom: 0.16.0_next@13.1.5
@@ -3245,6 +3247,11 @@ packages:
       prelude-ls: 1.2.1
       type-check: 0.4.0
     dev: true
+
+  /lightgallery/2.7.1:
+    resolution: {integrity: sha512-NbXOzD2APY1OhOOn464jDsBZBaCRahUoLvBxhDFxvwJeC8hCkCIPYSjGgGTYINxVK09DKMsNDJzRr1ngH5nDdg==}
+    engines: {node: '>=6.0.0'}
+    dev: false
 
   /lilconfig/2.0.6:
     resolution: {integrity: sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg==}

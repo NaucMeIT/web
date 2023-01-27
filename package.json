@@ -38,6 +38,7 @@
         "body-parser": "^1.20.1",
         "form-data": "^4.0.0",
         "gray-matter": "^4.0.3",
+        "lightgallery": "^2.7.1",
         "next": "^13.1.5",
         "next-auth": "^4.18.10",
         "next-axiom": "^0.16.0",
