@@ -114,7 +114,7 @@ export const getServerSideProps = handle<{}, UrlQuery, FormData>({
     },
 })
 
-const Register: NextPage<PageProps> = ({ session }) => {
+const Edit: NextPage<PageProps> = ({ session }) => {
     const router = useRouter()
     const startPlan = router?.query.startPlan as string
     const isEdit = !!router?.query.isEdit
@@ -129,9 +129,9 @@ const Register: NextPage<PageProps> = ({ session }) => {
             >
                 <title>Nauč mě IT - Registrace - krok 2</title>
             </Head>
-            <ProfileDetailsForm name={session.user?.name || ""} startPlan={startPlan} isEdit={isEdit} />
+            <ProfileDetailsForm name={session?.user?.name || ""} startPlan={startPlan} isEdit={isEdit} />
         </div>
     )
 }
 
-export default Register
+export default Edit

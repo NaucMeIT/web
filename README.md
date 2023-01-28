@@ -1,34 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Nauč mě IT
 
-## Getting Started
+[![MIT](https://img.shields.io/github/license/pegak/nauc-me-it)](https://github.com/pegak/nauc-me-it/blob/master/LICENSE)
+![Vercel](https://vercelbadge.vercel.app/api/pegak/nauc-me-it)
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fnaucme.it)](https://naucme.it)
+![Contributors](https://img.shields.io/github/contributors/pegak/nauc-me-it)
 
-First, run the development server:
+[![Discord](https://img.shields.io/discord/996169548845830394?color=7389D8&label&logo=discord&logoColor=ffffff&style=for-the-badge)](https://discord.gg/QbYswwYUPU)
+[![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/NaucMeIT)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/company/nauc-me-it/)
 
-```bash
-npm run dev
-# or
-pnpm run dev
-```
+Welcome to our Github repository! This app is built with Next.js, Tailwind.css, pnpm, Prisma, and Supabase.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Running the app
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Testing database
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+To run the app with testing database, follow these steps:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+#### Prerequisities
 
-## Learn More
+-   [Node.js](https://nodejs.org/en/) - you can install it from [here](https://nodejs.org/en/download/), we always use latest version.
+-   [pnpm](https://pnpm.io/) - please follow [this guide](https://pnpm.io/installation) to install pnpm (**it is different from npm shipped with Node.js**)
 
-To learn more about Next.js, take a look at the following resources:
+#### Steps
 
--   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
--   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Clone this repository to your local machine.
+1. Navigate to the root directory of the project and run `pnpm install` to install the dependencies.
+1. Create the environment variables in a `.env` file in the root directory. You can find an example in `.env.testing` file in the root directory, it has almost all variables except SendGrid, so emails won't work locally. To get the key download `.env` file from [Pastebin](https://pastebin.com/093He0QT) with password `BpYwfi4ngg`.
+1. Run `pnpm dev` to start the development server.
+1. Open your browser and go to http://localhost:3000 to view the app.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Local database
 
-## Deploy on Vercel
+To run the app with local database, follow these steps:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Prerequisities
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+-   [Node.js](https://nodejs.org/en/) - you can install it from [here](https://nodejs.org/en/download/), we always use latest version.
+-   [pnpm](https://pnpm.io/) - please follow [this guide](https://pnpm.io/installation) to install pnpm (**it is different from npm shipped with Node.js**)
+-   [Docker](https://www.docker.com/) - please follow [this guide](https://docs.docker.com/get-docker/) to install Docker
+-   Make sure your Docker is running
+
+#### Steps
+
+1. Clone this repository to your local machine.
+1. Navigate to the root directory of the project and run `pnpm install` to install the dependencies.
+1. Create the environment variables in a `.env` file in the root directory. You can find an example in `.env.testing` file in the root directory, it has almost all variables except SendGrid, so emails won't work locally. To get the key download `.env` file from [Pastebin](https://pastebin.com/093He0QT) with password `BpYwfi4ngg`.
+1. Run `pnpm supabase start`.
+1. Copy `DB URL` into `.env` file to the `DATABASE_URL` and remove the #.
+1. Run `pnpm prisma migrate deploy` or `npx prisma migrate deploy`.
+1. Run `pnpm prisma db seed` or `npx prisma db seed`.
+1. Run `pnpm dev` to start the development server.
+1. Open your browser and go to http://localhost:3000 to view the app.

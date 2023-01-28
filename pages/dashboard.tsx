@@ -35,7 +35,7 @@ const Dashboard: React.FC<DashboardProps> = ({ headings }) => {
                 <main className='row-end-7 xl:col-start-3 col-span-full row-start-3 xl:row-start-1 row-span-full overflow-auto xl:mt-20 pb-2 overscroll-none'>
                     <MissingBanner />
                     <section className='flex flex-col lg:flex-row justify-center items-center lg:items-start mt-5 gap-10'>
-                        <ContentCard title='Kurz QA' priority phrase='Začít' href='/chapter/qa-0'>
+                        <ContentCard title='Kurz QA' priority phrase='Začít' href='/chapter/qa-00'>
                             <Image
                                 src='/images/qa_illustration.svg'
                                 width={320}

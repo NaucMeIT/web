@@ -3,7 +3,7 @@ title: HTML a CSS
 abstract: HTML a CSS aneb tester musí znát strukturu aplikace, aby ji mohl testovat.
 ---
 
-S počítačem se musí mluvit jasně v příkazech. Přesně mu dávat pokyny. To platí i při tvorbě webových stránek. Pro tvorbu webových stránek jsou základem značkovací jazyk **HTML** a kaskádové styly - **CSS**. Výsledek použití jen HTML a CSS je pouze statický obsah. Pro web je vhodný programovací jazyk **JavaScript**, ten stránky oživí a umožní ti jako testerovi zefektivnit tvou práci. Na to se zaměříme později.
+S počítačem se musí mluvit jasně, v příkazech. Přesně mu dávat pokyny. To platí i při tvorbě webových stránek. Pro tvorbu webových stránek jsou základem značkovací jazyk - **HTML** a kaskádové styly - **CSS**. Výsledek použití jen HTML a CSS je pouze statický obsah. Pro web je vhodný programovací jazyk **JavaScript**, ten stránky oživí a umožní ti, jako testerovi, zefektivnit tvou práci. Na to se zaměříme později.
 
 ## HTML
 
@@ -18,7 +18,7 @@ Pojďme ale postupně - HTML (HyperText markup language) patří do skupiny [Zna
 Obyčejný text, který obsahuje <a href="https://naucme.it">odkaz</a>
 ```
 
-Této struktuře se říká [DOM](https://jecas.cz/dom) (objektový model dokumentu, sloužící pro reprezentaci HTML). DOM má stromovou strukturu. Stejně jako reálný strom má kořen, větve a listy, ale roste hlavou dolů
+Této struktuře se říká [DOM](https://jecas.cz/dom) (objektový model dokumentu, sloužící pro reprezentaci HTML). DOM má stromovou strukturu. Stejně jako reálný strom má kořen, větve a listy, ale roste hlavou dolů:
 
 ![Struktura DOM](/images/chapter/qa-1-1.png "Jednoduchá ukázka struktury DOM")
 
@@ -42,13 +42,13 @@ Kurz obsahuje krátká, stručná, ale obsáhlá videa. V kurzu jsou výzvy, kd
 
 Dalším místem, kde se můžeš seznámit se základy CSS, může být [ITNetwork](<https://www.itnetwork.cz/html-css/webove-stranky#:~:text=%C3%9Avod%20do%20CSS%20(kask%C3%A1dov%C3%BDch%20styl%C5%AF)>), doporučujeme projít kapitoly **6 až 17**. Nejlépe uděláš, když si kapitoly budeš otevírat v nové záložce, protože IT Network se v poslední době změnil k horšímu a nefunguje navigace na boku, pokud se nezaregistruješ.
 
-Další zdrojem mohou být videa od [Davida Šetka](https://www.youtube.com/watch?v=kbLBBI5hEK4&list=PLQ8x_VWW6AkvCiDzMEI5K9jW_1rsV9PTf). Pro psaní kódu doporučujeme jiný editor, než je ve videích. Pan Šetek rok po vydání video kurzu o HTML a CSS vydal kurz na editor [VS Code](https://www.youtube.com/watch?v=yEECa8i8pYc&list=PLQ8x_VWW6Akum05rlTYf063lJ0yg0s2jS&index=2).
+Další zdrojem mohou být videa od [Davida Šetka](https://www.youtube.com/watch?v=kbLBBI5hEK4&list=PLQ8x_VWW6AkvCiDzMEI5K9jW_1rsV9PTf). Pro psaní kódu doporučujeme Visual Studio Code. Pan Šetek rok po vydání video kurzu o HTML a CSS vydal kurz i pro tento [editor](https://www.youtube.com/watch?v=IVO49bC4YDw&list=PLQ8x_VWW6AksIzgE-LKqkwz4JMHh4AWVB).
 
 ---
 
 Poznámky k videím na Khan Academy:
 
-V lekci [Formátování textu pomocí CSS](https://cs.khanacademy.org/computing/computer-programming/html-css/css-text-properties/pt/css-font-family-property) video [CSS vlastnost: Velikost textu](https://cs.khanacademy.org/computing/computer-programming/html-css/css-text-properties/pt/css-font-size-property) se probírá jednotka _em -_ relativní jednotka pro velikost písma v rámci elementu. Jednotek pro velikost používaných na webu je více. Například často se používá _rem _- relativní jednotka velikosti písmen v rámci tagu `<hmtl></html>{:html}`. Tedy _rem_ a _em_ se liší tím, že _rem_ se váže na velikost písma pro celý dokument a _em_ pro konkrétní element. O dalších jednotkách se můžete dozvědět na webu [Vzhůru dolů](https://www.vzhurudolu.cz/) v článku [Jednotky pro tvorbu webu (em, rem, %, p vw): Kde použít jakou?](https://www.vzhurudolu.cz/prirucka/jednotky). Tento web si zapamatuj, je na něm spousta hodnotných informací.
+V lekci [Formátování textu pomocí CSS](https://cs.khanacademy.org/computing/computer-programming/html-css/css-text-properties/pt/css-font-family-property) video [CSS vlastnost: Velikost textu](https://cs.khanacademy.org/computing/computer-programming/html-css/css-text-properties/pt/css-font-size-property) se probírá jednotka _em -_ relativní jednotka pro velikost písma v rámci elementu. Jednotek pro velikost používaných na webu je více. Například často se používá _rem_ - relativní jednotka velikosti písmen v rámci tagu `<hmtl></html>{:html}`. Tedy _rem_ a _em_ se liší tím, že _rem_ se váže na velikost písma pro celý dokument a _em_ pro konkrétní element. O dalších jednotkách se můžete dozvědět na webu [Vzhůru dolů](https://www.vzhurudolu.cz/) v článku [Jednotky pro tvorbu webu (em, rem, %, p vw): Kde použít jakou?](https://www.vzhurudolu.cz/prirucka/jednotky). Tento web si zapamatuj, je na něm spousta hodnotných informací.
 
 ---
 
@@ -70,7 +70,7 @@ Možná struktura je tato:
 
 -   Pages, kde můžeš mít další html stránky
 -   Design, kde můžeš mít CSS
--   Images, kde můžeš mít obrázky. V našem případě jde o složku obrazky. Jsme krásně česko anglicky nekonzistentní, tomu se doporučujeme vyhnout.
+-   Images, kde můžeš mít obrázky. V našem případě jde o složku obrázky. Jsme krásně česko anglicky nekonzistentní, tomu se doporučujeme vyhnout.
 
 ![Ukázkový blog pro kurz](/images/chapter/qa-1-3.png "Ukázka editoru a výsledného blogu pro kurz")
 
@@ -80,15 +80,19 @@ Náš cvičný blog není jen o tom ukázat ti, jak to může vypadat. Když se
 
 Poznámka k obrázkům:
 
-Obrázky mohou být obrovské. To zpomaluje stránky a odrazuje jejich uživatele. Ideální je použít vhodný formát obrázku - můžeš si s tím pohrát na [Squoosh](https://squoosh.app/). Nejlepší je nyní používat Webp či Avif, které jsou velmi efektivní. Je třeba si však uvědomit, kdo jsou tví uživatelé. Bylo by mrzuté, kdyby neviděli nic z tvé galerie. Podporu pro tyto obrázky nalezneš na [Can I use](https://caniuse.com/) - když zadáš např. [Webp](https://caniuse.com/?search=webp), zjistíš, v jakých prohlížečích jsou podporované. Standardem je podporovat poslední dvě verze prohlížečů - ulehčí ti to práci a prohlížeče se nyní samy aktualizují.
+Obrázky mohou být obrovské. To zpomaluje stránky a odrazuje jejich uživatele. Ideální je použít vhodný formát obrázku - můžeš si s tím pohrát na [Squoosh](https://squoosh.app/). Nejlepší je nyní používat formáty Webp či Avif, které jsou velmi efektivní. Je třeba si však uvědomit, kdo jsou tví uživatelé. Bylo by mrzuté, kdyby neviděli nic z tvé galerie. Podporu pro tyto obrázky nalezneš na [Can I use](https://caniuse.com/) - když zadáš např. [Webp](https://caniuse.com/?search=webp), zjistíš, v jakých prohlížečích jsou podporované. Standardem je podporovat poslední dvě verze prohlížečů - ulehčí ti to práci a prohlížeče se nyní samy aktualizují.
 
 ---
 
-Neboj se si svým blogem pohrát. Nabereš tak zkušenosti, které zúročíš v pozdějších částech kurzu. V kapitole osm zjistíš, jak složku nahrát na Github (jak to [máme my](https://github.com/pegak/nauc-me-it)), kde se na to může podívat třeba i tvůj možný budoucí zaměstnavatel. Prozatím si ji můžeš uložit v nějakém cloudu, jako je Google Drive, One Drive nebo Dropbox. Pokud si nebudeš vědět rady, klidně se na nás obrať na našem [Discordu](https://discord.gg/QbYswwYUPU).
+Neboj se si se svým blogem pohrát. Nabereš tak zkušenosti, které zúročíš v pozdějších částech kurzu. V kapitole osm zjistíš, jak složku nahrát na Github (jak to [máme my](https://github.com/pegak/nauc-me-it)), kde se na to může podívat třeba i tvůj možný budoucí zaměstnavatel. Prozatím si ji můžeš uložit v nějakém cloudu, jako je Google Drive, One Drive nebo Dropbox. Pokud si nebudeš vědět rady, klidně se na nás obrať na našem [Discordu](https://discord.gg/QbYswwYUPU).
 
-Vem si jednu stránku svého blogu, tužku a papír a zkus si nakreslit a popsat jak vypadá DOM. Kdo jsou čí děti a jak je vlastně vše zanořené. Nebo si zkus vygooglit online DOM visualizer.
+Na jedné stránce blogu si za pomocí tužky a papíru zkus i s popisky nakreslit, jak takový DOM vypadá. Kdo jsou čí děti, a jak je vlastně vše zanořené. Nebo si zkus vygooglit online DOM visualizer.
 ![DOM vizualizace](/images/chapter/qa-1-4.jpg "DOM vizualizace jedné stránky blogu")
 
-Vizualizace jedné stránky našeho blogu (postřehy.html), vypadá komplexně. Pokud se to budeš snažit porovnat, tak se ti může zdát, že žluté uzly #text ničemu neodpovídájí. Ale vše mezi značkami `<html></html>{:html}` je součástí DOMu. Takže třeba i komentáře nebo mezera, či nový řádek. Právě mezi jednotlivými značkami bývá odsazení a prázdné značky, pokud používáš nějaké formátování, aby se ti s tím lépe pracovalo. Prohlížeče takové součásti DOMu ignorují a nezobrazují. Narozdíl od toho zelené uzly **#text** jsou zobrazovány. Jsou to texty, které můžeš napsat do jakékoliv párové značky(značka má dvě části <> </>, ne jako obrázek <img/>). Textové uzly (žluté i zelené) jsou vždy listy stromu, to znamená, že už nemůžou mít žádné děti a nic kromě textu do nich nejde vložit.
+<<<<<<< HEAD
+Vizualizace jedné stránky našeho blogu (postřehy.html), vypadá komplexně. Pokud se to budeš snažit porovnat, tak se ti může zdát, že žluté uzly #text ničemu neodpovídají. Ale vše mezi značkami `<html></html>{:html}` je součástí DOMu. Takže třeba i komentáře nebo mezera, či nový řádek. Právě mezi jednotlivými značkami bývá odsazení a prázdné značky, pokud používáš nějaké formátování, aby se ti s tím lépe pracovalo. Prohlížeče takové součásti DOMu ignorují a nezobrazují. Narozdíl od toho zelené uzly **#text** jsou zobrazovány. Jsou to texty, které můžeš napsat do jakékoliv párové značky (značka má dvě části `<>` `</>`, ne jako obrázek `<img/>)`. Textové uzly (žluté i zelené) jsou vždy listy stromu, to znamená, že už nemůžou mít žádné děti a nic kromě textu do nich nejde vložit.
+=======
+Vizualizace jedné stránky našeho blogu (postřehy.html), vypadá komplexně. Pokud se to budeš snažit porovnat, tak se ti může zdát, že žluté uzly #text ničemu neodpovídají. Ale vše mezi značkami `<html></html>{:html}` je součástí DOMu. Takže třeba i komentáře nebo mezera, či nový řádek. Právě mezi jednotlivými značkami bývá odsazení a prázdné značky, pokud používáš nějaké formátování, aby se ti s tím lépe pracovalo. Prohlížeče takové součásti DOMu ignorují a nezobrazují. Narozdíl od toho zelené uzly **#text** jsou zobrazovány. Jsou to texty, které můžeš napsat do jakékoliv párové značky (značka má dvě části `<>` `</>`,ne jako obrázek `<img/>)`. Textové uzly (žluté i zelené) jsou vždy listy stromu, to znamená, že už nemůžou mít žádné děti a nic kromě textu do nich nejde vložit.
+>>>>>>> 53ef0451d942fdf2843d97b46608736ed6b98e3e
 
 Pokud tě HTML zajímá a chceš se ponořit do hloubky, doporučujeme knížku **[Ponořme se do HTML5](https://knihy.nic.cz/files/edice/html5.pdf)** od Marka Pilgrima. Díky CZ.NIC vyšla zdarma v češtině.
