@@ -1,10 +1,13 @@
+import { useCallback, useRef } from "react"
 import rehypeShiki from "rehype-pretty-code"
+import imageSize from "rehype-img-size"
 import remarkGfm from "remark-gfm"
 import { GetStaticPaths, GetStaticProps } from "next"
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote"
 import { serialize } from "next-mdx-remote/serialize"
 import path from "path"
 import LightGallery from "lightgallery/react"
+import { InitDetail } from "lightgallery/lg-events"
 import { getFilesAt, HeadingsType, getMenuData, getHeadings } from "../../utils/mdx"
 import { getSourceId } from "../../utils/string"
 import { SideMenu } from "../../components/SideMenu"
@@ -17,8 +20,6 @@ import { InAppMenu } from "../../components/InAppMenu"
 import { Logo } from "../../components/icons"
 
 import "lightgallery/css/lightgallery.css"
-import { useCallback, useRef } from "react"
-import { InitDetail } from "lightgallery/lg-events"
 
 type PostProps = {
     readonly mdx: MDXRemoteProps
@@ -61,7 +62,7 @@ const Post: React.FC<PostProps> = ({ mdx, metaInformation, headings }) => {
                         >
                             {metaInformation.title}
                         </Typography>
-                        <LightGallery onInit={onInit} selector='.gallery-item' mode='lg-fade'>
+                        <LightGallery supportLegacyBrowser={false} onInit={onInit} selector='.gallery-item'>
                             <MDXRemote {...mdx} components={components} lazy />
                         </LightGallery>
                     </article>
@@ -101,7 +102,13 @@ export const getStaticProps: GetStaticProps<PostProps> = async (props) => {
 
     const currentPost = menuData[props?.params?.post as string]
     const mdx = await serialize(currentPost.content, {
-        mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [[rehypeShiki, options]] },
+        mdxOptions: {
+            remarkPlugins: [remarkGfm],
+            rehypePlugins: [
+                [rehypeShiki, options],
+                [imageSize as any, { dir: "public" }],
+            ],
+        },
     })
     const headings = getHeadings(menuData)
 

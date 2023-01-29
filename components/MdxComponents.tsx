@@ -60,7 +60,9 @@ const Th = (props: any) => <th className='border border-solid border-highlight p
 const Hr = (props: any) => <hr className='my-3' {...props} />
 const Img = (props: any) => (
     <a href={props.src}>
-        <img alt='Obrázek uvnitř MDX' loading='lazy' className='gallery-item' {...props} />
+        {/* Next.js image doesn't work well with gallery plugin */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img alt='Obrázek uvnitř MDX' loading='lazy' decoding='async' className='gallery-item' {...props} />
     </a>
 )
 
