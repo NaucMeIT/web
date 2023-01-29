@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { getSourceId } from "../utils/string"
 import { FacebookBtn, LinkedInBtn } from "./Button"
 import { EmailLink } from "./EmailLink"
