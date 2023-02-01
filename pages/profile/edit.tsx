@@ -26,7 +26,7 @@ type FormData = {
 }
 
 const redirectToCorrectPage = async (
-    session: Session | null,
+    session: Readonly<Session | null>,
     startPlan: string | readonly string[] | undefined,
     isEdit: string | readonly string[] | undefined,
 ) => {
@@ -85,7 +85,7 @@ export const getServerSideProps = handle<{}, UrlQuery, FormData>({
             const plan = parsedUrl.searchParams.get("startPlan") || ""
             const dbPlan = await prisma.plan.findFirst({ where: { name: plan } })
             if (!dbPlan) {
-                // eslint-disable-next-line functional/no-throw-statement
+                // eslint-disable-next-line functional/no-throw-statements
                 throw new Error("Tento plán neexistuje.")
             }
 

@@ -8,9 +8,9 @@ import { prisma } from "../../utils/prisma"
 const stripe = new createStripe(process.env.STRIPE_SECRET_KEY || "", { apiVersion: "2022-11-15", typescript: true })
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET || ""
 
-function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: Function) {
+function runMiddleware(req: Readonly<NextApiRequest>, res: Readonly<NextApiResponse>, fn: Readonly<Function>) {
     return new Promise((resolve, reject) => {
-        fn(req, res, (result: Object) => {
+        fn(req, res, (result: Readonly<Object>) => {
             if (result instanceof Error) {
                 return reject(result)
             }
@@ -26,7 +26,7 @@ export const config = {
     },
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<{}>) {
+export default async function handler(req: Readonly<NextApiRequest>, res: Readonly<NextApiResponse<{}>>) {
     await runMiddleware(req, res, bodyParser.raw({ type: "application/json" }))
 
     try {

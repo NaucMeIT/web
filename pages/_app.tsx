@@ -5,7 +5,7 @@ import { Session } from "next-auth"
 import splitbee from "@splitbee/web"
 import { useEffect } from "react"
 
-function MyApp({ Component, pageProps }: AppProps<{ readonly session: Session }>) {
+function MyApp({ Component, pageProps }: Readonly<AppProps<{ readonly session: Session }>>) {
     useEffect(() => {
         splitbee.init({
             scriptUrl: "/bee.js",

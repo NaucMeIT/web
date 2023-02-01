@@ -1,7 +1,7 @@
 import * as React from "react"
 import type { SVGProps } from "react"
 
-const SvgHorizontal = (props: SVGProps<SVGSVGElement>) => (
+const SvgHorizontal = (props: Readonly<SVGProps<SVGSVGElement>>) => (
   <svg xmlns='http://www.w3.org/2000/svg' width={763.039} height={30.991} viewBox='0 0 763.039 30.991' {...props}>
     <path
       data-name='Path 4394'

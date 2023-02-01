@@ -1,7 +1,7 @@
 import * as React from "react"
 import type { SVGProps } from "react"
 
-const SvgPayConsultancy = (props: SVGProps<SVGSVGElement>) => (
+const SvgPayConsultancy = (props: Readonly<SVGProps<SVGSVGElement>>) => (
   <svg xmlns='http://www.w3.org/2000/svg' width={97} height={94} viewBox='0 0 97 94' {...props}>
     <g data-name='Group 6296'>
       <g data-name='Group 6263' fill='#80eeff'>

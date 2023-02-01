@@ -18,7 +18,7 @@ const inputBorderVars = {
     "--border": "2px",
 } as React.CSSProperties
 
-function DecoratedInput(props: InputProps | TextareaProps): JSX.Element {
+function DecoratedInput(props: Readonly<InputProps | TextareaProps>): JSX.Element {
     // TODO: Needs to solve props inference
     const Input: any = props.component
     const id = useId()

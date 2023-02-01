@@ -72,7 +72,7 @@ Email: ${data.email}
 async function sendEmail(replyTo: string, text: string, subject: string, recaptcha: string, to: string) {
     if (!recaptcha) {
         log.error("No recaptcha token")
-        // eslint-disable-next-line functional/no-throw-statement
+        // eslint-disable-next-line functional/no-throw-statements
         throw new Error("No recaptcha")
     }
 
@@ -85,7 +85,7 @@ async function sendEmail(replyTo: string, text: string, subject: string, recaptc
         body: formData as unknown as BodyInit,
     }).then((res) => res.json())
     if (!verify.success) {
-        // eslint-disable-next-line functional/no-throw-statement
+        // eslint-disable-next-line functional/no-throw-statements
         throw new Error("Recaptcha failed")
     }
 

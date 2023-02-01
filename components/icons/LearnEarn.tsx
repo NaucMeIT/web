@@ -1,7 +1,7 @@
 import * as React from "react"
 import type { SVGProps } from "react"
 
-const SvgLearnEarn = (props: SVGProps<SVGSVGElement>) => (
+const SvgLearnEarn = (props: Readonly<SVGProps<SVGSVGElement>>) => (
   <svg data-name='Group 6297' xmlns='http://www.w3.org/2000/svg' width={98} height={94} viewBox='0 0 98 94' {...props}>
     <g data-name='Group 6262' fill='#80eeff'>
       <path
