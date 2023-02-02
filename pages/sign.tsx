@@ -67,9 +67,7 @@ const Sign: NextPage = () => {
                     </Typography>
                 )}
                 {status === "send" && (
-                    <Typography variant='normal' className='text-center'>
-                        Email s přihlašovacím odkazem byl odeslán!
-                    </Typography>
+                    <Typography className='text-center'>Email s přihlašovacím odkazem byl odeslán!</Typography>
                 )}
 
                 <div className='flex flex-wrap justify-center gap-5'>
