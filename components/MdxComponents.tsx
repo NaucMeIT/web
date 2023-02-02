@@ -59,7 +59,7 @@ const Th = (props: ElProps["th"]) => <th className='border border-solid border-h
 const Hr = (props: ElProps["hr"]) => <hr className='my-3' {...props} />
 const Img = (props: ElProps["img"]) => (
     <a href={props.src}>
-        {/* We don't know enough info to use next/image component */}
+        {/* Next.js image doesn't work well with gallery plugin */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img alt='Obrázek uvnitř MDX' loading='lazy' decoding='async' className='gallery-item' {...props} />
     </a>
