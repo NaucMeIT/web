@@ -5,6 +5,7 @@ import { EmailLink } from "./EmailLink"
 import { Typography } from "./Typography"
 
 type MdxTypographyProps = Omit<React.ComponentProps<typeof Typography>, "className" | "variant" | "component">
+type ElProps = JSX.IntrinsicElements
 
 const H1 = (props: MdxTypographyProps) => (
     <Typography
@@ -25,13 +26,11 @@ const H2 = (props: MdxTypographyProps) => (
     />
 )
 const H3 = (props: MdxTypographyProps) => <Typography className='pt-4' variant='step' component='h3' {...props} />
-const Text = (props: MdxTypographyProps) => <Typography className='pt-1' variant='normal' component='p' {...props} />
+const Text = (props: MdxTypographyProps) => <Typography className='pt-1' component='p' {...props} />
 const Strong = (props: MdxTypographyProps) => (
-    <Typography className='pt-1' variant='strong' component='strong' {...props} />
+    <Typography className='pt-1 font-semibold' component='strong' {...props} />
 )
-const EmailLinkMdx = (props: any) => (
-    <EmailLink subject='Dotaz na Zpracování údajů či obchodní podmínky' email={props.children}></EmailLink>
-)
+const Em = (props: MdxTypographyProps) => <Typography className='pt-1 italic' component='em' {...props} />
 const LinkMdx = (props: any) => (
     <Typography
         variant='link'
@@ -49,18 +48,18 @@ const LinkMdx = (props: any) => (
         {props.children}
     </Typography>
 )
-const Ol = (props: any) => <ol className='list-decimal pl-6 py-2 print:text-print' {...props}></ol>
-const Ul = (props: any) => <ul className='list-disc pl-6 py-2 print:text-print' {...props}></ul>
-const Table = (props: any) => (
+const Ol = (props: ElProps["ol"]) => <ol className='list-decimal pl-6 py-2 print:text-print' {...props}></ol>
+const Ul = (props: ElProps["ul"]) => <ul className='list-disc pl-6 py-2 print:text-print' {...props}></ul>
+const Table = (props: ElProps["table"]) => (
     <div className='overflow-auto print:overflow-visible print:text-xsDeviceBody print:text-print my-3'>
         <table className='w-max lg:max-w-3xl' {...props}></table>
     </div>
 )
-const Td = (props: any) => <td className='border border-solid border-highlight p-2' {...props}></td>
-const Th = (props: any) => <th className='border border-solid border-highlight p-1' {...props}></th>
-const Hr = (props: any) => <hr className='my-3' {...props} />
-const Img = (props: any) => (
-    <Link href={props.src}>
+const Td = (props: ElProps["td"]) => <td className='border border-solid border-highlight p-2' {...props}></td>
+const Th = (props: ElProps["th"]) => <th className='border border-solid border-highlight p-1' {...props}></th>
+const Hr = (props: ElProps["hr"]) => <hr className='my-3' {...props} />
+const Img = (props: ElProps["img"]) => (
+    <Link href={props.src || ""}>
         {/* We don't know enough info to use next/image component */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img alt='Obrázek uvnitř MDX' loading='lazy' {...props} />
@@ -73,8 +72,9 @@ export const components = {
     h3: H3,
     LinkedInBtn,
     FacebookBtn,
+    EmailLink,
     p: Text,
-    em: EmailLinkMdx,
+    em: Em,
     strong: Strong,
     a: LinkMdx,
     ol: Ol,
