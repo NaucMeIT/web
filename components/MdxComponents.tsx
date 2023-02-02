@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { getSourceId } from "../utils/string"
 import { FacebookBtn, LinkedInBtn } from "./Button"
 import { EmailLink } from "./EmailLink"
@@ -34,7 +33,7 @@ const Em = (props: MdxTypographyProps) => <Typography className='pt-1 italic' co
 const LinkMdx = (props: any) => (
     <Typography
         variant='link'
-        component={Link}
+        component='a'
         componentProps={
             {
                 href: props.href,
@@ -59,11 +58,11 @@ const Td = (props: ElProps["td"]) => <td className='border border-solid border-h
 const Th = (props: ElProps["th"]) => <th className='border border-solid border-highlight p-1' {...props}></th>
 const Hr = (props: ElProps["hr"]) => <hr className='my-3' {...props} />
 const Img = (props: ElProps["img"]) => (
-    <Link href={props.src || ""}>
+    <a href={props.src}>
         {/* We don't know enough info to use next/image component */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img alt='Obrázek uvnitř MDX' loading='lazy' {...props} />
-    </Link>
+        <img alt='Obrázek uvnitř MDX' loading='lazy' decoding='async' className='gallery-item' {...props} />
+    </a>
 )
 
 export const components = {
