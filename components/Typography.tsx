@@ -5,7 +5,6 @@ export const typographyClasses = {
     step: "text-lg text-secondary",
     important: "text-base text-highlight",
     normal: "text-highlight print:text-print",
-    strong: "font-semibold text-highlight print:text-print",
     error: "text-error",
     // subtitle: "font-montserrat italic font-normal text-primary",
     link: "font-semibold text-primary hover:text-secondary",
@@ -19,16 +18,16 @@ export const types = Object.keys(typographyClasses) as readonly (keyof typeof ty
 
 type TypographyProps<D extends React.ElementType> = {
     readonly children?: React.ReactNode
-    readonly variant: keyof typeof typographyClasses
+    readonly variant?: keyof typeof typographyClasses
     readonly component?: D
     readonly className?: string
     readonly componentProps?: React.ComponentProps<D>
 }
 
-function Typography<D extends React.ElementType>({
+export function Typography<D extends React.ElementType>({
     className,
     children,
-    variant,
+    variant = "normal",
     component,
     componentProps,
 }: TypographyProps<D>) {
@@ -40,9 +39,3 @@ function Typography<D extends React.ElementType>({
         </El>
     )
 }
-
-Typography.defaultProps = {
-    variant: "normal",
-}
-
-export { Typography }
