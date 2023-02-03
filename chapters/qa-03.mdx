@@ -11,7 +11,7 @@ Pro začátek je důležité pochopení základních konceptů. Pojmy jsou např
 
 Algoritmus je přesný návod, jak vyřešit úlohu. Představ si, že jsi kuchař a právě jsi vymyslel neuvěřitelný recept na dort. Našel jsi kombinaci ingrediencí a postup, jak dort uplácat a upéct. Protože ho všichni chválí, chceš ho upéct znovu. Pokud sis recept nenapsal, může se ti stát, že když ho chceš znovu upéct, zapomeneš na důležitou ingredienci. Proto si ho pro jistotu napíšeš. Přesně to je programování. Psaní receptu pro počítač. Program se obvykle skládá z více různých algoritmů, které různě spolupracují. U receptů je to to samé => můžeš mít recept na výrobu koření, které použiješ v receptu na krkovičku.
 
-My se budeme zabývat základy Javascriptu, což je nejrozšířenější jazyk pro vývoj webových aplikací v prohlížeči - dlouhou dobu byl jediný. Prohlížeče mu rozumí. Na práci s javascriptem můžeme použít editor, který je pro všechny snadno dostupný - DevTools konzoli (jak se k ní dostat již víš). Má to jednu nevýhodu, po zavření prohlížeče či aktualizaci stránky vše zmizí. Proto se píší takzvané scripty - soubory s příponou <sup>\*</sup>.js, které obsahují javascript. Pokud je chceme použít na webových stránkách psaných v HTML přidávají se podobně jako se přidávají soubory se styly, jen značka se liší.
+My se budeme zabývat základy JavaScriptu (JS), což je nejrozšířenější jazyk pro vývoj webových aplikací v prohlížeči - dlouhou dobu byl jediný. Prohlížeče mu rozumí. Na práci s JS můžeme použít editor, který je pro všechny snadno dostupný - DevTools konzoli (jak se k ní dostat již víš). Má to jednu nevýhodu, po zavření prohlížeče či aktualizaci stránky vše zmizí. Proto se píší takzvané scripty - soubory s příponou <sup>\*</sup>.js, které obsahují JS. Pokud je chceme použít na webových stránkách psaných v HTML přidávají se podobně jako se přidávají soubory se styly, jen značka se liší.
 
 V html se použije `<script src="cesta_k_souboru"></script>{:html}`. V některých materiálech se můžeš setkat s psaním scriptů přímo v html souboru - stačí napsat kód mezi značky `<script></script>{:html}` v dokumentu. Poslední varianta obvykle není vhodná.
 
@@ -40,7 +40,7 @@ let x = 0
 
 ![Znázornění změny hodnoty v proměnné](/images/chapter/qa-3-2.gif "Animované znázornění přiřazení do proměnné, autorka Maggie Appleton a Dan Abramov")
 
-V JavaScriptu se všechny proměnné musí deklarovat - musíme uvést, jakou proměnnou chceme vytvořit. Máme několik možností. Aktuálně je nejlepší používat **const** a v omezených případech **let**, které ti umožní měnit, kam proměnná odkazuje - jak jsi viděl v gifu výše. Tato změna snadno vytvoří matoucí kód, můžeš dokonce změnit kompletně typ hodnoty a pak se budeš divit, proč se děje něco úplně jiného. **V minulosti** se používalo i **var**, ale to přinášelo mnoho problémů - je to zastaralé řešení, se kterým se snadno střelíš do nohy. Spousta návodů je v tomhle ohledu neaktuálních, to neznamená, že nemají ostatní koncepty správně. Na Zdrojáku nalezneš [příklady problémů](https://zdrojak.cz/clanky/rozdil-mezi-var-a-let-v-javascriptu/). Jinak pojaté je vysvětlení na [Interval.cz](https://www.interval.cz/clanky/promenne-v-javascriptu/), kde se také popisují rezervovaná slova - tedy ta, jež nesmí být použita jako název proměnné ani funkce.
+V JS se všechny proměnné musí deklarovat - musíme uvést, jakou proměnnou chceme vytvořit. Máme několik možností. Aktuálně je nejlepší používat **const** a v omezených případech **let**, které ti umožní měnit, kam proměnná odkazuje - jak jsi viděl v gifu výše. Tato změna snadno vytvoří matoucí kód, můžeš dokonce změnit kompletně typ hodnoty a pak se budeš divit, proč se děje něco úplně jiného. **V minulosti** se používalo i **var**, ale to přinášelo mnoho problémů - je to zastaralé řešení, se kterým se snadno střelíš do nohy. Spousta návodů je v tomhle ohledu neaktuálních, to neznamená, že nemají ostatní koncepty správně. Na Zdrojáku nalezneš [příklady problémů](https://zdrojak.cz/clanky/rozdil-mezi-var-a-let-v-javascriptu/). Jinak pojaté je vysvětlení na [Interval.cz](https://www.interval.cz/clanky/promenne-v-javascriptu/), kde se také popisují rezervovaná slova - tedy ta, jež nesmí být použita jako název proměnné ani funkce.
 
 Když už jsme u těch názvů - správně pojmenovaná proměnná zjednodušuje čtení kódu. Pokud se ke kódu vrátíme po čase, tak nemusíme dlouho luštit, co všechny ty [názvy proměnných](https://www.itnetwork.cz/javascript/zaklady/nejcastejsi-chyby-js-zacatecniku-umis-pojmenovat-promenne) znamenají.
 
@@ -50,7 +50,7 @@ Když už jsme u těch názvů - správně pojmenovaná proměnná zjednodušuj
 -   Tři je menší než čtyři.
 -   Rajče je ovoce.
 
-Jsi schopný vyhodnotit tyto **výroky**? Ano, ale pro všechny potřebuješ jistou znalost (třeba kouknout se z okna). To stejné je schopen i počítač. Jen mu to musíme říct v jazyce, který chápe a dát mu potřebnou znalost pro vyhodnocení (počítač se z okna sám nepodívá). Výroky zapsané v javascriptu jsou vyhodnoceny jako pravda (**true**) nebo nepravda (**false**).
+Jsi schopný vyhodnotit tyto **výroky**? Ano, ale pro všechny potřebuješ jistou znalost (třeba kouknout se z okna). To stejné je schopen i počítač. Jen mu to musíme říct v jazyce, který chápe a dát mu potřebnou znalost pro vyhodnocení (počítač se z okna sám nepodívá). Výroky zapsané v JS jsou vyhodnoceny jako pravda (**true**) nebo nepravda (**false**).
 
 Představ si, že bychom v běžném jazyce používali jednoduché výroky o jednom rozhodnutí. Mluvili bychom velice vtipně. Proto máme spojky, kterými výroky spojujeme. Například “Slunce je hvězda a Mars je planeta.“ zní trochu přirozeněji než říct „Slunce je hvězda. Mars je planeta.“
 
@@ -171,7 +171,7 @@ for (let i = 5; i > 0; i--) {
 }
 ```
 
-Pozor, pokud spustíš tento kód v konzoli, může se stát, že se ti řádky seskupí. Je potřeba změnit nastavení konzole a deaktivovat seskupení stejných výrazů. Pokud ti naše vysvětlení nestačilo, podívej se na [vysvětlení zanořených cyklů na Khan Academy](https://cs.khanacademy.org/computing/computer-programming/programming/looping/pt/nested-for-loops). Kromě tabulek se tímto způsobem dá procházet i obrázek pixel po pixelu a celkově vše, co má dvourozměrný souřadnicový systém. Videa o zanořených **for**ech jsou součástí větší série, která jde hlouběji do programování v JavaScriptu, prozatím v ní nepokračuj.
+Pozor, pokud spustíš tento kód v konzoli, může se stát, že se ti řádky seskupí. Je potřeba změnit nastavení konzole a deaktivovat seskupení stejných výrazů. Pokud ti naše vysvětlení nestačilo, podívej se na [vysvětlení zanořených cyklů na Khan Academy](https://cs.khanacademy.org/computing/computer-programming/programming/looping/pt/nested-for-loops). Kromě tabulek se tímto způsobem dá procházet i obrázek pixel po pixelu a celkově vše, co má dvourozměrný souřadnicový systém. Videa o zanořených **for**ech jsou součástí větší série, která jde hlouběji do programování v JS, prozatím v ní nepokračuj.
 
 ### Funkce
 
