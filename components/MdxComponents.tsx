@@ -47,8 +47,8 @@ const LinkMdx = (props: any) => (
         {props.children}
     </Typography>
 )
-const Ol = (props: ElProps["ol"]) => <ol className='list-decimal pl-6 py-2 print:text-print' {...props}></ol>
-const Ul = (props: ElProps["ul"]) => <ul className='list-disc pl-6 py-2 print:text-print' {...props}></ul>
+const Ol = (props: ElProps["ol"]) => <ol className='mdx list-decimal pl-6 py-2 print:text-print' {...props}></ol>
+const Ul = (props: ElProps["ul"]) => <ul className='mdx list-disc pl-6 py-2 print:text-print' {...props}></ul>
 const Table = (props: ElProps["table"]) => (
     <div className='overflow-auto print:overflow-visible print:text-xsDeviceBody print:text-print my-3'>
         <table className='w-max lg:max-w-3xl' {...props}></table>
