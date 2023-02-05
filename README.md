@@ -4,6 +4,7 @@
 ![Vercel](https://vercelbadge.vercel.app/api/pegak/nauc-me-it)
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fnaucme.it)](https://naucme.it)
 ![Contributors](https://img.shields.io/github/contributors/pegak/nauc-me-it)
+![Checkly](https://api.checklyhq.com/v1/badges/checks/7c4c3bea-150f-42e0-935c-ade0dabca006?style=flat&theme=default&responseTime=true)
 
 [![Discord](https://img.shields.io/discord/996169548845830394?color=7389D8&label&logo=discord&logoColor=ffffff&style=for-the-badge)](https://discord.gg/QbYswwYUPU)
 [![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/NaucMeIT)
