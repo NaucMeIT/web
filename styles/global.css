@@ -124,3 +124,12 @@ span[id] {
     text-align: right;
     color: gray;
 }
+
+/* In Tailwind + MDX it is hard to style nested ol */
+ol.mdx ol.mdx {
+    list-style-type: lower-alpha !important;
+}
+
+ul.mdx ul.mdx {
+    list-style-type: square !important;
+}
