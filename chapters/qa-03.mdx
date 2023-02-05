@@ -61,18 +61,18 @@ Poměr slučovací: „Podejte nám zprávu písemně nebo telefonicky”
 | **Podejte nám zprávu písemně** | **Podejte nám zprávu telefonicky** | **Podejte nám zprávu písemně nebo telefonicky** |                                                                            |
 | :----------------------------: | :--------------------------------: | :---------------------------------------------: | :------------------------------------------------------------------------: |
 |        1 (true, pravda)        |          1 (true, pravda)          |                1 (true, pravda)                 |                      Zprávu můžu podat oběma způsoby                       |
-|        1 (true, pravda)        |         0 (false, nepravda)         |                1 (true, pravda)                 |                       Zprávu můžu podat jen písemně                        |
-|       0 (false, nepravda)       |          1 (true, pravda)          |                1 (true, pravda)                 |                     Zprávu můžu podat jen telefonicky.                     |
-|       0 (false, nepravda)       |         0 (false, nepravda)         |               0 (false, nepravda)                | Pokud podáš zprávu jinak než písemně nebo telefonicky, tak nebude přijata. |
+|        1 (true, pravda)        |        0 (false, nepravda)         |                1 (true, pravda)                 |                       Zprávu můžu podat jen písemně                        |
+|      0 (false, nepravda)       |          1 (true, pravda)          |                1 (true, pravda)                 |                     Zprávu můžu podat jen telefonicky.                     |
+|      0 (false, nepravda)       |        0 (false, nepravda)         |               0 (false, nepravda)               | Pokud podáš zprávu jinak než písemně nebo telefonicky, tak nebude přijata. |
 
 Poměr vylučovací: “Počítač je zapnutý, nebo vypnutý.”
 
 | **Počítač je zapnutý** | **Počítač je vypnutý** | **Počítač je zapnutý, nebo vypnutý.** |                                                   |
 | :--------------------: | :--------------------: | :-----------------------------------: | ------------------------------------------------- |
-|    1 (true, pravda)    |    1 (true, pravda)    |          0 (false, nepravda)           | Počítač nemůže být vypnutý nebo zapnutý zároveň   |
-|    1 (true, pravda)    |   0 (false, nepravda)   |           1 (true, pravda)            | Zapnutí vylučuje, že je vypnutý                   |
-|   0 (False, nepravda)   |    1 (True, pravda)    |           1 (True, pravda)            | Vypnutí vylučuje, že je zapnutý                   |
-|   0 (False, nepravda)   |   0 (False, nepravda)   |          0 (False, nepravda)           | Počítač nemůže být zároveň nezapnutý a nevypnutý. |
+|    1 (true, pravda)    |    1 (true, pravda)    |          0 (false, nepravda)          | Počítač nemůže být vypnutý nebo zapnutý zároveň   |
+|    1 (true, pravda)    |  0 (false, nepravda)   |           1 (true, pravda)            | Zapnutí vylučuje, že je vypnutý                   |
+|  0 (False, nepravda)   |    1 (True, pravda)    |           1 (True, pravda)            | Vypnutí vylučuje, že je zapnutý                   |
+|  0 (False, nepravda)   |  0 (False, nepravda)   |          0 (False, nepravda)          | Počítač nemůže být zároveň nezapnutý a nevypnutý. |
 
 Vidíš rozdíl? Druhá věta odpovídá spojce XOR, která se dá rozepsat pomocí **a**, **nebo**, **negace** takhle: „Počítač je zapnutý **a** **ne**vypnutý **nebo** počítač je **ne**zapnutý **a** vypnutý.”
 
