@@ -40,7 +40,7 @@
         "gray-matter": "^4.0.3",
         "lightgallery": "^2.7.1",
         "next": "^13.1.5",
-        "next-auth": "^4.18.10",
+        "next-auth": "^4.19.2",
         "next-axiom": "^0.16.0",
         "next-mdx-remote": "^4.3.0",
         "next-runtime": "^2.4.1",
@@ -84,5 +84,15 @@
         "ts-node": "^10.9.1",
         "tsutils": "^3.21.0",
         "typescript": "^4.9.4"
+    },
+    "packageManager": "pnpm@7.26.3",
+    "engineStrict": true,
+    "engines": {
+        "node": ">=19.6.0 || 18.x",
+        "npm": "please-use-pnpm",
+        "yarn": "please-use-pnpm"
+    },
+    "volta": {
+        "node": "19.6.0"
     }
 }

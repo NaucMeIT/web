@@ -20,8 +20,9 @@ To run the app with testing database, follow these steps:
 
 #### Prerequisities
 
--   [Node.js](https://nodejs.org/en/) - you can install it from [here](https://nodejs.org/en/download/), we always use latest version.
--   [pnpm](https://pnpm.io/) - please follow [this guide](https://pnpm.io/installation) to install pnpm (**it is different from npm shipped with Node.js**)
+-   [Volta](https://volta.sh/) - we use Volta, install guide [here](https://docs.volta.sh/guide/getting-started), **it handles Node.js and pnpm versions**.
+-   [Node.js](https://nodejs.org/en/) - please install it with Volta, we always use latest version.
+-   [pnpm](https://pnpm.io/) - please follow [this guide](https://pnpm.io/installation) to install pnpm (**it is different from npm shipped with Node.js**), optionally you can use Volta, but pnpm support is [experimental](https://docs.volta.sh/advanced/pnpm).
 
 #### Steps
 
