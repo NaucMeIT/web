@@ -88,7 +88,7 @@
     "packageManager": "pnpm@7.26.3",
     "engineStrict": true,
     "engines": {
-        "node": ">=19.6.0 || 16.x || 18.x",
+        "node": ">=19.6.0 || 18.x",
         "npm": "please-use-pnpm",
         "yarn": "please-use-pnpm"
     },
