@@ -84,5 +84,14 @@
         "ts-node": "^10.9.1",
         "tsutils": "^3.21.0",
         "typescript": "^4.9.4"
+    },
+    "engineStrict": true,
+    "engines": {
+        "node": ">=19.6.0",
+        "npm": "please-use-pnpm",
+        "yarn": "please-use-pnpm"
+    },
+    "volta": {
+        "node": "19.6.0"
     }
 }
