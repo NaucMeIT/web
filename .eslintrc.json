@@ -7,8 +7,8 @@
     "plugins": ["@typescript-eslint", "functional"],
     "extends": ["next/core-web-vitals", "prettier", "plugin:functional/lite"],
     "rules": {
-        "functional/no-return-void": ["error", { "ignoreImplicit": true }],
-        "functional/no-mixed-type": ["warn", { "checkInterfaces": false }],
+        "functional/no-return-void": [0],
+        "functional/no-mixed-types": ["warn", { "checkInterfaces": false }],
         "functional/immutable-data": ["warn", { "ignorePattern": ["defaultProps"] }]
     },
     "ignorePatterns": ["postcss.config.js"]

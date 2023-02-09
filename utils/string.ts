@@ -1,6 +1,6 @@
 import { LinkProps } from "next/link"
 
-export function isExternalUrl(url: LinkProps["href"]): boolean {
+export function isExternalUrl(url: Readonly<LinkProps["href"]>): boolean {
     return /^(https?:)?\/\//.test(url.toString())
 }
 

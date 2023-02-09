@@ -1,6 +1,6 @@
 import type { SVGProps } from "react"
 
-export function DownArrow(props: SVGProps<SVGSVGElement>) {
+export function DownArrow(props: Readonly<SVGProps<SVGSVGElement>>) {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' width={34.453} height={45.507} viewBox='0 0 34.453 45.507' {...props}>
       <g data-name='Component 14 \u2013 1' fill='none' stroke='#fff' strokeWidth={1.5}>

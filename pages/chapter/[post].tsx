@@ -30,8 +30,9 @@ type PostProps = {
 const Post: React.FC<PostProps> = ({ mdx, metaInformation, headings }) => {
     const lightGallery = useRef<any>(null)
 
-    const onInit = useCallback((detail: InitDetail) => {
+    const onInit = useCallback((detail: Readonly<InitDetail>) => {
         if (detail) {
+            // eslint-disable-next-line functional/immutable-data
             lightGallery.current = detail.instance
             setTimeout(() => {
                 lightGallery.current.refresh()
@@ -84,6 +85,7 @@ export const getStaticProps: GetStaticProps<PostProps> = async (props) => {
             // Prevent lines from collapsing in `display: grid` mode, and
             // allow empty lines to be copy/pasted
             if (node.children.length === 0) {
+                // eslint-disable-next-line functional/immutable-data
                 node.children = [{ type: "text", value: " " }]
             }
         },
@@ -92,6 +94,7 @@ export const getStaticProps: GetStaticProps<PostProps> = async (props) => {
             node.properties.className.push("highlighted")
         },
         onVisitHighlightedWord(node: Node) {
+            // eslint-disable-next-line functional/immutable-data
             node.properties.className = ["word"]
         },
     }

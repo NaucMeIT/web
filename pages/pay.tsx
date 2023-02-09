@@ -24,7 +24,7 @@ const getPlan = async (planId: string) => {
     return plan
 }
 
-const calculatePlanPrice = async (plan: Plan) => {
+const calculatePlanPrice = async (plan: Readonly<Plan>) => {
     return plan.price * 100
 }
 
