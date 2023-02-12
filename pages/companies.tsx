@@ -11,13 +11,13 @@ import { CompanyForm } from "../components/CompanyForm"
 import { Employees } from "../components/Employees"
 import { SideDecoration } from "../components/SideDecoration"
 
-const employeeFormLink = "https://forms.gle/tSnwjVUnvovQy9NL8"
+const employeeFormLink = "https://calendly.com/naucme_it/30min"
 const links = [
     { title: "Jak to funguje?", link: "#how" },
     { title: "Informace", link: "#company" },
     { title: "Specializace", link: "#employees" },
     { title: "Kontakt", link: "#contact" },
-    { title: "Chci zaměstnance", link: employeeFormLink, isImportant: true },
+    { title: "Domluvit schůzku", link: employeeFormLink, isImportant: true },
 ]
 
 const Home: NextPage = () => {
@@ -56,7 +56,7 @@ const Home: NextPage = () => {
                         },
                         { icon: <Worldwide />, children: <>Školíme plně online a není třeba žadných prostor</> },
                     ]}
-                    buttonText='Chci zaměstnance!'
+                    buttonText='Domluvit schůzku'
                     buttonProps={{ href: employeeFormLink }}
                 />
 
@@ -73,7 +73,7 @@ const Home: NextPage = () => {
                         "Placená stáž s dozorem",
                         "Nástup do firmy",
                     ]}
-                    buttonText='Chci zaměstnance!'
+                    buttonText='Domluvit schůzku'
                     buttonProps={{ href: employeeFormLink }}
                 />
 

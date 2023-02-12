@@ -22,7 +22,7 @@ export function ContactForm() {
                     type='tel'
                     pattern='^[+]?[()/0-9. -]{9,}$'
                     label='Vaše telefonní číslo'
-                    placeholder='Zadejte svoje číslo (např. +420 705 123 456)'
+                    placeholder='Zadejte svoje číslo (např. +420 731 472 822)'
                 />
             </div>
             <DecoratedInput
