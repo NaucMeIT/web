@@ -43,7 +43,7 @@ const Sign: NextPage = () => {
 
     const signInWithFacebook = () => sign("facebook")
     const signInWithGoogle = () => sign("google")
-    const signInWithEmail = (e: FormEvent<HTMLFormElement>) => {
+    const signInWithEmail = (e: Readonly<FormEvent<HTMLFormElement>>) => {
         e.preventDefault()
         // Typescript doesn't infer elements correctly
         const email = (e.currentTarget.elements as Record<string, any>).email?.value

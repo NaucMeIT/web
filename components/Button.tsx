@@ -55,7 +55,7 @@ const hexagonBorderVars = {
     "--border": "2px",
 } as React.CSSProperties
 
-export function Button({ className, disabled, children, theme, size, ...rest }: ButtonProps) {
+export function Button({ className, disabled, children, theme, size, ...rest }: Readonly<ButtonProps>) {
     const props = {
         className: `${theme !== "naked" && mainClasses} ${
             disabled ? themeClasses.disabled[theme] : themeClasses.enabled[theme]
@@ -100,7 +100,7 @@ Button.defaultProps = {
     type: "button",
 }
 
-export function SocialButton({ naked, label, className, disabled, children, ...rest }: SocialButtonProps) {
+export function SocialButton({ naked, label, className, disabled, children, ...rest }: Readonly<SocialButtonProps>) {
     const theme = naked ? "naked" : "off"
     const props = {
         className: `${naked ? "" : mainClasses} ${

@@ -38,7 +38,7 @@ export default function CheckoutForm() {
         })
     }, [stripe])
 
-    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: Readonly<FormEvent<HTMLFormElement>>) => {
         e.preventDefault()
 
         if (!stripe || !elements) {

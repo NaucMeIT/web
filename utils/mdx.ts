@@ -13,7 +13,7 @@ export type HeadingsType = readonly (Heading & {
 
 function assert(parsedMdx: any): asserts parsedMdx is { readonly data: { readonly title: string } } {
     if (!parsedMdx.data.title) {
-        // eslint-disable-next-line functional/no-throw-statement
+        // eslint-disable-next-line functional/no-throw-statements
         throw new Error("Title is missing in ", parsedMdx)
     }
 }

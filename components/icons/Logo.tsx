@@ -1,7 +1,7 @@
 import * as React from "react"
 import type { SVGProps } from "react"
 
-const SvgLogo = (props: SVGProps<SVGSVGElement>) => (
+const SvgLogo = (props: Readonly<SVGProps<SVGSVGElement>>) => (
   <svg
     id='Layer_1'
     xmlns='http://www.w3.org/2000/svg'

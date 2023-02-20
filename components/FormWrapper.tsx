@@ -6,7 +6,7 @@ import { EmailThanks } from "./EmailThanks"
 import { useId } from "react"
 import Turnstile from "react-turnstile"
 
-// eslint-disable-next-line functional/no-mixed-type
+// eslint-disable-next-line functional/no-mixed-types
 type FormWrapperProps = {
     readonly children: React.ReactNode
     readonly text: string

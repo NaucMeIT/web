@@ -47,17 +47,19 @@ const LinkMdx = (props: any) => (
         {props.children}
     </Typography>
 )
-const Ol = (props: ElProps["ol"]) => <ol className='mdx list-decimal pl-6 py-2 print:text-print' {...props}></ol>
-const Ul = (props: ElProps["ul"]) => <ul className='mdx list-disc pl-6 py-2 print:text-print' {...props}></ul>
-const Table = (props: ElProps["table"]) => (
+const Ol = (props: Readonly<ElProps["ol"]>) => (
+    <ol className='mdx list-decimal pl-6 py-2 print:text-print' {...props}></ol>
+)
+const Ul = (props: Readonly<ElProps["ul"]>) => <ul className='mdx list-disc pl-6 py-2 print:text-print' {...props}></ul>
+const Table = (props: Readonly<ElProps["table"]>) => (
     <div className='overflow-auto print:overflow-visible print:text-xsDeviceBody print:text-print my-3'>
         <table className='w-max lg:max-w-3xl' {...props}></table>
     </div>
 )
-const Td = (props: ElProps["td"]) => <td className='border border-solid border-highlight p-2' {...props}></td>
-const Th = (props: ElProps["th"]) => <th className='border border-solid border-highlight p-1' {...props}></th>
-const Hr = (props: ElProps["hr"]) => <hr className='my-3' {...props} />
-const Img = (props: ElProps["img"]) => (
+const Td = (props: Readonly<ElProps["td"]>) => <td className='border border-solid border-highlight p-2' {...props}></td>
+const Th = (props: Readonly<ElProps["th"]>) => <th className='border border-solid border-highlight p-1' {...props}></th>
+const Hr = (props: Readonly<ElProps["hr"]>) => <hr className='my-3' {...props} />
+const Img = (props: Readonly<ElProps["img"]>) => (
     <a href={props.src}>
         {/* Next.js image doesn't work well with gallery plugin */}
         {/* eslint-disable-next-line @next/next/no-img-element */}

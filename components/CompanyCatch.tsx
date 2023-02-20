@@ -31,7 +31,7 @@ export function CompanyCatch({ employeeLink }: { readonly employeeLink: string }
                 </Problem>
             </div>
             <Button theme='off' size='large' className='w-max mx-auto block' href={employeeLink}>
-                Chci zaměstnance
+                Domluvit schůzku
             </Button>
         </section>
     )
