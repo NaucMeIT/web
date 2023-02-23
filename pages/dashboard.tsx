@@ -70,11 +70,17 @@ const Dashboard: React.FC<DashboardProps> = ({ headings }) => {
                     <section className='flex flex-col items-center mt-5 gap-8'>
                         <Typography variant='h3'>Externí zdroje</Typography>
                         <div className='flex flex-col flex-wrap lg:flex-row justify-center items-center lg:items-start gap-10'>
-                            <ContentCard small title='Bezpečný kód' phrase='Piš bezpečně' href='https://bezpecnykod.cz'>
+                            <ContentCard
+                                priority
+                                small
+                                title='Bezpečný kód'
+                                phrase='Piš bezpečně'
+                                href='https://bezpecnykod.cz'
+                            >
                                 <Image
                                     src='/images/bezpecny_kod.svg'
-                                    width={100}
-                                    height={100}
+                                    width={200}
+                                    height={200}
                                     alt='Logo Bezpečný kód'
                                     loading='lazy'
                                 />
