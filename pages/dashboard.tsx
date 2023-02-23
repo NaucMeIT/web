@@ -11,12 +11,17 @@ import { MissingBanner } from "../components/MissingBanner"
 import { ContentCard } from "../components/ContentCard"
 import { Typography } from "../components/Typography"
 import { ActionSidebar } from "../components/ActionSidebar"
+import { useTrackedUser } from "../hooks/useTrackedUser"
 
 type DashboardProps = {
     readonly headings: HeadingsType
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ headings }) => {
+    const [user] = useTrackedUser()
+
+    const isLoggedOut = !user || !user.name || !user.email
+
     return (
         <>
             <Head
@@ -53,16 +58,18 @@ const Dashboard: React.FC<DashboardProps> = ({ headings }) => {
                                 loading='lazy'
                             />
                         </ContentCard>
-                        <ContentCard title='Další'>
-                            <div className='w-full h-full'>
-                                <ActionSidebar />
-                            </div>
-                        </ContentCard>
+                        {!isLoggedOut && (
+                            <ContentCard title='Další'>
+                                <div className='w-full h-full'>
+                                    <ActionSidebar />
+                                </div>
+                            </ContentCard>
+                        )}
                     </section>
                     <Root className='my-8 h-px w-11/12 mx-auto bg-secondary' />
                     <section className='flex flex-col items-center mt-5 gap-8'>
                         <Typography variant='h3'>Externí zdroje</Typography>
-                        <div className='flex flex-col lg:flex-row justify-center items-center lg:items-start gap-10'>
+                        <div className='flex flex-col flex-wrap lg:flex-row justify-center items-center lg:items-start gap-10'>
                             <ContentCard small title='Bezpečný kód' phrase='Piš bezpečně' href='https://bezpecnykod.cz'>
                                 <Image
                                     src='/images/bezpecny_kod.svg'
