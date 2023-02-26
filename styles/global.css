@@ -59,6 +59,7 @@ blockquote {
     --color-print: 0 0 0;
     --color-form: 166 177 187;
     --color-error: 255 0 0;
+    color-scheme: dark;
 }
 
 *::selection {
@@ -81,7 +82,7 @@ blockquote {
     }
 }
 
-span[id] {
+span[id]:not([id^="radix"]) {
     content: "";
     display: block;
     height: 75px;
@@ -123,6 +124,10 @@ span[id] {
     margin-right: 2rem;
     text-align: right;
     color: gray;
+}
+
+button {
+    all: unset;
 }
 
 /* In Tailwind + MDX it is hard to style nested ol */
