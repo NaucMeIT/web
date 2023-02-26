@@ -40,7 +40,7 @@ const Select = ({ groupValues, values, onChange, value, placeholder }: SelectPro
                         ))}
                         {groupValues?.map(([group, ...items]) => (
                             <RSelect.Group key={group}>
-                                <RSelect.Label className='px-6 leading-6 text-xs text-secondary'>{group}</RSelect.Label>
+                                <RSelect.Label className='pl-1 leading-6 text-xs text-secondary'>{group}</RSelect.Label>
                                 {items.map(({ value, label }) => (
                                     <SelectItem key={value} value={value}>
                                         {label}
@@ -62,11 +62,11 @@ const SelectItem = React.forwardRef<HTMLDivElement, { children: React.ReactNode;
     ({ children, ...props }, forwardedRef) => {
         return (
             <RSelect.Item
-                className='text-base leading-none text-highlight rounded-sm flex items-center h-6 pr-8 pl-6 relative select-none data-[disabled]:text-off data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-secondary data-[highlighted]:text-background'
+                className='text-base leading-none text-highlight rounded-sm flex items-center h-6 pr-8 pl-4 relative select-none data-[disabled]:text-off data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-secondary data-[highlighted]:text-background'
                 {...props}
                 ref={forwardedRef}
             >
-                <RSelect.ItemIndicator className='absolute left-0 w-6 inline-flex items-center justify-center'>
+                <RSelect.ItemIndicator className='absolute left-0 w-4 inline-flex items-center justify-center'>
                     <CheckIcon />
                 </RSelect.ItemIndicator>
                 <RSelect.ItemText>{children}</RSelect.ItemText>
