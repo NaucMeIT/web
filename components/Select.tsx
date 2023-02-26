@@ -2,8 +2,8 @@ import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons
 import * as RSelect from "@radix-ui/react-select"
 import React from "react"
 
-type Values = { label: string; value: string; disabled?: boolean }[]
-type GroupedValues = [string, ...Values][]
+type Values = { readonly label: string; readonly value: string; readonly disabled?: boolean }[]
+type GroupedValues = Readonly<Readonly<[string, ...Values]>[]>
 
 // eslint-disable-next-line functional/no-mixed-types
 type SelectProps = {

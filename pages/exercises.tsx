@@ -9,6 +9,63 @@ import { TreeToC } from "../components/TreeToC"
 import { Typography } from "../components/Typography"
 import { Select } from "../components/Select"
 
+const exercises = [
+    [
+        "Základní",
+        { label: "Pták", value: "basic/bird" },
+        { label: "Přerušovaná čára", value: "basic/dash_line" },
+        { label: "Ryba", value: "basic/fish" },
+        { label: "Vlajka", value: "basic/flag" },
+        { label: "Srdce", value: "basic/heart" },
+        { label: "M", value: "basic/m" },
+        { label: "Jedna", value: "basic/one" },
+        { label: "Obdélník", value: "basic/rectangle" },
+        { label: "Čtverec", value: "basic/square" },
+        { label: "T", value: "basic/t" },
+        { label: "3 čáry", value: "basic/three_line" },
+        { label: "Trojúhelník", value: "basic/triangle" },
+    ],
+    ["Podmínky", { label: "Kytka", value: "condition/flower" }, { label: "Kolo", value: "condition/wheel" }],
+    [
+        "Funkce",
+        { label: "B", value: "function/b" },
+        { label: "Dům", value: "function/house" },
+        { label: "Žebřík", value: "function/ledder" },
+        { label: "Mnohoúhelník", value: "function/polygon" },
+        { label: "Čtverce", value: "function/squares" },
+        { label: "Dva čtverce", value: "function/two_squares" },
+    ],
+    [
+        "Zanořený cyklus",
+        { label: "Kříž", value: "nested_cycle/cross" },
+        { label: "Přerušovaný šestiúhelník", value: "nested_cycle/dash_hex" },
+        { label: "Diamant", value: "nested_cycle/diamond" },
+        { label: "Vločka", value: "nested_cycle/flake" },
+        { label: "Kytka", value: "nested_cycle/flower" },
+        { label: "Mlýn", value: "nested_cycle/mill" },
+        { label: "Obdélníková kytka", value: "nested_cycle/rectangle_flower" },
+    ],
+    [
+        "Opakování",
+        { label: "B", value: "repetition/b" },
+        { label: "Přerušovaná čára", value: "repetition/dash_line" },
+        { label: "Šestiúhelník", value: "repetition/hex" },
+        { label: "Dům", value: "repetition/house" },
+        { label: "Osmiúhelník", value: "repetition/octa" },
+        { label: "Čtverec", value: "repetition/square" },
+        { label: "Čtverec s useklými rohy", value: "repetition/square_edge" },
+        { label: "Schody", value: "repetition/stairs" },
+        { label: "Trojúhelník", value: "repetition/triangle" },
+        { label: "Dva šestiúhelníky", value: "repetition/two_hex" },
+    ],
+    [
+        "Proměnná",
+        { label: "Rostoucí čtverec", value: "variable/growing_square" },
+        { label: "Růže", value: "variable/rose" },
+        { label: "Spirála", value: "variable/spirala" },
+    ],
+] as const
+
 type ExercisesProps = {
     readonly headings: HeadingsType
 }
@@ -45,66 +102,7 @@ const Exercises: React.FC<ExercisesProps> = ({ headings }) => {
                         value={path}
                         label='Cvičení'
                         placeholder='Vyber si cvičení'
-                        groupValues={[
-                            [
-                                "Základní",
-                                { label: "Pták", value: "basic/bird" },
-                                { label: "Přerušovaná čára", value: "basic/dash_line" },
-                                { label: "Ryba", value: "basic/fish" },
-                                { label: "Vlajka", value: "basic/flag" },
-                                { label: "Srdce", value: "basic/heart" },
-                                { label: "M", value: "basic/m" },
-                                { label: "Jedna", value: "basic/one" },
-                                { label: "Obdélník", value: "basic/rectangle" },
-                                { label: "Čtverec", value: "basic/square" },
-                                { label: "T", value: "basic/t" },
-                                { label: "3 čáry", value: "basic/three_line" },
-                                { label: "Trojúhelník", value: "basic/triangle" },
-                            ],
-                            [
-                                "Podmínky",
-                                { label: "Kytka", value: "condition/flower" },
-                                { label: "Kolo", value: "condition/wheel" },
-                            ],
-                            [
-                                "Funkce",
-                                { label: "B", value: "function/b" },
-                                { label: "Dům", value: "function/house" },
-                                { label: "Žebřík", value: "function/ledder" },
-                                { label: "Mnohoúhelník", value: "function/polygon" },
-                                { label: "Čtverce", value: "function/squares" },
-                                { label: "Dva čtverce", value: "function/two_squares" },
-                            ],
-                            [
-                                "Zanořený cyklus",
-                                { label: "Kříž", value: "nested_cycle/cross" },
-                                { label: "Přerušovaný šestiúhelník", value: "nested_cycle/dash_hex" },
-                                { label: "Diamant", value: "nested_cycle/diamond" },
-                                { label: "Vločka", value: "nested_cycle/flake" },
-                                { label: "Kytka", value: "nested_cycle/flower" },
-                                { label: "Mlýn", value: "nested_cycle/mill" },
-                                { label: "Obdélníková kytka", value: "nested_cycle/rectangle_flower" },
-                            ],
-                            [
-                                "Opakování",
-                                { label: "B", value: "repetition/b" },
-                                { label: "Přerušovaná čára", value: "repetition/dash_line" },
-                                { label: "Šestiúhelník", value: "repetition/hex" },
-                                { label: "Dům", value: "repetition/house" },
-                                { label: "Osmiúhelník", value: "repetition/octa" },
-                                { label: "Čtverec", value: "repetition/square" },
-                                { label: "Čtverec s useklými rohy", value: "repetition/square_edge" },
-                                { label: "Schody", value: "repetition/stairs" },
-                                { label: "Trojúhelník", value: "repetition/triangle" },
-                                { label: "Dva šestiúhelníky", value: "repetition/two_hex" },
-                            ],
-                            [
-                                "Proměnná",
-                                { label: "Rostoucí čtverec", value: "variable/growing_square" },
-                                { label: "Růže", value: "variable/rose" },
-                                { label: "Spirála", value: "variable/spirala" },
-                            ],
-                        ]}
+                        groupValues={exercises}
                     />
                     <embed
                         className='aspect-video w-11/12 mx-auto mt-2'
