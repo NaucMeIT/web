@@ -19,7 +19,7 @@ const Select = ({ groupValues, values, onChange, value, placeholder }: SelectPro
     return (
         <RSelect.Root onValueChange={onChange} value={value}>
             <RSelect.Trigger
-                className='flex items-center justify-between rounded px-4 text-base leading-none w-44 h-9 gap-1 bg-background text-highlight hover:text-secondary data-[placeholder]:text-secondary outline-none'
+                className='flex items-center justify-between rounded px-4 text-base leading-none w-56 h-9 gap-1 bg-background text-highlight hover:text-secondary data-[placeholder]:text-secondary outline-none'
                 aria-label='Food'
             >
                 <RSelect.Value placeholder={placeholder} />
@@ -28,7 +28,7 @@ const Select = ({ groupValues, values, onChange, value, placeholder }: SelectPro
                 </RSelect.Icon>
             </RSelect.Trigger>
             <RSelect.Portal>
-                <RSelect.Content className='overflow-hidden bg-background rounded-md'>
+                <RSelect.Content className='overflow-hidden bg-background rounded-md z-50'>
                     <RSelect.ScrollUpButton className='flex items-center justify-center h-6 bg-background text-primary cursor-default'>
                         <ChevronUpIcon />
                     </RSelect.ScrollUpButton>
