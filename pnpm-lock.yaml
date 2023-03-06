@@ -42,7 +42,7 @@ specifiers:
   next-axiom: ^0.17.0
   next-mdx-remote: ^4.3.0
   next-runtime: ^2.4.1
-  next-sitemap: ^3.1.49
+  next-sitemap: ^4.0.0
   nodemailer: ^6.9.1
   postcss: ^8.4.21
   prettier: ^2.8.3
@@ -120,7 +120,7 @@ devDependencies:
   eslint-plugin-functional: 5.0.4_4vsywjlpuriuw3tl5oq6zy5a64
   husky: 8.0.3
   lint-staged: 13.1.0
-  next-sitemap: 3.1.49_dlcnecpznf2wc36zwuq5m2ie5q
+  next-sitemap: 4.0.2_dlcnecpznf2wc36zwuq5m2ie5q
   postcss: 8.4.21
   prettier: 2.8.3
   prettier-plugin-tailwindcss: 0.2.2_prettier@2.8.3
@@ -1834,7 +1834,7 @@ packages:
     dependencies:
       acorn-node: 1.8.2
       defined: 1.0.1
-      minimist: 1.2.7
+      minimist: 1.2.8
     dev: true
 
   /dicer/0.2.5:
@@ -3229,7 +3229,7 @@ packages:
     resolution: {integrity: sha512-g1MWMLBiz8FKi1e4w0UyVL3w+iJceWAFBAaBnnGKOpNa5f8TLktkbre1+s6oICydWAm+HRUGTmI+//xv2hvXYA==}
     hasBin: true
     dependencies:
-      minimist: 1.2.7
+      minimist: 1.2.8
     dev: true
 
   /jsonc-parser/3.2.0:
@@ -3937,8 +3937,8 @@ packages:
       brace-expansion: 1.1.11
     dev: true
 
-  /minimist/1.2.7:
-    resolution: {integrity: sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==}
+  /minimist/1.2.8:
+    resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
     dev: true
 
   /minipass/3.3.6:
@@ -4092,8 +4092,8 @@ packages:
       - supports-color
     dev: false
 
-  /next-sitemap/3.1.49_dlcnecpznf2wc36zwuq5m2ie5q:
-    resolution: {integrity: sha512-bxBq+MQdi580PKn/8ert4X0RL8Kp9scvyiq6TmIpkCQC3bd4DResTyxHY2AuCGKz83ut2udHwKMZu3ztj3aq3w==}
+  /next-sitemap/4.0.2_dlcnecpznf2wc36zwuq5m2ie5q:
+    resolution: {integrity: sha512-NQVzguzW6xkh0fZzmgZJ//H9f1DdvKmhJmTO1xuIPmDuZxM2Gd48CrKHXVnbK0zAx52hpyNe3ZUGkrExUWyljg==}
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
@@ -4102,7 +4102,7 @@ packages:
     dependencies:
       '@corex/deepmerge': 4.0.37
       '@next/env': 13.1.6
-      minimist: 1.2.7
+      minimist: 1.2.8
       next: 13.1.6_biqbaboplfbrettd7655fr4n2y
     dev: true
 
@@ -5482,7 +5482,7 @@ packages:
     dependencies:
       '@types/json5': 0.0.29
       json5: 1.0.2
-      minimist: 1.2.7
+      minimist: 1.2.8
       strip-bom: 3.0.0
     dev: true
 

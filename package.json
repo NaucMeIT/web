@@ -73,7 +73,7 @@
         "eslint-plugin-functional": "^5.0.0",
         "husky": "^8.0.3",
         "lint-staged": "^13.1.0",
-        "next-sitemap": "^3.1.49",
+        "next-sitemap": "^4.0.0",
         "postcss": "^8.4.21",
         "prettier": "^2.8.3",
         "prettier-plugin-tailwindcss": "^0.2.2",
