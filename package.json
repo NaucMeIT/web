@@ -33,7 +33,7 @@
         "@radix-ui/react-separator": "^1.0.1",
         "@sendgrid/mail": "^7.7.0",
         "@splitbee/web": "^0.3.0",
-        "@stripe/react-stripe-js": "^1.16.4",
+        "@stripe/react-stripe-js": "^2.0.0",
         "@stripe/stripe-js": "^1.46.0",
         "body-parser": "^1.20.1",
         "form-data": "^4.0.0",
