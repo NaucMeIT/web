@@ -15,7 +15,7 @@ specifiers:
   '@radix-ui/react-separator': ^1.0.1
   '@sendgrid/mail': ^7.7.0
   '@splitbee/web': ^0.3.0
-  '@stripe/react-stripe-js': ^1.16.4
+  '@stripe/react-stripe-js': ^2.0.0
   '@stripe/stripe-js': ^1.46.0
   '@types/body-parser': ^1.19.2
   '@types/eslint': ^8.21.0
@@ -80,7 +80,7 @@ dependencies:
   '@radix-ui/react-separator': 1.0.1_biqbaboplfbrettd7655fr4n2y
   '@sendgrid/mail': 7.7.0
   '@splitbee/web': 0.3.0
-  '@stripe/react-stripe-js': 1.16.4_keartrz7uyerl3wkpjpue4xbhy
+  '@stripe/react-stripe-js': 2.0.0_keartrz7uyerl3wkpjpue4xbhy
   '@stripe/stripe-js': 1.46.0
   body-parser: 1.20.1
   form-data: 4.0.0
@@ -765,8 +765,8 @@ packages:
     resolution: {integrity: sha512-jNPDKg0GQGa4jCaBc6JQsv0NHmBA80WCwZE49nFyhcbo32WF0GyqXeice7ZApy7OUHI16bAUAzm4MOQw3gvxfQ==}
     dev: false
 
-  /@stripe/react-stripe-js/1.16.4_keartrz7uyerl3wkpjpue4xbhy:
-    resolution: {integrity: sha512-x+Zstd3mHctNbSATOdbA2rOVXqGhbLU1ziNgcWqYCaFXj2dPKzjkBiUJfDhoARJVXVGOts0oZ8teTkOFY/ZRzQ==}
+  /@stripe/react-stripe-js/2.0.0_keartrz7uyerl3wkpjpue4xbhy:
+    resolution: {integrity: sha512-JEzZlVdJaU9g3sZIcgCUXfHqvmDGF2pBqDVWxTJLAhSBNARp5kyFEoTFQzeCdPwrq3D4ZMJVgc6i6mbUgiXsgQ==}
     peerDependencies:
       '@stripe/stripe-js': ^1.44.1
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
