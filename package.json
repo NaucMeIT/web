@@ -85,7 +85,7 @@
         "tsutils": "^3.21.0",
         "typescript": "^5.0.0"
     },
-    "packageManager": "pnpm@7.30.0",
+    "packageManager": "pnpm@7.30.5",
     "engineStrict": true,
     "engines": {
         "node": ">=19.6.0 || 18.x",
