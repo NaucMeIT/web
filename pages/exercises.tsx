@@ -57,7 +57,11 @@ const exercises = [
         { label: "Čtverce", value: "4_function/squares" },
         { label: "Dva čtverce", value: "4_function/two_squares" },
     ],
-    ["Podmínky v cyklu", { label: "Kytka", value: "5_conditions_in_cycle/flower" }, { label: "Kolo", value: "5_conditions_in_cycle/wheel" }],
+    [
+        "Podmínky v cyklu",
+        { label: "Kytka", value: "5_conditions_in_cycle/flower" },
+        { label: "Kolo", value: "5_conditions_in_cycle/wheel" },
+    ],
     [
         "Proměnná v cyklu",
         { label: "Rostoucí čtverec", value: "6_variable/growing_square" },
@@ -106,7 +110,7 @@ const Exercises: React.FC<ExercisesProps> = ({ headings }) => {
                     />
                     <embed
                         className='aspect-video w-11/12 mx-auto mt-2'
-                        src={`https://stackblitz.com/edit/web-platform-xzniwb?embed=1&file=${path}_task.js&hideDevTools=1&hideExplorer=1&theme=dark&initialpath=index.html%23${hashPath}`}
+                        src={`https://stackblitz.com/github/nauc-me-it/js-turtle-exercises?terminalHeight=0&embed=1&file=${path}_task.js&hideDevTools=1&hideExplorer=1&theme=dark&initialpath=index.html%23${hashPath}`}
                     />
                 </main>
             </div>
