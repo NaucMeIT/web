@@ -7,28 +7,28 @@ type Package = {
 export const packages: readonly Package[] = [
     {
         title: "Basic",
-        benefits: ["Základní kurz testera", "Přístup na Discord"],
+        benefits: ["Všechny kurzy", "Přístup na Discord"],
         price: 0,
     },
     {
         title: "Core",
-        benefits: ["Základní kurz testera", "Přístup na Discord", "5 konzultací"],
-        price: 1249,
+        benefits: ["Všechny kurzy", "Přístup na Discord", "5 konzultací"],
+        price: 1749,
     },
     {
         title: "Standard",
-        benefits: ["Základní kurz testera", "Přístup na Discord", "10 konzultací", "Privátní skupina na Discordu"],
-        price: 2299,
+        benefits: ["Všechny kurzy", "Přístup na Discord", "10 konzultací", "Privátní skupina na Discordu"],
+        price: 3199,
     },
     {
         title: "Ultimate",
         benefits: [
-            "Základní kurz testera",
+            "Všechny kurzy",
             "Přístup na Discord",
             "15 konzultací",
             "Privátní skupina na Discordu",
             "Prioritní schůzky",
         ],
-        price: 3999,
+        price: 5499,
     },
 ]
