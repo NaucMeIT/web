@@ -12,13 +12,13 @@ async function main() {
             {
                 name: "Core",
                 credits: 5,
-                price: 1249,
+                price: 1749,
                 benefits: ["Všechny kurzy", "Přístup na Discord", "5 konzultací"],
             },
             {
                 name: "Standard",
                 credits: 10,
-                price: 2299,
+                price: 3199,
                 benefits: [
                     "Všechny kurzy",
                     "Přístup na Discord",
@@ -29,7 +29,7 @@ async function main() {
             {
                 name: "Ultimate",
                 credits: 15,
-                price: 3999,
+                price: 5499,
                 benefits: [
                     "Všechny kurzy",
                     "Přístup na Discord",

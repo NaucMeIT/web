@@ -13,12 +13,12 @@ export const packages: readonly Package[] = [
     {
         title: "Core",
         benefits: ["Všechny kurzy", "Přístup na Discord", "5 konzultací"],
-        price: 1249,
+        price: 1749,
     },
     {
         title: "Standard",
         benefits: ["Všechny kurzy", "Přístup na Discord", "10 konzultací", "Privátní skupina na Discordu"],
-        price: 2299,
+        price: 3199,
     },
     {
         title: "Ultimate",
@@ -29,6 +29,6 @@ export const packages: readonly Package[] = [
             "Privátní skupina na Discordu",
             "Prioritní schůzky",
         ],
-        price: 3999,
+        price: 5499,
     },
 ]
