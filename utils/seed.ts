@@ -7,20 +7,20 @@ async function main() {
                 name: "Basic",
                 credits: 0,
                 price: 0,
-                benefits: ["Základní kurz testera", "Přístup na Discord"],
+                benefits: ["Všechny kurzy", "Přístup na Discord"],
             },
             {
                 name: "Core",
                 credits: 5,
                 price: 1249,
-                benefits: ["Základní kurz testera", "Přístup na Discord", "5 konzultací"],
+                benefits: ["Všechny kurzy", "Přístup na Discord", "5 konzultací"],
             },
             {
                 name: "Standard",
                 credits: 10,
                 price: 2299,
                 benefits: [
-                    "Základní kurz testera",
+                    "Všechny kurzy",
                     "Přístup na Discord",
                     "10 konzultací",
                     "Privátní skupina na Discordu",
@@ -31,7 +31,7 @@ async function main() {
                 credits: 15,
                 price: 3999,
                 benefits: [
-                    "Základní kurz testera",
+                    "Všechny kurzy",
                     "Přístup na Discord",
                     "15 konzultací",
                     "Privátní skupina na Discordu",
