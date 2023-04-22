@@ -38,6 +38,11 @@ export default withMDX(
                     source: "/_hive/:slug",
                     destination: "https://hive.splitbee.io/:slug",
                 },
+                {
+                    source: "/discord",
+                    destination: "https://discord.gg/QbYswwYUPU",
+                    permanent: true,
+                },
             ]
         },
     }),
