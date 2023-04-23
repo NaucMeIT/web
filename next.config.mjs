@@ -38,6 +38,10 @@ export default withMDX(
                     source: "/_hive/:slug",
                     destination: "https://hive.splitbee.io/:slug",
                 },
+            ]
+        },
+        async redirects() {
+            return [
                 {
                     source: "/discord",
                     destination: "https://discord.gg/QbYswwYUPU",
