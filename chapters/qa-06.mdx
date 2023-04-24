@@ -11,27 +11,26 @@ Více o tom, jak funguje internet a i něco o jeho historii se můžeš dozv
 
 ## HTTP a HTTPS
 
-Zaměříme se na protokoly sedmé aplikační vrstvy. Protokoly, se kterými pracuje prohlížeč. [Protokolů](https://akela.mendelu.cz/~jprich/vyuka/os/unix/telnet.html) je celá řada. Při práci na webu se nejčastěji setkáš s protokoly [HTTPS](https://www.wikiwand.com/cs/HTTPS) a [HTTP](https://www.wikiwand.com/cs/Hypertext_Transfer_Protocol). Více o HTTP nalezneš na [Jakpsatweb.cz](https://www.jakpsatweb.cz/server/http-protokol.html), což je sice starší stránka, avšak stále obsahuje spoustu hodnotných informací. Protokoly HTTP a HTTPS jsou téměř stejné, nicméně HTTPS je zabezpečené. To znamená, že případný útočník si nemůže zobrazit obsah, který se posílá. Dříve byl tento protokol využívaný při výměně citlivých dat. Jistě bys nechtěl, aby se heslo do tvého internetového bankovnictví posílalo bez jakéhokoliv zabezpečení. Nyní se stále více tlačí na to, aby se se používal všude a některé vyhledávače (např. Google) penalizují stránky, které toto zabezpečení nepoužívají. Že je stránka zabezpečená, poznáš díky zámečku vedle URL adresy webu, na kterém se nacházíš. Nebo podle https: na začátku URL.
+Zaměříme se na protokoly sedmé aplikační vrstvy. Protokoly, se kterými pracuje prohlížeč. [Protokolů](https://akela.mendelu.cz/~jprich/vyuka/os/unix/telnet.html) je celá řada. Při práci na webu se nejčastěji setkáš s protokoly [HTTPS](https://www.wikiwand.com/cs/HTTPS) a [HTTP](https://www.wikiwand.com/cs/Hypertext_Transfer_Protocol). Více o HTTP nalezneš na [Jakpsatweb.cz](https://www.jakpsatweb.cz/server/http-protokol.html), což je sice starší stránka, avšak stále obsahuje spoustu hodnotných informací. Protokoly HTTP a HTTPS jsou téměř stejné, nicméně HTTPS je zabezpečené. To znamená, že případný útočník si nemůže zobrazit obsah, který se posílá. Dříve byl tento protokol využívaný při výměně citlivých dat. Jistě bys nechtěl, aby se heslo do tvého internetového bankovnictví posílalo bez jakéhokoliv zabezpečení. Nyní se stále více tlačí na to, aby se používal všude. Některé vyhledávače (např. Google) penalizují stránky, které toto zabezpečení nepoužívají. Že je stránka zabezpečená, poznáš díky zámečku vedle URL adresy webu, na kterém se nacházíš. Nebo podle https: na začátku URL.
 
 ### Metody
 
 Protokoly http a https obsahují několik metod (typ požadavku), které mají různý účel.
 
 -   GET - získání dat - klikl jsi na tlačítko, které tě odkáže na novou stránku
--   POST - vytvoření - vytvořil sis nový profil a odeslal formulář
--   PUT - přepíše celý zdroj - nahradí existující data poslanými - přepsal jsi adresu ve svém profilu a celý jej uložil
+-   POST - vytvoření - vytvořil sis nový profil odesláním formuláře
+-   PUT - upraví celý zdroj přepsaním- nahradí existující data poslanými - přepsal jsi adresu ve svém profilu a celý jej uložil
 -   DELETE - smazání - rozhodl ses smazat svůj účet
 -   PATCH - částečně upraví zdroj - sloučí data uložená na serveru s poslanými (např. jen změněnou adresou)
 
 PUT a PATCH mohou být matoucí. PUT posílá změněný zdroj, PATCH posílá instrukce, jak jej změnit. Více se o požadavcích můžeš dozvědět na [IT Networku](https://www.itnetwork.cz/programovani/nezarazene/stoparuv-pruvodce-rest-api/#_druha-uroven-http-verbs) - článek je zaměřený na [REST API](https://zdrojak.cz/clanky/rest-architektura-pro-webove-api/), což je jeden ze způsobů výměny dat mezi počítačem a serverem. Podstatné jsou metody, které specifikují typ změny dat. Přečti si pasáž o stavových kódech - těm se věnujeme v dalším odstavci.
 
-API si můžeš představit jako jídelnu. Jsi uživatel jídelny - strávník. Na jídelnu (server) můžeš mít různé požadavky:
+API specifikuje způsob komunikace - jak získávat data/jak spustit nějakou akci/atd. Je to obecný termín netýká se jen webů. Zkusíme to převést na příklad z reálného života. Představ si školní jídelnu. Jídelna má nastavená určitá pravidla pro komunikaci. Jsi uživatel jídelny - strávník. Na jídelnu (server) můžeš mít různé požadavky:
 
--   GET - bereš si jídlo na daný den z výdejního okna
--   POST - registruješ se k odběru obědů
--   PUT - zapisuješ si obědy na následující týden
--   PATCH - měníš jídlo, které sis už objednal na následující týden
--   DELETE - končíš na škole a odhlašuješ se z obědů
+-   GET - přijdeš k okýnku, nějakým způsobem (třeba čipem) oznámíš personálu, co máš objednané za jídlo. Personál ti jídlo nabere a vydá
+-   POST - jsi nový strávník musíš pro registraci vyplit formulář a zanést ho do kanceláře. Vytvoří ti účet
+-   PUT/PATCH - zapisuješ si obědy na následující týden. Záleží na implementaci
+-   DELETE - končíš na škole a odhlašuješ se z obědů, rušíš svůj profil
 
 Občas nastane chyba - pokusíš se změnit oběd na příští týden příliš pozdě => dostaneš odpověď, že změny již nelze provádět. Nebo chceš oběd, na který nemáš nárok.
 
