@@ -56,7 +56,7 @@
         "remark-prism": "^1.3.6",
         "sharp": "^0.32.0",
         "shiki": "^0.14.1",
-        "stripe": "^11.16.0"
+        "stripe": "^12.0.0"
     },
     "devDependencies": {
         "@types/body-parser": "^1.19.2",
@@ -87,7 +87,7 @@
         "tsutils": "^3.21.0",
         "typescript": "^5.0.2"
     },
-    "packageManager": "pnpm@8.2.0",
+    "packageManager": "pnpm@8.3.1",
     "engineStrict": true,
     "engines": {
         "node": ">=19.9.0 || 18.x",
@@ -96,6 +96,6 @@
     },
     "volta": {
         "node": "19.9.0",
-        "pnpm": "8.2.0"
+        "pnpm": "8.3.1"
     }
 }

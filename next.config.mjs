@@ -40,5 +40,14 @@ export default withMDX(
                 },
             ]
         },
+        async redirects() {
+            return [
+                {
+                    source: "/discord",
+                    destination: "https://discord.gg/QbYswwYUPU",
+                    permanent: true,
+                },
+            ]
+        },
     }),
 )

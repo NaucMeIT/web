@@ -6,7 +6,7 @@
 ![Contributors](https://img.shields.io/github/contributors/pegak/nauc-me-it)
 ![Checkly](https://api.checklyhq.com/v1/badges/checks/7c4c3bea-150f-42e0-935c-ade0dabca006?style=flat&theme=default&responseTime=true)
 
-[![Discord](https://img.shields.io/discord/996169548845830394?color=7389D8&label&logo=discord&logoColor=ffffff&style=for-the-badge)](https://discord.gg/QbYswwYUPU)
+[![Discord](https://img.shields.io/discord/996169548845830394?color=7389D8&label&logo=discord&logoColor=ffffff&style=for-the-badge)](https://naucme.it/discord)
 [![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/NaucMeIT)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/company/nauc-me-it/)
 
