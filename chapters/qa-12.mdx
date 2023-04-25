@@ -1,0 +1,118 @@
+---
+title: Základy API
+abstract: Co je API? Rozhraní pro komunikaci. V této kapitole si uděláš představu jak funguje a jaký způsob komunikace probíhá na interneru.
+---
+
+import { Spoiler } from "../components/Spoiler"
+
+S API (Application Programming Interface) se setkáváš často a ani o tom nevíš. Stačí jen brouzdat po internetu a určitě s nějakým API tvůj prohlížeč komunikuje - získává pro tebe informace. API je rozhraní (interface) pro komunikaci a interakci mezi aplikacemi/systémy/komponentami. Poskytuje sadu pravidel, protokolů a funkcí například pro to, jak žádat o vykonání akce nebo jak požádat o data. V podstatě je to dohoda o tom, jak si budou dvě služby povídat. API je obecný termín, proto jsou v textu výše uvedeny například i komponenty. Ale v kapitole se budeme se zabývat webovými rozhraními.
+
+Určitě máš chytrý telefon, který ti ukazuje, kolik je venku stupňů. Jak tato data získává? Pomocí API. Více o tom jak se můžeš dozvědět článku na webu [Co je API?](https://cojeapi.cz/01-uvod-do-api.html), kde Honza Javorek uvádí několik hezkých příkladů.
+
+## Klient - server
+
+Slyšel jsi někdy pojmy klient a server? V kontextu webového prostředí je API dohoda komunikace mezi klientem (tebou/robotem - posíláš dotazy) a serverem (ČHMÚ nebo ČNB - posílá odpovědi). Ale ty přece nejsi robot! Jak můžeš posílat svoje dotazy? Používáš k tomu svůj prohlížeč - obecný klient - který zvládne interpretovat různá API. Nebo aplikace, které komunikují s určitým serverem. Obecným klientem nemusí být jen tvůj prohlížeč, ale existují i další aplikace, které zvládnou pracovat jako obecný klient. Přečti si článek [Klient a server](https://cojeapi.cz/02-klient-server.html), u kterého se na chvíli zastavíme. V článku je zmíněný curl - nástroj pro příkazový řádek na komunikaci přes síť. Honza používá curl pro otestování URL `https://www.cnb.cz/cs/financni-trhy/devizovy-trh/kurzy-devizoveho-trhu/kurzy-devizoveho-trhu/denni_kurz.txt`, což je API Endpoint (místo, kterého se dotazujeme - místo, které nám API vystavuje a když mu pošleme, požadavek ví, co s ním dělat). Spusť si příkazový řádek a zkus si dotazování pomocí curl. V článku je zmíněno více programů a aplikací pro práci s API. Pro teď si zapamatuj Postman, kterému se budeme věnovat v dalším článku.
+
+## Request
+
+Už máš představu, co je API. Takže se dostáváš do fáze, kdy je potřeba ho zasadit do webového kontextu. API se musí dohodnout, jak si budou povídat. K tomu slouží protokoly. Nejdůležitějším pro nás je protokol HTTP či jeho šifrovaná verze HTTPS. Je ti to povědomé? Podívej se na URL adresu nahoře v prohlížeči. Více o HTTP se dozvíš v našem článku o [Síti](https://naucme.it/chapter/qa-06#sit) a v článku [Základní pojmy](https://cojeapi.cz/03-zakladni-pojmy.html) od Honzy Javorka. Oba články si přečti, budeme s nimi dále pracovat.
+
+V kapitole [o síti](https://naucme.it/chapter/qa-06#sit) jsou zmíněny [DevTools](https://naucme.it/chapter/qa-02#vyvojarske-nastroje). Můžeš jimi získat stejné informace jako v příkazovém řádku pomocí curl. V článku [Základní pojmy](https://cojeapi.cz/03-zakladni-pojmy.html) je cvičení na zjištění hodnoty Content-Type v hlavičce (header). Ukážeme si jak stejnou informaci zjistit v DevTools.
+
+1. Otevři si nové okno prohlížeče (nejlépe založeného na Chromiu - Chrome, Edge, Opera - v podstatě cokoliv kromě Safari a Firefoxu)
+2. Otevři si DevTools v Network tabu (pokud tam něco je, tak ho vyprázdni tlačítkem s přeškrtnutým kolečkem)
+3. Do adresního řádku napiš adresu `http://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/denni_kurz.txt`
+
+![Request na Kurzovní lístek ČNB v DevTools](/images/chapter/qa-12-1.png "Request na Kurzovní lístek ČNB v DevTools")
+
+V okně prohlížeče se ti zobrazil kurzovní lístek. Dole v DevTools jde vidět request (požadavek). Můžeš si všimnou, že vpravo nahoře je značka Incognito. To znamená, že obrázek je pořízený v incognito módu (často se používá termín porno mód). Je to z důvodu, že v běžně používaném prohlížeči může mít člověk nainstalovaná různá rozšíření a ta můžou ovlivňovat výsledek - přidávat další requesty, které můžou mást. Proto se ti může stát, že kromě jednoho requestu můžeš vidět i další. V takovém případě to zkus znovu v incognito módu (v Chromu ctrl+shift+n), který má defaultní nastavení a není ovlivněný rozšířeními.
+
+O requestu denni_kurz.txt můžeš na první pohled zjistit [několik informací](https://naucme.it/chapter/qa-06#sit). Sloupečků v záložce Network můžeš mít více nebo méně než je na obrázku. Jde to nastavit, podle tvých potřeb. Všimni si hlavně sloupců:
+
+1. status - kód 200 - request byl uspěšně vyřízený.
+2. type - dokument - typ requestu je dokument (to nám stále ale neprozrazuje Content-Type, ale dává nám to jistou nápovědu)
+
+### Headers
+
+Když klikneš ve sloupci name na request denni_kurz.txt dozvíš se o požadavku více. Momentálně nás zajímá záložka Headers. V headers se nachází parametry pro komunikaci. V DevTools můžeš vidět tři hlavičky:
+
+-   General - obecné informace
+-   Request - parametry odeslaného požadavku
+-   Response - paramatry přijaté odpovědi
+
+Parametrů v hlavičkách je mnoho. Na některé se můžeš podívat v článku [HTTP Headers Explained](https://dev.to/spukas/http-headers-explained-4kg1). Některé rozebereme níže. Ale kdybys někdy potřeboval vědět více o konkrétních hlavičkách - vyhledej si je na [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language).
+
+![Headers requestu na Kurzovní lístek ČNB](/images/chapter/qa-12-2.png "Headers requestu na Kurzovní lístek ČNB")
+
+### General
+
+V General se můžeš dozvědět obecné informace o požadavku:
+
+-   RequestURL - adresa endpointu, kterého se dotazujeme
+-   [Request Method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) - Typ metody HTTP protokolu - GET | POST | PUT | PATCH | DELETE a další
+-   [Status Code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) - výsledek dotazu
+-   Remote Address - IP adresa dotazovaného serveru
+
+### Request Headers
+
+V Request Headers se můžeš dozvědět, jaké parametry má odeslaný požadavek. Podíváme se na na některé parametry:
+
+-   [Accept](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept) - jaký typ dat akceptuješ. V jakém formátu ti má přijít odpovědět. Pro vyjádření typu dat se používá formát [MIME](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types).
+-   [Accept-Encoding](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding) - specifikace algoritmu pro kompresi dat. Přes síť by bylo náročné posílat data v plné velikosti. Proto se komprimují. Komprese jsou založené na jiných algoritmech.
+-   [Accept-Language](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language) - jaký jazyk požaduješ. Představ si, že máš web více jazyčný. Proto je důležité specifikovat jaký jazyk chceš. Pro češtinu se používá označení **cs-CZ**.
+
+### Response Headers
+
+V Response Header se můžeš dozvědět jaké parametry má odpověď na tvůj požadavek. Nás nejvíc bude zajímat parameter [Content-Type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type). Ten říká: Přišla ti data v tomto formátu.
+
+### Cvičení
+
+V článku [Základní pojmy](https://cojeapi.cz/03-zakladni-pojmy.html#xml) se řeší, jaký je Content Type odpovědi na požadavek GET `http://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/denni_kurz.txt.` V článku se informace získávají pomocí curl. Otevři si DevTools a ověř si, že dostaneš stejnou odpověď jako pomocí curl: Content-Type: text/plain;charset=UTF-8.
+
+Pokračuj cvičením z článku a ověř jestli Content-Type všech čtyř adres je stejný?
+
+1. `https://www.gravatar.com/avatar/7b2e4bf7ecca28e530e1c421f0676c0b?s=120`
+2. `https://feeds.feedburner.com/respekt-clanky`
+3. `https://www.omdbapi.com/?t=westworld`
+4. `https://duckduckgo.com/`
+
+Mají všechny Status code 200? Pokud ne co, to znamená? Je typ dat uvedený v Content-Type součástí parametru Accept v Request header?
+
+<Spoiler textButton="Odhalit řešení">
+Řešení najdeš v DevTools v Network tabu, když klikneš na konkrétní požadavek. Následně hledej Status code v General, Content-Type v Response Headers a Accept v Request Headers.
+
+1.  Content-Type - image/jpeg
+
+    Status code - 200
+
+    Accept - Ano je to tam schované pod \*/\* - což znamená, že to bere všechny typy, ale preferuješ ty specifikované dříve.
+
+2.  Content-Type - text/xml; charset=utf-8
+
+    Status code - 200
+
+    Accept se opět ukrývá pod \*/\*
+
+3.  Content-Type - application/json; charset=utf-8
+
+    Status code - 401 Unauthorized - request nemá práva (špatné údaje pro autorizaci)
+
+    Accept se opět ukrývá pod \*/\*
+
+4.  Content-Type: text/html; charset=UTF-8
+
+        Status code: 200
+
+        Accept - text/html je uvedený ve výčtu
+
+</Spoiler>
+
+### Tip:
+
+V DevTools můžeš snadno kopírovat informace o requestu a jeho response. Stačí kliknout pravým tlačítkem myši na název requestu. Poté v Copy vybrat požadovaný formát. Všimni si, že u cURL máš vždy dvě možnosti - bash a cmd. Oba jsou mezi sebou nekompatibilní. Windosový příkazový řádek se liší od bashe. Dle verze tvého systému budeš mít v základu buď CMD nebo PowerShell. Pokud již máš PowerShell, použij “Copy as PowerShell”.
+
+![Ukázka kopírování adresy požadavku z DevTools](/images/chapter/qa-12-3.png "Ukázka kopírování adresy požadavku z DevTools")
+
+Pro tebe zajímavým formátem může být ještě fetch - což je rozhraní Javascriptu pro práci se sítí pro získávání zdrojů. Zkus si zkopírovat fetch a vložit ho do konzole. Nezapomeň, před fetch napsat await. Funkce fetch je totiž asynchronní. (Více o asynchronním programování se dozvíš v kurzu automatizovaného testera nebo JavaScript vývojáře). Jako odpověď dostaneš objekt Response, který můžeš proklikat.
+
+![Uázka pouzití funkce fetch v DevTools](/images/chapter/qa-12-4.png "ukázka pouzití funkce fetch v DevTools")
