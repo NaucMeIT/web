@@ -1,0 +1,29 @@
+import { MdxWrapper } from "../components/MdxWrapper"
+
+Želva je cvičení na seznámení se se základy programování. Když dáš želvě jasné příkazy dokáže nakreslit obrázky. Želva rozumí pouze příkazům:
+
+-   forward(step) - jdi dopředu určitý počet kroků (steps)
+-   right(angle) - zatoč doprava pod určitým úhlem (angle)
+-   left(angle) - zatoč doleva pod určitým úhlem (angle)
+-   penup() - zvedni tužku
+-   pendown() - polož tužku
+
+Jaké obrázky máš kreslit? A jak želvě dáš příkazy? Před tebou se nachází editor se zadáním úkolu. Můžeš do něj psát. Úkol se vyhodnotí jakmile přestaneš psát. Další cvičení si můžeš vybrat nahoře nad editorem v políčku pro výběr cvičení.
+
+Vpravo od editoru je místo, kde se želva vyřádí. Canvas (plátno) je rozděleno na tři části.
+
+-   Zelený rámeček označuje plátno, kde kreslí tvoje želva.
+-   Modrý rámeček označuje plátno s výsledkem, který máš nakreslit.
+-   Červený rámeček označuje plátno, kde najdeš červeně znázorněný rozdíl.
+
+Může se ti stát, že všechny nejsou vidět, stačí scrollnout doleva doprava v canvasu. Nebo kliknout na tlačítko Preview pod editorem. Zpět se dostaneš tlačítkem Editor nebo Both(obojí).
+
+Jakmile želva se dostane na okraj kreslící části, přeběhne na druhý okraj - jako by byly spojené. Jinak řečeno - nahoře bude želvě chybět 10 kroků, ale už se dostala na okraj, tak je nakreslí dolů.
+
+U cvičení se ti bude hodit tužka a papír. Protože želvě musíš dávat jasné příkazy, tak ji musíš říkat i jasné úhly. Nejčastější úhly cvičení jsou 45,90,135 a 360/n (počet stran v n-úhelníku - pro trojúhelník 360/3 atd.)
+
+![Uhly](/images/angles.png "Vizualizace úhlů v kruhu")
+
+U pokročilejších cvičení hledej pravidelnosti - například n-úhelníky (trojúhelníky, čtverce, šestiúhelníky, osmiúhelníky, dvanáctiúhelníky). Kdyby ses na nějakém cvičení zasekl napiš na Discord - rádi ti tam poradíme.
+
+export default ({ children }) => <MdxWrapper>{children}</MdxWrapper>

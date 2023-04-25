@@ -8,6 +8,7 @@ import { SideMenu } from "../components/SideMenu"
 import { TreeToC } from "../components/TreeToC"
 import { Typography } from "../components/Typography"
 import { Select } from "../components/Select"
+import TurtleDesc from "../components/TurtleDesc.mdx"
 
 const exercises = [
     [
@@ -101,6 +102,7 @@ const Exercises: React.FC<ExercisesProps> = ({ headings }) => {
                     <Typography className='py-4' variant='h2' component='h1'>
                         Cvičení
                     </Typography>
+                    <TurtleDesc />
                     <Select
                         onChange={handlePath}
                         value={path}
