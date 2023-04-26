@@ -1,0 +1,47 @@
+---
+title: Typy API
+abstract: SOAP, REST, GraphQL. Magické pojmy z inzerátů. Přitom jde pouze o návrhy API.
+---
+
+Prozkoumali jsme hlavičky requestů. Zjistili jsme existuje hlavička Content-Type, ale co to znamená pro tělo odpovědi? Podíváme se na jednotlivé formáty.
+
+V předchozí kapitole jsme zmínili [MIME](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types), o kterém by se dalo říct, že je seznam formátů, které se dá posílat přes web. Obrázkové formáty (avif, jpg, png, gif, atd.) probírat nebudeme. Ty se liší ve vlastnostech, kompresi a dalších věcech. Probereme formáty ze cvičení z předchozí kapitoly:
+
+-   text/html - Odpovědí je html soubor, které říká co má být na stránce. Jaké scripty dostahovat či jaké css styly jsou potřeba atd. Mohl jsi ho získat po té, co jsme šel na adresu [https://duckduckgo.com](http://duckduckgo.com). V DevTools se podívej na Response u požadavku. Všimni si, že vlevo pod duckduckgo.com máš spoustu dalších requestů. Nerovnají se náhodou adresám z tagů link v html souboru?
+
+![Ukázka odpovědi na request](/images/chapter/qa-13-1.png "Ukázka odpovědi v html na request")
+
+-   text/plain - formát dat není specifikovaný nějako konvencí. Jedná se o čistý text. Mohl jsi ho získat po té, co jsi zadal adresu `http://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/denni_kurz.txt`. Podívej se do DevTools, že tabulka s kurzy je ve formátu txt a má tvar, který na první pohled není jednoduše oddělitelný, pokud nevíš, že druhý řádek je záhlaví tabulky.
+-   text/xml | application/xml - odkazují na [XML](https://www.interval.cz/clanky/co-je-xml/) (eXtensible Markup Language), což je značkovací jazyk, stejně jako HTML (ale pozor, HTML není založené na XML). HTML říká, co značky znamenají (`html<p>` je paragraf/odstavec, `html<img>` obrázek, atd.). XML dává jen pravidla, jak tvořit značky a jak je mají aplikace číst. V XML si můžeme vytvořit například vlastní značku `html<…></…>`. To se hodí pro zápis dat, nemusíš nikde sdílet legendu s vysvětlivkami. Značky se vysvětlí samy. Tento formát jsi mohl získat po navštívení adresy `https://feeds.feedburner.com/respekt-clanky`.
+-   application/json odkazuje na formát [JSON](https://zdrojak.cz/clanky/json-jednotny-format-pro-vymenu-dat/) (JavaScript Object Notation), který vychází z JavaScriptu. Ale není na něm nijak závislý. To znamená, že [JSON](https://jecas.cz/json) můžeme používat i v jiných jazycích po zápis dat. Navíc kvůli své jednoduchosti a jasným pravidlům získal na oblibě. Pro práci s daty v JSON můžeš použít nástroj [JSON Hero](https://jsonhero.io/), který ti je umožní lépe vizualizovat.
+
+Nejrozšířenějším formátem pro práci s daty je JSON. Starší aplikace například používají XML. Jak si mohl vidět, jde použít plain text. Otázka je, co je lepší pro poskytování. Podívej se na [ukázky dat zapsaných v JSON](https://json.org/example.html) a porovnej je se zápisem v XML. Co ti přijde lépe čitelné? Je také důležité si uvědomit, že zpracování ukecaného XML je náročnější než zpracování JSONu. Není tolik kvalitních nástrojů pro hezkou vizualizaci XML - je totiž na ústupu.
+
+## Typy návrhu API
+
+API určuje druh komunikace. Lze přes něj poslat cokoliv. Můžeš si navrhnout vlastní způsob, jak posílat data, nebo se inspirovat. Existuje mnoho návrhů. Některé se v komunitě neujaly. Příkladem je návrh Falcor od Netflixu. Jiné zase zazářily. Nejvíce se prosadily návrhy - SOAP, REST a GraphQL - o kterých se už mohl dozvědět v článku [Základní pojmy](https://cojeapi.cz/03-zakladni-pojmy.html) od Honzy Javorka.
+
+### SOAP
+
+SOAP (Simple Object Access Protocol) je starší model založený na posílání dat v XML a formátu SOAP zpráv. To znamená, že pár značek má jasný formát. Na strukturu SOAP zprávy se můžeš podívat na webu [IBM](https://www.ibm.com/docs/en/cics-ts/5.4?topic=format-structure-soap-message). SOAP byl populární v minulosti, ale postupem času ztratil na popularitě (vytlačil ho REST a GraphQL). Stále se s ním můžeš setkat ve starších systémech.
+
+### REST
+
+REST (Representational State Transfer) je návrh API. Soubor pravidel. Honza Javorek to v článku přirovnává ke stavění domů a architektonickým stylům - ty taky jasně neříkají jak má dům vypadat, ale jakých pravidel se má držet.
+
+O co v RESTu jde? REST je orientovaný na zdroje (data či stavy aplikace). Definuje základní operace CRUD pro práci s daty a používá pro ně standartní metody HTTP - GET | POST | PUT | PATCH | DELETE. Přečti si více o metodách přistupování ke zdrojům na [Zdrojáku](https://www.heurekadevs.cz/srdceryvny-pribeh-aneb-zaklady-rest-api-polopaticky?fbclid=IwAR2TqbAXvjJOzpCw-iHCY0R39oBeWOJaBUBhk-BnDRgHpzpcEdzb77qADn8). V článku je ukazovaná práce s API Twitteru. Práce s ním ti nepůjde, protože se v průběhu změnilo a nedávno bylo zpoplatněno.
+
+Pokud mám jen základní metody, jak zajistím, že se budou týkat konkrétních dat? Vytvořím soubor endpointů pro komunikaci. Tedy míst, kterých se budu dotazovat. Dané místo ví, jak request má zpracovat. Co vykonat pro to, aby mohlo odpovědět. Na ukázku, jak vytvářet endpointy se můžeš podívat na webu [&ltHeurekaDevs/&gt](https://www.heurekadevs.cz/srdceryvny-pribeh-aneb-zaklady-rest-api-polopaticky?fbclid=IwAR2TqbAXvjJOzpCw-iHCY0R39oBeWOJaBUBhk-BnDRgHpzpcEdzb77qADn8).
+
+REST nedefinuje formát odpovědi. Nejčastěji se používá v kombinaci s JSONem. Ale lze použít i XML. Což není tak časté. Podívej se na krátké shrnutí [Co je to REST API](https://www.youtube.com/watch?v=-MTSQjw5DrM). Po dvou minutách se video zaměří na vytváření API. Doporučujeme se na to podívat, i když kódu nebudeš rozumět.
+
+### GraphQL
+
+GraphQL je návrh API, který vyvinula společnost Facebook. Potřebovali flexibilnější strukturu. Pokud používáš REST API pro více aplikací (typicky mobilní a webová) vznikají dva zásadní problémy.
+
+-   Overfetching - získáváš i některá nepotřebná data - například celý obsah článku, když potřebuješ jen titulek a popisek.
+-   Underfetching - nezískáváš všechna potřebná data a musíš tak vykonat více dotazů na server než budeš mít vše důležité. Toto je velký problém - více zatěžuješ infrastrukturu, zpomaluješ aplikaci (často se děje, že uděláš dotaz, počkáš na odpověď, uděláš další dotaz a takto můžeš vykonat sérii několika zbytečných dotazů).
+
+GraphQL to řeší tím, že má jen jeden endpoint, se kterým se komunikuje. QL v názvu znamená query language - dotazovací jazyk. Takže API komunikuje jen s jedním místem pomocí dotazů, které jsou psané v JSONu.
+
+Více o GraphQL se můžeš dozvědět v článku [GraphQL – aktuální trend v oblasti integrací](https://www.tesena.com/novinky/graphql-aktualni-trend-v-oblasti-integraci?fbclid=IwAR0ROuqcX6OehUzgKMWWNrP7t8GSYQDoOzydS290XtEZBwgHcxYhRh1ETwc) na webu Tesena nebo v krátkém [videu](https://www.youtube.com/watch?v=eIQh02xuVw4). Pokud by ses chtěl lépe seznámit s dotazovacím jazykem podívej se do [dokumentace GraphQL](https://graphql.org/learn/), kde je dobrý tutoriál.
