@@ -49,7 +49,7 @@ const Dashboard: React.FC<DashboardProps> = ({ headings }) => {
                                 loading='lazy'
                             />
                         </ContentCard>
-                        <ContentCard title='Discord' phrase='Připojit se' href='https://discord.gg/QbYswwYUPU'>
+                        <ContentCard title='Discord' phrase='Připojit se' href='https://naucme.it/discord'>
                             <Image
                                 src='/images/discord.svg'
                                 width={205}

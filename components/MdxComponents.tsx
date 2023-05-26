@@ -1,6 +1,7 @@
 import { getSourceId } from "../utils/string"
 import { FacebookBtn, LinkedInBtn } from "./Button"
 import { EmailLink } from "./EmailLink"
+import { Spoiler } from "./Spoiler"
 import { Typography } from "./Typography"
 
 type MdxTypographyProps = Omit<React.ComponentProps<typeof Typography>, "className" | "variant" | "component">
@@ -74,6 +75,7 @@ export const components = {
     LinkedInBtn,
     FacebookBtn,
     EmailLink,
+    Spoiler,
     p: Text,
     em: Em,
     strong: Strong,
