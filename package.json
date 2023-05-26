@@ -19,6 +19,7 @@
         "supabase": "supabase"
     },
     "dependencies": {
+        "@builder.io/react": "^3.0.2",
         "@headlessui/react": "^1.7.13",
         "@heroicons/react": "^2.0.16",
         "@mdx-js/loader": "^2.3.0",
