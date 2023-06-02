@@ -40,6 +40,12 @@ Builder.registerComponent(withChildren(dynamic(() => import("../../components/Me
     image: "https://tabler-icons.io/static/tabler-icons/icons-png/3d-cube-sphere-off.png",
 })
 
+Builder.registerComponent(withChildren(dynamic(() => import("../../components/Landing").then((mod) => mod.Landing))), {
+    name: "Landing",
+    inputs: [{ name: "title", type: "string" }],
+    image: "",
+})
+
 // Replace with your Public API Key
 builder.init("ac51e69ef16e4f8fbc1a1df6a44edf61")
 
