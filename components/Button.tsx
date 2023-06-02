@@ -98,7 +98,7 @@ export function Button({ className, disabled, children, theme, size, ...rest }: 
 
 Button.defaultProps = {
     type: "button",
-}
+} as const
 
 export function SocialButton({ naked, label, className, disabled, children, ...rest }: Readonly<SocialButtonProps>) {
     const theme = naked ? "naked" : "off"
