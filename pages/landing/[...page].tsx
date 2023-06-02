@@ -6,6 +6,7 @@ import Head from "next/head"
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from "next"
 import dynamic from "next/dynamic"
 import { typographyClasses } from "../../components/Typography"
+import { icons } from "../../components/CatchPoints"
 
 Builder.registerComponent(withChildren(dynamic(() => import("../../components/Menu").then((mod) => mod.Menu))), {
     name: "Menu",
@@ -49,6 +50,15 @@ Builder.registerComponent(withChildren(dynamic(() => import("../../components/La
         { name: "text", type: "string" },
         { name: "buttonText", type: "string" },
         { name: "buttonProps", type: "object", subFields: [{ name: "href", type: "string" }] },
+        {
+            name: "catchPoints",
+            type: "list",
+            subFields: [
+                { name: "icon", type: "string", enum: ["Pay", "Time", "Worldwide", "LearnEarn"] },
+                { name: "children", type: "string" },
+            ],
+            required: true,
+        },
     ],
     image: "",
 })
