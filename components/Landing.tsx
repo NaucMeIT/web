@@ -12,12 +12,12 @@ type BasicProps = {
 
 type ConditionalProps =
     | {
-          readonly buttonText?: string
-          readonly buttonProps?: any // Partial<ButtonProps>
+          readonly buttonText: string
+          readonly buttonProps: any // Partial<ButtonProps>
           readonly children?: never
       }
     | {
-          readonly children?: React.ReactNode
+          readonly children: React.ReactNode
           readonly buttonText?: never
           readonly buttonProps?: never
       }
