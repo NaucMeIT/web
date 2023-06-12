@@ -122,6 +122,7 @@ Builder.registerComponent(withChildren(dynamic(() => import("../components/Butto
         { name: "theme", type: "string", enum: ["main", "off", "naked"] },
         { name: "size", type: "string", enum: ["huge", "large", "medium", "normal", "none"] },
         { name: "disabled", type: "boolean" },
+        { name: "href", type: "string" },
         { name: "children", type: "string" },
     ],
     image: "",
