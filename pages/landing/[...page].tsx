@@ -68,7 +68,6 @@ Builder.registerComponent(
     withChildren(dynamic(() => import("../../components/DownArrow").then((mod) => mod.DownArrow))),
     {
         name: "DownArrow",
-        inputs: [{ name: "className", type: "string" }],
         image: "",
     },
 )
