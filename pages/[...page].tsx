@@ -5,9 +5,9 @@ import DefaultErrorPage from "next/error"
 import Head from "next/head"
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from "next"
 import dynamic from "next/dynamic"
-import { typographyClasses } from "../../components/Typography"
+import { typographyClasses } from "../components/Typography"
 
-Builder.registerComponent(withChildren(dynamic(() => import("../../components/Menu").then((mod) => mod.Menu))), {
+Builder.registerComponent(withChildren(dynamic(() => import("../components/Menu").then((mod) => mod.Menu))), {
     name: "Menu",
     canHaveChildren: true,
     inputs: [
@@ -41,7 +41,7 @@ Builder.registerComponent(withChildren(dynamic(() => import("../../components/Me
     image: "https://tabler-icons.io/static/tabler-icons/icons-png/3d-cube-sphere-off.png",
 })
 
-Builder.registerComponent(withChildren(dynamic(() => import("../../components/Landing").then((mod) => mod.Landing))), {
+Builder.registerComponent(withChildren(dynamic(() => import("../components/Landing").then((mod) => mod.Landing))), {
     name: "Landing",
     canHaveChildren: true,
     inputs: [
@@ -64,15 +64,12 @@ Builder.registerComponent(withChildren(dynamic(() => import("../../components/La
     image: "",
 })
 
-Builder.registerComponent(
-    withChildren(dynamic(() => import("../../components/DownArrow").then((mod) => mod.DownArrow))),
-    {
-        name: "DownArrow",
-        image: "",
-    },
-)
+Builder.registerComponent(withChildren(dynamic(() => import("../components/DownArrow").then((mod) => mod.DownArrow))), {
+    name: "DownArrow",
+    image: "",
+})
 
-Builder.registerComponent(withChildren(dynamic(() => import("../../components/Footer").then((mod) => mod.Footer))), {
+Builder.registerComponent(withChildren(dynamic(() => import("../components/Footer").then((mod) => mod.Footer))), {
     name: "Footer",
     inputs: [
         {
@@ -95,31 +92,31 @@ Builder.registerComponent(withChildren(dynamic(() => import("../../components/Fo
     image: "",
 })
 
-Builder.registerComponent(withChildren(dynamic(() => import("../../components/icons/LearnEarn"))), {
+Builder.registerComponent(withChildren(dynamic(() => import("../components/icons/LearnEarn"))), {
     name: "Earn Money",
     inputs: [],
     image: "",
 })
 
-Builder.registerComponent(withChildren(dynamic(() => import("../../components/icons/PayConsultancy"))), {
+Builder.registerComponent(withChildren(dynamic(() => import("../components/icons/PayConsultancy"))), {
     name: "Pay",
     inputs: [],
     image: "",
 })
 
-Builder.registerComponent(withChildren(dynamic(() => import("../../components/icons/Time"))), {
+Builder.registerComponent(withChildren(dynamic(() => import("../components/icons/Time"))), {
     name: "Time",
     inputs: [],
     image: "",
 })
 
-Builder.registerComponent(withChildren(dynamic(() => import("../../components/icons/Worldwide"))), {
+Builder.registerComponent(withChildren(dynamic(() => import("../components/icons/Worldwide"))), {
     name: "Worldwide",
     inputs: [],
     image: "",
 })
 
-Builder.registerComponent(withChildren(dynamic(() => import("../../components/Button").then((mod) => mod.Button))), {
+Builder.registerComponent(withChildren(dynamic(() => import("../components/Button").then((mod) => mod.Button))), {
     name: "Button",
     inputs: [
         { name: "theme", type: "string", enum: ["main", "off", "naked"] },
@@ -131,7 +128,7 @@ Builder.registerComponent(withChildren(dynamic(() => import("../../components/Bu
 })
 
 Builder.registerComponent(
-    withChildren(dynamic(() => import("../../components/Typography").then((mod) => mod.Typography))),
+    withChildren(dynamic(() => import("../components/Typography").then((mod) => mod.Typography))),
     {
         name: "Typography",
         inputs: [
@@ -143,7 +140,7 @@ Builder.registerComponent(
     },
 )
 
-Builder.registerComponent(withChildren(dynamic(() => import("../../components/AboutUs").then((mod) => mod.AboutUs))), {
+Builder.registerComponent(withChildren(dynamic(() => import("../components/AboutUs").then((mod) => mod.AboutUs))), {
     name: "AboutUs",
     inputs: [
         {

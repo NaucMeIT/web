@@ -1,6 +1,5 @@
 import Image from "next/image"
 import type { NextPage } from "next"
-import { PaymentStatus } from "@prisma/client"
 import { handle, json } from "next-runtime"
 import { unstable_getServerSession } from "next-auth"
 import { FormEvent } from "react"
