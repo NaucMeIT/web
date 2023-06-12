@@ -19,12 +19,7 @@ async function main() {
                 name: "Standard",
                 credits: 10,
                 price: 3199,
-                benefits: [
-                    "Všechny kurzy",
-                    "Přístup na Discord",
-                    "10 konzultací",
-                    "Privátní skupina na Discordu",
-                ],
+                benefits: ["Všechny kurzy", "Přístup na Discord", "10 konzultací", "Privátní skupina na Discordu"],
             },
             {
                 name: "Ultimate",

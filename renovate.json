@@ -1,16 +1,10 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base"
-  ],
-  "reviewers": [
-    "pegak"
-  ],
-  "labels": [
-    "dependencies"
-  ],
-  "prHourlyLimit": 0,
-  "prConcurrentLimit": 0,
-  "assignAutomerge": true,
-  "fetchReleaseNotes": true
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": ["config:base"],
+    "reviewers": ["pegak"],
+    "labels": ["dependencies"],
+    "prHourlyLimit": 0,
+    "prConcurrentLimit": 0,
+    "assignAutomerge": true,
+    "fetchReleaseNotes": true
 }
