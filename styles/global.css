@@ -114,7 +114,8 @@ span[id]:not([id^="radix"]) {
 [data-rehype-pretty-code-fragment] > pre > code {
     counter-reset: line;
 }
-[data-rehype-pretty-code-fragment] > pre > code > .line::before {
+
+[data-rehype-pretty-code-fragment] > pre > code > [data-line]::before {
     counter-increment: line;
     content: counter(line);
 
