@@ -12,7 +12,7 @@
         "lint": "next lint",
         "prepare": "husky install",
         "postbuild": "next-sitemap --config next-sitemap.config.mjs",
-        "prettier": "prettier --write '**/*.{js,jsx,md,json,css,scss,ts,tsx}'",
+        "prettier": "prettier --write .",
         "preinstall": "npx only-allow pnpm",
         "postinstall": "prisma generate",
         "prisma": "prisma",
