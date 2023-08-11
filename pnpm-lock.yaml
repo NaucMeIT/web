@@ -55,10 +55,10 @@ dependencies:
     version: 0.3.0
   '@stripe/react-stripe-js':
     specifier: ^2.1.0
-    version: 2.1.0(@stripe/stripe-js@1.54.0)(react-dom@18.2.0)(react@18.2.0)
+    version: 2.1.0(@stripe/stripe-js@2.0.0)(react-dom@18.2.0)(react@18.2.0)
   '@stripe/stripe-js':
-    specifier: ^1.54.0
-    version: 1.54.0
+    specifier: ^2.0.0
+    version: 2.0.0
   '@types/mdx':
     specifier: ^2.0.5
     version: 2.0.5
@@ -1328,21 +1328,21 @@ packages:
     resolution: {integrity: sha512-jNPDKg0GQGa4jCaBc6JQsv0NHmBA80WCwZE49nFyhcbo32WF0GyqXeice7ZApy7OUHI16bAUAzm4MOQw3gvxfQ==}
     dev: false
 
-  /@stripe/react-stripe-js@2.1.0(@stripe/stripe-js@1.54.0)(react-dom@18.2.0)(react@18.2.0):
+  /@stripe/react-stripe-js@2.1.0(@stripe/stripe-js@2.0.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-Zb6Ycrj5QuhYkvtlvvLzo+cysUyA6wkx3zWHQ7uVnHRYRM/n1jtQD6VGBrdmptC8e8PJN6L091gBCyB5P0FqmA==}
     peerDependencies:
       '@stripe/stripe-js': ^1.44.1
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@stripe/stripe-js': 1.54.0
+      '@stripe/stripe-js': 2.0.0
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@stripe/stripe-js@1.54.0:
-    resolution: {integrity: sha512-nElTXkS+nMfDNMkWfLmyeqHQfMGJ1JjrjAVMibV61Oc/rYdUv0cKRYCi1l4ivZ5SySB3vQLcLolxbKBkbNznZA==}
+  /@stripe/stripe-js@2.0.0:
+    resolution: {integrity: sha512-SxZnf192En0uAfgbigUIj7oJYaXgGc5AI1aos59YXvO8DPeLI0AtT4oMg/Wuk17wbpquEv73+akyCe7xdEjGlA==}
     dev: false
 
   /@swc/helpers@0.5.1:
