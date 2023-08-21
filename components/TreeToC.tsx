@@ -45,15 +45,19 @@ export function TreeToC({ headings }: Props) {
                             }`}
                         >
                             <ItemText {...heading} active={heading.href.includes(activeRoute)} />
-                            <Accordion.Trigger className='group'>
-                                <ChevronDownIcon
-                                    className='group-data-open:rotate-180 transition-transform duration-500'
-                                    aria-hidden
-                                />
-                            </Accordion.Trigger>
+                            {!!heading.children.length && (
+                                <Accordion.Trigger className='group'>
+                                    <ChevronDownIcon
+                                        className='group-data-open:rotate-180 transition-transform duration-500'
+                                        aria-hidden
+                                    />
+                                </Accordion.Trigger>
+                            )}
                         </Accordion.Header>
                         <Accordion.Content className='data-open:animate-open data-close:animate-close will-change-auto overflow-hidden'>
-                            {heading.children?.map((sub) => <ItemText key={sub.href} {...sub} />)}
+                            {heading.children?.map((sub) => (
+                                <ItemText key={sub.href} {...sub} />
+                            ))}
                         </Accordion.Content>
                     </Accordion.Item>
                 )

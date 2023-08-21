@@ -1,8 +1,6 @@
-import path from "path"
 import Image from "next/image"
-import { GetStaticProps } from "next"
 import { Root } from "@radix-ui/react-separator"
-import { getFilesAt, HeadingsType, getMenuData, getHeadings } from "../utils/mdx"
+import { HeadingsType } from "../utils/mdx"
 import { Head } from "../components/Head"
 import { InAppMenu } from "../components/InAppMenu"
 import { SideMenu } from "../components/SideMenu"
@@ -13,12 +11,22 @@ import { Typography } from "../components/Typography"
 import { ActionSidebar } from "../components/ActionSidebar"
 import { useTrackedUser } from "../hooks/useTrackedUser"
 
-type DashboardProps = {
-    readonly headings: HeadingsType
-}
-
-const Dashboard: React.FC<DashboardProps> = ({ headings }) => {
+const Dashboard: React.FC = () => {
     const [user] = useTrackedUser()
+    const headings: HeadingsType = [
+        {
+            text: "Tester",
+            href: "/chapter/qa-00",
+            level: 1,
+            children: [],
+        },
+        /*         {
+            text: "Frontend",
+            href: "/chapter/fe-01",
+            level: 1,
+            children: [],
+        }, */
+    ]
 
     const isLoggedOut = !user || !user.name || !user.email
 
@@ -49,6 +57,15 @@ const Dashboard: React.FC<DashboardProps> = ({ headings }) => {
                                 loading='lazy'
                             />
                         </ContentCard>
+                        {/* <ContentCard title='Kurz frontend' phrase='Začít' href='/chapter/fe-01'>
+                            <Image
+                                src='/images/dev_illustration.svg'
+                                width={214}
+                                height={185}
+                                alt='Ilustrace ke kurzu frontend'
+                                loading='lazy'
+                            />
+                        </ContentCard> */}
                         <ContentCard title='Discord' phrase='Připojit se' href='https://naucme.it/discord'>
                             <Image
                                 src='/images/discord.svg'
@@ -123,19 +140,6 @@ const Dashboard: React.FC<DashboardProps> = ({ headings }) => {
             </div>
         </>
     )
-}
-
-export const getStaticProps: GetStaticProps<{}> = async () => {
-    const folderPath = path.join(process.cwd(), "chapters")
-    const paths = getFilesAt(folderPath, ".mdx")
-    const menuData = getMenuData(paths, folderPath)
-    const headings = getHeadings(menuData)
-
-    return {
-        props: {
-            headings,
-        },
-    }
 }
 
 export default Dashboard
