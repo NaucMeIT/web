@@ -103,6 +103,7 @@ export const getStaticProps: GetStaticProps<PostProps> = async (props) => {
     const paths = getFilesAt(folderPath, ".mdx")
     const menuData = getMenuData(paths, folderPath)
 
+    const currentCourse = (props?.params?.post as string)?.split("-")[0]
     const currentPost = menuData[props?.params?.post as string]
     const mdx = await serialize(currentPost.content, {
         mdxOptions: {
@@ -113,7 +114,8 @@ export const getStaticProps: GetStaticProps<PostProps> = async (props) => {
             ],
         },
     })
-    const headings = getHeadings(menuData)
+    // Show headings only for the active course
+    const headings = getHeadings(menuData).filter((heading) => heading.href.startsWith(`/chapter/${currentCourse}`))
 
     return {
         props: {
