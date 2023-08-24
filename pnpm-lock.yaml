@@ -123,8 +123,8 @@ dependencies:
     specifier: ^0.14.2
     version: 0.14.2
   stripe:
-    specifier: ^12.7.0
-    version: 12.7.0
+    specifier: ^13.0.0
+    version: 13.0.0
 
 devDependencies:
   '@types/body-parser':
@@ -6513,8 +6513,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /stripe@12.7.0:
-    resolution: {integrity: sha512-4yY9gNFznBI6fZtR0B4y2a+o2EJe+s7p4DiHECKphwa36zYIczpWzO1g4dF0PF3lhTRw5FWTaHGBjwaD5FEiDQ==}
+  /stripe@13.0.0:
+    resolution: {integrity: sha512-b840YPFBqeOO3Gd3FPXx0WoE9r4hb4CvMaJZhSYsgbmAETCsdomXcMvmSYWoHt3OrnFXmwW/Ix17DbZ+zTVGZw==}
     engines: {node: '>=12.*'}
     dependencies:
       '@types/node': 20.2.5
