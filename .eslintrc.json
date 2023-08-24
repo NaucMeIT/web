@@ -9,7 +9,7 @@
     "rules": {
         "functional/no-return-void": [0],
         "functional/no-mixed-types": ["warn", { "checkInterfaces": false }],
-        "functional/immutable-data": ["warn", { "ignorePattern": ["defaultProps", "displayName"] }]
+        "functional/immutable-data": ["warn", { "ignoreAccessorPattern": ["**.defaultProps", "**.displayName"] }]
     },
     "ignorePatterns": ["postcss.config.js"]
 }
