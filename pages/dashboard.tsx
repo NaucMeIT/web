@@ -20,12 +20,12 @@ const Dashboard: React.FC = () => {
             level: 1,
             children: [],
         },
-        /*         {
+        {
             text: "Frontend",
             href: "/chapter/fe-01",
             level: 1,
             children: [],
-        }, */
+        },
     ]
 
     const isLoggedOut = !user || !user.name || !user.email
@@ -57,7 +57,7 @@ const Dashboard: React.FC = () => {
                                 loading='lazy'
                             />
                         </ContentCard>
-                        {/* <ContentCard title='Kurz frontend' phrase='Začít' href='/chapter/fe-01'>
+                        <ContentCard title='Kurz frontend' phrase='Začít' href='/chapter/fe-01'>
                             <Image
                                 src='/images/dev_illustration.svg'
                                 width={214}
@@ -65,7 +65,7 @@ const Dashboard: React.FC = () => {
                                 alt='Ilustrace ke kurzu frontend'
                                 loading='lazy'
                             />
-                        </ContentCard> */}
+                        </ContentCard>
                         <ContentCard title='Discord' phrase='Připojit se' href='https://naucme.it/discord'>
                             <Image
                                 src='/images/discord.svg'

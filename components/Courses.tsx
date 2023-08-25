@@ -19,7 +19,14 @@ export function Courses() {
                 Práce testera je ověřování kvality produktu. Na&nbsp;nalezené chyby upozorňuje srozumitelnou formou.
                 Práce testera není příliš složitá. Vše potřebné se naučíš v našem kurzu.
             </CourseBox>
-            <CourseBox image='/images/dev_illustration.svg' width={320} height={348} side='left' title='Programátor'>
+            <CourseBox
+                image='/images/dev_illustration.svg'
+                width={320}
+                height={348}
+                side='left'
+                title='Programátor'
+                link='/chapter/fe-01'
+            >
                 <p className='mb-4'>
                     Aplikace se nevytvoří samy. Skrývá se za tím komplexní proces, jehož nedílnou částí je programování.
                 </p>
