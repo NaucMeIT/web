@@ -1,0 +1,55 @@
+---
+title: Skládáme stránku
+abstract: Jak správně rozložit stránku tak, aby to nebyla jedna velká nudle? S pomocí flexboxu, který se naučíme v této kapitole.
+---
+
+Tvé stránky už začínají vypadat docela hezky. Teď by to ještě chtělo klasickou strukturu, na jakou jsi zvyklý. Je libo menu nahoře? Nebo menu na boku? Je potřeba vytvořit tzv. layout stránky.
+
+Existuje mnoho způsobů, jak takový layout vytvořit. Spousta starších návodů nechává dva nejlepší až na úplný závěr, jak se píše v [první kapitole o flexboxu](https://www.theodinproject.com/lessons/foundations-introduction-to-flexbox) Projektu Odin. **Dva nejlepší způsoby tvorby layoutu jsou Flexbox a Grid.**
+
+Zde se poprvé budeme výrazně rozcházet my a Projekt Odin. Proč? V jejich návodu správně apelují na používání flexu místo starších metod. Nicméně je tu ještě [novější a lepší přístup](https://www.vzhurudolu.cz/prirucka/css-grid-proc) - ten doporučujeme.
+
+> Překvapilo mě, že skoro vždy bylo nakonec řešení pomocí gridu efektivnější, přehlednější. Vlastně celkově lepší.
+>
+> <cite className='pt-4 pl-4 block'>-- Martin Michálek</cite>
+
+Svět se neustále posouvá kupředu a nikdo normální už dnes nepodporuje Internet Explorer, kvůli kterému se vývoj zastavil na mnoho let a je také důvodem, proč mnoho vývojářů umí lépe flexbox než grid. Grid totiž v IE prakticky nefungoval, zatímco flexbox aspoň trochu ano. Nicméně [Internet Explorer je už mrtvý](https://www.vzhurudolu.cz/prirucka/msie).
+
+## Začínáme s flexboxem
+
+Ne každý projekt je moderní a spousta vývojářů umí hlavně flexbox. Proto je veliká šance, že se s flexboxem potkáš v práci. Pročti si [první kapitolu o flexboxu](https://www.theodinproject.com/lessons/foundations-introduction-to-flexbox). Vývojářské nástroje se neustále posouvají kupředu a nyní je možné flexbox nejen zobrazit v základní podobě, ale pracovat s ním [velice precizně](https://www.youtube.com/watch?v=J5n2aS37rpE). K videu se ještě vrátíme až budeš znát flexbox do hloubky. Rozhodně si ulož [CSS Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) do záložek - jde o jednu z nejlépe zpracovaných příruček o flexu.
+
+[👉 Kvíz ke kapitole](https://docs.google.com/forms/d/e/1FAIpQLSdmgFM3lcYajLqOcD9f8VDK09GaZbfi1S4IXT_7zJ3nAUvJ0g/viewform)
+
+## Zvětšování a zmenšování
+
+Hlavní výhoda flexu je snadná možnost tvorby layoutů, které se přizpůsobí a jsou responzivní. Co ale dělat, když chceme, aby nějaký prvek byl větší než jiný? Pevná výška/šířka všechno zkazí a budeme muset pokaždé definovat novou. Existuje však řešení, jež je přímo součástí flexu. Jde o vlastnosti `flex-grow`, `flex-shrink` a `flex-basis`, jak vysvětluje [druhá kapitola o flexboxu](https://www.theodinproject.com/lessons/foundations-growing-and-shrinking). Krásný příklad má také [Martin Michálek](https://www.vzhurudolu.cz/prirucka/css-flexbox#priklad-treti).
+
+[👉 Kvíz ke kapitole](https://docs.google.com/forms/d/e/1FAIpQLScywhWF2iqerj1f89rXW6BRMVsSp8oR5Rpahgc9yNixOYKn-Q/viewform)
+
+## Osy
+
+Na mobilu bychom rozhodně chtěli mít obsah ve sloupcích. Jednom, maximálně dvou. Ale na počítači by nebylo vhodné mít jednu dlouhou nudli - prostoru je tam přeci mnohem víc. Jak si s tím poradit? Odpovědí jsou osy, chceš-li orientace, které se probírají ve [třetí kapitole o flexboxu](https://www.theodinproject.com/lessons/foundations-axes).
+
+[👉 Kvíz ke kapitole](https://docs.google.com/forms/u/1/d/e/1FAIpQLSfmO8Oz8xEzKrYJxYrfrebrOjKt8MiSTQYREwrC6huMTMhSQA/viewform)
+
+## Zarovnání
+
+Jak poskládat různé prvky ve flexu? Nemusejí být všechny na začátku svého kontejneru a také nemusejí být těsně u sebe. Abys toto ovlivnil potřebuješ změnit zarovnání prvků, o čemž se mluví v [kapitole 4 o flexboxu](https://www.theodinproject.com/lessons/foundations-alignment). Některé z hodnot těchto vlastností vytvoří i prostor mezi prvky. Tak je to správně. Webové stránky musejí dýchat a mít prostor. Určitě víš, že k tomu lze použít `margin` nebo `padding`. Ale v případě flexu existuje mnohem lepší řešení. Vlastnost `gap`.
+
+[👉 Kvíz ke kapitole](https://docs.google.com/forms/d/e/1FAIpQLSeCH8BytMESPjVsEHbK87C8E2Svzxy7bmSmDCqdJ7l9onugtQ/viewform)
+
+## Projekt
+
+Nastal čas vyzkoušet veškeré nově nabyté znalosti. Pro tento projekt budeš opět potřebovat Git, pokud v něm stále tápeš, je tu naše [Kapitola 8](https://naucme.it/chapter/qa-08) a také první kapitola tohoto kurzu, kde se vše probírá v Projektu Odin, který již důvěrně znáš.
+
+Je extrémně důležité dodržet to, co se píše v [Project: Landing Page](https://www.theodinproject.com/lessons/foundations-landing-page) ⇒ když se zasekneš, nekoukej se na řešení ostatních. Místo toho zkus [metodu gumové kachničky](https://it-slovnik.cz/pojem/rubber-duck-debugging), zajdi si na procházku nebo se ptej. Kde se ptát? Na Google, případně ti pomůže i AI, ale jak již bylo zmíněno - měj se na pozoru, někde tě AI může úplně svést z cesty.
+
+Další neméně důležitá praktika je “commit early & commit often” - tedy ukládej si svou práci a to nejen ve svém editoru, ale i na Gitu. Vždy, když uděláš posun v nějaké části, přidej ji do Gitu a ideálně rovnou nahraj na GitHub. Nezapomeň při tom dodržet [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), které taktéž znáš. Pokud se budeš chtít svou stránkou pochlubit, na konci Project: Landing Page stránky je připomenutý návod.
+
+## Závěrem
+
+Projekt Odin se neustále rozšiřuje a dodatečné zdroje uvedené na konci kapitoly o zarovnání bys rozhodně neměl přeskočit, přestože jde o něco navíc. Chtěli bychom vypíchnout zejména tyto 2 zdroje:
+
+-   [Flexbox Froggy](https://flexboxfroggy.com/) - skvělá hra, ve které si procvičíš flex a to od nejjednodušších cvičení až po ta náročnější. Navíc je její [zdrojový kód otevřený](https://github.com/thomaspark/flexboxfroggy/), kdyby tě tedy zajímalo, jak se tvoří takové zábavné hry, můžeš se do něj podívat. Až za sebou budeš mít naše kapitoly o JavaScriptu, měl bys být schopen pochopit její kód.
+-   [An Interactive Guide to Flexbox](https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/) - Josh Comeau je autor skvělých kurzů, které jsou vysoce interaktivní. Při tvorbě jednoho z nich vytvořil tento návod, kde nejenže můžeš přehledně prozkoumat taje flexboxu, ale také si je hravou formou vyzkoušet. Absolutní povinnost.

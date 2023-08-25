@@ -139,3 +139,23 @@ ol.mdx ol.mdx {
 ul.mdx ul.mdx {
     list-style-type: square !important;
 }
+
+/* Fix MDX problems with blockquote and author */
+blockquote > p {
+    display: inline;
+}
+
+blockquote > p::before {
+    content: open-quote;
+}
+
+blockquote > p::after {
+    content: close-quote;
+}
+
+blockquote:has(cite)::before {
+    content: "";
+}
+blockquote:has(cite)::after {
+    content: "";
+}

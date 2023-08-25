@@ -1,0 +1,53 @@
+---
+title: Web získává tvář
+abstract: Co by to bylo za webovou stránku, kdyby nevypadala k světu. Vývojáři frontendu se starají i o vzhled webu, samozřejmě na základě designu od grafika. V této kapitole se podíváme právě na základy CSS.
+---
+
+Výborně, už máš svůj první web! Dokonce ho může každý vidět, aniž bys musel složitě pracovat se servery a přemýšlet, kam web umístit. V průběhu času zjistíš, že jsou různé přístupy:
+
+-   moderní a svěží, které ti ulehčí práci
+-   přístupy zastaralé, které ti jen budou komplikovat práci
+
+V pozdějších kapitolách se podíváme na další jednoduché přístupy - podobné jako bylo zobrazení tvých stránek pomocí Github Pages!
+
+Zatím tvoje stránky vypadají docela bídně, viď? Černo-bílé a nudné. Rozhodně nezaujmou svým vzhledem. Pojďme to změnit. Dalších několik kapitol Projektu Odin se [věnuje CSS](https://www.theodinproject.com/paths/foundations/courses/foundations#css-foundations).
+
+## Základy CSS
+
+Aby tvoje stránka získala svou tvář, je třeba použít CSS. K tomu je vhodné znát [základy](https://www.theodinproject.com/lessons/foundations-intro-to-css). Hned v první části se dočteš o různých selektorech. Všechny selektory hezky sesumarizoval Martin Michálek na webu [Vzhůru dolů](https://www.vzhurudolu.cz/prirucka/css-selektory). Nejčastěji se používá selektor “.” - tedy cílení na třídu. Naopak “#” dává smysl velice málo. Důvod je jednoduchý - ID (tedy #) by se mělo ve stránce vyskytovat pouze jednou. V tu chvíli nedává smysl stylovat jeden prvek tímto způsobem.
+
+CSS je zkratka pro **kaskádové** styly. Je důležité si tento pojem zapamatovat, abys nebyl později překvapen, že stránka nevypadá tak, jak ty chceš. Martin Michálek opět skvěle rozebral kaskádu na [svém blogu](https://www.vzhurudolu.cz/prirucka/css-kaskada). V některé z dalších kapitol se podíváme na lepší řešení, ve kterém se netřeba trápit se specificitou selektorů - což je hlavní příčina problémů s kaskádou.
+
+[👉 Kvíz ke kapitole](https://docs.google.com/forms/d/e/1FAIpQLSf3ZcfltCIfs07DH2U5QVFKRL7_CKkE5mA7y_FHompY8oZl3w/viewform)
+
+## Inspekce CSS
+
+V začátcích často natrefíš na to, že se CSS nechová dle tvých představ. Právě tehdy využiješ [vývojářské nástroje](https://www.theodinproject.com/lessons/foundations-inspecting-html-and-css)! Bez nich bys musel vždy v editoru změnit CSS, obnovit stránku a takhle pořád dokolečka, dokud by ti nepraskla hlava. Naštěstí díky vývojářským nástrojům můžeš provádět změny v prohlížeči, dokud nejsi spokojený s výsledkem a pak je pouze použít v kódu.
+
+Vývojářské nástroje obsahují spoustu vychytávek. Natočili jsme naše vlastní videa, kde rozebíráme [práci s HTML](https://www.youtube.com/watch?v=4iSC1Xzs-4M) i [práci s CSS](https://www.youtube.com/watch?v=rxJtZ9ZvqJg). Jako všechno i DevTools se neustále vyvíjejí, proto doporučujeme sledovat [kanál Chrome Devs](https://www.youtube.com/@ChromeDevs).
+
+[👉 Kvíz ke kapitole](https://docs.google.com/forms/d/e/1FAIpQLSdtmUOyc3-bq93slRFJ3UY3OuZrd9Or3mtFERJCn1m3U7fkMg/viewform)
+
+## Box model
+
+“Rychle rychle, musím se prokousat skrz HTML a CSS, abych se mohl vrhnout na JavaScript!” - takhle nějak by se dal popsat přístup spousty lidí, kteří se chtějí naučit dělat weby. JS je přeci ta zajímavá část - rozhýbe věci a oživí celý web. Ale to je právě ten kámen úrazu. Je důležité položit pevné základy.
+
+Součástí těchto pevných základů je právě CSS box model. Velice pěknou [ilustraci](https://twitter.com/anniebombanie_/status/1485600904720101380/photo/1) udělala Annie Bombanie.
+
+![Box model](/images/chapter/fe-2-1.png "Ilustrace CSS Box modelu od Annie Bombanie")
+
+Správné pochopení box modelu, je kritické. Proto věnuj zvýšenou pozornost [této kapitole](https://www.theodinproject.com/lessons/foundations-the-box-model) v Projektu Odin. [V češtině](https://www.vzhurudolu.cz/prirucka/css3-box-sizing) se o Box Modelu rozpovídal Martin Michálek.
+
+[👉 Kvíz ke kapitole](https://docs.google.com/forms/d/e/1FAIpQLSdGcQyj4SlarAD_Au6CeEdoBARMOx7o2IPIXldncOMVsXj6iQ/viewform)
+
+## Inline a block
+
+Projekt Odin odkazoval na [lekci na MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model) . Pokud ses do ní začetl pořádně, tak určitě už tušíš, odkud vítr vane. Různé HTML elementy mají různé výchozí vlastnosti. Například `html<a>` je inline, naproti tomu `html<h1>` je block. Tyto vlastnosti samozřejmě lze změnit. V praxi se to nepoužívá tak často, ale hodí se o této možnosti vědět, aby ses pak nedivil, proč ti nejde nastavit šířka u odkazu. Podívej se na další kapitolu [Projektu Odin](https://www.theodinproject.com/lessons/foundations-block-and-inline).
+
+Co když ale nechceš dát prvku význam, ale potřebuješ ho odlišit, abys na něj mohl aplikovat nějaké styly? Pak se používá `html<span>` pro inline prvky, např. součást nadpisu s jinou barvou. Pro block prvky se používá `html<div>`. Na mnoha webech ještě nyní nalezneš `html<div>` použitý na mnoha místech, kde již dává smysl používat prvky se [sémantickým významem](https://zdrojak.cz/clanky/webdesigneruv-pruvodce-po-html5-nova-semantika/#:~:text=Prvn%C3%ADch%20%C5%A1est%20nov%C3%BDch%20HTML5%20element%C5%AF). Jejich správné používání ulehčí orientaci lidem i prohlížečům!
+
+[👉 Kvíz ke kapitole](https://docs.google.com/forms/d/e/1FAIpQLSeqnBvfuQPZmYph5qqnFXDrUplJT9B4pROCrnM0u-_9_KHBjw/viewform)
+
+## Závěr
+
+CSS dělá ohromný problém i zkušeným vývojářům, kteří znají JavaScript horem spodem. Natolik, že mu Josh Comeau věnoval [samostatný článek](https://www.joshwcomeau.com/css/the-importance-of-learning-css/). V něm ukazuje jaké benefity má hlubší znalost CSS pro každého, kdo se chce věnovat frontendu. A to i pro ty, kteří se soustředí na frameworky jako React či Angular. Dům taky nestavíš bez základů, tak nebuď vývojář, který rovnou skočí do světa frameworků, aniž by pochopil, na čem stojí.
