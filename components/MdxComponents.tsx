@@ -26,6 +26,9 @@ const H2 = (props: MdxTypographyProps) => (
     />
 )
 const H3 = (props: MdxTypographyProps) => <Typography className='pt-4' variant='step' component='h3' {...props} />
+const Cite = (props: MdxTypographyProps) => (
+    <Typography className='my-4 ml-4 pl-4 border-l-2 border-primary border-solid' component='blockquote' {...props} />
+)
 const Text = (props: MdxTypographyProps) => <Typography className='pt-1' component='p' {...props} />
 const Strong = (props: MdxTypographyProps) => (
     <Typography className='pt-1 font-semibold' component='strong' {...props} />
@@ -87,4 +90,5 @@ export const components = {
     table: Table,
     td: Td,
     th: Th,
+    blockquote: Cite,
 }
