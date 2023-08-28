@@ -1,4 +1,4 @@
-import { packages as defaultPackages, packages } from "../utils/packages"
+import { packages as defaultPackages } from "../utils/packages"
 import { PackageBox } from "./PackageBox"
 import { Typography } from "./Typography"
 
