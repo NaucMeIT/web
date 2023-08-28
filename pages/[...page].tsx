@@ -141,6 +141,27 @@ Builder.registerComponent(
     },
 )
 
+Builder.registerComponent(withChildren(dynamic(() => import("../components/How").then((mod) => mod.How))), {
+    name: "How",
+    inputs: [
+        { name: "headline", type: "string", helperText: "Headline of the section" },
+        { name: "buttonText", type: "string", helperText: "What is shown in the CTA", required: true },
+        { name: "buttonProps", type: "object", subFields: [{ name: "href", type: "string" }], required: true },
+        {
+            name: "builderSteps",
+            type: "list",
+            subFields: [
+                {
+                    name: "text",
+                    type: "string",
+                    required: true,
+                },
+            ],
+        },
+    ],
+    image: "",
+})
+
 Builder.registerComponent(withChildren(dynamic(() => import("../components/AboutUs").then((mod) => mod.AboutUs))), {
     name: "AboutUs",
     inputs: [
