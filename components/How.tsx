@@ -4,11 +4,14 @@ import { Typography } from "./Typography"
 
 type HowProps = {
     readonly steps: readonly string[]
+    readonly builderSteps?: readonly { text: string }[]
     readonly buttonText: string
     readonly buttonProps?: any // Partial<ButtonProps>
 }
 
-export function How({ steps, buttonText, buttonProps }: HowProps) {
+export function How({ builderSteps, steps, buttonText, buttonProps }: HowProps) {
+    const mappedSteps = builderSteps?.length ? builderSteps?.map((step) => step.text) : steps
+
     return (
         <section className='flex flex-col'>
             <span id='how'>&nbsp;</span>
@@ -16,7 +19,7 @@ export function How({ steps, buttonText, buttonProps }: HowProps) {
                 Jak to funguje?
             </Typography>
             <div className='mx-auto flex max-w-6xl flex-row flex-wrap items-center justify-center gap-12'>
-                {steps.map((step, index) => (
+                {mappedSteps.map((step, index) => (
                     <Step key={`step-${index}`} order={index + 1}>
                         {step}
                     </Step>
