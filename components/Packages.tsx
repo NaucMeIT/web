@@ -58,10 +58,10 @@ export function BuilderPackages({ packages, headline, subHeadline }: BuilderPack
             <Typography variant='h2' component='h2' className='mb-8 text-center'>
                 {headline}
             </Typography>
-            <Typography className='mb-6 text-center' component='p'>
+            <Typography className='mb-6 text-center max-w-5xl' component='p'>
                 {subHeadline}
             </Typography>
-            <div className='grid md:grid-cols-2 md:grid-rows-1 xl:grid-cols-1 xl:grid-rows-1 justify-center gap-8'>
+            <div className='grid grid-cols-1 grid-rows-1 md:grid-cols-2 justify-center gap-8'>
                 {mappedPackages.map((p) => (
                     <PackageBox key={p.title} {...p} buttonProps={{ href: "#contact" }} priority={p.priority} />
                 ))}
