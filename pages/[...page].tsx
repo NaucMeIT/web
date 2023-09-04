@@ -162,6 +162,44 @@ Builder.registerComponent(withChildren(dynamic(() => import("../components/How")
     image: "",
 })
 
+Builder.registerComponent(
+    withChildren(dynamic(() => import("../components/Packages").then((mod) => mod.BuilderPackages))),
+    {
+        name: "Packages",
+        inputs: [
+            { name: "headline", type: "string", required: true },
+            { name: "subHeadline", type: "string", required: true },
+            {
+                name: "packages",
+                type: "list",
+                subFields: [
+                    {
+                        name: "title",
+                        type: "string",
+                        required: true,
+                    },
+                    {
+                        name: "price",
+                        type: "number",
+                        required: true,
+                    },
+                    {
+                        name: "priority",
+                        type: "boolean",
+                    },
+                    {
+                        name: "benefits",
+                        type: "list",
+                        required: true,
+                        subFields: [{ name: "text", type: "string" }],
+                    },
+                ],
+            },
+        ],
+        image: "",
+    },
+)
+
 Builder.registerComponent(withChildren(dynamic(() => import("../components/AboutUs").then((mod) => mod.AboutUs))), {
     name: "AboutUs",
     inputs: [
