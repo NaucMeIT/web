@@ -8,11 +8,13 @@ import {
     formatContactForm,
     formatErrorForm,
     ErrorFormData,
+    CourseFormData,
+    formatCourseForm,
 } from "../../utils/email"
 
 export const getServerSideProps: GetServerSideProps<
     Record<string, any>,
-    { readonly type: "index" | "company" | "error" }
+    { readonly type: "index" | "company" | "error" | "course" }
 > = (context) => {
     const type = context.params?.type
 
@@ -23,6 +25,8 @@ export const getServerSideProps: GetServerSideProps<
             return handleEmail<CompanyFormData>(formatCompanyForm, "B2B Nauč mě IT")(context)
         case "error":
             return handleEmail<ErrorFormData>(formatErrorForm, "Nahlášení chyby", "lydie.hemalova@naucme.it")(context)
+        case "course":
+            return handleEmail<CourseFormData>(formatCourseForm, "Přihláška ke kurzu", "lydie.hemalova@naucme.it")(context)
         default:
             return handle({})(context)
     }
