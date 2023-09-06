@@ -116,6 +116,12 @@ Builder.registerComponent(withChildren(dynamic(() => import("../components/icons
     image: "",
 })
 
+Builder.registerComponent(withChildren(dynamic(() => import("../components/CourseForm").then((mod) => mod.CourseForm))), {
+    name: "CourseForm",
+    inputs: [],
+    image: "",
+})
+
 Builder.registerComponent(withChildren(dynamic(() => import("../components/Button").then((mod) => mod.Button))), {
     name: "Button",
     inputs: [

@@ -29,6 +29,13 @@ export type ErrorFormData = {
     readonly chapter: string
     readonly recaptcha: string
 }
+export type CourseFormData = {
+    readonly name: string
+    readonly email: string
+    readonly package: "Bug Hunter" | "Epic Bug Hunter"
+    readonly message: string
+    readonly recaptcha: string
+}
 
 export function formatErrorForm(data: ErrorFormData) {
     return `
@@ -41,6 +48,16 @@ ${data.message}
 Jméno: ${data.name}
 Email: ${data.email}
     `
+}
+
+export function formatCourseForm(data: CourseFormData) {
+    return `
+Jméno: ${data.name}
+Email: ${data.email}
+Balíček: ${data.package}
+
+${data.message}
+`
 }
 
 export function formatContactForm(data: ContactFormData) {
