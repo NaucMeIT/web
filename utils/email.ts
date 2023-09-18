@@ -93,14 +93,19 @@ async function sendEmail(replyTo: string, text: string, subject: string, recaptc
         throw new Error("No recaptcha")
     }
 
-    const formData = new FormData()
-    formData.append("secret", process.env.RECAPTCHA_BACKEND || "")
-    formData.append("response", recaptcha)
+    const formJson = {
+        secret: process.env.RECAPTCHA_BACKEND,
+        response: recaptcha,
+    }
 
     const verify = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
         method: "POST",
-        body: formData as unknown as BodyInit,
+        body: JSON.stringify(formJson),
+        headers: {
+            "Content-Type": "application/json",
+        },
     }).then((res) => res.json())
+    console.log(verify)
     if (!verify.success) {
         // eslint-disable-next-line functional/no-throw-statements
         throw new Error("Recaptcha failed")
