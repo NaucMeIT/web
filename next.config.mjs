@@ -38,6 +38,10 @@ export default withMDX(
                     source: "/_hive/:slug",
                     destination: "https://hive.splitbee.io/:slug",
                 },
+                {
+                    source: "/fb/:path*",
+                    destination: "https://connect.facebook.net/:path*",
+                },
             ]
         },
         async redirects() {

@@ -19,6 +19,7 @@
         "supabase": "supabase"
     },
     "dependencies": {
+        "@builder.io/partytown": "^0.8.1",
         "@builder.io/react": "^3.0.2",
         "@headlessui/react": "^1.7.15",
         "@heroicons/react": "^2.0.18",
