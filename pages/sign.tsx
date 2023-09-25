@@ -13,6 +13,7 @@ import { Head } from "../components/Head"
 import { useTrackedUser } from "../hooks/useTrackedUser"
 import { authOptions } from "./api/auth/[...nextauth]"
 import { allowedStatus } from "../utils/stripe"
+import { useRouter } from "next/router"
 
 export const getServerSideProps = handle<{}, {}, {}>({
     async get(context) {
@@ -48,6 +49,8 @@ const Sign: NextPage = () => {
         const email = (e.currentTarget.elements as Record<string, any>).email?.value
         sign("email", email)
     }
+    const startPlan = useRouter().query.startPlan
+    const hasQueryParam = startPlan || (Array.isArray(startPlan) && startPlan?.length)
 
     return (
         <div className='flex flex-col justify-center h-[100vh]'>
@@ -56,6 +59,7 @@ const Sign: NextPage = () => {
                 url='https://naucme.it/'
             >
                 <title>Nauč mě IT - Přihlášení</title>
+                {hasQueryParam && <link rel='canonical' href='/sign' />}
             </Head>
             <form className='w-3/4 lg:w-1/2 mx-auto flex flex-col gap-4 group' onSubmit={signInWithEmail}>
                 <DecoratedInput name='email' type='email' label='Váš email' placeholder='Zadejte svůj email' required />
