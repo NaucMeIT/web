@@ -1,6 +1,8 @@
 // eslint-disable-next-line @next/next/no-document-import-in-page
 import { Html, Head, Main, NextScript } from "next/document"
 import Script from "next/script"
+import { Partytown } from "@builder.io/partytown/react"
+import { Tracking } from "../components/Tracking"
 
 const APP_MAIN_COLOR = "#090c28"
 const APP_NAME = "Nauč mě IT"
@@ -49,6 +51,18 @@ export default function Document() {
                 <meta property='og:type' content='website' />
                 <meta property='og:title' key='og:title' content={APP_NAME} />
                 <meta property='og:site_name' content={APP_NAME} />
+
+                <Partytown
+                    resolveUrl={function (url: Readonly<URL>) {
+                        if (url.hostname === "connect.facebook.net") {
+                            var proxyUrl = new URL(`${process.env.NEXT_PUBLIC_SITE_URL}/fb${url.pathname}`)
+                            return proxyUrl
+                        }
+                        return url
+                    }}
+                    debug={true}
+                    forward={["gtag", "dataLayer.push", "fbq"]}
+                />
             </Head>
             <body className='h-full font-poppins accent-primary caret-primary'>
                 <Main />
@@ -59,6 +73,7 @@ export default function Document() {
                     dangerouslySetInnerHTML={{ __html: registerScript }}
                     strategy='lazyOnload'
                 />
+                <Tracking />
             </body>
         </Html>
     )
