@@ -7,7 +7,7 @@
     },
     "scripts": {
         "dev": "next dev",
-        "build": "next build",
+        "build": "pnpm run partytown && next build",
         "start": "next start",
         "lint": "next lint",
         "prepare": "husky install",
@@ -16,7 +16,8 @@
         "preinstall": "npx only-allow pnpm",
         "postinstall": "prisma generate",
         "prisma": "prisma",
-        "supabase": "supabase"
+        "supabase": "supabase",
+        "partytown": "partytown copylib public/~partytown"
     },
     "dependencies": {
         "@builder.io/partytown": "^0.8.1",
