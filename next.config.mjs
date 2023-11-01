@@ -51,6 +51,46 @@ export default withMDX(
                     destination: "https://discord.gg/QbYswwYUPU",
                     permanent: true,
                 },
+                {
+                    source: "/navit-stream/zvyseni-platu",
+                    destination: "https://drp.li/5EvLM",
+                    permanent: true,
+                },
+                {
+                    source: "/navit-stream/real-user-monitoring",
+                    destination: "https://drp.li/3b1vE",
+                    permanent: true,
+                },
+                {
+                    source: "/navit-stream/security-nepropalte-miliony",
+                    destination: "https://drp.li/wEEFV",
+                    permanent: true,
+                },
+                {
+                    source: "/navit-stream/programator-ai-svet",
+                    destination: "https://drp.li/w5zYC",
+                    permanent: true,
+                },
+                {
+                    source: "/navit-stream/remote-work",
+                    destination: "https://drp.li/PFmec",
+                    permanent: true,
+                },
+                {
+                    source: "/navit-stream/vzdelavani-vliv",
+                    destination: "https://drp.li/JWPiV",
+                    permanent: true,
+                },
+                {
+                    source: "/navit-stream/pohovor-nanecisto",
+                    destination: "https://drp.li/965Qd",
+                    permanent: true,
+                },
+                {
+                    source: "/navit-stream/junior-zisk-prace",
+                    destination: "https://drp.li/AwlWa",
+                    permanent: true,
+                },
             ]
         },
     }),
