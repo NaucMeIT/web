@@ -6,7 +6,7 @@ export function CourseForm() {
         <FormWrapper
             className='w-10/12 md:w-6/12 mt-36'
             type='course'
-            text='Nejste si něčím jistí nebo máte další otázky? Nebojte se nám zavolat, poslat zprávu nebo napsat na email:'
+            text='Pokud se chceš přihlásit, nebo si nejsi něčím jistý nebo máš další otázky? Neboj se nám zavolat, poslat zprávu nebo napsat na email:'
         >
             <DecoratedInput name='name' type='text' label='Vaše jméno' placeholder='Zadejte své jméno' required />
             <DecoratedInput
@@ -22,13 +22,8 @@ export function CourseForm() {
                 placeholder='Jaký balíček chcete?'
                 required
                 list="packages-list"
-                pattern="(Bug Hunter|Epic Bug Hunter)"
                 title="Vyberte jeden z balíčků"
             />
-            <datalist id="packages-list">
-                <option value="Bug Hunter"></option>
-                <option value="Epic Bug Hunter"></option>
-            </datalist>
             <DecoratedInput
                 name='message'
                 component='textarea'
