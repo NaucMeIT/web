@@ -32,7 +32,7 @@ export type ErrorFormData = {
 export type CourseFormData = {
     readonly name: string
     readonly email: string
-    readonly package: "Bug Hunter" | "Epic Bug Hunter"
+    readonly package: string
     readonly message: string
     readonly recaptcha: string
 }
