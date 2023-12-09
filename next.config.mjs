@@ -19,6 +19,9 @@ export default withMDX(
         },
         experimental: {
             mdxRs: true,
+            typedRoutes: true,
+            webpackBuildWorker: true,
+            staticWorkerRequestDeduping: true,
         },
         images: {
             formats: ["image/avif", "image/webp"],
