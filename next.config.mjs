@@ -18,7 +18,6 @@ export default withMDX(
             dirs: ["pages", "components", "hooks", "utils", "chapters", "types"],
         },
         experimental: {
-            newNextLinkBehavior: true,
             mdxRs: true,
         },
         images: {
@@ -48,7 +47,7 @@ export default withMDX(
             return [
                 {
                     source: "/discord",
-                    destination: "https://discord.gg/QbYswwYUPU",
+                    destination: "https://discord.gg/SdHYjdJ9k3",
                     permanent: true,
                 },
                 {

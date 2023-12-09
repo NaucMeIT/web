@@ -109,7 +109,7 @@ export const getStaticProps: GetStaticProps<PostProps> = async (props) => {
         mdxOptions: {
             remarkPlugins: [remarkGfm],
             rehypePlugins: [
-                [rehypeShiki, options],
+                [rehypeShiki as any, options],
                 [imageSize as any, { dir: "public" }],
             ],
         },
