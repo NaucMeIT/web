@@ -1,11 +1,11 @@
 import type { GetServerSideProps, NextPage } from "next"
-import { unstable_getServerSession } from "next-auth/next"
+import { getServerSession } from "next-auth/next"
 import { authOptions } from "./api/auth/[...nextauth]"
 import { Button } from "../components/Button"
 import { useTrackedUser } from "../hooks/useTrackedUser"
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const session = await unstable_getServerSession(context.req, context.res, authOptions)
+    const session = await getServerSession(context.req, context.res, authOptions)
 
     if (!session?.user) {
         return {

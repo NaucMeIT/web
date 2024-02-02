@@ -1,4 +1,4 @@
-/* Partytown 0.8.1 - MIT builder.io */
+/* Partytown 0.9.1 - MIT builder.io */
 (self => {
     const WinIdKey = Symbol();
     const InstanceIdKey = Symbol();
@@ -68,6 +68,22 @@
         value: value,
         writable: true
     });
+    Object.freeze((obj => {
+        const properties = new Set;
+        let currentObj = obj;
+        do {
+            Object.getOwnPropertyNames(currentObj).forEach((item => {
+                "function" == typeof currentObj[item] && properties.add(item);
+            }));
+        } while ((currentObj = Object.getPrototypeOf(currentObj)) !== Object.prototype);
+        return Array.from(properties);
+    })([]));
+    function testIfMustLoadScriptOnMainThread(config, value) {
+        var _a, _b;
+        return null !== (_b = null === (_a = config.loadScriptsOnMainThread) || void 0 === _a ? void 0 : _a.map((([type, value]) => new RegExp("string" === type ? function(input) {
+            return input.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        }(value) : value))).some((regexp => regexp.test(value)))) && void 0 !== _b && _b;
+    }
     const hasInstanceStateValue = (instance, stateKey) => stateKey in instance[InstanceStateKey];
     const getInstanceStateValue = (instance, stateKey) => instance[InstanceStateKey][stateKey];
     const setInstanceStateValue = (instance, stateKey, stateValue) => instance[InstanceStateKey][stateKey] = stateValue;
@@ -698,7 +714,11 @@
     };
     const run = (env, scriptContent, scriptUrl) => {
         env.$runWindowLoadEvent$ = 1;
-        scriptContent = `with(this){${scriptContent.replace(/\bthis\b/g, ((match, offset, originalStr) => offset > 0 && "$" !== originalStr[offset - 1] ? "(thi$(this)?window:this)" : match)).replace(/\/\/# so/g, "//Xso")}\n;function thi$(t){return t===this}};${(webWorkerCtx.$config$.globalFns || []).filter((globalFnName => /[a-zA-Z_$][0-9a-zA-Z_$]*/.test(globalFnName))).map((g => `(typeof ${g}=='function'&&(this.${g}=${g}))`)).join(";")};` + (scriptUrl ? "\n//# sourceURL=" + scriptUrl : "");
+        let sourceWithReplacedThis = ((scriptContent, newThis) => scriptContent.replace(/([a-zA-Z0-9_$\.\'\"\`])?(\.\.\.)?this(?![a-zA-Z0-9_$:])/g, ((match, p1, p2) => {
+            const prefix = (p1 || "") + (p2 || "");
+            return null != p1 ? prefix + "this" : prefix + newThis;
+        })))(scriptContent, "(thi$(this)?window:this)");
+        scriptContent = `with(this){${sourceWithReplacedThis.replace(/\/\/# so/g, "//Xso")}\n;function thi$(t){return t===this}};${(webWorkerCtx.$config$.globalFns || []).filter((globalFnName => /[a-zA-Z_$][0-9a-zA-Z_$]*/.test(globalFnName))).map((g => `(typeof ${g}=='function'&&(this.${g}=${g}))`)).join(";")};` + (scriptUrl ? "\n//# sourceURL=" + scriptUrl : "");
         env.$isSameOrigin$ || (scriptContent = scriptContent.replace(/.postMessage\(/g, `.postMessage('${env.$winId$}',`));
         new Function(scriptContent).call(env.$window$);
         env.$runWindowLoadEvent$ = 0;
@@ -728,7 +748,7 @@
         return resolvedUrl;
     };
     const resolveUrl = (env, url, type) => resolveToUrl(env, url, type) + "";
-    const getPartytownScript = () => `<script src="${partytownLibUrl("partytown.js?v=0.8.1")}"><\/script>`;
+    const getPartytownScript = () => `<script src="${partytownLibUrl("partytown.js?v=0.9.1")}"><\/script>`;
     const createImageConstructor = env => class HTMLImageElement {
         constructor() {
             this.s = "";
@@ -759,6 +779,10 @@
         addEventListener(eventName, cb) {
             "load" === eventName && this.l.push(cb);
             "error" === eventName && this.e.push(cb);
+        }
+        removeEventListener(eventName, cb) {
+            "load" === eventName && (this.l = this.l.filter((fn => fn !== cb)));
+            "error" === eventName && (this.e = this.e.filter((fn => fn !== cb)));
         }
         get onload() {
             return this.l[0];
@@ -835,8 +859,8 @@
                     setInstanceStateValue(this, 4, url);
                     setter(this, [ "src" ], url);
                     orgUrl !== url && setter(this, [ "dataset", "ptsrc" ], orgUrl);
-                    if (this.type && config.loadScriptsOnMainThread) {
-                        const shouldExecuteScriptViaMainThread = config.loadScriptsOnMainThread.some((scriptUrl => scriptUrl === url));
+                    if (this.type) {
+                        const shouldExecuteScriptViaMainThread = testIfMustLoadScriptOnMainThread(config, url);
                         shouldExecuteScriptViaMainThread && setter(this, [ "type" ], "text/javascript");
                     }
                 }
@@ -876,7 +900,6 @@
             get href() {}
             set href(_) {}
             insertBefore(newNode, referenceNode) {
-                var _a, _b;
                 const winId = newNode[WinIdKey] = this[WinIdKey];
                 const instanceId = newNode[InstanceIdKey];
                 const nodeName = newNode[InstanceDataKey];
@@ -888,7 +911,7 @@
                     if (scriptContent) {
                         if (isScriptJsType(scriptType)) {
                             const scriptId = newNode.id;
-                            const loadOnMainThread = scriptId && (null === (_b = null === (_a = config.loadScriptsOnMainThread) || void 0 === _a ? void 0 : _a.includes) || void 0 === _b ? void 0 : _b.call(_a, scriptId));
+                            const loadOnMainThread = scriptId && testIfMustLoadScriptOnMainThread(config, scriptId);
                             if (loadOnMainThread) {
                                 setter(newNode, [ "type" ], "text/javascript");
                             } else {
@@ -1045,6 +1068,11 @@
                     return getter(this, [ "images" ]);
                 }
             },
+            scripts: {
+                get() {
+                    return getter(this, [ "scripts" ]);
+                }
+            },
             implementation: {
                 get() {
                     return {
@@ -1139,6 +1167,9 @@
                     let href;
                     if ("string" != typeof value) {
                         href = getter(this, [ "href" ]);
+                        if ("" === href) {
+                            return "protocol" === anchorProp ? ":" : "";
+                        }
                         setInstanceStateValue(this, 4, href);
                         value = new URL(href)[anchorProp];
                     }
@@ -1348,6 +1379,11 @@
         const WorkerWindow = defineConstructorName(class extends WorkerBase {
             constructor() {
                 super($winId$, $winId$);
+                this.addEventListener = (...args) => {
+                    "load" === args[0] ? env.$runWindowLoadEvent$ && setTimeout((() => args[1]({
+                        type: "load"
+                    }))) : callMethod(this, [ "addEventListener" ], args, 2);
+                };
                 let win = this;
                 let value;
                 let historyState;
@@ -1357,7 +1393,7 @@
                         (() => {
                             if (!webWorkerCtx.$initWindowMedia$) {
                                 self.$bridgeToMedia$ = [ getter, setter, callMethod, constructGlobal, definePrototypePropertyDescriptor, randomId, WinIdKey, InstanceIdKey, ApplyPathKey ];
-                                webWorkerCtx.$importScripts$(partytownLibUrl("partytown-media.js?v=0.8.1"));
+                                webWorkerCtx.$importScripts$(partytownLibUrl("partytown-media.js?v=0.9.1"));
                                 webWorkerCtx.$initWindowMedia$ = self.$bridgeFromMedia$;
                                 delete self.$bridgeFromMedia$;
                             }
@@ -1553,11 +1589,6 @@
                 }
                 win.Worker = void 0;
             }
-            addEventListener(...args) {
-                "load" === args[0] ? env.$runWindowLoadEvent$ && setTimeout((() => args[1]({
-                    type: "load"
-                }))) : callMethod(this, [ "addEventListener" ], args, 2);
-            }
             get body() {
                 return env.$body$;
             }
@@ -1597,8 +1628,7 @@
             }
             get navigator() {
                 return (env => {
-                    let key;
-                    let nav = {
+                    const nav = {
                         sendBeacon: (url, body) => {
                             if (webWorkerCtx.$config$.logSendBeaconRequests) {
                                 try {
@@ -1621,13 +1651,20 @@
                             }
                         }
                     };
-                    for (key in navigator) {
+                    for (let key in navigator) {
                         nav[key] = navigator[key];
                     }
                     return new Proxy(nav, {
                         set(_, propName, propValue) {
                             navigator[propName] = propValue;
                             return true;
+                        },
+                        get(target, prop) {
+                            if (Object.prototype.hasOwnProperty.call(target, prop)) {
+                                return target[prop];
+                            }
+                            const value = getter(env.$window$, [ "navigator", prop ]);
+                            return value;
                         }
                     });
                 })(env);

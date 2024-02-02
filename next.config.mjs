@@ -18,8 +18,10 @@ export default withMDX(
             dirs: ["pages", "components", "hooks", "utils", "chapters", "types"],
         },
         experimental: {
-            newNextLinkBehavior: true,
             mdxRs: true,
+            typedRoutes: true,
+            webpackBuildWorker: true,
+            staticWorkerRequestDeduping: true,
         },
         images: {
             formats: ["image/avif", "image/webp"],
@@ -48,7 +50,7 @@ export default withMDX(
             return [
                 {
                     source: "/discord",
-                    destination: "https://discord.gg/QbYswwYUPU",
+                    destination: "https://discord.gg/SdHYjdJ9k3",
                     permanent: true,
                 },
                 {

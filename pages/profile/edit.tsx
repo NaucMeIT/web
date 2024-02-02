@@ -1,5 +1,5 @@
 import { NextPage } from "next"
-import { Session, unstable_getServerSession } from "next-auth"
+import { Session, getServerSession } from "next-auth"
 import { log } from "next-axiom"
 import { handle, json } from "next-runtime"
 import { useRouter } from "next/router"
@@ -73,7 +73,7 @@ const redirectToCorrectPage = async (
 
 export const getServerSideProps = handle<{}, UrlQuery, FormData>({
     async get(context) {
-        const session = await unstable_getServerSession(context.req, context.res, authOptions)
+        const session = await getServerSession(context.req, context.res, authOptions)
         return redirectToCorrectPage(session, context.query?.startPlan, context.query?.isEdit)
     },
     async post(context) {
@@ -89,7 +89,7 @@ export const getServerSideProps = handle<{}, UrlQuery, FormData>({
                 throw new Error("Tento plán neexistuje.")
             }
 
-            const session = await unstable_getServerSession(context.req, context.res, authOptions)
+            const session = await getServerSession(context.req, context.res, authOptions)
             const isPaidPlan = dbPlan.price !== 0
             await prisma.user.update({
                 where: { email: session?.user?.email || "" },
