@@ -8,7 +8,7 @@ import { Typography } from "../components/Typography"
 import type { GetServerSideProps } from "next"
 import { PaymentStatus, Plan } from "@prisma/client"
 import { prisma } from "../utils/prisma"
-import { unstable_getServerSession } from "next-auth"
+import { getServerSession } from "next-auth"
 import { authOptions } from "./api/auth/[...nextauth]"
 import { Head } from "../components/Head"
 
@@ -43,7 +43,7 @@ const appRedirect = {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const stripe = new createStripe(process.env.STRIPE_SECRET_KEY || "", { apiVersion: "2023-10-16", typescript: true })
-    const session = await unstable_getServerSession(context.req, context.res, authOptions)
+    const session = await getServerSession(context.req, context.res, authOptions)
     const planId = session?.user.planId
     const userEmail = session?.user.email
     const paymentStatus = session?.user.paymentStatus

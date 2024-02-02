@@ -1,7 +1,7 @@
 import Image from "next/image"
 import type { NextPage } from "next"
 import { handle, json } from "next-runtime"
-import { unstable_getServerSession } from "next-auth"
+import { getServerSession } from "next-auth"
 import { FormEvent } from "react"
 import { Button, SocialButton } from "../components/Button"
 import { DecoratedInput } from "../components/DecoratedInput"
@@ -17,7 +17,7 @@ import { useRouter } from "next/router"
 
 export const getServerSideProps = handle<{}, {}, {}>({
     async get(context) {
-        const session = await unstable_getServerSession(context.req, context.res, authOptions)
+        const session = await getServerSession(context.req, context.res, authOptions)
         const startPlan = context.query?.startPlan
         if (session) {
             const { planId, name, paymentStatus } = session.user
