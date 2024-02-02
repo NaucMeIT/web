@@ -1,4 +1,15 @@
-/* Partytown 0.8.1 - MIT builder.io */
+/* Partytown 0.9.1 - MIT builder.io */
+Object.freeze((obj => {
+    const properties = new Set;
+    let currentObj = obj;
+    do {
+        Object.getOwnPropertyNames(currentObj).forEach((item => {
+            "function" == typeof currentObj[item] && properties.add(item);
+        }));
+    } while ((currentObj = Object.getPrototypeOf(currentObj)) !== Object.prototype);
+    return Array.from(properties);
+})([]));
+
 const resolves = new Map;
 
 const swMessageError = (accessReq, $error$) => ({
@@ -52,7 +63,7 @@ self.onfetch = ev => {
     const url = new URL(req.url);
     const pathname = url.pathname;
     if (pathname.endsWith("sw.html")) {
-        ev.respondWith(response('<!DOCTYPE html><html><head><meta charset="utf-8"><script src="./partytown-sandbox-sw.js?v=0.8.1"><\/script></head></html>'));
+        ev.respondWith(response('<!DOCTYPE html><html><head><meta charset="utf-8"><script src="./partytown-sandbox-sw.js?v=0.9.1"><\/script></head></html>'));
     } else {
         pathname.endsWith("proxytown") && ev.respondWith(httpRequestFromWebWorker(req));
     }
