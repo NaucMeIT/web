@@ -49,6 +49,10 @@ export default withMDX(
         async redirects() {
             return [
                 {
+                    source: "/companies",
+                    destination: "/",
+                },
+                {
                     source: "/discord",
                     destination: "https://discord.gg/SdHYjdJ9k3",
                     permanent: true,
