@@ -51,6 +51,7 @@ export default withMDX(
                 {
                     source: "/companies",
                     destination: "/",
+                    permanent: true,
                 },
                 {
                     source: "/discord",
