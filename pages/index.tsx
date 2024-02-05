@@ -13,6 +13,7 @@ import { SideDecoration } from "../components/SideDecoration"
 
 const employeeFormLink = "https://calendly.com/naucme_it/30min"
 const links = [
+    { title: "Jsem student", link: "/education" },
     { title: "Jak to funguje?", link: "#how" },
     { title: "Informace", link: "#company" },
     { title: "Specializace", link: "#employees" },
