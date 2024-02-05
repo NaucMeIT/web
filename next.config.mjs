@@ -49,11 +49,6 @@ export default withMDX(
         async redirects() {
             return [
                 {
-                    source: "/companies",
-                    destination: "/",
-                    permanent: true,
-                },
-                {
                     source: "/discord",
                     destination: "https://discord.gg/SdHYjdJ9k3",
                     permanent: true,
@@ -96,6 +91,11 @@ export default withMDX(
                 {
                     source: "/navit-stream/junior-zisk-prace",
                     destination: "https://drp.li/AwlWa",
+                    permanent: true,
+                },
+                {
+                    source: "/companies",
+                    destination: "/",
                     permanent: true,
                 },
             ]

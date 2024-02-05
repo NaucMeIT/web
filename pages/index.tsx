@@ -26,7 +26,7 @@ const Home: NextPage = () => {
         <div className='bg-landing bg-cover bg-fixed pt-20'>
             <Head
                 desc='Chybí vám zaměstnanci? Chcete začít od píky, ale nemáte čas na přípravu juniorů? Jsme tu pro vás. Připravíme juniora na míru!'
-                url='https://naucme.it/companies'
+                url='https://naucme.it/'
                 twImg='https://naucme.it/twitter.png'
                 fbImg='https://naucme.it/og.png'
             >
