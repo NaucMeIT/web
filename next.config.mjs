@@ -93,6 +93,11 @@ export default withMDX(
                     destination: "https://drp.li/AwlWa",
                     permanent: true,
                 },
+                {
+                    source: "/companies",
+                    destination: "/",
+                    permanent: true,
+                },
             ]
         },
     }),
