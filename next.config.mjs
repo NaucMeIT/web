@@ -54,6 +54,11 @@ export default withMDX(
                     permanent: true,
                 },
                 {
+                    source: "/slido",
+                    destination: "https://drp.li/WBofe",
+                    permanent: true,
+                },
+                {
                     source: "/navit-stream/zvyseni-platu",
                     destination: "https://drp.li/5EvLM",
                     permanent: true,
