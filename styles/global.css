@@ -92,7 +92,7 @@ span[id]:not([id^="radix"]) {
     z-index: -1;
 }
 
-[data-rehype-pretty-code-fragment] > pre {
+[data-rehype-pretty-code-figure] > pre {
     padding: 1em;
     margin: 0.5em 0;
     border-radius: 0.5em;
@@ -102,7 +102,7 @@ span[id]:not([id^="radix"]) {
     color: #ffffff;
 }
 
-[data-rehype-pretty-code-fragment] > code {
+[data-rehype-pretty-code-figure] > code {
     padding: 0 0.3rem;
     border-radius: 0.5em;
     overflow: auto;
@@ -111,11 +111,11 @@ span[id]:not([id^="radix"]) {
     color: #ffffff;
 }
 
-[data-rehype-pretty-code-fragment] > pre > code {
+[data-rehype-pretty-code-figure] > pre > code {
     counter-reset: line;
 }
 
-[data-rehype-pretty-code-fragment] > pre > code > [data-line]::before {
+[data-rehype-pretty-code-figure] > pre > code > [data-line]::before {
     counter-increment: line;
     content: counter(line);
 
