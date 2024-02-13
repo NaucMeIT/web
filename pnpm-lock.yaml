@@ -111,8 +111,8 @@ dependencies:
     specifier: ^1.0.1
     version: 1.0.1
   rehype-pretty-code:
-    specifier: ^0.12.6
-    version: 0.12.6(shikiji@0.10.2)
+    specifier: ^0.13.0
+    version: 0.13.0(shiki@1.1.2)
   remark-gfm:
     specifier: ^3.0.1
     version: 3.0.1
@@ -1612,6 +1612,10 @@ packages:
       - debug
     dev: false
 
+  /@shikijs/core@1.1.2:
+    resolution: {integrity: sha512-ERVzNQz88ZkDqUpWeC57Kp+Kmx5RjqeDBR1M8AGWGom4yrkITiTfXCGmjchlDSw12MhDTuPYR4HVFW8uT61RaQ==}
+    dev: false
+
   /@splitbee/web@0.3.0:
     resolution: {integrity: sha512-jNPDKg0GQGa4jCaBc6JQsv0NHmBA80WCwZE49nFyhcbo32WF0GyqXeice7ZApy7OUHI16bAUAzm4MOQw3gvxfQ==}
     dev: false
@@ -1764,7 +1768,7 @@ packages:
   /@types/hast@2.3.10:
     resolution: {integrity: sha512-McWspRw8xx8J9HurkVBfYj0xKoE25tOFlHGdx4MJ5xORQrMGZNqJhVQWaIbm6Oyla5kYOXtDiopzKRJzEOkwJw==}
     dependencies:
-      '@types/unist': 2.0.6
+      '@types/unist': 2.0.10
     dev: false
 
   /@types/hast@3.0.3:
@@ -4308,7 +4312,7 @@ packages:
     dependencies:
       '@types/estree': 1.0.5
       '@types/estree-jsx': 1.0.0
-      '@types/hast': 3.0.3
+      '@types/hast': 3.0.4
       comma-separated-tokens: 2.0.3
       devlop: 1.1.0
       estree-util-attach-comments: 3.0.0
@@ -4329,7 +4333,7 @@ packages:
   /hast-util-to-jsx-runtime@2.2.0:
     resolution: {integrity: sha512-wSlp23N45CMjDg/BPW8zvhEi3R+8eRE1qFbjEyAUzMCzu2l1Wzwakq+Tlia9nkCtEl5mDxa7nKHsvYJ6Gfn21A==}
     dependencies:
-      '@types/hast': 3.0.3
+      '@types/hast': 3.0.4
       '@types/unist': 3.0.2
       comma-separated-tokens: 2.0.3
       hast-util-whitespace: 3.0.0
@@ -4353,7 +4357,7 @@ packages:
   /hast-util-whitespace@3.0.0:
     resolution: {integrity: sha512-88JUN06ipLwsnv+dVn+OIYOvAuvBMy/Qoi6O7mQHxdPXpjy+Cd6xRkWwux7DKO+4sYILtLBRIKgsdpS2gQc7qw==}
     dependencies:
-      '@types/hast': 3.0.3
+      '@types/hast': 3.0.4
     dev: false
 
   /hastscript@8.0.0:
@@ -5186,7 +5190,7 @@ packages:
     resolution: {integrity: sha512-fGCu8eWdKUKNu5mohVGkhBXCXGnOTLuFqOvGMvdikr+J1w7lDJgxThOKpwRWzzbyXAU2hhSwsmssOY4yTokluw==}
     dependencies:
       '@types/estree-jsx': 1.0.0
-      '@types/hast': 3.0.3
+      '@types/hast': 3.0.4
       '@types/mdast': 4.0.3
       devlop: 1.1.0
       mdast-util-from-markdown: 2.0.0
@@ -5218,7 +5222,7 @@ packages:
     resolution: {integrity: sha512-XZuPPzQNBPAlaqsTTgRrcJnyFbSOBovSadFgbFu8SnuNgm+6Bdx1K+IWoitsmj6Lq6MNtI+ytOqwN70n//NaBA==}
     dependencies:
       '@types/estree-jsx': 1.0.0
-      '@types/hast': 3.0.3
+      '@types/hast': 3.0.4
       '@types/mdast': 4.0.3
       '@types/unist': 3.0.2
       ccount: 2.0.1
@@ -5274,7 +5278,7 @@ packages:
     resolution: {integrity: sha512-EcmOpxsZ96CvlP03NghtH1EsLtr0n9Tm4lPUJUBccV9RwUOneqSycg19n5HGzCf+10LozMRSObtVr3ee1WoHtg==}
     dependencies:
       '@types/estree-jsx': 1.0.0
-      '@types/hast': 3.0.3
+      '@types/hast': 3.0.4
       '@types/mdast': 4.0.3
       devlop: 1.1.0
       mdast-util-from-markdown: 2.0.0
@@ -5312,7 +5316,7 @@ packages:
   /mdast-util-to-hast@13.0.2:
     resolution: {integrity: sha512-U5I+500EOOw9e3ZrclN3Is3fRpw8c19SMyNZlZ2IS+7vLsNzb2Om11VpIVOR+/0137GhZsFEF6YiKD5+0Hr2Og==}
     dependencies:
-      '@types/hast': 3.0.3
+      '@types/hast': 3.0.4
       '@types/mdast': 4.0.3
       '@ungap/structured-clone': 1.2.0
       devlop: 1.1.0
@@ -6466,7 +6470,7 @@ packages:
   /parse-entities@4.0.1:
     resolution: {integrity: sha512-SWzvYcSJh4d/SGLIOQfZ/CoNv6BTlI6YEQ7Nj82oDVnRpwe/Z/F1EMx42x3JAOwGBlCjeCH0BRJQbQ/opHL17w==}
     dependencies:
-      '@types/unist': 2.0.6
+      '@types/unist': 2.0.10
       character-entities: 2.0.2
       character-entities-legacy: 3.0.0
       character-reference-invalid: 2.0.1
@@ -7043,17 +7047,17 @@ packages:
       unified: 11.0.4
     dev: false
 
-  /rehype-pretty-code@0.12.6(shikiji@0.10.2):
-    resolution: {integrity: sha512-AW18s4eXwnb4PGwL0Y8BoUzBJr23epWNXndCKaZ52S4kl/4tsgM+406oCp5NdtPZsB0ItpaY+hCMv3kw58DLrA==}
+  /rehype-pretty-code@0.13.0(shiki@1.1.2):
+    resolution: {integrity: sha512-+22dz1StXlF7dlMyOySNaVxgcGhMI4BCxq0JxJJPWYGiKsI6cu5jyuIKGHXHvH18D8sv1rdKtvsY9UEfN3++SQ==}
     engines: {node: '>=18'}
     peerDependencies:
-      shikiji: ^0.7.0 || ^0.8.0 || ^0.9.0 || ^0.10.0
+      shiki: ^1.0.0
     dependencies:
       '@types/hast': 3.0.4
       hast-util-to-string: 3.0.0
       parse-numeric-range: 1.3.0
       rehype-parse: 9.0.0
-      shikiji: 0.10.2
+      shiki: 1.1.2
       unified: 11.0.4
       unist-util-visit: 5.0.0
     dev: false
@@ -7138,7 +7142,7 @@ packages:
   /remark-rehype@11.0.0:
     resolution: {integrity: sha512-vx8x2MDMcxuE4lBmQ46zYUDfcFMmvg80WYX+UNLeG6ixjdCCLcw1lrgAukwBTuOFsS78eoAedHGn9sNM0w7TPw==}
     dependencies:
-      '@types/hast': 3.0.3
+      '@types/hast': 3.0.4
       '@types/mdast': 4.0.3
       mdast-util-to-hast: 13.0.2
       unified: 11.0.4
@@ -7367,6 +7371,12 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
     dev: true
+
+  /shiki@1.1.2:
+    resolution: {integrity: sha512-qNzFwTv5uhEDNUIwp7wHjsrffVeLbmOgWnM5mZZhoiz7G2qAUvqVfUzuWfieD45/YAKipzCtdV9SndacKtABow==}
+    dependencies:
+      '@shikijs/core': 1.1.2
+    dev: false
 
   /shikiji-core@0.10.2:
     resolution: {integrity: sha512-9Of8HMlF96usXJHmCL3Gd0Fcf0EcyJUF9m8EoAKKd98mHXi0La2AZl1h6PegSFGtiYcBDK/fLuKbDa1l16r1fA==}
@@ -8105,7 +8115,7 @@ packages:
   /unist-util-position@4.0.4:
     resolution: {integrity: sha512-kUBE91efOWfIVBo8xzh/uZQ7p9ffYRtUbMRZBNFYwf0RK8koUMx6dGUfwylLOKmaT2cs4wSW96QoYUSXAyEtpg==}
     dependencies:
-      '@types/unist': 2.0.6
+      '@types/unist': 2.0.10
     dev: false
 
   /unist-util-position@5.0.0:
@@ -8117,7 +8127,7 @@ packages:
   /unist-util-remove-position@4.0.2:
     resolution: {integrity: sha512-TkBb0HABNmxzAcfLf4qsIbFbaPDvMO6wa3b3j4VcEzFVaw1LBKwnW4/sRJ/atSLSzoIg41JWEdnE7N6DIhGDGQ==}
     dependencies:
-      '@types/unist': 2.0.6
+      '@types/unist': 2.0.10
       unist-util-visit: 4.1.2
     dev: false
 
@@ -8270,7 +8280,7 @@ packages:
   /vfile-message@3.1.4:
     resolution: {integrity: sha512-fa0Z6P8HUrQN4BZaX05SIVXic+7kE3b05PWAtPuYP9QLHsLKYR7/AlLW3NtOrpXRLeawpDLMsVkmk5DG0NXgWw==}
     dependencies:
-      '@types/unist': 2.0.6
+      '@types/unist': 2.0.10
       unist-util-stringify-position: 3.0.3
 
   /vfile-message@4.0.2:
