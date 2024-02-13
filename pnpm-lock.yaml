@@ -122,9 +122,9 @@ dependencies:
   sharp:
     specifier: ^0.33.2
     version: 0.33.2
-  shikiji:
-    specifier: ^0.10.2
-    version: 0.10.2
+  shiki:
+    specifier: ^1.1.2
+    version: 1.1.2
   stripe:
     specifier: ^14.14.0
     version: 14.14.0
@@ -7376,16 +7376,6 @@ packages:
     resolution: {integrity: sha512-qNzFwTv5uhEDNUIwp7wHjsrffVeLbmOgWnM5mZZhoiz7G2qAUvqVfUzuWfieD45/YAKipzCtdV9SndacKtABow==}
     dependencies:
       '@shikijs/core': 1.1.2
-    dev: false
-
-  /shikiji-core@0.10.2:
-    resolution: {integrity: sha512-9Of8HMlF96usXJHmCL3Gd0Fcf0EcyJUF9m8EoAKKd98mHXi0La2AZl1h6PegSFGtiYcBDK/fLuKbDa1l16r1fA==}
-    dev: false
-
-  /shikiji@0.10.2:
-    resolution: {integrity: sha512-wtZg3T0vtYV2PnqusWQs3mDaJBdCPWxFDrBM/SE5LfrX92gjUvfEMlc+vJnoKY6Z/S44OWaCRzNIsdBRWcTAiw==}
-    dependencies:
-      shikiji-core: 0.10.2
     dev: false
 
   /side-channel@1.0.4:
