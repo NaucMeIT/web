@@ -5,7 +5,7 @@ import { Typography } from "./Typography"
 import { Button } from "./Button"
 import { Logo } from "./icons"
 
-interface MenuItemProps {
+export interface MenuItemProps {
     readonly link: string
     readonly title: string
     readonly isActive?: boolean
