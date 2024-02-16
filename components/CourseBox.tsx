@@ -33,7 +33,7 @@ export function CourseBox({ image, width, height, side, title, children, link }:
                         variant='link'
                         component={Link}
                         componentProps={{ href: link }}
-                        className='py-5 underline'
+                        className='py-2 underline'
                     >
                         Zjistit více {">"}
                     </Typography>
