@@ -1,131 +1,85 @@
 import { NextPage } from "next"
-import { AboutUs } from "../components/AboutUs"
-import { CompanyBox } from "../components/CompanyBox"
-import { ContactForm } from "../components/ContactForm"
 import { Menu } from "../components/Menu"
 import { DownArrow } from "../components/DownArrow"
 import { Footer } from "../components/Footer"
 import { Landing } from "../components/Landing"
 import { How } from "../components/How"
-import { Packages } from "../components/Packages"
-import { Courses } from "../components/Courses"
 import { Head } from "../components/Head"
-import img from "../images/petr_border.webp"
 import { LearnEarn, PayConsultancy, Time, Worldwide } from "../components/icons"
+import { CompanyCatch } from "../components/CompanyCatch"
+import { CompanyForm } from "../components/CompanyForm"
+import { Employees } from "../components/Employees"
 import { SideDecoration } from "../components/SideDecoration"
 
+const employeeFormLink = "https://calendly.com/naucme_it/30min"
 const links = [
+    { title: "Jsem student", link: "/education" },
     { title: "Jak to funguje?", link: "#how" },
-    { title: "Balíčky", link: "#packages" },
-    { title: "Kurzy", link: "#courses" },
-    { title: "O nás", link: "#about" },
-    { title: "Pro firmy", link: "/companies" },
+    { title: "Informace", link: "#company" },
+    { title: "Specializace", link: "#employees" },
     { title: "Kontakt", link: "#contact" },
-    { title: "Přihlásit se", link: "/sign", isImportant: true },
+    { title: "Domluvit schůzku", link: employeeFormLink, isImportant: true },
 ]
 
 const Home: NextPage = () => {
     return (
         <div className='bg-landing bg-cover bg-fixed pt-20'>
             <Head
-                desc='Chceš získat práci v IT a nevíš, jak začít? Právě proto jsme tu my! Na naší platformě poskytujeme kurzy, díky kterým získáš práci v IT dřív než řekneš Java.'
+                desc='Chybí vám zaměstnanci? Chcete začít od píky, ale nemáte čas na přípravu juniorů? Jsme tu pro vás. Připravíme juniora na míru!'
                 url='https://naucme.it/'
                 twImg='https://naucme.it/twitter.png'
                 fbImg='https://naucme.it/og.png'
-                structuredData={{
-                    "@context": "https://schema.org",
-                    "@type": "Course",
-                    name: "Úvod do testování a webových technologií",
-                    description:
-                        "Kurzy pro kohokoliv, kdo se chce dostat do světa IT, zejména testování a webového vývoje.",
-                    provider: {
-                        "@type": "Organization",
-                        name: "Nauč mě IT",
-                        sameAs: "https://naucme.it",
-                    },
-                }}
             >
-                <title>Nauč mě IT - Úvodní strana</title>
+                <title>Nauč mě IT - Firmy</title>
             </Head>
             <Menu items={links} logoLink='/' />
             <SideDecoration />
 
             <main>
                 <Landing
-                    title='Nauč se programovat'
-                    subtitle='a nech si za to platit!'
+                    title='Junior s praxí?'
+                    subtitle='Dodáme vám ho!'
                     text={
                         <>
-                            Klademe si za cíl pomoci komukoliv získat dovednosti a{"\u00A0"}znalosti vhodné pro práci v
-                            IT. To vše bez časových limitací a za cenu dostupnou pro každého.
+                            U nás vychováváme budoucí testery, developery i kodéry. Také zajišťujeme praxi, takže ani
+                            úplný junior není bez zkušeností!
                         </>
                     }
                     catchPoints={[
-                        { icon: <LearnEarn />, children: <>Učíš se a zároveň vyděláváš</> },
+                        { icon: <LearnEarn />, children: <>Ušetříte za výuku juniora, školí ho naši profesionálové</> },
                         {
                             icon: <PayConsultancy />,
-                            children: <>Platíš pouze za konzultace s{"\u00A0"}odborníkem z oboru</>,
+                            children: <>Platíte pouze za odvedenou práci a zaměstnance</>,
                         },
                         {
                             icon: <Time />,
-                            children: (
-                                <>
-                                    Rychlost kurzu si{"\u00A0"}určuješ{"\u00A0"}sám
-                                </>
-                            ),
+                            children: <>Sami určíte, kdy zaměstnance potřebujete</>,
                         },
-                        { icon: <Worldwide />, children: <>Celý kurz je online přístupný odkudkoliv</> },
+                        { icon: <Worldwide />, children: <>Školíme plně online a není třeba žadných prostor</> },
                     ]}
-                    buttonText='Vyzkoušej ZDARMA'
-                    buttonProps={{
-                        href: "/sign?startPlan=Basic",
-                    }}
+                    buttonText='Domluvit schůzku'
+                    buttonProps={{ href: employeeFormLink }}
                 />
 
                 <DownArrow />
 
                 <How
                     steps={[
-                        "Zaregistruj se ZDARMA",
-                        "Vyber si jeden z kurzů",
-                        "Načerpej z něj znalosti",
-                        "Ověř si je v praxi",
-                        "Získej svůj první job v IT",
+                        "Určení zadání a požadavků",
+                        "Úprava materiálů na míru",
+                        "Zařazení a školení studentů",
+                        "Placená stáž s dozorem",
+                        "Nástup do firmy",
                     ]}
-                    buttonText='Chci se přidat!'
-                    buttonProps={{
-                        href: "/sign?startPlan=Basic",
-                    }}
+                    buttonText='Domluvit schůzku'
+                    buttonProps={{ href: employeeFormLink }}
                 />
 
-                <Packages />
+                <CompanyCatch employeeLink={employeeFormLink} />
 
-                <Courses />
+                <Employees link={employeeFormLink} />
 
-                <AboutUs
-                    people={[
-                        {
-                            name: "Petr Glaser",
-                            email: "petr.glaser@naucme.it",
-                            position: "Staff Software Engineer",
-                            image: img,
-                        },
-                        {
-                            name: "Pavel Koudelka",
-                            email: "pavel.koudelka@naucme.it",
-                            position: "Sales",
-                        },
-                        {
-                            name: "Lýdie Hemalová",
-                            email: "lydie.hemalova@naucme.it",
-                            position: "QA Engineer",
-                        },
-                    ]}
-                />
-
-                <CompanyBox />
-
-                <ContactForm />
+                <CompanyForm />
             </main>
 
             <Footer links={links} />
