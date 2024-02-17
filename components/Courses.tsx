@@ -28,7 +28,7 @@ export function Courses() {
                 <Typography
                     variant='link'
                     component={Link}
-                    componentProps={{ href: "/chapters/qa-00" }}
+                    componentProps={{ href: "/chapter/qa-00" }}
                     className='underline mb-5 block'
                 >
                     Mrknout na kurz testera {">"}
@@ -43,7 +43,7 @@ export function Courses() {
                 <Typography
                     variant='link'
                     component={Link}
-                    componentProps={{ href: "/chapters/fe-01" }}
+                    componentProps={{ href: "/chapter/fe-01" }}
                     className='underline mb-5 block'
                 >
                     Mrknout na kurz vývojáře {">"}
