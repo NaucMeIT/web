@@ -2,7 +2,7 @@ import { NextPage } from "next"
 import { AboutUs } from "../components/AboutUs"
 import { CompanyBox } from "../components/CompanyBox"
 import { ContactForm } from "../components/ContactForm"
-import { Menu } from "../components/Menu"
+import { Menu, MenuItemProps } from "../components/Menu"
 import { DownArrow } from "../components/DownArrow"
 import { Footer } from "../components/Footer"
 import { Landing } from "../components/Landing"
@@ -14,14 +14,14 @@ import img from "../images/petr_border.webp"
 import { LearnEarn, PayConsultancy, Time, Worldwide } from "../components/icons"
 import { SideDecoration } from "../components/SideDecoration"
 
-const links = [
+const links: MenuItemProps[] = [
     { title: "Jak to funguje?", link: "#how" },
     { title: "Balíčky", link: "#packages" },
-    { title: "Kurzy", link: "#courses" },
     { title: "O nás", link: "#about" },
     { title: "Pro firmy", link: "/" },
     { title: "Kontakt", link: "#contact" },
-    { title: "Přihlásit se", link: "/sign", isImportant: true },
+    { title: "Přihlásit se", link: "/sign" },
+    { title: "Git Kurz", link: "/kurz-git-zaklad", isImportant: true },
 ]
 
 const Home: NextPage = () => {
