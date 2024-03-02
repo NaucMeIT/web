@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@builder.io/partytown':
-    specifier: ^0.9.1
-    version: 0.9.1
+    specifier: ^0.10.0
+    version: 0.10.0
   '@builder.io/react':
     specifier: ^3.2.0
     version: 3.2.0(react-dom@18.2.0)(react@18.2.0)
@@ -287,8 +287,8 @@ packages:
       to-fast-properties: 2.0.0
     dev: false
 
-  /@builder.io/partytown@0.9.1:
-    resolution: {integrity: sha512-9Bo4eZBoc7FlY38atqaXvuEMjuwU6ege/ZN+lh5G7/dC0LtdZCQJQ6CndrUtYGeia+7JoQyWXBpjcx1jFty0VA==}
+  /@builder.io/partytown@0.10.0:
+    resolution: {integrity: sha512-OS/o9lAmK5rZZLkjFmghPNmp3P40uTF5yu2rFY3TVlnSie7CQhwrQ+5lycUkHqrDVyI4NOnOiA655Q1eGPE2pw==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     dev: false
