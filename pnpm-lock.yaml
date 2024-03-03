@@ -52,7 +52,7 @@ dependencies:
     version: 1.0.3(@types/react@18.2.51)(react-dom@18.2.0)(react@18.2.0)
   '@sendgrid/mail':
     specifier: ^8.1.0
-    version: 8.1.0
+    version: 8.1.1
   '@splitbee/web':
     specifier: ^0.3.0
     version: 0.3.0
@@ -1623,12 +1623,12 @@ packages:
     resolution: {integrity: sha512-RbhOOTCNoCrbfkRyoXODZp75MlpiHMgbE5MEBZAnnnLyQNgrigEj4p0lzsMDyc1zVsJDLrivB58tgg3emX0eEA==}
     dev: true
 
-  /@sendgrid/client@8.1.0:
-    resolution: {integrity: sha512-Kp2kKLr307v/HnR3uGuySt0AbCkeG7naDVOzfPOtWvKHVZIEHmKidQjJjzytVZNYWtoRdYgNfBw6GyUznGqa6w==}
+  /@sendgrid/client@8.1.1:
+    resolution: {integrity: sha512-pg0gYhAdyQil3Aga7/xHVcZFpvDAjAQMNBgMy5njTSkjACoWHmpSi1nWBZM7nIH/ptcRNMpnBbm9B5EvQ8fX2w==}
     engines: {node: '>=12.*'}
     dependencies:
       '@sendgrid/helpers': 8.0.0
-      axios: 1.6.2
+      axios: 1.6.7
     transitivePeerDependencies:
       - debug
     dev: false
@@ -1640,11 +1640,11 @@ packages:
       deepmerge: 4.3.1
     dev: false
 
-  /@sendgrid/mail@8.1.0:
-    resolution: {integrity: sha512-WkE0qwOrJMX9oQ+Xvtl3CdmucD6/iKw6go0VPoPieVlfXc43rbIf91wvtO6m7sKPnzxw3G+8rekBgXibmP4S8Q==}
+  /@sendgrid/mail@8.1.1:
+    resolution: {integrity: sha512-tNtmgWLtBA7ZxKtPuEGOaIdEZP1vZSXsj5zg9iuoDBPVj/fNz+7LWzndvTcKumHk5eaDrS0UPXJqBm61m3+H1A==}
     engines: {node: '>=12.*'}
     dependencies:
-      '@sendgrid/client': 8.1.0
+      '@sendgrid/client': 8.1.1
       '@sendgrid/helpers': 8.0.0
     transitivePeerDependencies:
       - debug
@@ -2641,8 +2641,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /axios@1.6.2:
-    resolution: {integrity: sha512-7i24Ri4pmDRfJTR7LDBhsOTtcm+9kjX5WiY1X3wIisx6G9So3pfMkEiU7emUBe46oceVImccTEM3k6C5dbVW8A==}
+  /axios@1.6.7:
+    resolution: {integrity: sha512-/hDJGff6/c7u0hDkvkGxR/oy6CbCs8ziCsC7SqmhjfozqiJGc8Z11wrv9z9lYfY4K8l+H9TpjcMDX0xOZmx+RA==}
     dependencies:
       follow-redirects: 1.15.5
       form-data: 4.0.0
