@@ -10,7 +10,7 @@ dependencies:
     version: 0.10.0
   '@builder.io/react':
     specifier: ^3.2.0
-    version: 3.2.0(react-dom@18.2.0)(react@18.2.0)
+    version: 3.2.5(react-dom@18.2.0)(react@18.2.0)
   '@headlessui/react':
     specifier: ^1.7.18
     version: 1.7.18(react-dom@18.2.0)(react@18.2.0)
@@ -236,7 +236,7 @@ packages:
     resolution: {integrity: sha512-0pYVBnDKZO2fnSPCrgM/6WMc7eS20Fbok+0r88fp+YtWVLZrp4CkafFGIp+W0VKw4a22sgebPT99y+FDNMdP4w==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.23.9
+      '@babel/types': 7.24.0
     dev: false
 
   /@babel/helper-string-parser@7.23.4:
@@ -277,9 +277,17 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.14.1
+    dev: true
 
-  /@babel/types@7.23.9:
-    resolution: {integrity: sha512-dQjSq/7HaSjRM43FFGnv5keM2HsxpmyV1PfaSVm0nzzjwwTmjOe6J4bC8e3+pTEIgHaHj+1ZlLThRJ2auc/w1Q==}
+  /@babel/runtime@7.24.0:
+    resolution: {integrity: sha512-Chk32uHMg6TnQdvw2e9IlqPpFX/6NLuK0Ys2PqLb7/gL5uFn9mXvK715FGLlOLQrcO4qIkNHkvPGktzzXexsFw==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.14.1
+    dev: false
+
+  /@babel/types@7.24.0:
+    resolution: {integrity: sha512-+j7a5c253RfKh8iABBhywc8NSfP5LURe7Uh4qpsh6jc+aLJguvmIUBdjSdEMQv2bENrCR5MfRdjGo7vzS/ob7w==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/helper-string-parser': 7.23.4
@@ -293,18 +301,18 @@ packages:
     hasBin: true
     dev: false
 
-  /@builder.io/react@3.2.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-5n1+H+i93xaKpzO2ROJnhG+pt234SFAqyYvvU3K4jKjBanDtyu/e5yfZlF3mdzUgHV+4B06i6jSZxa3IB8QtVw==}
+  /@builder.io/react@3.2.5(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-EadSsaGgC6u0/+TSBAfDtsCc4QVtI6TbjvpgPMDHZQ8yowhMWCIWkeSNfRWXLP25EqWXmpD48I/k5ziuYEbsNQ==}
     engines: {node: '>=6.0.0'}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
-      '@builder.io/sdk': 2.2.0
+      '@builder.io/sdk': 2.2.2
       '@emotion/core': 10.3.1(react@18.2.0)
       hash-sum: 2.0.0
       isolated-vm: 4.7.2
-      preact: 10.19.3
+      preact: 10.19.6
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     optionalDependencies:
@@ -314,8 +322,8 @@ packages:
       - encoding
     dev: false
 
-  /@builder.io/sdk@2.2.0:
-    resolution: {integrity: sha512-R/mOxmNhuCDaNxI4NWgSoY3GBMq2sn1NHu+NKH3MnONOnlzU7YtMsg3/SjYtbO0ANA/aSKG7DeVuHg2mOiMfFQ==}
+  /@builder.io/sdk@2.2.2:
+    resolution: {integrity: sha512-XUEuMiohLwD+FJCCEb2FuNNcupt2x+QvAbwf2j7X+52yxFBIVfsslUKycX6mH6y0BdJSqRE19xWOkEnVPSdpZQ==}
     dependencies:
       hash-sum: 2.0.0
       node-fetch: 2.7.0
@@ -357,7 +365,7 @@ packages:
     peerDependencies:
       react: '>=16.3.0'
     dependencies:
-      '@babel/runtime': 7.23.9
+      '@babel/runtime': 7.24.0
       '@emotion/cache': 10.0.29
       '@emotion/css': 10.0.27
       '@emotion/serialize': 0.11.16
@@ -2667,7 +2675,7 @@ packages:
   /babel-plugin-macros@2.8.0:
     resolution: {integrity: sha512-SEP5kJpfGYqYKpBrj5XU3ahw5p5GOHJ0U5ssOSQ/WBVdwkD2Dzlce95exQTs3jOVWPPKLBN2rlEWkCK7dSmLvg==}
     dependencies:
-      '@babel/runtime': 7.23.9
+      '@babel/runtime': 7.24.0
       cosmiconfig: 6.0.0
       resolve: 1.22.8
     dev: false
@@ -4788,7 +4796,7 @@ packages:
     engines: {node: '>=16.0.0'}
     requiresBuild: true
     dependencies:
-      prebuild-install: 7.1.1
+      prebuild-install: 7.1.2
     dev: false
 
   /iterator.prototype@1.1.2:
@@ -6251,8 +6259,8 @@ packages:
       - '@babel/core'
       - babel-plugin-macros
 
-  /node-abi@3.54.0:
-    resolution: {integrity: sha512-p7eGEiQil0YUV3ItH4/tBb781L5impVmmx2E9FRKF7d18XXzp4PGT2tdYMFY6wQqgxD0IwNZOiSJ0/K0fSi/OA==}
+  /node-abi@3.56.0:
+    resolution: {integrity: sha512-fZjdhDOeRcaS+rcpve7XuwHBmktS1nS1gzgghwKUQQ8nTy2FdSDr6ZT8k6YhvlJeHmmQMYiT/IH9hfco5zeW2Q==}
     engines: {node: '>=10'}
     dependencies:
       semver: 7.6.0
@@ -6701,12 +6709,12 @@ packages:
     resolution: {integrity: sha512-qs2ansoQEwzNiV5eAcRT1p1EC/dmEzaATVDJNiB3g2sRDWdA7b7MurXdJjB2+/WQktGWZwxvDrnuRFbWuIr64g==}
     dev: false
 
-  /preact@10.19.3:
-    resolution: {integrity: sha512-nHHTeFVBTHRGxJXKkKu5hT8C/YWBkPso4/Gad6xuj5dbptt9iF9NZr9pHbPhBrnT2klheu7mHTxTZ/LjwJiEiQ==}
+  /preact@10.19.6:
+    resolution: {integrity: sha512-gympg+T2Z1fG1unB8NH29yHJwnEaCH37Z32diPDku316OTnRPeMbiRV9kTrfZpocXjdfnWuFUl/Mj4BHaf6gnw==}
     dev: false
 
-  /prebuild-install@7.1.1:
-    resolution: {integrity: sha512-jAXscXWMcCK8GgCoHOfIr0ODh5ai8mj63L2nWrjuAgXE6tDyYGnx4/8o/rCgU+B4JSyZBKbeZqzhtwtC3ovxjw==}
+  /prebuild-install@7.1.2:
+    resolution: {integrity: sha512-UnNke3IQb6sgarcZIDU3gbMeTp/9SSU1DAIkil7PrqG1vZlBtY5msYccSKSHDqa3hNg436IXK+SNImReuA1wEQ==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -6716,7 +6724,7 @@ packages:
       minimist: 1.2.8
       mkdirp-classic: 0.5.3
       napi-build-utils: 1.0.2
-      node-abi: 3.54.0
+      node-abi: 3.56.0
       pump: 3.0.0
       rc: 1.2.8
       simple-get: 4.0.1
