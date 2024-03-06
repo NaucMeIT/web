@@ -55,7 +55,7 @@ export default withMDX(
                 },
                 {
                     source: "/slido",
-                    destination: "https://drp.li/WBofe",
+                    destination: "https://drp.li/nmit-slido",
                     permanent: true,
                 },
                 {
