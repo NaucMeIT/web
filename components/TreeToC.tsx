@@ -55,9 +55,7 @@ export function TreeToC({ headings }: Props) {
                             )}
                         </Accordion.Header>
                         <Accordion.Content className='data-open:animate-open data-close:animate-close will-change-auto overflow-hidden'>
-                            {heading.children?.map((sub) => (
-                                <ItemText key={sub.href} {...sub} />
-                            ))}
+                            {heading.children?.map((sub) => <ItemText key={sub.href} {...sub} />)}
                         </Accordion.Content>
                     </Accordion.Item>
                 )

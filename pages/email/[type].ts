@@ -26,7 +26,11 @@ export const getServerSideProps: GetServerSideProps<
         case "error":
             return handleEmail<ErrorFormData>(formatErrorForm, "Nahlášení chyby", "lydie.hemalova@naucme.it")(context)
         case "course":
-            return handleEmail<CourseFormData>(formatCourseForm, "Přihláška ke kurzu", "lydie.hemalova@naucme.it")(context)
+            return handleEmail<CourseFormData>(
+                formatCourseForm,
+                "Přihláška ke kurzu",
+                "lydie.hemalova@naucme.it",
+            )(context)
         default:
             return handle({})(context)
     }

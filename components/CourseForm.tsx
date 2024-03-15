@@ -9,20 +9,14 @@ export function CourseForm() {
             text='Pokud se chceš přihlásit, nebo si nejsi něčím jistý nebo máš další otázky? Neboj se nám zavolat, poslat zprávu nebo napsat na email:'
         >
             <DecoratedInput name='name' type='text' label='Vaše jméno' placeholder='Zadejte své jméno' required />
-            <DecoratedInput
-                name='email'
-                type='email'
-                label='Váš e-mail'
-                placeholder='Zadejte svůj email'
-                required
-            />
+            <DecoratedInput name='email' type='email' label='Váš e-mail' placeholder='Zadejte svůj email' required />
             <DecoratedInput
                 name='package'
                 label='Balíček'
                 placeholder='Jaký balíček chcete?'
                 required
-                list="packages-list"
-                title="Vyberte jeden z balíčků"
+                list='packages-list'
+                title='Vyberte jeden z balíčků'
             />
             <DecoratedInput
                 name='message'

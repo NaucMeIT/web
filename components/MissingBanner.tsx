@@ -13,8 +13,8 @@ export function MissingBanner() {
                 {!user
                     ? "Nejsi přihlášen. Většina funkcí pro tebe není dostupná."
                     : hasCredits
-                    ? `Skvělá volba plánu, máš k dispozici ještě ${user.credits} konzultací!`
-                    : "Nemáš žádné konzultace k dispozici, změň to a získej konzultace za ty nejlepší ceny!"}
+                      ? `Skvělá volba plánu, máš k dispozici ještě ${user.credits} konzultací!`
+                      : "Nemáš žádné konzultace k dispozici, změň to a získej konzultace za ty nejlepší ceny!"}
             </Typography>
             {user && !hasCredits ? (
                 <Button

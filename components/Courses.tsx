@@ -9,16 +9,31 @@ export function Courses() {
             <Typography variant='h2' component='h2' className='text-center'>
                 Naše kurzy
             </Typography>
-            <CourseBox
-                image='/images/qa_illustration.svg'
-                width={320}
-                height={291}
-                side='right'
-                title='Placené'
-                link='/kurz-git-zaklad'
-            >
-                Git je magie! Aby ses ji naučil, nemusíš ukrást zakázanou knihu drakovi. Stačí pochopit základní
-                koncepty, které tě vystřelí rychle dál.
+            <CourseBox image='/images/qa_illustration.svg' width={320} height={291} side='right' title='Placené'>
+                <p className='mb-2'>
+                    Ať jsi programátor nebo tester, AI potřebuješ ke svému životu. Googlení už není in, proto je čas
+                    natrhnout triko neefektivitě.
+                </p>
+                <Typography
+                    variant='link'
+                    component={Link}
+                    componentProps={{ href: "/kurz-ai" }}
+                    className='underline mb-5 block'
+                >
+                    Mrknout na AI kurz {">"}
+                </Typography>
+                <p className='mb-2'>
+                    Git je magie! Aby ses ji naučil, nemusíš ukrást zakázanou knihu drakovi. Stačí pochopit základní
+                    koncepty, které tě vystřelí rychle dál.
+                </p>
+                <Typography
+                    variant='link'
+                    component={Link}
+                    componentProps={{ href: "/kurz-git-zaklad" }}
+                    className='underline mb-5 block'
+                >
+                    Mrknout na kurz Gitu {">"}
+                </Typography>
             </CourseBox>
             <CourseBox image='/images/dev_illustration.svg' width={320} height={348} side='left' title='Samostudium'>
                 <p className='mb-2'>
