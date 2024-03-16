@@ -58,7 +58,7 @@ dependencies:
     version: 0.3.0
   '@stripe/react-stripe-js':
     specifier: ^2.6.0
-    version: 2.6.0(@stripe/stripe-js@3.0.10)(react-dom@18.2.0)(react@18.2.0)
+    version: 2.6.2(@stripe/stripe-js@3.0.10)(react-dom@18.2.0)(react@18.2.0)
   '@stripe/stripe-js':
     specifier: ^3.0.0
     version: 3.0.10
@@ -1650,8 +1650,8 @@ packages:
     resolution: {integrity: sha512-jNPDKg0GQGa4jCaBc6JQsv0NHmBA80WCwZE49nFyhcbo32WF0GyqXeice7ZApy7OUHI16bAUAzm4MOQw3gvxfQ==}
     dev: false
 
-  /@stripe/react-stripe-js@2.6.0(@stripe/stripe-js@3.0.10)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-SuXm8pNpWaE0xd7QsMNW1nz3S3w3MTMc16bVUa3SdGVYc+wJDVD1GzJeK6xtVZ7dC2DZB+aOikPuG/tegj6zAQ==}
+  /@stripe/react-stripe-js@2.6.2(@stripe/stripe-js@3.0.10)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-FSjNg4v7BiCfojvx25PQ8DugOa09cGk1t816R/DLI/lT+1bgRAYpMvoPirLT4ZQ3ev/0VDtPdWNaabPsLDTOMA==}
     peerDependencies:
       '@stripe/stripe-js': ^1.44.1 || ^2.0.0 || ^3.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
