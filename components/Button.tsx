@@ -72,11 +72,11 @@ export function Button({ className, disabled, children, theme, size, ...rest }: 
                   "data-splitbee-event-destination": rest.href,
               }
             : hasHref
-            ? {}
-            : {
-                  "data-splitbee-event": "Button",
-                  "data-splitbee-event-destination": `${children}`,
-              }
+              ? {}
+              : {
+                    "data-splitbee-event": "Button",
+                    "data-splitbee-event-destination": `${children}`,
+                }
 
     return hasHref ? (
         <span {...props} tabIndex={-1}>
@@ -118,11 +118,11 @@ export function SocialButton({ naked, label, className, disabled, children, ...r
                   "data-splitbee-event-destination": rest.href,
               }
             : hasHref
-            ? {}
-            : {
-                  "data-splitbee-event": "Button",
-                  "data-splitbee-event-destination": label,
-              }
+              ? {}
+              : {
+                    "data-splitbee-event": "Button",
+                    "data-splitbee-event-destination": label,
+                }
 
     return hasHref ? (
         <span {...props} tabIndex={-1}>
