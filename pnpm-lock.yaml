@@ -195,7 +195,7 @@ devDependencies:
     version: 5.11.0
   supabase:
     specifier: ^1.148.6
-    version: 1.148.6
+    version: 1.149.4
   tailwindcss:
     specifier: ^3.4.1
     version: 3.4.1(ts-node@10.9.2)
@@ -1887,6 +1887,12 @@ packages:
     resolution: {integrity: sha512-M/GPWVS2wLkSkNHVeLkrF2fD5Lx5UC4PxA0uZcKc6QqbIQUJyW1jVjueJYi1z8n0I5PxYrtpnPnWglE+y9A0KA==}
     dependencies:
       undici-types: 5.26.5
+
+  /@types/node@20.11.29:
+    resolution: {integrity: sha512-P99thMkD/1YkCvAtOd6/zGedKNA0p2fj4ZpjCzcNiSCBWgm3cNRTBfa/qjFnsKkkojxu4vVLtWpesnZ9+ap+gA==}
+    dependencies:
+      undici-types: 5.26.5
+    dev: false
 
   /@types/nodemailer@6.4.14:
     resolution: {integrity: sha512-fUWthHO9k9DSdPCSPRqcu6TWhYyxTBg382vlNIttSe9M7XfsT06y0f24KHXtbnijPGGRIcVvdKHTNikOI6qiHA==}
@@ -4842,7 +4848,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 20.11.28
+      '@types/node': 20.11.29
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: false
@@ -7738,8 +7744,8 @@ packages:
       ts-interface-checker: 0.1.13
     dev: true
 
-  /supabase@1.148.6:
-    resolution: {integrity: sha512-/VXbN0C/r/o1TkHGw4EXYvwtwfsSvRaBd6lWa5HamcC6HdFpbof8VsSglWjiie5ONTg3lwqv06wcOrtdpzz/Bg==}
+  /supabase@1.149.4:
+    resolution: {integrity: sha512-yijNJCq2SNoG14IFDXjfy9DkJYbtgKqzUZxOVySJcMkjbVI3q5P8IdUOt7b8Zn3AYo6eSAOHxJR+UISOHSYIVw==}
     engines: {npm: '>=8'}
     hasBin: true
     requiresBuild: true
