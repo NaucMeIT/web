@@ -171,7 +171,7 @@ devDependencies:
     version: 9.1.0(eslint@8.57.0)
   eslint-plugin-functional:
     specifier: ^6.2.0
-    version: 6.2.0(eslint@8.57.0)(typescript@5.4.3)
+    version: 6.2.1(eslint@8.57.0)(typescript@5.4.3)
   husky:
     specifier: ^9.0.11
     version: 9.0.11
@@ -3617,8 +3617,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-functional@6.2.0(eslint@8.57.0)(typescript@5.4.3):
-    resolution: {integrity: sha512-8/c7rnqQL0e2Pu33InHLlSnMgP8Gq9AlsS7J4D6aIIjAU2w2TnBNTFcs16rYQLGUoBrTmcmLb8QEnezr69zBuA==}
+  /eslint-plugin-functional@6.2.1(eslint@8.57.0)(typescript@5.4.3):
+    resolution: {integrity: sha512-Snap/SzvsoKQsy4BDuRsL+CS5/CmLR21luC12V/GdWO67uyeZmBVKOXRfgMsb6OLpOHanqYrMaVXwcZZGJDWYA==}
     engines: {node: '>=16.10.0'}
     peerDependencies:
       eslint: ^8.0.0
