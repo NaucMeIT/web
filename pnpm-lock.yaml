@@ -84,8 +84,8 @@ dependencies:
     specifier: ^4.24.7
     version: 4.24.7(next@14.1.4)(nodemailer@6.9.13)(react-dom@18.2.0)(react@18.2.0)
   next-axiom:
-    specifier: ^0.18.0
-    version: 0.18.1(next@14.1.4)
+    specifier: ^1.0.0
+    version: 1.1.1(next@14.1.4)(react@18.2.0)
   next-mdx-remote:
     specifier: ^4.4.1
     version: 4.4.1(react-dom@18.2.0)(react@18.2.0)
@@ -6265,13 +6265,16 @@ packages:
       uuid: 8.3.2
     dev: false
 
-  /next-axiom@0.18.1(next@14.1.4):
-    resolution: {integrity: sha512-yWhAwcruCAedktE9DGR9nATF5RhFgiUhzj4ghv3JdblEYRtyR4IuRgo/pDzHI6IAvcB5I7xWB+vfvWsSgXIHtw==}
-    engines: {node: '>=15'}
+  /next-axiom@1.1.1(next@14.1.4)(react@18.2.0):
+    resolution: {integrity: sha512-0r/TJ+/zetD+uDc7B+2E7WpC86hEtQ1U+DuWYrP/JNmUz+ZdPFbrZgzOSqaZ6TwYbXP56VVlPfYwq1YsKHTHYQ==}
+    engines: {node: '>=18'}
     peerDependencies:
-      next: '>=12.1.4'
+      next: '>=13.4'
+      react: '>=18.0.0'
     dependencies:
       next: 14.1.4(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      remeda: 1.56.0
       whatwg-fetch: 3.6.19
     dev: false
 
@@ -7330,6 +7333,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /remeda@1.56.0:
+    resolution: {integrity: sha512-ZGebbddlHYNIc4P6o6B/LRiUIZyuFvO9/aKxKpzzFjJxb9maUmYk5E72VpvAooh5uFw0rSbfygIV3rc49NW2xg==}
+    dev: false
 
   /requires-port@1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
