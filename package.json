@@ -99,7 +99,7 @@
         "yarn": "please-use-pnpm"
     },
     "volta": {
-        "node": "20.11.1",
+        "node": "20.12.0",
         "pnpm": "8.15.5"
     }
 }
