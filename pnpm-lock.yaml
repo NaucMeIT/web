@@ -127,7 +127,7 @@ dependencies:
     version: 1.2.1
   stripe:
     specifier: ^14.22.0
-    version: 14.23.0
+    version: 14.25.0
 
 devDependencies:
   '@types/body-parser':
@@ -6906,8 +6906,8 @@ packages:
       side-channel: 1.0.6
     dev: false
 
-  /qs@6.12.0:
-    resolution: {integrity: sha512-trVZiI6RMOkO476zLGaBIzszOdFPnCCXHPG9kn0yuS1uz6xdVxPfZdB3vUig9pxPFDM9BRAgz/YUIVQ1/vuiUg==}
+  /qs@6.12.1:
+    resolution: {integrity: sha512-zWmv4RSuB9r2mYQw3zxQuHWeU+42aKi1wWig/j4ele4ygELZ7PEO6MM7rim9oAQH2A5MWfsAVf/jPvTPgCbvUQ==}
     engines: {node: '>=0.6'}
     dependencies:
       side-channel: 1.0.6
@@ -7702,12 +7702,12 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /stripe@14.23.0:
-    resolution: {integrity: sha512-OPD7LqBmni6uDdqA05GGgMZyyRWxJOehONBNC9tYgY4Uh089EtXd6QLIgRGrqTDlQH3cA2BXo848nxwa/zsQzw==}
+  /stripe@14.25.0:
+    resolution: {integrity: sha512-wQS3GNMofCXwH8TSje8E1SE8zr6ODiGtHQgPtO95p9Mb4FhKC9jvXR2NUTpZ9ZINlckJcFidCmaTFV4P6vsb9g==}
     engines: {node: '>=12.*'}
     dependencies:
       '@types/node': 20.11.30
-      qs: 6.12.0
+      qs: 6.12.1
     dev: false
 
   /style-to-object@0.4.1:
