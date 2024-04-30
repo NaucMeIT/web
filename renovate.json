@@ -1,39 +1,74 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["config:base"],
-    "reviewers": ["pegak"],
-    "labels": ["dependencies"],
+    "extends": [
+        "config:base"
+    ],
+    "reviewers": [
+        "BleedingDev"
+    ],
+    "labels": [
+        "dependencies"
+    ],
     "prHourlyLimit": 0,
     "prConcurrentLimit": 0,
     "assignAutomerge": true,
     "fetchReleaseNotes": true,
     "packageRules": [
         {
-            "matchPackagePatterns": ["^@radix-ui"],
+            "matchPackagePatterns": [
+                "^@radix-ui"
+            ],
             "groupName": "radix packages"
         },
         {
-            "matchPackagePatterns": ["^@builder.io"],
+            "matchPackagePatterns": [
+                "^@builder.io"
+            ],
             "groupName": "builder packages"
         },
         {
-            "matchPackagePatterns": ["^eslint", "@typescript-eslint"],
+            "matchPackagePatterns": [
+                "^eslint",
+                "@typescript-eslint"
+            ],
             "matchPackageNames": "@types/eslint",
             "groupName": "eslint packages"
         },
         {
-            "matchPackagePatterns": ["^@next", "^next"],
-            "matchPackageNames": ["eslint-config-next"],
+            "matchPackagePatterns": [
+                "^@next",
+                "^next"
+            ],
+            "matchPackageNames": [
+                "eslint-config-next"
+            ],
             "groupName": "next packages"
         },
         {
-            "matchPackagePatterns": ["^@mdx-js"],
-            "matchPackageNames": ["@types/mdx-js__react"],
+            "matchPackagePatterns": [
+                "^@mdx-js",
+                "^remark",
+                "^rehype"
+            ],
+            "matchPackageNames": [
+                "@types/mdx-js__react"
+            ],
             "groupName": "markdown packages"
         },
         {
-            "matchPackagePatterns": ["^@types"],
-            "groupName": "types packages"
+            "matchPackagePatterns": [
+                "^@stripe/"
+            ],
+            "matchPackageNames": [
+                "stripe"
+            ],
+            "groupName": "stripe packages"
         },
+        {
+            "matchPackagePatterns": [
+                "^@types/"
+            ],
+            "groupName": "types packages"
+        }
     ]
 }
