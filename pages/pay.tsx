@@ -42,7 +42,7 @@ const appRedirect = {
 } as const
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const stripe = new createStripe(process.env.STRIPE_SECRET_KEY || "", { apiVersion: "2023-10-16", typescript: true })
+    const stripe = new createStripe(process.env.STRIPE_SECRET_KEY || "", { apiVersion: "2024-04-10", typescript: true })
     const session = await getServerSession(context.req, context.res, authOptions)
     const planId = session?.user.planId
     const userEmail = session?.user.email
