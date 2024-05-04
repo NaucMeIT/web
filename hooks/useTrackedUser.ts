@@ -34,7 +34,6 @@ export const useTrackedUser = () => {
                 email,
             })
             if (signInStatus?.error) {
-                // eslint-disable-next-line functional/no-throw-statements
                 throw new Error(signInStatus?.error)
             }
             setSignStatus(isEmail ? "send" : "oauth")

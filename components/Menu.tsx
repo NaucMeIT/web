@@ -26,7 +26,6 @@ function MenuItem({
 }: {
     readonly item: MenuItemProps
     readonly className?: string
-    // eslint-disable-next-line functional/no-return-void
     readonly close: () => void
 }) {
     return (

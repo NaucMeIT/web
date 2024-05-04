@@ -4,12 +4,7 @@
         "project": "./tsconfig.json",
         "ecmaVersion": "latest"
     },
-    "plugins": ["@typescript-eslint", "functional"],
-    "extends": ["next/core-web-vitals", "prettier", "plugin:functional/lite"],
-    "rules": {
-        "functional/no-return-void": [0],
-        "functional/no-mixed-types": ["warn", { "checkInterfaces": false }],
-        "functional/immutable-data": ["warn", { "ignoreAccessorPattern": ["**.defaultProps", "**.displayName"] }]
-    },
+    "plugins": ["@typescript-eslint"],
+    "extends": ["next/core-web-vitals", "prettier"],
     "ignorePatterns": ["postcss.config.js"]
 }

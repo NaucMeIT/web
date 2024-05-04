@@ -5,7 +5,6 @@ import React from "react"
 type Values = { readonly label: string; readonly value: string; readonly disabled?: boolean }[]
 type GroupedValues = Readonly<Readonly<[string, ...Values]>[]>
 
-// eslint-disable-next-line functional/no-mixed-types
 type SelectProps = {
     readonly values?: Values
     readonly groupValues?: GroupedValues

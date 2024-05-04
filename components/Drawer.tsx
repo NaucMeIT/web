@@ -1,10 +1,8 @@
 import { DownArrow } from "./DownArrow"
 
-// eslint-disable-next-line functional/no-mixed-types
 type DrawerProps = {
     readonly children: React.ReactNode
     readonly isOpen: boolean
-    // eslint-disable-next-line functional/no-return-void
     readonly setIsOpen: (isOpen: boolean) => void
 }
 
