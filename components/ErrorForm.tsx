@@ -3,10 +3,8 @@ import { DecoratedInput } from "./DecoratedInput"
 import { FormWrapper } from "./FormWrapper"
 import { useRouter } from "next/router"
 
-// eslint-disable-next-line functional/no-mixed-types
 type Props = {
     readonly user: Session["user"]
-    // eslint-disable-next-line functional/no-return-void
     readonly onSuccess: () => void
 }
 

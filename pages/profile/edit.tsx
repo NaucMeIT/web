@@ -85,7 +85,6 @@ export const getServerSideProps = handle<{}, UrlQuery, FormData>({
             const plan = parsedUrl.searchParams.get("startPlan") || ""
             const dbPlan = await prisma.plan.findFirst({ where: { name: plan } })
             if (!dbPlan) {
-                // eslint-disable-next-line functional/no-throw-statements
                 throw new Error("Tento plán neexistuje.")
             }
 

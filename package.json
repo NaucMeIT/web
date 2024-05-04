@@ -76,7 +76,6 @@
         "eslint": "^8.57.0",
         "eslint-config-next": "^14.2.3",
         "eslint-config-prettier": "^9.1.0",
-        "eslint-plugin-functional": "^6.2.0",
         "husky": "^9.0.11",
         "lint-staged": "^15.2.2",
         "next-sitemap": "^4.2.3",
@@ -91,7 +90,7 @@
         "tsutils": "^3.21.0",
         "typescript": "^5.4.3"
     },
-    "packageManager": "pnpm@8.15.5",
+    "packageManager": "pnpm@9.0.6",
     "engineStrict": true,
     "engines": {
         "node": ">=20.3.0 || 18.x",
@@ -100,6 +99,6 @@
     },
     "volta": {
         "node": "20.12.2",
-        "pnpm": "8.15.5"
+        "pnpm": "9.0.6"
     }
 }
