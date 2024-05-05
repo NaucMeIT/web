@@ -1,0 +1,9 @@
+{
+  "name": "legacy_nmit",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/legacy_nmit",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project legacy_nmit --web",
+  "targets": {}
+}
