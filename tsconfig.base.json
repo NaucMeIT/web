@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nmit-coursition/primitives": ["libs/primitives/src/index.ts"],
+      "@nmit-coursition/primitives/*": ["primitives/src/*"],
+      "@nmit-coursition/utils": ["libs/utils/src/index.ts"],
+      "@nmit-coursition/utils/*": ["utils/src/*"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
