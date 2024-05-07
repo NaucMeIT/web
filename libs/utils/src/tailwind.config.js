@@ -1,14 +1,11 @@
-const { createGlobPatternsForDependencies } = require('@nx/react/tailwind');
-const { join } = require('path');
-const TailwindAnimate = require('tailwindcss-animate');
+const { createGlobPatternsForDependencies } = require('@nx/react/tailwind')
+const { join } = require('path')
+const TailwindAnimate = require('tailwindcss-animate')
 
 function buildConfig(appDir) {
   return {
     content: [
-      join(
-        appDir,
-        '{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,html}'
-      ),
+      join(appDir, '{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,html}'),
       ...createGlobPatternsForDependencies(appDir),
     ],
     theme: {
@@ -70,7 +67,7 @@ function buildConfig(appDir) {
       },
     },
     plugins: [TailwindAnimate],
-  };
+  }
 }
 
-module.exports = { buildConfig };
+module.exports = { buildConfig }
