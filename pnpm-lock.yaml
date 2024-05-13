@@ -8562,6 +8562,12 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
 
+  '@nrwl/devkit@18.0.2(nx@18.0.2(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))':
+    dependencies:
+      '@nx/devkit': 18.0.2(nx@18.0.2(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
+    transitivePeerDependencies:
+      - nx
+
   '@nrwl/devkit@18.0.2(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))':
     dependencies:
       '@nx/devkit': 18.0.2(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
@@ -8795,7 +8801,7 @@ snapshots:
 
   '@nx/devkit@18.0.2(nx@18.0.2(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))':
     dependencies:
-      '@nrwl/devkit': 18.0.2(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
+      '@nrwl/devkit': 18.0.2(nx@18.0.2(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
       ejs: 3.1.10
       enquirer: 2.3.6
       ignore: 5.3.1
