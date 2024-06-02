@@ -93,12 +93,12 @@
   "packageManager": "pnpm@9.1.4",
   "engineStrict": true,
   "engines": {
-    "node": ">=20.14.0 || 18.x",
+    "node": ">=20.12.2 || 18.x",
     "npm": "please-use-pnpm",
     "yarn": "please-use-pnpm"
   },
   "volta": {
-    "node": "20.14.0",
+    "node": "20.12.2",
     "pnpm": "9.1.4"
   }
 }
