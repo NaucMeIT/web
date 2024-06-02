@@ -5,6 +5,7 @@
   "scripts": {},
   "private": true,
   "dependencies": {
+    "ai": "^3.1.22",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.378.0",
@@ -19,14 +20,14 @@
     "@babel/core": "^7.14.5",
     "@babel/preset-react": "^7.14.5",
     "@nx-extend/shadcn-ui": "^1.1.0",
-    "@nx/devkit": "19.0.1",
-    "@nx/eslint": "19.0.1",
-    "@nx/eslint-plugin": "19.0.1",
-    "@nx/js": "19.0.1",
-    "@nx/next": "19.0.1",
-    "@nx/playwright": "19.0.1",
-    "@nx/react": "19.0.1",
-    "@nx/workspace": "19.0.1",
+    "@nx/devkit": "19.1.1",
+    "@nx/eslint": "19.1.1",
+    "@nx/eslint-plugin": "19.1.1",
+    "@nx/js": "19.1.1",
+    "@nx/next": "19.1.1",
+    "@nx/playwright": "19.1.1",
+    "@nx/react": "19.1.1",
+    "@nx/workspace": "19.1.1",
     "@playwright/test": "^1.44.0",
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.3",
@@ -46,7 +47,7 @@
     "eslint-plugin-playwright": "^1.6.0",
     "eslint-plugin-react": "7.34.1",
     "eslint-plugin-react-hooks": "4.6.2",
-    "nx": "19.0.1",
+    "nx": "19.1.1",
     "postcss": "8.4.38",
     "prettier": "^3.2.5",
     "tailwindcss": "3.4.3",
@@ -54,4 +55,3 @@
     "typescript": "~5.4.2"
   }
 }
-
