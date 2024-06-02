@@ -10,7 +10,7 @@
     "build": "pnpm run partytown && next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky",
+    "prepare": "husky apps/legacy_nmit/.husky",
     "postbuild": "next-sitemap --config next-sitemap.config.mjs",
     "prettier": "prettier --write .",
     "preinstall": "npx only-allow pnpm",
