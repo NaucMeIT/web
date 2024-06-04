@@ -1,0 +1,12 @@
+{
+  "name": "primitives",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/primitives/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "add": {
+      "executor": "@nx-extend/shadcn-ui:add"
+    }
+  }
+}
