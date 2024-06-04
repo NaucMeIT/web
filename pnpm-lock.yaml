@@ -31,7 +31,7 @@ importers:
         version: 2.3.0
       tailwindcss-animate:
         specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@3.4.3(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(typescript@5.4.5)))
+        version: 1.0.7(tailwindcss@3.4.3(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(typescript@5.4.5)))
       tslib:
         specifier: ^2.3.0
         version: 2.6.2
@@ -44,28 +44,28 @@ importers:
         version: 7.24.1(@babel/core@7.24.5)
       '@nx-extend/shadcn-ui':
         specifier: ^1.1.0
-        version: 1.1.0(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(react@18.3.1)(tailwindcss@3.4.3(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(typescript@5.4.5)))
+        version: 1.1.0(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(react@18.3.1)(tailwindcss@3.4.3(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(typescript@5.4.5)))
       '@nx/devkit':
         specifier: 19.0.1
         version: 19.0.1(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
       '@nx/eslint':
         specifier: 19.0.1
-        version: 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
+        version: 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
       '@nx/eslint-plugin':
         specifier: 19.0.1
-        version: 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(@typescript-eslint/parser@7.8.0(eslint@8.57.0)(typescript@5.4.5))(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
+        version: 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(@typescript-eslint/parser@7.8.0(eslint@8.57.0)(typescript@5.4.5))(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
       '@nx/js':
         specifier: 19.0.1
-        version: 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
+        version: 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
       '@nx/next':
         specifier: 19.0.1
-        version: 19.0.1(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))
+        version: 19.0.1(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))
       '@nx/playwright':
         specifier: 19.0.1
-        version: 19.0.1(@babel/traverse@7.24.5)(@playwright/test@1.44.0)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
+        version: 19.0.1(@babel/traverse@7.24.5)(@playwright/test@1.44.0)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
       '@nx/react':
         specifier: 19.0.1
-        version: 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))
+        version: 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))
       '@nx/workspace':
         specifier: 19.0.1
         version: 19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))
@@ -83,13 +83,13 @@ importers:
         version: 0.5.11
       '@testing-library/react':
         specifier: ^15.0.7
-        version: 15.0.7(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 15.0.7(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@types/node':
-        specifier: 20.12.10
-        version: 20.12.10
+        specifier: 20.14.1
+        version: 20.14.1
       '@types/react':
         specifier: ^18.3.1
-        version: 18.3.1
+        version: 18.3.3
       '@types/react-dom':
         specifier: 18.3.0
         version: 18.3.0
@@ -137,10 +137,10 @@ importers:
         version: 3.2.5
       tailwindcss:
         specifier: 3.4.3
-        version: 3.4.3(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(typescript@5.4.5))
+        version: 3.4.3(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(typescript@5.4.5))
       ts-node:
         specifier: 10.9.2
-        version: 10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(typescript@5.4.5)
+        version: 10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(typescript@5.4.5)
       typescript:
         specifier: ~5.4.2
         version: 5.4.5
@@ -164,7 +164,7 @@ importers:
         version: 3.0.1(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))
       '@mdx-js/react':
         specifier: ^3.0.1
-        version: 3.0.1(@types/react@18.3.1)(react@18.3.1)
+        version: 3.0.1(@types/react@18.3.3)(react@18.3.1)
       '@next-auth/prisma-adapter':
         specifier: ^1.0.7
         version: 1.0.7(@prisma/client@5.14.0(prisma@5.14.0))(next-auth@4.24.7(next@14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nodemailer@6.9.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
@@ -173,25 +173,25 @@ importers:
         version: 14.2.3
       '@next/mdx':
         specifier: ^14.2.3
-        version: 14.2.3(@mdx-js/loader@3.0.1(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11))))(@mdx-js/react@3.0.1(@types/react@18.3.1)(react@18.3.1))
+        version: 14.2.3(@mdx-js/loader@3.0.1(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11))))(@mdx-js/react@3.0.1(@types/react@18.3.3)(react@18.3.1))
       '@prisma/client':
         specifier: ^5.13.0
         version: 5.14.0(prisma@5.14.0)
       '@radix-ui/react-accordion':
         specifier: ^1.1.2
-        version: 1.1.2(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 1.1.2(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-dialog':
         specifier: ^1.0.5
-        version: 1.0.5(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 1.0.5(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-icons':
         specifier: ^1.3.0
         version: 1.3.0(react@18.3.1)
       '@radix-ui/react-select':
         specifier: ^2.0.0
-        version: 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-separator':
         specifier: ^1.0.3
-        version: 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@sendgrid/mail':
         specifier: ^8.1.3
         version: 8.1.3
@@ -282,13 +282,13 @@ importers:
         version: 1.5.8
       '@types/node':
         specifier: ^20.12.8
-        version: 20.12.10
+        version: 20.14.1
       '@types/nodemailer':
         specifier: ^6.4.15
         version: 6.4.15
       '@types/react':
         specifier: ^18.3.1
-        version: 18.3.1
+        version: 18.3.3
       '@types/remark-prism':
         specifier: ^1.3.7
         version: 1.3.7
@@ -336,13 +336,13 @@ importers:
         version: 1.172.2
       tailwindcss:
         specifier: ^3.4.1
-        version: 3.4.3(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(typescript@5.4.5))
+        version: 3.4.3(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(typescript@5.4.5))
       tailwindcss-fluid:
         specifier: ^0.2.0
         version: 0.2.0
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(typescript@5.4.5)
+        version: 10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(typescript@5.4.5)
       tsutils:
         specifier: ^3.21.0
         version: 3.21.0(typescript@5.4.5)
@@ -2408,8 +2408,8 @@ packages:
   '@types/node-forge@1.3.11':
     resolution: {integrity: sha512-FQx220y22OKNTqaByeBGqHWYz4cl94tpcxeFdvBo3wjG6XPBuZ0BNgNZRV5J5TFmmcsJ4IzsLkmGRiQbnYsBEQ==}
 
-  '@types/node@20.12.10':
-    resolution: {integrity: sha512-Eem5pH9pmWBHoGAT8Dr5fdc5rYA+4NAovdM4EktRPVAAiJhmWWfQrA0cFhAbOsQdSfIHjAud6YdkbL69+zSKjw==}
+  '@types/node@20.14.1':
+    resolution: {integrity: sha512-T2MzSGEu+ysB/FkWfqmhV3PLyQlowdptmmgD20C6QxsS8Fmv5SjpZ1ayXaEC0S21/h5UJ9iA6W/5vSNU5l00OA==}
 
   '@types/nodemailer@6.4.15':
     resolution: {integrity: sha512-0EBJxawVNjPkng1zm2vopRctuWVCxk34JcIlRuXSf54habUWdz1FB7wHDqOqvDa8Mtpt0Q3LTXQkAs2LNyK5jQ==}
@@ -2435,8 +2435,8 @@ packages:
   '@types/react@17.0.80':
     resolution: {integrity: sha512-LrgHIu2lEtIo8M7d1FcI3BdwXWoRQwMoXOZ7+dPTW0lYREjmlHl3P0U1VD0i/9tppOuv8/sam7sOjx34TxSFbA==}
 
-  '@types/react@18.3.1':
-    resolution: {integrity: sha512-V0kuGBX3+prX+DQ/7r2qsv1NsdfnCLnTgnRJ1pYnxykBhGMz+qj+box5lq7XsO5mtZsBqpjwwTu/7wszPfMBcw==}
+  '@types/react@18.3.3':
+    resolution: {integrity: sha512-hti/R0pS0q1/xx+TsI73XIqk26eBsISZ2R0wUijXIngRK9R/e7Xw/cXVxQK7R5JjW+SV4zGcn5hXjudkN/pLIw==}
 
   '@types/remark-prism@1.3.7':
     resolution: {integrity: sha512-cPdp6UXuMi8ikq6RtMuVoZIYn7Kxi6+ToiJ4YuT0f8Ha6DP/cxne+MS3W2ddlQrBb7GZDIu4YGD2geeTIU9Jmg==}
@@ -4100,6 +4100,7 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@11.12.0:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
@@ -4323,6 +4324,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.3:
     resolution: {integrity: sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw==}
@@ -6259,6 +6261,7 @@ packages:
 
   rimraf@3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rimraf@5.0.7:
@@ -8385,7 +8388,7 @@ snapshots:
       '@jest/schemas': 29.6.3
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
       '@types/yargs': 17.0.32
       chalk: 4.1.2
 
@@ -8479,13 +8482,13 @@ snapshots:
   '@mdx-js/react@2.3.0(react@18.3.1)':
     dependencies:
       '@types/mdx': 2.0.13
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
       react: 18.3.1
 
-  '@mdx-js/react@3.0.1(@types/react@18.3.1)(react@18.3.1)':
+  '@mdx-js/react@3.0.1(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
       '@types/mdx': 2.0.13
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
       react: 18.3.1
 
   '@next-auth/prisma-adapter@1.0.7(@prisma/client@5.14.0(prisma@5.14.0))(next-auth@4.24.7(next@14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nodemailer@6.9.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
@@ -8501,12 +8504,12 @@ snapshots:
     dependencies:
       glob: 10.3.10
 
-  '@next/mdx@14.2.3(@mdx-js/loader@3.0.1(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11))))(@mdx-js/react@3.0.1(@types/react@18.3.1)(react@18.3.1))':
+  '@next/mdx@14.2.3(@mdx-js/loader@3.0.1(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11))))(@mdx-js/react@3.0.1(@types/react@18.3.3)(react@18.3.1))':
     dependencies:
       source-map: 0.7.4
     optionalDependencies:
       '@mdx-js/loader': 3.0.1(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))
-      '@mdx-js/react': 3.0.1(@types/react@18.3.1)(react@18.3.1)
+      '@mdx-js/react': 3.0.1(@types/react@18.3.3)(react@18.3.1)
 
   '@next/swc-darwin-arm64@14.2.3':
     optional: true
@@ -8565,9 +8568,9 @@ snapshots:
     transitivePeerDependencies:
       - nx
 
-  '@nrwl/eslint-plugin-nx@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(@typescript-eslint/parser@7.8.0(eslint@8.57.0)(typescript@5.4.5))(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)':
+  '@nrwl/eslint-plugin-nx@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(@typescript-eslint/parser@7.8.0(eslint@8.57.0)(typescript@5.4.5))(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)':
     dependencies:
-      '@nx/eslint-plugin': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(@typescript-eslint/parser@7.8.0(eslint@8.57.0)(typescript@5.4.5))(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
+      '@nx/eslint-plugin': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(@typescript-eslint/parser@7.8.0(eslint@8.57.0)(typescript@5.4.5))(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -8583,9 +8586,9 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nrwl/js@18.0.2(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.3.3)':
+  '@nrwl/js@18.0.2(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.3.3)':
     dependencies:
-      '@nx/js': 18.0.2(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.3.3)
+      '@nx/js': 18.0.2(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.3.3)
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -8598,9 +8601,9 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nrwl/js@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)':
+  '@nrwl/js@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)':
     dependencies:
-      '@nx/js': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
+      '@nx/js': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -8613,9 +8616,9 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nrwl/next@19.0.1(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))':
+  '@nrwl/next@19.0.1(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))':
     dependencies:
-      '@nx/next': 19.0.1(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))
+      '@nx/next': 19.0.1(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))
     transitivePeerDependencies:
       - '@babel/core'
       - '@babel/traverse'
@@ -8648,9 +8651,9 @@ snapshots:
       - webpack
       - webpack-cli
 
-  '@nrwl/react@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))':
+  '@nrwl/react@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))':
     dependencies:
-      '@nx/react': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))
+      '@nx/react': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -8683,9 +8686,9 @@ snapshots:
       - '@swc/core'
       - debug
 
-  '@nrwl/web@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)':
+  '@nrwl/web@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)':
     dependencies:
-      '@nx/web': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
+      '@nx/web': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -8698,9 +8701,9 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nrwl/webpack@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)':
+  '@nrwl/webpack@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)':
     dependencies:
-      '@nx/webpack': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
+      '@nx/webpack': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@parcel/css'
@@ -8757,18 +8760,18 @@ snapshots:
       - debug
       - nx
 
-  '@nx-extend/shadcn-ui@1.1.0(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(react@18.3.1)(tailwindcss@3.4.3(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(typescript@5.4.5)))':
+  '@nx-extend/shadcn-ui@1.1.0(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(react@18.3.1)(tailwindcss@3.4.3(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(typescript@5.4.5)))':
     dependencies:
       '@nx-extend/core': 6.0.2(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
       '@nx/devkit': 18.0.2(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
-      '@nx/eslint': 18.0.2(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
+      '@nx/eslint': 18.0.2(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
       '@nx/workspace': 18.0.2(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))
       class-variance-authority: 0.7.0
       clsx: 2.1.0
       lucide-react: 0.343.0(react@18.3.1)
       shelljs: 0.8.5
       tailwind-merge: 2.2.1
-      tailwindcss-animate: 1.0.7(tailwindcss@3.4.3(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(typescript@5.4.5)))
+      tailwindcss-animate: 1.0.7(tailwindcss@3.4.3(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(typescript@5.4.5)))
       tslib: 2.6.2
     transitivePeerDependencies:
       - '@babel/traverse'
@@ -8821,11 +8824,11 @@ snapshots:
       tslib: 2.6.2
       yargs-parser: 21.1.1
 
-  '@nx/eslint-plugin@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(@typescript-eslint/parser@7.8.0(eslint@8.57.0)(typescript@5.4.5))(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)':
+  '@nx/eslint-plugin@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(@typescript-eslint/parser@7.8.0(eslint@8.57.0)(typescript@5.4.5))(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)':
     dependencies:
-      '@nrwl/eslint-plugin-nx': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(@typescript-eslint/parser@7.8.0(eslint@8.57.0)(typescript@5.4.5))(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
+      '@nrwl/eslint-plugin-nx': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(@typescript-eslint/parser@7.8.0(eslint@8.57.0)(typescript@5.4.5))(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
       '@nx/devkit': 19.0.1(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
-      '@nx/js': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
+      '@nx/js': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
       '@typescript-eslint/parser': 7.8.0(eslint@8.57.0)(typescript@5.4.5)
       '@typescript-eslint/type-utils': 7.8.0(eslint@8.57.0)(typescript@5.4.5)
       '@typescript-eslint/utils': 7.8.0(eslint@8.57.0)(typescript@5.4.5)
@@ -8849,11 +8852,11 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nx/eslint@18.0.2(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))':
+  '@nx/eslint@18.0.2(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))':
     dependencies:
       '@nx/devkit': 18.0.2(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
-      '@nx/js': 18.0.2(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.3.3)
-      '@nx/linter': 18.0.2(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
+      '@nx/js': 18.0.2(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.3.3)
+      '@nx/linter': 18.0.2(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
       eslint: 8.57.0
       tslib: 2.6.2
       typescript: 5.3.3
@@ -8870,11 +8873,11 @@ snapshots:
       - supports-color
       - verdaccio
 
-  '@nx/eslint@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))':
+  '@nx/eslint@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))':
     dependencies:
       '@nx/devkit': 19.0.1(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
-      '@nx/js': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
-      '@nx/linter': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
+      '@nx/js': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
+      '@nx/linter': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
       eslint: 8.57.0
       tslib: 2.6.2
       typescript: 5.4.5
@@ -8891,7 +8894,7 @@ snapshots:
       - supports-color
       - verdaccio
 
-  '@nx/js@18.0.2(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.3.3)':
+  '@nx/js@18.0.2(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.3.3)':
     dependencies:
       '@babel/core': 7.24.5
       '@babel/plugin-proposal-decorators': 7.24.1(@babel/core@7.24.5)
@@ -8900,7 +8903,7 @@ snapshots:
       '@babel/preset-env': 7.24.5(@babel/core@7.24.5)
       '@babel/preset-typescript': 7.24.1(@babel/core@7.24.5)
       '@babel/runtime': 7.24.5
-      '@nrwl/js': 18.0.2(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.3.3)
+      '@nrwl/js': 18.0.2(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.3.3)
       '@nx/devkit': 18.0.2(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
       '@nx/workspace': 18.0.2(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.3.3)
@@ -8920,7 +8923,7 @@ snapshots:
       ora: 5.3.0
       semver: 7.6.0
       source-map-support: 0.5.19
-      ts-node: 10.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(typescript@5.3.3)
+      ts-node: 10.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(typescript@5.3.3)
       tsconfig-paths: 4.2.0
       tslib: 2.6.2
     transitivePeerDependencies:
@@ -8934,7 +8937,7 @@ snapshots:
       - supports-color
       - typescript
 
-  '@nx/js@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)':
+  '@nx/js@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)':
     dependencies:
       '@babel/core': 7.24.5
       '@babel/plugin-proposal-decorators': 7.24.1(@babel/core@7.24.5)
@@ -8943,7 +8946,7 @@ snapshots:
       '@babel/preset-env': 7.24.5(@babel/core@7.24.5)
       '@babel/preset-typescript': 7.24.1(@babel/core@7.24.5)
       '@babel/runtime': 7.24.5
-      '@nrwl/js': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
+      '@nrwl/js': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
       '@nx/devkit': 19.0.1(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
       '@nx/workspace': 19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))
       babel-plugin-const-enum: 1.2.0(@babel/core@7.24.5)
@@ -8962,7 +8965,7 @@ snapshots:
       ora: 5.3.0
       semver: 7.6.0
       source-map-support: 0.5.19
-      ts-node: 10.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(typescript@5.4.5)
+      ts-node: 10.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(typescript@5.4.5)
       tsconfig-paths: 4.2.0
       tslib: 2.6.2
     transitivePeerDependencies:
@@ -8976,9 +8979,9 @@ snapshots:
       - supports-color
       - typescript
 
-  '@nx/linter@18.0.2(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))':
+  '@nx/linter@18.0.2(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))':
     dependencies:
-      '@nx/eslint': 18.0.2(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
+      '@nx/eslint': 18.0.2(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -8991,9 +8994,9 @@ snapshots:
       - supports-color
       - verdaccio
 
-  '@nx/linter@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))':
+  '@nx/linter@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))':
     dependencies:
-      '@nx/eslint': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
+      '@nx/eslint': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -9006,16 +9009,16 @@ snapshots:
       - supports-color
       - verdaccio
 
-  '@nx/next@19.0.1(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))':
+  '@nx/next@19.0.1(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))':
     dependencies:
       '@babel/plugin-proposal-decorators': 7.24.1(@babel/core@7.24.5)
-      '@nrwl/next': 19.0.1(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))
+      '@nrwl/next': 19.0.1(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))
       '@nx/devkit': 19.0.1(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
-      '@nx/eslint': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
-      '@nx/js': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
-      '@nx/react': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))
-      '@nx/web': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
-      '@nx/webpack': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
+      '@nx/eslint': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
+      '@nx/js': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
+      '@nx/react': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))
+      '@nx/web': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
+      '@nx/webpack': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
       '@nx/workspace': 19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))
       '@svgr/webpack': 8.1.0(typescript@5.4.5)
       chalk: 4.1.2
@@ -9118,11 +9121,11 @@ snapshots:
   '@nx/nx-win32-x64-msvc@19.0.1':
     optional: true
 
-  '@nx/playwright@19.0.1(@babel/traverse@7.24.5)(@playwright/test@1.44.0)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)':
+  '@nx/playwright@19.0.1(@babel/traverse@7.24.5)(@playwright/test@1.44.0)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)':
     dependencies:
       '@nx/devkit': 19.0.1(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
-      '@nx/eslint': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
-      '@nx/js': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
+      '@nx/eslint': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
+      '@nx/js': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.4.5)
       minimatch: 9.0.3
       tslib: 2.6.2
@@ -9141,13 +9144,13 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nx/react@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))':
+  '@nx/react@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))':
     dependencies:
-      '@nrwl/react': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))
+      '@nrwl/react': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))
       '@nx/devkit': 19.0.1(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
-      '@nx/eslint': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
-      '@nx/js': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
-      '@nx/web': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
+      '@nx/eslint': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(js-yaml@4.1.0)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
+      '@nx/js': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
+      '@nx/web': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.4.5)
       '@svgr/webpack': 8.1.0(typescript@5.4.5)
       chalk: 4.1.2
@@ -9168,11 +9171,11 @@ snapshots:
       - verdaccio
       - webpack
 
-  '@nx/web@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)':
+  '@nx/web@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)':
     dependencies:
-      '@nrwl/web': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
+      '@nrwl/web': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
       '@nx/devkit': 19.0.1(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
-      '@nx/js': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
+      '@nx/js': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
       chalk: 4.1.2
       detect-port: 1.5.1
       http-server: 14.1.1
@@ -9189,12 +9192,12 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nx/webpack@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)':
+  '@nx/webpack@19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)':
     dependencies:
       '@babel/core': 7.24.5
-      '@nrwl/webpack': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
+      '@nrwl/webpack': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
       '@nx/devkit': 19.0.1(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))
-      '@nx/js': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
+      '@nx/js': 19.0.1(@babel/traverse@7.24.5)(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(nx@19.0.1(@swc-node/register@1.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@swc/types@0.1.6)(typescript@5.4.5))(@swc/core@1.5.3(@swc/helpers@0.5.11)))(typescript@5.4.5)
       ajv: 8.13.0
       autoprefixer: 10.4.19(postcss@8.4.38)
       babel-loader: 9.1.3(@babel/core@7.24.5)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11)))
@@ -9336,312 +9339,312 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.24.5
 
-  '@radix-ui/react-accordion@1.1.2(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@radix-ui/react-accordion@1.1.2(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
       '@radix-ui/primitive': 1.0.1
-      '@radix-ui/react-collapsible': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-collection': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-context': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-direction': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-id': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-use-controllable-state': 1.0.1(@types/react@18.3.1)(react@18.3.1)
+      '@radix-ui/react-collapsible': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-collection': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-context': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-direction': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-id': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-use-controllable-state': 1.0.1(@types/react@18.3.3)(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
 
-  '@radix-ui/react-arrow@1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@radix-ui/react-arrow@1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
-      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
 
-  '@radix-ui/react-collapsible@1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@radix-ui/react-collapsible@1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
       '@radix-ui/primitive': 1.0.1
-      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-context': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-id': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-presence': 1.0.1(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-use-controllable-state': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.3.1)(react@18.3.1)
+      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-context': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-id': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-presence': 1.0.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-use-controllable-state': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.3.3)(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
 
-  '@radix-ui/react-collection@1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@radix-ui/react-collection@1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
-      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-context': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-slot': 1.0.2(@types/react@18.3.1)(react@18.3.1)
+      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-context': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-slot': 1.0.2(@types/react@18.3.3)(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
 
-  '@radix-ui/react-compose-refs@1.0.1(@types/react@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-compose-refs@1.0.1(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
       react: 18.3.1
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
 
-  '@radix-ui/react-context@1.0.1(@types/react@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-context@1.0.1(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
       react: 18.3.1
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
 
-  '@radix-ui/react-dialog@1.0.5(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@radix-ui/react-dialog@1.0.5(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
       '@radix-ui/primitive': 1.0.1
-      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-context': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-dismissable-layer': 1.0.5(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-focus-guards': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-focus-scope': 1.0.4(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-id': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-portal': 1.0.4(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-presence': 1.0.1(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-slot': 1.0.2(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-use-controllable-state': 1.0.1(@types/react@18.3.1)(react@18.3.1)
+      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-context': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-dismissable-layer': 1.0.5(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-focus-guards': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-focus-scope': 1.0.4(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-id': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-portal': 1.0.4(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-presence': 1.0.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-slot': 1.0.2(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-use-controllable-state': 1.0.1(@types/react@18.3.3)(react@18.3.1)
       aria-hidden: 1.2.4
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      react-remove-scroll: 2.5.5(@types/react@18.3.1)(react@18.3.1)
+      react-remove-scroll: 2.5.5(@types/react@18.3.3)(react@18.3.1)
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
 
-  '@radix-ui/react-direction@1.0.1(@types/react@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-direction@1.0.1(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
       react: 18.3.1
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
 
-  '@radix-ui/react-dismissable-layer@1.0.5(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@radix-ui/react-dismissable-layer@1.0.5(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
       '@radix-ui/primitive': 1.0.1
-      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-use-escape-keydown': 1.0.3(@types/react@18.3.1)(react@18.3.1)
+      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-use-escape-keydown': 1.0.3(@types/react@18.3.3)(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
 
-  '@radix-ui/react-focus-guards@1.0.1(@types/react@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-focus-guards@1.0.1(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
       react: 18.3.1
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
 
-  '@radix-ui/react-focus-scope@1.0.4(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@radix-ui/react-focus-scope@1.0.4(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
-      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.3.1)(react@18.3.1)
+      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.3.3)(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
 
   '@radix-ui/react-icons@1.3.0(react@18.3.1)':
     dependencies:
       react: 18.3.1
 
-  '@radix-ui/react-id@1.0.1(@types/react@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-id@1.0.1(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
-      '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.3.1)(react@18.3.1)
+      '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.3.3)(react@18.3.1)
       react: 18.3.1
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
 
-  '@radix-ui/react-popper@1.1.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@radix-ui/react-popper@1.1.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
       '@floating-ui/react-dom': 2.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-arrow': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-context': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-use-rect': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-use-size': 1.0.1(@types/react@18.3.1)(react@18.3.1)
+      '@radix-ui/react-arrow': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-context': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-use-rect': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-use-size': 1.0.1(@types/react@18.3.3)(react@18.3.1)
       '@radix-ui/rect': 1.0.1
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
 
-  '@radix-ui/react-portal@1.0.4(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@radix-ui/react-portal@1.0.4(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
-      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
 
-  '@radix-ui/react-presence@1.0.1(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@radix-ui/react-presence@1.0.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
-      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.3.1)(react@18.3.1)
+      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.3.3)(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
 
-  '@radix-ui/react-primitive@1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@radix-ui/react-primitive@1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
-      '@radix-ui/react-slot': 1.0.2(@types/react@18.3.1)(react@18.3.1)
+      '@radix-ui/react-slot': 1.0.2(@types/react@18.3.3)(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
 
-  '@radix-ui/react-select@2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@radix-ui/react-select@2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
       '@radix-ui/number': 1.0.1
       '@radix-ui/primitive': 1.0.1
-      '@radix-ui/react-collection': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-context': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-direction': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-dismissable-layer': 1.0.5(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-focus-guards': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-focus-scope': 1.0.4(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-id': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-popper': 1.1.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-portal': 1.0.4(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@radix-ui/react-slot': 1.0.2(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-use-controllable-state': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-use-previous': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      '@radix-ui/react-visually-hidden': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-collection': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-context': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-direction': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-dismissable-layer': 1.0.5(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-focus-guards': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-focus-scope': 1.0.4(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-id': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-popper': 1.1.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-portal': 1.0.4(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-slot': 1.0.2(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-use-controllable-state': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-use-previous': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@radix-ui/react-visually-hidden': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       aria-hidden: 1.2.4
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      react-remove-scroll: 2.5.5(@types/react@18.3.1)(react@18.3.1)
+      react-remove-scroll: 2.5.5(@types/react@18.3.3)(react@18.3.1)
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
 
-  '@radix-ui/react-separator@1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@radix-ui/react-separator@1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
-      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
 
-  '@radix-ui/react-slot@1.0.2(@types/react@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-slot@1.0.2(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
-      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.1)(react@18.3.1)
+      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.3)(react@18.3.1)
       react: 18.3.1
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
 
-  '@radix-ui/react-use-callback-ref@1.0.1(@types/react@18.3.1)(react@18.3.1)':
-    dependencies:
-      '@babel/runtime': 7.24.5
-      react: 18.3.1
-    optionalDependencies:
-      '@types/react': 18.3.1
-
-  '@radix-ui/react-use-controllable-state@1.0.1(@types/react@18.3.1)(react@18.3.1)':
-    dependencies:
-      '@babel/runtime': 7.24.5
-      '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      react: 18.3.1
-    optionalDependencies:
-      '@types/react': 18.3.1
-
-  '@radix-ui/react-use-escape-keydown@1.0.3(@types/react@18.3.1)(react@18.3.1)':
-    dependencies:
-      '@babel/runtime': 7.24.5
-      '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.3.1)(react@18.3.1)
-      react: 18.3.1
-    optionalDependencies:
-      '@types/react': 18.3.1
-
-  '@radix-ui/react-use-layout-effect@1.0.1(@types/react@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-use-callback-ref@1.0.1(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
       react: 18.3.1
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
 
-  '@radix-ui/react-use-previous@1.0.1(@types/react@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-use-controllable-state@1.0.1(@types/react@18.3.3)(react@18.3.1)':
+    dependencies:
+      '@babel/runtime': 7.24.5
+      '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.3
+
+  '@radix-ui/react-use-escape-keydown@1.0.3(@types/react@18.3.3)(react@18.3.1)':
+    dependencies:
+      '@babel/runtime': 7.24.5
+      '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.3.3)(react@18.3.1)
+      react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.3
+
+  '@radix-ui/react-use-layout-effect@1.0.1(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
       react: 18.3.1
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
 
-  '@radix-ui/react-use-rect@1.0.1(@types/react@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-use-previous@1.0.1(@types/react@18.3.3)(react@18.3.1)':
+    dependencies:
+      '@babel/runtime': 7.24.5
+      react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.3
+
+  '@radix-ui/react-use-rect@1.0.1(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
       '@radix-ui/rect': 1.0.1
       react: 18.3.1
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
 
-  '@radix-ui/react-use-size@1.0.1(@types/react@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-use-size@1.0.1(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
-      '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.3.1)(react@18.3.1)
+      '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.3.3)(react@18.3.1)
       react: 18.3.1
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
 
-  '@radix-ui/react-visually-hidden@1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@radix-ui/react-visually-hidden@1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
-      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
 
   '@radix-ui/rect@1.0.1':
@@ -9921,7 +9924,7 @@ snapshots:
       lz-string: 1.5.0
       pretty-format: 27.5.1
 
-  '@testing-library/react@15.0.7(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@testing-library/react@15.0.7(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.5
       '@testing-library/dom': 10.1.0
@@ -9929,7 +9932,7 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
 
   '@tootallnate/once@1.1.2': {}
 
@@ -9945,7 +9948,7 @@ snapshots:
 
   '@types/accepts@1.3.7':
     dependencies:
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
 
   '@types/acorn@4.0.6':
     dependencies:
@@ -9956,33 +9959,33 @@ snapshots:
   '@types/body-parser@1.19.5':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
 
   '@types/bonjour@3.5.13':
     dependencies:
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
 
   '@types/busboy@0.2.4':
     dependencies:
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
 
   '@types/bytes@3.1.4': {}
 
   '@types/connect-history-api-fallback@1.5.4':
     dependencies:
       '@types/express-serve-static-core': 4.19.0
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
 
   '@types/cookies@0.7.10':
     dependencies:
       '@types/connect': 3.4.38
       '@types/express': 4.17.21
       '@types/keygrip': 1.0.6
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
 
   '@types/debug@4.1.12':
     dependencies:
@@ -10006,7 +10009,7 @@ snapshots:
 
   '@types/express-serve-static-core@4.19.0':
     dependencies:
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
       '@types/qs': 6.9.15
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -10030,7 +10033,7 @@ snapshots:
 
   '@types/http-proxy@1.17.14':
     dependencies:
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
 
   '@types/istanbul-lib-coverage@2.0.6': {}
 
@@ -10060,7 +10063,7 @@ snapshots:
 
   '@types/mdx-js__react@1.5.8':
     dependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
 
   '@types/mdx@2.0.13': {}
 
@@ -10070,20 +10073,20 @@ snapshots:
 
   '@types/node-fetch@2.6.11':
     dependencies:
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
       form-data: 4.0.0
 
   '@types/node-forge@1.3.11':
     dependencies:
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
 
-  '@types/node@20.12.10':
+  '@types/node@20.14.1':
     dependencies:
       undici-types: 5.26.5
 
   '@types/nodemailer@6.4.15':
     dependencies:
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
 
   '@types/parse-json@4.0.2': {}
 
@@ -10099,7 +10102,7 @@ snapshots:
 
   '@types/react-dom@18.3.0':
     dependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
 
   '@types/react@17.0.80':
     dependencies:
@@ -10107,7 +10110,7 @@ snapshots:
       '@types/scheduler': 0.16.8
       csstype: 3.1.3
 
-  '@types/react@18.3.1':
+  '@types/react@18.3.3':
     dependencies:
       '@types/prop-types': 15.7.12
       csstype: 3.1.3
@@ -10129,7 +10132,7 @@ snapshots:
   '@types/send@0.17.4':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
 
   '@types/serve-index@1.9.4':
     dependencies:
@@ -10138,12 +10141,12 @@ snapshots:
   '@types/serve-static@1.15.7':
     dependencies:
       '@types/http-errors': 2.0.4
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
       '@types/send': 0.17.4
 
   '@types/sockjs@0.3.36':
     dependencies:
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
 
   '@types/unist@2.0.10': {}
 
@@ -10151,7 +10154,7 @@ snapshots:
 
   '@types/ws@8.5.10':
     dependencies:
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
 
   '@types/yargs-parser@21.0.3': {}
 
@@ -12655,7 +12658,7 @@ snapshots:
   jest-util@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
       chalk: 4.1.2
       ci-info: 3.9.0
       graceful-fs: 4.2.11
@@ -12663,13 +12666,13 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
   jest-worker@29.7.0:
     dependencies:
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
       jest-util: 29.7.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
@@ -14328,13 +14331,13 @@ snapshots:
       camelcase-css: 2.0.1
       postcss: 8.4.38
 
-  postcss-load-config@4.0.2(postcss@8.4.38)(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(typescript@5.4.5)):
+  postcss-load-config@4.0.2(postcss@8.4.38)(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(typescript@5.4.5)):
     dependencies:
       lilconfig: 3.1.1
       yaml: 2.4.2
     optionalDependencies:
       postcss: 8.4.38
-      ts-node: 10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(typescript@5.4.5)
+      ts-node: 10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(typescript@5.4.5)
 
   postcss-loader@6.2.1(postcss@8.4.38)(webpack@5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11))):
     dependencies:
@@ -14634,33 +14637,33 @@ snapshots:
 
   react-is@18.3.1: {}
 
-  react-remove-scroll-bar@2.3.6(@types/react@18.3.1)(react@18.3.1):
+  react-remove-scroll-bar@2.3.6(@types/react@18.3.3)(react@18.3.1):
     dependencies:
       react: 18.3.1
-      react-style-singleton: 2.2.1(@types/react@18.3.1)(react@18.3.1)
+      react-style-singleton: 2.2.1(@types/react@18.3.3)(react@18.3.1)
       tslib: 2.6.2
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
 
-  react-remove-scroll@2.5.5(@types/react@18.3.1)(react@18.3.1):
+  react-remove-scroll@2.5.5(@types/react@18.3.3)(react@18.3.1):
     dependencies:
       react: 18.3.1
-      react-remove-scroll-bar: 2.3.6(@types/react@18.3.1)(react@18.3.1)
-      react-style-singleton: 2.2.1(@types/react@18.3.1)(react@18.3.1)
+      react-remove-scroll-bar: 2.3.6(@types/react@18.3.3)(react@18.3.1)
+      react-style-singleton: 2.2.1(@types/react@18.3.3)(react@18.3.1)
       tslib: 2.6.2
-      use-callback-ref: 1.3.2(@types/react@18.3.1)(react@18.3.1)
-      use-sidecar: 1.1.2(@types/react@18.3.1)(react@18.3.1)
+      use-callback-ref: 1.3.2(@types/react@18.3.3)(react@18.3.1)
+      use-sidecar: 1.1.2(@types/react@18.3.3)(react@18.3.1)
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
 
-  react-style-singleton@2.2.1(@types/react@18.3.1)(react@18.3.1):
+  react-style-singleton@2.2.1(@types/react@18.3.3)(react@18.3.1):
     dependencies:
       get-nonce: 1.0.1
       invariant: 2.2.4
       react: 18.3.1
       tslib: 2.6.2
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
 
   react-turnstile@1.1.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
@@ -15306,7 +15309,7 @@ snapshots:
 
   stripe@15.9.0:
     dependencies:
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
       qs: 6.12.1
 
   strong-log-transformer@2.1.0:
@@ -15414,13 +15417,13 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.24.5
 
-  tailwindcss-animate@1.0.7(tailwindcss@3.4.3(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(typescript@5.4.5))):
+  tailwindcss-animate@1.0.7(tailwindcss@3.4.3(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(typescript@5.4.5))):
     dependencies:
-      tailwindcss: 3.4.3(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(typescript@5.4.5))
+      tailwindcss: 3.4.3(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(typescript@5.4.5))
 
   tailwindcss-fluid@0.2.0: {}
 
-  tailwindcss@3.4.3(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(typescript@5.4.5)):
+  tailwindcss@3.4.3(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(typescript@5.4.5)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -15439,7 +15442,7 @@ snapshots:
       postcss: 8.4.38
       postcss-import: 15.1.0(postcss@8.4.38)
       postcss-js: 4.0.1(postcss@8.4.38)
-      postcss-load-config: 4.0.2(postcss@8.4.38)(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(typescript@5.4.5))
+      postcss-load-config: 4.0.2(postcss@8.4.38)(ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(typescript@5.4.5))
       postcss-nested: 6.0.1(postcss@8.4.38)
       postcss-selector-parser: 6.0.16
       resolve: 1.22.8
@@ -15548,14 +15551,14 @@ snapshots:
       typescript: 5.4.5
       webpack: 5.91.0(@swc/core@1.5.3(@swc/helpers@0.5.11))
 
-  ts-node@10.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(typescript@5.3.3):
+  ts-node@10.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(typescript@5.3.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
       acorn: 8.11.3
       acorn-walk: 8.3.2
       arg: 4.1.3
@@ -15568,14 +15571,14 @@ snapshots:
     optionalDependencies:
       '@swc/core': 1.5.3(@swc/helpers@0.5.11)
 
-  ts-node@10.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(typescript@5.4.5):
+  ts-node@10.9.1(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(typescript@5.4.5):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
       acorn: 8.11.3
       acorn-walk: 8.3.2
       arg: 4.1.3
@@ -15588,14 +15591,14 @@ snapshots:
     optionalDependencies:
       '@swc/core': 1.5.3(@swc/helpers@0.5.11)
 
-  ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.12.10)(typescript@5.4.5):
+  ts-node@10.9.2(@swc/core@1.5.3(@swc/helpers@0.5.11))(@types/node@20.14.1)(typescript@5.4.5):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.12.10
+      '@types/node': 20.14.1
       acorn: 8.11.3
       acorn-walk: 8.3.2
       arg: 4.1.3
@@ -15829,20 +15832,20 @@ snapshots:
       querystringify: 2.2.0
       requires-port: 1.0.0
 
-  use-callback-ref@1.3.2(@types/react@18.3.1)(react@18.3.1):
+  use-callback-ref@1.3.2(@types/react@18.3.3)(react@18.3.1):
     dependencies:
       react: 18.3.1
       tslib: 2.6.2
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
 
-  use-sidecar@1.1.2(@types/react@18.3.1)(react@18.3.1):
+  use-sidecar@1.1.2(@types/react@18.3.3)(react@18.3.1):
     dependencies:
       detect-node-es: 1.1.0
       react: 18.3.1
       tslib: 2.6.2
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
 
   util-deprecate@1.0.2: {}
 
