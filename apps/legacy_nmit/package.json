@@ -65,7 +65,7 @@
     "devDependencies": {
         "@types/body-parser": "^1.19.5",
         "@types/eslint": "^8.56.10",
-        "@types/mdx-js__react": "^1.5.8",
+        "@types/mdx-js__react": "^2.0.0",
         "@types/node": "^20.12.8",
         "@types/nodemailer": "^6.4.15",
         "@types/react": "^18.3.1",
