@@ -1,18 +1,3 @@
-interface Answer {
-  text: string
-  isCorrect: boolean
-}
-
-interface Task {
-  question: string
-  answers: Answer[]
-}
-
-interface Quiz {
-  chapterName: string
-  tasks: Task[]
-}
-
 const LLAMA_CLOUD_API_KEY = 'llx-YzRf0CmlTDoOu03F7b3HBKCD6eBMsndBMJgJ8eU2eABB1Ka5'
 const parseApi = 'https://api.cloud.llamaindex.ai/api/parsing/'
 
@@ -98,7 +83,7 @@ export async function POST(request: Request) {
 
     const markdown = await getResult(id)
 
-    return new Response(markdown, {
+    return new Response(JSON.stringify(markdown), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     })
