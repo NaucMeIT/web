@@ -1,4 +1,3 @@
-const LLAMA_CLOUD_API_KEY = 'llx-YzRf0CmlTDoOu03F7b3HBKCD6eBMsndBMJgJ8eU2eABB1Ka5'
 const parseApi = 'https://api.cloud.llamaindex.ai/api/parsing/'
 
 async function parseFile(file: Blob) {
@@ -10,7 +9,7 @@ async function parseFile(file: Blob) {
     headers: {
       accept: 'application/json',
       contentType: 'multipart/form-data',
-      Authorization: `Bearer ${LLAMA_CLOUD_API_KEY}`,
+      Authorization: `Bearer ${process.env.LLAMA_CLOUD_API_KEY}`,
     },
     body,
   })
@@ -33,7 +32,7 @@ async function waitUntilJobIsDone(id: string, status: string) {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: `Bearer ${LLAMA_CLOUD_API_KEY}`,
+        Authorization: `Bearer ${process.env.LLAMA_CLOUD_API_KEY}`,
       },
     })
 
@@ -57,7 +56,7 @@ async function getResult(id: string): Promise<string> {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: `Bearer ${LLAMA_CLOUD_API_KEY}`,
+      Authorization: `Bearer ${process.env.LLAMA_CLOUD_API_KEY}`,
     },
   })
 
