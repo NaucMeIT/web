@@ -1,8 +1,0 @@
-{
-  "name": "nmit-e2e",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/nmit-e2e/src",
-  "implicitDependencies": ["nmit"],
-  "// targets": "to see all targets run: nx show project nmit-e2e --web",
-  "targets": {}
-}
