@@ -32,6 +32,9 @@ importers:
       react-dom:
         specifier: 19.0.0-rc-f994737d14-20240522
         version: 19.0.0-rc-f994737d14-20240522(react@19.0.0-rc-f994737d14-20240522)
+      spacetrim:
+        specifier: ^0.11.31
+        version: 0.11.31
       tailwind-merge:
         specifier: ^2.3.0
         version: 2.3.0
@@ -7187,6 +7190,9 @@ packages:
   space-separated-tokens@2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
 
+  spacetrim@0.11.31:
+    resolution: {integrity: sha512-SU4QTqJDYyN/aRS/ivHZvK2ebgHBye8clHI8WAyNNIhx6F2enEBazuQ+EDzJqHH9ZEttZiX6jR/CsAdytZQi4A==}
+
   spdy-transport@3.0.0:
     resolution: {integrity: sha512-hsLVFE5SjA6TCisWeJXFKniGGOpBgMLmerfO2aCyCU5s7nJ/rpAepqmFifv/GCbSbueEeAJJnmSQ2rKC/g8Fcw==}
 
@@ -13058,7 +13064,7 @@ snapshots:
       enhanced-resolve: 5.16.1
       eslint: 8.57.0
       eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.57.0))(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.12.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
       fast-glob: 3.3.2
       get-tsconfig: 4.7.4
       is-core-module: 2.13.1
@@ -13127,7 +13133,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.12.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint@8.57.0)
+      eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.57.0))(eslint@8.57.0)
       hasown: 2.0.2
       is-core-module: 2.13.1
       is-glob: 4.0.3
@@ -16812,6 +16818,8 @@ snapshots:
   source-map@0.7.4: {}
 
   space-separated-tokens@2.0.2: {}
+
+  spacetrim@0.11.31: {}
 
   spdy-transport@3.0.0:
     dependencies:

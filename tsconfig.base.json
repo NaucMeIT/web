@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@nmit-coursition/ai": ["libs/ai/src/index.ts"],
       "@nmit-coursition/primitives": ["libs/primitives/src/index.ts"],
       "@nmit-coursition/primitives/*": ["primitives/src/*"],
       "@nmit-coursition/utils": ["libs/utils/src/index.ts"],

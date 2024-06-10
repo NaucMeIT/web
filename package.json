@@ -13,6 +13,7 @@
     "next": "15.0.0-rc.0",
     "react": "19.0.0-rc-f994737d14-20240522",
     "react-dom": "19.0.0-rc-f994737d14-20240522",
+    "spacetrim": "^0.11.31",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "tslib": "^2.6.3",
