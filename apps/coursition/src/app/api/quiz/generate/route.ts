@@ -1,41 +1,27 @@
-import { generateObject } from 'ai'
-import { google } from '@ai-sdk/google'
-import { z } from 'zod'
+import { generateQuiz } from '@nmit-coursition/ai'
+import { zfd } from '@nmit-coursition/utils'
 
-const answerSchema = z.object({
-  text: z.string(),
-  isCorrect: z.boolean(),
+const formDataSchema = zfd.formData({
+  content: zfd.text(),
+  amountQuestions: zfd.numeric().optional(),
+  amountAnswers: zfd.numeric().optional(),
+  outputLang: zfd.text().optional(),
+  allowMultiple: zfd.checkbox().optional(),
 })
-
-const taskSchema = z.object({
-  question: z.string(),
-  answers: z.array(answerSchema),
-})
-
-const quizSchema = z.object({
-  chapterName: z.string(),
-  tasks: z.array(taskSchema),
-})
-
-async function generateQuiz(content: string) {
-  return generateObject({
-    model: google('models/gemini-1.5-flash-latest'),
-    schema: quizSchema,
-    prompt: `You are expert in making interesting quizzes. You excel in generating multiple question each different from other. You always use CONTEXT for your questions.
----
-${content}
-`,
-  })
-}
 
 export async function POST(request: Request) {
-  const formData = await request.formData()
-  const content = formData.get('content') as string
-
   try {
-    const { object } = await generateQuiz(content)
+    const { content, amountQuestions, amountAnswers, outputLang, allowMultiple } = formDataSchema.parse(
+      await request.formData(),
+    )
+    const quiz = await generateQuiz(content, {
+      amountQuestions,
+      amountAnswers,
+      outputLang,
+      allowMultiple,
+    })
 
-    return new Response(JSON.stringify(object), {
+    return new Response(JSON.stringify(quiz), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     })

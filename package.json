@@ -6,6 +6,8 @@
   "private": true,
   "dependencies": {
     "@ai-sdk/google": "^0.0.20",
+    "@google-cloud/storage": "^7.11.2",
+    "@google/generative-ai": "^0.12.0",
     "ai": "^3.1.28",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -13,6 +15,7 @@
     "next": "15.0.0-rc.0",
     "react": "19.0.0-rc-f994737d14-20240522",
     "react-dom": "19.0.0-rc-f994737d14-20240522",
+    "spacetrim": "^0.11.31",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "tslib": "^2.6.3",

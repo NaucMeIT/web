@@ -8,17 +8,16 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "ES2022",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "lib": ["ESNext", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@nmit-coursition/ai": ["libs/ai/src/index.ts"],
       "@nmit-coursition/primitives": ["libs/primitives/src/index.ts"],
-      "@nmit-coursition/primitives/*": ["primitives/src/*"],
-      "@nmit-coursition/utils": ["libs/utils/src/index.ts"],
-      "@nmit-coursition/utils/*": ["utils/src/*"]
+      "@nmit-coursition/utils": ["libs/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
