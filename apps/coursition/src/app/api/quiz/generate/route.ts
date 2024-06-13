@@ -7,7 +7,7 @@ const formDataSchema = zfd.formData({
   amountQuestions: zfd.numeric().optional(),
   amountAnswers: zfd.numeric().optional(),
   outputLang: zfd.text().optional(),
-  allowMultiple: zfd.checkbox().optional().or(z.boolean().optional()),
+  allowMultiple: z.boolean().optional(),
 })
 
 export async function POST(request: Request) {
