@@ -7,7 +7,7 @@ import { trim } from '@nmit-coursition/utils'
 
 // TODO: Patch the AI SDK, because it allows only inline content (base64) and not file URLs
 // https://github.com/vercel/ai/blob/main/packages/google/src/convert-to-google-generative-ai-messages.ts
-export async function getTranscript(fileUrl: string) {
+export async function getTranscript(fileUrl: string, mimeType: string) {
   const { text } = await generateText({
     model: google('models/gemini-1.5-flash-latest'),
     messages: [
@@ -71,6 +71,11 @@ export async function getTranscript(fileUrl: string) {
           {
             type: 'image',
             image: new URL(fileUrl),
+          },
+          {
+            type: 'file',
+            mimeType,
+            uri: fileUrl,
           },
         ],
       },
