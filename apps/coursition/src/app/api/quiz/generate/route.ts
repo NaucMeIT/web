@@ -1,12 +1,13 @@
 import { generateQuiz } from '@nmit-coursition/ai'
 import { zfd } from '@nmit-coursition/utils'
+import { z } from 'zod'
 
 const formDataSchema = zfd.formData({
   content: zfd.text(),
   amountQuestions: zfd.numeric().optional(),
   amountAnswers: zfd.numeric().optional(),
   outputLang: zfd.text().optional(),
-  allowMultiple: zfd.checkbox().optional(),
+  allowMultiple: zfd.checkbox().optional().or(z.boolean().optional()),
 })
 
 export async function POST(request: Request) {
