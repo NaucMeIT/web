@@ -5,10 +5,10 @@
   "scripts": {},
   "private": true,
   "dependencies": {
-    "@ai-sdk/google": "^0.0.20",
+    "@ai-sdk/google": "file:../ai/packages/google",
     "@google-cloud/storage": "^7.11.2",
     "@google/generative-ai": "^0.12.0",
-    "ai": "^3.1.28",
+    "ai": "file:../ai/packages/core",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.387.0",
