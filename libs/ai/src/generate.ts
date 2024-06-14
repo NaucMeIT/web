@@ -38,11 +38,17 @@ export async function generateQuiz(
       You are an expert in making interesting quizzes.
       You excel in generating multiple questions, each different from the others.
       You always use context for your questions.
-      Output is always generated in ${outputLang} language.
+      Output is always generated in ${outputLang} language no matter the input language of CONTEXT.
+      Make sure you always generate the quiz in ${outputLang} language.
     `,
     prompt: trim`
       Generate a quiz with ${amountQuestions} questions each having ${amountAnswers} answers.
-      ${allowMultiple ? 'Multiple correct answers are allowed.' : 'Only one correct answer is allowed.'}
+      ${
+        allowMultiple
+          ? 'Multiple correct answers are allowed. Make sure at least one of the answers is correct.'
+          : 'Make sure that only one correct answer is allowed. Make sure only one of the answers is correct.'
+      }
+      Take a deep breath and reason step by step to generate the quiz based on the following CONTEXT.
       ---
       # CONTEXT:
       ${content}
