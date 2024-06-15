@@ -25,6 +25,7 @@
     "@babel/core": "^7.24.7",
     "@babel/preset-react": "^7.24.7",
     "@nx-extend/shadcn-ui": "^2.0.0",
+    "@nx-tools/nx-container": "^6.0.1",
     "@nx/devkit": "19.2.0",
     "@nx/eslint": "19.2.0",
     "@nx/eslint-plugin": "19.2.0",
