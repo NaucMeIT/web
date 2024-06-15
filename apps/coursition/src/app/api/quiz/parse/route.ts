@@ -1,5 +1,8 @@
 import { parseFile, waitUntilJobIsDone, getResult } from '@nmit-coursition/ai'
 
+export const maxDuration = 60
+export const dynamic = 'force-dynamic'
+
 export async function POST(request: Request) {
   const formData = await request.formData()
   const file = formData.get('file') as Blob
