@@ -3,13 +3,39 @@
 import { generateText } from 'ai'
 import { google } from '@ai-sdk/google'
 import { Storage } from '@google-cloud/storage'
+import { GoogleGenerativeAI } from '@google/generative-ai'
 import { trim } from '@nmit-coursition/utils'
+import { GoogleAIFileManager } from './google'
 
-// TODO: Patch the AI SDK, because it allows only inline content (base64) and not file URLs
-// https://github.com/vercel/ai/blob/main/packages/google/src/convert-to-google-generative-ai-messages.ts
-export async function getTranscript(fileUrl: string, mimeType: string) {
+export async function getTranscript(file: File) {
+  // Upload file
+  const fileManager = new GoogleAIFileManager(process.env['GOOGLE_GENERATIVE_AI_API_KEY'] || '')
+  const uploadResult = await fileManager.uploadFile(file, {
+    mimeType: 'video/mp4',
+  })
+  const files = await fileManager.listFiles()
+  console.log(files)
+
+  // Generate content
+  const genAI = new GoogleGenerativeAI(process.env['GOOGLE_GENERATIVE_AI_API_KEY'] || '')
+  const model = genAI.getGenerativeModel({
+    model: 'gemini-1.5-flash-latest',
+  })
+  const result = await model.generateContent([
+    {
+      fileData: {
+        mimeType: uploadResult.file.mimeType,
+        fileUri: uploadResult.file.uri,
+      },
+    },
+    { text: 'Transcribe this video, in the format of timecode, caption in .srt format.' },
+  ])
+  return { result, files }
+}
+
+export async function getTranscript2(fileUrl: string, mimeType?: string) {
   const { text } = await generateText({
-    model: google('models/gemini-1.5-flash-latest'),
+    model: google('models/gemini-1.5-pro-latest'),
     messages: [
       {
         role: 'system',
@@ -69,13 +95,9 @@ export async function getTranscript(fileUrl: string, mimeType: string) {
             `,
           },
           {
-            type: 'image',
-            image: new URL(fileUrl),
-          },
-          {
             type: 'file',
             mimeType,
-            uri: fileUrl,
+            file: fileUrl,
           },
         ],
       },
@@ -88,28 +110,6 @@ export async function getTranscript(fileUrl: string, mimeType: string) {
 const bucketName = 'coursition-media-2024'
 const storage = new Storage({ keyFilename: 'coursition-storage.json' })
 
-export const uploadToGcs = async (file: File) => {
-  if (!file) throw new Error('No file provided')
-  if (file.size < 1) throw new Error('File is empty')
-
-  const buffer = await file.arrayBuffer()
-  const storage = new Storage()
-  await storage.bucket(bucketName).file(file.name).save(Buffer.from(buffer))
-
-  return true
-}
-
-export const uploadFile = async (form: FormData) => {
-  try {
-    const file = form.get('file') as File
-    await uploadToGcs(file)
-    return true
-  } catch (error) {
-    console.error(error)
-    return false
-  }
-}
-
 export const getSignedUrl = async (fileName: string) => {
   const [url] = await storage
     .bucket(bucketName)
@@ -118,7 +118,7 @@ export const getSignedUrl = async (fileName: string) => {
       action: 'write',
       version: 'v4',
       expires: Date.now() + 15 * 60 * 1000,
-      contentType: 'application/octet-stream',
+      contentType: 'video/mp4',
     })
 
   return url
@@ -163,7 +163,7 @@ export async function uploadMediaGoogleApis(file: File) {
     headers: {
       accept: 'application/json',
       contentType: 'multipart/form-data',
-      Authorization: `Bearer ${process.env['LLAMA_CLOUD_API_KEY']}`,
+      Authorization: `Bearer ${process.env['GOOGLE_GENERATIVE_AI_API_KEY']}`,
     },
     body,
   })

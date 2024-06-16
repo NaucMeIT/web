@@ -1,11 +1,11 @@
-import { getTranscript2 } from '@nmit-coursition/ai'
+import { getTranscript } from '@nmit-coursition/ai'
 
 export async function POST(request: Request) {
   const formData = await request.formData()
-  const file = formData.get('file') as string
+  const fileUrl = formData.get('url') as File
 
   try {
-    const status = await getTranscript2(file)
+    const status = await getTranscript(fileUrl)
     console.log(status)
 
     return new Response(JSON.stringify(status), {

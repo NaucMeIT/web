@@ -17,7 +17,7 @@ function UploadSignedUrl() {
         method: 'PUT',
         body: file,
         headers: {
-          'Content-Type': 'application/octet-stream',
+          'Content-Type': 'video/mp4',
         },
       })
     } catch (error) {
@@ -44,17 +44,27 @@ const acceptedFileTypes =
 export default function Index() {
   return (
     <div>
-      <h1>File Parse</h1>
+      <h1 className='text-gray-600 text-xl m-8'>Save + transcribe video</h1>
+      <form action='/api/quiz/save' method='POST' encType='multipart/form-data'>
+        <input type='file' id='file' name='file' />
+        <button type='submit'>Submit</button>
+      </form>
+      <h1 className='text-gray-600 text-xl m-8'>File Parse</h1>
       <form action='/api/quiz/parse' method='POST' encType='multipart/form-data'>
         <input type='file' id='file' name='file' accept={acceptedFileTypes} />
         <button type='submit'>Submit</button>
       </form>
-      <h1>Generate quiz</h1>
+      <h1 className='text-gray-600 text-xl m-8'>Generate quiz</h1>
       <form action='/api/quiz/generate' method='POST' encType='multipart/form-data'>
         <textarea id='content' name='content' />
         <button type='submit'>Submit</button>
       </form>
       <UploadSignedUrl />
+      <h1 className='text-gray-600 text-xl m-8'>Transcribe video</h1>
+      <form action='/api/quiz/media' method='POST' encType='multipart/form-data'>
+        <input id='url' name='url' />
+        <button type='submit'>Submit</button>
+      </form>
     </div>
   )
 }
