@@ -1,5 +1,5 @@
 name: CI/CD Pipeline
-on: 
+on:
   push:
     branches:
       - master
@@ -7,7 +7,7 @@ on:
 env:
   CI_REGISTRY: ghcr.io
   CI_NAMESPACE: NaucMeIT/web
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
