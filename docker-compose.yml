@@ -1,6 +1,6 @@
 services:
   web:
-    image: elearning-web
+    image: ${CI_REGISTRY}/${CI_NAMESPACE}/elearning-web:${GITHUB_REF_NAME}
     container_name: elearning-web
     build:
       context: .
@@ -16,7 +16,7 @@ services:
       - elearning_network
 
   nginx:
-    image: elearning-nginx
+    image: ${CI_REGISTRY}/${CI_NAMESPACE}/elearning-nginx:${GITHUB_REF_NAME}
     container_name: nginx
     build:
       context: ./nginx
