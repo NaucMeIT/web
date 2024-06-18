@@ -1,4 +1,3 @@
-node_modules
 Dockerfile*
 docker-compose*
 .dockerignore
@@ -9,7 +8,48 @@ LICENSE
 .vscode
 Makefile
 helm-charts
-.env
 .editorconfig
-.idea
-coverage*
+apps/legacy_nmit
+
+# compiled output
+dist
+tmp
+/out-tsc
+
+# dependencies
+node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Nx
+.nx/cache
+.nx/workspace-data
+
+# Next.js
+.next
+out
+
+# Env
+.env*
+coursition-storage.json
