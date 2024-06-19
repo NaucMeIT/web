@@ -67,7 +67,7 @@ jobs:
           echo "StrictHostKeyChecking no " > ~/.ssh/config
           openssl pkey -check -in ~/.ssh/id_rsa -noout
           docker context create remote --docker "host=ssh://$USER@$HOST"
-          docker --context remote login -u $REGISTRY_USER -p $REGISTRY_TOKEN $REGISTRY
+          docker --context remote login -u $REGISTRY_USER -p $REGISTRY_TOKEN https://$REGISTRY
           docker --context remote compose -f docker-compose.yml pull web
           docker --context remote compose -f docker-compose.yml pull nginx
           docker --context remote compose -f docker-compose.yml up -d
