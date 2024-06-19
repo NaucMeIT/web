@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  CI_REGISTRY: https://ghcr.io
+  CI_REGISTRY: ghcr.io
   CI_NAMESPACE: naucmeit/web
 
 jobs:
@@ -66,8 +66,5 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           echo "StrictHostKeyChecking no " > ~/.ssh/config
           docker context create remote --docker "host=ssh://$USER@$HOST"
-          docker --context remote login -u $REGISTRY_USER -p $REGISTRY_TOKEN https://$REGISTRY
-          docker --context remote compose -f docker-compose.yml pull web
-          docker --context remote compose -f docker-compose.yml pull nginx
-          docker --context remote compose -f docker-compose.yml up -d
+          docker --context remote login -u $REGISTRY_USER -p $REGISTRY_TOKEN $REGISTRY
           echo "0 1 * * * docker start certbot" | ssh $USER@$HOST crontab
