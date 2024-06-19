@@ -45,5 +45,18 @@
       "library": {}
     }
   },
-  "nxCloudAccessToken": "YzIzZmUxOGMtYjU4ZS00MzIzLTkzN2UtMDdlNjFlNDU4MGI3fHJlYWQtd3JpdGU="
+  "nxCloudAccessToken": "YzIzZmUxOGMtYjU4ZS00MzIzLTkzN2UtMDdlNjFlNDU4MGI3fHJlYWQtd3JpdGU=",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@vercel/remote-nx",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "test",
+          "lint",
+          "e2e"
+        ]
+      }
+    }
+  }
 }
