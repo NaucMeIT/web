@@ -1,0 +1,67 @@
+name: CI/CD Pipeline
+on: 
+  push:
+    branches:
+      - master
+
+env:
+  CI_REGISTRY: ghcr.io
+  CI_NAMESPACE: NaucMeIT/web
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.CI_REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker images
+        env:
+          GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
+          LLAMA_CLOUD_API_KEY: ${{ secrets.LLAMA_CLOUD_API_KEY }}
+        run: |
+          docker compose -f docker-compose.yml build --no-cache web
+          docker compose -f docker-compose.yml push web
+          docker compose -f docker-compose.yml build --no-cache nginx
+          docker compose -f docker-compose.yml push nginx
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install SSH client
+        run: sudo apt-get install -y openssh-client
+
+      - name: Deploy to production server
+        env:
+          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          HOST: ${{ secrets.PRODUCTION_HOST }}
+          USER: ${{ secrets.PRODUCTION_USER }}
+          REGISTRY: ${{ env.CI_REGISTRY }}
+          REGISTRY_USER: ${{ github.actor }}
+          REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
+          LLAMA_CLOUD_API_KEY: ${{ secrets.LLAMA_CLOUD_API_KEY }}
+        run: |
+          chmod og= $PRIVATE_KEY
+          mkdir ~/.ssh
+          chmod 700 ~/.ssh
+          echo $PRIVATE_KEY > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          echo "StrictHostKeyChecking no " > ~/.ssh/config
+          docker context create remote --docker "host=ssh://$USER@$HOST"
+          docker --context remote login -u $REGISTRY_USER -p $REGISTRY_TOKEN $REGISTRY
+          docker --context remote compose -f docker-compose.yml pull web
+          docker --context remote compose -f docker-compose.yml pull nginx
+          docker --context remote compose -f docker-compose.yml up -d
+          echo "0 1 * * * docker start certbot" | ssh $USER@$HOST crontab
