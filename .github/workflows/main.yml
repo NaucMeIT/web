@@ -68,4 +68,7 @@ jobs:
         run: |
           docker context create remote --docker "host=ssh://$USER@$HOST"
           docker --context remote login -u $REGISTRY_USER -p $REGISTRY_TOKEN $REGISTRY
+          docker --context remote compose -f docker-compose.yml pull web
+          docker --context remote compose -f docker-compose.yml pull nginx
+          docker --context remote compose -f docker-compose.yml up -d
           echo "0 1 * * * docker start certbot" | ssh $USER@$HOST crontab
