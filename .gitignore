@@ -49,3 +49,6 @@ out
 # Env
 .env*
 coursition-storage.json
+
+# Turborepo
+.turbo
