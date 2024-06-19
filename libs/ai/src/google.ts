@@ -156,6 +156,8 @@ export class GoogleAIFileManager {
 
   /**
    * Upload a file
+   * Altered version which accepts file directly, not just file path
+   * This is fork of official Google Generative AI SDK
    */
   async uploadFile(file: File, fileMetadata: FileMetadata): Promise<UploadFileResponse> {
     const url = new FilesRequestUrl(FilesTask.UPLOAD, this.apiKey, this._requestOptions)
