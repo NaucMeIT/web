@@ -2,6 +2,7 @@ name: CI/CD Pipeline
 on: 
   push:
     branches:
+      - deployment
       - master
 
 env:
