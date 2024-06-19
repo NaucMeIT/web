@@ -6,7 +6,7 @@ on:
 
 env:
   CI_REGISTRY: ghcr.io
-  CI_NAMESPACE: NaucMeIT/web
+  CI_NAMESPACE: naucmeit/web
   
 jobs:
   build:
