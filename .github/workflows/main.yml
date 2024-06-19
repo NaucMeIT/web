@@ -46,9 +46,15 @@ jobs:
       - name: Install SSH client
         run: sudo apt-get install -y openssh-client
 
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.PRODUCTION_HOST }} >> ~/.ssh/known_hosts
+
       - name: Deploy to production server
         env:
-          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           HOST: ${{ secrets.PRODUCTION_HOST }}
           USER: ${{ secrets.PRODUCTION_USER }}
           REGISTRY: ${{ env.CI_REGISTRY }}
@@ -60,11 +66,6 @@ jobs:
           CERTBOT_DOMAIN: ${{ env.CERTBOT_DOMAIN }}
           CERTBOT_NAKED_DOMAIN: ${{ env.CERTBOT_NAKED_DOMAIN }}
         run: |
-          mkdir ~/.ssh
-          chmod 700 ~/.ssh
-          echo $PRIVATE_KEY > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          echo "StrictHostKeyChecking no " > ~/.ssh/config
           docker context create remote --docker "host=ssh://$USER@$HOST"
           docker --context remote login -u $REGISTRY_USER -p $REGISTRY_TOKEN $REGISTRY
           echo "0 1 * * * docker start certbot" | ssh $USER@$HOST crontab
