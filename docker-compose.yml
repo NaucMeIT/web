@@ -47,7 +47,7 @@ services:
       com.elearning-ai.web: certbot
     command: certonly --webroot --webroot-path /var/www/certbot/ --non-interactive --agree-tos -m ${SUPPORT_EMAIL} -d ${CERTBOT_DOMAIN} -d ${CERTBOT_NAKED_DOMAIN} --expand
     networks:
-      - trynego_network
+      - elearning_network
 
 networks:
   elearning_network:

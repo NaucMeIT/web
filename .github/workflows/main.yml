@@ -26,6 +26,9 @@ jobs:
         env:
           GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
           LLAMA_CLOUD_API_KEY: ${{ secrets.LLAMA_CLOUD_API_KEY }}
+          SUPPORT_EMAIL: ${{ env.SUPPORT_EMAIL }}
+          CERTBOT_DOMAIN: ${{ env.CERTBOT_DOMAIN }}
+          CERTBOT_NAKED_DOMAIN: ${{ env.CERTBOT_NAKED_DOMAIN }}
         run: |
           docker compose -f docker-compose.yml build --no-cache web
           docker compose -f docker-compose.yml push web
