@@ -66,6 +66,9 @@ jobs:
           CERTBOT_DOMAIN: ${{ env.CERTBOT_DOMAIN }}
           CERTBOT_NAKED_DOMAIN: ${{ env.CERTBOT_NAKED_DOMAIN }}
         run: |
+          echo $CERTBOT_DOMAIN
+          echo ${{ env.CERTBOT_DOMAIN }}
+          echo ${{ secrets.CERTBOT_DOMAIN }}
           docker context create remote --docker "host=ssh://$USER@$HOST"
           docker --context remote login -u $REGISTRY_USER -p $REGISTRY_TOKEN $REGISTRY
           docker --context remote compose -f docker-compose.yml pull web
