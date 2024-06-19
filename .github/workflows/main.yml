@@ -56,12 +56,16 @@ jobs:
           REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
           LLAMA_CLOUD_API_KEY: ${{ secrets.LLAMA_CLOUD_API_KEY }}
+          SUPPORT_EMAIL: ${{ env.SUPPORT_EMAIL }}
+          CERTBOT_DOMAIN: ${{ env.CERTBOT_DOMAIN }}
+          CERTBOT_NAKED_DOMAIN: ${{ env.CERTBOT_NAKED_DOMAIN }}
         run: |
           mkdir ~/.ssh
           chmod 700 ~/.ssh
           echo $PRIVATE_KEY > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           echo "StrictHostKeyChecking no " > ~/.ssh/config
+          openssl pkey -check -in ~/.ssh/id_rsa -noout
           docker context create remote --docker "host=ssh://$USER@$HOST"
           docker --context remote login -u $REGISTRY_USER -p $REGISTRY_TOKEN $REGISTRY
           docker --context remote compose -f docker-compose.yml pull web
