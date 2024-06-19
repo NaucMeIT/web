@@ -27,9 +27,9 @@ jobs:
         env:
           GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
           LLAMA_CLOUD_API_KEY: ${{ secrets.LLAMA_CLOUD_API_KEY }}
-          SUPPORT_EMAIL: ${{ env.SUPPORT_EMAIL }}
-          CERTBOT_DOMAIN: ${{ env.CERTBOT_DOMAIN }}
-          CERTBOT_NAKED_DOMAIN: ${{ env.CERTBOT_NAKED_DOMAIN }}
+          SUPPORT_EMAIL: ${{ vars.SUPPORT_EMAIL }}
+          CERTBOT_DOMAIN: ${{ vars.CERTBOT_DOMAIN }}
+          CERTBOT_NAKED_DOMAIN: ${{ vars.CERTBOT_NAKED_DOMAIN }}
         run: |
           docker compose -f docker-compose.yml build --no-cache web
           docker compose -f docker-compose.yml push web
@@ -62,13 +62,10 @@ jobs:
           REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
           LLAMA_CLOUD_API_KEY: ${{ secrets.LLAMA_CLOUD_API_KEY }}
-          SUPPORT_EMAIL: ${{ env.SUPPORT_EMAIL }}
-          CERTBOT_DOMAIN: ${{ env.CERTBOT_DOMAIN }}
-          CERTBOT_NAKED_DOMAIN: ${{ env.CERTBOT_NAKED_DOMAIN }}
+          SUPPORT_EMAIL: ${{ vars.SUPPORT_EMAIL }}
+          CERTBOT_DOMAIN: ${{ vars.CERTBOT_DOMAIN }}
+          CERTBOT_NAKED_DOMAIN: ${{ vars.CERTBOT_NAKED_DOMAIN }}
         run: |
-          echo $CERTBOT_DOMAIN
-          echo ${{ env.CERTBOT_DOMAIN }}
-          echo ${{ secrets.CERTBOT_DOMAIN }}
           docker context create remote --docker "host=ssh://$USER@$HOST"
           docker --context remote login -u $REGISTRY_USER -p $REGISTRY_TOKEN $REGISTRY
           docker --context remote compose -f docker-compose.yml pull web
