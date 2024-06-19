@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  CI_REGISTRY: ghcr.io
+  CI_REGISTRY: https://ghcr.io
   CI_NAMESPACE: naucmeit/web
   
 jobs:
@@ -59,14 +59,15 @@ jobs:
           SUPPORT_EMAIL: ${{ env.SUPPORT_EMAIL }}
           CERTBOT_DOMAIN: ${{ env.CERTBOT_DOMAIN }}
           CERTBOT_NAKED_DOMAIN: ${{ env.CERTBOT_NAKED_DOMAIN }}
-        run: mkdir ~/.ssh
-        run: chmod 700 ~/.ssh
-        run: echo $PRIVATE_KEY > ~/.ssh/id_rsa
-        run: chmod 600 ~/.ssh/id_rsa
-        run: echo "StrictHostKeyChecking no " > ~/.ssh/config
-        run: docker context create remote --docker "host=ssh://$USER@$HOST"
-        run: docker --context remote login -u $REGISTRY_USER -p $REGISTRY_TOKEN $REGISTRY
-        run: docker --context remote compose -f docker-compose.yml pull web
-        run: docker --context remote compose -f docker-compose.yml pull nginx
-        run: docker --context remote compose -f docker-compose.yml up -d
-        run: echo "0 1 * * * docker start certbot" | ssh $USER@$HOST crontab
+        run: |
+          mkdir ~/.ssh
+          chmod 700 ~/.ssh
+          echo $PRIVATE_KEY > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          echo "StrictHostKeyChecking no " > ~/.ssh/config
+          docker context create remote --docker "host=ssh://$USER@$HOST"
+          docker --context remote login -u $REGISTRY_USER -p $REGISTRY_TOKEN https://$REGISTRY
+          docker --context remote compose -f docker-compose.yml pull web
+          docker --context remote compose -f docker-compose.yml pull nginx
+          docker --context remote compose -f docker-compose.yml up -d
+          echo "0 1 * * * docker start certbot" | ssh $USER@$HOST crontab
