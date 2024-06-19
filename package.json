@@ -9,6 +9,7 @@
     "@google/generative-ai": "^0.13.0",
     "@vercel/remote-nx": "^2.0.0",
     "ai": "^3.2.1",
+    "@google-cloud/storage": "^7.11.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.387.0",
