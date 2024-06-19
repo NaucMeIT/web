@@ -6,7 +6,7 @@ on:
 
 env:
   CI_REGISTRY: ghcr.io
-  CI_NAMESPACE: NaucMeIT/web
+  CI_NAMESPACE: naucmeit/web
   
 jobs:
   build:
@@ -26,9 +26,9 @@ jobs:
         env:
           GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
           LLAMA_CLOUD_API_KEY: ${{ secrets.LLAMA_CLOUD_API_KEY }}
-          SUPPORT_EMAIL: ${{ env.SUPPORT_EMAIL }}
-          CERTBOT_DOMAIN: ${{ env.CERTBOT_DOMAIN }}
-          CERTBOT_NAKED_DOMAIN: ${{ env.CERTBOT_NAKED_DOMAIN }}
+          SUPPORT_EMAIL: ${{ vars.SUPPORT_EMAIL }}
+          CERTBOT_DOMAIN: ${{ vars.CERTBOT_DOMAIN }}
+          CERTBOT_NAKED_DOMAIN: ${{ vars.CERTBOT_NAKED_DOMAIN }}
         run: |
           docker compose -f docker-compose.yml build --no-cache web
           docker compose -f docker-compose.yml push web
@@ -45,9 +45,15 @@ jobs:
       - name: Install SSH client
         run: sudo apt-get install -y openssh-client
 
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.PRODUCTION_HOST }} >> ~/.ssh/known_hosts
+
       - name: Deploy to production server
         env:
-          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           HOST: ${{ secrets.PRODUCTION_HOST }}
           USER: ${{ secrets.PRODUCTION_USER }}
           REGISTRY: ${{ env.CI_REGISTRY }}
@@ -55,16 +61,35 @@ jobs:
           REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
           LLAMA_CLOUD_API_KEY: ${{ secrets.LLAMA_CLOUD_API_KEY }}
+          SUPPORT_EMAIL: ${{ vars.SUPPORT_EMAIL }}
+          CERTBOT_DOMAIN: ${{ vars.CERTBOT_DOMAIN }}
+          CERTBOT_NAKED_DOMAIN: ${{ vars.CERTBOT_NAKED_DOMAIN }}
         run: |
-          chmod og= $PRIVATE_KEY
-          mkdir ~/.ssh
-          chmod 700 ~/.ssh
-          echo $PRIVATE_KEY > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          echo "StrictHostKeyChecking no " > ~/.ssh/config
           docker context create remote --docker "host=ssh://$USER@$HOST"
           docker --context remote login -u $REGISTRY_USER -p $REGISTRY_TOKEN $REGISTRY
           docker --context remote compose -f docker-compose.yml pull web
           docker --context remote compose -f docker-compose.yml pull nginx
           docker --context remote compose -f docker-compose.yml up -d
           echo "0 1 * * * docker start certbot" | ssh $USER@$HOST crontab
+
+  cleanup:
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+      - name: Install SSH client
+        run: sudo apt-get install -y openssh-client
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.PRODUCTION_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Cleanup docker on production server
+        env:
+          HOST: ${{ secrets.PRODUCTION_HOST }}
+          USER: ${{ secrets.PRODUCTION_USER }}
+        run: |
+          docker context create remote --docker "host=ssh://$SERVER_USER@$SERVER_IP"
+          docker --context remote system prune -af --filter "label!=com.elearning-ai.web=certbot"
