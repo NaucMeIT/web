@@ -57,7 +57,6 @@ jobs:
           GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
           LLAMA_CLOUD_API_KEY: ${{ secrets.LLAMA_CLOUD_API_KEY }}
         run: |
-          chmod og= $PRIVATE_KEY
           mkdir ~/.ssh
           chmod 700 ~/.ssh
           echo $PRIVATE_KEY > ~/.ssh/id_rsa
