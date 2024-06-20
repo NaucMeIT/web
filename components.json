@@ -3,13 +3,13 @@
   "style": "default",
   "rsc": false,
   "tailwind": {
-    "config": "utils\\tailwind.config.js",
-    "css": "utils\\global.css",
+    "config": "libs\\ui\\utils\\tailwind.config.js",
+    "css": "libs\\ui\\utils\\global.css",
     "baseColor": "neutral",
     "cssVariables": true
   },
   "aliases": {
-    "components": "@nmit-coursition/primitives",
-    "utils": "@nmit-coursition/utils"
+    "components": "@nmit-coursition/ui/primitives",
+    "utils": "@nmit-coursition/ui/utils"
   }
 }
