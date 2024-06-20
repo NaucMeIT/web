@@ -1,3 +1,4 @@
+'use server'
 import { generateObject } from 'ai'
 import { google } from '@ai-sdk/google'
 import { z } from 'zod'
