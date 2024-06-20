@@ -91,5 +91,5 @@ jobs:
           HOST: ${{ secrets.PRODUCTION_HOST }}
           USER: ${{ secrets.PRODUCTION_USER }}
         run: |
-          docker context create remote --docker "host=ssh://$SERVER_USER@$SERVER_IP"
+          docker context create remote --docker "host=ssh://$USER@$HOST"
           docker --context remote system prune -af --filter "label!=com.elearning-ai.web=certbot"
