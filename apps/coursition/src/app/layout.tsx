@@ -1,4 +1,4 @@
-import '../../../../libs/utils/src/global.css'
+import '@nmit-coursition/ui/utils/global.css'
 
 export const metadata = {
   title: 'Welcome to nmit',

@@ -16,8 +16,10 @@
     "baseUrl": ".",
     "paths": {
       "@nmit-coursition/ai": ["libs/ai/src/index.ts"],
-      "@nmit-coursition/primitives": ["libs/primitives/src/index.ts"],
-      "@nmit-coursition/utils": ["libs/utils/src/index.ts"]
+      "@nmit-coursition/utils": ["libs/utils/src/index.ts"],
+      "@nmit-coursition/ui/primitives": ["libs/ui/primitives/src/index.ts"],
+      "@nmit-coursition/ui/utils": ["libs/ui/utils/src/index.ts"],
+      "@nmit-coursition/ui/utils/*": ["libs/ui/utils/src/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
