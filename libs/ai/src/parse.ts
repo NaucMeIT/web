@@ -1,3 +1,4 @@
+'use server'
 const parseApi = 'https://api.cloud.llamaindex.ai/api/parsing/'
 
 export async function parseFile(file: Blob) {

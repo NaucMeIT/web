@@ -12,6 +12,11 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: true,
   },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '1GB',
+    },
+  },
 }
 
 const plugins = [

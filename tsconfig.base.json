@@ -18,6 +18,7 @@
       "@nmit-coursition/ai": ["libs/ai/src/index.ts"],
       "@nmit-coursition/utils": ["libs/utils/src/index.ts"],
       "@nmit-coursition/ui/primitives": ["libs/ui/primitives/src/index.ts"],
+      "@nmit-coursition/ui/primitives/*": ["libs/ui/primitives/src/*"],
       "@nmit-coursition/ui/utils": ["libs/ui/utils/src/index.ts"],
       "@nmit-coursition/ui/utils/*": ["libs/ui/utils/src/*"]
     }
