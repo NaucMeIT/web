@@ -5,126 +5,29 @@ import { Accordion, Button, Checkbox, Input } from '@nmit-coursition/design-syst
 import { zfd } from '@nmit-coursition/utils'
 import React, { useState } from 'react'
 import { useFormState } from 'react-dom'
+import { z } from 'zod'
+import { StatusDisplay } from '../components/statusDisplay'
 
 const acceptedFileTypes =
   'application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.presentation,text/html,image/x-png,image/jpeg,image/gif'
 
-const fileSchema = zfd.formData({ file: zfd.file() })
+const fileSchema = zfd.formData({
+  file: zfd.file(),
+  outputLang: z.string().optional(),
+  amountQuestions: zfd.numeric().optional(),
+  amountAnswers: zfd.numeric().optional(),
+  allowMultiple: z.boolean().optional(),
+})
 
 const initialState: any = {
   quiz: null,
-}
-
-function CircleCheckIcon(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns='http://www.w3.org/2000/svg'
-      width='24'
-      height='24'
-      viewBox='0 0 24 24'
-      fill='none'
-      stroke='currentColor'
-      strokeWidth='2'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-    >
-      <circle cx='12' cy='12' r='10' />
-      <path d='m9 12 2 2 4-4' />
-    </svg>
-  )
-}
-
-function LoaderIcon(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns='http://www.w3.org/2000/svg'
-      width='24'
-      height='24'
-      viewBox='0 0 24 24'
-      fill='none'
-      stroke='currentColor'
-      strokeWidth='2'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-    >
-      <path d='M12 2v4' />
-      <path d='m16.2 7.8 2.9-2.9' />
-      <path d='M18 12h4' />
-      <path d='m16.2 16.2 2.9 2.9' />
-      <path d='M12 18v4' />
-      <path d='m4.9 19.1 2.9-2.9' />
-      <path d='M2 12h4' />
-      <path d='m4.9 4.9 2.9 2.9' />
-    </svg>
-  )
-}
-
-function MonitorStopIcon(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns='http://www.w3.org/2000/svg'
-      width='24'
-      height='24'
-      viewBox='0 0 24 24'
-      fill='none'
-      stroke='currentColor'
-      strokeWidth='2'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-    >
-      <path d='M12 17v4' />
-      <path d='M8 21h8' />
-      <rect x='2' y='3' width='20' height='14' rx='2' />
-      <rect x='9' y='7' width='6' height='6' rx='1' />
-    </svg>
-  )
-}
-
-type State<T extends string> = {
-  key: T
-  text: string
-}
-
-type StatusDisplayProps<T extends string> = {
-  states: Array<State<T>>
-  status: NoInfer<T>
-}
-
-const StatusDisplay = <T extends string>({ states, status }: StatusDisplayProps<T>) => {
-  const currentIndex = states.findIndex((state) => state.key === status)
-
-  const renderStatusCard = (state: { text: string; key: string }, index: number) => {
-    let icon, textClass
-    if (index < currentIndex) {
-      icon = <CircleCheckIcon className='text-green-500 h-6 w-6' />
-      textClass = 'text-gray-700'
-    } else if (index === currentIndex) {
-      icon = <LoaderIcon className='text-gray-500 h-6 w-6 animate-spin' />
-      textClass = 'text-gray-700'
-    } else {
-      icon = <MonitorStopIcon className='text-gray-400 h-6 w-6' />
-      textClass = 'text-gray-500'
-    }
-
-    return (
-      <div key={state.key} className='p-4 bg-white flex items-center space-x-4'>
-        {icon}
-        <span className={`text-lg font-medium ${textClass}`}>{state.text}</span>
-      </div>
-    )
-  }
-
-  return <div>{states.map((state, index) => renderStatusCard(state, index))}</div>
 }
 
 export default function Index() {
   const [status, setStatus] = useState<'idle' | 'upload' | 'parse' | 'generate' | 'done'>('idle')
   const handleSubmit = async (_: any, formData: FormData) => {
     setStatus('upload')
-    const { file } = fileSchema.parse(formData)
+    const { file, outputLang, amountQuestions, amountAnswers } = fileSchema.parse(formData)
     const { id, status } = await parseFile(file)
 
     setStatus('parse')
@@ -132,7 +35,7 @@ export default function Index() {
     const markdown = await getResult(id)
 
     setStatus('generate')
-    const quiz = await generateQuiz(markdown, { outputLang: 'English', amountQuestions: 2, amountAnswers: 3 })
+    const quiz = await generateQuiz(markdown, { outputLang, amountQuestions, amountAnswers })
     setStatus('done')
     return { quiz }
   }
