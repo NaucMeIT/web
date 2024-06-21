@@ -42,7 +42,9 @@
       }
     },
     "@nx/react": {
-      "library": {}
+      "library": {
+        "unitTestRunner": "none"
+      }
     }
   },
   "nxCloudAccessToken": "YzIzZmUxOGMtYjU4ZS00MzIzLTkzN2UtMDdlNjFlNDU4MGI3fHJlYWQtd3JpdGU=",
