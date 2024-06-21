@@ -1,4 +1,4 @@
-import '../../../../libs/utils/src/global.css'
+import '@nmit-coursition/ui/utils/global.css'
 
 export const metadata = {
   title: 'Welcome to nmit',
@@ -8,7 +8,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
-      <body>{children}</body>
+      <body className='overflow-hidden'>{children}</body>
     </html>
   )
 }
