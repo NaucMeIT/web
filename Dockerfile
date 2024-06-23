@@ -3,4 +3,4 @@ COPY . /app
 WORKDIR /app
 RUN bun install --frozen-lockfile --prod
 EXPOSE 3000
-CMD ["bunx", "--bun", "nx", "start", "coursition", "--prod"]
+CMD ["bunx", "--bun", "nx", "start", "coursition", "--prod", "--verbose"]
