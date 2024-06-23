@@ -1,14 +1,14 @@
+import type { ErrorDetails, RequestOptions } from '@google/generative-ai'
 import {
   type FileMetadata,
   type FileMetadataResponse,
+  GoogleGenerativeAIError,
+  GoogleGenerativeAIFetchError,
+  GoogleGenerativeAIRequestInputError,
   type ListFilesResponse,
   type ListParams,
   type UploadFileResponse,
-  GoogleGenerativeAIError,
-  GoogleGenerativeAIRequestInputError,
-  GoogleGenerativeAIFetchError,
 } from './google-types'
-import type { ErrorDetails, RequestOptions } from '@google/generative-ai'
 
 const DEFAULT_BASE_URL = 'https://generativelanguage.googleapis.com'
 const DEFAULT_API_VERSION = 'v1beta'

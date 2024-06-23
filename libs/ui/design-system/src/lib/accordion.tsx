@@ -1,8 +1,8 @@
 import {
-  Accordion as AccordionPrimitive,
-  AccordionItem,
-  AccordionTrigger,
   AccordionContent,
+  AccordionItem,
+  Accordion as AccordionPrimitive,
+  AccordionTrigger,
 } from '@nmit-coursition/ui/primitives'
 import { createSafeKey } from '@nmit-coursition/utils'
 import type { ReactNode } from 'react'
