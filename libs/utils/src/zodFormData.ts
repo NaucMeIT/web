@@ -161,7 +161,7 @@ const processFormData = preprocessIfValid(
       const map: Map<string, unknown[]> = new Map()
       for (const [key, value] of data) {
         if (map.has(key)) {
-          map.get(key)!.push(value)
+          map.get(key)?.push(value)
         } else {
           map.set(key, [value])
         }

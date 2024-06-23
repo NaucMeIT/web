@@ -50,14 +50,14 @@ class FilesRequestUrl {
     const baseUrl = this.requestOptions?.baseUrl || DEFAULT_BASE_URL
     let initialUrl = baseUrl
     if (this.task === FilesTask.UPLOAD) {
-      initialUrl += `/upload`
+      initialUrl += '/upload'
     }
     initialUrl += `/${apiVersion}/files`
     this._url = new URL(initialUrl)
   }
 
   appendPath(path: string): void {
-    this._url.pathname = this._url.pathname + `/${path}`
+    this._url.pathname = `${this._url.pathname}/${path}`
   }
 
   appendParam(key: string, value: string): void {
@@ -119,9 +119,8 @@ async function makeFilesRequest(
         response.statusText,
         errorDetails,
       )
-    } else {
-      return response
     }
+      return response
   } catch (e) {
     let err: any = e
     if (!(e instanceof GoogleGenerativeAIFetchError)) {
@@ -172,18 +171,8 @@ export class GoogleAIFileManager {
     // Multipart formatting code taken from @firebase/storage
     const metadataString = JSON.stringify({ file: uploadMetadata })
     const preBlobPart =
-      '--' +
-      boundary +
-      '\r\n' +
-      'Content-Type: application/json; charset=utf-8\r\n\r\n' +
-      metadataString +
-      '\r\n--' +
-      boundary +
-      '\r\n' +
-      'Content-Type: ' +
-      fileMetadata.mimeType +
-      '\r\n\r\n'
-    const postBlobPart = '\r\n--' + boundary + '--'
+      `--${boundary}\r\nContent-Type: application/json; charset=utf-8\r\n\r\n${metadataString}\r\n--${boundary}\r\nContent-Type: ${fileMetadata.mimeType}\r\n\r\n`
+    const postBlobPart = `\r\n--${boundary}--`
     const blob = new Blob([preBlobPart, file, postBlobPart])
 
     const response = await makeFilesRequest(url, uploadHeaders, blob)
@@ -237,7 +226,7 @@ function parseFileId(fileId: string): string {
   }
   if (!fileId) {
     throw new GoogleGenerativeAIError(
-      `Invalid fileId ${fileId}. ` + `Must be in the format "files/filename" or "filename"`,
+      `Invalid fileId ${fileId}. Must be in the format "files/filename" or "filename"`,
     )
   }
 

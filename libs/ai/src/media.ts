@@ -53,7 +53,7 @@ const systemInstruction = trim`
 
 export async function getTranscript(file: File) {
   // Upload file
-  const fileManager = new GoogleAIFileManager(process.env['GOOGLE_GENERATIVE_AI_API_KEY'] || '')
+  const fileManager = new GoogleAIFileManager(process.env.GOOGLE_GENERATIVE_AI_API_KEY || '')
   const uploadResult = await fileManager.uploadFile(file, {
     mimeType: 'video/mp4',
   })
@@ -61,7 +61,7 @@ export async function getTranscript(file: File) {
   console.log(files)
 
   // Generate content
-  const genAI = new GoogleGenerativeAI(process.env['GOOGLE_GENERATIVE_AI_API_KEY'] || '')
+  const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GENERATIVE_AI_API_KEY || '')
   const model = genAI.getGenerativeModel({
     model: 'gemini-1.5-flash-latest',
     systemInstruction,

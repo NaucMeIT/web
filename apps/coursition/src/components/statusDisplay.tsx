@@ -14,17 +14,24 @@ export const StatusDisplay = <T extends string>({ states, status }: StatusDispla
   const currentIndex = states.findIndex((state) => state.key === status)
 
   const renderStatusCard = (state: { text: string; key: string }, index: number) => {
-    let icon, textClass
-    if (index < currentIndex) {
-      icon = <CircleCheckIcon className='text-green-500 h-6 w-6' />
-      textClass = 'text-gray-700'
-    } else if (index === currentIndex) {
-      icon = <LoaderIcon className='text-gray-500 h-6 w-6 animate-spin' />
-      textClass = 'text-gray-700'
-    } else {
-      icon = <MonitorStopIcon className='text-gray-400 h-6 w-6' />
-      textClass = 'text-gray-500'
-    }
+    const { icon, textClass } = (() => {
+      if (index < currentIndex) {
+        return {
+          icon: <CircleCheckIcon className='text-green-500 h-6 w-6' />,
+          textClass: 'text-gray-700',
+        }
+      }
+      if (index === currentIndex) {
+        return {
+          icon: <LoaderIcon className='text-gray-500 h-6 w-6 animate-spin' />,
+          textClass: 'text-gray-700',
+        }
+      }
+      return {
+        icon: <MonitorStopIcon className='text-gray-400 h-6 w-6' />,
+        textClass: 'text-gray-500',
+      }
+    })()
 
     return (
       <div key={state.key} className='p-4 bg-white flex items-center space-x-4'>
