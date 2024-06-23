@@ -57,7 +57,8 @@
           "test",
           "lint",
           "e2e"
-        ]
+        ],
+        "token": "zADT8Mf80Cmklmx5XxE6KcSe"
       }
     }
   }
