@@ -4,7 +4,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from '@nmit-coursition/ui/primitives'
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 interface AccordionItem {
   title: string
