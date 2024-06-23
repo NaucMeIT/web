@@ -1,6 +1,5 @@
 //@ts-check
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { composePlugins, withNx } = require('@nx/next')
 
 /**
@@ -16,6 +15,9 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: '1GB',
     },
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 }
 
