@@ -4,6 +4,9 @@
     "enabled": true,
     "clientKind": "git"
   },
+  "files": {
+    "ignore": ["apps/legacy_nmit/**"]
+  },
   "formatter": {
     "enabled": true,
     "formatWithErrors": false,
@@ -12,12 +15,7 @@
     "lineEnding": "lf",
     "lineWidth": 120,
     "attributePosition": "auto",
-    "ignore": [
-      "./dist",
-      "./coverage",
-      "./.nx/cache",
-      "./.nx/workspace-data"
-    ]
+    "ignore": ["./dist", "./coverage", "./.nx/cache", "./.nx/workspace-data"]
   },
   "organizeImports": {
     "enabled": true

@@ -1,14 +1,14 @@
+import type { ErrorDetails, RequestOptions } from '@google/generative-ai'
 import {
-  FileMetadata,
-  FileMetadataResponse,
-  ListFilesResponse,
-  ListParams,
-  UploadFileResponse,
+  type FileMetadata,
+  type FileMetadataResponse,
   GoogleGenerativeAIError,
-  GoogleGenerativeAIRequestInputError,
   GoogleGenerativeAIFetchError,
+  GoogleGenerativeAIRequestInputError,
+  type ListFilesResponse,
+  type ListParams,
+  type UploadFileResponse,
 } from './google-types'
-import { RequestOptions } from '@google/generative-ai'
 
 const DEFAULT_BASE_URL = 'https://generativelanguage.googleapis.com'
 const DEFAULT_API_VERSION = 'v1beta'
@@ -50,14 +50,14 @@ class FilesRequestUrl {
     const baseUrl = this.requestOptions?.baseUrl || DEFAULT_BASE_URL
     let initialUrl = baseUrl
     if (this.task === FilesTask.UPLOAD) {
-      initialUrl += `/upload`
+      initialUrl += '/upload'
     }
     initialUrl += `/${apiVersion}/files`
     this._url = new URL(initialUrl)
   }
 
   appendPath(path: string): void {
-    this._url.pathname = this._url.pathname + `/${path}`
+    this._url.pathname = `${this._url.pathname}/${path}`
   }
 
   appendParam(key: string, value: string): void {
@@ -71,7 +71,7 @@ class FilesRequestUrl {
 
 function getHeaders(url: FilesRequestUrl): Headers {
   const headers = new Headers()
-  headers.append('x-goog-api-client', getClientHeaders(url.requestOptions as any))
+  headers.append('x-goog-api-client', getClientHeaders(url.requestOptions || {}))
   headers.append('x-goog-api-key', url.apiKey)
   return headers
 }
@@ -102,7 +102,7 @@ async function makeFilesRequest(
     const response = await fetchFn(url.toString(), requestInit)
     if (!response.ok) {
       let message = ''
-      let errorDetails
+      let errorDetails: ErrorDetails[] = []
       try {
         const json = await response.json()
         message = json.error.message
@@ -119,14 +119,18 @@ async function makeFilesRequest(
         response.statusText,
         errorDetails,
       )
-    } else {
-      return response
     }
+    return response
   } catch (e) {
+    // biome-ignore lint/suspicious/noExplicitAny: Google SDK implementation, shouldn't touch this code much
     let err: any = e
     if (!(e instanceof GoogleGenerativeAIFetchError)) {
-      err = new GoogleGenerativeAIError(`Error fetching from ${url.toString()}: ${(e as any).message}`)
-      err.stack = (e as any).stack
+      if (e instanceof Error) {
+        err = new GoogleGenerativeAIError(`Error fetching from ${url.toString()}: ${e.message}`)
+        err.stack = e.stack
+      } else {
+        err = new GoogleGenerativeAIError(`Error fetching from ${url.toString()}: ${e}`)
+      }
     }
     throw err
   }
@@ -171,19 +175,8 @@ export class GoogleAIFileManager {
 
     // Multipart formatting code taken from @firebase/storage
     const metadataString = JSON.stringify({ file: uploadMetadata })
-    const preBlobPart =
-      '--' +
-      boundary +
-      '\r\n' +
-      'Content-Type: application/json; charset=utf-8\r\n\r\n' +
-      metadataString +
-      '\r\n--' +
-      boundary +
-      '\r\n' +
-      'Content-Type: ' +
-      fileMetadata.mimeType +
-      '\r\n\r\n'
-    const postBlobPart = '\r\n--' + boundary + '--'
+    const preBlobPart = `--${boundary}\r\nContent-Type: application/json; charset=utf-8\r\n\r\n${metadataString}\r\n--${boundary}\r\nContent-Type: ${fileMetadata.mimeType}\r\n\r\n`
+    const postBlobPart = `\r\n--${boundary}--`
     const blob = new Blob([preBlobPart, file, postBlobPart])
 
     const response = await makeFilesRequest(url, uploadHeaders, blob)
@@ -236,9 +229,7 @@ function parseFileId(fileId: string): string {
     return fileId.split('files/')[1]
   }
   if (!fileId) {
-    throw new GoogleGenerativeAIError(
-      `Invalid fileId ${fileId}. ` + `Must be in the format "files/filename" or "filename"`,
-    )
+    throw new GoogleGenerativeAIError(`Invalid fileId ${fileId}. Must be in the format "files/filename" or "filename"`)
   }
 
   return fileId

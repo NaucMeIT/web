@@ -1,4 +1,4 @@
-import { z, ZodArray, ZodEffects, ZodNumber, ZodObject, ZodString, ZodType, ZodTypeAny } from 'zod'
+import { z, type ZodArray, type ZodEffects, type ZodNumber, type ZodObject, type ZodString, ZodType, type ZodTypeAny } from 'zod'
 
 export const stringToPathArray = <T extends string>(path: T): (string | number)[] => {
   if (path.length === 0) return []
@@ -161,7 +161,7 @@ const processFormData = preprocessIfValid(
       const map: Map<string, unknown[]> = new Map()
       for (const [key, value] of data) {
         if (map.has(key)) {
-          map.get(key)!.push(value)
+          map.get(key)?.push(value)
         } else {
           map.set(key, [value])
         }

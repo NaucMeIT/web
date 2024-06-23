@@ -10,13 +10,13 @@ export async function parseFile(file: Blob) {
     headers: {
       accept: 'application/json',
       contentType: 'multipart/form-data',
-      Authorization: `Bearer ${process.env['LLAMA_CLOUD_API_KEY']}`,
+      Authorization: `Bearer ${process.env.LLAMA_CLOUD_API_KEY}`,
     },
     body,
   })
 
   if (!uploadResponse.ok) {
-    throw new Error('Upload failed: ' + uploadResponse.statusText)
+    throw new Error(`Upload failed: ${uploadResponse.statusText}`)
   }
 
   const { id, status } = await uploadResponse.json()
@@ -33,12 +33,12 @@ export async function waitUntilJobIsDone(id: string, status: string) {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: `Bearer ${process.env['LLAMA_CLOUD_API_KEY']}`,
+        Authorization: `Bearer ${process.env.LLAMA_CLOUD_API_KEY}`,
       },
     })
 
     if (!statusResponse.ok) {
-      throw new Error('Status check failed: ' + statusResponse.statusText)
+      throw new Error(`Status check failed: ${statusResponse.statusText}`)
     }
 
     const statusJson = await statusResponse.json()
@@ -57,12 +57,12 @@ export async function getResult(id: string): Promise<string> {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: `Bearer ${process.env['LLAMA_CLOUD_API_KEY']}`,
+      Authorization: `Bearer ${process.env.LLAMA_CLOUD_API_KEY}`,
     },
   })
 
   if (!resultResponse.ok) {
-    throw new Error('Fetching result failed: ' + resultResponse.statusText + ' id: ' + id)
+    throw new Error(`Fetching result failed: ${resultResponse.statusText} id: ${id}`)
   }
 
   const { markdown } = await resultResponse.json()

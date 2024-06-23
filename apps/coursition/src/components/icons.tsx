@@ -1,4 +1,6 @@
-export function CircleCheckIcon(props: any) {
+import type { SVGProps } from 'react'
+
+export function CircleCheckIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -12,13 +14,14 @@ export function CircleCheckIcon(props: any) {
       strokeLinecap='round'
       strokeLinejoin='round'
     >
+      <title>Circle Check</title>
       <circle cx='12' cy='12' r='10' />
       <path d='m9 12 2 2 4-4' />
     </svg>
   )
 }
 
-export function LoaderIcon(props: any) {
+export function LoaderIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -32,6 +35,7 @@ export function LoaderIcon(props: any) {
       strokeLinecap='round'
       strokeLinejoin='round'
     >
+      <title>Loader</title>
       <path d='M12 2v4' />
       <path d='m16.2 7.8 2.9-2.9' />
       <path d='M18 12h4' />
@@ -44,7 +48,7 @@ export function LoaderIcon(props: any) {
   )
 }
 
-export function MonitorStopIcon(props: any) {
+export function MonitorStopIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -58,6 +62,7 @@ export function MonitorStopIcon(props: any) {
       strokeLinecap='round'
       strokeLinejoin='round'
     >
+      <title>Monitor Stop</title>
       <path d='M12 17v4' />
       <path d='M8 21h8' />
       <rect x='2' y='3' width='20' height='14' rx='2' />

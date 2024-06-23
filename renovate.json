@@ -1,14 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base"
-  ],
-  "reviewers": [
-    "BleedingDev"
-  ],
-  "labels": [
-    "dependencies"
-  ],
+  "extends": ["config:base"],
+  "reviewers": ["BleedingDev"],
+  "labels": ["dependencies"],
   "enabled": false,
   "prHourlyLimit": 0,
   "prConcurrentLimit": 0,
@@ -16,59 +10,35 @@
   "fetchReleaseNotes": true,
   "packageRules": [
     {
-      "matchPackagePatterns": [
-        "^@radix-ui"
-      ],
+      "matchPackagePatterns": ["^@radix-ui"],
       "groupName": "radix packages"
     },
     {
-      "matchPackagePatterns": [
-        "^@builder.io"
-      ],
+      "matchPackagePatterns": ["^@builder.io"],
       "groupName": "builder packages"
     },
     {
-      "matchPackagePatterns": [
-        "^eslint",
-        "@typescript-eslint"
-      ],
+      "matchPackagePatterns": ["^eslint", "@typescript-eslint"],
       "matchPackageNames": "@types/eslint",
       "groupName": "eslint packages"
     },
     {
-      "matchPackagePatterns": [
-        "^@next",
-        "^next"
-      ],
-      "matchPackageNames": [
-        "eslint-config-next"
-      ],
+      "matchPackagePatterns": ["^@next", "^next"],
+      "matchPackageNames": ["eslint-config-next"],
       "groupName": "next packages"
     },
     {
-      "matchPackagePatterns": [
-        "^@mdx-js",
-        "^remark",
-        "^rehype"
-      ],
-      "matchPackageNames": [
-        "@types/mdx-js__react"
-      ],
+      "matchPackagePatterns": ["^@mdx-js", "^remark", "^rehype"],
+      "matchPackageNames": ["@types/mdx-js__react"],
       "groupName": "markdown packages"
     },
     {
-      "matchPackagePatterns": [
-        "^@stripe/"
-      ],
-      "matchPackageNames": [
-        "stripe"
-      ],
+      "matchPackagePatterns": ["^@stripe/"],
+      "matchPackageNames": ["stripe"],
       "groupName": "stripe packages"
     },
     {
-      "matchPackagePatterns": [
-        "^@types/"
-      ],
+      "matchPackagePatterns": ["^@types/"],
       "groupName": "types packages"
     }
   ]
