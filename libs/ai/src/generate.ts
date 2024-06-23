@@ -64,6 +64,9 @@ export async function generateQuiz(
     # CONTEXT:
     ${content}
   `
+  trace.update({
+    input: prompt,
+  })
   const span = trace.span({
     name: 'generate',
     input: {
@@ -98,6 +101,9 @@ export async function generateQuiz(
     system,
     prompt,
     ...modelParameters,
+  })
+  trace.update({
+    output: object,
   })
   generation.end({
     output: object,

@@ -1,9 +1,39 @@
 'use server'
+
+import { langfuse } from './langfuse'
+
 const parseApi = 'https://api.cloud.llamaindex.ai/api/parsing/'
 
-export async function parseFile(file: Blob) {
+const defaultTrace = langfuse.trace({
+  name: 'quiz',
+})
+
+export async function parseFile(file: File, trace = defaultTrace) {
   const body = new FormData()
   body.append('file', file)
+  trace.update({
+    input: file.name,
+  })
+  const span = trace.span({
+    name: 'parse',
+    input: {
+      fileName: file.name,
+    },
+  })
+  const generation = span.generation({
+    name: 'parse',
+    input: {
+      file: file.name,
+    },
+  })
+  generation.update({
+    completionStartTime: new Date(),
+  })
+  span.update({
+    metadata: {
+      function: 'uploadFile',
+    },
+  })
 
   const uploadResponse = await fetch(`${parseApi}upload`, {
     method: 'POST',
@@ -18,13 +48,14 @@ export async function parseFile(file: Blob) {
   if (!uploadResponse.ok) {
     throw new Error('Upload failed: ' + uploadResponse.statusText)
   }
+  span.end({})
 
   const { id, status } = await uploadResponse.json()
 
   return { id, status }
 }
 
-export async function waitUntilJobIsDone(id: string, status: string) {
+export async function waitUntilJobIsDone(id: string, status: string, trace = defaultTrace) {
   const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
   let currentStatus = status
 
@@ -52,7 +83,7 @@ export async function waitUntilJobIsDone(id: string, status: string) {
   return currentStatus
 }
 
-export async function getResult(id: string): Promise<string> {
+export async function getResult(id: string, trace = defaultTrace): Promise<string> {
   const resultResponse = await fetch(`${parseApi}job/${id}/result/markdown`, {
     method: 'GET',
     headers: {
