@@ -19,13 +19,14 @@ const fileSchema = zfd.formData({
   allowMultiple: z.boolean().optional(),
 })
 
+// biome-ignore lint/suspicious/noExplicitAny: It's broken in Next.js if correctly typed
 const initialState: any = {
   quiz: null,
 }
 
 export default function Index() {
   const [status, setStatus] = useState<'idle' | 'upload' | 'parse' | 'generate' | 'done'>('idle')
-  const handleSubmit = async (_: any, formData: FormData) => {
+  const handleSubmit = async (_: unknown, formData: FormData) => {
     setStatus('upload')
     const { file, outputLang, amountQuestions, amountAnswers } = fileSchema.parse(formData)
     const { id, status } = await parseFile(file)
