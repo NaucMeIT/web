@@ -16,6 +16,7 @@ const documentQuizMachine = setup({
       | { type: 'PARSE_STARTED'; id: string; status: string }
       | { type: 'JOB_COMPLETED' }
       | { type: 'DOCUMENT_PARSED'; content: string }
+      | { type: 'GENERATE_QUIZ' }
       | { type: 'QUIZ_GENERATED'; quiz: string },
   },
   actions: {
@@ -37,7 +38,7 @@ const documentQuizMachine = setup({
     ),
   },
 }).createMachine({
-  /** @xstate-layout N4IgpgJg5mDOIC5QQPYGMCuBbMA7ALgIoYCWAXgLICGaAFibmAHQkQA2YAxAKoAKAMgHkAggBEA+qMEBhbhQCiAOQAqAbQAMAXUSgADilgl8JFLh0gAHogCMANmtMAzM+cBOdQBYAHK9cAaEABPRFcPJg9HAHYAVmt1dUcAJi9rSOtXAF8MgNRMHAJicmo6BmYMXTYUKggGKE5eYQAlAGV5cWblJuV5UQ1tJBB9Q2NTcysEaNsvJnVIxNckjw9Iry9EgOCEUPCo2PiklLTM7JBc7DwiUkoaekYmAHcqI1rOAClBACFxaUEKAXlur0tOYhs9RgNxq5omFrB5ol5bPN1LZoolbP4gjZUjN4vFIo5otFZvjHFkcuhzgUrsVbswAGZgfAlXBQcQAJzgGDY+E4UlkChU4gaLR6fRBBjBZghNiiDjmrkS1gRCsSyK8GxCYQiMTiCWSqXSZNOFPylyKN1KTBgjDZVGMLM4hG4AEkAFriADiSnkjWEgLFA1BIyloHGSusiSYhMVRPU8KWEY1Wy1u11BwNxxOuBQEDg5jOpsK12ZYHFwxMIcsiAAtLYk7Wcbim83IkaCxcizTLawOGXJWNEB51piENZsbG8QSiZF8R42yaO9SLXdypVqrU+8GBwhHF51Ex7HCVej4YSk9s7LZbHN7JETwT53lF+aSw8nvaoJuK9uYmEUolUQAxxrCiVZzxhK9rzRVJ70fSkzWLWkmAZJlblZDlYC5fAv3BUMsQ8WwmFcKZIncDwFkVawkxSJhLyvBYiQia9bDgwsl1fa0wFtD8cMrMN4WmTxUkVBECR8DxqIcOj0QJTxHCmRJWOfRDLTQFAsAqRlS0DCUt2lBBVXUaZ5II1FVl8KF1RHMdCIA3ESQiSZZiyLIgA */
+  /** @xstate-layout N4IgpgJg5mDOIC5QQPYGMCuBbMA7ALgIoYCWAXgLICGaAFibmAHQkQA2YAxAKoAKAMgHkAggBEA+qMEBhbhQCiAOQAqAbQAMAXUSgADilgl8JFLh0gAHogCMAFgDsTAJwunANgBMTgBwf7Htyd7ABoQAE9EDwBmAFZnazc3b291JyiPbzd7bwBfHNDUTBwCYnJqOgZmXSoAJ0NcKE5URiZYfCp8ZkLsPCJSShp6Fuq6higNbSQQfUNjU3MrBGso9WsmdIyfbydbD3UYqNCIhG81hMT7a29dt2sYmKc8gvQekv7yoara+qgmDF02CgqBAxpxeMIAEoAZXk4ihykhynkogm5hmRhMZimixi9icTGuUXs6lsuwOHg81iOkVsUXiiWSqXSmXsMSeIG6xT6ZUGlSYIx+TAA7lQMQ1OAApQQAIXE0kEFAE8iRKK0aIMGPm2MQOzihPsKyc6gC3iitmpCACbmcMVNtnctNsBzcUXZnN6pQGFWG3zGTAAZmB8N6oOIanAMGx8JwpLIFCpxODocjUVN0XMsaBFstvHE8XdvMTbNYSVcLR5afSkik0hksrl8hyXlzPR8+TBGDUOqDmsw2h0us2Pe9eS0O2Au8YGqm9BqMwtIqcmG4mdcrvYnZ4QuFELa1jF1IertZ3BvPG6h28ed7mOPJ37dOGRqCAOJKeQQ4RI8SEbgASQALRnaY50xBdLT8dZcyJLcAnuO4LXsLImHUU0okyJwYlpLDbAvIph2vT4mDvbsGmIvAJ1Ixpf0A8Q30UD8vxTNU01ArUs0QNwYmtCknDuW0V2ufZENJFDi38LDS0Lew8kbXAUAgOBzHdK8vU+dVZjA7UEAAWjcC09Lw15uTUvlWA4DTNUzSxEF2csHiYJ07QdM0DhkxsVJMtsfVGBpLPnbTYnUJgkPUKIjSJElyRiC07mtVlD1QuwmQeNwjJbEcb35X0yP+QFgTGfytI4hBwu8EKV3CsKi2i8tROsCsXEuKIuISNkPMvLzRy+XzfhFMUoCK9ibIQVk6ViYt1AZA9Lm3Y4K1sJgGoPcTbEPFcMnSgjTJ8wVA2DIZQ3DWBI3wIbrOzBrrQcPiT1sF1YhindLXqjwD2sDcS1zJyttU7zbwo+8-NYzThpxJwLS4xxUKiCb7QPRJ2uefC-u68jOyo-kn1qQqQas8CSzmxAkMcW1YYwrC4d+rqspIqdfjp3HZ1Bi7bLCph7j2XFdicAIghExa3sPM1SU+g1qdbNG0BQLAASDMBzvAwklu4ikvGSbjEMSdZYZaoXDVtWSciAA */
   id: 'documentQuizMachine',
   initial: 'idle',
   context: {
@@ -51,68 +52,87 @@ const documentQuizMachine = setup({
     idle: {
       on: {
         UPLOAD_DOCUMENT: {
-          target: 'uploading',
+          target: 'parsing',
           actions: ({ context, event }) => {
             context.document = event.document
           },
         },
       },
     },
-    uploading: {
-      invoke: {
-        src: 'parseFile',
-        input: ({ context }) => ({ document: context.document }),
-      },
-      on: {
-        PARSE_STARTED: {
-          target: 'waiting',
-          actions: ({ context, event }) => {
-            context.jobId = event.id
-            context.jobStatus = event.status
+    parsing: {
+      initial: 'uploading',
+      states: {
+        uploading: {
+          invoke: {
+            src: 'parseFile',
+            input: ({ context }) => ({ document: context.document }),
+          },
+          on: {
+            PARSE_STARTED: {
+              target: 'waiting',
+              actions: ({ context, event }) => {
+                context.jobId = event.id
+                context.jobStatus = event.status
+              },
+            },
+          },
+        },
+        waiting: {
+          invoke: {
+            src: 'waitForJob',
+            input: ({ context }) => ({ id: context.jobId, status: context.jobStatus }),
+          },
+          on: {
+            JOB_COMPLETED: {
+              target: 'fetching_result',
+            },
+          },
+        },
+        fetching_result: {
+          invoke: {
+            src: 'getParseResult',
+            input: ({ context }) => ({ id: context.jobId }),
+          },
+          on: {
+            DOCUMENT_PARSED: {
+              target: '#documentQuizMachine.generating',
+              actions: ({ context, event }) => {
+                context.parsedContent = event.content
+              },
+            },
           },
         },
       },
-    },
-    waiting: {
-      invoke: {
-        src: 'waitForJob',
-        input: ({ context }) => ({ id: context.jobId, status: context.jobStatus }),
+      onDone: {
+        actions: 'logParsedContent',
       },
-      on: {
-        JOB_COMPLETED: {
-          target: 'fetching_result',
-        },
-      },
-    },
-    fetching_result: {
-      invoke: {
-        src: 'getParseResult',
-        input: ({ context }) => ({ id: context.jobId }),
-      },
-      on: {
-        DOCUMENT_PARSED: {
-          target: 'generating',
-          actions: ({ context, event }) => {
-            context.parsedContent = event.content
-          },
-        },
-      },
-      exit: 'logParsedContent',
     },
     generating: {
-      invoke: {
-        src: 'generateQuiz',
-        input: ({ context }) => ({ parsedContent: context.parsedContent }),
-      },
-      on: {
-        QUIZ_GENERATED: {
-          target: 'complete',
-          actions: ({ context, event }) => {
-            context.quiz = event.quiz
+      initial: 'preparing',
+      states: {
+        preparing: {
+          on: {
+            GENERATE_QUIZ: 'generating',
+          },
+        },
+        generating: {
+          invoke: {
+            src: 'generateQuiz',
+            input: ({ context }) => ({ parsedContent: context.parsedContent }),
+          },
+          on: {
+            QUIZ_GENERATED: {
+              target: '#documentQuizMachine.complete',
+              actions: ({ context, event }) => {
+                context.quiz = event.quiz
+              },
+            },
           },
         },
       },
-      exit: 'logGeneratedQuiz',
+      onDone: {
+        actions: 'logGeneratedQuiz',
+      },
     },
     complete: {
       type: 'final',
@@ -120,6 +140,7 @@ const documentQuizMachine = setup({
   },
 })
 
+// Create and export the machine with provided services
 export const createDocumentQuizMachine = () =>
   documentQuizMachine.provide({
     actions: {},
