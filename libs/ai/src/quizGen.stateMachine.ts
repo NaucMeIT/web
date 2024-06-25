@@ -1,6 +1,6 @@
 import { fromPromise, setup } from 'xstate'
-import { getResult, parseFile, waitUntilJobIsDone } from './parse'
 import { generateQuiz } from './generate'
+import { getResult, parseFile, waitUntilJobIsDone } from './parse'
 
 const documentQuizMachine = setup({
   types: {
