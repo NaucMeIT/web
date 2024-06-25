@@ -65,7 +65,8 @@ const documentQuizMachine = setup({
         uploading: {
           invoke: {
             src: 'parseFile',
-            input: ({ context }) => ({ document: context.document }),
+            // biome-ignore lint/style/noNonNullAssertion: Stately enforces correct context types
+            input: ({ context }) => ({ document: context.document! }),
           },
           on: {
             PARSE_STARTED: {
@@ -80,7 +81,8 @@ const documentQuizMachine = setup({
         waiting: {
           invoke: {
             src: 'waitForJob',
-            input: ({ context }) => ({ id: context.jobId, status: context.jobStatus }),
+            // biome-ignore lint/style/noNonNullAssertion: Stately enforces correct context types
+            input: ({ context }) => ({ id: context.jobId!, status: context.jobStatus! }),
           },
           on: {
             JOB_COMPLETED: {
@@ -91,7 +93,8 @@ const documentQuizMachine = setup({
         fetching_result: {
           invoke: {
             src: 'getParseResult',
-            input: ({ context }) => ({ id: context.jobId }),
+            // biome-ignore lint/style/noNonNullAssertion: Stately enforces correct context types
+            input: ({ context }) => ({ id: context.jobId! }),
           },
           on: {
             DOCUMENT_PARSED: {
@@ -118,7 +121,8 @@ const documentQuizMachine = setup({
         generating: {
           invoke: {
             src: 'generateQuiz',
-            input: ({ context }) => ({ parsedContent: context.parsedContent }),
+            // biome-ignore lint/style/noNonNullAssertion: Stately enforces correct context types
+            input: ({ context }) => ({ parsedContent: context.parsedContent! }),
           },
           on: {
             QUIZ_GENERATED: {
