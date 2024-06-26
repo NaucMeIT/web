@@ -16,30 +16,44 @@ const fileSchema = zfd.formData({
   outputLang: z.string().optional(),
   amountQuestions: zfd.numeric().optional(),
   amountAnswers: zfd.numeric().optional(),
-  allowMultiple: z.boolean().optional(),
+  allowMultiple: zfd.checkbox().optional(),
+  precisionMode: zfd.checkbox().optional(),
+  contentDescription: z.string().optional(),
+  inputLang: z.string().optional(),
+  action: z.enum(['convert', 'generate']),
 })
 
 // biome-ignore lint/suspicious/noExplicitAny: It's broken in Next.js if correctly typed
 const initialState: any = {
+  markdown: null,
   quiz: null,
 }
 
 export default function Index() {
   const [status, setStatus] = useState<'idle' | 'upload' | 'parse' | 'generate' | 'done'>('idle')
+
   const handleSubmit = async (_: unknown, formData: FormData) => {
     setStatus('upload')
-    const { file, outputLang, amountQuestions, amountAnswers } = fileSchema.parse(formData)
-    const { id, status } = await parseFile(file)
+    const { file, outputLang, amountQuestions, amountAnswers, action, precisionMode, contentDescription, inputLang } =
+      fileSchema.parse(formData)
+    const config = { precisionMode, contentDescription, inputLang }
+    const { id, status } = await parseFile(file, config)
 
     setStatus('parse')
     await waitUntilJobIsDone(id, status)
     const markdown = await getResult(id)
 
+    if (action === 'convert') {
+      setStatus('done')
+      return { markdown }
+    }
+
     setStatus('generate')
     const quiz = await generateQuiz(markdown, { outputLang, amountQuestions, amountAnswers })
     setStatus('done')
-    return { quiz }
+    return { markdown, quiz }
   }
+
   const [state, formAction] = useFormState(handleSubmit, initialState)
 
   return (
@@ -67,6 +81,33 @@ export default function Index() {
                     title: 'Advanced Options',
                     content: (
                       <div className='flex gap-3 flex-col'>
+                        <Checkbox
+                          label='Precision mode'
+                          id='precisionMode'
+                          subtext='Enable for more precise document parsing. It can be handy for handwritten notes and other normally unprocessable files. Requires an OpenAI API key.'
+                        />
+                        <Input
+                          label='OpenAI API Key'
+                          placeholder='sk-...'
+                          type='text'
+                          id='apiKey'
+                          subtext='Your OpenAI API key for more precise document parsing, necessary for precision mode'
+                        />
+                        <Input
+                          label='Content description'
+                          placeholder='My handwritten notes from the lecture about biology.'
+                          type='text'
+                          id='contentDescription'
+                          subtext='A short description of the document content to help with processing it.'
+                        />
+                        <Input
+                          label='Input language'
+                          placeholder='en'
+                          type='text'
+                          id='inputLang'
+                          subtext='The language of the uploaded document. Should be a two-letter language code, e.g. cs, en, de...'
+                        />
+                        <hr />
                         <Input label='Output language' placeholder='English' type='text' id='outputLang' />
                         <Input
                           label='Amount of questions'
@@ -92,12 +133,24 @@ export default function Index() {
                   },
                 ]}
               />
-              <Button
-                type='submit'
-                className='w-full bg-violet-500 hover:bg-violet-600 text-white font-medium py-2 px-4 rounded-md'
-              >
-                Generate quiz
-              </Button>
+              <div className='flex gap-4'>
+                <Button
+                  type='submit'
+                  name='action'
+                  value='convert'
+                  className='flex-1 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md'
+                >
+                  Convert
+                </Button>
+                <Button
+                  type='submit'
+                  name='action'
+                  value='generate'
+                  className='flex-1 bg-violet-500 hover:bg-violet-600 text-white font-medium py-2 px-4 rounded-md'
+                >
+                  Convert & Generate Quiz
+                </Button>
+              </div>
             </form>
           </>
         )}
@@ -111,7 +164,25 @@ export default function Index() {
             status={status}
           />
         )}
-        {status === 'done' && <pre className='w-full h-auto'>{JSON.stringify(state.quiz, null, 2)}</pre>}
+        {status === 'done' && (
+          <div>
+            <h2 className='text-xl font-bold mb-2'>Results:</h2>
+            {state.markdown && (
+              <div className='mb-4'>
+                <h3 className='text-lg font-semibold mb-1'>Markdown:</h3>
+                <pre className='w-full h-auto max-h-60 overflow-auto bg-gray-100 p-2 rounded'>{state.markdown}</pre>
+              </div>
+            )}
+            {state.quiz && (
+              <div>
+                <h3 className='text-lg font-semibold mb-1'>Quiz:</h3>
+                <pre className='w-full h-auto max-h-60 overflow-auto bg-gray-100 p-2 rounded'>
+                  {JSON.stringify(state.quiz, null, 2)}
+                </pre>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   )
