@@ -1,9 +1,20 @@
 'use server'
 const parseApi = 'https://api.cloud.llamaindex.ai/api/parsing/'
 
-export async function parseFile(file: Blob) {
+export async function parseFile(
+  file: Blob,
+  config?: {
+    precisionMode?: boolean
+    contentDescription?: string
+    inputLang?: string
+    apiKey?: string
+  },
+) {
   const body = new FormData()
   body.append('file', file)
+  config?.precisionMode && body.append('gpt4o_mode', 'true')
+  config?.contentDescription && body.append('parsing_instruction', config?.contentDescription)
+  config?.inputLang && body.append('input_lang', config?.inputLang)
 
   const uploadResponse = await fetch(`${parseApi}upload`, {
     method: 'POST',
