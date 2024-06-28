@@ -1,8 +1,8 @@
 'use server'
 const parseApi = 'https://api.cloud.llamaindex.ai/api/parsing/'
 
-export async function parseFile(
-  file: Blob,
+export async function uploadFile(
+  file: File,
   config?: {
     precisionMode?: boolean
     contentDescription?: string
@@ -30,7 +30,7 @@ export async function parseFile(
     throw new Error(`Upload failed: ${uploadResponse.statusText}`)
   }
 
-  const { id, status } = await uploadResponse.json()
+  const { id, status }: { id: string; status: string } = await uploadResponse.json()
 
   return { id, status }
 }

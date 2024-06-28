@@ -1,4 +1,4 @@
-export * from './parse'
+export * from './google'
 export * from './generate'
 export * from './media'
-export * from './google'
+export * from './document'

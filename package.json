@@ -6,6 +6,7 @@
   "private": true,
   "dependencies": {
     "@ai-sdk/google": "^0.0.20",
+    "@deepgram/sdk": "^3.3.5",
     "@google-cloud/storage": "^7.11.2",
     "@google/generative-ai": "^0.12.0",
     "@radix-ui/react-accordion": "^1.2.0",
