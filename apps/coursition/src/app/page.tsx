@@ -1,15 +1,16 @@
 'use client'
 
-import { generateQuiz, getResult, parseFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
+import { generateQuiz, getResult, getTranscript, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
 import { Accordion, Button, Checkbox, Input } from '@nmit-coursition/design-system'
 import { zfd } from '@nmit-coursition/utils'
-import React, { useState } from 'react'
-import { useFormState } from 'react-dom'
+import React, { useActionState, useState } from 'react'
 import { z } from 'zod'
 import { StatusDisplay } from '../components/statusDisplay'
 
-const acceptedFileTypes =
+const acceptedDocumentFileTypes =
   'application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.oasis.opendocument.text,application/vnd.oasis.opendocument.presentation,text/html,image/x-png,image/jpeg,image/gif'
+const acceptedMediaFileTypes = 'video/*,audio/*'
+const acceptedFileTypes = `${acceptedDocumentFileTypes},${acceptedMediaFileTypes}`
 
 const fileSchema = zfd.formData({
   file: zfd.file(),
@@ -25,7 +26,7 @@ const fileSchema = zfd.formData({
 
 // biome-ignore lint/suspicious/noExplicitAny: It's broken in Next.js if correctly typed
 const initialState: any = {
-  markdown: null,
+  text: null,
   quiz: null,
 }
 
@@ -36,25 +37,31 @@ export default function Index() {
     setStatus('upload')
     const { file, outputLang, amountQuestions, amountAnswers, action, precisionMode, contentDescription, inputLang } =
       fileSchema.parse(formData)
-    const config = { precisionMode, contentDescription, inputLang }
-    const { id, status } = await parseFile(file, config)
+    let text = ''
+    if (acceptedDocumentFileTypes.includes(file.type)) {
+      const config = { precisionMode, contentDescription, inputLang }
+      const { id, status } = await uploadFile(file, config)
 
-    setStatus('parse')
-    await waitUntilJobIsDone(id, status)
-    const markdown = await getResult(id)
+      setStatus('parse')
+      await waitUntilJobIsDone(id, status)
+      text = await getResult(id)
+    } else {
+      setStatus('parse')
+      text = await getTranscript(file)
+    }
 
     if (action === 'convert') {
       setStatus('done')
-      return { markdown }
+      return { text }
     }
 
     setStatus('generate')
-    const quiz = await generateQuiz(markdown, { outputLang, amountQuestions, amountAnswers })
+    const quiz = await generateQuiz(text, { outputLang, amountQuestions, amountAnswers })
     setStatus('done')
-    return { markdown, quiz }
+    return { text, quiz }
   }
 
-  const [state, formAction] = useFormState(handleSubmit, initialState)
+  const [state, formAction] = useActionState(handleSubmit, initialState)
 
   return (
     <div className='flex justify-center items-center h-screen'>
@@ -167,10 +174,10 @@ export default function Index() {
         {status === 'done' && (
           <div>
             <h2 className='text-xl font-bold mb-2'>Results:</h2>
-            {state.markdown && (
+            {state.text && (
               <div className='mb-4'>
-                <h3 className='text-lg font-semibold mb-1'>Markdown:</h3>
-                <pre className='w-full h-auto max-h-60 overflow-auto bg-gray-100 p-2 rounded'>{state.markdown}</pre>
+                <h3 className='text-lg font-semibold mb-1'>Text:</h3>
+                <pre className='w-full h-auto max-h-60 overflow-auto bg-gray-100 p-2 rounded'>{state.text}</pre>
               </div>
             )}
             {state.quiz && (

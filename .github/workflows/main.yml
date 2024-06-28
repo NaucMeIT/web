@@ -1,5 +1,5 @@
 name: CI/CD Pipeline
-on: 
+on:
   push:
     branches:
       - master
@@ -7,7 +7,7 @@ on:
 env:
   CI_REGISTRY: ghcr.io
   CI_NAMESPACE: naucmeit/web
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,6 +26,7 @@ jobs:
         env:
           GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
           LLAMA_CLOUD_API_KEY: ${{ secrets.LLAMA_CLOUD_API_KEY }}
+          DEEPGRAM_API_KEY: ${{ secrets.DEEPGRAM_API_KEY }}
           SUPPORT_EMAIL: ${{ vars.SUPPORT_EMAIL }}
           CERTBOT_DOMAIN: ${{ vars.CERTBOT_DOMAIN }}
           CERTBOT_NAKED_DOMAIN: ${{ vars.CERTBOT_NAKED_DOMAIN }}
@@ -61,6 +62,7 @@ jobs:
           REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
           LLAMA_CLOUD_API_KEY: ${{ secrets.LLAMA_CLOUD_API_KEY }}
+          DEEPGRAM_API_KEY: ${{ secrets.DEEPGRAM_API_KEY }}
           SUPPORT_EMAIL: ${{ vars.SUPPORT_EMAIL }}
           CERTBOT_DOMAIN: ${{ vars.CERTBOT_DOMAIN }}
           CERTBOT_NAKED_DOMAIN: ${{ vars.CERTBOT_NAKED_DOMAIN }}
