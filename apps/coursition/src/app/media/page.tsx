@@ -1,10 +1,10 @@
 'use client'
 
-import { useSignal, useSignals } from '@preact/signals-react/runtime'
 import { getTranscript } from '@nmit-coursition/ai'
-import { Accordion, Button, Input } from '@nmit-coursition/design-system'
+import { Accordion, Button, Textarea } from '@nmit-coursition/design-system'
 import { zfd } from '@nmit-coursition/utils'
-import React, { useActionState, useState } from 'react'
+import { useSignal } from '@preact/signals-react/runtime'
+import React, { useActionState } from 'react'
 import { z } from 'zod'
 import { StatusDisplay } from '../../components/statusDisplay'
 
@@ -16,7 +16,6 @@ const fileSchema = zfd.formData({
   keywords: z.string().optional(),
 })
 
-// biome-ignore lint/suspicious/noExplicitAny: It's broken in Next.js if correctly typed
 const initialState = {
   raw: '',
   srt: '',
@@ -30,7 +29,7 @@ export default function Index() {
     status.value = 'upload'
     const { file, keywords } = fileSchema.parse(formData)
     status.value = 'parse'
-    const keywordsArray = keywords ? keywords.split(',') : []
+    const keywordsArray = keywords ? keywords.split(',').map((word) => `${word}:5`) : []
     const { raw, srt, vtt } = await getTranscript(file, keywordsArray)
     status.value = 'done'
     return { raw, srt, vtt }
@@ -63,12 +62,11 @@ export default function Index() {
                     title: 'Advanced Options',
                     content: (
                       <div className='flex gap-3 flex-col w-full'>
-                        <Input
+                        <Textarea
                           label='Difficult words'
                           placeholder='ChatGPT, Claude, Zig'
-                          type='text'
                           id='keywords'
-                          subtext='Unusual words or phrases that may be difficult to transcribe. Separate with commas.'
+                          subtext='Unusual words or phrases that may be difficult to transcribe. Separate with commas. Avoid putting common words.'
                         />
                       </div>
                     ),
