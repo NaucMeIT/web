@@ -47,7 +47,8 @@ export default function Index() {
       text = await getResult(id)
     } else {
       setStatus('parse')
-      text = await getTranscript(file)
+      const { raw } = await getTranscript(file)
+      text = raw
     }
 
     if (action === 'convert') {
