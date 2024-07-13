@@ -9,6 +9,13 @@ const MAX_UPLOAD_SIZE = 1024 * 1024 * 1024 * 2 // 2GB
 
 export const mediaRouter = {
   transcribe: publicProcedure
+    .use(async (opts) => {
+      const input = await opts.getRawInput()
+      console.log('input', input)
+      return opts.next({
+        input,
+      })
+    })
     .input(
       z.object({
         file: z
@@ -23,7 +30,7 @@ export const mediaRouter = {
         keywords: z.array(z.string()).optional(),
       }),
     )
-    .query(({ input }) => {
+    .mutation(({ input }) => {
       return getTranscript(input.file, input.keywords, input.apiKey)
     }),
   extractAudio: publicProcedure
@@ -34,7 +41,7 @@ export const mediaRouter = {
         }, 'File must be a video or audio'),
       }),
     )
-    .query(({ input }) => {
+    .mutation(({ input }) => {
       return undefined
     }),
 } satisfies TRPCRouterRecord

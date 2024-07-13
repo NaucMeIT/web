@@ -34,7 +34,6 @@ export function TRPCReactProvider(props: { children: ReactNode }) {
             process.env.NODE_ENV === 'development' || (op.direction === 'down' && op.result instanceof Error),
         }),
         unstable_httpBatchStreamLink({
-          transformer: SuperJSON,
           url: `${getBaseUrl()}/api/trpc`,
           headers() {
             // biome-ignore lint/suspicious/noExplicitAny: Grabbed from https://github.com/t3-oss/create-t3-turbo/blob/main/apps/nextjs/src/trpc/react.tsx it shouldn't yell

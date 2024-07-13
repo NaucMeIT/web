@@ -1,13 +1,12 @@
 'use client'
 
-import { getTranscript } from '@nmit-coursition/ai'
 import { Accordion, Button, Textarea } from '@nmit-coursition/design-system'
 import { zfd } from '@nmit-coursition/utils'
 import { useSignal } from '@preact/signals-react/runtime'
 import React, { useActionState } from 'react'
 import { z } from 'zod'
 import { StatusDisplay } from '../../components/statusDisplay'
-import { api } from '../../trpc/next-server'
+import { api } from '../../trpc/react'
 
 const acceptedMediaFileTypes = 'video/*,audio/*'
 const acceptedFileTypes = `${acceptedMediaFileTypes}`
@@ -25,13 +24,20 @@ const initialState = {
 
 export default function Index() {
   const status = useSignal<'idle' | 'upload' | 'parse' | 'done'>('idle')
+  const mutation = api.media.transcribe.useMutation()
 
   const handleSubmit = async (formData: FormData) => {
     status.value = 'upload'
     const { file, keywords } = fileSchema.parse(formData)
     status.value = 'parse'
     const keywordsArray = keywords ? keywords.split(',').map((word) => `${word}:5`) : []
-    const { raw, srt, vtt } = await api.media.transcribe({ file, keywords: keywordsArray })
+    const { raw, srt, vtt } = await mutation.mutateAsync({ file, keywords: keywordsArray })
+    if (mutation.error || !mutation.data) {
+      status.value = 'idle'
+      // TODO: Show error to the user, maybe use Sonner toast
+      return initialState
+    }
+
     status.value = 'done'
     return { raw, srt, vtt }
   }
