@@ -1,5 +1,6 @@
 'use client'
 
+import type { AppRouter } from '@nmit-coursition/api'
 import type { QueryClient } from '@tanstack/react-query'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { loggerLink, unstable_httpBatchStreamLink } from '@trpc/client'
@@ -7,7 +8,6 @@ import { createTRPCReact } from '@trpc/react-query'
 import { type ReactNode, useState } from 'react'
 import SuperJSON from 'superjson'
 
-import type { AppRouter } from '../root'
 import { createQueryClient } from './query-client'
 
 let clientQueryClientSingleton: QueryClient | undefined = undefined

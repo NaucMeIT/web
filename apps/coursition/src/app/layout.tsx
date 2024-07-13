@@ -1,5 +1,5 @@
-import { TRPCReactProvider } from '@nmit-coursition/api'
 import '@nmit-coursition/ui/utils/global.css'
+import { TRPCReactProvider } from '../trpc/react'
 
 export const metadata = {
   title: 'Welcome to nmit',

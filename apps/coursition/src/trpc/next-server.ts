@@ -2,8 +2,7 @@ import { createHydrationHelpers } from '@trpc/react-query/rsc'
 import { headers } from 'next/headers'
 import { cache } from 'react'
 
-import { createCaller, createTRPCContext } from '../index'
-import type { AppRouter } from '../root'
+import { type AppRouter, createCaller, createTRPCContext } from '@nmit-coursition/api'
 import { createQueryClient } from './query-client'
 
 /**

@@ -1,8 +1,6 @@
 import { appRouter, createTRPCContext } from '@nmit-coursition/api'
 import { fetchRequestHandler } from '@trpc/server/adapters/fetch'
 
-export const runtime = 'edge'
-
 /**
  * Configure basic CORS headers
  * You should extend this to match your needs
