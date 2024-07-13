@@ -19,7 +19,7 @@ export const mediaRouter = {
           .refine((file) => {
             return ACCEPTED_FILE_TYPES.includes(file.type)
           }, 'File must be a video or audio'),
-        apiKey: z.string(),
+        apiKey: z.string().optional(),
         keywords: z.array(z.string()).optional(),
       }),
     )

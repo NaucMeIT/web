@@ -7,6 +7,7 @@ import { useSignal } from '@preact/signals-react/runtime'
 import React, { useActionState } from 'react'
 import { z } from 'zod'
 import { StatusDisplay } from '../../components/statusDisplay'
+import { api } from '../../trpc/next-server'
 
 const acceptedMediaFileTypes = 'video/*,audio/*'
 const acceptedFileTypes = `${acceptedMediaFileTypes}`
@@ -30,7 +31,7 @@ export default function Index() {
     const { file, keywords } = fileSchema.parse(formData)
     status.value = 'parse'
     const keywordsArray = keywords ? keywords.split(',').map((word) => `${word}:5`) : []
-    const { raw, srt, vtt } = await getTranscript(file, keywordsArray)
+    const { raw, srt, vtt } = await api.media.transcribe({ file, keywords: keywordsArray })
     status.value = 'done'
     return { raw, srt, vtt }
   }
