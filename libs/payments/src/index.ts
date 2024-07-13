@@ -7,6 +7,14 @@ const apiKey = process.env.LEMON_SQUEEZY_API_KEY as string
 const storeId = process.env.LEMON_SQUEEZY_STORE_ID as string
 
 export type Metadata = Record<string, string>
+export type WebhookEventHandlerApi = {
+  rawBody: string
+  request: Request
+  customData: {
+    event: string
+    callback: () => void
+  }
+}
 
 LS.lemonSqueezySetup({ apiKey })
 
@@ -27,7 +35,11 @@ export const createCheckoutSession = async (variant: string, metadata?: Metadata
   return intent
 }
 
-export const webhookEventHandler = async (rawBody: string, request: Request) => {
+export const webhookEventHandler = async ({
+  rawBody,
+  request,
+  customData: { callback, event },
+}: WebhookEventHandlerApi) => {
   /**
    * Decodes the webhook secret.
    */
@@ -41,12 +53,11 @@ export const webhookEventHandler = async (rawBody: string, request: Request) => 
   }
 
   const data = JSON.parse(rawBody)
+  const isPaid = data.data.attributes.status === 'paid'
 
-  if (data.meta.event_name === 'order_created' && data.data.status === 'paid') {
-    // Gets stuff from custom data and updates the user.
-    return { success: true }
+  if (data.meta.event_name === event && isPaid) {
+    callback()
   }
 
-  // Todo: add other conditions
   return { success: true }
 }
