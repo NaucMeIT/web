@@ -27,7 +27,7 @@
     "@nx/next": {
       "application": {
         "style": "tailwind",
-        "linter": "eslint"
+        "linter": "none"
       }
     },
     "@nx/react": {
