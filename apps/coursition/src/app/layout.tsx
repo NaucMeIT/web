@@ -1,3 +1,4 @@
+import { TRPCReactProvider } from '@nmit-coursition/api'
 import '@nmit-coursition/ui/utils/global.css'
 
 export const metadata = {
@@ -8,7 +9,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
-      <body className='overflow-hidden'>{children}</body>
+      <body className='overflow-hidden'>
+        <TRPCReactProvider>{children}</TRPCReactProvider>
+      </body>
     </html>
   )
 }

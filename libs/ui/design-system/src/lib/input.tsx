@@ -12,7 +12,7 @@ interface InputProps {
 
 export function Input({ label, placeholder, type, id, subtext, disabled }: InputProps) {
   return (
-    <div className='grid w-full max-w-sm items-center gap-1.5'>
+    <div className='grid w-full items-center gap-1.5'>
       <Label htmlFor={id}>{label}</Label>
       <InputPrimitive type={type} id={id} name={id} placeholder={placeholder} disabled={disabled} />
       {subtext && <p className='text-sm text-muted-foreground'>{subtext}</p>}

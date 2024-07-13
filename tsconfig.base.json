@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "strict": true,
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
@@ -16,6 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@nmit-coursition/ai": ["libs/ai/src/index.ts"],
+      "@nmit-coursition/api": ["libs/api/src/index.ts"],
       "@nmit-coursition/design-system": ["libs/ui/design-system/src/index.ts"],
       "@nmit-coursition/ui/primitives": ["libs/ui/primitives/src/index.ts"],
       "@nmit-coursition/ui/primitives/*": ["libs/ui/primitives/src/*"],
