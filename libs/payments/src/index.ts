@@ -6,13 +6,15 @@ import * as LS from '@lemonsqueezy/lemonsqueezy.js'
 const apiKey = process.env.LEMON_SQUEEZY_API_KEY as string
 const storeId = process.env.LEMON_SQUEEZY_STORE_ID as string
 
+type RecursiveRecord = Record<string, string | RecursiveRecord>
+
 export type Metadata = Record<string, string>
 export type WebhookEventHandlerApi = {
   rawBody: string
   request: Request
   customData: {
-    event: string
-    callback: () => void
+    condition: (data: RecursiveRecord) => boolean
+    callback: (emailToUpdate: string) => void
   }
 }
 
@@ -38,7 +40,7 @@ export const createCheckoutSession = async (variant: string, metadata?: Metadata
 export const webhookEventHandler = async ({
   rawBody,
   request,
-  customData: { callback, event },
+  customData: { callback, condition },
 }: WebhookEventHandlerApi) => {
   /**
    * Decodes the webhook secret.
@@ -53,11 +55,12 @@ export const webhookEventHandler = async ({
   }
 
   const data = JSON.parse(rawBody)
-  const isPaid = data.data.attributes.status === 'paid'
 
-  if (data.meta.event_name === event && isPaid) {
-    callback()
+  if (condition(data)) {
+    callback(data.meta.custom_data?.email)
   }
 
   return { success: true }
 }
+
+export type { LS }

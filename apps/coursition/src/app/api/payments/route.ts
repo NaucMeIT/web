@@ -7,8 +7,18 @@ export const POST = async (request: NextRequest) => {
     rawBody,
     request,
     customData: {
-      callback: () => void console.log('user granted lifetime access'),
-      event: 'order_created',
+      condition: (data) => {
+        return (
+          data.data.attributes.status === 'paid' &&
+          data.meta.custom_data?.platform === 'coursition' &&
+          data.meta.custom_data?.sub_type === 'lifetime'
+        )
+      },
+      callback: async (email) => {
+        /**
+         * Todo: update user payment status
+         */
+      },
     },
   })
   return NextResponse.json(data)

@@ -3,8 +3,9 @@
 import { generateQuiz, getResult, getTranscript, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
 import { Accordion, Button, Checkbox, Input } from '@nmit-coursition/design-system'
 import { zfd } from '@nmit-coursition/utils'
-import React, { useActionState, useState } from 'react'
+import { useActionState, useState } from 'react'
 import { z } from 'zod'
+import { BuyLifetime } from '../components/buyLifetime'
 import { StatusDisplay } from '../components/statusDisplay'
 
 const acceptedDocumentFileTypes =
@@ -191,6 +192,8 @@ export default function Index() {
             )}
           </div>
         )}
+
+        <BuyLifetime />
       </div>
     </div>
   )

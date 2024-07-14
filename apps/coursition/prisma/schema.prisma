@@ -8,6 +8,10 @@ generator client {
   provider = "prisma-client-js"
 }
 
+enum PaymentStatus {
+  FREE
+  LIFETIME
+}
 model User {
   id            String          @id @default(cuid())
   name          String?
@@ -21,6 +25,7 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  paymentStatus  PaymentStatus @default(FREE)
 }
 
 model Account {
