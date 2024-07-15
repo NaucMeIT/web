@@ -34,7 +34,7 @@ export const createCheckoutSession = async (variant: string, metadata?: Metadata
     },
   })
 
-  return intent
+  return JSON.parse(JSON.stringify(intent)) as typeof intent
 }
 
 export const webhookEventHandler = async ({
