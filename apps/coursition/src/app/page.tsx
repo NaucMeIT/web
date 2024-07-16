@@ -3,6 +3,7 @@
 import { generateQuiz, getResult, getTranscript, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
 import { Accordion, Button, Checkbox, Input } from '@nmit-coursition/design-system'
 import { zfd } from '@nmit-coursition/utils'
+import { signIn } from 'next-auth/react'
 import { useActionState, useState } from 'react'
 import { z } from 'zod'
 import { BuyLifetime } from '../components/buyLifetime'
@@ -68,6 +69,8 @@ export default function Index() {
   return (
     <div className='flex justify-center items-center h-screen'>
       <div className='p-4 shadow rounded-md max-w-2xl w-full'>
+        {/* <PaymentStatusBadge /> */}
+
         {status === 'idle' && (
           <>
             <h1 className='text-2xl font-bold mb-4'>Upload a File</h1>
@@ -194,6 +197,12 @@ export default function Index() {
         )}
 
         <BuyLifetime />
+        <Button
+          onClick={async () => await signIn('google', { callbackUrl: '/' })}
+          className='mt-6 w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md'
+        >
+          Sign in with google
+        </Button>
       </div>
     </div>
   )

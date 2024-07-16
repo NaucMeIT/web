@@ -1,4 +1,7 @@
 import { webhookEventHandler } from '@nmit-coursition/payments'
+import { PaymentStatus } from '@prisma/client'
+import prisma from 'apps/coursition/prisma'
+import { revalidatePath } from 'next/cache'
 import { type NextRequest, NextResponse } from 'next/server'
 
 export const POST = async (request: NextRequest) => {
@@ -15,9 +18,13 @@ export const POST = async (request: NextRequest) => {
         )
       },
       callback: async (email) => {
-        /**
-         * Todo: update user payment status
-         */
+        await prisma.user.update({
+          where: { email },
+          data: {
+            paymentStatus: PaymentStatus.LIFETIME,
+          },
+        })
+        revalidatePath('/')
       },
     },
   })
