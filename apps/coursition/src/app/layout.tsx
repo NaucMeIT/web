@@ -1,5 +1,6 @@
 import '@nmit-coursition/ui/utils/global.css'
 import { getServerSession } from 'next-auth'
+import Script from 'next/script'
 import { SessionProvider } from '../components/session-provider'
 
 export const metadata = {
@@ -12,6 +13,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang='en'>
+      <Script src='https://app.lemonsqueezy.com/js/lemon.js' strategy='lazyOnload' />
       <SessionProvider session={session}>
         <body className='overflow-hidden'>{children}</body>
       </SessionProvider>
