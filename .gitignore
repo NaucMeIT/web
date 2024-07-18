@@ -47,7 +47,7 @@ Thumbs.db
 out
 
 # Env
-.env*
+.env
 coursition-storage.json
 
 # Turborepo

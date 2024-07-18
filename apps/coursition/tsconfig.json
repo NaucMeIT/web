@@ -27,7 +27,8 @@
     "../../dist/apps/nmit/.next/types/**/*.ts",
     "next-env.d.ts",
     ".next/types/**/*.ts",
-    "tailwind.config.js"
+    "tailwind.config.js",
+    "../../.d.ts/shims.d.ts"
   ],
   "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"]
 }
