@@ -5,8 +5,10 @@ import * as React from 'react'
 import { Button } from '@nmit-coursition/design-system'
 import { ImSpinner8 } from 'react-icons/im'
 import { generateCheckout } from '../app/actions'
+import { useMounted } from '../app/hooks/useMounted'
 
 export const BuyLifetime = () => {
+  const isMounted = useMounted()
   const [isRedirecting, setIsRedirecting] = React.useState(false)
 
   const openPaymentDialog = async () => {
@@ -18,7 +20,7 @@ export const BuyLifetime = () => {
 
   React.useEffect(() => {
     const eventHandler = async () => {
-      if (typeof window !== 'undefined') {
+      if (isMounted) {
         window.LemonSqueezy.Setup({
           eventHandler: (event) => {
             console.log({ event })
@@ -34,7 +36,9 @@ export const BuyLifetime = () => {
     }
 
     eventHandler()
-  }, [])
+  }, [isMounted])
+
+  if (!isMounted) return <></>
 
   return (
     <div>
