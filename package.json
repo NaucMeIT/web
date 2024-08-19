@@ -18,6 +18,8 @@
     "ai": "^3.1.28",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "cross-env": "^7.0.3",
+    "elysia": "^1.1.6",
     "lefthook": "^1.6.18",
     "lucide-react": "^0.395.0",
     "next": "15.0.0-rc.0",
