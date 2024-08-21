@@ -7,11 +7,11 @@
   },
   "private": true,
   "dependencies": {
-    "@ai-sdk/google": "^0.0.20",
+    "@ai-sdk/google": "^0.0.43",
     "@auth/prisma-adapter": "^2.4.2",
     "@deepgram/sdk": "^3.5.1",
     "@google-cloud/storage": "^7.12.1",
-    "@google/generative-ai": "^0.12.0",
+    "@google/generative-ai": "^0.17.0",
     "@lemonsqueezy/lemonsqueezy.js": "^3.2.0",
     "@preact/signals-react": "^2.2.0",
     "@prisma/client": "^5.18.0",
@@ -24,7 +24,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lefthook": "^1.7.14",
-    "lucide-react": "^0.395.0",
+    "lucide-react": "^0.429.0",
     "next": "15.0.0-rc.0",
     "next-auth": "^4.24.7",
     "prisma": "^5.18.0",
@@ -42,7 +42,7 @@
     "@babel/core": "^7.25.2",
     "@babel/preset-react": "^7.24.7",
     "@biomejs/biome": "1.8.2",
-    "@nx-extend/shadcn-ui": "^2.0.4",
+    "@nx-extend/shadcn-ui": "^3.0.1",
     "@nx-tools/nx-container": "^6.0.2",
     "@nx/devkit": "19.6.1",
     "@nx/js": "19.6.1",
@@ -61,6 +61,6 @@
     "prettier": "^3.3.3",
     "tailwindcss": "3.4.4",
     "ts-node": "10.9.2",
-    "typescript": "~5.4.5"
+    "typescript": "~5.5.4"
   }
 }
