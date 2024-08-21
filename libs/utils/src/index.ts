@@ -3,3 +3,4 @@ export * from './zodFormData'
 export { zfd }
 
 export * from './string'
+export * from './typescript'

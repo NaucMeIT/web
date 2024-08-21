@@ -2,18 +2,31 @@ import 'server-only'
 
 import * as crypto from 'node:crypto'
 import * as LS from '@lemonsqueezy/lemonsqueezy.js'
+import type { LooseAutocomplete } from '@nmit-coursition/utils'
 
-const apiKey = process.env.LEMON_SQUEEZY_API_KEY as string
-const storeId = process.env.LEMON_SQUEEZY_STORE_ID as string
+const apiKey = process.env['LEMON_SQUEEZY_API_KEY'] as string
+const storeId = process.env['LEMON_SQUEEZY_STORE_ID'] as string
 
-type RecursiveRecord = Record<string, string | RecursiveRecord>
+type LemonSqueezyData = {
+  data: {
+    attributes: {
+      status: 'paid' | 'unpaid' | 'pending'
+    }
+  }
+  meta: {
+    custom_data?: {
+      platform?: string
+      sub_type?: LooseAutocomplete<'lifetime'>
+    }
+  }
+}
 
 export type Metadata = Record<string, string>
 export type WebhookEventHandlerApi = {
   rawBody: string
   request: Request
   customData: {
-    condition: (data: RecursiveRecord) => boolean
+    condition: (data: LemonSqueezyData) => boolean
     callback: (emailToUpdate: string) => void
   }
 }
@@ -45,7 +58,7 @@ export const webhookEventHandler = async ({
   /**
    * Decodes the webhook secret.
    */
-  const secret = process.env.LEMON_SQUEEZY_WEBHOOK_SECRET as string
+  const secret = process.env['LEMON_SQUEEZY_WEBHOOK_SECRET'] as string
   const hmac = crypto.createHmac('sha256', secret)
   const digest = Buffer.from(hmac.update(rawBody).digest('hex'), 'hex')
   const signature = Buffer.from(request.headers.get('X-Signature') || '', 'hex')
