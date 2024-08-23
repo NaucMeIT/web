@@ -21,7 +21,7 @@ export const BuyLifetime = () => {
   React.useEffect(() => {
     const eventHandler = async () => {
       if (isMounted) {
-        window.LemonSqueezy.Setup({
+        window.LemonSqueezy?.Setup({
           eventHandler: (event) => {
             console.log({ event })
             if (event?.event === 'Checkout.Success') {
