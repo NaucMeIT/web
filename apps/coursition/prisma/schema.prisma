@@ -12,17 +12,22 @@ enum PaymentStatus {
   FREE
   LIFETIME
 }
+
+enum AuthProvider {
+  Google
+  Credentials
+}
+
 model User {
   id            String          @id @default(cuid())
   name          String?
   email         String          @unique
   emailVerified DateTime?
   image         String?
+  password      String?
+  authProvider  AuthProvider
   accounts      Account[]
   sessions      Session[]
-  // Optional for WebAuthn support
-  Authenticator Authenticator[]
-
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   paymentStatus  PaymentStatus @default(FREE)
@@ -65,20 +70,4 @@ model VerificationToken {
   expires    DateTime
 
   @@id([identifier, token])
-}
-
-// Optional for WebAuthn support
-model Authenticator {
-  credentialID         String  @unique
-  userId               String
-  providerAccountId    String
-  credentialPublicKey  String
-  counter              Int
-  credentialDeviceType String
-  credentialBackedUp   Boolean
-  transports           String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@id([userId, credentialID])
 }
