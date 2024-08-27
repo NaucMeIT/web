@@ -52,3 +52,4 @@ coursition-storage.json
 
 # Turborepo
 .turbo
+.aider*
