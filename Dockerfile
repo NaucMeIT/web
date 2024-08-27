@@ -1,4 +1,4 @@
-FROM oven/bun:1 as build
+FROM oven/bun:1.1.26-alpine as build
 COPY . /app
 WORKDIR /app
 RUN bun install --frozen-lockfile --prod
