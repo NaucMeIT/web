@@ -1,30 +1,22 @@
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import { prisma } from 'apps/coursition/prisma/prismaClient'
 import bcrypt from 'bcryptjs'
-import { Effect, Either, Struct } from 'effect'
-import type { NextAuthOptions } from 'next-auth'
+import type { NextAuthOptions, User } from 'next-auth'
 import type { Adapter } from 'next-auth/adapters'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
 
-const handleAuthorize = (dto: { email: string; password: string }) =>
-  Effect.gen(function* () {
-    const result = yield* Effect.tryPromise({
-      try: async () => await prisma.user.findFirstOrThrow({ where: { email: dto.email } }),
-      catch: () => Effect.fail('user not found'),
-    }).pipe(Effect.either)
+const handleAuthorize = async ({ email, password }: { email: string; password: string }) => {
+  const user = await prisma.user.findFirst({ where: { email } })
 
-    if (Either.isRight(result)) {
-      const user = result.right
-      const isValidPassword = bcrypt.compareSync(dto.password, user.password as string)
+  if (!user) return { error: 'user not found' }
 
-      if (isValidPassword)
-        return Struct.evolve({ id: user.id as string, email: user.email }, { id: (id) => id.toString() })
-      return null
-    }
+  const isValidPassword = bcrypt.compareSync(password, user.password as string)
 
-    return null
-  }).pipe(Effect.runPromise)
+  if (!isValidPassword) return { error: 'invalid credentials' }
+
+  return { id: user.id as string, email: user.email }
+}
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma) as Adapter,
@@ -38,9 +30,10 @@ export const authOptions: NextAuthOptions = {
         email: {},
         password: {},
       },
-      async authorize(credentials, _req) {
+      async authorize(credentials, _) {
         const { email, password } = credentials as Record<'email' | 'password', string>
-        return await handleAuthorize({ email, password })
+
+        return (await handleAuthorize({ email, password })) as User
       },
     }),
   ],
@@ -50,5 +43,13 @@ export const authOptions: NextAuthOptions = {
   },
   session: {
     strategy: 'jwt',
+  },
+  callbacks: {
+    signIn: ({ user }) => {
+      if ('error' in user) {
+        return `/sign-in?error=${user.error}`
+      }
+      return true
+    },
   },
 }

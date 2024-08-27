@@ -1,9 +1,9 @@
 'use server'
 
 import { createCheckoutSession } from '@nmit-coursition/payments'
+import { Prisma } from '@prisma/client'
 import { prisma } from 'apps/coursition/prisma/prismaClient'
 import bcrypt from 'bcryptjs'
-import { Effect, flow } from 'effect'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '../app/api/auth/[...nextauth]/auth-options'
 
@@ -23,25 +23,25 @@ export const generateCheckout = async () => {
   })
 }
 
-export const createUser = (dto: { email: string; password: string }) =>
-  Effect.gen(function* () {
-    const saltOrRounds = 10
-    return flow(
-      () => bcrypt.hashSync(dto.password, saltOrRounds),
-      async (hash) =>
-        await prisma.user.create({
-          data: {
-            email: dto.email,
-            password: hash,
-            authProvider: 'Credentials',
-            paymentStatus: 'FREE',
-          },
-        }),
-
-      async (user) => {
-        const _ = await user
-        if (_.id) return { success: true }
-        return { success: false }
+export const createUser = async ({ email, password }: { email: string; password: string }) => {
+  const saltOrRounds = 10
+  const passwordHash = bcrypt.hashSync(password, saltOrRounds)
+  return await prisma.user
+    .create({
+      data: {
+        email,
+        password: passwordHash,
+        authProvider: 'Credentials',
+        paymentStatus: 'FREE',
       },
-    )()
-  }).pipe(Effect.runPromise)
+    })
+    .catch((err) => {
+      if (err instanceof Prisma.PrismaClientKnownRequestError) {
+        if (err.code === 'P2002') {
+          return { error: 'An account already exist with this email' }
+        }
+        return { error: err.message }
+      }
+      return { error: 'unknown error' }
+    })
+}

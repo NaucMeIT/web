@@ -12,7 +12,7 @@ export const GoogleSignIn = () => {
         setIsLoading(true)
         await signIn('google', { callbackUrl: '/' })
       }}
-      className='w-ful text-white font-medium py-2 px-4 rounded-md'
+      className='w-full max-w-4xl text-white font-medium py-2 px-4 rounded-md'
     >
       <span>Sign in with google</span>
       {isLoading && <Loader className='animate-spin text-sm ml-1' />}
