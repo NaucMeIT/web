@@ -1,4 +1,4 @@
-FROM oven/bun:1.1.26-slim AS build
+FROM oven/bun:1.1.26 AS build
 COPY . /app
 WORKDIR /app
 RUN bun install --frozen-lockfile --prod
