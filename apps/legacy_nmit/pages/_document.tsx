@@ -3,6 +3,7 @@ import { Html, Head, Main, NextScript } from "next/document"
 import Script from "next/script"
 import { Partytown } from "@builder.io/partytown/react"
 import { Tracking } from "../components/Tracking"
+import Link from 'next/link';
 
 const APP_MAIN_COLOR = "#090c28"
 const APP_NAME = "Nauč mě IT"
@@ -65,6 +66,7 @@ export default function Document() {
                 />
             </Head>
             <body className='h-full font-poppins accent-primary caret-primary'>
+                <div className="fixed top-0 w-full z-50 text-white py-1 text-xl text-center bg-primary"><Link href={"/kurz-api"}>Už jsme v kurzu! Můžeš se přihlásit na Kurz API zde.</Link></div>
                 <Main />
                 <NextScript />
                 <Script

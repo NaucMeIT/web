@@ -1,5 +1,6 @@
-//@ts-check
-
+// @ts-check
+// @ts-ignore
+const { PrismaPlugin } = require('@prisma/nextjs-monorepo-workaround-plugin')
 const { composePlugins, withNx } = require('@nx/next')
 
 /**
@@ -18,6 +19,13 @@ const nextConfig = {
   },
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.plugins = [...config.plugins, new PrismaPlugin()]
+    }
+
+    return config
   },
 }
 
