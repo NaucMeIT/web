@@ -1,8 +1,8 @@
 'use server'
-import { generateObject } from 'ai'
 import { google } from '@ai-sdk/google'
-import { z } from 'zod'
 import { trim } from '@nmit-coursition/utils'
+import { generateObject } from 'ai'
+import { z } from 'zod'
 
 const getQuizSchema = (amountQuestions: number, amountAnswers: number) => {
   const answerSchema = z.object({
