@@ -1,8 +1,8 @@
 'use server'
-import { generateObject } from 'ai'
-import { google } from '@ai-sdk/google'
-import { z } from 'zod'
+import { openai } from '@ai-sdk/openai'
 import { trim } from '@nmit-coursition/utils'
+import { generateObject } from 'ai'
+import { z } from 'zod'
 
 const getQuizSchema = (amountQuestions: number, amountAnswers: number) => {
   const answerSchema = z.object({
@@ -33,8 +33,9 @@ export async function generateQuiz(
 ) {
   const schema = getQuizSchema(amountQuestions, amountAnswers)
   const { object } = await generateObject({
-    model: google('models/gemini-1.5-flash-latest'),
+    model: openai('gpt-4o-mini'),
     schema: schema,
+    mode: 'tool',
     system: trim`
       You are an expert in making interesting quizzes.
       You excel in generating multiple questions, each different from the others.
