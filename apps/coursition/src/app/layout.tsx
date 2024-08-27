@@ -1,7 +1,7 @@
 import '@nmit-coursition/ui/utils/global.css'
 import { getServerSession } from 'next-auth'
-import { Toaster } from 'sonner'
 import Script from 'next/script'
+import { Toaster } from 'sonner'
 import { SessionProvider } from '../components/session-provider'
 
 export const metadata = {
