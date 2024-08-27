@@ -2,9 +2,6 @@
   "name": "@nmit-coursition/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {
-    "postinstall": "bunx prisma generate --schema ./apps/coursition/prisma/schema.prisma"
-  },
   "private": true,
   "trustedDependencies": ["@biomejs/biome", "core-js-pure", "prisma"],
   "dependencies": {
