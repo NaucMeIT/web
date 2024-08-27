@@ -50,5 +50,5 @@ out
 .env
 coursition-storage.json
 
-# Turborepo
-.turbo
+# Prisma
+generated
