@@ -3,7 +3,20 @@
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
-  "trustedDependencies": ["@biomejs/biome", "@prisma/client", "@prisma/engines", "@swc/core", "core-js-pure", "lefthook", "nx", "prisma", "sharp"],
+  "scripts": {
+    "postinstall": "prisma generate --schema ./apps/coursition/prisma/schema.prisma"
+  },
+  "trustedDependencies": [
+    "@biomejs/biome",
+    "@prisma/client",
+    "@prisma/engines",
+    "@swc/core",
+    "core-js-pure",
+    "lefthook",
+    "nx",
+    "prisma",
+    "sharp"
+  ],
   "dependencies": {
     "@ai-sdk/google": "^0.0.46",
     "@ai-sdk/openai": "^0.0.54",
