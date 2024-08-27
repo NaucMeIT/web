@@ -20,7 +20,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-    webpack: (config, { isServer }) => {
+  webpack: (config, { isServer }) => {
     if (isServer) {
       config.plugins = [...config.plugins, new PrismaPlugin()]
     }
