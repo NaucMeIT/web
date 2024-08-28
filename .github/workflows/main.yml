@@ -28,6 +28,7 @@ jobs:
           LLAMA_CLOUD_API_KEY: ${{ secrets.LLAMA_CLOUD_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           DEEPGRAM_API_KEY: ${{ secrets.DEEPGRAM_API_KEY }}
+          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
           SUPPORT_EMAIL: ${{ vars.SUPPORT_EMAIL }}
           CERTBOT_DOMAIN: ${{ vars.CERTBOT_DOMAIN }}
           CERTBOT_NAKED_DOMAIN: ${{ vars.CERTBOT_NAKED_DOMAIN }}
@@ -37,6 +38,7 @@ jobs:
             --build-arg LLAMA_CLOUD_API_KEY=$LLAMA_CLOUD_API_KEY \
             --build-arg OPENAI_API_KEY=$OPENAI_API_KEY \
             --build-arg DEEPGRAM_API_KEY=$DEEPGRAM_API_KEY \
+            --build-arg NEXTAUTH_SECRET=$NEXTAUTH_SECRET \
             --build-arg SUPPORT_EMAIL=$SUPPORT_EMAIL \
             --build-arg CERTBOT_DOMAIN=$CERTBOT_DOMAIN \
             --build-arg CERTBOT_NAKED_DOMAIN=$CERTBOT_NAKED_DOMAIN \
@@ -73,6 +75,7 @@ jobs:
           LLAMA_CLOUD_API_KEY: ${{ secrets.LLAMA_CLOUD_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           DEEPGRAM_API_KEY: ${{ secrets.DEEPGRAM_API_KEY }}
+          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
           SUPPORT_EMAIL: ${{ vars.SUPPORT_EMAIL }}
           CERTBOT_DOMAIN: ${{ vars.CERTBOT_DOMAIN }}
           CERTBOT_NAKED_DOMAIN: ${{ vars.CERTBOT_NAKED_DOMAIN }}
