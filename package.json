@@ -4,7 +4,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "postinstall": "bunx --bun prisma generate --schema ./apps/coursition/prisma/schema.prisma"
+    "postinstall": "prisma generate --schema ./apps/coursition/prisma/schema.prisma"
   },
   "trustedDependencies": [
     "@biomejs/biome",
