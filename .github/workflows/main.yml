@@ -32,7 +32,15 @@ jobs:
           CERTBOT_DOMAIN: ${{ vars.CERTBOT_DOMAIN }}
           CERTBOT_NAKED_DOMAIN: ${{ vars.CERTBOT_NAKED_DOMAIN }}
         run: |
-          docker compose -f docker-compose.yml build --no-cache web
+          docker compose -f docker-compose.yml build --no-cache \
+            --build-arg GOOGLE_GENERATIVE_AI_API_KEY=$GOOGLE_GENERATIVE_AI_API_KEY \
+            --build-arg LLAMA_CLOUD_API_KEY=$LLAMA_CLOUD_API_KEY \
+            --build-arg OPENAI_API_KEY=$OPENAI_API_KEY \
+            --build-arg DEEPGRAM_API_KEY=$DEEPGRAM_API_KEY \
+            --build-arg SUPPORT_EMAIL=$SUPPORT_EMAIL \
+            --build-arg CERTBOT_DOMAIN=$CERTBOT_DOMAIN \
+            --build-arg CERTBOT_NAKED_DOMAIN=$CERTBOT_NAKED_DOMAIN \
+            web
           docker compose -f docker-compose.yml push web
           docker compose -f docker-compose.yml build --no-cache nginx
           docker compose -f docker-compose.yml push nginx
