@@ -27,6 +27,6 @@ export async function getTranscript(file: any, keywords?: string[]) {
   return {
     srt: srt(result),
     vtt,
-    raw: result?.results.channels[0].alternatives[0].transcript,
+    raw: result?.results?.channels?.[0]?.alternatives?.[0]?.transcript,
   }
 }

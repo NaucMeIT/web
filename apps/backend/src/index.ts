@@ -27,11 +27,13 @@ new Elysia()
             body.output &&= Array.isArray(body.output) ? body.output : [body.output]
             body.keywords &&= Array.isArray(body.keywords) ? body.keywords : [body.keywords]
           },
-          response: t.Object({
-            vtt: t.Optional(t.String()),
-            srt: t.Optional(t.String()),
-            text: t.Optional(t.String()),
-          }),
+          response: {
+            200: t.Object({
+              vtt: t.Optional(t.String()),
+              srt: t.Optional(t.String()),
+              text: t.Optional(t.String()),
+            }),
+          },
         },
       ),
     ),
