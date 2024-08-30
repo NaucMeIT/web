@@ -1,19 +1,17 @@
 'use server'
 
 import { createCheckoutSession } from '@nmit-coursition/payments'
-import { Prisma } from '@prisma/client'
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
 import { prisma } from 'apps/coursition/prisma/prismaClient'
 import bcrypt from 'bcryptjs'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '../app/api/auth/[...nextauth]/auth-options'
 
-export const getSession = async () => await getServerSession(authOptions)
-
 /**
  * Doing this because we can only call the payments functions from the server.
  */
 export const generateCheckout = async () => {
-  const session = await getSession()
+  const session = await getServerSession(authOptions)
   if (!session?.user?.email) return
 
   return createCheckoutSession(process.env.NMIT_LIFETIME_PRODUCT_VARIANT_ID || '', {
@@ -35,8 +33,8 @@ export const createUser = async ({ email, password }: { email: string; password:
         paymentStatus: 'FREE',
       },
     })
-    .catch((err) => {
-      if (err instanceof Prisma.PrismaClientKnownRequestError) {
+    .catch((err: unknown) => {
+      if (err instanceof PrismaClientKnownRequestError) {
         if (err.code === 'P2002') {
           return { error: 'An account already exist with this email' }
         }

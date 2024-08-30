@@ -1,8 +1,12 @@
+'use client'
+
+import { useSession } from 'next-auth/react'
 import * as React from 'react'
-import { getSession } from '../app/actions'
 
-export const Header = async () => {
-  const session = await getSession()
+export function Header() {
+  const { data } = useSession()
+  const email = data?.user?.email
+  if (!email) return null
 
-  return <div>Logged in as {session?.user?.email ?? 'null'}</div>
+  return <div>Logged in as {email}</div>
 }

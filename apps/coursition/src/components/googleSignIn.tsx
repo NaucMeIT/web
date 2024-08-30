@@ -14,7 +14,7 @@ export const GoogleSignIn = () => {
       }}
       className='w-full max-w-4xl text-white font-medium py-2 px-4 rounded-md'
     >
-      <span>Sign in with google</span>
+      <span>Sign with google</span>
       {isLoading && <Loader className='animate-spin text-sm ml-1' />}
     </Button>
   )
