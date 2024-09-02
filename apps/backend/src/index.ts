@@ -15,7 +15,7 @@ new Elysia()
         authorization: t.String({ error: 'You must provide API key to use this service.' }),
       }),
       response: {
-        200: t.Any(),
+        200: t.Unknown(),
         401: t.String(),
       },
     },
