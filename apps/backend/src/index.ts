@@ -2,6 +2,10 @@ import { swagger } from '@elysiajs/swagger'
 import { getTranscript } from '@nmit-coursition/ai'
 import { Elysia, t } from 'elysia'
 
+function reportUsage(key: string, duration: number) {
+  console.log(`API Key ${key} used ${duration}.`)
+}
+
 new Elysia()
   .use(swagger())
   .group(
@@ -24,18 +28,20 @@ new Elysia()
           v1Api
             .post(
               '/media',
-              async ({ body: { output, keywords, file } }) => {
-                const transcript = await getTranscript(file, keywords)
+              async ({ body: { output, keywords, file, language } }) => {
+                const transcript = await getTranscript(file, keywords, language)
 
                 return {
                   ...(output.includes('vtt') ? { vtt: transcript.vtt } : {}),
                   ...(output.includes('srt') ? { srt: transcript.srt } : {}),
                   ...(output.includes('text') ? { text: transcript.raw } : {}),
+                  duration: transcript.metadata?.duration,
                 }
               },
               {
                 body: t.Object({
                   file: t.File(),
+                  language: t.Optional(t.String()),
                   output: t.Array(t.Union([t.Literal('vtt'), t.Literal('srt'), t.Literal('text')]), {
                     default: ['text'],
                   }),
@@ -50,7 +56,14 @@ new Elysia()
                     vtt: t.Optional(t.String()),
                     srt: t.Optional(t.String()),
                     text: t.Optional(t.String()),
+                    duration: t.Optional(t.Number()),
                   }),
+                },
+                afterResponse({ response, headers }) {
+                  // ! Elysia infers incorrect response (including status code as a key)
+                  // biome-ignore lint/suspicious/noExplicitAny: Above comment
+                  const duration = (response as any)?.duration
+                  duration >= 0 && reportUsage(headers.authorization, duration)
                 },
               },
             )

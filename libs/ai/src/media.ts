@@ -4,15 +4,15 @@ import { createClient, srt, webvtt } from '@deepgram/sdk'
 const deepgram = createClient(process.env.DEEPGRAM_API_KEY || '')
 
 // biome-ignore lint/suspicious/noExplicitAny: Ain't nobody got time for that
-export async function getTranscript(file: any, keywords?: string[]) {
+export async function getTranscript(file: any, keywords?: string[], language?: string) {
   const { result } = await deepgram.listen.prerecorded.transcribeFile(file, {
-    smart_format: true,
     model: 'nova-2',
-    language: 'en-GB',
+    smart_format: true,
     utterances: true,
     numerals: true,
     punctuate: true,
     paragraphs: true,
+    ...(language ? { language } : { detect_language: true }),
     keywords,
   })
 
@@ -28,5 +28,6 @@ export async function getTranscript(file: any, keywords?: string[]) {
     srt: srt(result),
     vtt,
     raw: result?.results?.channels?.[0]?.alternatives?.[0]?.transcript,
+    metadata: result.metadata,
   }
 }
