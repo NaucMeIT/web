@@ -14,7 +14,7 @@ export async function POST(request: Request) {
     const finalStatus = await waitUntilJobIsDone(id, status)
     console.log('Final status:', finalStatus)
 
-    const markdown = await getResult(id)
+    const { markdown } = await getResult(id)
 
     return new Response(JSON.stringify(markdown), {
       status: 200,

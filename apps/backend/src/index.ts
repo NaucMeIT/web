@@ -1,9 +1,9 @@
 import { swagger } from '@elysiajs/swagger'
-import { getTranscript } from '@nmit-coursition/ai'
+import { getResult, getTranscript, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
 import { Elysia, t } from 'elysia'
 
-function reportUsage(key: string, duration: number) {
-  console.log(`API Key ${key} used ${duration}.`)
+function reportUsage(apiKey: string, duration: number, type: 'video' | 'document') {
+  console.log(`API Key ${apiKey} used ${duration} on ${type}.`)
 }
 
 function validateApiKey(apiKey: string) {
@@ -88,11 +88,42 @@ new Elysia()
                   // ! Elysia infers incorrect response (including status code as a key)
                   // biome-ignore lint/suspicious/noExplicitAny: Above comment
                   const duration = (response as any)?.duration
-                  duration >= 0 && reportUsage(headers.authorization, duration)
+                  duration >= 0 && reportUsage(headers.authorization, duration, 'video')
                 },
               },
             )
-            .post('/document', () => ''),
+            .post(
+              '/document',
+              async ({ body: { file, language, description } }) => {
+                const { id, status } = await uploadFile(file, { inputLang: language, contentDescription: description })
+                await waitUntilJobIsDone(id, status)
+                const { markdown, credits } = await getResult(id)
+
+                return {
+                  md: markdown,
+                  credits,
+                }
+              },
+              {
+                body: t.Object({
+                  file: t.File(),
+                  language: t.Optional(t.String()),
+                  description: t.Optional(t.String()),
+                }),
+                response: {
+                  200: t.Object({
+                    md: t.String(),
+                    credits: t.Number(),
+                  }),
+                },
+                afterResponse({ response, headers }) {
+                  // ! Elysia infers incorrect response (including status code as a key)
+                  // biome-ignore lint/suspicious/noExplicitAny: Above comment
+                  const credits = (response as any)?.credits
+                  credits >= 0 && reportUsage(headers.authorization, credits, 'document')
+                },
+              },
+            ),
         ),
   )
   .listen(3000)

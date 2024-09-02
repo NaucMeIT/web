@@ -46,7 +46,8 @@ export default function Index() {
 
       setStatus('parse')
       await waitUntilJobIsDone(id, status)
-      text = await getResult(id)
+      const { markdown } = await getResult(id)
+      text = markdown
     } else {
       setStatus('parse')
       const { raw } = await getTranscript(file)
