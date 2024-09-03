@@ -1,6 +1,6 @@
 import { swagger } from '@elysiajs/swagger'
 import FirecrawlApp from '@mendable/firecrawl-js'
-import { getResult, getTranscript, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
+import { generateQuiz, getResult, getTranscript, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
 import { Elysia, t } from 'elysia'
 
 function reportUsage(apiKey: string, duration: number, type: 'video' | 'document' | 'web') {
@@ -13,7 +13,7 @@ function validateApiKey(apiKey: string) {
 
 const fcApp = new FirecrawlApp({ apiKey: process.env.FIRECRAWL_API_KEY })
 
-new Elysia()
+export const elysiaApp = new Elysia()
   .use(
     swagger({
       documentation: {
@@ -176,6 +176,49 @@ new Elysia()
                 },
               },
             ),
+        )
+        .group('/ai', (aiApp) =>
+          aiApp.post(
+            '/quiz',
+            async ({ body: { content, outputLang, amountQuestions, amountAnswers, allowMultiple }, error }) => {
+              try {
+                const quiz = await generateQuiz(content, {
+                  outputLang,
+                  amountQuestions,
+                  amountAnswers,
+                  allowMultiple,
+                })
+                return quiz
+              } catch (e) {
+                return error(500, `Error generating quiz: ${e}`)
+              }
+            },
+            {
+              body: t.Object({
+                content: t.String(),
+                outputLang: t.Optional(t.String()),
+                amountQuestions: t.Optional(t.Number()),
+                amountAnswers: t.Optional(t.Number()),
+                allowMultiple: t.Optional(t.Boolean()),
+              }),
+              response: {
+                200: t.Object({
+                  chapterName: t.String(),
+                  tasks: t.Array(
+                    t.Object({
+                      question: t.String(),
+                      answers: t.Array(
+                        t.Object({
+                          text: t.String(),
+                          isCorrect: t.Boolean(),
+                        }),
+                      ),
+                    }),
+                  ),
+                }),
+              },
+            },
+          ),
         ),
   )
   .listen(3000)
