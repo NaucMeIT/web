@@ -1,5 +1,5 @@
-import { createGlobPatternsForDependencies } from '@nx/react/tailwind'
 import { join } from 'node:path'
+import { createGlobPatternsForDependencies } from '@nx/react/tailwind'
 import TailwindAnimate from 'tailwindcss-animate'
 
 import type { Config } from 'tailwindcss'
@@ -46,6 +46,13 @@ export function buildConfig(appDir: string): Config {
             DEFAULT: 'hsl(var(--card))',
             foreground: 'hsl(var(--card-foreground))',
           },
+        },
+        backgroundColor: {
+          'gray-50': '#f1f6f6',
+          'gray-100': '#e5e7eb',
+          'gray-200': '#d1d5db',
+          'gray-400': '#a1a1a1',
+          'purple-700': '#6b206b',
         },
         borderRadius: {
           lg: 'var(--radius)',
