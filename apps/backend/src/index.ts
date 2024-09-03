@@ -1,14 +1,17 @@
 import { swagger } from '@elysiajs/swagger'
+import FirecrawlApp from '@mendable/firecrawl-js'
 import { getResult, getTranscript, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
 import { Elysia, t } from 'elysia'
 
-function reportUsage(apiKey: string, duration: number, type: 'video' | 'document') {
+function reportUsage(apiKey: string, duration: number, type: 'video' | 'document' | 'web') {
   console.log(`API Key ${apiKey} used ${duration} on ${type}.`)
 }
 
 function validateApiKey(apiKey: string) {
   if (!apiKey) return false
 }
+
+const fcApp = new FirecrawlApp({ apiKey: process.env.FIRECRAWL_API_KEY })
 
 new Elysia()
   .use(
@@ -39,18 +42,20 @@ new Elysia()
       response: {
         200: t.Unknown(),
         401: t.String(),
+        429: t.String(),
+        500: t.String(),
       },
       detail: {
         tags: ['v1'],
       },
     },
-    (app) =>
-      app
+    (v1App) =>
+      v1App
         .onBeforeHandle(({ headers, error }) => {
           validateApiKey(headers.authorization) && error(401, 'Provided API key is invalid.')
         })
-        .group('/parse', (v1Api) =>
-          v1Api
+        .group('/parse', (parseApp) =>
+          parseApp
             .post(
               '/media',
               async ({ body: { output, keywords, file, language } }) => {
@@ -94,14 +99,20 @@ new Elysia()
             )
             .post(
               '/document',
-              async ({ body: { file, language, description } }) => {
-                const { id, status } = await uploadFile(file, { inputLang: language, contentDescription: description })
-                await waitUntilJobIsDone(id, status)
-                const { markdown, credits } = await getResult(id)
-
-                return {
-                  md: markdown,
-                  credits,
+              async ({ body: { file, language, description }, error }) => {
+                try {
+                  const { id, status } = await uploadFile(file, {
+                    inputLang: language,
+                    contentDescription: description,
+                  })
+                  await waitUntilJobIsDone(id, status)
+                  const { markdown, credits } = await getResult(id)
+                  return {
+                    md: markdown,
+                    credits,
+                  }
+                } catch (e) {
+                  return error(500, `Something went wrong while processing your document. Details: ${e}`)
                 }
               },
               {
@@ -121,6 +132,47 @@ new Elysia()
                   // biome-ignore lint/suspicious/noExplicitAny: Above comment
                   const credits = (response as any)?.credits
                   credits >= 0 && reportUsage(headers.authorization, credits, 'document')
+                },
+              },
+            )
+            .post(
+              '/web',
+              async ({ body: { url, onlyMainContent }, error }) => {
+                const scrapeResponse = await fcApp.scrapeUrl(url, {
+                  formats: ['markdown'],
+                  onlyMainContent,
+                })
+
+                if (!scrapeResponse.success) {
+                  return error(500, scrapeResponse.error)
+                }
+                if (!scrapeResponse.markdown) {
+                  return error(500, 'Content of the page is empty.')
+                }
+
+                return {
+                  md: scrapeResponse.markdown,
+                  metadata: scrapeResponse.metadata,
+                  credits: 1,
+                }
+              },
+              {
+                body: t.Object({
+                  url: t.String(),
+                  onlyMainContent: t.Optional(t.Boolean()),
+                }),
+                response: {
+                  200: t.Object({
+                    md: t.String(),
+                    metadata: t.Optional(t.Record(t.String(), t.Unknown())),
+                    credits: t.Number(),
+                  }),
+                },
+                afterResponse({ response, headers }) {
+                  // ! Elysia infers incorrect response (including status code as a key)
+                  // biome-ignore lint/suspicious/noExplicitAny: Above comment
+                  const credits = (response as any)?.credits
+                  credits >= 0 && reportUsage(headers.authorization, credits, 'web')
                 },
               },
             ),

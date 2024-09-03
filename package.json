@@ -26,6 +26,7 @@
     "@google-cloud/storage": "^7.12.1",
     "@google/generative-ai": "^0.17.1",
     "@lemonsqueezy/lemonsqueezy.js": "^3.2.0",
+    "@mendable/firecrawl-js": "^1.2.1",
     "@preact/signals-react": "^2.2.0",
     "@prisma/client": "^5.18.0",
     "@prisma/nextjs-monorepo-workaround-plugin": "^5.18.0",
