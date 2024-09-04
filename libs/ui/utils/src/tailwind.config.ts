@@ -54,6 +54,13 @@ export function buildConfig(appDir: string): Config {
           'gray-400': '#a1a1a1',
           'purple-700': '#6b206b',
         },
+        textColor: {
+          'gray-50': '#f1f6f6',
+          'gray-100': '#e5e7eb',
+          'gray-200': '#d1d5db',
+          'gray-400': '#a1a1a1',
+          'purple-700': '#6b206b',
+        },
         borderRadius: {
           lg: 'var(--radius)',
           md: 'calc(var(--radius) - 2px)',
