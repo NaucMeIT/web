@@ -1,4 +1,5 @@
 import { t } from 'elysia'
+import type { Mutable } from './typescript'
 
 export const languages = {
   aa: 'Afar',
@@ -279,9 +280,13 @@ export const allowedDeepgramLanguages = [
   'vi',
 ] as const
 
-export const allowedDeepgramLanguagesAsType = t.UnionEnum<typeof allowedDeepgramLanguages>(allowedDeepgramLanguages, {
-  default: 'en',
-})
+// TODO: Fix Mutable hack after ElysiaJS allows readonly UnionEnum
+export const allowedDeepgramLanguagesAsType = t.UnionEnum<Mutable<typeof allowedDeepgramLanguages>>(
+  allowedDeepgramLanguages as Mutable<typeof allowedDeepgramLanguages>,
+  {
+    default: 'en',
+  },
+)
 
 export const allowedLlamaParseLanguages = [
   'af',
@@ -372,7 +377,8 @@ export const allowedLlamaParseLanguages = [
   'kn',
 ] as const
 
-export const allowedLlamaParseLanguagesAsType = t.UnionEnum<typeof allowedLlamaParseLanguages>(
-  allowedLlamaParseLanguages,
+// TODO: Fix Mutable hack after ElysiaJS allows readonly UnionEnum
+export const allowedLlamaParseLanguagesAsType = t.UnionEnum<Mutable<typeof allowedLlamaParseLanguages>>(
+  allowedLlamaParseLanguages as Mutable<typeof allowedLlamaParseLanguages>,
   { default: 'en' },
 )
