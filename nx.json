@@ -27,8 +27,18 @@
     }
   ],
   "generators": {
-    "@nx/next": { "application": { "style": "tailwind", "linter": "none" } },
-    "@nx/react": { "library": { "unitTestRunner": "none", "linter": "none" } }
+    "@nx/next": {
+      "application": {
+        "style": "tailwind",
+        "linter": "none"
+      }
+    },
+    "@nx/react": {
+      "library": {
+        "unitTestRunner": "none",
+        "linter": "none"
+      }
+    }
   },
   "nxCloudAccessToken": "OWJlNGIzNzctMTJjMi00MjdkLThiYWItNzRmZDBiM2ZkM2JkfHJlYWQtd3JpdGU="
 }
