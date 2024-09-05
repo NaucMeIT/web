@@ -16,7 +16,6 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
       authorization: t.String({ error: 'You must provide API key to use this service.' }),
     }),
     response: {
-      200: t.Unknown(),
       401: t.String(),
       429: t.String(),
       500: t.String(),
