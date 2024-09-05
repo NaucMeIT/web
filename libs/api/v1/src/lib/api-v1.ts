@@ -1,14 +1,13 @@
 import FirecrawlApp from '@mendable/firecrawl-js'
 import { generateQuiz, getResult, getTranscript, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
+import { reportUsage, validateApiKey } from '@nmit-coursition/api/utils'
+import {
+  allowedDeepgramLanguagesAsType,
+  allowedLlamaParseLanguagesAsType,
+  languages,
+  languagesAsType,
+} from '@nmit-coursition/utils'
 import { Elysia, t } from 'elysia'
-
-function reportUsage(apiKey: string, duration: number, type: 'video' | 'document' | 'web') {
-  console.log(`API Key ${apiKey} used ${duration} on ${type}.`)
-}
-
-function validateApiKey(apiKey: string) {
-  if (!apiKey) return false
-}
 
 export const apiV1 = new Elysia({ prefix: '/v1' })
   .guard({
@@ -44,7 +43,7 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
         {
           body: t.Object({
             file: t.File(),
-            language: t.Optional(t.String()),
+            language: t.Optional(allowedDeepgramLanguagesAsType),
             output: t.Array(t.Union([t.Literal('vtt'), t.Literal('srt'), t.Literal('text')]), {
               default: ['text'],
             }),
@@ -91,7 +90,7 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
         {
           body: t.Object({
             file: t.File(),
-            language: t.Optional(t.String()),
+            language: t.Optional(allowedLlamaParseLanguagesAsType),
             description: t.Optional(t.String()),
           }),
           response: {
@@ -133,7 +132,7 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
         },
         {
           body: t.Object({
-            url: t.String(),
+            url: t.String({ format: 'uri' }),
             onlyMainContent: t.Optional(t.Boolean()),
           }),
           response: {
@@ -158,7 +157,7 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
       async ({ body: { content, outputLang, amountQuestions, amountAnswers, allowMultiple }, error }) => {
         try {
           const quiz = await generateQuiz(content, {
-            outputLang,
+            outputLang: languages[outputLang || 'en'],
             amountQuestions,
             amountAnswers,
             allowMultiple,
@@ -171,7 +170,7 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
       {
         body: t.Object({
           content: t.String(),
-          outputLang: t.Optional(t.String()),
+          outputLang: t.Optional(languagesAsType),
           amountQuestions: t.Optional(t.Number()),
           amountAnswers: t.Optional(t.Number()),
           allowMultiple: t.Optional(t.Boolean()),
