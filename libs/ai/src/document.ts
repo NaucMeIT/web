@@ -63,7 +63,7 @@ export async function waitUntilJobIsDone(id: string, status: string) {
   return currentStatus
 }
 
-export async function getResult(id: string): Promise<string> {
+export async function getResult(id: string) {
   const resultResponse = await fetch(`${parseApi}job/${id}/result/markdown`, {
     method: 'GET',
     headers: {
@@ -76,7 +76,6 @@ export async function getResult(id: string): Promise<string> {
     throw new Error(`Fetching result failed: ${resultResponse.statusText} id: ${id}`)
   }
 
-  const { markdown } = await resultResponse.json()
-
-  return markdown
+  const { markdown, job_metadata } = await resultResponse.json()
+  return { markdown, credits: job_metadata.job_credits_usage }
 }
