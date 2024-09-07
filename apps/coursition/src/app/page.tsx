@@ -15,29 +15,30 @@ import {
   TrendingUp,
 } from 'lucide-react'
 import { BuyLifetime } from '../components/buyLifetime'
+import { Footer } from '../components/footer'
 import { GetInTouch } from '../components/getInTouch'
 
-const links = [
-  { name: 'fastest', icon: <TrainFront /> },
-  { name: 'most-accurate', icon: <ShieldCheck /> },
-  { name: 'privacy-first', icon: <Fingerprint /> },
-  { name: 'cost-effective', icon: <BadgeDollarSign /> },
+const actions = [
+  { name: 'fastest', icon: TrainFront },
+  { name: 'most-accurate', icon: ShieldCheck },
+  { name: 'privacy-first', icon: Fingerprint },
+  { name: 'cost-effective', icon: BadgeDollarSign },
 ]
 
 const benefits = [
-  { text: 'From speech to text in record time.', icon: <Clock className='text-purple-700' /> },
-  { text: 'Lost in playback? Found in transcript. Crystal clear.', icon: <TrendingUp className='text-purple-700' /> },
-  { text: 'Upgrade your audio. Effortless text transformation.', icon: <Heart className='text-purple-700' /> },
+  { text: 'From speech to text in record time.', icon: Clock },
+  { text: 'Lost in playback? Found in transcript. Crystal clear.', icon: TrendingUp },
+  { text: 'Upgrade your audio. Effortless text transformation.', icon: Heart },
 ]
 
 export default function Index() {
   return (
-    <div className='w-screen h-screen mx-auto p-6 md:p-12 flex flex-col overflow-y-auto overflow-x-hidden'>
+    <div className='w-screen h-screen mx-auto px-6 pt-6 md:pt-12 md:px-12 flex flex-col overflow-y-auto overflow-x-hidden'>
       <header className='container mx-auto'>
         <ul className='w-full flex items-center justify-between'>
-          {links.map((it) => (
+          {actions.map((it) => (
             <li key={it.name} className='flex gap-1 items-center'>
-              {it.icon}
+              <it.icon />
               <span className='text-[16px] uppercase'>{it.name}</span>
             </li>
           ))}
@@ -66,7 +67,7 @@ export default function Index() {
           <ul className='w-full flex justify-evenly mt-8'>
             {benefits.map((it) => (
               <li key={it.text} className='flex flex-col gap-2 items-center max-w-[240px]'>
-                {it.icon}
+                <it.icon className='text-purple-700' />
                 <span className='text-purple-700 text-center font-semibold text-[16px] '>{it.text}</span>
               </li>
             ))}
@@ -180,6 +181,8 @@ export default function Index() {
         <h4 className='font-semibold text-[20px] text-center'>Curious about our transcription magic?</h4>
         <GetInTouch />
       </section>
+
+      <Footer />
     </div>
   )
 }

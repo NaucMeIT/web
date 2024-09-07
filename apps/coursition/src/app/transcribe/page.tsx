@@ -195,7 +195,7 @@ export default function TranscribeIndex() {
           </div>
         )}
 
-        <BuyLifetime />
+        <BuyLifetime withIcon={false} />
       </div>
     </div>
   )
