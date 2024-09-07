@@ -2,7 +2,7 @@
 
 import { getTranscript } from '@nmit-coursition/ai'
 import { Accordion, Button, Textarea } from '@nmit-coursition/design-system'
-import { zfd } from '@nmit-coursition/utils'
+import { zfd } from 'zod-form-data'
 import { useSignal } from '@preact/signals-react/runtime'
 import React, { useActionState } from 'react'
 import { z } from 'zod'

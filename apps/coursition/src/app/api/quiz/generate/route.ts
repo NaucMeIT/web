@@ -1,5 +1,5 @@
 import { generateQuiz } from '@nmit-coursition/ai'
-import { zfd } from '@nmit-coursition/utils'
+import { zfd } from 'zod-form-data'
 import { z } from 'zod'
 
 const formDataSchema = zfd.formData({
