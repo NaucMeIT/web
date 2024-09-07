@@ -23,7 +23,7 @@ export const SignUp = () => {
       return toast(result.error)
     }
 
-    push('/sign-in')
+    return push('/sign-in')
   }
 
   return (

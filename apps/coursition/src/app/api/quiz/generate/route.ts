@@ -1,6 +1,6 @@
 import { generateQuiz } from '@nmit-coursition/ai'
-import { zfd } from 'zod-form-data'
 import { z } from 'zod'
+import { zfd } from 'zod-form-data'
 
 const formDataSchema = zfd.formData({
   content: zfd.text(),

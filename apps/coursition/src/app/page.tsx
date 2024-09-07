@@ -51,7 +51,7 @@ export default function Index() {
     } else {
       setStatus('parse')
       const { raw } = await getTranscript(file)
-      text = raw || ""
+      text = raw || ''
     }
 
     if (action === 'convert') {

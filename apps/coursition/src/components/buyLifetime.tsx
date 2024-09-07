@@ -28,7 +28,7 @@ export const BuyLifetime = () => {
               setIsRedirecting(false)
               window.LemonSqueezy.Url.Close()
               const lsLoaderElement = document.getElementsByClassName('lemonsqueezy-loader')[0]
-              document.body.removeChild(lsLoaderElement)
+              lsLoaderElement && document.body.removeChild(lsLoaderElement)
             }
           },
         })

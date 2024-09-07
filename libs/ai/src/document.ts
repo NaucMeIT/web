@@ -21,7 +21,7 @@ export async function uploadFile(
     headers: {
       accept: 'application/json',
       contentType: 'multipart/form-data',
-      Authorization: `Bearer ${process.env.LLAMA_CLOUD_API_KEY}`,
+      Authorization: `Bearer ${process.env['LLAMA_CLOUD_API_KEY']}`,
     },
     body,
   })
@@ -44,7 +44,7 @@ export async function waitUntilJobIsDone(id: string, status: string) {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: `Bearer ${process.env.LLAMA_CLOUD_API_KEY}`,
+        Authorization: `Bearer ${process.env['LLAMA_CLOUD_API_KEY']}`,
       },
     })
 
@@ -68,7 +68,7 @@ export async function getResult(id: string) {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: `Bearer ${process.env.LLAMA_CLOUD_API_KEY}`,
+      Authorization: `Bearer ${process.env['LLAMA_CLOUD_API_KEY']}`,
     },
   })
 
