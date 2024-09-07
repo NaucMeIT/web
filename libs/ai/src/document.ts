@@ -31,8 +31,7 @@ export async function uploadFile(
   }
 
   // TODO: add response validation
-  // @ts-expect-error
-  const { id, status }: { id: string; status: string } = await uploadResponse.json()
+  const { id, status } = await uploadResponse.json() as { id: string; status: string }
 
   return { id, status }
 }
