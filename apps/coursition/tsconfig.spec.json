@@ -1,11 +1,5 @@
 {
   "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
-    "module": "commonjs",
-    "types": ["node"],
-    "jsx": "react"
-  },
   "include": [
     "src/**/*.test.ts",
     "src/**/*.spec.ts",
