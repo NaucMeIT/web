@@ -1,4 +1,19 @@
-import { BadgeDollarSign, Clock, Fingerprint, Heart, ShieldCheck, TrainFront, TrendingUp } from 'lucide-react'
+import {
+  BadgeDollarSign,
+  Cable,
+  Captions,
+  Clock,
+  FastForward,
+  FileUp,
+  Fingerprint,
+  Heart,
+  Lock,
+  LogIn,
+  Recycle,
+  ShieldCheck,
+  TrainFront,
+  TrendingUp,
+} from 'lucide-react'
 import { BuyLifetime } from '../components/buyLifetime'
 
 const links = [
@@ -39,7 +54,7 @@ export default function Index() {
             Secure, cost-effective transcription. Your media, instantly processed, never stored.
           </p>
 
-          <BuyLifetime />
+          <BuyLifetime withIcon />
         </div>
 
         <div className='h-full flex items-center justify-center'>Insert image here</div>
@@ -83,7 +98,7 @@ export default function Index() {
 
         <h4 className='font-semibold text-[24px] mt-4'>Time to unlock your content</h4>
 
-        <BuyLifetime className='mt-4' />
+        <BuyLifetime className='mt-4' withIcon />
       </section>
 
       <section className='mt-12 py-6 bg-gray-50 text-black flex flex-col gap-4 items-center justify-center -mx-12'>
@@ -93,7 +108,73 @@ export default function Index() {
           Make videos searchable and AI-ready. For creators, businesses, and consumers.
         </p>
 
-        <BuyLifetime className='mt-4' />
+        <BuyLifetime className='mt-4' withIcon />
+      </section>
+
+      <section className='mt-12 container mx-auto grid grid-cols-1 md:grid-cols-2'>
+        <div className='h-full flex items-center justify-center'>Insert image here</div>
+
+        <div className='flex flex-col gap-4'>
+          <h3 className='font-semibold text-[35px] max-w-[557px] leading-[60px]'>Smart transcription on your terms</h3>
+
+          <div className='w-full h-[150px]' />
+          <BuyLifetime withIcon={false} />
+        </div>
+      </section>
+
+      <section className='mt-12 py-12 bg-gray-50 text-black flex flex-col gap-8 items-center justify-center -mx-12'>
+        <h4 className='font-semibold text-[24px]'>3 simple steps to solve your customer’s problem</h4>
+
+        <ul className='grid grid-cols-1 md:grid-cols-3'>
+          {[
+            { text: '1. Sign up for our lifetime deal.', icon: LogIn },
+            { text: '2. Upload any video or audio file', icon: FileUp },
+            { text: '3. Get accurate transcripts instantly', icon: Captions },
+          ].map((it) => (
+            <li key={it.text} className='flex flex-col items-center gap-2'>
+              <it.icon className='size-[100px] text-purple-700' />
+              <span className='font-semibold text-[18px]'>{it.text}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className='mt-12 container mx-auto flex flex-col gap-6'>
+        <h4 className='font-semibold text-[20px] text-center'>Our Promise to You</h4>
+        <ul className='grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-4 max-w-7xl mx-auto'>
+          {[
+            {
+              header: 'Top accuracy',
+              description:
+                'We guarantee ongoing improvements in transcription accuracy, ensuring your lifetime investment grows in value over time.',
+              icon: Lock,
+            },
+            {
+              header: 'Lifetime access',
+              description:
+                'One purchase grants you unlimited transcriptions for life, with no hidden fees or subscription traps.',
+              icon: FastForward,
+            },
+            {
+              header: 'Adaptable technology',
+              description:
+                'As audio and video formats evolve, our software will adapt, future-proofing your transcription capabilities.',
+              icon: Recycle,
+            },
+            {
+              header: 'Unwavering support',
+              description:
+                'Our dedicated team provides continuous technical assistance, safeguarding your long-term transcription needs.',
+              icon: Cable,
+            },
+          ].map((it) => (
+            <li key={it.header} className='flex flex-col gap-2 items-center justify-center'>
+              <it.icon className='size-8 text-purple-700' />
+              <b className='mt-10 text-[18px]'>{it.header}</b>
+              <p className='text-[16px]'>{it.description}</p>
+            </li>
+          ))}
+        </ul>
       </section>
     </div>
   )

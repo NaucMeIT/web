@@ -9,9 +9,11 @@ import { ArrowUpLeft } from 'lucide-react'
 import { generateCheckout } from '../app/actions'
 import { useMounted } from '../app/hooks/useMounted'
 
-interface Props extends ButtonProps {}
+interface Props extends ButtonProps {
+  withIcon: boolean
+}
 
-export const BuyLifetime = ({ className, ...rest }: Props) => {
+export const BuyLifetime = ({ className, withIcon = true, ...rest }: Props) => {
   const isMounted = useMounted()
 
   const openPaymentDialog = async () => {
@@ -49,9 +51,11 @@ export const BuyLifetime = ({ className, ...rest }: Props) => {
       )}
     >
       <div className='font-semibold text-[24px]'>Get lifetime deal</div>
-      <div className='bg-white px-4 h-full flex items-center justify-center flex-1'>
-        <ArrowUpLeft className='rotate-[85deg] text-purple-700' />
-      </div>
+      {withIcon && (
+        <div className='bg-white px-4 h-full flex items-center justify-center flex-1'>
+          <ArrowUpLeft className='rotate-[85deg] text-purple-700' />
+        </div>
+      )}
     </Button>
   )
 }
