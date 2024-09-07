@@ -1,7 +1,7 @@
 'use server'
 import { createClient, srt, webvtt } from '@deepgram/sdk'
 
-const deepgram = createClient(process.env.DEEPGRAM_API_KEY || '')
+const deepgram = createClient(process.env['DEEPGRAM_API_KEY'] || '')
 
 // biome-ignore lint/suspicious/noExplicitAny: Ain't nobody got time for that
 export async function getTranscript(file: any, keywords?: string[], language?: string) {

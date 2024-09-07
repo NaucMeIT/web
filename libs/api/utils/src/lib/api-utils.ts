@@ -4,4 +4,5 @@ export function reportUsage(apiKey: string, duration: number, type: 'video' | 'd
 
 export function validateApiKey(apiKey: string) {
   if (!apiKey) return false
+  return true
 }

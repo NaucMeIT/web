@@ -110,7 +110,7 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
       .post(
         '/web',
         async ({ body: { url, onlyMainContent }, error }) => {
-          const fcApp = new FirecrawlApp({ apiKey: process.env.FIRECRAWL_API_KEY })
+          const fcApp = new FirecrawlApp({ apiKey: process.env['FIRECRAWL_API_KEY'] })
 
           const scrapeResponse = await fcApp.scrapeUrl(url, {
             formats: ['markdown'],
