@@ -31,7 +31,7 @@ export async function uploadFile(
   }
 
   // TODO: add response validation
-  const { id, status } = await uploadResponse.json() as { id: string; status: string }
+  const { id, status } = (await uploadResponse.json()) as { id: string; status: string }
 
   return { id, status }
 }
@@ -55,7 +55,7 @@ export async function waitUntilJobIsDone(id: string, status: string) {
 
     const statusJson = await statusResponse.json()
     // TODO: add response validation
-    // @ts-expect-error
+    // @ts-ignore
     currentStatus = statusJson.status
 
     if (currentStatus !== 'SUCCESS') {
@@ -80,7 +80,7 @@ export async function getResult(id: string) {
   }
 
   // TODO: add response validation
-  // @ts-expect-error
+  // @ts-ignore
   const { markdown, job_metadata } = await resultResponse.json()
   return { markdown, credits: job_metadata.job_credits_usage }
 }
