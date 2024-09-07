@@ -19,6 +19,7 @@
     "lib": ["ESNext"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "experimentalDecorators": true,
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
