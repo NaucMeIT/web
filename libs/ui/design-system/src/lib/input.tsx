@@ -3,10 +3,12 @@ import type * as React from 'react'
 import { Input as InputPrimitive } from '@nmit-coursition/ui/primitives/input'
 import { Label } from '@nmit-coursition/ui/primitives/label'
 
+type InputType = React.ComponentProps<'input'>['type']
+
 interface InputProps extends React.ComponentProps<'input'> {
   label: string
   placeholder: string
-  type: string
+  type: InputType
   id: string
   subtext?: string
   disabled?: boolean

@@ -15,6 +15,7 @@ import {
   TrendingUp,
 } from 'lucide-react'
 import { BuyLifetime } from '../components/buyLifetime'
+import { GetInTouch } from '../components/getInTouch'
 
 const links = [
   { name: 'fastest', icon: <TrainFront /> },
@@ -76,7 +77,7 @@ export default function Index() {
       </section>
 
       <section className='bg-black text-white -mx-12'>
-        <div className='flex items-center justify-center font-semibold text-[24px] h-[160px]'>
+        <div className='flex items-center justify-center font-semibold text-[24px] h-[160px] text-center px-4'>
           Maximize the value of video content by making every word searchable.
         </div>
       </section>
@@ -175,6 +176,9 @@ export default function Index() {
             </li>
           ))}
         </ul>
+
+        <h4 className='font-semibold text-[20px] text-center'>Curious about our transcription magic?</h4>
+        <GetInTouch />
       </section>
     </div>
   )
