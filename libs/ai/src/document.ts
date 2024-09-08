@@ -21,7 +21,7 @@ export async function uploadFile(
     headers: {
       accept: 'application/json',
       contentType: 'multipart/form-data',
-      Authorization: `Bearer ${process.env.LLAMA_CLOUD_API_KEY}`,
+      Authorization: `Bearer ${process.env['LLAMA_CLOUD_API_KEY']}`,
     },
     body,
   })
@@ -30,7 +30,8 @@ export async function uploadFile(
     throw new Error(`Upload failed: ${uploadResponse.statusText}`)
   }
 
-  const { id, status }: { id: string; status: string } = await uploadResponse.json()
+  // TODO: add response validation
+  const { id, status } = (await uploadResponse.json()) as { id: string; status: string }
 
   return { id, status }
 }
@@ -44,7 +45,7 @@ export async function waitUntilJobIsDone(id: string, status: string) {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: `Bearer ${process.env.LLAMA_CLOUD_API_KEY}`,
+        Authorization: `Bearer ${process.env['LLAMA_CLOUD_API_KEY']}`,
       },
     })
 
@@ -53,6 +54,8 @@ export async function waitUntilJobIsDone(id: string, status: string) {
     }
 
     const statusJson = await statusResponse.json()
+    // TODO: add response validation
+    // @ts-ignore
     currentStatus = statusJson.status
 
     if (currentStatus !== 'SUCCESS') {
@@ -63,12 +66,12 @@ export async function waitUntilJobIsDone(id: string, status: string) {
   return currentStatus
 }
 
-export async function getResult(id: string): Promise<string> {
+export async function getResult(id: string) {
   const resultResponse = await fetch(`${parseApi}job/${id}/result/markdown`, {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: `Bearer ${process.env.LLAMA_CLOUD_API_KEY}`,
+      Authorization: `Bearer ${process.env['LLAMA_CLOUD_API_KEY']}`,
     },
   })
 
@@ -76,7 +79,8 @@ export async function getResult(id: string): Promise<string> {
     throw new Error(`Fetching result failed: ${resultResponse.statusText} id: ${id}`)
   }
 
-  const { markdown } = await resultResponse.json()
-
-  return markdown
+  // TODO: add response validation
+  // @ts-ignore
+  const { markdown, job_metadata } = await resultResponse.json()
+  return { markdown, credits: job_metadata.job_credits_usage }
 }

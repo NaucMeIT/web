@@ -31,7 +31,7 @@ export const BuyLifetime = ({ className, withIcon = true, ...rest }: Props) => {
             if (event?.event === 'Checkout.Success') {
               window.LemonSqueezy.Url.Close()
               const lsLoaderElement = document.getElementsByClassName('lemonsqueezy-loader')[0]
-              document.body.removeChild(lsLoaderElement)
+              lsLoaderElement && document.body.removeChild(lsLoaderElement)
             }
           },
         })

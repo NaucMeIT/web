@@ -1,0 +1,43 @@
+{
+  "name": "backend",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/backend",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project backend --web",
+  "targets": {
+    "build:executable": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "bun build --compile --minify --sourcemap apps/backend/src/index.ts --outfile ./apps/dist/backend apps/backend/src/index.ts"
+      },
+      "cache": true
+    },
+    "start:executable": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "backend",
+        "cwd": "apps/dist"
+      }
+    },
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "bun --watch apps/backend/src/index.ts"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "bun build --target bun --outdir ./apps/backend/dist apps/backend/src/index.ts"
+      },
+      "cache": true
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cross-env NODE_ENV=production bun apps/backend/dist/index.js"
+      }
+    }
+  }
+}
