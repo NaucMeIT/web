@@ -96,7 +96,7 @@ export default function Index() {
       <section className='mt-12 container mx-auto grid grid-cols-1 md:grid-cols-2'>
         <div className='flex flex-col gap-4'>
           <b className='text-xl font-semibold text-purple-700'>For any video & audio</b>
-          <h3 className='font-semibold text-5xl max-w-[557px] leading-[60px]'>Get best transcription in no time.</h3>
+          <h3 className='font-semibold text-5xl'>Get best transcription in no time.</h3>
           <p className='text-lg font-semibold'>
             From podcasts to lectures, interviews to vlogs - we outperform competitors in speed and accuracy.
           </p>
@@ -116,7 +116,7 @@ export default function Index() {
             {benefits.map((it) => (
               <li key={it.text} className='flex flex-col items-center text-center'>
                 <it.icon className='text-purple-700 w-12 h-12 mb-4' />
-                <span className='text-purple-700 font-semibold max-w-[240px]'>{it.text}</span>
+                <span className='text-purple-700 font-semibold max-w-60'>{it.text}</span>
               </li>
             ))}
           </ul>
@@ -151,7 +151,7 @@ export default function Index() {
 
       <section className='mt-12 py-6 bg-gray-50 text-black flex flex-col gap-4 items-center justify-center -mx-12'>
         <h4 className='font-semibold text-2xl'>Why us?</h4>
-        <p className='w-3/4 max-w-[400px]'>
+        <p className='w-3/4 max-w-96'>
           Simplify your media. Best AI transcription, under your control. User-friendly interface, flexible pricing.
           Make videos searchable and AI-ready. For creators, businesses, and consumers.
         </p>
@@ -163,7 +163,7 @@ export default function Index() {
         <div className='h-full flex items-center justify-center'>Insert image here</div>
 
         <div className='flex flex-col gap-6'>
-          <h3 className='font-semibold text-4xl max-w-[557px]'>Smart transcription on your terms</h3>
+          <h3 className='font-semibold text-4xl'>Smart transcription on your terms</h3>
 
           <p className='text-xl'>
             Smart transcripts, your way. Easy to start, simple to use. We tackle the tough stuff - quality, speed, and
@@ -180,7 +180,7 @@ export default function Index() {
         <ul className='grid grid-cols-1 md:grid-cols-3 gap-6'>
           {steps.map((it) => (
             <li key={it.text} className='flex flex-col items-center gap-2'>
-              <it.icon className='size-[60px] lg:size-[100px] text-purple-700' />
+              <it.icon className='size-16 lg:size-24 text-purple-700' />
               <span className='font-semibold text-lg'>{it.text}</span>
             </li>
           ))}
