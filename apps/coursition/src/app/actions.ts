@@ -43,3 +43,9 @@ export const createUser = async ({ email, password }: { email: string; password:
       return { error: 'unknown error' }
     })
 }
+
+export const getInTouch = async (formdata: FormData) => {
+  const data = Object.fromEntries(formdata)
+  console.log({ data })
+  // todo: call resend helper
+}
