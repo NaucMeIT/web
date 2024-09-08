@@ -81,8 +81,8 @@ const steps = [
 
 export default function Index() {
   return (
-    <div className='w-screen h-screen mx-auto px-6 pt-6 md:pt-12 md:px-12 flex flex-col overflow-y-auto overflow-x-hidden'>
-      <header className='container mx-auto'>
+    <div className='w-screen h-screen mx-auto p-6 md:p-12 flex flex-col overflow-y-auto overflow-x-hidden'>
+      <header className='w-full max-w-7xl mx-auto'>
         <ul className='w-full grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-2'>
           {actions.map((it) => (
             <li key={it.name} className='flex items-center justify-center sm:justify-start gap-2'>
@@ -93,7 +93,7 @@ export default function Index() {
         </ul>
       </header>
 
-      <section className='mt-12 container mx-auto grid grid-cols-1 md:grid-cols-2'>
+      <section className='mt-12 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2'>
         <div className='flex flex-col gap-4'>
           <b className='text-xl font-semibold text-purple-700'>For any video & audio</b>
           <h3 className='font-semibold text-5xl'>Get best transcription in no time.</h3>
@@ -188,7 +188,7 @@ export default function Index() {
       </section>
 
       <section className='mt-12 container mx-auto flex flex-col gap-6'>
-        <h4 className='font-semibold text-xl text-center'>Our Promise to You</h4>
+        <h4 className='font-semibold text-2xl text-center'>Our Promise to You</h4>
         <ul className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8'>
           {promises.map((it) => (
             <li key={it.header} className='grid grid-rows-[auto_auto_1fr] gap-y-2'>
