@@ -2,9 +2,9 @@
 
 import { generateQuiz, getResult, getTranscript, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
 import { Accordion, Button, Checkbox, Input } from '@nmit-coursition/design-system'
-import { zfd } from '@nmit-coursition/utils'
 import { useActionState, useState } from 'react'
 import { z } from 'zod'
+import { zfd } from 'zod-form-data'
 import { BuyLifetime } from '../../components/buyLifetime'
 import { Header } from '../../components/header'
 import { StatusDisplay } from '../../components/statusDisplay'
