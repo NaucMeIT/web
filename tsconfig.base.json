@@ -16,7 +16,7 @@
     "importHelpers": true,
     "target": "ES2023",
     "module": "esnext",
-    "lib": ["ESNext"],
+    "lib": ["ESNext", "dom", "DOM.Iterable"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "experimentalDecorators": true,
