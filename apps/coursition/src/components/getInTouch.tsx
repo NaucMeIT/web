@@ -1,11 +1,20 @@
 'use client'
 
 import { Button, Input, Textarea } from '@nmit-coursition/design-system'
+import * as React from 'react'
+import { useFormState } from 'react-dom'
+import { toast } from 'sonner'
 import { getInTouch } from '../app/actions'
 
 export const GetInTouch = () => {
+  const [state, action] = useFormState(getInTouch, { message: '' })
+
+  React.useEffect(() => {
+    toast.message(state.message)
+  }, [state])
+
   return (
-    <form className='flex flex-col gap-4' action={getInTouch}>
+    <form className='flex flex-col gap-4' action={action}>
       <div className='grid grid-cols-2 gap-6'>
         <Input
           name='email'

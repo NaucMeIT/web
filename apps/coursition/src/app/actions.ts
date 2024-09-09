@@ -1,5 +1,6 @@
 'use server'
 
+import { Components, send } from '@nmit-coursition/email'
 import { createCheckoutSession } from '@nmit-coursition/payments'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
 import { prisma } from 'apps/coursition/prisma/prismaClient'
@@ -45,8 +46,16 @@ export const createUser = async ({ email, password }: { email: string; password:
     })
 }
 
-export const getInTouch = async (formdata: FormData) => {
-  const data = Object.fromEntries(formdata)
-  console.log({ data })
-  // todo: call resend helper
+export const getInTouch = async (prevState: { message: string }, formdata: FormData) => {
+  const data = Object.fromEntries(formdata) as Record<string, string>
+
+  const { email = '', firstName, lastName, comment } = data
+  return await send({
+    react: Components.GetInTouchEmailTemplate({ email, fullName: `${firstName} ${lastName}`, comment }),
+    from: 'Acme <onboarding@resend.dev>',
+    to: [''],
+    subject: 'Get In Touch',
+  })
+    .then(() => ({ message: 'Your invitation has been sent' }))
+    .catch(() => ({ message: "Sorry, your invitation wasn't sent" }))
 }
