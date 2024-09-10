@@ -5,6 +5,7 @@ import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
 import { prisma } from 'apps/coursition/prisma/prismaClient'
 import bcrypt from 'bcryptjs'
 import { getServerSession } from 'next-auth'
+import { redirect } from 'next/navigation'
 import { authOptions } from '../app/api/auth/[...nextauth]/auth-options'
 
 /**
@@ -12,7 +13,7 @@ import { authOptions } from '../app/api/auth/[...nextauth]/auth-options'
  */
 export const generateCheckout = async () => {
   const session = await getServerSession(authOptions)
-  if (!session?.user?.email) return
+  if (!session?.user?.email) return redirect('/sign-in')
 
   return createCheckoutSession(process.env['NMIT_LIFETIME_PRODUCT_VARIANT_ID'] || '', {
     platform: 'coursition',

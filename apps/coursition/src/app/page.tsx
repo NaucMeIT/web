@@ -104,7 +104,7 @@ export default function Index() {
             Secure, cost-effective transcription. Your media, instantly processed, never stored.
           </p>
 
-          <BuyLifetime withIcon />
+          <BuyLifetime />
         </div>
 
         <div className='h-full items-center justify-center hidden md:flex'>Insert image here</div>
@@ -144,7 +144,7 @@ export default function Index() {
           </div>
           <h4 className='font-semibold text-2xl text-center mt-8'>Time to unlock your content</h4>
           <div className='flex justify-center mt-6'>
-            <BuyLifetime withIcon />
+            <BuyLifetime />
           </div>
         </div>
       </section>
@@ -156,7 +156,7 @@ export default function Index() {
           Make videos searchable and AI-ready. For creators, businesses, and consumers.
         </p>
 
-        <BuyLifetime className='mt-4' withIcon />
+        <BuyLifetime className='mt-4' />
       </section>
 
       <section className='mt-12 container mx-auto grid grid-cols-1 md:grid-cols-2'>
@@ -170,7 +170,7 @@ export default function Index() {
             data safety. Made for real people, always improving. Your content changes? We change too.
           </p>
 
-          <BuyLifetime withIcon />
+          <BuyLifetime />
         </div>
       </section>
 
