@@ -10,7 +10,7 @@ import { generateCheckout } from '../app/actions'
 import { useMounted } from '../app/hooks/useMounted'
 
 interface Props extends ButtonProps {
-  withIcon: boolean
+  withIcon?: boolean
 }
 
 export const BuyLifetime = ({ className, withIcon = true, ...rest }: Props) => {
