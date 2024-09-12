@@ -44,6 +44,7 @@
     "elysia": "^1.1.12",
     "lefthook": "^1.7.14",
     "lucide-react": "^0.436.0",
+    "nanoid": "^5.0.7",
     "next": "15.0.0-rc.0",
     "next-auth": "^4.24.7",
     "prisma": "^5.18.0",
