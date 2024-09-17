@@ -21,7 +21,9 @@ interface LemonSqueezyData {
   }
 }
 
-export interface Metadata { [key: string]: string }
+export interface Metadata {
+  [key: string]: string
+}
 export interface WebhookEventHandlerApi {
   rawBody: string
   request: Request

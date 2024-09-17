@@ -20,6 +20,9 @@
   "organizeImports": {
     "enabled": true
   },
+  "linter": {
+    "enabled": false
+  },
   "javascript": {
     "formatter": {
       "jsxQuoteStyle": "single",
