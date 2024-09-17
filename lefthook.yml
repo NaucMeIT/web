@@ -3,7 +3,7 @@ pre-commit:
   commands:
     biome:
       glob: '*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}'
-      run: bunx @biomejs/biome check --write --no-errors-on-unmatched --files-ignore-unknown=true && git update-index
+      run: bun run check:biome && git update-index
     oxlint:
       glob: '*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}'
-      run: bunx oxlint@latest -D all -D nursery --ignore-pattern=**/legacy_nmit/** -A explicit-function-return-type -A no-optional-chaining -A react-in-jsx-scope -A no-rest-spread-properties -A no-ternary -A prefer-ts-expect-error -A no-async-await -A no-side-effects-in-initialization -A no-undef -A no-magic-numbers -A max-lines -A no-empty-interface -A ban-ts-comment -A filename-case -A prefer-dom-node-remove -A sort-keys -A sort-imports && git update-index
+      run: bun run check:oxlint && git update-index
