@@ -31,7 +31,7 @@ export const authOptions: NextAuthOptions = {
         password: {},
       },
       async authorize(credentials, _) {
-        const { email, password } = credentials as Record<'email' | 'password', string>
+        const { email, password } = credentials as { email: string, password: string }
 
         return (await handleAuthorize({ email, password })) as User
       },

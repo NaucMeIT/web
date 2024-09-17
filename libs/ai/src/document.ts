@@ -1,4 +1,7 @@
 'use server'
+
+import { delay } from '@nmit-coursition/utils'
+
 const parseApi = 'https://api.cloud.llamaindex.ai/api/parsing/'
 
 export async function uploadFile(
@@ -37,10 +40,10 @@ export async function uploadFile(
 }
 
 export async function waitUntilJobIsDone(id: string, status: string) {
-  const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
   let currentStatus = status
 
   while (currentStatus !== 'SUCCESS') {
+    // eslint-disable-next-line no-await-in-loop -- it's on purpose to avoid spamming the API
     const statusResponse = await fetch(`${parseApi}job/${id}`, {
       method: 'GET',
       headers: {
@@ -53,12 +56,14 @@ export async function waitUntilJobIsDone(id: string, status: string) {
       throw new Error(`Status check failed: ${statusResponse.statusText}`)
     }
 
+    // eslint-disable-next-line no-await-in-loop -- it's on purpose to avoid spamming the API
     const statusJson = await statusResponse.json()
     // TODO: add response validation
     // @ts-ignore
     currentStatus = statusJson.status
 
     if (currentStatus !== 'SUCCESS') {
+      // eslint-disable-next-line no-await-in-loop -- it's on purpose to avoid spamming the API
       await delay(500)
     }
   }

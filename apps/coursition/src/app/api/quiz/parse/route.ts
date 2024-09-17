@@ -9,10 +9,8 @@ export async function POST(request: Request) {
 
   try {
     const { id, status } = await uploadFile(file)
-    console.log(id, status)
 
-    const finalStatus = await waitUntilJobIsDone(id, status)
-    console.log('Final status:', finalStatus)
+    await waitUntilJobIsDone(id, status)
 
     const { markdown } = await getResult(id)
 
@@ -21,7 +19,6 @@ export async function POST(request: Request) {
       headers: { 'Content-Type': 'application/json' },
     })
   } catch (error) {
-    console.log(error)
     return new Response(JSON.stringify({ error }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },

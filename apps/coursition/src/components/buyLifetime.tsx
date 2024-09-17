@@ -23,14 +23,13 @@ export const BuyLifetime = ({ className, withIcon = true, ...rest }: Props) => {
   }
 
   React.useEffect(() => {
-    const eventHandler = async () => {
+    const eventHandler = () => {
       if (isMounted) {
         window.LemonSqueezy?.Setup({
           eventHandler: (event) => {
-            console.log({ event })
             if (event?.event === 'Checkout.Success') {
               window.LemonSqueezy.Url.Close()
-              const lsLoaderElement = document.getElementsByClassName('lemonsqueezy-loader')[0]
+              const lsLoaderElement = document.querySelectorAll('lemonsqueezy-loader')[0]
               lsLoaderElement && document.body.removeChild(lsLoaderElement)
             }
           },

@@ -2,8 +2,8 @@
 import { createClient, srt, webvtt } from '@deepgram/sdk'
 
 const deepgram = createClient(process.env['DEEPGRAM_API_KEY'] || '')
-
-// biome-ignore lint/suspicious/noExplicitAny: Ain't nobody got time for that
+// ! mess between File, Blob, and Buffer types
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function getTranscript(file: any, keywords?: string[], language?: string) {
   const { result } = await deepgram.listen.prerecorded.transcribeFile(file, {
     model: 'nova-2',

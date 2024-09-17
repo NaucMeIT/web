@@ -34,19 +34,20 @@ export const createUser = async ({ email, password }: { email: string; password:
         paymentStatus: 'FREE',
       },
     })
-    .catch((err: unknown) => {
-      if (err instanceof PrismaClientKnownRequestError) {
-        if (err.code === 'P2002') {
+    .catch((error: unknown) => {
+      if (error instanceof PrismaClientKnownRequestError) {
+        if (error.code === 'P2002') {
           return { error: 'An account already exist with this email' }
         }
-        return { error: err.message }
+        return { error: error.message }
       }
       return { error: 'unknown error' }
     })
 }
 
+// eslint-disable-next-line require-await -- todo: call resend helper
 export const getInTouch = async (formdata: FormData) => {
   const data = Object.fromEntries(formdata)
+  // eslint-disable-next-line no-console -- todo: call resend helper
   console.log({ data })
-  // todo: call resend helper
 }

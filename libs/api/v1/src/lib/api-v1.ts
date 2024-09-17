@@ -63,7 +63,7 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
           },
           afterResponse({ response, headers }) {
             // ! Elysia infers incorrect response (including status code as a key)
-            // biome-ignore lint/suspicious/noExplicitAny: Above comment
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const duration = (response as any)?.duration
             duration >= 0 && reportUsage(headers.authorization, duration, 'video')
           },
@@ -71,7 +71,7 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
       )
       .post(
         '/document',
-        async ({ body: { file, language, description }, error }) => {
+        async ({ body: { file, language, description }, error: errorFn }) => {
           try {
             const { id, status } = await uploadFile(file, {
               inputLang: language,
@@ -83,8 +83,8 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
               md: markdown,
               credits,
             }
-          } catch (e) {
-            return error(500, `Something went wrong while processing your document. Details: ${e}`)
+          } catch (error) {
+            return errorFn(500, `Something went wrong while processing your document. Details: ${error}`)
           }
         },
         {
@@ -101,7 +101,7 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
           },
           afterResponse({ response, headers }) {
             // ! Elysia infers incorrect response (including status code as a key)
-            // biome-ignore lint/suspicious/noExplicitAny: Above comment
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const credits = (response as any)?.credits
             credits >= 0 && reportUsage(headers.authorization, credits, 'document')
           },
@@ -144,7 +144,7 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
           },
           afterResponse({ response, headers }) {
             // ! Elysia infers incorrect response (including status code as a key)
-            // biome-ignore lint/suspicious/noExplicitAny: Above comment
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const credits = (response as any)?.credits
             credits >= 0 && reportUsage(headers.authorization, credits, 'web')
           },
@@ -154,7 +154,7 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
   .group('/ai', (aiApp) =>
     aiApp.post(
       '/quiz',
-      async ({ body: { content, outputLang, amountQuestions, amountAnswers, allowMultiple }, error }) => {
+      async ({ body: { content, outputLang, amountQuestions, amountAnswers, allowMultiple }, error: errorFn }) => {
         try {
           const quiz = await generateQuiz(content, {
             outputLang: languages[outputLang || 'en'],
@@ -163,8 +163,8 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
             allowMultiple,
           })
           return quiz
-        } catch (e) {
-          return error(500, `Error generating quiz: ${e}`)
+        } catch (error) {
+          return errorFn(500, `Error generating quiz: ${error}`)
         }
       },
       {
