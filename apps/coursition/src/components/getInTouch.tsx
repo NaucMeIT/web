@@ -9,10 +9,10 @@ export const GetInTouch = () => {
   const handleSubmit = async (formdata: FormData) => {
     try {
       await getInTouch(formdata)
-      toast('Invitation successfully sent')
+      toast.success('Invitation successfully sent')
     } catch (err: unknown) {
       if (err instanceof Error) {
-        toast(err.message)
+        toast.error(err.message)
       }
     }
   }

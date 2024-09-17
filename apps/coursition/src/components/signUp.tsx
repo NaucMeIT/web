@@ -17,10 +17,12 @@ export const SignUp = () => {
     const formdata = new FormData(e.currentTarget)
     const email = formdata.get('email') as string
     const password = formdata.get('password') as string
-    const result = await createUser({ email, password })
-
-    if ('error' in result) {
-      return toast(result.error)
+    try {
+      await createUser({ email, password })
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message)
+      }
     }
 
     return push('/sign-in')

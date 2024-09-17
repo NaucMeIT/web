@@ -30,8 +30,8 @@ export const generateCheckout = async () => {
 
 export const createUser = async ({ email, password }: { email: string; password: string }) => {
   const passwordHash = bcrypt.hashSync(password, HASH_SALT_OR_ROUNDS)
-  return await prisma.user
-    .create({
+  try {
+    await prisma.user.create({
       data: {
         email,
         password: passwordHash,
@@ -39,15 +39,15 @@ export const createUser = async ({ email, password }: { email: string; password:
         paymentStatus: 'FREE',
       },
     })
-    .catch((err: unknown) => {
-      if (err instanceof PrismaClientKnownRequestError) {
-        if (err.code === 'P2002') {
-          return { error: 'An account already exist with this email' }
-        }
-        return { error: err.message }
+  } catch (err) {
+    if (err instanceof PrismaClientKnownRequestError) {
+      if (err.code === 'P2002') {
+        throw new Error('An account already exist with this email')
       }
-      return { error: 'unknown error' }
-    })
+      throw new Error(err.message)
+    }
+    throw new Error('unknown error')
+  }
 }
 
 export const getInTouch = async (formdata: FormData) => {

@@ -19,7 +19,7 @@ export const ForgotPassword = () => {
     } catch (error: unknown) {
       if (error instanceof Error) {
         step.value = 1
-        toast(error?.message)
+        toast.error(error?.message)
       }
       return null
     }

@@ -19,7 +19,7 @@ export const UpdatePassword = ({ secret }: Props) => {
       router.push('/sign-in')
     } catch (err: unknown) {
       if (err instanceof Error) {
-        toast(err.message)
+        toast.error(err.message)
       }
     }
   }
