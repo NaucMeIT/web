@@ -1,8 +1,9 @@
 'use server'
 
-import { Components, send } from '@nmit-coursition/email'
+import { send } from '@nmit-coursition/email'
+import { GetInTouchEmailTemplate, ResetPasswordEmailTemplate } from '@nmit-coursition/email/components'
 import { createCheckoutSession } from '@nmit-coursition/payments'
-import type { PasswordReset, User } from '@prisma/client'
+import type { PasswordReset } from '@prisma/client'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
 import { prisma } from 'apps/coursition/prisma/prismaClient'
 import bcrypt from 'bcryptjs'
@@ -49,30 +50,30 @@ export const createUser = async ({ email, password }: { email: string; password:
     })
 }
 
-export const getInTouch = async (prevState: { message: string }, formdata: FormData) => {
+export const getInTouch = async (formdata: FormData) => {
   const data = Object.fromEntries(formdata) as Record<string, string>
 
   const { email = '', firstName, lastName, comment } = data
-  return await send({
-    react: Components.GetInTouchEmailTemplate({ email, fullName: `${firstName} ${lastName}`, comment }),
-    from: 'Acme <onboarding@resend.dev>',
-    to: [''], // company's email
-    subject: 'Get In Touch',
-  })
-    .then(() => ({ message: 'Your invitation has been sent' }))
-    .catch(() => ({ message: "Sorry, your invitation wasn't sent" }))
+
+  try {
+    await send({
+      react: GetInTouchEmailTemplate({ email, fullName: `${firstName} ${lastName}`, comment }),
+      from: email,
+      to: [''], // company's email
+      subject: 'Get In Touch',
+    })
+  } catch (error) {
+    throw new Error("Sorry, your invitation wasn't sent")
+  }
 }
 
-export const sendResetPassword = async (
-  _: { step: number; error?: string | null },
-  formdata: FormData,
-): Promise<{ step: number; error?: string }> => {
+export const sendResetPassword = async (formdata: FormData) => {
   try {
     const email = formdata.get('email') as string
 
     const user = await prisma.user.findFirst({ where: { email } })
 
-    if (!user?.id) return { error: 'user not found', step: 1 }
+    if (!user?.id) throw new Error('User not found')
 
     const record = (await prisma.passwordReset
       .create({
@@ -90,25 +91,29 @@ export const sendResetPassword = async (
         return { step: 1, error: JSON.stringify(err) }
       })) as PasswordReset
 
-    if (!record?.id) return { error: 'error generating reset link', step: 1 }
+    if (!record?.id) throw new Error('Error generating reset link')
 
-    return await send({
+    const response = await send({
       from: 'Acme <onboarding@resend.dev>', // todo: change
       to: [email],
-      subject: 'Reset your password',
-      react: Components.ResetPasswordEmailTemplate({
+      subject: 'Coursition - Reset your password',
+      react: ResetPasswordEmailTemplate({
         link: `${process.env['NEXTAUTH_URL']}/forgot-password?secret=${record.secret}`,
       }),
     })
-      .then(() => ({ step: 2 }))
-      .catch((err) => ({ step: 1, error: JSON.stringify(err) }))
-  } catch (err) {
-    console.log({ err })
-    return { error: 'an unexpected error occured', step: 1 }
+
+    if (!response.data?.id) throw new Error('An error occured while sending email')
+
+    return { email }
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      throw new Error(err.message)
+    }
+    return null
   }
 }
 
-export const updatePassword = async (_: { message: string }, formdata: FormData): Promise<{ message: string }> => {
+export const updatePassword = async (formdata: FormData) => {
   const password = formdata.get('password') as string
   const secret = formdata.get('secret') as string
 
@@ -116,24 +121,24 @@ export const updatePassword = async (_: { message: string }, formdata: FormData)
 
   const reset = await prisma.passwordReset.findFirst({ where: { secret } })
 
-  console.log({ reset })
-
   if (reset?.id) {
-    return await Promise.all([
-      prisma.user.update({
-        where: { id: reset.userId },
-        data: {
-          password: passwordHash,
-        },
-      }),
-      prisma.passwordReset.update({
-        where: { id: reset?.id },
-        data: { is_used: true },
-      }),
-    ])
-      .then(() => ({ message: 'password successfully updated' }))
-      .catch(() => ({ message: 'An unexpected error occured' }))
+    try {
+      await Promise.all([
+        prisma.user.update({
+          where: { id: reset.userId },
+          data: {
+            password: passwordHash,
+          },
+        }),
+        prisma.passwordReset.update({
+          where: { id: reset?.id },
+          data: { is_used: true },
+        }),
+      ])
+      return { success: true }
+    } catch (err) {
+      throw new Error('Error updating password')
+    }
   }
-
-  return { message: 'Invalid user' }
+  throw new Error('Invalid user')
 }

@@ -1,37 +1,37 @@
 'use client'
 
 import { Button, Input } from '@nmit-coursition/design-system'
-import * as React from 'react'
-import { useFormState } from 'react-dom'
+import { useSignal } from '@preact/signals-react'
+import { useActionState } from 'react'
 import { toast } from 'sonner'
 import { sendResetPassword } from '../app/actions'
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-const initialState: any = {
-  step: 1,
-  error: null,
-}
+const initialState = { email: '' }
 
 export const ForgotPassword = () => {
-  const [step, setStep] = React.useState<1 | 2>(1)
-  const [email, setEmail] = React.useState('')
-  const [state, action] = useFormState(sendResetPassword, initialState)
+  const step = useSignal<1 | 2>(1)
 
-  React.useEffect(() => {
-    if (state.step) {
-      setStep(state.step)
+  const handleSubmit = async (formdata: FormData) => {
+    try {
+      await sendResetPassword(formdata)
+      step.value = 2
+      return null
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        step.value = 1
+        toast(error?.message)
+      }
+      return null
     }
+  }
 
-    if (state.error) {
-      toast(state.error)
-    }
-  }, [state.step, state.error])
+  const [state, action] = useActionState((_: unknown, formdata: FormData) => handleSubmit(formdata), initialState)
 
-  if (step === 2) {
+  if (step.value === 2) {
     return (
       <div className='container h-screen flex-col gap-2 py-12 flex items-center justify-center mx-auto'>
         <h2 className='text-[20px] font-semibold'>Check Your Email</h2>
-        <p>We've sent an email to {email} with a link to reset your password.</p>
+        <p>We've sent an email to {state?.email} with a link to reset your password.</p>
       </div>
     )
   }
@@ -40,15 +40,7 @@ export const ForgotPassword = () => {
     <div className='container h-screen flex-col gap-2 py-12 flex items-center justify-center mx-auto'>
       <h2 className='text-[20px] font-semibold'>Reset your password</h2>
       <form className='grid gap-2 w-full max-w-4xl' action={action}>
-        <Input
-          label='Email'
-          placeholder='johndoe@gmail.com'
-          id='email'
-          type='email'
-          name='email'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <Input label='Email' placeholder='johndoe@gmail.com' id='email' type='email' name='email' />
         <Button>Request Password reset</Button>
       </form>
     </div>

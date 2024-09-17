@@ -1,28 +1,30 @@
 'use client'
 
 import { Button, Input } from '@nmit-coursition/design-system'
-import * as React from 'react'
-import { useFormState } from 'react-dom'
+import { useRouter } from 'next/navigation'
+import { useActionState } from 'react'
 import { toast } from 'sonner'
 import { updatePassword } from '../app/actions'
-
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-const initialState: any = {
-  message: null,
-}
 
 interface Props {
   secret: string
 }
 
 export const UpdatePassword = ({ secret }: Props) => {
-  const [{ message }, action] = useFormState(updatePassword, initialState)
+  const router = useRouter()
 
-  React.useEffect(() => {
-    if (message) {
-      toast(message)
+  const handleSubmit = async (formdata: FormData) => {
+    try {
+      await updatePassword(formdata)
+      router.push('/sign-in')
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        toast(err.message)
+      }
     }
-  }, [message])
+  }
+
+  const [_, action] = useActionState((_: unknown, formdata: FormData) => handleSubmit(formdata), null)
 
   return (
     <div className='container h-screen flex-col gap-2 py-12 flex items-center justify-center mx-auto'>

@@ -1,17 +1,23 @@
 'use client'
 
 import { Button, Input, Textarea } from '@nmit-coursition/design-system'
-import * as React from 'react'
-import { useFormState } from 'react-dom'
+import { useActionState } from 'react'
 import { toast } from 'sonner'
 import { getInTouch } from '../app/actions'
 
 export const GetInTouch = () => {
-  const [state, action] = useFormState(getInTouch, { message: '' })
+  const handleSubmit = async (formdata: FormData) => {
+    try {
+      await getInTouch(formdata)
+      toast('Invitation successfully sent')
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        toast(err.message)
+      }
+    }
+  }
 
-  React.useEffect(() => {
-    toast.message(state.message)
-  }, [state])
+  const [_, action] = useActionState((_: unknown, formdata: FormData) => handleSubmit(formdata), null)
 
   return (
     <form className='flex flex-col gap-4' action={action}>
