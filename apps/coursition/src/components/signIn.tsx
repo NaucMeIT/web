@@ -23,7 +23,7 @@ export const SignIn = () => {
 
   React.useEffect(() => {
     if (errorMessage) {
-      toast(errorMessage)
+      toast.error(errorMessage)
     }
   }, [errorMessage])
 
