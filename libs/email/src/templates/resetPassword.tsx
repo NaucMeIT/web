@@ -1,7 +1,5 @@
-import * as React from 'react'
-
-import { Button, Heading, Html, Link, Section, Text } from '@react-email/components'
-import { buttonVariants } from '../../../ui/primitives/src'
+import { buttonVariants } from '@nmit-coursition/ui/primitives'
+import { Button, Heading, Html, Link, Section } from '@react-email/components'
 
 interface Props {
   link: string

@@ -1,5 +1,4 @@
 import { Heading, Html, Section, Text } from '@react-email/components'
-import * as React from 'react'
 
 interface Props {
   email: string
