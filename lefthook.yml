@@ -3,7 +3,7 @@ pre-commit:
   commands:
     biome:
       glob: '*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}'
-      run: bun run check:biome && git update-index
+      run: bun run check:biome {staged_files} && git update-index
     oxlint:
       glob: '*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}'
-      run: bun run check:oxlint && git update-index
+      run: bun run check:oxlint {staged_files} && git update-index

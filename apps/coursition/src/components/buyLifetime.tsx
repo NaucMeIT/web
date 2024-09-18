@@ -29,7 +29,7 @@ export const BuyLifetime = ({ className, withIcon = true, ...rest }: Props) => {
           eventHandler: (event) => {
             if (event?.event === 'Checkout.Success') {
               window.LemonSqueezy.Url.Close()
-              const lsLoaderElement = document.querySelectorAll('lemonsqueezy-loader')[0]
+              const lsLoaderElement = document.querySelectorAll('.lemonsqueezy-loader')[0]
               lsLoaderElement && document.body.removeChild(lsLoaderElement)
             }
           },
