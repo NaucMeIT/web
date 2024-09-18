@@ -1,6 +1,7 @@
 import FirecrawlApp from '@mendable/firecrawl-js'
 import { generateQuiz, getResult, getTranscript, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
-import { reportUsage, validateApiKey } from '@nmit-coursition/api/utils'
+import { formatApiErrorResponse, reportUsage, validateApiKey } from '@nmit-coursition/api/utils'
+import { type ApiErrorCode, ERROR_LIST } from '@nmit-coursition/api/utils'
 import {
   allowedDeepgramLanguagesAsType,
   allowedLlamaParseLanguagesAsType,
@@ -9,22 +10,36 @@ import {
 } from '@nmit-coursition/utils'
 import { Elysia, t } from 'elysia'
 
+const errorResponseType = t.Object({
+  state: t.String(),
+  message: t.String(),
+  code: t.Number(),
+  errorCode: t.String(),
+  correlationId: t.String(),
+  description: t.Optional(t.String()),
+})
+
 export const apiV1 = new Elysia({ prefix: '/v1' })
   .guard({
     headers: t.Object({
       authorization: t.String({ error: 'You must provide API key to use this service.' }),
     }),
     response: {
-      401: t.String(),
-      429: t.String(),
-      500: t.String(),
+      401: errorResponseType,
+      404: errorResponseType,
+      429: errorResponseType,
+      500: errorResponseType,
     },
     detail: {
       tags: ['v1'],
     },
   })
-  .onBeforeHandle(({ headers, error }) => {
-    validateApiKey(headers.authorization) && error(401, 'Provided API key is invalid.')
+  .onBeforeHandle(async ({ headers, error, set }) => {
+    const errorCode: ApiErrorCode | undefined = await validateApiKey(headers.authorization)
+    if (errorCode) {
+      set.headers['Content-Type'] = 'application/json; charset=utf8'
+      return error(ERROR_LIST[errorCode].code, formatApiErrorResponse(errorCode))
+    }
   })
   .group('/parse', (parseApp) =>
     parseApp
