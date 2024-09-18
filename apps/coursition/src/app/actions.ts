@@ -1,7 +1,7 @@
 'use server'
 
 import { send } from '@nmit-coursition/email'
-import { GetInTouchEmailTemplate, ResetPasswordEmailTemplate } from '@nmit-coursition/email/components'
+import { GetInTouchEmailTemplate, ResetPasswordEmailTemplate } from '@nmit-coursition/email'
 import { createCheckoutSession } from '@nmit-coursition/payments'
 import type { PasswordReset } from '@prisma/client'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
