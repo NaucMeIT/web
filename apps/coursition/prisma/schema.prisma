@@ -28,9 +28,10 @@ model User {
   authProvider  AuthProvider
   accounts      Account[]
   sessions      Session[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  paymentStatus  PaymentStatus @default(FREE)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  paymentStatus PaymentStatus   @default(FREE)
+  PasswordReset PasswordReset[]
 }
 
 model Account {
@@ -52,6 +53,17 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([provider, providerAccountId])
+}
+
+model PasswordReset {
+  id         String   @id
+  secret     String   @unique
+  expires_at DateTime
+  is_used    Boolean  @default(false)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Session {

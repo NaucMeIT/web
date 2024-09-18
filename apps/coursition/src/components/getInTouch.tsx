@@ -1,11 +1,26 @@
 'use client'
 
 import { Button, Input, Textarea } from '@nmit-coursition/design-system'
+import { useActionState } from 'react'
+import { toast } from 'sonner'
 import { getInTouch } from '../app/actions'
 
 export const GetInTouch = () => {
+  const handleSubmit = async (formdata: FormData) => {
+    try {
+      await getInTouch(formdata)
+      toast.success('Invitation successfully sent')
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        toast.error(err.message)
+      }
+    }
+  }
+
+  const [_, action] = useActionState((_: unknown, formdata: FormData) => handleSubmit(formdata), null)
+
   return (
-    <form className='flex flex-col gap-4' action={getInTouch}>
+    <form className='flex flex-col gap-4' action={action}>
       <div className='grid grid-cols-2 gap-6'>
         <Input
           name='email'
