@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "npx prisma generate --schema ./apps/coursition/prisma/schema.prisma",
     "check:biome": "bunx @biomejs/biome check --write --no-errors-on-unmatched --files-ignore-unknown=true",
-    "check:oxlint": "bunx oxlint@latest -D all -D nursery -A explicit-function-return-type -A no-optional-chaining -A react-in-jsx-scope -A no-rest-spread-properties -A no-ternary -A prefer-ts-expect-error -A no-async-await -A no-side-effects-in-initialization -A no-undef -A no-magic-numbers -A max-lines -A no-empty-interface -A ban-ts-comment -A filename-case -A prefer-dom-node-remove -A sort-keys -A sort-imports"
+    "check:oxlint": "bunx oxlint@latest -c oxlintrc.json --ignore-path=.oxlintignore --jsx-a11y-plugin --nextjs-plugin --react-perf-plugin --promise-plugin --node-plugin --import-plugin --tsconfig=tsconfig.base.json -D all -D nursery -A explicit-function-return-type -A no-optional-chaining -A react-in-jsx-scope -A no-rest-spread-properties -A no-ternary -A prefer-ts-expect-error -A no-async-await -A no-side-effects-in-initialization -A no-undef -A no-magic-numbers -A max-lines -A no-empty-interface -A ban-ts-comment -A filename-case -A prefer-dom-node-remove -A sort-keys -A sort-imports"
   },
   "trustedDependencies": [
     "@biomejs/biome",

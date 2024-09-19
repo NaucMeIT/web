@@ -15,13 +15,15 @@ export const ForgotPassword = () => {
     try {
       await sendResetPassword(formdata)
       step.value = 2
-      return null
+      return {
+        email: formdata.get('email') as string,
+      }
     } catch (error: unknown) {
       if (error instanceof Error) {
         step.value = 1
         toast.error(error?.message)
       }
-      return null
+      return initialState
     }
   }
 
@@ -31,7 +33,7 @@ export const ForgotPassword = () => {
     return (
       <div className='container h-screen flex-col gap-2 py-12 flex items-center justify-center mx-auto'>
         <h2 className='text-[20px] font-semibold'>Check Your Email</h2>
-        <p>We've sent an email to {state?.email} with a link to reset your password.</p>
+        <p>We&apos;ve sent an email to {state?.email} with a link to reset your password.</p>
       </div>
     )
   }

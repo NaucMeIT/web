@@ -1,7 +1,6 @@
 'use server'
 
-import { send } from '@nmit-coursition/email'
-import { GetInTouchEmailTemplate, ResetPasswordEmailTemplate } from '@nmit-coursition/email'
+import { GetInTouchEmailTemplate, ResetPasswordEmailTemplate, send } from '@nmit-coursition/email'
 import { createCheckoutSession } from '@nmit-coursition/payments'
 import type { PasswordReset } from '@prisma/client'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
@@ -50,9 +49,8 @@ export const createUser = async ({ email, password }: { email: string; password:
   }
 }
 
-// eslint-disable-next-line require-await -- todo: call resend helper
 export const getInTouch = async (formdata: FormData) => {
-  const data = Object.fromEntries(formdata) as Record<string, string>
+  const data = Object.fromEntries(formdata) as { [key: string]: string }
 
   const { email = '', firstName, lastName, comment } = data
 
@@ -63,7 +61,7 @@ export const getInTouch = async (formdata: FormData) => {
       to: [''], // company's email
       subject: 'Get In Touch',
     })
-  } catch (error) {
+  } catch {
     throw new Error("Sorry, your invitation wasn't sent")
   }
 }
@@ -87,9 +85,8 @@ export const sendResetPassword = async (formdata: FormData) => {
           userId: user.id,
         },
       })
-      .catch((err) => {
-        console.log({ err })
-        return { step: 1, error: JSON.stringify(err) }
+      .catch((error) => {
+        return { step: 1, error: JSON.stringify(error) }
       })) as PasswordReset
 
     if (!record?.id) throw new Error('Error generating reset link')
@@ -106,11 +103,11 @@ export const sendResetPassword = async (formdata: FormData) => {
     if (!response.data?.id) throw new Error('An error occured while sending email')
 
     return { email }
-  } catch (err: unknown) {
-    if (err instanceof Error) {
-      throw new Error(err.message)
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw new Error(error.message)
     }
-    return null
+    return
   }
 }
 
@@ -137,7 +134,7 @@ export const updatePassword = async (formdata: FormData) => {
         }),
       ])
       return { success: true }
-    } catch (error) {
+    } catch {
       throw new Error('Error updating password')
     }
   }

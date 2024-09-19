@@ -1,0 +1,15 @@
+{
+  "env": {
+    "browser": true
+  },
+  "settings": {},
+  "rules": {
+    "import/no-cycle": "error",
+    "react-perf/jsx-no-new-function-as-prop": "warn",
+    "react-perf/jsx-no-new-array-as-prop": "warn",
+    "import/max-dependencies": "warn",
+    "import/no-default-export": "warn",
+    "jsx-a11y/label-has-associated-control": "off",
+    "unicorn/prefer-type-error": "off"
+  }
+}
