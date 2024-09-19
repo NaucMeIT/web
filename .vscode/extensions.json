@@ -1,8 +1,9 @@
 {
   "recommendations": [
+    "vivaxy.vscode-conventional-commits",
+    "aaron-bond.better-comments",
     "nrwl.angular-console",
-    "esbenp.prettier-vscode",
-    "ms-playwright.playwright",
-    "firsttris.vscode-jest-runner"
+    "oxc.oxc-vscode",
+    "biomejs.biome"
   ]
 }

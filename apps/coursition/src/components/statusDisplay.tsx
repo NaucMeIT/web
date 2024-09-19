@@ -1,12 +1,12 @@
 import { CircleCheckIcon, LoaderIcon, MonitorStopIcon } from './icons'
 
-type State<T extends string> = {
+interface State<T extends string> {
   key: T
   text: string
 }
 
-type StatusDisplayProps<T extends string> = {
-  states: Array<State<T>>
+interface StatusDisplayProps<T extends string> {
+  states: State<T>[]
   status: NoInfer<T>
 }
 

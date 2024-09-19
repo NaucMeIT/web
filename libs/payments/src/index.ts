@@ -7,7 +7,7 @@ import type { LooseAutocomplete } from '@nmit-coursition/utils'
 const apiKey = process.env['LEMON_SQUEEZY_API_KEY'] as string
 const storeId = process.env['LEMON_SQUEEZY_STORE_ID'] as string
 
-type LemonSqueezyData = {
+interface LemonSqueezyData {
   data: {
     attributes: {
       status: 'paid' | 'unpaid' | 'pending'
@@ -21,8 +21,10 @@ type LemonSqueezyData = {
   }
 }
 
-export type Metadata = Record<string, string>
-export type WebhookEventHandlerApi = {
+export interface Metadata {
+  [key: string]: string
+}
+export interface WebhookEventHandlerApi {
   rawBody: string
   request: Request
   customData: {
@@ -47,6 +49,7 @@ export const createCheckoutSession = async (variant: string, metadata?: Metadata
     },
   })
 
+  // eslint-disable-next-line prefer-structured-clone -- have to check if it works with LemonSqueezy
   return JSON.parse(JSON.stringify(intent)) as typeof intent
 }
 
@@ -67,7 +70,7 @@ export const webhookEventHandler = async ({
     throw new Error('Invalid signature.')
   }
 
-  const data = JSON.parse(rawBody)
+  const data = await JSON.parse(rawBody)
 
   if (condition(data)) {
     callback(data.meta.custom_data?.email)

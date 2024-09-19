@@ -5,5 +5,5 @@ export const trim = (strings: TemplateStringsArray, ...values: unknown[]): strin
 }
 
 export const createSafeKey = (title: string) => {
-  return `key-${title.replace(/[^a-zA-Z0-9]/g, '-')}`
+  return `key-${title.replaceAll(/[^a-zA-Z0-9]/g, '-')}`
 }

@@ -2,7 +2,6 @@
 
 import { Button, Input } from '@nmit-coursition/design-system'
 import { useRouter } from 'next/navigation'
-import { useActionState } from 'react'
 import { toast } from 'sonner'
 import { updatePassword } from '../app/actions'
 
@@ -17,19 +16,17 @@ export const UpdatePassword = ({ secret }: Props) => {
     try {
       await updatePassword(formdata)
       router.push('/sign-in')
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        toast.error(err.message)
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message)
       }
     }
   }
 
-  const [_, action] = useActionState((_: unknown, formdata: FormData) => handleSubmit(formdata), null)
-
   return (
     <div className='container h-screen flex-col gap-2 py-12 flex items-center justify-center mx-auto'>
       <h2 className='text-xl font-semibold'>Reset your password</h2>
-      <form className='grid gap-2 w-full max-w-4xl' action={action}>
+      <form className='grid gap-2 w-full max-w-4xl' action={handleSubmit}>
         <Input label='New password' placeholder='' id='password' type='password' name='password' />
         <input name='secret' value={secret} className='hidden' />
         <Button>Update password</Button>

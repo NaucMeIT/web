@@ -6,5 +6,8 @@
       "path": "./tsconfig.lib.json"
     }
   ],
+  "compilerOptions": {
+    "jsx": "react-jsx"
+  },
   "extends": "../../../tsconfig.base.json"
 }

@@ -1,11 +1,9 @@
 pre-commit:
+  parallel: true
   commands:
-    check:
+    biome:
       glob: '*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}'
-      run: npx @biomejs/biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files} && git update-index
-
-pre-push:
-  commands:
-    check:
+      run: bun run check:biome {staged_files} && git update-index
+    oxlint:
       glob: '*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}'
-      run: npx @biomejs/biome check --no-errors-on-unmatched --files-ignore-unknown=true {push_files}
+      run: bun run check:oxlint {staged_files} && git update-index
