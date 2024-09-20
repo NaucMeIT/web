@@ -1,4 +1,4 @@
-import { prisma } from 'apps/coursition/prisma/prismaClient'
+import { prisma } from '@nmit-coursition/db'
 import { ForgotPassword } from 'apps/coursition/src/components/forgotPassword'
 import { UpdatePassword } from 'apps/coursition/src/components/updatePassword'
 
