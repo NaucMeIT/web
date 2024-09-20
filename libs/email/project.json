@@ -6,6 +6,18 @@
   "tags": [],
   "// targets": "to see all targets run: nx show project email --web",
   "targets": {
-    "dev": { "command": "email dev --dir libs/email/src/components" }
+    "dev": {
+      "command": "email dev --dir libs/email/src/components"
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "libs/email",
+        "commands": ["npx tsc --pretty --noEmit -p tsconfig.lib.json"],
+        "forwardAllArgs": false,
+        "description": "Type check with tsc"
+      },
+      "cache": true
+    }
   }
 }
