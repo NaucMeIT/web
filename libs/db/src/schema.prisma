@@ -1,0 +1,125 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum PaymentStatus {
+  FREE
+  LIFETIME
+}
+
+enum AuthProvider {
+  Google
+  Credentials
+}
+
+model User {
+  id            String        @id @default(cuid())
+  name          String?
+  email         String        @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  authProvider  AuthProvider
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  paymentStatus PaymentStatus @default(FREE)
+  accounts      Account[]
+  sessions      Session[]
+  PasswordReset PasswordReset[]
+}
+
+model Account {
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
+}
+
+model PasswordReset {
+  id         String   @id
+  secret     String   @unique
+  expires_at DateTime
+  is_used    Boolean  @default(false)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Session {
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@id([identifier, token])
+}
+
+model cas__organisation {
+  id                        Int                         @id(map: "cas__organisation_pk") @default(autoincrement())
+  name                      String                      @db.VarChar(128)
+  slug                      String                      @unique(map: "cas__organisation_slug_uindex") @db.VarChar(128)
+  description               String?
+  inserted_date             DateTime                    @db.Timestamp(6)
+  storage_used              BigInt
+  billing_period_A          BigInt
+  billing_period_B          BigInt
+  billing_period_C          BigInt
+  cas__organisation_api_key cas__organisation_api_key[]
+  cas__user                 cas__user[]
+}
+
+model cas__organisation_api_key {
+  id                BigInt            @id(map: "cas__organisation_api_key_pk") @default(autoincrement())
+  organisation_id   Int
+  api_key           String            @unique(map: "cas__organisation_api_key_api_key_uindex") @db.Char(32)
+  used_count_today  BigInt
+  user_id           BigInt
+  is_active         Boolean
+  is_deleted        Boolean
+  description       String?
+  inserted_date     DateTime          @db.Timestamp(6)
+  expiration_date   DateTime          @db.Timestamp(6)
+  last_used_date    DateTime          @db.Timestamp(6)
+  cas__organisation cas__organisation @relation(fields: [organisation_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "cas__organisation_api_key_cas__organisation_id_fk")
+  cas__user         cas__user         @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "cas__organisation_api_key_cas__user_id_fk")
+
+  @@index([organisation_id], map: "cas__organisation_api_key_organisation_id_index")
+}
+
+model cas__user {
+  id                        BigInt                      @id(map: "cas__user_pk") @default(autoincrement())
+  organisation_id           Int
+  email                     String                      @unique(map: "cas__user_email_uindex") @db.VarChar(200)
+  inserted_date             DateTime                    @db.Timestamp(6)
+  updated_date              DateTime                    @db.Timestamp(6)
+  synced_date               DateTime                    @db.Timestamp(6)
+  cas__organisation_api_key cas__organisation_api_key[]
+  cas__organisation         cas__organisation           @relation(fields: [organisation_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "cas__user_cas__organisation_id_fk")
+}
