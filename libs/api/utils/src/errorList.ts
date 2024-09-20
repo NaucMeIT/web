@@ -1,6 +1,8 @@
-export type ApiErrorCode = keyof typeof apiErrorList
+import type { ReactNode } from 'react'
 
-export type ErrorDefinition = {
+export type ApiErrorCode = keyof typeof ERROR_LIST
+
+export interface ErrorDefinition {
   message: string
   httpStatusCode?: number
   description?: string
@@ -9,7 +11,7 @@ export type ErrorDefinition = {
 
 export type ErrorDescription = NonDocumentedErrorDescription | DocumentedErrorDescription
 
-export type NonDocumentedErrorDescription = {
+export interface NonDocumentedErrorDescription {
   state: string
   message: string
   code: number

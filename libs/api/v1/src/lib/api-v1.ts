@@ -5,6 +5,7 @@ import {
   ERROR_LIST,
   errorResponseModel,
   formatApiErrorResponse,
+  reportUsage,
   validateApiKey,
 } from '@nmit-coursition/api/utils'
 import {
@@ -30,11 +31,11 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
       tags: ['v1'],
     },
   })
-  .onBeforeHandle(async ({ headers, error, set }) => {
+  .onBeforeHandle(async ({ headers, error: errorFn, set }) => {
     const errorCode: ApiErrorCode | undefined = await validateApiKey(headers.authorization)
     if (errorCode) {
       set.headers['Content-Type'] = 'application/json; charset=utf8'
-      return error(ERROR_LIST[errorCode].code, formatApiErrorResponse(errorCode))
+      return errorFn(ERROR_LIST[errorCode].code, formatApiErrorResponse(errorCode))
     }
   })
   .group('/parse', (parseApp) =>
@@ -73,9 +74,8 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
             }),
           },
           afterResponse({ response, headers }) {
-            // ! Elysia infers incorrect response (including status code as a key)
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const duration = (response as any)?.duration
+            if (response && !('duration' in response)) return
+            const duration = response?.duration || 0
             duration >= 0 && reportUsage(headers.authorization, duration, 'video')
           },
         },
@@ -111,9 +111,8 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
             }),
           },
           afterResponse({ response, headers }) {
-            // ! Elysia infers incorrect response (including status code as a key)
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const credits = (response as any)?.credits
+            if (response && !('credits' in response)) return
+            const credits = response?.credits || 0
             credits >= 0 && reportUsage(headers.authorization, credits, 'document')
           },
         },
@@ -154,9 +153,8 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
             }),
           },
           afterResponse({ response, headers }) {
-            // ! Elysia infers incorrect response (including status code as a key)
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const credits = (response as any)?.credits
+            if (response && !('credits' in response)) return
+            const credits = response?.credits || 0
             credits >= 0 && reportUsage(headers.authorization, credits, 'web')
           },
         },

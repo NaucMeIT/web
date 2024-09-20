@@ -66,7 +66,11 @@ export const webhookEventHandler = async ({
   const digest = Buffer.from(hmac.update(rawBody).digest('hex'), 'hex')
   const signature = Buffer.from(request.headers.get('X-Signature') || '', 'hex')
 
-  if (!crypto.timingSafeEqual(digest, signature)) {
+  // Convert Buffer to Uint8Array
+  const digestArray = new Uint8Array(digest)
+  const signatureArray = new Uint8Array(signature)
+
+  if (!crypto.timingSafeEqual(digestArray, signatureArray)) {
     throw new Error('Invalid signature.')
   }
 
