@@ -67,7 +67,7 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@babel/preset-react": "^7.24.7",
-    "@biomejs/biome": "1.8.2",
+    "@biomejs/biome": "1.9.2",
     "@nx-extend/shadcn-ui": "^3.1.2",
     "@nx-tools/nx-container": "^6.0.2",
     "@nx/devkit": "19.6.1",
