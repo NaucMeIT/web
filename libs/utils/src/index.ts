@@ -1,3 +1,4 @@
+export * from './date'
 export * from './string'
 export * from './languages'
 export * from './common'

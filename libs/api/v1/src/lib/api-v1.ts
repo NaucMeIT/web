@@ -1,6 +1,12 @@
 import FirecrawlApp from '@mendable/firecrawl-js'
 import { generateQuiz, getResult, getTranscript, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
-import { reportUsage, validateApiKey } from '@nmit-coursition/api/utils'
+import {
+  type ApiErrorCode,
+  ERROR_LIST,
+  errorResponseModel,
+  formatApiErrorResponse,
+  validateApiKey,
+} from '@nmit-coursition/api/utils'
 import {
   allowedDeepgramLanguagesAsType,
   allowedLlamaParseLanguagesAsType,
@@ -15,16 +21,21 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
       authorization: t.String({ error: 'You must provide API key to use this service.' }),
     }),
     response: {
-      401: t.String(),
-      429: t.String(),
-      500: t.String(),
+      401: errorResponseModel,
+      404: errorResponseModel,
+      429: errorResponseModel,
+      500: errorResponseModel,
     },
     detail: {
       tags: ['v1'],
     },
   })
-  .onBeforeHandle(({ headers, error }) => {
-    validateApiKey(headers.authorization) && error(401, 'Provided API key is invalid.')
+  .onBeforeHandle(async ({ headers, error, set }) => {
+    const errorCode: ApiErrorCode | undefined = await validateApiKey(headers.authorization)
+    if (errorCode) {
+      set.headers['Content-Type'] = 'application/json; charset=utf8'
+      return error(ERROR_LIST[errorCode].code, formatApiErrorResponse(errorCode))
+    }
   })
   .group('/parse', (parseApp) =>
     parseApp

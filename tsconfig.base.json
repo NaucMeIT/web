@@ -30,6 +30,7 @@
     "incremental": true,
     "paths": {
       "@nmit-coursition/ai": ["libs/ai/src/index.ts"],
+      "@nmit-coursition/api/dev": ["libs/api/dev/src/index.ts"],
       "@nmit-coursition/api/utils": ["libs/api/utils/src/index.ts"],
       "@nmit-coursition/api/v1": ["libs/api/v1/src/index.ts"],
       "@nmit-coursition/db": ["libs/db/src/index.ts"],

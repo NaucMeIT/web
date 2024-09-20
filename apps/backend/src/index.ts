@@ -1,4 +1,5 @@
 import { swagger } from '@elysiajs/swagger'
+import { apiDev } from '@nmit-coursition/api/dev'
 import { apiV1 } from '@nmit-coursition/api/v1'
 import { Elysia } from 'elysia'
 
@@ -23,4 +24,5 @@ new Elysia()
     }),
   )
   .use(apiV1)
+  .use(apiDev)
   .listen(3000)
