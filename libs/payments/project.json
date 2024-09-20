@@ -5,5 +5,16 @@
   "projectType": "library",
   "tags": [],
   "// targets": "to see all targets run: nx show project payments --web",
-  "targets": {}
+  "targets": {
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "libs/payments",
+        "commands": ["npx tsc --pretty --noEmit -p tsconfig.lib.json"],
+        "forwardAllArgs": false,
+        "description": "Type check with tsc"
+      },
+      "cache": true
+    }
+  }
 }

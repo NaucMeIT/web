@@ -7,6 +7,16 @@
   "targets": {
     "add-component": {
       "executor": "@nx-extend/shadcn-ui:add"
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "libs/ui/primitives",
+        "commands": ["npx tsc --pretty --noEmit -p tsconfig.lib.json"],
+        "forwardAllArgs": false,
+        "description": "Type check with tsc"
+      },
+      "cache": true
     }
   }
 }
