@@ -1,7 +1,12 @@
 import FirecrawlApp from '@mendable/firecrawl-js'
 import { generateQuiz, getResult, getTranscript, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
-import { formatApiErrorResponse, reportUsage, validateApiKey } from '@nmit-coursition/api/utils'
-import { type ApiErrorCode, ERROR_LIST } from '@nmit-coursition/api/utils'
+import {
+  type ApiErrorCode,
+  ERROR_LIST,
+  errorResponseModel,
+  formatApiErrorResponse,
+  validateApiKey,
+} from '@nmit-coursition/api/utils'
 import {
   allowedDeepgramLanguagesAsType,
   allowedLlamaParseLanguagesAsType,
@@ -10,25 +15,16 @@ import {
 } from '@nmit-coursition/utils'
 import { Elysia, t } from 'elysia'
 
-const errorResponseType = t.Object({
-  state: t.String(),
-  message: t.String(),
-  code: t.Number(),
-  errorCode: t.String(),
-  correlationId: t.String(),
-  description: t.Optional(t.String()),
-})
-
 export const apiV1 = new Elysia({ prefix: '/v1' })
   .guard({
     headers: t.Object({
       authorization: t.String({ error: 'You must provide API key to use this service.' }),
     }),
     response: {
-      401: errorResponseType,
-      404: errorResponseType,
-      429: errorResponseType,
-      500: errorResponseType,
+      401: errorResponseModel,
+      404: errorResponseModel,
+      429: errorResponseModel,
+      500: errorResponseModel,
     },
     detail: {
       tags: ['v1'],

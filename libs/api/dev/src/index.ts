@@ -1,1 +1,1 @@
-export * from './lib/api-dev'
+export * from './api-dev'

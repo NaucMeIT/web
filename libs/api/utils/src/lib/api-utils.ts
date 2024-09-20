@@ -1,5 +1,5 @@
+import { prisma } from '@nmit-coursition/db'
 import { isDateBeforeNow } from '@nmit-coursition/utils'
-import { prisma } from 'apps/coursition/prisma/prismaClient'
 import { parseApiKey } from '../api'
 import type { ApiErrorCode } from '../errorList'
 
