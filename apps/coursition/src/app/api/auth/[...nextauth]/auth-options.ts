@@ -1,5 +1,5 @@
 import { PrismaAdapter } from '@auth/prisma-adapter'
-import { prisma } from 'apps/coursition/prisma/prismaClient'
+import { prisma } from '@nmit-coursition/db'
 import bcrypt from 'bcryptjs'
 import type { NextAuthOptions, User } from 'next-auth'
 import type { Adapter } from 'next-auth/adapters'

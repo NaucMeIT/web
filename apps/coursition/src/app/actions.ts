@@ -1,10 +1,10 @@
 'use server'
 
+import { prisma } from '@nmit-coursition/db'
 import { GetInTouchEmailTemplate, ResetPasswordEmailTemplate, send } from '@nmit-coursition/email'
 import { createCheckoutSession } from '@nmit-coursition/payments'
 import type { PasswordReset } from '@prisma/client'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
-import { prisma } from 'apps/coursition/prisma/prismaClient'
 import bcrypt from 'bcryptjs'
 import { nanoid } from 'nanoid'
 import { getServerSession } from 'next-auth'
