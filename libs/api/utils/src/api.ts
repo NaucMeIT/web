@@ -1,5 +1,5 @@
-import { v4 as uuidv4 } from 'uuid'
-import type { ApiErrorCode, ApiErrorResponse, ErrorDescription } from './errorList'
+import { generateRandomIdentifier } from '../../../utils/src/random'
+import type { ApiErrorCode, ApiErrorMessageRaw, ApiErrorResponse, ErrorDefinition } from './errorList'
 import { ERROR_LIST } from './errorList'
 
 type KeyType = 'PROD' | 'DEV' | 'ROOT'
@@ -8,21 +8,31 @@ type ValidResult = { isValid: false } | { isValid: true; type: KeyType }
 
 export function parseApiKey(apiKey: string): ValidResult {
   const parse = apiKey.match(/^(PROD|DEV_|ROOT)([a-zA-Z0-9]{28})$/)
-  return parse ? { isValid: true, type: parse[1].replace('_', '') as KeyType } : { isValid: false }
+  return parse ? { isValid: true, type: (parse[1] || '').replace('_', '') as KeyType } : { isValid: false }
 }
 
 export function formatApiErrorResponse(
-  errorCode: ApiErrorCode,
-  errorDetails?: Partial<ErrorDescription>,
+  errorCode: ApiErrorCode | ApiErrorMessageRaw,
+  errorDetails?: { [key: string]: string | number | boolean },
 ): ApiErrorResponse {
-  const errorDefinition = ERROR_LIST[errorCode]
+  const errorCodeResolved: ApiErrorCode = isApiErrorCode(errorCode) ? errorCode : 'PUBLIC_COMMON_RAW_ERROR'
+  const { message, code, description }: ErrorDefinition = ERROR_LIST[errorCodeResolved]
+
   return {
     state: 'error',
-    message: errorDefinition.message,
-    code: errorDefinition.code,
-    errorCode,
-    correlationId: uuidv4(),
-    description: errorDefinition.description,
+    message: ERROR_LIST[errorCode as keyof typeof ERROR_LIST] ? message : errorCode,
+    code: code || 500,
+    errorCode: errorCodeResolved,
+    correlationId: getRequestId(),
+    description,
     ...errorDetails,
   }
+}
+
+function isApiErrorCode(code: string): code is ApiErrorCode {
+  return code in ERROR_LIST
+}
+
+function getRequestId(): string {
+  return generateRandomIdentifier()
 }

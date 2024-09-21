@@ -1,33 +1,33 @@
-import type { ReactNode } from 'react'
-
 export type ApiErrorCode = keyof typeof ERROR_LIST
 
+export type ApiErrorMessageRaw = `${string}`
+
 export interface ErrorDefinition {
-  message: string
-  httpStatusCode?: number
+  message: ApiErrorMessageRaw
+  code?: number
   description?: string
-  troubleshoot?: ReactNode[]
+  troubleshoot?: string[]
 }
 
-export type ErrorDescription = NonDocumentedErrorDescription | DocumentedErrorDescription
-
-export interface NonDocumentedErrorDescription {
+export interface DocumentedErrorDescription {
   state: string
-  message: string
+  message: ApiErrorMessageRaw
   code: number
-}
-
-export type DocumentedErrorDescription = NonDocumentedErrorDescription & {
-  errorCode: string
+  errorCode: ApiErrorCode
+  description?: string
   hint?: string
-  documentationUrl: string
 }
 
-export type ApiErrorResponse = ErrorDescription & {
+export type ApiErrorResponse = DocumentedErrorDescription & {
   correlationId: string
 }
 
 export const ERROR_LIST = {
+  PUBLIC_COMMON_RAW_ERROR: {
+    code: 500,
+    message: 'Common raw error.',
+    description: 'This is a general error for which there is no direct documentation. Please follow the error message.',
+  },
   PUBLIC_API_KEY_DOES_NOT_EXIST: {
     code: 401,
     message: 'Organisation API key does not exist or is broken.',
