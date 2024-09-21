@@ -4,6 +4,6 @@ export const trim = (strings: TemplateStringsArray, ...values: unknown[]): strin
   return spaceTrim(String.raw({ raw: strings }, ...values))
 }
 
-export const createSafeKey = (title: string) => {
+export function createSafeKey(title: string) {
   return `key-${title.replaceAll(/[^a-zA-Z0-9]/g, '-')}`
 }

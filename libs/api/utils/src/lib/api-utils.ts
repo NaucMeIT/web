@@ -22,9 +22,10 @@ export async function validateApiKey(apiKey: string): Promise<ApiErrorCode | und
   if (isDateBeforeNow(key.expiration_date)) return 'PUBLIC_API_KEY_HAS_BEEN_EXPIRED'
 
   await incrementKeyUsage(key.id)
+  return
 }
 
-async function incrementKeyUsage(keyId: number) {
+async function incrementKeyUsage(keyId: bigint) {
   await prisma.$executeRaw`
     UPDATE cas__organisation_api_key
     SET used_count_today = used_count_today + 1

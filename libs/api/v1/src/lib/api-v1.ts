@@ -35,7 +35,7 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
     const errorCode: ApiErrorCode | undefined = await validateApiKey(headers.authorization)
     if (errorCode) {
       set.headers['Content-Type'] = 'application/json; charset=utf8'
-      return errorFn(ERROR_LIST[errorCode].code, formatApiErrorResponse(errorCode))
+      throw errorFn(ERROR_LIST[errorCode].code, formatApiErrorResponse(errorCode))
     }
   })
   .group('/parse', (parseApp) =>
@@ -95,7 +95,10 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
               credits,
             }
           } catch (error) {
-            return errorFn(500, `Something went wrong while processing your document. Details: ${error}`)
+            return errorFn(
+              500,
+              formatApiErrorResponse(`Something went wrong while processing your document. Details: ${error}`),
+            )
           }
         },
         {
@@ -128,10 +131,10 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
           })
 
           if (!scrapeResponse.success) {
-            return error(500, scrapeResponse.error)
+            return error(500, formatApiErrorResponse(scrapeResponse.error))
           }
           if (!scrapeResponse.markdown) {
-            return error(500, 'Content of the page is empty.')
+            return error(500, formatApiErrorResponse('Content of the page is empty.'))
           }
 
           return {
@@ -173,7 +176,7 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
           })
           return quiz
         } catch (error) {
-          return errorFn(500, `Error generating quiz: ${error}`)
+          return errorFn(500, formatApiErrorResponse(`Error generating quiz: ${error}`))
         }
       },
       {
