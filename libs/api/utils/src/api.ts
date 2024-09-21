@@ -1,4 +1,4 @@
-import { generateRandomIdentifier } from '../../../utils/src/random'
+import { generateRandomIdentifier } from '@nmit-coursition/utils'
 import type { ApiErrorCode, ApiErrorMessageRaw, ApiErrorResponse, ErrorDefinition } from './errorList'
 import { ERROR_LIST } from './errorList'
 
