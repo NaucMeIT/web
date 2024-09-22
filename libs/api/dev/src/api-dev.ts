@@ -1,8 +1,10 @@
 import {
   type ApiErrorCode,
   ERROR_LIST,
+  computeUsage,
   errorResponseModel,
   formatApiErrorResponse,
+  reportSpend,
   validateApiKey,
 } from '@nmit-coursition/api/utils'
 import { Elysia, t } from 'elysia'
@@ -29,4 +31,9 @@ export const apiDev = new Elysia({ prefix: '/dev' })
       throw error(ERROR_LIST[errorCode].code, formatApiErrorResponse(errorCode))
     }
   })
-  .get('/ping', 'PONG')
+  .get('/ping', () => ({ status: 'PONG' }), {
+    afterResponse: () => reportSpend({}),
+  })
+  .get('/report-usage', async () => await computeUsage({ organisationId: 1 }), {
+    afterResponse: () => reportSpend({}),
+  })
