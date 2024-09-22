@@ -1,8 +1,9 @@
 import { prisma } from '@nmit-coursition/db'
 import { isDateBeforeNow } from '@nmit-coursition/utils'
+import { Prisma } from '@prisma/client'
 import { parseApiKey } from '../api'
 import type { ApiErrorCode } from '../errorList'
-import type { ApiKeyReportUsageRequest } from '../typescript'
+import type { ApiKeyReportUsageRequest, ApiUsageReport, ApiUsageRequest } from '../typescript'
 
 let API_KEY_TO_ID_CACHE: { [key: string]: bigint } = {}
 
@@ -61,6 +62,41 @@ export async function resolveApiKeyIdByKey(apiKey: string): Promise<bigint> {
   API_KEY_TO_ID_CACHE[apiKey] = selectedKey.id
 
   return selectedKey.id
+}
+
+export async function computeUsage(r: ApiUsageRequest): Promise<ApiUsageReport[]> {
+  const keyIds = await resolveUsageKeyIds(r)
+  const spendRaw = await prisma.$queryRaw<ApiUsageReport[]>`
+   SELECT
+     u.operation_class AS operation,
+     SUM(u.spend) AS spend,
+     COUNT(u.spend) AS operations
+   FROM core__api_key_usage u
+   WHERE u.key_id IN (${Prisma.join(keyIds)})
+   GROUP BY u.operation_class`;
+
+  return spendRaw.map(
+    (record): ApiUsageReport => ({
+      operation: record.operation,
+      spend: Number(record.spend),
+      operations: Number(record.operations),
+    }),
+  )
+}
+
+async function resolveUsageKeyIds(r: ApiUsageRequest): Promise<bigint[]> {
+  if (!('apiKey' in r || 'userId' in r || 'organisationId' in r)) return []
+
+  const keyListRaw = await prisma.cas__organisation_api_key.findMany({
+    select: { id: true },
+    where: {
+      ...('apiKey' in r ? { api_key: r.apiKey } : {}),
+      ...('userId' in r ? { user_id: r.userId } : {}),
+      ...('organisationId' in r ? { organisation_id: r.organisationId } : {}),
+    },
+  });
+
+  return keyListRaw.map((key) => key.id)
 }
 
 async function incrementKeyUsage(keyId: bigint) {

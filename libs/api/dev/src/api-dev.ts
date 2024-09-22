@@ -1,6 +1,7 @@
 import {
   type ApiErrorCode,
   ERROR_LIST,
+  computeUsage,
   errorResponseModel,
   formatApiErrorResponse,
   reportSpend,
@@ -31,5 +32,8 @@ export const apiDev = new Elysia({ prefix: '/dev' })
     }
   })
   .get('/ping', () => ({ status: 'PONG' }), {
+    afterResponse: () => reportSpend({}),
+  })
+  .get('/report-usage', async () => await computeUsage({ organisationId: 1 }), {
     afterResponse: () => reportSpend({}),
   })
