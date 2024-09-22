@@ -15,5 +15,5 @@ export interface ApiUsageReport {
 
 export type ApiUsageRequest = ({ organisationId: number } | { userId: number } | { apiKey: string }) & {
   dateFrom?: Date
-  dateTo: Date
+  dateTo?: Date
 }
