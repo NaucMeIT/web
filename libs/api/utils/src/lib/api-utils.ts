@@ -1,6 +1,5 @@
-import { prisma } from '@nmit-coursition/db'
+import { Prisma, prisma } from '@nmit-coursition/db'
 import { isDateBeforeNow } from '@nmit-coursition/utils'
-import { Prisma } from '@prisma/client'
 import { parseApiKey } from '../api'
 import type { ApiErrorCode } from '../errorList'
 import type { ApiKeyReportUsageRequest, ApiUsageReport, ApiUsageRequest } from '../typescript'
@@ -73,7 +72,7 @@ export async function computeUsage(r: ApiUsageRequest): Promise<ApiUsageReport[]
      COUNT(u.spend) AS operations
    FROM core__api_key_usage u
    WHERE u.key_id IN (${Prisma.join(keyIds)})
-   GROUP BY u.operation_class`;
+   GROUP BY u.operation_class`
 
   return spendRaw.map(
     (record): ApiUsageReport => ({
@@ -94,7 +93,7 @@ async function resolveUsageKeyIds(r: ApiUsageRequest): Promise<bigint[]> {
       ...('userId' in r ? { user_id: r.userId } : {}),
       ...('organisationId' in r ? { organisation_id: r.organisationId } : {}),
     },
-  });
+  })
 
   return keyListRaw.map((key) => key.id)
 }
