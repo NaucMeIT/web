@@ -6,17 +6,23 @@ import type { ApiKeyReportUsageRequest } from '../typescript'
 
 let API_KEY_TO_ID_CACHE: { [key: string]: bigint } = {}
 
+let API_KEY_CONTEXT: string | undefined
+
 export function reportUsage(apiKey: string, duration: number, type: 'video' | 'document' | 'web') {
   // eslint-disable-next-line no-console -- will be replaced with real usage reporting
   console.log(`API Key ${apiKey} used ${duration} on ${type}.`)
 }
 
 export async function reportSpend({ apiKey, operationClass, spend, metaData }: ApiKeyReportUsageRequest) {
+  const key = apiKey || API_KEY_CONTEXT
+  if (!key) throw new Error(`API key context has not been set. Please define apiKey.`)
+
   // eslint-disable-next-line no-console debug info
   console.log(`🚀 Spend report (${operationClass || 'A'}): ${spend || 1}`)
+
   await prisma.core__api_key_usage.create({
     data: {
-      key_id: await resolveApiKeyIdByKey(apiKey),
+      key_id: await resolveApiKeyIdByKey(key),
       operation_class: operationClass || 'A',
       spend: Number(spend || 1),
       inserted_date: new Date(),
@@ -38,6 +44,7 @@ export async function validateApiKey(apiKey: string): Promise<ApiErrorCode | und
   if (!key.is_active) return 'PUBLIC_API_KEY_IS_NOT_ACTIVE'
   if (isDateBeforeNow(key.expiration_date)) return 'PUBLIC_API_KEY_HAS_BEEN_EXPIRED'
   API_KEY_TO_ID_CACHE[apiKey] = key.id
+  API_KEY_CONTEXT = apiKey
 
   await incrementKeyUsage(key.id)
   return

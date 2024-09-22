@@ -1,5 +1,5 @@
 export interface ApiKeyReportUsageRequest {
-  apiKey: string
+  apiKey?: string
   operationClass?: 'A' | 'B' | 'C'
   spend?: number | bigint
   metaData?: object

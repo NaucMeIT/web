@@ -31,7 +31,5 @@ export const apiDev = new Elysia({ prefix: '/dev' })
     }
   })
   .get('/ping', () => ({ status: 'PONG' }), {
-    afterResponse: async ({ headers }) => {
-      await reportSpend({ apiKey: headers.authorization })
-    },
+    afterResponse: () => reportSpend({}),
   })
