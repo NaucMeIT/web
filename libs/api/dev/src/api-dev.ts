@@ -3,6 +3,7 @@ import {
   ERROR_LIST,
   errorResponseModel,
   formatApiErrorResponse,
+  reportSpend,
   validateApiKey,
 } from '@nmit-coursition/api/utils'
 import { Elysia, t } from 'elysia'
@@ -29,4 +30,8 @@ export const apiDev = new Elysia({ prefix: '/dev' })
       throw error(ERROR_LIST[errorCode].code, formatApiErrorResponse(errorCode))
     }
   })
-  .get('/ping', 'PONG')
+  .get('/ping', () => ({ status: 'PONG' }), {
+    afterResponse: async ({ headers }) => {
+      await reportSpend({ apiKey: headers.authorization })
+    },
+  })
