@@ -9,5 +9,6 @@ declare const globalThis: {
 } & typeof global
 
 export const prisma = globalThis.prismaGlobal ?? prismaClientSingleton()
+export { Prisma } from '@prisma/client'
 
-if (process.env.NODE_ENV !== 'production') globalThis.prismaGlobal = prisma
+if (process.env['NODE_ENV'] !== 'production') globalThis.prismaGlobal = prisma

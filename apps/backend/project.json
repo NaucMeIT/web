@@ -38,6 +38,16 @@
       "options": {
         "command": "cross-env NODE_ENV=production bun apps/backend/dist/index.js"
       }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/backend",
+        "commands": ["npx tsc --pretty --noEmit -p tsconfig.json"],
+        "forwardAllArgs": false,
+        "description": "Type check with tsc"
+      },
+      "cache": true
     }
   }
 }
