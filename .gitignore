@@ -54,3 +54,6 @@ coursition-storage.json
 
 # Prisma
 generated
+
+# Aider
+.aider*
