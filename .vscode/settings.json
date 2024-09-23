@@ -1,3 +1,6 @@
 {
-  "conventionalCommits.scopes": ["nx", "ui", "deps", "lint", "ai", "db", "legacy", "api"]
+  "conventionalCommits.scopes": ["nx", "ui", "deps", "lint", "ai", "db", "legacy", "api"],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
 }

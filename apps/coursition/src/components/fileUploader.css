@@ -1,0 +1,37 @@
+.filepond--root {
+  @apply !font-sans;
+
+  .filepond--panel-root {
+    @apply rounded border border-gray-200 bg-white;
+  }
+
+  .filepond--drop-label {
+    @apply text-sm text-gray-400;
+  }
+
+  .filepond--drip {
+    @apply opacity-100;
+  }
+
+  .filepond--drip-blob {
+    @apply bg-blue-50;
+  }
+
+  .filepond--file-action-button {
+    @apply bg-blue-700;
+  }
+
+  .filepond--item-panel {
+    @apply bg-gray-500;
+  }
+
+  [data-filepond-item-state*='error'] .filepond--item-panel,
+  [data-filepond-item-state*='invalid'] .filepond--item-panel {
+    @apply bg-red-600;
+  }
+
+  [data-filepond-item-state='processing-complete'] .filepond--item-panel,
+  [data-filepond-item-state='idle'] .filepond--item-panel {
+    @apply bg-blue-400;
+  }
+}
