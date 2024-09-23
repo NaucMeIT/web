@@ -1,7 +1,7 @@
 {
   "name": "@nmit-coursition/source",
   "version": "0.0.0",
-  "license": "MIT",
+  "license": "FSL",
   "private": true,
   "scripts": {
     "postinstall": "npx prisma generate --schema ./libs/db/src/schema.prisma",
