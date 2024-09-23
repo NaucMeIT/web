@@ -1,6 +1,6 @@
 import FirecrawlApp from '@mendable/firecrawl-js'
 import { generateQuiz, getResult, getTranscript, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
-import { bootApiRequest, errorResponseModel, formatApiErrorResponse, reportUsage } from '@nmit-coursition/api/utils'
+import { apiCommonGuard, formatApiErrorResponse, reportUsage } from '@nmit-coursition/api/utils'
 import {
   allowedDeepgramLanguagesAsType,
   allowedLlamaParseLanguagesAsType,
@@ -10,18 +10,7 @@ import {
 import { Elysia, t } from 'elysia'
 
 export const apiV1 = new Elysia({ prefix: '/v1' })
-  .guard({
-    response: {
-      401: errorResponseModel,
-      404: errorResponseModel,
-      429: errorResponseModel,
-      500: errorResponseModel,
-    },
-    detail: {
-      tags: ['v1'],
-    },
-  })
-  .onBeforeHandle((handler) => bootApiRequest(handler))
+  .use(apiCommonGuard)
   .group('/parse', (parseApp) =>
     parseApp
       .post(

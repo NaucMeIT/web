@@ -1,29 +1,37 @@
 import { Prisma, prisma } from '@nmit-coursition/db'
 import { generateRandomIdentifier, isDateBeforeNow } from '@nmit-coursition/utils'
+import { Elysia } from 'elysia'
 import { formatApiErrorResponse, parseApiKey } from '../api'
 import type { ApiErrorCode } from '../errorList'
 import { ERROR_LIST } from '../errorList'
-import type {
-  ApiKeyReportUsageRequest,
-  ApiUsageReport,
-  ApiUsageRequest,
-  BootApiHandlers,
-  ExtendedRequest,
-} from '../typescript'
+import { errorResponseModel } from '../model'
+import type { ApiKeyReportUsageRequest, ApiUsageReport, ApiUsageRequest, ExtendedRequest } from '../typescript'
 
 let API_KEY_TO_ID_CACHE: { [key: string]: bigint } = {}
 
-export async function bootApiRequest({ headers, request: r, error, set }: BootApiHandlers) {
-  const request = r as ExtendedRequest
-  request.requestId = generateRandomIdentifier()
-  request.apiKey = String(headers['authorization'] || '')
+export const apiCommonGuard = new Elysia().guard({
+  as: 'global',
+  response: {
+    401: errorResponseModel,
+    404: errorResponseModel,
+    429: errorResponseModel,
+    500: errorResponseModel,
+  },
+  detail: {
+    tags: ['v1'],
+  },
+  beforeHandle: async ({ headers, request: r, error, set }) => {
+    const request = r as ExtendedRequest
+    request.requestId = generateRandomIdentifier()
+    request.apiKey = String(headers['authorization'] || '')
 
-  const errorCode: ApiErrorCode | undefined = await validateApiKey(request.apiKey)
-  if (errorCode) {
-    set.headers['Content-Type'] = 'application/json; charset=utf8'
-    throw error(ERROR_LIST[errorCode].code, formatApiErrorResponse(request, errorCode))
-  }
-}
+    const errorCode: ApiErrorCode | undefined = await validateApiKey(request.apiKey)
+    if (errorCode) {
+      set.headers['Content-Type'] = 'application/json; charset=utf8'
+      throw error(ERROR_LIST[errorCode].code, formatApiErrorResponse(request, errorCode))
+    }
+  },
+})
 
 export function reportUsage(apiKey: string, duration: number, type: 'video' | 'document' | 'web') {
   // eslint-disable-next-line no-console -- will be replaced with real usage reporting
