@@ -1,4 +1,3 @@
-import { generateRandomIdentifier } from '@nmit-coursition/utils'
 import type { ApiErrorCode, ApiErrorMessageRaw, ApiErrorResponse, ErrorDefinition } from './errorList'
 import { ERROR_LIST } from './errorList'
 
@@ -12,6 +11,7 @@ export function parseApiKey(apiKey: string): ValidResult {
 }
 
 export function formatApiErrorResponse(
+  request: Request,
   errorCode: ApiErrorCode | ApiErrorMessageRaw,
   errorDetails?: { [key: string]: string | number | boolean },
 ): ApiErrorResponse {
@@ -23,7 +23,7 @@ export function formatApiErrorResponse(
     message: ERROR_LIST[errorCode as keyof typeof ERROR_LIST] ? message : errorCode,
     code: code || 500,
     errorCode: errorCodeResolved,
-    correlationId: getRequestId(),
+    correlationId: String('requestId' in request ? request.requestId : ''),
     description,
     ...errorDetails,
   }
@@ -31,8 +31,4 @@ export function formatApiErrorResponse(
 
 function isApiErrorCode(code: string): code is ApiErrorCode {
   return code in ERROR_LIST
-}
-
-function getRequestId(): string {
-  return generateRandomIdentifier()
 }
