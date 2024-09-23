@@ -33,6 +33,7 @@
       "@nmit-coursition/api/dev": ["libs/api/dev/src/index.ts"],
       "@nmit-coursition/api/utils": ["libs/api/utils/src/index.ts"],
       "@nmit-coursition/api/v1": ["libs/api/v1/src/index.ts"],
+      "@nmit-coursition/auth": ["libs/auth/src/index.ts"],
       "@nmit-coursition/db": ["libs/db/src/index.ts"],
       "@nmit-coursition/design-system": ["libs/ui/design-system/src/index.ts"],
       "@nmit-coursition/email": ["libs/email/src/index.ts"],
