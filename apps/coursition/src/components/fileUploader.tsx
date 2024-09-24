@@ -5,30 +5,26 @@ import * as React from 'react'
 import * as ReactFilePond from 'react-filepond'
 import { toast } from 'sonner'
 
-interface ServerFileMetadata {
-  url: string
-  name: string
-  size: number
-  type: string
-}
+/** Walkaround, the creators of react-filepond promised to use the navive file object soon */
+export type ActualFileObject = Blob & { readonly lastModified: number; readonly name: string }
 
-interface Props extends React.ComponentPropsWithRef<typeof ReactFilePond.FilePond> {
+interface Props<T = ActualFileObject> extends React.ComponentPropsWithRef<typeof ReactFilePond.FilePond> {
   labelIdle?: string
-  value?: readonly ServerFileMetadata[]
-  onChange?: (setFiles: (prevFiles: ServerFileMetadata[]) => ServerFileMetadata[]) => void
+  value: readonly T[]
+  onChange: React.Dispatch<React.SetStateAction<T[]>>
 }
 
-export const FileUploader = ({ labelIdle = 'Drag and drop a file here or click', value, onChange }: Props) => {
+export const FileUploader = ({ labelIdle = 'Drag and drop a file here or click', value, onChange, ...rest }: Props) => {
   const [files, setFiles] = React.useState<ReactFilePond.FilePondProps['files']>(
     value?.map((file) => ({
-      source: file.url,
+      source: file.name,
       options: {
         type: 'local',
-        metadata: { url: file.url },
+        metadata: { name: file.name },
         file: {
           name: file.name,
-          url: file.url,
           type: file.type,
+          size: file.size,
         },
       },
     })),
@@ -40,18 +36,19 @@ export const FileUploader = ({ labelIdle = 'Drag and drop a file here or click',
       credits={false}
       forceRevert={false}
       files={files}
-      onupdatefiles={(newFiles) => setFiles(newFiles.map((newFile) => newFile.file))}
+      onupdatefiles={(newFiles) => {
+        setFiles(newFiles.map((newFile) => newFile.file))
+        onChange?.(newFiles.map((newFile) => newFile.file))
+      }}
       onprocessfile={(error, file) => {
-        if (error?.type) return toast.error(error.body)
-        return onChange?.((files) => [
-          ...files,
-          { name: file.filename, size: file.fileSize, type: file.fileType, url: file.serverId },
-        ])
+        if (error?.type) toast.error(error.body)
+        return onChange?.((prev) => [...prev, file.source as ActualFileObject])
       }}
       onremovefile={(error, file) => {
         if (error?.code) return toast.error(error.body)
-        return onChange?.((prev) => prev.filter((el) => el.url !== file.getMetadata('url')))
+        return onChange?.((prev) => prev.filter((el) => el.name !== file.filename))
       }}
+      {...rest}
     />
   )
 }

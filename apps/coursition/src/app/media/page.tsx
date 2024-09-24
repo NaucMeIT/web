@@ -3,13 +3,13 @@
 import { getTranscript } from '@nmit-coursition/ai'
 import { Accordion, Button, Textarea } from '@nmit-coursition/design-system'
 import { useSignal } from '@preact/signals-react/runtime'
-import React, { useActionState } from 'react'
+import React, { useActionState, useState } from 'react'
 import { z } from 'zod'
 import { zfd } from 'zod-form-data'
+import { type ActualFileObject, FileUploader } from '../../components/fileUploader'
 import { StatusDisplay } from '../../components/statusDisplay'
 
-const acceptedMediaFileTypes = 'video/*,audio/*'
-const acceptedFileTypes = `${acceptedMediaFileTypes}`
+const acceptedFileTypes = ['video/*', 'audio/*']
 
 const fileSchema = zfd.formData({
   file: zfd.file(),
@@ -24,9 +24,23 @@ const initialState = {
 
 export default function Index() {
   const status = useSignal<'idle' | 'upload' | 'parse' | 'done'>('idle')
+  const [uploadable, setUploadable] = useState<ActualFileObject[]>([])
 
   const handleSubmit = async (formData: FormData) => {
     status.value = 'upload'
+
+    // makes it compatible with the native file type
+    if (uploadable[0]?.name) {
+      const blob = new Blob([await uploadable[0].arrayBuffer()], { type: 'application/octet-stream' })
+      formData.append(
+        'file',
+        new File([blob], uploadable[0].name, {
+          type: uploadable[0].type,
+          lastModified: uploadable[0].lastModified,
+        }),
+      )
+    }
+
     const { file, keywords } = fileSchema.parse(formData)
     status.value = 'parse'
     const keywordsArray = keywords ? keywords.split(',').map((word) => `${word}:5`) : []
@@ -48,14 +62,17 @@ export default function Index() {
                 <label htmlFor='file' className='block font-medium text-gray-700 mb-1'>
                   Choose a media file
                 </label>
-                <input
-                  type='file'
+
+                <FileUploader
+                  allowMultiple={false}
                   id='file'
                   name='file'
-                  accept={acceptedFileTypes}
-                  className='block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100'
+                  acceptedFileTypes={acceptedFileTypes}
+                  value={uploadable}
+                  onChange={setUploadable}
                 />
               </div>
+
               <Accordion
                 items={[
                   {
