@@ -27,7 +27,10 @@ export const ForgotPassword = () => {
     }
   }
 
-  const [state, action] = useActionState((_: unknown, formdata: FormData) => handleSubmit(formdata), initialState)
+  const [state, action, isPending] = useActionState(
+    (_: unknown, formdata: FormData) => handleSubmit(formdata),
+    initialState,
+  )
 
   if (step.value === 2) {
     return (
@@ -43,7 +46,7 @@ export const ForgotPassword = () => {
       <h2 className='text-[20px] font-semibold'>Reset your password</h2>
       <form className='grid gap-2 w-full max-w-4xl' action={action}>
         <Input label='Email' placeholder='johndoe@gmail.com' id='email' type='email' name='email' />
-        <Button>Request Password reset</Button>
+        <Button disabled={isPending}>Request Password reset</Button>
       </form>
     </div>
   )
