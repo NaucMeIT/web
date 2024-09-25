@@ -8,7 +8,7 @@
     "react-perf/jsx-no-new-function-as-prop": "warn",
     "react-perf/jsx-no-new-array-as-prop": "warn",
     "import/max-dependencies": "warn",
-    "import/no-default-export": "warn",
+    "import/no-default-export": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "unicorn/prefer-type-error": "off",
     "func-names": "off",
