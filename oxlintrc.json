@@ -10,6 +10,12 @@
     "import/max-dependencies": "warn",
     "import/no-default-export": "warn",
     "jsx-a11y/label-has-associated-control": "off",
-    "unicorn/prefer-type-error": "off"
+    "unicorn/prefer-type-error": "off",
+    "func-names": "off",
+    "max-classes-per-file": "off",
+    "typescript/no-unsafe-function-type": "error",
+    "typescript/no-wrapper-object-types": "error",
+    "typescript/no-unsafe-declaration-merging": "error",
+    "@typescript-eslint/ban-types": "off"
   }
 }
