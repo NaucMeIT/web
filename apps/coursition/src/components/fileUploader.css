@@ -25,13 +25,13 @@
     @apply bg-gray-500;
   }
 
-  [data-filepond-item-state*='error'] .filepond--item-panel,
-  [data-filepond-item-state*='invalid'] .filepond--item-panel {
+  [data-filepond-item-state*="error"] .filepond--item-panel,
+  [data-filepond-item-state*="invalid"] .filepond--item-panel {
     @apply bg-red-600;
   }
 
-  [data-filepond-item-state='processing-complete'] .filepond--item-panel,
-  [data-filepond-item-state='idle'] .filepond--item-panel {
+  [data-filepond-item-state="processing-complete"] .filepond--item-panel,
+  [data-filepond-item-state="idle"] .filepond--item-panel {
     @apply bg-blue-400;
   }
 }
