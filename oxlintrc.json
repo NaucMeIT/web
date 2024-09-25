@@ -14,6 +14,7 @@
     "func-names": "off",
     "no-undefined": "off",
     "no-null": "off",
+    "no-unexpected-multiline": "off",
     "max-classes-per-file": "off",
     "typescript/no-unsafe-function-type": "error",
     "typescript/no-wrapper-object-types": "error",
