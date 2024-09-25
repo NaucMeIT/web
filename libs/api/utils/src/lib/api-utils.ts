@@ -20,7 +20,8 @@ export const apiCommonGuard = new Elysia().guard({
   detail: {
     tags: ['v1'],
   },
-  beforeHandle: async ({ headers, request: r, error, set }) => {
+  beforeHandle: async ({ headers, request: r, error, set, path }) => {
+    if (path.startsWith('/swagger')) return
     const request = r as ExtendedRequest
     request.requestId = generateRandomIdentifier()
     request.apiKey = String(headers['authorization'] || '')

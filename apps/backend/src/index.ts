@@ -1,7 +1,7 @@
 import { swagger } from '@elysiajs/swagger'
+import { apiAuth } from '@nmit-coursition/api/auth'
 import { apiDev } from '@nmit-coursition/api/dev'
 import { apiV1 } from '@nmit-coursition/api/v1'
-import { apiAuth } from '@nmit-coursition/auth'
 import { Elysia } from 'elysia'
 
 new Elysia()
@@ -24,7 +24,7 @@ new Elysia()
       },
     }),
   )
+  .use(apiAuth)
   .use(apiV1)
   .use(apiDev)
-  .use(apiAuth)
   .listen(3000)
