@@ -2,20 +2,20 @@ import 'filepond/dist/filepond.min.css'
 import './fileUploader.css'
 
 import * as React from 'react'
-import * as ReactFilePond from 'react-filepond'
+import { FilePond, type FilePondProps } from 'react-filepond'
 import { toast } from 'sonner'
 
 /** Walkaround, the creators of react-filepond promised to use the navive file object soon */
 export type ActualFileObject = Blob & { readonly lastModified: number; readonly name: string }
 
-interface Props<T = ActualFileObject> extends React.ComponentPropsWithRef<typeof ReactFilePond.FilePond> {
+interface Props<T = ActualFileObject> extends React.ComponentPropsWithRef<typeof FilePond> {
   labelIdle?: string
   value: readonly T[]
   onChange: React.Dispatch<React.SetStateAction<T[]>>
 }
 
 export const FileUploader = ({ labelIdle = 'Drag and drop a file here or click', value, onChange, ...rest }: Props) => {
-  const [files, setFiles] = React.useState<ReactFilePond.FilePondProps['files']>(
+  const [files, setFiles] = React.useState<FilePondProps['files']>(
     value?.map((file) => ({
       source: file.name,
       options: {
@@ -31,7 +31,7 @@ export const FileUploader = ({ labelIdle = 'Drag and drop a file here or click',
   )
 
   return (
-    <ReactFilePond.FilePond
+    <FilePond
       labelIdle={labelIdle}
       credits={false}
       forceRevert={false}
