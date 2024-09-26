@@ -1,20 +1,11 @@
 import { formatApiErrorResponse } from '@nmit-coursition/api/utils'
-import { invalidateSession, storeUserSession, updateUser } from '@nmit-coursition/auth'
+import { AUTH_COOKIES_NAME, invalidateSession, storeUserSession, updateUser } from '@nmit-coursition/auth'
 import { WorkOS } from '@workos-inc/node'
 import { Elysia } from 'elysia'
 
 const workos = new WorkOS(process.env['WORKOS_API_KEY'], {
   clientId: process.env['WORKOS_CLIENT_ID'],
 })
-
-function parseCookies(cookieHeader: string): { [key: string]: string } {
-  return Object.fromEntries(
-    (cookieHeader || '').split(';').map((cookie): [string, string] => {
-      const parts = cookie.split('=')
-      return [parts.shift()?.trim() || '', decodeURIComponent(parts.join('=')).trim()]
-    }),
-  )
-}
 
 export const apiAuth = new Elysia({ prefix: '/auth' })
   .get('/ping', () => ({ status: 'PONG' }))
@@ -27,7 +18,7 @@ export const apiAuth = new Elysia({ prefix: '/auth' })
 
     return redirect(authorizationUrl)
   })
-  .get('/callback', async ({ request, query, error, redirect }) => {
+  .get('/callback', async ({ request, query, error, redirect, cookie }) => {
     const organisationId = 1 // TODO
     const code = String(query['code'] || '')
 
@@ -45,26 +36,15 @@ export const apiAuth = new Elysia({ prefix: '/auth' })
 
       const { user, sealedSession } = authenticateResponse
 
-      // TODO: res.cookie('wos-session', sealedSession, {
-      // TODO:   path: '/',
-      // TODO:   httpOnly: true,
-      // TODO:   secure: true,
-      // TODO:   sameSite: 'lax',
-      // TODO: })
+      cookie[AUTH_COOKIES_NAME]?.set({
+        value: sealedSession || '',
+        path: '/',
+        httpOnly: true,
+        secure: true,
+        sameSite: 'lax',
+      })
 
-      // TODO: set('Set-Cookie', `wos-session=${sealedSession}; Path=/; HttpOnly; Secure; SameSite=Lax`)
-      //set.cookie?.pokuas = {};
-      //set.cookie['pokus'] = 'Hodnota';
-
-      const internalUser = await updateUser(
-        {
-          ...user,
-          profilePictureUrl: user.profilePictureUrl || '',
-          firstName: user.firstName || '',
-          lastName: user.lastName || '',
-        },
-        organisationId,
-      )
+      const internalUser = await updateUser(user, organisationId)
       await storeUserSession(internalUser.id, sealedSession || '')
 
       return redirect('/')
@@ -74,10 +54,8 @@ export const apiAuth = new Elysia({ prefix: '/auth' })
       return redirect('/login')
     }
   })
-  .get('/logout', async ({ request, redirect }) => {
-    const cookies = parseCookies(request.headers.get('Cookie') || '')
-    const sessionData = cookies['wos-session'] || ''
-
+  .get('/logout', async ({ redirect, cookie }) => {
+    const sessionData = cookie[AUTH_COOKIES_NAME]?.toString()
     if (!sessionData) return redirect('/login')
 
     try {
@@ -87,12 +65,8 @@ export const apiAuth = new Elysia({ prefix: '/auth' })
       })
 
       const url = await session.getLogoutUrl()
-
-      // Expire cookies
-      // TODO: set('Set-Cookie', 'wos-session=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT')
-
-      // TODO: Load cookies session and invalidate from DB
-      await invalidateSession('TODO')
+      cookie[AUTH_COOKIES_NAME]?.remove()
+      await invalidateSession(sessionData)
 
       return redirect(url)
     } catch (error) {

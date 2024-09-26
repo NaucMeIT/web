@@ -4,9 +4,9 @@ import type { cas__user } from '@prisma/client'
 interface User {
   id: string
   email: string
-  profilePictureUrl?: string
-  firstName?: string
-  lastName?: string
+  profilePictureUrl?: string | null
+  firstName?: string | null
+  lastName?: string | null
   createdAt: string
   updatedAt: string
 }
@@ -29,7 +29,7 @@ export async function updateUser(userData: User, organisationId: number): Promis
       },
     }))
 
-  return await prisma.cas__user.update({
+  return prisma.cas__user.update({
     where: { id: user.id },
     data: {
       workos_id: userData.id,
@@ -37,17 +37,11 @@ export async function updateUser(userData: User, organisationId: number): Promis
       inserted_date: new Date(userData.createdAt),
       updated_date: new Date(userData.updatedAt),
       synced_date: new Date(),
-      first_name: fuckEmptyValue(userData.firstName || ''),
-      last_name: fuckEmptyValue(userData.lastName || ''),
-      avatar_url: fuckEmptyValue(userData.profilePictureUrl || ''),
+      first_name: userData.firstName || null,
+      last_name: userData.lastName || null,
+      avatar_url: userData.profilePictureUrl || null,
     },
   })
-}
-
-function fuckEmptyValue(value: string): string {
-  // TODO: Here must be a UNDEFINED. Fuck it
-  const empty = '' as unknown as string
-  return value || empty
 }
 
 export async function storeUserSession(internalUserId: bigint, session: string) {

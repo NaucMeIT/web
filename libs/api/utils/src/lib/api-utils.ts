@@ -10,18 +10,14 @@ import type { ApiKeyReportUsageRequest, ApiUsageReport, ApiUsageRequest, Extende
 let API_KEY_TO_ID_CACHE: { [key: string]: bigint } = {}
 
 export const apiCommonGuard = new Elysia().guard({
-  as: 'global',
+  as: 'scoped',
   response: {
     401: errorResponseModel,
     404: errorResponseModel,
     429: errorResponseModel,
     500: errorResponseModel,
   },
-  detail: {
-    tags: ['v1'],
-  },
-  beforeHandle: async ({ headers, request: r, error, set, path }) => {
-    if (path.startsWith('/swagger')) return
+  beforeHandle: async ({ headers, request: r, error, set }) => {
     const request = r as ExtendedRequest
     request.requestId = generateRandomIdentifier()
     request.apiKey = String(headers['authorization'] || '')
