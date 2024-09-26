@@ -1,3 +1,4 @@
+import { AUTH_COOKIES_NAME, validateSessionToken } from '@nmit-coursition/auth'
 import { Prisma, prisma } from '@nmit-coursition/db'
 import { generateRandomIdentifier, isDateBeforeNow } from '@nmit-coursition/utils'
 import { Elysia } from 'elysia'
@@ -17,12 +18,16 @@ export const apiCommonGuard = new Elysia().guard({
     429: errorResponseModel,
     500: errorResponseModel,
   },
-  beforeHandle: async ({ headers, request: r, error, set }) => {
+  beforeHandle: async ({ headers, request: r, error, set, cookie }) => {
+    const session = cookie[AUTH_COOKIES_NAME]?.toString() || ''
+    const apiKeyRaw = String(headers['authorization'] || '')
+    const apiKey = apiKeyRaw || (await validateSessionToken(session))
+
     const request = r as ExtendedRequest
     request.requestId = generateRandomIdentifier()
-    request.apiKey = String(headers['authorization'] || '')
+    request.apiKey = apiKey
 
-    const errorCode: ApiErrorCode | undefined = await validateApiKey(request.apiKey)
+    const errorCode: ApiErrorCode | undefined = await validateApiKey(apiKey)
     if (errorCode) {
       set.headers['Content-Type'] = 'application/json; charset=utf8'
       throw error(ERROR_LIST[errorCode].code, formatApiErrorResponse(request, errorCode))
