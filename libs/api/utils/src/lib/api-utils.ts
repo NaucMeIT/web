@@ -1,21 +1,54 @@
+import { AUTH_COOKIES_NAME, validateSessionToken } from '@nmit-coursition/auth'
 import { Prisma, prisma } from '@nmit-coursition/db'
-import { isDateBeforeNow } from '@nmit-coursition/utils'
-import { parseApiKey } from '../api'
+import { generateRandomIdentifier, isDateBeforeNow } from '@nmit-coursition/utils'
+import { Elysia } from 'elysia'
+import { formatApiErrorResponse, parseApiKey } from '../api'
 import type { ApiErrorCode } from '../errorList'
-import type { ApiKeyReportUsageRequest, ApiUsageReport, ApiUsageRequest } from '../typescript'
+import { ERROR_LIST } from '../errorList'
+import { errorResponseModel } from '../model'
+import type { ApiKeyReportUsageRequest, ApiUsageReport, ApiUsageRequest, ExtendedRequest } from '../typescript'
 
 let API_KEY_TO_ID_CACHE: { [key: string]: bigint } = {}
 
-let API_KEY_CONTEXT: string | undefined
+export const apiCommonGuard = new Elysia().guard({
+  as: 'scoped',
+  response: {
+    401: errorResponseModel,
+    404: errorResponseModel,
+    429: errorResponseModel,
+    500: errorResponseModel,
+  },
+  beforeHandle: async ({ headers, request: r, error, set, cookie }) => {
+    const session = cookie[AUTH_COOKIES_NAME]?.toString() || ''
+    const apiKeyRaw = String(headers['authorization'] || '')
+    const apiKey = apiKeyRaw || (await validateSessionToken(session))
+
+    const request = r as ExtendedRequest
+    request.requestId = generateRandomIdentifier()
+    request.apiKey = apiKey
+
+    const errorCode: ApiErrorCode | undefined = await validateApiKey(apiKey)
+    if (errorCode) {
+      set.headers['Content-Type'] = 'application/json; charset=utf8'
+      throw error(ERROR_LIST[errorCode].code, formatApiErrorResponse(request, errorCode))
+    }
+  },
+})
 
 export function reportUsage(apiKey: string, duration: number, type: 'video' | 'document' | 'web') {
   // eslint-disable-next-line no-console -- will be replaced with real usage reporting
   console.log(`API Key ${apiKey} used ${duration} on ${type}.`)
 }
 
-export async function reportSpend({ apiKey, operationClass = 'A', spend = 1, metaData }: ApiKeyReportUsageRequest) {
-  const key = apiKey || API_KEY_CONTEXT
-  if (!key) throw new Error(`API key context has not been set. Please define apiKey.`)
+export async function reportSpend({
+  request,
+  apiKey,
+  operationClass = 'A',
+  spend = 1,
+  metaData,
+}: ApiKeyReportUsageRequest) {
+  const key = apiKey || String('apiKey' in request ? request.apiKey : '')
+  if (!key) return
 
   // eslint-disable-next-line no-console debug info
   console.log(`🚀 Spend report (${operationClass}): ${spend}`)
@@ -44,7 +77,6 @@ export async function validateApiKey(apiKey: string): Promise<ApiErrorCode | und
   if (!key.is_active) return 'PUBLIC_API_KEY_IS_NOT_ACTIVE'
   if (isDateBeforeNow(key.expiration_date)) return 'PUBLIC_API_KEY_HAS_BEEN_EXPIRED'
   API_KEY_TO_ID_CACHE[apiKey] = key.id
-  API_KEY_CONTEXT = apiKey
 
   await incrementKeyUsage(key.id)
   return

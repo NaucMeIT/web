@@ -38,6 +38,7 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@react-email/components": "^0.0.25",
     "@types/bcryptjs": "^2.4.6",
+    "@workos-inc/node": "^7.27.3",
     "ai": "^3.3.44",
     "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.7.0",

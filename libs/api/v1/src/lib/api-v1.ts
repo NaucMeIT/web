@@ -1,13 +1,6 @@
 import FirecrawlApp from '@mendable/firecrawl-js'
 import { generateQuiz, getResult, getTranscript, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
-import {
-  type ApiErrorCode,
-  ERROR_LIST,
-  errorResponseModel,
-  formatApiErrorResponse,
-  reportUsage,
-  validateApiKey,
-} from '@nmit-coursition/api/utils'
+import { apiCommonGuard, formatApiErrorResponse, reportUsage } from '@nmit-coursition/api/utils'
 import {
   allowedDeepgramLanguagesAsType,
   allowedLlamaParseLanguagesAsType,
@@ -17,27 +10,7 @@ import {
 import { Elysia, t } from 'elysia'
 
 export const apiV1 = new Elysia({ prefix: '/v1' })
-  .guard({
-    headers: t.Object({
-      authorization: t.String({ error: 'You must provide API key to use this service.' }),
-    }),
-    response: {
-      401: errorResponseModel,
-      404: errorResponseModel,
-      429: errorResponseModel,
-      500: errorResponseModel,
-    },
-    detail: {
-      tags: ['v1'],
-    },
-  })
-  .onBeforeHandle(async ({ headers, error: errorFn, set }) => {
-    const errorCode: ApiErrorCode | undefined = await validateApiKey(headers.authorization)
-    if (errorCode) {
-      set.headers['Content-Type'] = 'application/json; charset=utf8'
-      throw errorFn(ERROR_LIST[errorCode].code, formatApiErrorResponse(errorCode))
-    }
-  })
+  .use(apiCommonGuard)
   .group('/parse', (parseApp) =>
     parseApp
       .post(
@@ -76,13 +49,13 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
           afterResponse({ response, headers }) {
             if (response && !('duration' in response)) return
             const duration = response?.duration || 0
-            duration >= 0 && reportUsage(headers.authorization, duration, 'video')
+            duration >= 0 && reportUsage(headers['authorization'] || '', duration, 'video')
           },
         },
       )
       .post(
         '/document',
-        async ({ body: { file, language, description }, error: errorFn }) => {
+        async ({ body: { file, language, description }, error: errorFn, request }) => {
           try {
             const { id, status } = await uploadFile(file, {
               inputLang: language,
@@ -97,7 +70,7 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
           } catch (error) {
             return errorFn(
               500,
-              formatApiErrorResponse(`Something went wrong while processing your document. Details: ${error}`),
+              formatApiErrorResponse(request, `Something went wrong while processing your document. Details: ${error}`),
             )
           }
         },
@@ -116,13 +89,13 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
           afterResponse({ response, headers }) {
             if (response && !('credits' in response)) return
             const credits = response?.credits || 0
-            credits >= 0 && reportUsage(headers.authorization, credits, 'document')
+            credits >= 0 && reportUsage(headers['authorization'] || '', credits, 'document')
           },
         },
       )
       .post(
         '/web',
-        async ({ body: { url, onlyMainContent }, error }) => {
+        async ({ body: { url, onlyMainContent }, error, request }) => {
           const fcApp = new FirecrawlApp({ apiKey: process.env['FIRECRAWL_API_KEY'] })
 
           const scrapeResponse = await fcApp.scrapeUrl(url, {
@@ -131,10 +104,10 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
           })
 
           if (!scrapeResponse.success) {
-            return error(500, formatApiErrorResponse(scrapeResponse.error))
+            return error(500, formatApiErrorResponse(request, scrapeResponse.error))
           }
           if (!scrapeResponse.markdown) {
-            return error(500, formatApiErrorResponse('Content of the page is empty.'))
+            return error(500, formatApiErrorResponse(request, 'Content of the page is empty.'))
           }
 
           return {
@@ -158,7 +131,7 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
           afterResponse({ response, headers }) {
             if (response && !('credits' in response)) return
             const credits = response?.credits || 0
-            credits >= 0 && reportUsage(headers.authorization, credits, 'web')
+            credits >= 0 && reportUsage(headers['authorization'] || '', credits, 'web')
           },
         },
       ),
@@ -166,7 +139,11 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
   .group('/ai', (aiApp) =>
     aiApp.post(
       '/quiz',
-      async ({ body: { content, outputLang, amountQuestions, amountAnswers, allowMultiple }, error: errorFn }) => {
+      async ({
+        body: { content, outputLang, amountQuestions, amountAnswers, allowMultiple },
+        error: errorFn,
+        request,
+      }) => {
         try {
           const quiz = await generateQuiz(content, {
             outputLang: languages[outputLang || 'en'],
@@ -176,7 +153,7 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
           })
           return quiz
         } catch (error) {
-          return errorFn(500, formatApiErrorResponse(`Error generating quiz: ${error}`))
+          return errorFn(500, formatApiErrorResponse(request, `Error generating quiz: ${error}`))
         }
       },
       {
