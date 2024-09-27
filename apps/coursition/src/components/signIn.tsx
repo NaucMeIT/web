@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 
-import { Button, Input } from '@nmit-coursition/design-system'
+import { Button, Input } from '@nmit-coursition/ui/design-system'
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
