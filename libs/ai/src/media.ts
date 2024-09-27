@@ -69,7 +69,7 @@ export class TranscribeApi extends Context.Tag('TranscribeApi')<
 }
 
 // TODO: Remove once we get rid of the old getTranscript function
-const program = Effect.gen(function* (_) {
+const program = Effect.gen(function* () {
   const transcribeApi = yield* TranscribeApi
   return yield* transcribeApi.getTranscript
 })
