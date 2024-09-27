@@ -2,14 +2,13 @@
 
 import * as React from 'react'
 
-import { Button } from '@nmit-coursition/design-system'
-import type { ButtonProps } from '@nmit-coursition/ui/primitives'
+import { Button, type ButtonProps } from '@nmit-coursition/ui/design-system'
 import { cn } from '@nmit-coursition/ui/utils'
 import { ArrowUpLeft } from 'lucide-react'
 import { generateCheckout } from '../app/actions'
 import { useMounted } from '../app/hooks/useMounted'
 
-interface Props extends ButtonProps {
+type Props = ButtonProps & {
   withIcon?: boolean
 }
 
