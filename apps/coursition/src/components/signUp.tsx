@@ -2,7 +2,7 @@
 
 import type * as React from 'react'
 
-import { Button, Input } from '@nmit-coursition/design-system'
+import { Button, Input } from '@nmit-coursition/ui/design-system'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
