@@ -12,7 +12,7 @@ type Props = ButtonProps & {
   withIcon?: boolean
 }
 
-export const BuyLifetime = ({ className, withIcon = true, ...rest }: Props) => {
+export const BuyLifetime = ({ className, ...rest }: Props) => {
   const isMounted = useMounted()
 
   const openPaymentDialog = async () => {
@@ -44,16 +44,17 @@ export const BuyLifetime = ({ className, withIcon = true, ...rest }: Props) => {
       {...rest}
       onClick={openPaymentDialog}
       className={cn(
-        'h-[62px] py-1 pl-3 pr-1 max-w-[263px] rounded-none bg-purple-700 hover:bg-purple-700/90 flex gap-2',
+        'py-1 h-16 pl-3 pr-1 max-w-[263px] rounded-none bg-purple-700 hover:bg-purple-700/90 flex gap-2',
         className,
       )}
-    >
-      <div className='font-semibold text-[24px]'>Get lifetime deal</div>
-      {withIcon && (
+      icon={
         <div className='bg-white px-4 h-full flex items-center justify-center flex-1'>
           <ArrowUpLeft className='rotate-[85deg] text-purple-700' />
         </div>
-      )}
+      }
+      iconPosition='right'
+    >
+      <div className='font-semibold text-[24px]'>Get lifetime deal</div>
     </Button>
   )
 }
