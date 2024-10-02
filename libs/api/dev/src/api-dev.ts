@@ -6,6 +6,11 @@ export const apiDev = new Elysia({ prefix: '/dev' })
   .get('/ping', () => ({ status: 'PONG' }), {
     afterResponse: ({ request }) => reportSpend({ request }),
   })
+  .get('/fail', () => {
+    throw new Error(
+      `This is error message from always failing endpoint. Current server time: ${new Date().toISOString()}`,
+    )
+  })
   .get('/report-usage', async () => await computeUsage({ organisationId: 1 }), {
     afterResponse: ({ request }) => reportSpend({ request }),
   })

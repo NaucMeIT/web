@@ -2,6 +2,7 @@ import { swagger } from '@elysiajs/swagger'
 import { apiAuth } from '@nmit-coursition/api/auth'
 import { apiDev } from '@nmit-coursition/api/dev'
 import { apiV1 } from '@nmit-coursition/api/v1'
+import * as Sentry from '@sentry/react'
 import { Elysia } from 'elysia'
 
 new Elysia()
@@ -24,6 +25,10 @@ new Elysia()
       },
     }),
   )
+  .onError(({ error, code }) => {
+    if (code === 'NOT_FOUND') return
+    Sentry.captureException(error)
+  })
   .use(apiAuth)
   .use(apiV1)
   .use(apiDev)

@@ -19,6 +19,17 @@ export interface ApiUsageReport {
   operations: number
 }
 
+export interface ApiKeyRecord {
+  id: bigint
+  organisation_id: number
+  is_active: boolean
+  is_deleted: boolean
+  expiration_date: Date
+  user_id?: string
+  full_name?: string
+  email?: string
+}
+
 export type ApiUsageRequest = ({ organisationId: number } | { userId: number } | { apiKey: string }) & {
   dateFrom?: Date
   dateTo?: Date
