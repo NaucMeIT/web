@@ -1,12 +1,19 @@
 import { AUTH_COOKIES_NAME, validateSessionToken } from '@nmit-coursition/auth'
 import { Prisma, prisma } from '@nmit-coursition/db'
 import { generateRandomIdentifier, isDateBeforeNow } from '@nmit-coursition/utils'
+import * as Sentry from '@sentry/react'
 import { Elysia } from 'elysia'
 import { formatApiErrorResponse, parseApiKey } from '../api'
 import type { ApiErrorCode } from '../errorList'
 import { ERROR_LIST } from '../errorList'
 import { errorResponseModel } from '../model'
-import type { ApiKeyReportUsageRequest, ApiUsageReport, ApiUsageRequest, ExtendedRequest } from '../typescript'
+import type {
+  ApiKeyRecord,
+  ApiKeyReportUsageRequest,
+  ApiUsageReport,
+  ApiUsageRequest,
+  ExtendedRequest,
+} from '../typescript'
 
 let API_KEY_TO_ID_CACHE: { [key: string]: bigint } = {}
 
@@ -26,14 +33,49 @@ export const apiCommonGuard = new Elysia().guard({
     const request = r as ExtendedRequest
     request.requestId = generateRandomIdentifier()
     request.apiKey = apiKey
+    initSentry(request)
 
     const errorCode: ApiErrorCode | undefined = await validateApiKey(apiKey)
     if (errorCode) {
       set.headers['Content-Type'] = 'application/json; charset=utf8'
       throw error(ERROR_LIST[errorCode].code, formatApiErrorResponse(request, errorCode))
+    } else {
+      Sentry.setTag('authorizedKey', 'true')
     }
   },
 })
+
+function initSentry(request: ExtendedRequest) {
+  Sentry.init({
+    dsn: 'https://709a51d30d0a43d222def56984819928@o4508026955038720.ingest.de.sentry.io/4508047143010384',
+    integrations: [
+      Sentry.browserTracingIntegration(),
+      Sentry.replayIntegration({
+        maskAllText: false,
+        maskAllInputs: false,
+        blockAllMedia: false,
+      }),
+      Sentry.httpClientIntegration(),
+      Sentry.captureConsoleIntegration({ levels: ['error'] }),
+    ],
+    tracesSampleRate: 1,
+    release: process.env['VERCEL_GIT_COMMIT_SHA'] || undefined,
+    replaysSessionSampleRate: 0.1,
+    replaysOnErrorSampleRate: 1,
+    beforeSend(event, hint) {
+      // @ts-ignore
+      if (hint && hint.originalException && hint?.originalException?.message?.includes('Dynamic server usage')) {
+        return null
+      }
+      return event
+    },
+  })
+
+  Sentry.setTag('correlationId', request.requestId)
+  Sentry.setTag('apiKey', request.apiKey?.replace(/^(\w{4}).*$/, '$1'))
+  Sentry.setTag('authorizedKey', 'false')
+  Sentry.setTag('url', request.url || 'CLI')
+}
 
 export function reportUsage(apiKey: string, duration: number, type: 'video' | 'document' | 'web') {
   // eslint-disable-next-line no-console -- will be replaced with real usage reporting
@@ -68,15 +110,18 @@ export async function validateApiKey(apiKey: string): Promise<ApiErrorCode | und
   if (!apiKey) return 'PUBLIC_API_KEY_DOES_NOT_EXIST'
   if (!parseApiKey(apiKey).isValid) return 'PUBLIC_API_KEY_IS_NOT_IN_VALID_FORMAT'
 
-  const key = await prisma.cas__organisation_api_key.findFirst({
-    select: { id: true, organisation_id: true, is_active: true, is_deleted: true, expiration_date: true },
-    where: { api_key: apiKey },
-  })
+  const key = await selectApiKey(apiKey)
   if (!key) return 'PUBLIC_API_KEY_DOES_NOT_EXIST'
   if (key.is_deleted) return 'PUBLIC_API_KEY_HAS_BEEN_DELETED'
   if (!key.is_active) return 'PUBLIC_API_KEY_IS_NOT_ACTIVE'
   if (isDateBeforeNow(key.expiration_date)) return 'PUBLIC_API_KEY_HAS_BEEN_EXPIRED'
   API_KEY_TO_ID_CACHE[apiKey] = key.id
+
+  Sentry.setUser({
+    id: key.user_id || `key:${key.id}`,
+    username: (key.full_name || '').trim() || undefined,
+    email: key.email,
+  })
 
   await incrementKeyUsage(key.id)
   return
@@ -129,6 +174,25 @@ async function resolveUsageKeyIds(request: ApiUsageRequest): Promise<bigint[]> {
   })
 
   return keyListRaw.map((key) => key.id)
+}
+
+async function selectApiKey(apiKey: string): Promise<ApiKeyRecord | undefined> {
+  const records = await prisma.$queryRaw<ApiKeyRecord[]>`
+    SELECT
+      k.id,
+      k.organisation_id,
+      k.is_active,
+      k.is_deleted,
+      k.expiration_date,
+      u.workos_id AS user_id,
+      u.first_name || ' ' || u.last_name AS full_name,
+      u.email
+    FROM cas__organisation_api_key k
+    JOIN cas__user u ON u.id = k.user_id
+    WHERE k.api_key = ${apiKey}
+    LIMIT 1`
+
+  return records?.[0] || undefined
 }
 
 async function incrementKeyUsage(keyId: bigint) {
