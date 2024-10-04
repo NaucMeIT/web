@@ -50,4 +50,8 @@ export const ERROR_LIST = {
     code: 401,
     message: 'Organisation API key has been expired.',
   },
+  USER_CREDIT_CAN_NOT_BE_NEGATIVE: {
+    code: 500,
+    message: 'Credit operation is not permitted. User credit can not be smaller than zero.',
+  },
 } as const

@@ -66,6 +66,7 @@ export async function updateUser(userData: User, organisationId: number): Promis
         updated_date: new Date(userData.updatedAt),
         synced_date: new Date(),
         workos_id: userData.id,
+        credit: 0,
       },
     }))
 
@@ -106,4 +107,58 @@ export async function invalidateSession(session: string) {
     where: { session },
     data: { expired: true },
   })
+}
+
+export async function addCreditRecord(userId: bigint, amount: number, description?: string) {
+  const user = await prisma.cas__user.findFirstOrThrow({
+    select: { id: true, credit: true },
+    where: { id: userId },
+  })
+
+  const newAmount = user.credit + amount
+  if (newAmount < 0) throw new Error('USER_CREDIT_CAN_NOT_BE_NEGATIVE')
+
+  await prisma.cas__user_credit.create({
+    data: {
+      user_id: user.id,
+      amount,
+      description: (description || '').trim() || null,
+      external_id: randomStringGenerator(16),
+      inserted_date: new Date(),
+    },
+  })
+
+  await recomputeUserCreditBalance(user.id)
+}
+
+export async function recomputeUserCreditBalance(userId: bigint): Promise<number> {
+  const user = await prisma.cas__user.findFirstOrThrow({
+    select: { id: true, credit: true, credit_alert_lower_then: true },
+    where: { id: userId },
+  })
+
+  const creditSumRaw = await prisma.cas__user_credit.aggregate({
+    _sum: { amount: true },
+    where: { user_id: user.id },
+  })
+  const creditSum = Number(creditSumRaw._sum.amount || 0)
+
+  await prisma.cas__user.update({
+    data: { credit: creditSum, updated_date: new Date() },
+    where: { id: user.id },
+  })
+
+  if (user.credit_alert_lower_then && user.credit < user.credit_alert_lower_then)
+    reportLowCreditBalance(user.id, creditSum)
+
+  return creditSum
+}
+
+export function reportLowCreditBalance(userId: bigint, currentBalance: number) {
+  // TODO: Credits alerts (e.g. less than 10 % of your credits remains - could trigger some action like email)
+
+  // eslint-disable-next-line no-console prepared for future use
+  console.log(`Report credit usage`, userId, currentBalance)
+
+  return true
 }
