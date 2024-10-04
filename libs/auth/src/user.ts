@@ -1,15 +1,45 @@
 import { prisma } from '@nmit-coursition/db'
 import { randomStringGenerator } from '@nmit-coursition/utils'
 import type { cas__user } from '@prisma/client'
+import type { User, UserProfileRawRecord, UserProfileResponse } from './typescript'
 
-interface User {
-  id: string
-  email: string
-  profilePictureUrl?: string | null
-  firstName?: string | null
-  lastName?: string | null
-  createdAt: string
-  updatedAt: string
+export async function getUserProfile(apiKey: string): Promise<UserProfileResponse> {
+  const profileRecords = await prisma.$queryRaw<UserProfileRawRecord[]>`
+    SELECT
+      u.id AS user_id,
+      o.name AS organisation_name,
+      o.slug AS organisation_slug,
+      u.email,
+      u.inserted_date,
+      u.updated_date,
+      u.synced_date,
+      u.first_name || ' ' || u.last_name AS full_name,
+      u.avatar_url,
+      u.credit,
+      u.credit_alert_lower_then,
+      k.used_count_today AS key_used_count_today
+    FROM cas__user u
+    JOIN cas__organisation_api_key k ON k.user_id = u.id
+    JOIN cas__organisation o ON o.id = u.organisation_id
+    WHERE k.api_key = ${apiKey}`
+
+  const profile = profileRecords[0] || undefined
+  if (!profile) throw new Error(`User is not logged in.`)
+
+  return {
+    internalId: Number(profile.user_id),
+    organisationName: profile.organisation_name,
+    organisationSlug: profile.organisation_slug,
+    email: profile.email,
+    insertedDate: profile.inserted_date,
+    updatedDate: profile.updated_date,
+    syncedDate: profile.synced_date,
+    fullName: profile.full_name,
+    avatarUrl: profile.avatar_url,
+    credit: profile.credit,
+    creditAlertLowerThen: profile.credit_alert_lower_then,
+    usedCountToday: profile.used_count_today,
+  }
 }
 
 export async function validateSessionToken(sessionToken: string): Promise<string> {
