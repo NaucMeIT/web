@@ -115,9 +115,7 @@ export default function Index() {
             )}
           </div>
         )}
-        {status.value === 'done' && (
-          <TranscriptionResults raw={state.raw ?? ''} srt={state.srt ?? ''} vtt={state.vtt ?? ''} />
-        )}
+        {status.value === 'done' && <TranscriptionResults raw={state.raw} srt={state.srt} vtt={state.vtt} />}
       </div>
     </div>
   )
