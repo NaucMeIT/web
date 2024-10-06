@@ -1,4 +1,4 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@nmit-coursition/ui/primitives'
+import { Tabs } from '@nmit-coursition/design-system'
 import { CheckIcon, CopyIcon } from 'lucide-react'
 import { useState } from 'react'
 
@@ -10,22 +10,18 @@ interface Props {
 
 export const TranscriptionResults = ({ raw, srt, vtt }: Props) => {
   return (
-    <Tabs defaultValue='raw' className='w-full'>
-      <TabsList className='w-full'>
-        <TabsTrigger value='raw'>raw</TabsTrigger>
-        <TabsTrigger value='srt'>srt</TabsTrigger>
-        <TabsTrigger value='vtt'>vtt</TabsTrigger>
-      </TabsList>
-      <TabsContent value='raw'>
-        <TextCopier text={raw} title='Transcript' />
-      </TabsContent>
-      <TabsContent value='srt'>
-        <TextCopier text={srt} title='SRT subtitles' />
-      </TabsContent>
-      <TabsContent value='vtt'>
-        <TextCopier text={vtt} title='VTT subtitles' />
-      </TabsContent>
-    </Tabs>
+    <Tabs<['raw', 'srt', 'vtt']>
+      triggers={[
+        { value: 'raw', displayText: 'raw' },
+        { value: 'srt', displayText: 'srt' },
+        { value: 'vtt', displayText: 'vtt' },
+      ]}
+      contents={[
+        { value: 'raw', children: <TextCopier text={raw} title='Transcript' /> },
+        { value: 'srt', children: <TextCopier text={srt} title='SRT subtitles' /> },
+        { value: 'vtt', children: <TextCopier text={vtt} title='VTT subtitles' /> },
+      ]}
+    />
   )
 }
 
