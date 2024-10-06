@@ -46,6 +46,16 @@ export function buildConfig(appDir: string): Config {
             DEFAULT: 'hsl(var(--card))',
             foreground: 'hsl(var(--card-foreground))',
           },
+          amber: {
+            50: '#FFFBEB',
+            100: '#FEF3C7',
+          },
+          red: {
+            600: '#DC2626',
+          },
+          fuchsia: {
+            400: '#E879F9',
+          },
         },
         backgroundColor: {
           'gray-50': '#f1f6f6',
