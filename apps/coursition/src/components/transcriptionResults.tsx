@@ -10,16 +10,12 @@ interface Props {
 
 export const TranscriptionResults = ({ raw, srt, vtt }: Props) => {
   return (
-    <Tabs<['raw', 'srt', 'vtt']>
-      triggers={[
-        { value: 'raw', displayText: 'raw' },
-        { value: 'srt', displayText: 'srt' },
-        { value: 'vtt', displayText: 'vtt' },
-      ]}
-      contents={[
-        { value: 'raw', children: <TextCopier text={raw} title='Transcript' /> },
-        { value: 'srt', children: <TextCopier text={srt} title='SRT subtitles' /> },
-        { value: 'vtt', children: <TextCopier text={vtt} title='VTT subtitles' /> },
+    <Tabs
+      values={[
+        // Merge triggers and contents
+        { value: 'raw', displayText: 'raw', children: <TextCopier text={raw} title='Transcript' /> },
+        { value: 'srt', displayText: 'srt', children: <TextCopier text={srt} title='SRT subtitles' /> },
+        { value: 'vtt', displayText: 'vtt', children: <TextCopier text={vtt} title='VTT subtitles' /> },
       ]}
     />
   )
