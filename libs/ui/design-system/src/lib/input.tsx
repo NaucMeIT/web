@@ -1,29 +1,33 @@
 import type * as React from 'react'
 
-import { Input as InputPrimitive } from '@nmit-coursition/ui/primitives/input'
+import { Input as InputPrimitive, type InputProps as InputPrimitiveProps } from '@nmit-coursition/ui/primitives/input'
 import { Label } from '@nmit-coursition/ui/primitives/label'
 import { cn } from '@nmit-coursition/ui/utils'
+import type { MixinProps, OverrideProps } from '@nmit-coursition/utils'
+import { splitProps } from '@nmit-coursition/utils'
 
-type InputType = React.ComponentProps<'input'>['type']
-
-interface InputProps extends React.ComponentProps<'input'> {
-  label: string
-  placeholder: string
-  type: InputType
-  id: string
-  subtext?: string
-  disabled?: boolean
-
-  // todo: use mix props
-  containerClassName?: string
+interface InputProps
+  extends OverrideProps<InputPrimitiveProps, { id: string; name: string; type: string }>,
+    MixinProps<'label', Omit<React.ComponentProps<'label'>, 'children'>>,
+    MixinProps<'container', React.ComponentProps<'div'>>,
+    MixinProps<'subText', Omit<React.ComponentProps<'p'>, 'children'>> {
+  labelText: string
+  subText?: string
 }
 
-export function Input({ label, placeholder, type, id, subtext, disabled, containerClassName, ...rest }: InputProps) {
+export function Input({ labelText, subText, ...mixProps }: InputProps) {
+  const props = splitProps(mixProps, 'label', 'container', 'subText')
   return (
-    <div className={cn('grid w-full items-center gap-1.5', containerClassName)}>
-      <Label htmlFor={id}>{label}</Label>
-      <InputPrimitive type={type} id={id} name={id} placeholder={placeholder} disabled={disabled} {...rest} />
-      {subtext && <p className='text-sm text-muted-foreground'>{subtext}</p>}
+    <div className={cn('grid w-full items-center gap-1.5', props.container.className)} {...props.container}>
+      <Label htmlFor={props.rest.id} {...props.label}>
+        {labelText}
+      </Label>
+      <InputPrimitive {...props.rest} />
+      {subText && (
+        <p className='text-sm text-muted-foreground' {...props.subText}>
+          {subText}
+        </p>
+      )}
     </div>
   )
 }
