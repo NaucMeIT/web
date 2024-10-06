@@ -31,8 +31,8 @@ export const SignIn = () => {
     <div className='container px-12 h-screen w-screen flex flex-col gap-8 items-center justify-center'>
       <h2 className='font-semibold text-2xl'>Sign in to courstion</h2>
       <form className='flex flex-col gap-4 w-full max-w-4xl mx-auto' onSubmit={handleSubmit}>
-        <Input placeholder='johndoe@gmail.com' id='email' label='Email' type='email' name='email' />
-        <Input placeholder='' id='password' label='Password' type='password' name='password' />
+        <Input placeholder='johndoe@gmail.com' id='email' labelText='Email' type='email' name='email' />
+        <Input placeholder='' id='password' labelText='Password' type='password' name='password' />
 
         <Button type='submit'>Sign in</Button>
       </form>
