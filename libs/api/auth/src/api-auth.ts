@@ -84,7 +84,7 @@ export const apiAuth = new Elysia({ prefix: '/auth' })
   })
   .get('/profile', async ({ headers, cookie }) => {
     const session = cookie[AUTH_COOKIES_NAME]?.toString() || ''
-    const apiKeyRaw = String(headers['authorization'] || '')
+    const apiKeyRaw = headers['authorization'] || ''
     const apiKey = apiKeyRaw || (await validateSessionToken(session))
 
     return getUserProfile(apiKey)
