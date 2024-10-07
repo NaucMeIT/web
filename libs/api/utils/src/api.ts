@@ -29,6 +29,6 @@ export function formatApiErrorResponse(
   }
 }
 
-function isApiErrorCode(code: string): code is ApiErrorCode {
+export function isApiErrorCode(code: string): code is ApiErrorCode {
   return code in ERROR_LIST
 }

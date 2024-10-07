@@ -36,6 +36,7 @@
     "@radix-ui/react-switch": "^1.1.1",
     "@radix-ui/react-tabs": "^1.1.1",
     "@react-email/components": "^0.0.25",
+    "@sentry/bun": "^8.33.1",
     "@workos-inc/node": "^7.27.4",
     "ai": "^3.3.44",
     "bcryptjs": "^2.4.3",

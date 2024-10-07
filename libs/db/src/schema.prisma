@@ -115,8 +115,11 @@ model cas__user {
   first_name                String?                     @db.VarChar(100)
   last_name                 String?                     @db.VarChar(100)
   avatar_url                String?
+  credit                    Int
+  credit_alert_lower_then   Int?
   cas__organisation_api_key cas__organisation_api_key[]
   cas__organisation         cas__organisation           @relation(fields: [organisation_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "cas__user_cas__organisation_id_fk")
+  cas__user_credit          cas__user_credit[]
   cas__user_identity        cas__user_identity[]
 }
 
@@ -143,6 +146,18 @@ model cas__user_identity {
   cas__user       cas__user @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "cas__user_identity_cas__user_id_fk")
 
   @@index([user_id], map: "cas__user_identity_user_id_index")
+}
+
+model cas__user_credit {
+  id            BigInt    @id(map: "cas__user_credit_pk") @default(autoincrement())
+  user_id       BigInt
+  external_id   String    @unique(map: "cas__user_credit_external_id_uindex") @db.Char(16)
+  amount        Int
+  description   String?
+  inserted_date DateTime  @db.Timestamp(6)
+  cas__user     cas__user @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "cas__user_credit_cas__user_id_fk")
+
+  @@index([user_id], map: "cas__user_credit_user_id_index")
 }
 
 enum PaymentStatus {
