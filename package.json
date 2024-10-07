@@ -88,5 +88,23 @@
     "tailwindcss": "3.4.13",
     "ts-node": "10.9.2",
     "typescript": "~5.6.2"
+  },
+  "packageManager": "npm@10.8.1",
+  "engineStrict": true,
+  "engines": {
+    "npm": ">=10",
+    "pnpm": "please-use-npm",
+    "yarn": "please-use-npm",
+    "bun": "please-use-npm"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "bun",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "npm",
+      "onFail": "error"
+    }
   }
 }
