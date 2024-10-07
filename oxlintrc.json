@@ -11,6 +11,8 @@
     "import/no-default-export": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "unicorn/prefer-type-error": "off",
+    "unicorn/switch-case-braces": "off",
+    "default-case": "off",
     "func-names": "off",
     "no-undefined": "off",
     "no-null": "off",
