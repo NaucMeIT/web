@@ -1,4 +1,5 @@
 import * as TabsPrimitive from '@nmit-coursition/ui/primitives/tabs'
+import { createSafeKey } from '@nmit-coursition/utils'
 import type { ReactNode } from 'react'
 
 interface TabsProps {
@@ -11,14 +12,14 @@ export const Tabs = ({ values }: TabsProps) => {
     <TabsPrimitive.Tabs>
       <TabsPrimitive.TabsList>
         {values.map(({ value, displayText }) => (
-          <TabsPrimitive.TabsTrigger value={value} key={value}>
+          <TabsPrimitive.TabsTrigger value={`headline-${createSafeKey(value)}`} key={value}>
             {displayText}
           </TabsPrimitive.TabsTrigger>
         ))}
       </TabsPrimitive.TabsList>
 
       {values.map(({ value, children }) => (
-        <TabsPrimitive.TabsContent key={value} value={value}>
+        <TabsPrimitive.TabsContent key={`content-${createSafeKey(value)}`} value={value}>
           {children}
         </TabsPrimitive.TabsContent>
       ))}
