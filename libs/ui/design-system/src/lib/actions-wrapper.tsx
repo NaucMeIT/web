@@ -13,6 +13,7 @@ import {
   useContext,
   useRef,
 } from 'react'
+import { toast } from 'sonner'
 
 type Position = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left'
 
@@ -187,8 +188,16 @@ const DefaultActionBar: FC<DefaultActionBarProps> = ({
   return (
     <Actions.Wrapper position={position} className={className}>
       <Actions.Content>{children}</Actions.Content>
-      <Actions.Copy />
-      <Actions.Download filename={filename} format={format} />
+      <Actions.Copy
+        onSuccess={() => toast.success('Copied to clipboard')}
+        onError={(error) => toast.error(`Copy failed. Reason: ${error.message}`)}
+      />
+      <Actions.Download
+        filename={filename}
+        format={format}
+        onSuccess={() => toast.success('Downloaded successfully')}
+        onError={(error) => toast.error(`Download failed. Reason: ${error.message}`)}
+      />
     </Actions.Wrapper>
   )
 }
