@@ -1,7 +1,7 @@
 'use client'
 
 import { getTranscript } from '@nmit-coursition/ai'
-import { Accordion, Button, CopyWrapper, DownloadWrapper, Textarea } from '@nmit-coursition/design-system'
+import { Accordion, Actions, Button, Textarea } from '@nmit-coursition/design-system'
 import { useSignal } from '@preact/signals-react/runtime'
 import React, { useActionState } from 'react'
 import { z } from 'zod'
@@ -99,31 +99,25 @@ export default function Index() {
             {state.raw && (
               <div className='mb-4'>
                 <h3 className='text-lg font-semibold mb-1'>Transcript:</h3>
-                <DownloadWrapper>
-                  <CopyWrapper>
-                    <pre className='w-full h-auto max-h-60 overflow-auto bg-gray-100 p-2 rounded'>{state.raw}</pre>
-                  </CopyWrapper>
-                </DownloadWrapper>
+                <Actions.DefaultActionBar>
+                  <pre className='w-full h-auto max-h-60 overflow-auto bg-gray-100 p-2 rounded'>{state.raw}</pre>
+                </Actions.DefaultActionBar>
               </div>
             )}
             {state.srt && (
               <div className='mb-4'>
                 <h3 className='text-lg font-semibold mb-1'>SRT subtitles:</h3>
-                <DownloadWrapper>
-                  <CopyWrapper>
-                    <pre className='w-full h-auto max-h-60 overflow-auto bg-gray-100 p-2 rounded'>{state.srt}</pre>
-                  </CopyWrapper>
-                </DownloadWrapper>
+                <Actions.DefaultActionBar>
+                  <pre className='w-full h-auto max-h-60 overflow-auto bg-gray-100 p-2 rounded'>{state.srt}</pre>
+                </Actions.DefaultActionBar>
               </div>
             )}
             {state.vtt && (
               <div className='mb-4'>
                 <h3 className='text-lg font-semibold mb-1'>VTT subtitles:</h3>
-                <DownloadWrapper>
-                  <CopyWrapper>
-                    <pre className='w-full h-auto max-h-60 overflow-auto bg-gray-100 p-2 rounded'>{state.vtt}</pre>
-                  </CopyWrapper>
-                </DownloadWrapper>
+                <Actions.DefaultActionBar>
+                  <pre className='w-full h-auto max-h-60 overflow-auto bg-gray-100 p-2 rounded'>{state.vtt}</pre>
+                </Actions.DefaultActionBar>
               </div>
             )}
           </div>
