@@ -1,5 +1,12 @@
 import { formatApiErrorResponse } from '@nmit-coursition/api/utils'
-import { AUTH_COOKIES_NAME, invalidateSession, storeUserSession, updateUser } from '@nmit-coursition/auth'
+import {
+  AUTH_COOKIES_NAME,
+  getUserProfile,
+  invalidateSession,
+  storeUserSession,
+  updateUser,
+  validateSessionToken,
+} from '@nmit-coursition/auth'
 import { WorkOS } from '@workos-inc/node'
 import { Elysia } from 'elysia'
 
@@ -74,4 +81,11 @@ export const apiAuth = new Elysia({ prefix: '/auth' })
       console.error(error)
       return redirect('/login')
     }
+  })
+  .get('/profile', async ({ headers, cookie }) => {
+    const session = cookie[AUTH_COOKIES_NAME]?.toString() || ''
+    const apiKeyRaw = headers['authorization'] || ''
+    const apiKey = apiKeyRaw || (await validateSessionToken(session))
+
+    return getUserProfile(apiKey)
   })

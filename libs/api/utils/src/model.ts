@@ -8,3 +8,7 @@ export const errorResponseModel = t.Object({
   correlationId: t.String(),
   description: t.Optional(t.String()),
 })
+
+export const headersModel = t.Object({
+  authorization: t.Optional(t.String()),
+})

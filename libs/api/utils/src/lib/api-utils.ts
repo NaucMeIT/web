@@ -6,7 +6,7 @@ import { Elysia } from 'elysia'
 import { formatApiErrorResponse, parseApiKey } from '../api'
 import type { ApiErrorCode } from '../errorList'
 import { ERROR_LIST } from '../errorList'
-import { errorResponseModel } from '../model'
+import { errorResponseModel, headersModel } from '../model'
 import type {
   ApiKeyRecord,
   ApiKeyReportUsageRequest,
@@ -25,9 +25,10 @@ export const apiCommonGuard = new Elysia().guard({
     429: errorResponseModel,
     500: errorResponseModel,
   },
+  headers: headersModel,
   beforeHandle: async ({ headers, request: r, error, set, cookie }) => {
     const session = cookie[AUTH_COOKIES_NAME]?.toString() || ''
-    const apiKeyRaw = String(headers['authorization'] || '')
+    const apiKeyRaw = headers['authorization'] || ''
     const apiKey = apiKeyRaw || (await validateSessionToken(session))
 
     const request = r as ExtendedRequest
