@@ -20,19 +20,15 @@ export function parseError(error: Error | string | ApiError | unknown): Document
     return ''
   })()
 
-  const errorCodeResolved: ApiErrorCode = isApiErrorCode(message) ? message : 'PUBLIC_COMMON_RAW_ERROR'
-
   return {
     state: (state || 'exception').toLowerCase(),
     code: 500,
     message: errorDefinition?.message || message,
-    errorCode: errorCodeResolved, // TODO: TS error. I dont know why.
+    errorCode: isApiErrorCode(message) ? message : 'PUBLIC_COMMON_RAW_ERROR',
     ...(errorDefinition
       ? {
           code: errorDefinition.code || 500,
-          errorCode: message,
           hint: errorDefinition.description,
-          documentationUrl: `https://brj.app/documentation/error/${message}`,
         }
       : {}),
   }
