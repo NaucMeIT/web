@@ -1,7 +1,7 @@
 import { AUTH_COOKIES_NAME, validateSessionToken } from '@nmit-coursition/auth'
 import { Prisma, prisma } from '@nmit-coursition/db'
 import { generateRandomIdentifier, isDateBeforeNow } from '@nmit-coursition/utils'
-import * as Sentry from '@sentry/react'
+import * as Sentry from '@sentry/bun'
 import { Elysia } from 'elysia'
 import { formatApiErrorResponse, parseApiKey } from '../api'
 import type { ApiErrorCode } from '../errorList'
@@ -48,23 +48,11 @@ export const apiCommonGuard = new Elysia().guard({
 function initSentry(request: ExtendedRequest) {
   Sentry.init({
     dsn: 'https://709a51d30d0a43d222def56984819928@o4508026955038720.ingest.de.sentry.io/4508047143010384',
-    integrations: [
-      Sentry.browserTracingIntegration(),
-      Sentry.replayIntegration({
-        maskAllText: false,
-        maskAllInputs: false,
-        blockAllMedia: false,
-      }),
-      Sentry.httpClientIntegration(),
-      Sentry.captureConsoleIntegration({ levels: ['error'] }),
-    ],
+    integrations: [Sentry.captureConsoleIntegration({ levels: ['error'] })],
     tracesSampleRate: 1,
-    release: process.env['VERCEL_GIT_COMMIT_SHA'] || undefined,
-    replaysSessionSampleRate: 0.1,
-    replaysOnErrorSampleRate: 1,
     beforeSend(event, hint) {
       // @ts-ignore
-      if (hint && hint.originalException && hint?.originalException?.message?.includes('Dynamic server usage')) {
+      if (hint?.originalException?.message?.includes('Dynamic server usage')) {
         return null
       }
       return event

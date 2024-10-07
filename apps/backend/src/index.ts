@@ -2,7 +2,7 @@ import { swagger } from '@elysiajs/swagger'
 import { apiAuth } from '@nmit-coursition/api/auth'
 import { apiDev } from '@nmit-coursition/api/dev'
 import { apiV1 } from '@nmit-coursition/api/v1'
-import * as Sentry from '@sentry/react'
+import * as Sentry from '@sentry/bun'
 import { Elysia } from 'elysia'
 
 new Elysia()
