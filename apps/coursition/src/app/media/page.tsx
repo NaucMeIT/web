@@ -1,12 +1,13 @@
 'use client'
 
 import { getTranscript } from '@nmit-coursition/ai'
-import { Accordion, Button, Textarea } from '@nmit-coursition/design-system'
+import { Accordion, Actions, Button, Textarea } from '@nmit-coursition/design-system'
 import { useSignal } from '@preact/signals-react/runtime'
 import React, { useActionState } from 'react'
 import { z } from 'zod'
 import { zfd } from 'zod-form-data'
 import { StatusDisplay } from '../../components/statusDisplay'
+import { TranscriptionResults } from '../../components/transcriptionResults'
 
 const acceptedMediaFileTypes = 'video/*,audio/*'
 const acceptedFileTypes = `${acceptedMediaFileTypes}`
@@ -22,6 +23,26 @@ const initialState = {
   vtt: '',
 }
 
+const accordionItems = [
+  {
+    title: 'Advanced Options',
+    content: (
+      <div className='flex gap-3 flex-col w-full'>
+        <Textarea
+          label='Difficult words'
+          placeholder='ChatGPT, Claude, Zig'
+          id='keywords'
+          subtext='Unusual words or phrases that may be difficult to transcribe. Separate with commas. Avoid putting common words.'
+        />
+      </div>
+    ),
+  },
+]
+
+const statusStates = [
+  { key: 'upload', text: 'Uploading media' },
+  { key: 'parse', text: 'Transcribing' },
+]
 export default function Index() {
   const status = useSignal<'idle' | 'upload' | 'parse' | 'done'>('idle')
 
@@ -56,23 +77,7 @@ export default function Index() {
                   className='block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100'
                 />
               </div>
-              <Accordion
-                items={[
-                  {
-                    title: 'Advanced Options',
-                    content: (
-                      <div className='flex gap-3 flex-col w-full'>
-                        <Textarea
-                          label='Difficult words'
-                          placeholder='ChatGPT, Claude, Zig'
-                          id='keywords'
-                          subtext='Unusual words or phrases that may be difficult to transcribe. Separate with commas. Avoid putting common words.'
-                        />
-                      </div>
-                    ),
-                  },
-                ]}
-              />
+              <Accordion items={accordionItems} />
               <div className='flex gap-4'>
                 <Button
                   type='submit'
@@ -85,13 +90,7 @@ export default function Index() {
           </>
         )}
         {status.value !== 'idle' && status.value !== 'done' && (
-          <StatusDisplay
-            states={[
-              { key: 'upload', text: 'Uploading media' },
-              { key: 'parse', text: 'Transcribing' },
-            ]}
-            status={status.value}
-          />
+          <StatusDisplay states={statusStates} status={status.value} />
         )}
         {status.value === 'done' && (
           <div>
@@ -99,23 +98,30 @@ export default function Index() {
             {state.raw && (
               <div className='mb-4'>
                 <h3 className='text-lg font-semibold mb-1'>Transcript:</h3>
-                <pre className='w-full h-auto max-h-60 overflow-auto bg-gray-100 p-2 rounded'>{state.raw}</pre>
+                <Actions.DefaultActionBar>
+                  <pre className='w-full h-auto max-h-60 overflow-auto bg-gray-100 p-2 rounded'>{state.raw}</pre>
+                </Actions.DefaultActionBar>
               </div>
             )}
             {state.srt && (
               <div className='mb-4'>
                 <h3 className='text-lg font-semibold mb-1'>SRT subtitles:</h3>
-                <pre className='w-full h-auto max-h-60 overflow-auto bg-gray-100 p-2 rounded'>{state.srt}</pre>
+                <Actions.DefaultActionBar>
+                  <pre className='w-full h-auto max-h-60 overflow-auto bg-gray-100 p-2 rounded'>{state.srt}</pre>
+                </Actions.DefaultActionBar>
               </div>
             )}
             {state.vtt && (
               <div className='mb-4'>
                 <h3 className='text-lg font-semibold mb-1'>VTT subtitles:</h3>
-                <pre className='w-full h-auto max-h-60 overflow-auto bg-gray-100 p-2 rounded'>{state.vtt}</pre>
+                <Actions.DefaultActionBar>
+                  <pre className='w-full h-auto max-h-60 overflow-auto bg-gray-100 p-2 rounded'>{state.vtt}</pre>
+                </Actions.DefaultActionBar>
               </div>
             )}
           </div>
         )}
+        {status.value === 'done' && <TranscriptionResults raw={state.raw} srt={state.srt} vtt={state.vtt} />}
       </div>
     </div>
   )
