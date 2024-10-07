@@ -20,18 +20,14 @@
     "sharp"
   ],
   "dependencies": {
-    "@ai-sdk/google": "^0.0.51",
     "@ai-sdk/openai": "^0.0.66",
     "@auth/prisma-adapter": "^2.6.0",
     "@deepgram/sdk": "^3.7.0",
     "@elysiajs/swagger": "^1.1.3",
-    "@google-cloud/storage": "^7.13.0",
-    "@google/generative-ai": "^0.19.0",
     "@lemonsqueezy/lemonsqueezy.js": "^3.3.1",
     "@mendable/firecrawl-js": "^1.4.5",
     "@preact/signals-react": "^2.2.0",
     "@prisma/client": "^5.20.0",
-    "@prisma/nextjs-monorepo-workaround-plugin": "^5.20.0",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-checkbox": "^1.1.1",
     "@radix-ui/react-label": "^2.1.0",
@@ -40,7 +36,6 @@
     "@radix-ui/react-switch": "^1.1.1",
     "@radix-ui/react-tabs": "^1.1.1",
     "@react-email/components": "^0.0.25",
-    "@types/bcryptjs": "^2.4.6",
     "@workos-inc/node": "^7.27.4",
     "ai": "^3.3.44",
     "bcryptjs": "^2.4.3",
@@ -52,13 +47,12 @@
     "lefthook": "^1.7.18",
     "lucide-react": "^0.447.0",
     "nanoid": "^5.0.7",
-    "next": "15.0.0-canary.163",
+    "next": "15.0.0-canary.170",
     "next-auth": "^4.24.8",
     "prisma": "^5.19.1",
-    "react": "19.0.0-rc-5d19e1c8-20240923",
-    "react-dom": "19.0.0-rc-5d19e1c8-20240923",
+    "react": "19.0.0-rc-1460d67c-20241003",
+    "react-dom": "19.0.0-rc-1460d67c-20241003",
     "react-email": "^3.0.1",
-    "react-icons": "^5.3.0",
     "resend": "^4.0.0",
     "server-only": "^0.0.1",
     "sonner": "^1.5.0",
@@ -72,7 +66,7 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@babel/preset-react": "^7.24.7",
-    "@biomejs/biome": "1.9.2",
+    "@biomejs/biome": "1.9.3",
     "@nx-extend/shadcn-ui": "^3.1.2",
     "@nx-tools/nx-container": "^6.0.4",
     "@nx/devkit": "20.0.0",
@@ -83,15 +77,33 @@
     "@swc-node/register": "1.9.1",
     "@swc/core": "1.5.25",
     "@swc/helpers": "0.5.11",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "20.14.2",
     "@types/react": "^18.3.8",
     "@types/react-dom": "18.3.0",
     "autoprefixer": "10.4.19",
     "nx": "20.0.0",
     "postcss": "8.4.38",
-    "prettier": "^3.3.3",
-    "tailwindcss": "3.4.4",
+    "tailwindcss": "3.4.13",
     "ts-node": "10.9.2",
     "typescript": "~5.6.2"
+  },
+  "packageManager": "npm@10.8.1",
+  "engineStrict": true,
+  "engines": {
+    "npm": ">=10",
+    "pnpm": "please-use-npm",
+    "yarn": "please-use-npm",
+    "bun": "please-use-npm"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "bun",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "npm",
+      "onFail": "error"
+    }
   }
 }
