@@ -3,14 +3,13 @@
 import { getTranscript } from '@nmit-coursition/ai'
 import { Accordion, Actions, Button, Textarea } from '@nmit-coursition/design-system'
 import { useSignal } from '@preact/signals-react/runtime'
-import React, { useActionState } from 'react'
+import { useActionState } from 'react'
+import { toast } from 'sonner'
 import { z } from 'zod'
 import { zfd } from 'zod-form-data'
+import { FileDropper } from '../../components/fileDropper'
 import { StatusDisplay } from '../../components/statusDisplay'
 import { TranscriptionResults } from '../../components/transcriptionResults'
-
-const acceptedMediaFileTypes = 'video/*,audio/*'
-const acceptedFileTypes = `${acceptedMediaFileTypes}`
 
 const fileSchema = zfd.formData({
   file: zfd.file(),
@@ -43,6 +42,7 @@ const statusStates = [
   { key: 'upload', text: 'Uploading media' },
   { key: 'parse', text: 'Transcribing' },
 ]
+
 export default function Index() {
   const status = useSignal<'idle' | 'upload' | 'parse' | 'done'>('idle')
 
@@ -65,18 +65,14 @@ export default function Index() {
           <>
             <h1 className='text-2xl font-bold mb-4'>Upload media</h1>
             <form className='space-y-4' action={formAction}>
-              <div>
-                <label htmlFor='file' className='block font-medium text-gray-700 mb-1'>
-                  Choose a media file
-                </label>
-                <input
-                  type='file'
-                  id='file'
-                  name='file'
-                  accept={acceptedFileTypes}
-                  className='block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100'
-                />
-              </div>
+              <FileDropper
+                idleMessage="Drag 'n' drop some files here, or click to select files"
+                dropZoneMessage='Drop the files here ...'
+                className='border max-w-2xl mx-auto'
+                inputName='file'
+                maxFiles={1}
+                accept={{ 'video/*': [], 'audio/*': [] }}
+              />
               <Accordion items={accordionItems} />
               <div className='flex gap-4'>
                 <Button
