@@ -1,4 +1,4 @@
-import { Tabs } from '@nmit-coursition/design-system'
+import { Tabs } from '@nmit-coursition/ui/design-system'
 
 interface Props {
   raw: string | undefined
