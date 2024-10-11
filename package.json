@@ -22,6 +22,7 @@
   ],
   "dependencies": {
     "@ai-sdk/openai": "^0.0.66",
+    "@ap0nia/eden-react-query": "^1.2.1",
     "@auth/prisma-adapter": "^2.6.0",
     "@deepgram/sdk": "^3.7.0",
     "@elysiajs/swagger": "^1.1.3",

@@ -1,3 +1,4 @@
+import { createEdenTreatyReactQuery } from '@ap0nia/eden-react-query'
 import FirecrawlApp from '@mendable/firecrawl-js'
 import { generateQuiz, getResult, getTranscript, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
 import { apiCommonGuard, formatApiErrorResponse, reportUsage } from '@nmit-coursition/api/utils'
@@ -10,6 +11,7 @@ import {
 import { Elysia, t } from 'elysia'
 
 export const apiV1 = new Elysia({ prefix: '/v1' })
+  .get('/test', () => 'test')
   .use(apiCommonGuard)
   .group('/parse', (parseApp) =>
     parseApp
@@ -183,3 +185,5 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
       },
     ),
   )
+
+export const v1 = createEdenTreatyReactQuery<typeof apiV1>()

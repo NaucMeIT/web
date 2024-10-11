@@ -1,3 +1,4 @@
+import { v1 } from '@nmit-coursition/api/v1'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/test')({
@@ -5,5 +6,6 @@ export const Route = createFileRoute('/test')({
 })
 
 function Home() {
-  return <div>Test</div>
+  const testQuery = v1.test.get.useQuery()
+  return <div>{testQuery.data}</div>
 }

@@ -1,3 +1,4 @@
+import { edenPlugin } from '@ap0nia/eden-react-query'
 import { swagger } from '@elysiajs/swagger'
 import { apiAuth } from '@nmit-coursition/api/auth'
 import { apiDev } from '@nmit-coursition/api/dev'
@@ -25,6 +26,7 @@ new Elysia()
       },
     }),
   )
+  .use(edenPlugin({ batch: true }))
   .onError(({ error, code }) => {
     if (code === 'NOT_FOUND') return
     Sentry.captureException(error)
@@ -32,4 +34,4 @@ new Elysia()
   .use(apiAuth)
   .use(apiV1)
   .use(apiDev)
-  .listen(3000)
+  .listen(3001)

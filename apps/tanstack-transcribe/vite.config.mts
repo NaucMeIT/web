@@ -33,4 +33,7 @@ export default defineConfig({
       transformMixedEsModules: true,
     },
   },
+  ssr: {
+    external: ["@nmit-coursition/api/v1"]
+  }
 })
