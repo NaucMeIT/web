@@ -39,6 +39,7 @@
       "@nmit-coursition/email": ["libs/email/src/index.ts"],
       "@nmit-coursition/payments": ["libs/payments/src/index.ts"],
       "@nmit-coursition/ui/design-system": ["libs/ui/design-system/src/index.ts"],
+      "@nmit-coursition/ui/design-system/*": ["libs/ui/design-system/src/*"],
       "@nmit-coursition/ui/primitives": ["libs/ui/primitives/src/index.ts"],
       "@nmit-coursition/ui/primitives/*": ["libs/ui/primitives/src/*"],
       "@nmit-coursition/ui/utils": ["libs/ui/utils/src/index.ts"],

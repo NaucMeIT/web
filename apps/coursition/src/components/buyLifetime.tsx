@@ -42,14 +42,12 @@ export const BuyLifetime = ({ className, ...rest }: Props) => {
   return (
     <Button
       {...rest}
+      type='button'
       onClick={openPaymentDialog}
-      className={cn(
-        'py-1 h-16 pl-3 pr-1 max-w-64 rounded-none bg-purple-700 hover:bg-purple-700/90 flex gap-2',
-        className,
-      )}
+      className={cn('h-16 rounded-none flex gap-2', className)}
       icon={
         <div className='bg-white px-4 h-full flex items-center justify-center flex-1'>
-          <ArrowUpLeft className='rotate-[85deg] text-purple-700' />
+          <ArrowUpLeft className='rotate-[85deg]' />
         </div>
       }
       iconPosition='right'

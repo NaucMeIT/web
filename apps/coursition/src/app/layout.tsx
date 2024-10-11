@@ -1,4 +1,5 @@
 import '@nmit-coursition/ui/utils/global.css'
+import '@nmit-coursition/ui/design-system/nmit-colors.css'
 import { getServerSession } from 'next-auth'
 import Script from 'next/script'
 import { Toaster } from 'sonner'

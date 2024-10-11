@@ -1,4 +1,3 @@
-import { Button as ButtonPrimitive } from '@nmit-coursition/ui/primitives/button'
 import { cn } from '@nmit-coursition/ui/utils'
 import { trim } from '@nmit-coursition/utils'
 import { type VariantProps, cva } from 'class-variance-authority'
@@ -8,7 +7,8 @@ import * as React from 'react'
 const buttonVariants = cva(
   trim`
     inline-flex items-center justify-center
-    rounded-md text-sm font-medium
+    rounded-md whitespace-nowrap
+    text-sm font-medium
     ring-offset-background transition-colors
     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
     disabled:pointer-events-none disabled:opacity-50
@@ -24,15 +24,16 @@ const buttonVariants = cva(
         true: 'w-full',
       },
       size: {
-        cta: 'h-12 px-6 py-3 text-lg',
-        default: 'h-10 px-4 py-2',
-        sm: 'h-9 px-3 text-sm',
+        cta: 'h-12 px-6 py-1 text-lg',
+        default: 'h-10 px-4 py-1',
+        sm: 'h-9 p-3 text-sm',
       },
       variant: {
-        primary: 'bg-yellow-500 text-white hover:bg-yellow-600',
-        secondary: 'bg-blue-500 text-white hover:bg-blue-600',
-        tertiary: 'bg-green-500 text-white hover:bg-green-600',
-        destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
+        primary: 'bg-button-interactive-primary text-text-static-primary hover:bg-button-interactive-primary-hover',
+        secondary:
+          'bg-button-interactive-secondary text-text-static-primary hover:bg-button-interactive-secondary-hover',
+        tertiary: 'bg-green-500 text-text-static-primary hover:bg-green-600',
+        destructive: 'bg-button-interactive-alert text-destructive-foreground hover:bg-button-interactive-alert-hover',
         outline: 'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
@@ -86,12 +87,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       loadingText = 'Loading...',
       icon,
       children,
+      type = 'button',
       ...props
     },
     ref,
   ) => {
     return (
-      <ButtonPrimitive
+      <button
         className={cn(
           buttonVariants({ intent, size, variant, grow, iconPosition, className }),
           'relative',
@@ -99,6 +101,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         )}
         ref={ref}
         disabled={isLoading || props.disabled}
+        type={type}
         {...props}
       >
         <span className={cn('contents', isLoading && 'invisible')}>
@@ -113,7 +116,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             {loadingText}
           </span>
         )}
-      </ButtonPrimitive>
+      </button>
     )
   },
 )

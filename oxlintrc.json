@@ -5,6 +5,7 @@
   "settings": {},
   "rules": {
     "import/no-cycle": "error",
+    "react/button-has-type": "off",
     "react-perf/jsx-no-new-function-as-prop": "off",
     "react-perf/jsx-no-new-array-as-prop": "off",
     "react-perf/jsx-no-new-object-as-prop": "off",

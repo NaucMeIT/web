@@ -1,0 +1,96 @@
+  /* Raw colours */
+  :root {
+    --color-amber-50: #fffbeb;
+    --color-amber-50-15: rgba(var(--color-amber-50), 0.15);
+    --color-amber-50-30: rgba(var(--color-amber-50), 0.30);
+    --color-amber-50-75: rgba(var(--color-amber-50), 0.75);
+    --color-amber-100: #fef3c7;
+    --color-amber-600: #d97706;
+    --color-amber-700: #b45309;
+    --color-red-500: #ff0000;
+    --color-red-600: #dc2626;
+    --color-red-700: #b91c1c;
+    --color-yellow-400: #facc15;
+    --color-yellow-500: #eab308;
+    --color-nmit-yellow: #faff00;
+    --color-nmit-turquoise: #00ffe0;
+    --color-nmit-dark-turquoise: #00caff;
+    --color-nmit-green: #9eff00;
+    --color-fuchsia-100: #fae8ff;
+    --color-fuchsia-200: #f5d0fe;
+    --color-fuchsia-200-80: rgba(var(--color-fuchsia-200), 0.80);
+    --color-fuchsia-300: #f1b9ff;
+    --color-fuchsia-400: #e879f9;
+    --color-fuchsia-600: #c026d3;
+    --color-fuchsia-600-30: rgba(var(--color-fuchsia-600), 0.30);
+    --color-fuchsia-600-50: rgba(var(--color-fuchsia-600), 0.50);
+    --color-fuchsia-900: #701a75;
+    --color-fuchsia-950: #4a044e;
+    --color-fuchsia-950-50: rgba(var(--color-fuchsia-950), 0.50);
+    --color-fuchsia-950-75: rgba(var(--color-fuchsia-950), 0.75);
+    --color-stone-50: #fafaf9;
+    --color-stone-400: #a8a29e;
+    --color-stone-500: #78716c;
+    --color-stone-600: #57534e;
+    --color-stone-800: #292524;
+    --color-stone-900: #1c1917;
+    --color-stone-950: #0a0a0a;
+  }
+
+ /* Semantic colours */
+  :root {
+    /* Background tokens */
+    --background-static-primary-default: var(--color-amber-50);
+    --background-interactive-secondary-default: var(--color-amber-50-15);
+    --background-interactive-secondary-hover: var(--color-amber-50-30);
+    --background-interactive-tertiary-default: var(--color-fuchsia-100);
+    --background-interactive-tertiary-hover: var(--color-fuchsia-200);
+
+    /* Button tokens */
+    --button-interactive-primary-default: var(--color-nmit-yellow);
+    --button-interactive-primary-hover: var(--color-yellow-500);
+    --button-interactive-primary-disabled: var(--color-stone-400);
+    --button-interactive-secondary-default: var(--color-amber-50-15);
+    --button-interactive-secondary-hover: var(--color-amber-50-30);
+    --button-interactive-secondary-disabled: var(--color-amber-50-15);
+    --button-interactive-alert-default: var(--color-red-500);
+    --button-interactive-alert-hover: var(--color-red-600);
+
+    /* Text tokens */
+    --text-static-primary-default: var(--color-amber-100);
+    --text-static-primary-alert: var(--color-red-500);
+    --text-static-primary-success: var(--color-nmit-green);
+    --text-static-secondary-default: var(--color-amber-50-75);
+    --text-static-tertiary-default: var(--color-amber-50-30);
+    --text-static-link: var(--color-fuchsia-400);
+    --text-static-inlinecode: var(--color-fuchsia-950);
+  }
+
+  /* Dark theme overrides */
+  .dark {
+    /* Background tokens */
+    --background-static-primary-default: var(--color-fuchsia-950);
+    --background-interactive-secondary-default: var(--color-fuchsia-600-30);
+    --background-interactive-secondary-hover: var(--color-fuchsia-600-50);
+    --background-interactive-tertiary-default: var(--color-fuchsia-200);
+    --background-interactive-tertiary-hover: var(--color-fuchsia-300);
+
+    /* Button tokens */
+    --button-interactive-primary-default: var(--color-nmit-turquoise);
+    --button-interactive-primary-hover: var(--color-nmit-dark-turquoise);
+    --button-interactive-primary-disabled: var(--color-stone-500);
+    --button-interactive-secondary-default: var(--color-fuchsia-600-30);
+    --button-interactive-secondary-hover: var(--color-fuchsia-600-50);
+    --button-interactive-secondary-disabled: var(--color-fuchsia-600-30);
+    --button-interactive-alert-default: var(--color-red-500);
+    --button-interactive-alert-hover: var(--color-red-600);
+
+    /* Text tokens */
+    --text-static-primary-default: var(--color-fuchsia-950);
+    --text-static-primary-alert: var(--color-red-500);
+    --text-static-primary-success: var(--color-nmit-green);
+    --text-static-secondary-default: var(--color-fuchsia-950-75);
+    --text-static-tertiary-default: var(--color-fuchsia-950-50);
+    --text-static-link: var(--color-fuchsia-600);
+    --text-static-inlinecode: var(--color-amber-100);
+  }
