@@ -24,6 +24,17 @@
         "devTargetName": "dev",
         "serveStaticTargetName": "serve-static"
       }
+    },
+    {
+      "plugin": "@nx/vite/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "testTargetName": "test",
+        "serveTargetName": "start",
+        "previewTargetName": "dev",
+        "serveStaticTargetName": "serve-static",
+        "typecheckTargetName": "typecheck"
+      }
     }
   ],
   "generators": {
@@ -35,8 +46,17 @@
     },
     "@nx/react": {
       "library": {
-        "unitTestRunner": "none",
-        "linter": "none"
+        "style": "tailwind",
+        "linter": "none",
+        "unitTestRunner": "none"
+      },
+      "application": {
+        "babel": true,
+        "style": "tailwind",
+        "bundler": "vite"
+      },
+      "component": {
+        "style": "tailwind"
       }
     }
   },
