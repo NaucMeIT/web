@@ -1,0 +1,15 @@
+
+:root {
+    --shadow-shadow-interactive-primary-default: 0 4px 4px 0 rgba(0,0,0,1);   
+
+    --shadow-shadow-interactive-primary-hover: 0 4px 4px 0 rgba(0,0,0,1);   
+
+    --shadow-shadow-interactive-secondary-default: 0 4px 4px 0 rgba(0,0,0,1);   
+
+    --shadow-shadow-interactive-secondary-hover: 0 4px 4px 0 rgba(0,0,0,1);   
+
+    --shadow-shadow-interactive-tertiary-default: 0 4px 4px 0 rgba(0,0,0,1);   
+
+    --shadow-shadow-interactive-tertiary-hover: 0 4px 4px 0 rgba(0,0,0,1);   
+
+}
