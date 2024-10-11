@@ -14,6 +14,7 @@
     "jsx-a11y/label-has-associated-control": "off",
     "unicorn/prefer-type-error": "off",
     "unicorn/switch-case-braces": "off",
+    "unicorn/no-abusive-eslint-disable": "warn",
     "default-case": "off",
     "func-names": "off",
     "no-undefined": "off",
@@ -23,6 +24,7 @@
     "typescript/no-unsafe-function-type": "error",
     "typescript/no-wrapper-object-types": "error",
     "typescript/no-unsafe-declaration-merging": "error",
-    "@typescript-eslint/ban-types": "off"
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-non-null-assertion": "warn"
   }
 }
