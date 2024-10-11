@@ -7,6 +7,7 @@ import * as Sentry from '@sentry/bun'
 import { Elysia } from 'elysia'
 
 new Elysia()
+  .use(edenPlugin({ batch: true }))
   .use(
     swagger({
       documentation: {
@@ -26,7 +27,6 @@ new Elysia()
       },
     }),
   )
-  .use(edenPlugin({ batch: true }))
   .onError(({ error, code }) => {
     if (code === 'NOT_FOUND') return
     Sentry.captureException(error)

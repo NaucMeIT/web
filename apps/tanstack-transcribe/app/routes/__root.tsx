@@ -28,7 +28,7 @@ function RootComponent() {
     v1.createClient({
       links: [
         httpBatchLink({
-          domain: 'http://localhost:3001/v1/eden',
+          domain: 'http://localhost:3001/eden/v1',
         }),
       ],
     }),

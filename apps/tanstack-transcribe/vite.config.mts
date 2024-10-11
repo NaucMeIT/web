@@ -34,6 +34,6 @@ export default defineConfig({
     },
   },
   ssr: {
-    external: ["@nmit-coursition/api/v1"]
-  }
+    external: ['@nmit-coursition/api/v1'],
+  },
 })
