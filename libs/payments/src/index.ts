@@ -78,9 +78,10 @@ export const webhookEventHandler = async ({
 
   if (condition(data)) {
     callback(data.meta.custom_data?.email)
+    return { success: true }
   }
 
-  return { success: true }
+  return { success: false }
 }
 
 export type { LS }
