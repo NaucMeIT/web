@@ -1,28 +1,66 @@
-import type * as React from 'react'
-
-import { Input as InputPrimitive } from '@nmit-coursition/ui/primitives/input'
+import * as InputPrimitive from '@nmit-coursition/ui/primitives/input'
 import { Label } from '@nmit-coursition/ui/primitives/label'
 import { cn } from '@nmit-coursition/ui/utils'
+import { type VariantProps, cva } from 'class-variance-authority'
 
-type InputType = React.ComponentProps<'input'>['type']
+type OverrideProps<T, V> = V & Omit<T, keyof V>
 
-interface InputProps extends React.ComponentProps<'input'> {
+const inputVariants = cva('', {
+  variants: {
+    variant: {
+      primary: '',
+      valid: '', // green borders
+      inValid: '',
+      disabled: '',
+    },
+  },
+})
+
+type Orientation = 'horizontal' | 'vertical'
+
+interface InputProps
+  extends OverrideProps<
+      InputPrimitive.RootProps,
+      { type: InputPrimitive.RootProps['type']; placeholder: string; id: string }
+    >,
+    VariantProps<typeof inputVariants> {
   label: string
-  placeholder: string
-  type: InputType
-  id: string
   subtext?: string
   disabled?: boolean
-
-  // todo: use mix props
+  orientation?: Orientation
   containerClassName?: string
 }
 
-export function Input({ label, placeholder, type, id, subtext, disabled, containerClassName, ...rest }: InputProps) {
+export function Input({
+  label,
+  placeholder,
+  type,
+  id,
+  subtext,
+  disabled,
+  variant,
+  orientation = 'vertical',
+  containerClassName,
+  ...rest
+}: InputProps) {
   return (
-    <div className={cn('grid w-full items-center gap-1.5', containerClassName)}>
+    <div
+      className={cn(
+        'flex w-full items-center justify-center gap-1.5',
+        orientation == 'vertical' ? 'flex-col items-start' : '',
+        containerClassName,
+      )}
+    >
       <Label htmlFor={id}>{label}</Label>
-      <InputPrimitive type={type} id={id} name={id} placeholder={placeholder} disabled={disabled} {...rest} />
+      <InputPrimitive.Main
+        type={type}
+        id={id}
+        name={id}
+        placeholder={placeholder}
+        disabled={disabled}
+        className={cn(inputVariants({ variant }))}
+        {...rest}
+      />
       {subtext && <p className='text-sm text-muted-foreground'>{subtext}</p>}
     </div>
   )
