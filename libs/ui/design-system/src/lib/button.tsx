@@ -1,1 +1,1 @@
-export { Button } from '@nmit-coursition/ui/primitives/button'
+export { Button, type ButtonProps } from '@nmit-coursition/ui/primitives/button'
