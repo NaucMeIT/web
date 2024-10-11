@@ -1,4 +1,4 @@
-import { Button } from '@nmit-coursition/design-system'
+import { Button } from '@nmit-coursition/ui/design-system'
 import { Loader } from 'lucide-react'
 import { signIn } from 'next-auth/react'
 import * as React from 'react'

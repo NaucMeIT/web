@@ -1,7 +1,7 @@
 'use client'
 
 import { getTranscript } from '@nmit-coursition/ai'
-import { Accordion, Actions, Button, Textarea } from '@nmit-coursition/design-system'
+import { Accordion, Actions, Button, Textarea } from '@nmit-coursition/ui/design-system'
 import { useSignal } from '@preact/signals-react/runtime'
 import React, { useActionState } from 'react'
 import { z } from 'zod'

@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Input, Textarea } from '@nmit-coursition/design-system'
+import { Button, Input, Textarea } from '@nmit-coursition/ui/design-system'
 import { toast } from 'sonner'
 import { getInTouch } from '../app/actions'
 
