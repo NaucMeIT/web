@@ -3,6 +3,8 @@ import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
 import react from '@vitejs/plugin-react'
 /// <reference types='vitest' />
 import { defineConfig } from 'vite'
+import type { UserConfig } from 'vite'
+import { one } from 'one/vite'
 
 export default defineConfig({
   root: __dirname,
@@ -18,7 +20,7 @@ export default defineConfig({
     host: 'localhost',
   },
 
-  plugins: [react(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
+  plugins: [react(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md']), one({ config: { tsConfigPaths: false }})],
 
   // Uncomment this if you are using workers.
   // worker: {
@@ -29,8 +31,11 @@ export default defineConfig({
     outDir: '../../dist/apps/one-transcribe',
     emptyOutDir: true,
     reportCompressedSize: true,
-    commonjsOptions: {
-      transformMixedEsModules: true,
+    rollupOptions: {
+      maxParallelFileOps: 1
     },
+    commonjsOptions: {
+      strictRequires: true,
+    }
   },
-})
+}) satisfies UserConfig
