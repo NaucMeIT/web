@@ -24,12 +24,18 @@ interface LemonSqueezyData {
 export interface Metadata {
   [key: string]: string
 }
+
+export interface WebhookEventHandlerApiCallback {
+  success: boolean
+  message: string
+}
+
 export interface WebhookEventHandlerApi {
   rawBody: string
   request: Request
   customData: {
     condition: (data: LemonSqueezyData) => boolean
-    callback: (emailToUpdate: string) => void
+    callback: (emailToUpdate: string) => Promise<WebhookEventHandlerApiCallback>
   }
 }
 
@@ -57,7 +63,7 @@ export const webhookEventHandler = async ({
   rawBody,
   request,
   customData: { callback, condition },
-}: WebhookEventHandlerApi) => {
+}: WebhookEventHandlerApi): Promise<WebhookEventHandlerApiCallback> => {
   /**
    * Decodes the webhook secret.
    */
@@ -77,10 +83,10 @@ export const webhookEventHandler = async ({
   const data = await JSON.parse(rawBody)
 
   if (condition(data)) {
-    callback(data.meta.custom_data?.email)
+    return callback(data.meta.custom_data?.email)
   }
 
-  return { success: true }
+  return { success: false, message: 'criteria to execute callback was not met' }
 }
 
 export type { LS }

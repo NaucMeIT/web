@@ -25,6 +25,7 @@ export const POST = async (request: NextRequest) => {
           },
         })
         revalidatePath('/')
+        return { success: true, message: 'user.roles.upated' }
       },
     },
   })
