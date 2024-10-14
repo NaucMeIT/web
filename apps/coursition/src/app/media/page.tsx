@@ -1,10 +1,9 @@
 'use client'
 
 import { getTranscript } from '@nmit-coursition/ai'
-import { Accordion, Actions, Button, Textarea } from '@nmit-coursition/ui/design-system'
+import { Accordion, Button, Textarea } from '@nmit-coursition/ui/design-system'
 import { useSignal } from '@preact/signals-react/runtime'
 import { useActionState } from 'react'
-import { toast } from 'sonner'
 import { z } from 'zod'
 import { zfd } from 'zod-form-data'
 import { FileDropper } from '../../components/fileDropper'
@@ -87,35 +86,6 @@ export default function Index() {
         )}
         {status.value !== 'idle' && status.value !== 'done' && (
           <StatusDisplay states={statusStates} status={status.value} />
-        )}
-        {status.value === 'done' && (
-          <div>
-            <h2 className='text-xl font-bold mb-2'>Results:</h2>
-            {state.raw && (
-              <div className='mb-4'>
-                <h3 className='text-lg font-semibold mb-1'>Transcript:</h3>
-                <Actions.DefaultActionBar>
-                  <pre className='w-full h-auto max-h-60 overflow-auto bg-gray-100 p-2 rounded'>{state.raw}</pre>
-                </Actions.DefaultActionBar>
-              </div>
-            )}
-            {state.srt && (
-              <div className='mb-4'>
-                <h3 className='text-lg font-semibold mb-1'>SRT subtitles:</h3>
-                <Actions.DefaultActionBar>
-                  <pre className='w-full h-auto max-h-60 overflow-auto bg-gray-100 p-2 rounded'>{state.srt}</pre>
-                </Actions.DefaultActionBar>
-              </div>
-            )}
-            {state.vtt && (
-              <div className='mb-4'>
-                <h3 className='text-lg font-semibold mb-1'>VTT subtitles:</h3>
-                <Actions.DefaultActionBar>
-                  <pre className='w-full h-auto max-h-60 overflow-auto bg-gray-100 p-2 rounded'>{state.vtt}</pre>
-                </Actions.DefaultActionBar>
-              </div>
-            )}
-          </div>
         )}
         {status.value === 'done' && <TranscriptionResults raw={state.raw} srt={state.srt} vtt={state.vtt} />}
       </div>
