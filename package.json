@@ -53,6 +53,7 @@
     "prisma": "^5.19.1",
     "react": "19.0.0-rc-1460d67c-20241003",
     "react-dom": "19.0.0-rc-1460d67c-20241003",
+    "react-dropzone": "^14.2.9",
     "react-email": "^3.0.1",
     "resend": "^4.0.0",
     "server-only": "^0.0.1",
