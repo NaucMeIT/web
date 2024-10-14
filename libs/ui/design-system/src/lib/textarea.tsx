@@ -1,8 +1,23 @@
 import { Label } from '@nmit-coursition/ui/primitives/label'
-import { Textarea as TextareaPrimitive } from '@nmit-coursition/ui/primitives/textarea'
+import * as TextareaPrimitive from '@nmit-coursition/ui/primitives/textarea'
 import { cn } from '@nmit-coursition/ui/utils'
+import { type VariantProps, cva } from 'class-variance-authority'
 
-interface TextareaWithTextProps extends React.ComponentProps<'textarea'> {
+const textAreaVariants = cva('', {
+  variants: {
+    variant: {
+      primary: '',
+      invalid: '',
+      outlined: '',
+      noBackdrop: '',
+    },
+  },
+  defaultVariants: {
+    variant: 'primary',
+  },
+})
+
+export interface TextareaWithTextProps extends TextareaPrimitive.RootProps, VariantProps<typeof textAreaVariants> {
   id: string
   label: string
   placeholder: string
@@ -17,13 +32,22 @@ export function Textarea({
   placeholder,
   subtext,
   disabled,
+  className,
   containerClassName,
+  variant,
   ...rest
 }: TextareaWithTextProps) {
   return (
     <div className={cn('grid w-full gap-1.5', containerClassName)}>
       <Label htmlFor={id}>{label}</Label>
-      <TextareaPrimitive placeholder={placeholder} id={id} name={id} disabled={disabled} {...rest} />
+      <TextareaPrimitive.Main
+        placeholder={placeholder}
+        id={id}
+        name={id}
+        disabled={disabled}
+        {...rest}
+        className={cn(textAreaVariants({ variant, className }))}
+      />
       {subtext && <p className='text-sm text-muted-foreground'>{subtext}</p>}
     </div>
   )
