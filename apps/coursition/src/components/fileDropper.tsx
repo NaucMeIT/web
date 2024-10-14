@@ -1,10 +1,9 @@
 'use client'
 
-import { Button } from '@nmit-coursition/design-system'
+import { Button } from '@nmit-coursition/ui/design-system'
 import { cn } from '@nmit-coursition/ui/utils'
 import { X as DeleteIcon } from 'lucide-react'
-import { useState } from 'react'
-import { useDropzone, type DropzoneOptions } from 'react-dropzone'
+import { type DropzoneOptions, useDropzone } from 'react-dropzone'
 
 interface Props extends DropzoneOptions {
   idleMessage?: string
@@ -16,28 +15,14 @@ interface Props extends DropzoneOptions {
 }
 
 export const FileDropper = ({ dropZoneMessage, idleMessage, className, inputName, ...forwardedProps }: Props) => {
-  const [files, setFiles] = useState<File[]>([])
-
-  const onDropAccepted = (acceptedFiles: File[]): void => {
-    const newFiles = acceptedFiles.map((file) => {
-      return new File([file], file.name, {
-        type: file.type,
-        /** lastModified is used as the fileId, hence why it needs to be unique */
-        lastModified: Date.now(),
-      })
-    }) as File[]
-
-    setFiles((prev) => [...prev, ...newFiles])
-  }
-
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDropAccepted, ...forwardedProps })
+  const { acceptedFiles, getRootProps, getInputProps, isDragActive } = useDropzone({ ...forwardedProps })
 
   return (
     <div {...getRootProps()} className={cn('bg-blue-50 rounded-md py-4 px-12', className)}>
       <input name={inputName} {...getInputProps()} />
 
       <ul className='grid grid-cols-1 gap-2'>
-        {files.map((file) => (
+        {acceptedFiles.map((file) => (
           <li key={file.name} className='h-8 w-full relative bg-blue-300 flex items-center justify-center'>
             {file.name}
 
@@ -48,7 +33,6 @@ export const FileDropper = ({ dropZoneMessage, idleMessage, className, inputName
               onClick={(e) => {
                 /** prevents the button from triggering the input */
                 e.stopPropagation()
-                setFiles((prev) => prev.filter(({ lastModified }) => lastModified !== file.lastModified))
               }}
             >
               <DeleteIcon size={18} />
