@@ -4,6 +4,7 @@ import { getTranscript } from '@nmit-coursition/ai'
 import { Accordion, Button, Textarea } from '@nmit-coursition/ui/design-system'
 import { useSignal } from '@preact/signals-react/runtime'
 import { useActionState } from 'react'
+import { toast } from 'sonner'
 import { z } from 'zod'
 import { zfd } from 'zod-form-data'
 import { FileDropper } from '../../components/fileDropper'
@@ -46,13 +47,21 @@ export default function Index() {
   const status = useSignal<'idle' | 'upload' | 'parse' | 'done'>('idle')
 
   const handleSubmit = async (formData: FormData) => {
-    status.value = 'upload'
-    const { file, keywords } = fileSchema.parse(formData)
-    status.value = 'parse'
-    const keywordsArray = keywords ? keywords.split(',').map((word) => `${word}:5`) : []
-    const { raw, srt, vtt } = await getTranscript(file, keywordsArray)
-    status.value = 'done'
-    return { raw, srt, vtt }
+    try {
+      status.value = 'upload'
+      const { file, keywords } = fileSchema.parse(formData)
+      status.value = 'parse'
+      const keywordsArray = keywords ? keywords.split(',').map((word) => `${word}:5`) : []
+      const { raw, srt, vtt } = await getTranscript(file, keywordsArray)
+      status.value = 'done'
+      return { raw, srt, vtt }
+    } catch (error) {
+      toast.error(
+        `Something went wrong. Please try again. Reason: ${error instanceof Error ? error.message : 'Unknown.'}`,
+      )
+      status.value = 'idle'
+      return initialState
+    }
   }
 
   const [state, formAction] = useActionState((_: unknown, formData: FormData) => handleSubmit(formData), initialState)
