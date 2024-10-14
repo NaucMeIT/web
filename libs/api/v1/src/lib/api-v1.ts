@@ -1,12 +1,14 @@
 import FirecrawlApp from '@mendable/firecrawl-js'
 import { generateQuiz, getResult, getTranscript, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
 import { apiCommonGuard, formatApiErrorResponse, reportUsage } from '@nmit-coursition/api/utils'
+import { secretsEnv } from '@nmit-coursition/env'
 import {
   allowedDeepgramLanguagesAsType,
   allowedLlamaParseLanguagesAsType,
   languages,
   languagesAsType,
 } from '@nmit-coursition/utils'
+import { Redacted } from 'effect'
 import { Elysia, t } from 'elysia'
 
 export const apiV1 = new Elysia({ prefix: '/v1' })
@@ -96,7 +98,7 @@ export const apiV1 = new Elysia({ prefix: '/v1' })
       .post(
         '/web',
         async ({ body: { url, onlyMainContent }, error, request }) => {
-          const fcApp = new FirecrawlApp({ apiKey: process.env['FIRECRAWL_API_KEY'] })
+          const fcApp = new FirecrawlApp({ apiKey: Redacted.value(secretsEnv.FIRECRAWL_API_KEY) })
 
           const scrapeResponse = await fcApp.scrapeUrl(url, {
             formats: ['markdown'],

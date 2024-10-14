@@ -7,11 +7,13 @@ import {
   updateUser,
   validateSessionToken,
 } from '@nmit-coursition/auth'
+import { secretsEnv } from '@nmit-coursition/env'
 import { WorkOS } from '@workos-inc/node'
+import { Redacted } from 'effect'
 import { Elysia } from 'elysia'
 
-const workos = new WorkOS(process.env['WORKOS_API_KEY'], {
-  clientId: process.env['WORKOS_CLIENT_ID'],
+const workos = new WorkOS(Redacted.value(secretsEnv.WORKOS_API_KEY), {
+  clientId: Redacted.value(secretsEnv.WORKOS_CLIENT_ID),
 })
 
 export const apiAuth = new Elysia({ prefix: '/auth' })
@@ -20,7 +22,7 @@ export const apiAuth = new Elysia({ prefix: '/auth' })
     const authorizationUrl = workos.userManagement.getAuthorizationUrl({
       provider: 'authkit',
       redirectUri: 'http://localhost:3000/auth/callback',
-      clientId: process.env['WORKOS_CLIENT_ID'] || '',
+      clientId: Redacted.value(secretsEnv.WORKOS_CLIENT_ID),
     })
 
     return redirect(authorizationUrl)
@@ -33,11 +35,11 @@ export const apiAuth = new Elysia({ prefix: '/auth' })
 
     try {
       const authenticateResponse = await workos.userManagement.authenticateWithCode({
-        clientId: process.env['WORKOS_CLIENT_ID'] || '',
+        clientId: Redacted.value(secretsEnv.WORKOS_CLIENT_ID),
         code,
         session: {
           sealSession: true,
-          cookiePassword: process.env['WORKOS_COOKIE_PASSWORD'] || '',
+          cookiePassword: Redacted.value(secretsEnv.WORKOS_COOKIE_PASSWORD),
         },
       })
 
@@ -68,7 +70,7 @@ export const apiAuth = new Elysia({ prefix: '/auth' })
     try {
       const session = workos.userManagement.loadSealedSession({
         sessionData,
-        cookiePassword: process.env['WORKOS_COOKIE_PASSWORD'] || '',
+        cookiePassword: Redacted.value(secretsEnv.WORKOS_COOKIE_PASSWORD),
       })
 
       const url = await session.getLogoutUrl()

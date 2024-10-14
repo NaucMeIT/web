@@ -1,6 +1,8 @@
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import { prisma } from '@nmit-coursition/db'
+import { secretsEnv } from '@nmit-coursition/env'
 import bcrypt from 'bcryptjs'
+import { Redacted } from 'effect'
 import type { NextAuthOptions, User } from 'next-auth'
 import type { Adapter } from 'next-auth/adapters'
 import CredentialsProvider from 'next-auth/providers/credentials'
@@ -22,8 +24,8 @@ export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma) as Adapter,
   providers: [
     GoogleProvider({
-      clientId: process.env['GOOGLE_ID'] || '',
-      clientSecret: process.env['GOOGLE_SECRET'] || '',
+      clientId: Redacted.value(secretsEnv.GOOGLE_ID),
+      clientSecret: Redacted.value(secretsEnv.GOOGLE_SECRET),
     }),
     CredentialsProvider({
       credentials: {

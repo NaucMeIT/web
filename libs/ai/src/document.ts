@@ -1,8 +1,11 @@
 'use server'
 
+import { secretsEnv } from '@nmit-coursition/env'
 import { delay } from '@nmit-coursition/utils'
+import { Redacted } from 'effect'
 
 const parseApi = 'https://api.cloud.llamaindex.ai/api/parsing/'
+const llamaCloudApiKey = secretsEnv.LLAMA_CLOUD_API_KEY
 
 export async function uploadFile(
   file: File,
@@ -24,7 +27,7 @@ export async function uploadFile(
     headers: {
       accept: 'application/json',
       contentType: 'multipart/form-data',
-      Authorization: `Bearer ${process.env['LLAMA_CLOUD_API_KEY']}`,
+      Authorization: `Bearer ${Redacted.value(llamaCloudApiKey)}`,
     },
     body,
   })
@@ -48,7 +51,7 @@ export async function waitUntilJobIsDone(id: string, status: string) {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: `Bearer ${process.env['LLAMA_CLOUD_API_KEY']}`,
+        Authorization: `Bearer ${Redacted.value(llamaCloudApiKey)}`,
       },
     })
 
@@ -76,7 +79,7 @@ export async function getResult(id: string) {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: `Bearer ${process.env['LLAMA_CLOUD_API_KEY']}`,
+      Authorization: `Bearer ${Redacted.value(llamaCloudApiKey)}`,
     },
   })
 

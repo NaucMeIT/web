@@ -21,7 +21,7 @@ export const generateCheckout = async () => {
   const session = await getServerSession(authOptions)
   if (!session?.user?.email) return redirect('/sign-in')
 
-  return createCheckoutSession(process.env['NMIT_LIFETIME_PRODUCT_VARIANT_ID'] || '', {
+  return createCheckoutSession(typedEnv.NMIT_LIFETIME_PRODUCT_VARIANT_ID, {
     platform: 'coursition',
     email: session?.user?.email,
     subType: 'lifetime',

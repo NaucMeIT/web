@@ -84,5 +84,10 @@ const secrets = program.pipe(
   Effect.catchTag('EmptyError', () => Effect.die('Empty PROJECT_ID or ACCESS_TOKEN.')),
   Effect.catchTag('InfisicalError', () => Effect.die('Initialization of Infisical failed.')),
 )
+type Secrets = Effect.Effect.Success<typeof secrets>
 
-export const secretsEnv = Effect.runPromise(secrets)
+// * We use top-level await to wait for this module during build time.
+export let secretsEnv: Secrets
+await Effect.runPromise(secrets).then((secrets) => {
+  secretsEnv = secrets
+})
