@@ -2,9 +2,9 @@ import * as React from 'react'
 
 import { cn } from '@nmit-coursition/ui/utils'
 
-export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
+export interface RootProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
 
-const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(({ className, ...props }, ref) => {
+const Main = React.forwardRef<HTMLTextAreaElement, RootProps>(({ className, ...props }, ref) => {
   return (
     <textarea
       className={cn(
@@ -16,6 +16,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(({ classNa
     />
   )
 })
-Textarea.displayName = 'Textarea'
 
-export { Textarea }
+Main.displayName = 'Textarea'
+
+export { Main }
