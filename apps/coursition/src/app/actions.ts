@@ -2,6 +2,7 @@
 
 import { prisma } from '@nmit-coursition/db'
 import { GetInTouchEmailTemplate, ResetPasswordEmailTemplate, send } from '@nmit-coursition/email'
+import { typedEnv } from '@nmit-coursition/env'
 import { createCheckoutSession } from '@nmit-coursition/payments'
 import type { PasswordReset } from '@prisma/client'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
@@ -96,7 +97,7 @@ export const sendResetPassword = async (formdata: FormData) => {
       to: [email],
       subject: 'Coursition - Reset your password',
       react: ResetPasswordEmailTemplate({
-        link: `${process.env['NEXTAUTH_URL']}/forgot-password?secret=${record.secret}`,
+        link: `${typedEnv.NEXTAUTH_URL}/forgot-password?secret=${record.secret}`,
       }),
     })
 
