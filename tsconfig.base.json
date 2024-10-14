@@ -43,7 +43,9 @@
       "@nmit-coursition/ui/primitives/*": ["libs/ui/primitives/src/*"],
       "@nmit-coursition/ui/utils": ["libs/ui/utils/src/index.ts"],
       "@nmit-coursition/ui/utils/*": ["libs/ui/utils/src/*"],
-      "@nmit-coursition/utils": ["libs/utils/src/index.ts"]
+      "@nmit-coursition/utils": ["libs/utils/src/index.ts"],
+      "remote1/Module": ["apps/remote1/src/remote-entry.ts"],
+      "remote2/Module": ["apps/remote2/src/remote-entry.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
