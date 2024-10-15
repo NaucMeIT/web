@@ -1,23 +1,8 @@
 import { Label } from '@nmit-coursition/ui/primitives/label'
 import * as TextareaPrimitive from '@nmit-coursition/ui/primitives/textarea'
 import { cn } from '@nmit-coursition/ui/utils'
-import { type VariantProps, cva } from 'class-variance-authority'
 
-const textAreaVariants = cva('', {
-  variants: {
-    variant: {
-      primary: '',
-      invalid: '',
-      outlined: '',
-      noBackdrop: '',
-    },
-  },
-  defaultVariants: {
-    variant: 'primary',
-  },
-})
-
-export interface TextareaWithTextProps extends TextareaPrimitive.RootProps, VariantProps<typeof textAreaVariants> {
+export interface TextareaWithTextProps extends TextareaPrimitive.RootProps {
   id: string
   label: string
   placeholder: string
@@ -34,7 +19,6 @@ export function Textarea({
   disabled,
   className,
   containerClassName,
-  variant,
   ...rest
 }: TextareaWithTextProps) {
   return (
@@ -46,7 +30,8 @@ export function Textarea({
         name={id}
         disabled={disabled}
         {...rest}
-        className={cn(textAreaVariants({ variant, className }))}
+        // todo: add base and focus styles
+        className={cn(``, className)}
       />
       {subtext && <p className='text-sm text-muted-foreground'>{subtext}</p>}
     </div>
