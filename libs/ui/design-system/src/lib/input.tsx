@@ -7,12 +7,8 @@ type OverrideProps<T, V> = V & Omit<T, keyof V>
 
 const inputVariants = cva('', {
   variants: {
-    variant: {
-      primary: '',
-      verified: '', // green borders
-      unVerified: '', // red borders
-      disabled: '',
-    },
+    /** todo: add orientation to the variants with mixins. */
+    variant: {},
   },
 })
 
@@ -47,7 +43,7 @@ export function Input({
     <div
       className={cn(
         'flex w-full items-center justify-center gap-1.5',
-        orientation == 'vertical' ? 'flex-col items-start' : '',
+        orientation === 'vertical' ? 'flex-col items-start' : '',
         containerClassName,
       )}
     >
