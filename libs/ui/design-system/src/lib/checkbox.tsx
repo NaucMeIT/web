@@ -6,13 +6,12 @@ import { type VariantProps, cva } from 'class-variance-authority'
 const checkboxVariants = cva('', {
   variants: {
     variant: {
+      primary: '',
       outlined: '',
-      critical: '', // applies a red border
     },
-    size: {
-      sm: '', // 8px
-      lg: '', // 14px
-    },
+  },
+  defaultVariants: {
+    variant: 'primary',
   },
 })
 
