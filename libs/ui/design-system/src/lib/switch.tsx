@@ -1,4 +1,4 @@
-import { cva, type VariantProps } from 'class-variance-authority'
+import { type VariantProps, cva } from 'class-variance-authority'
 
 import { Label } from '@nmit-coursition/ui/primitives'
 import * as SwitchPrimitive from '@nmit-coursition/ui/primitives/switch'
@@ -25,15 +25,22 @@ const switchVariants = cva('', {
   },
 })
 
-interface Props extends OverrideProps<SwitchPrimitive.RootProps, { id: string }>, VariantProps<typeof switchVariants> {
+interface Props
+  extends OverrideProps<SwitchPrimitive.RootProps, { id: string; name: string }>,
+    VariantProps<typeof switchVariants> {
   label: string
+  subText?: string
 }
 
-export const Switch = ({ id, className, variant, label, ...rest }: Props) => {
+export const Switch = ({ id, className, name, variant, label, subText, ...rest }: Props) => {
   return (
-    <div className='flex flex-row-reverse items-center justify-center gap-2'>
-      <Label htmlFor={id}>{label}</Label>
-      <SwitchPrimitive.Main id={id} className={cn(switchVariants({ variant }))} {...rest} />
+    <div className='flex flex-col gap-2'>
+      <div className='flex flex-row-reverse items-center justify-center gap-2'>
+        <Label htmlFor={id}>{label}</Label>
+        <SwitchPrimitive.Main id={id} className={cn(switchVariants({ variant }))} name={name} {...rest} />
+      </div>
+
+      {subText && <p className='text-sm'>{subText}</p>}
     </div>
   )
 }
