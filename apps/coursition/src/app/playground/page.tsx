@@ -4,25 +4,25 @@ import { Airplay } from 'lucide-react'
 export default function Test() {
   return (
     <div className='flex flex-col max-w-52 '>
-      <Button intent='primary' variant='yellow' size='cta'>
+      <Button intent='main' variant='primary' size='cta'>
         Primary Yellow CTA
       </Button>
-      <Button intent='primary' variant='blue'>
+      <Button intent='main' variant='secondary'>
         Primary Blue
       </Button>
-      <Button intent='primary' variant='destructive'>
+      <Button intent='main' variant='destructive'>
         Destructive Button
       </Button>
-      <Button intent='secondary' variant='outline'>
+      <Button intent='off' variant='outline'>
         Secondary Outline
       </Button>
-      <Button intent='secondary' variant='link'>
+      <Button intent='off' variant='link'>
         Secondary Link
       </Button>
-      <Button intent='primary' variant='green' size='sm' icon={<Airplay />} iconPosition='left'>
+      <Button intent='main' variant='tertiary' size='sm' icon={<Airplay />} iconPosition='left'>
         Small Primary Green
       </Button>
-      <Button intent='primary' variant='green' size='sm' icon={<Airplay />} iconPosition='right'>
+      <Button intent='main' variant='tertiary' size='sm' icon={<Airplay />} iconPosition='right'>
         Small Primary Green
       </Button>
 
