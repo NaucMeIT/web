@@ -52,13 +52,13 @@ export default function Index() {
       const { file, keywords } = fileSchema.parse(formData)
       status.value = 'parse'
       const keywordsArray = keywords ? keywords.split(',').map((word) => `${word}:5`) : []
-      const { raw, srt, vtt } = await getTranscript(file, keywordsArray)
+      const result = await getTranscript(file, keywordsArray)
+      if ('error' in result) throw new Error(result.error)
+      const { raw, srt, vtt } = result
       status.value = 'done'
       return { raw, srt, vtt }
     } catch (error) {
-      toast.error(
-        `Something went wrong. Please try again. Reason: ${error instanceof Error ? error.message : 'Unknown.'}`,
-      )
+      toast.error(`Something went wrong. Reason: ${error instanceof Error ? error.message : 'Unknown.'}`)
       status.value = 'idle'
       return initialState
     }
