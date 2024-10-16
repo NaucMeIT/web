@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Input } from '@nmit-coursition/design-system'
+import { Button, Input } from '@nmit-coursition/ui/design-system'
 import { useSignal } from '@preact/signals-react'
 import { useActionState } from 'react'
 import { toast } from 'sonner'

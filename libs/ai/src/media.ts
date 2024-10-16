@@ -1,12 +1,16 @@
 import { createClient, srt, webvtt } from '@deepgram/sdk'
-import { Config, Context, Data, Effect, Layer, ManagedRuntime, Redacted } from 'effect'
+import { Config, Context, Data, Effect, Layer, Redacted } from 'effect'
 
-interface TranscriptOutput {
+interface TranscriptSuccess {
   srt: string
   vtt: string
   raw?: string
   metadata: { duration: number }
 }
+interface TranscriptError {
+  error: string
+}
+type TranscriptResult = TranscriptSuccess | TranscriptError
 
 export class Params extends Context.Tag('Params')<Params, { language: string; keywords: string[] }>() {
   static readonly Test = {
@@ -19,8 +23,9 @@ export class MediaFile extends Context.Tag('MediaFile')<MediaFile, Buffer>() {
   static readonly Test = Buffer.from('')
 }
 
-class FetchError extends Data.TaggedError('FetchError')<{}> {}
+class InternalError extends Data.TaggedError('InternalError')<{}> {}
 class TranscribeError extends Data.TaggedError('TranscribeError')<{}> {}
+class EmptyError extends Data.TaggedError('EmptyError')<{}> {}
 
 const deepgram = Effect.gen(function* () {
   const apiKey = yield* Config.redacted('DEEPGRAM_API_KEY')
@@ -41,21 +46,25 @@ const deepgram = Effect.gen(function* () {
             ...(language ? { language } : { detect_language: true }),
             keywords,
           }),
-        catch: () => new FetchError(),
+        catch: () => new InternalError(),
       })
 
       if (!result) {
         return yield* new TranscribeError()
       }
 
-      // * Remove unnecessary metadata
-      const vtt = webvtt(result).replace(/WEBVTT\s*\n(?:[\s\S]*?)(?=^(?:\d{2}:)?\d{2}:\d{2})/m, 'WEBVTT\n\n')
+      try {
+        // * Remove unnecessary metadata
+        const vtt = webvtt(result).replace(/WEBVTT\s*\n(?:[\s\S]*?)(?=^(?:\d{2}:)?\d{2}:\d{2})/m, 'WEBVTT\n\n')
 
-      return {
-        srt: srt(result),
-        vtt,
-        raw: result?.results?.channels?.[0]?.alternatives?.[0]?.transcript,
-        metadata: result.metadata,
+        return {
+          srt: srt(result),
+          vtt,
+          raw: result?.results?.channels?.[0]?.alternatives?.[0]?.transcript,
+          metadata: result.metadata,
+        }
+      } catch {
+        return yield* new EmptyError()
       }
     }),
   } as const
@@ -74,10 +83,6 @@ const program = Effect.gen(function* () {
   return yield* transcribeApi.getTranscript
 })
 
-const MainLayer = Layer.mergeAll(TranscribeApi.Deepgram)
-
-const TranscribeRuntime = ManagedRuntime.make(MainLayer)
-
 /**
  * @deprecated Use TranscribeApi instead, this is just compability layer for now.
  */
@@ -86,14 +91,18 @@ export function getTranscript(
   file: any,
   keywords: string[] = [],
   language: string = 'en',
-): Promise<TranscriptOutput> {
-  return TranscribeRuntime.runPromise(
+): Promise<TranscriptResult> {
+  return Effect.runPromise(
     program.pipe(
       Effect.provideService(Params, {
         language,
         keywords,
       }),
       Effect.provideService(MediaFile, file),
+      Effect.provide(TranscribeApi.Deepgram),
+      Effect.catchTag('InternalError', () => Effect.succeed({ error: 'Internal error.' })),
+      Effect.catchTag('TranscribeError', () => Effect.succeed({ error: 'Failed creating transcription.' })),
+      Effect.catchTag('EmptyError', () => Effect.succeed({ error: 'Input file contains no audio to transcribe.' })),
     ),
   )
 }

@@ -3,16 +3,15 @@ import { createSafeKey } from '@nmit-coursition/utils'
 import type { ReactNode } from 'react'
 
 interface TabsProps {
-  // Merge triggers and contents into one values
   values: { value: string; displayText: string; children: ReactNode }[]
 }
 
 export const Tabs = ({ values }: TabsProps) => {
   return (
-    <TabsPrimitive.Tabs>
+    <TabsPrimitive.Tabs defaultValue={values[0]?.value}>
       <TabsPrimitive.TabsList>
         {values.map(({ value, displayText }) => (
-          <TabsPrimitive.TabsTrigger value={`headline-${createSafeKey(value)}`} key={value}>
+          <TabsPrimitive.TabsTrigger key={`headline-${createSafeKey(value)}`} value={value}>
             {displayText}
           </TabsPrimitive.TabsTrigger>
         ))}
