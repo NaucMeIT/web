@@ -54,4 +54,5 @@ export const authOptions: NextAuthOptions = {
       return true
     },
   },
+  secret: Redacted.value(secretsEnv.NEXTAUTH_SECRET),
 }
