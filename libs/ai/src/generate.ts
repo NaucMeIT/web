@@ -1,7 +1,9 @@
 'use server'
-import { openai } from '@ai-sdk/openai'
+import { createOpenAI } from '@ai-sdk/openai'
+import { secretsEnv } from '@nmit-coursition/env'
 import { trim } from '@nmit-coursition/utils'
 import { generateObject } from 'ai'
+import { Redacted } from 'effect'
 import { z } from 'zod'
 
 const getQuizSchema = (amountQuestions: number, amountAnswers: number) => {
@@ -21,6 +23,11 @@ const getQuizSchema = (amountQuestions: number, amountAnswers: number) => {
   })
   return quizSchema
 }
+
+const openai = createOpenAI({
+  apiKey: Redacted.value(secretsEnv.OPENAI_API_KEY),
+  compatibility: 'strict',
+})
 
 export async function generateQuiz(
   content: string,
