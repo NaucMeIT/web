@@ -5,7 +5,14 @@ import { type VariantProps, cva } from 'class-variance-authority'
 
 type OverrideProps<T, V> = V & Omit<T, keyof V>
 
-const inputVariants = cva('')
+const inputVariants = cva('', {
+  variants: {
+    grow: {
+      false: 'w-min',
+      true: 'w-full',
+    },
+  },
+})
 
 type Orientation = 'horizontal' | 'vertical'
 
@@ -19,7 +26,17 @@ interface InputProps
   containerClassName?: string
 }
 
-export function Input({ label, placeholder, type, id, subtext, disabled, containerClassName, ...rest }: InputProps) {
+export function Input({
+  label,
+  placeholder,
+  type,
+  id,
+  subtext,
+  disabled,
+  grow,
+  containerClassName,
+  ...rest
+}: InputProps) {
   return (
     <div className={cn('flex w-full items-center justify-center gap-1.5', containerClassName)}>
       <Label htmlFor={id}>{label}</Label>
@@ -29,7 +46,7 @@ export function Input({ label, placeholder, type, id, subtext, disabled, contain
         name={id}
         placeholder={placeholder}
         disabled={disabled}
-        className={cn(inputVariants({}))}
+        className={cn(inputVariants({ grow }))}
         {...rest}
       />
       {subtext && <p className='text-sm text-muted-foreground'>{subtext}</p>}
