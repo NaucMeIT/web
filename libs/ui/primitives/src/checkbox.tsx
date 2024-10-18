@@ -4,9 +4,9 @@ import * as React from 'react'
 
 import { cn } from '@nmit-coursition/ui/utils'
 
-export interface RootProps extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {}
+export interface CheckboxProps extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {}
 
-const Main = React.forwardRef<React.ElementRef<typeof CheckboxPrimitive.Root>, RootProps>(
+const Checkbox = React.forwardRef<React.ElementRef<typeof CheckboxPrimitive.Root>, CheckboxProps>(
   ({ className, ...props }, ref) => (
     <CheckboxPrimitive.Root
       ref={ref}
@@ -22,7 +22,6 @@ const Main = React.forwardRef<React.ElementRef<typeof CheckboxPrimitive.Root>, R
     </CheckboxPrimitive.Root>
   ),
 )
+Checkbox.displayName = CheckboxPrimitive.Root.displayName
 
-Main.displayName = CheckboxPrimitive.Root.displayName
-
-export { Main }
+export { Checkbox }
