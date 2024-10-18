@@ -7,7 +7,7 @@ import { cn } from '@nmit-coursition/ui/utils'
 
 export interface RootProps extends React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root> {}
 
-const Main = React.forwardRef<React.ElementRef<typeof SwitchPrimitives.Root>, RootProps>(
+const Switch = React.forwardRef<React.ElementRef<typeof SwitchPrimitives.Root>, RootProps>(
   ({ className, ...props }, ref) => (
     <SwitchPrimitives.Root
       className={cn(
@@ -26,6 +26,6 @@ const Main = React.forwardRef<React.ElementRef<typeof SwitchPrimitives.Root>, Ro
   ),
 )
 
-Main.displayName = SwitchPrimitives.Root.displayName
+Switch.displayName = SwitchPrimitives.Root.displayName
 
-export { Main }
+export { Switch }
