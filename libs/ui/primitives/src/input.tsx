@@ -2,9 +2,9 @@ import * as React from 'react'
 
 import { cn } from '@nmit-coursition/ui/utils'
 
-export interface RootProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-const Main = React.forwardRef<HTMLInputElement, RootProps>(({ className, type, ...props }, ref) => {
+const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, type, ...props }, ref) => {
   return (
     <input
       type={type}
@@ -17,7 +17,6 @@ const Main = React.forwardRef<HTMLInputElement, RootProps>(({ className, type, .
     />
   )
 })
+Input.displayName = 'Input'
 
-Main.displayName = 'Input'
-
-export { Main }
+export { Input }

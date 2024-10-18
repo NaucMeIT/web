@@ -1,24 +1,16 @@
-import * as InputPrimitive from '@nmit-coursition/ui/primitives/input'
+import { Input as InputPrimitive, type InputProps as RootProps } from '@nmit-coursition/ui/primitives/input'
 import { Label } from '@nmit-coursition/ui/primitives/label'
 import { cn } from '@nmit-coursition/ui/utils'
 import { type VariantProps, cva } from 'class-variance-authority'
 
 type OverrideProps<T, V> = V & Omit<T, keyof V>
 
-const inputVariants = cva('', {
-  variants: {
-    /** todo: add orientation to the variants with mixins. */
-    variant: {},
-  },
-})
+const inputVariants = cva('')
 
 type Orientation = 'horizontal' | 'vertical'
 
 interface InputProps
-  extends OverrideProps<
-      InputPrimitive.RootProps,
-      { type: InputPrimitive.RootProps['type']; placeholder: string; id: string }
-    >,
+  extends OverrideProps<RootProps, { type: RootProps['type']; placeholder: string; id: string }>,
     VariantProps<typeof inputVariants> {
   label: string
   subtext?: string
@@ -27,34 +19,17 @@ interface InputProps
   containerClassName?: string
 }
 
-export function Input({
-  label,
-  placeholder,
-  type,
-  id,
-  subtext,
-  disabled,
-  variant,
-  orientation = 'vertical',
-  containerClassName,
-  ...rest
-}: InputProps) {
+export function Input({ label, placeholder, type, id, subtext, disabled, containerClassName, ...rest }: InputProps) {
   return (
-    <div
-      className={cn(
-        'flex w-full items-center justify-center gap-1.5',
-        orientation === 'vertical' ? 'flex-col items-start' : '',
-        containerClassName,
-      )}
-    >
+    <div className={cn('flex w-full items-center justify-center gap-1.5', containerClassName)}>
       <Label htmlFor={id}>{label}</Label>
-      <InputPrimitive.Main
+      <InputPrimitive
         type={type}
         id={id}
         name={id}
         placeholder={placeholder}
         disabled={disabled}
-        className={cn(inputVariants({ variant }))}
+        className={cn(inputVariants({}))}
         {...rest}
       />
       {subtext && <p className='text-sm text-muted-foreground'>{subtext}</p>}
