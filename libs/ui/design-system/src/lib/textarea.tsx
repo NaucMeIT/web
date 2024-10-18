@@ -1,8 +1,8 @@
 import { Label } from '@nmit-coursition/ui/primitives/label'
-import * as TextareaPrimitive from '@nmit-coursition/ui/primitives/textarea'
+import { Textarea as TextareaPrimitive, type TextareaProps } from '@nmit-coursition/ui/primitives/textarea'
 import { cn } from '@nmit-coursition/ui/utils'
 
-export interface TextareaWithTextProps extends TextareaPrimitive.RootProps {
+export interface TextareaWithTextProps extends TextareaProps {
   id: string
   label: string
   placeholder: string
@@ -24,13 +24,12 @@ export function Textarea({
   return (
     <div className={cn('grid w-full gap-1.5', containerClassName)}>
       <Label htmlFor={id}>{label}</Label>
-      <TextareaPrimitive.Main
+      <TextareaPrimitive
         placeholder={placeholder}
         id={id}
         name={id}
         disabled={disabled}
         {...rest}
-        // todo: add base and focus styles
         className={cn(``, className)}
       />
       {subtext && <p className='text-sm text-muted-foreground'>{subtext}</p>}
