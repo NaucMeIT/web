@@ -1,7 +1,7 @@
 import { apiCommonGuard, computeUsage, reportSpend } from '@nmit-coursition/api/utils'
 import { Elysia } from 'elysia'
 
-export const apiDev = new Elysia({ prefix: '/dev' })
+export const apiDev = new Elysia({ prefix: '/dev', tags: ['dev'] })
   .use(apiCommonGuard)
   .get('/ping', () => ({ status: 'PONG' }), {
     afterResponse: ({ request }) => reportSpend({ request }),

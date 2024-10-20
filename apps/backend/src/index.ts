@@ -21,6 +21,15 @@ new Elysia()
             description:
               "Stable endpoints in version 1 of API. Endpoints defined here won't be deleted, but might be marked as deprecated for following versions.",
           },
+          {
+            name: 'auth',
+            description: 'Authentication endpoints. Used to authenticate users.',
+          },
+          {
+            name: 'dev',
+            description:
+              'Expiremental endpoints. Used for testing new features and stability. Might be deleted or changed at any time.',
+          },
         ],
       },
     }),
