@@ -17,7 +17,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <Script src='https://app.lemonsqueezy.com/js/lemon.js' strategy='lazyOnload' />
       <SessionProvider session={session}>
         <body className='overflow-hidden'>
-          <Toaster />
+          <Toaster richColors position='bottom-center' pauseWhenPageIsHidden />
           {children}
         </body>
       </SessionProvider>
