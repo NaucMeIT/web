@@ -42,7 +42,7 @@ export const ForgotPassword = () => {
     <div className='container h-screen flex-col gap-2 py-12 flex items-center justify-center mx-auto'>
       <h2 className='text-[20px] font-semibold'>Reset your password</h2>
       <form className='grid gap-2 w-full max-w-4xl' action={action}>
-        <Input label='Email' placeholder='johndoe@gmail.com' id='email' type='email' name='email' />
+        <Input labelText='Email' placeholder='johndoe@gmail.com' id='email' type='email' name='email' />
         <Button>Request Password reset</Button>
       </form>
     </div>
