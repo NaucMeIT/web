@@ -1,10 +1,11 @@
 import { InfisicalSDK } from '@infisical/sdk'
+import { parseError } from '@nmit-coursition/api/utils'
 import { Config, ConfigProvider, Data, Effect, Layer } from 'effect'
 import { url, redactedString, redactedUrl } from './utils'
 
 class EmptyError extends Data.TaggedError('EmptyError')<{}> {}
-class FetchError extends Data.TaggedError('FetchError')<{}> {}
-class InfisicalError extends Data.TaggedError('InfisicalError')<{}> {}
+class FetchError extends Data.TaggedError('FetchError')<{ details: string }> {}
+class InfisicalError extends Data.TaggedError('InfisicalError')<{ details: string }> {}
 
 class InfisicalClient extends Effect.Service<InfisicalClient>()('env/InfisicalClient', {
   effect: Effect.gen(function* () {
@@ -22,7 +23,7 @@ class InfisicalClient extends Effect.Service<InfisicalClient>()('env/InfisicalCl
         await client.auth().accessToken(accessToken)
         return client
       },
-      catch: () => new InfisicalError(),
+      catch: (e) => new InfisicalError({ details: parseError(e).message || 'Unknown error during fetching secrets' }),
     })
 
     const fetchSecrets = () =>
@@ -32,7 +33,7 @@ class InfisicalClient extends Effect.Service<InfisicalClient>()('env/InfisicalCl
             environment: 'dev',
             projectId,
           }),
-        catch: () => new FetchError(),
+        catch: (e) => new FetchError({ details: parseError(e).message || 'Unknown error during fetching secrets' }),
       })
 
     return { client, fetchSecrets } as const
@@ -80,9 +81,9 @@ const program = Effect.gen(function* (_) {
 
 const secrets = program.pipe(
   Effect.provide(SecretsConfig.Default),
-  Effect.catchTag('FetchError', () => Effect.die('Fetching secrets failed.')),
-  Effect.catchTag('EmptyError', () => Effect.die('Empty PROJECT_ID or ACCESS_TOKEN.')),
-  Effect.catchTag('InfisicalError', () => Effect.die('Initialization of Infisical failed.')),
+  Effect.catchTag('EmptyError', () => Effect.die(`Empty PROJECT_ID or ACCESS_TOKEN.`)),
+  Effect.catchTag('FetchError', (error) => Effect.die(`Fetching secrets failed. Details: ${error.details}`)),
+  Effect.catchTag('InfisicalError', (error) => Effect.die(`Initialization of Infisical failed. Details: ${error.details}`)),
 )
 type Secrets = Effect.Effect.Success<typeof secrets>
 
