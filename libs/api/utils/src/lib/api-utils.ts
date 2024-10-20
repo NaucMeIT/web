@@ -21,6 +21,7 @@ export const apiCommonGuard = new Elysia().guard({
   as: 'scoped',
   response: {
     401: errorResponseModel,
+    402: errorResponseModel,
     404: errorResponseModel,
     429: errorResponseModel,
     500: errorResponseModel,
