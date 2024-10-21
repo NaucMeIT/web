@@ -1,10 +1,22 @@
 zerops:
   - setup: backend
     build:
-      base: bun@1.1
+      base:
+        - bun@1.1
+        - nodejs@latest
       os: ubuntu
+      envVariables:
+        NODE_ENV: production
+        ACCESS_TOKEN: ${RUNTIME_ACCESS_TOKEN}
+        PROJECT_ID: ${RUNTIME_PROJECT_ID}
+        SITE_URL: ${RUNTIME_SITE_URL}
+        LEMON_SQUEEZY_STORE_ID: ${RUNTIME_LEMON_SQUEEZY_STORE_ID}
+        NMIT_LIFETIME_PRODUCT_VARIANT_ID: ${RUNTIME_NMIT_LIFETIME_PRODUCT_VARIANT_ID}
+        NEXTAUTH_URL: ${RUNTIME_NEXTAUTH_URL}
       buildCommands:
-        - bun i
+        - bun install
+        - bun run postinstall
+        - bun run validateEnv
         - bun x nx build backend
       deployFiles:
         - apps/backend/dist
@@ -19,8 +31,7 @@ zerops:
       os: ubuntu
       ports:
         - port: 3000
-      start:
-        - bun x nx start backend
+      start: bun apps/backend/dist/index.js
 
     deploy:
       readinessCheck:
