@@ -18,8 +18,8 @@ export const splitProps = <Props, Mixins extends string[]>(
   props: Props,
   ...mixins: Mixins
 ): SplitProps<Props, Mixins> => {
-  const result: Record<string, unknown> = {}
-  const rest: Record<string, unknown> = {}
+  const result: { [key: string]: unknown } = {}
+  const rest: { [key: string]: unknown } = {}
   for (const mixinKey of mixins) result[mixinKey] = {}
 
   for (const key in props) {
@@ -27,8 +27,8 @@ export const splitProps = <Props, Mixins extends string[]>(
     for (const mixinKey of mixins) {
       if (!String.startsWith(mixinKey)(key)) continue
       split = true
-      const splitKey = pipe(key, String.substring(mixinKey.length), String.uncapitalize)
-      const splitProps = result[mixinKey] as Record<string, unknown>
+      const splitKey = pipe(key, String.slice(mixinKey.length), String.uncapitalize)
+      const splitProps = result[mixinKey] as { [key: string]: unknown }
       splitProps[splitKey] = props[key]
     }
     if (!split) rest[key] = props[key]

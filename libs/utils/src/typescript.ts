@@ -1,4 +1,4 @@
-import { Types } from 'effect'
+import type { Types } from 'effect'
 
 export type LooseAutocomplete<T extends string> = T | Omit<string, T>
 
