@@ -1,7 +1,7 @@
 import { Checkbox as CheckboxPrimitive } from '@nmit-coursition/ui/primitives/checkbox'
 import { Label } from '@nmit-coursition/ui/primitives/label'
 import { cn } from '@nmit-coursition/ui/utils'
-import { splitProps, type MixinProps } from '@nmit-coursition/utils'
+import { type MixinProps, splitProps } from '@nmit-coursition/utils'
 import type { ComponentPropsWithRef } from 'react'
 
 interface CheckboxProps

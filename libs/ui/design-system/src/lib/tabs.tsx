@@ -1,6 +1,6 @@
-import * as TabsPrimitive from '@nmit-coursition/ui/primitives/tabs';
-import { createSafeKey, splitProps, type MixinProps } from '@nmit-coursition/utils';
-import type { ComponentPropsWithRef, ReactNode } from 'react';
+import * as TabsPrimitive from '@nmit-coursition/ui/primitives/tabs'
+import { type MixinProps, createSafeKey, splitProps } from '@nmit-coursition/utils'
+import type { ComponentPropsWithRef, ReactNode } from 'react'
 
 interface TabsProps
   extends ComponentPropsWithRef<typeof TabsPrimitive.Tabs>,

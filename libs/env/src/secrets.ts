@@ -83,7 +83,9 @@ const secrets = program.pipe(
   Effect.provide(SecretsConfig.Default),
   Effect.catchTag('EmptyError', () => Effect.die(`Empty PROJECT_ID or ACCESS_TOKEN.`)),
   Effect.catchTag('FetchError', (error) => Effect.die(`Fetching secrets failed. Details: ${error.details}`)),
-  Effect.catchTag('InfisicalError', (error) => Effect.die(`Initialization of Infisical failed. Details: ${error.details}`)),
+  Effect.catchTag('InfisicalError', (error) =>
+    Effect.die(`Initialization of Infisical failed. Details: ${error.details}`),
+  ),
 )
 type Secrets = Effect.Effect.Success<typeof secrets>
 

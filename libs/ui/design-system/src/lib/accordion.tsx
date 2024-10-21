@@ -4,7 +4,7 @@ import {
   Accordion as AccordionPrimitive,
   AccordionTrigger,
 } from '@nmit-coursition/ui/primitives'
-import { createSafeKey, splitProps, type MixinProps } from '@nmit-coursition/utils'
+import { type MixinProps, createSafeKey, splitProps } from '@nmit-coursition/utils'
 import type { ComponentPropsWithoutRef, ReactNode } from 'react'
 
 interface TAccordionItem {
