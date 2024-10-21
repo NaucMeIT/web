@@ -23,15 +23,15 @@ export const GetInTouch = () => {
           name='email'
           id='email'
           type='email'
-          label='Email'
+          labelText='Email'
           required
           placeholder='johndoe@example.com'
           className='py-6 w-full col-span-2'
           containerClassName='col-span-2'
         />
 
-        <Input id='firstName' name='firstName' placeholder='John' label='First name' type='text' className='py-6' />
-        <Input id='lastName' name='lastName' placeholder='Doe' label='Last name' type='text' className='py-6' />
+        <Input id='firstName' name='firstName' placeholder='John' labelText='First name' type='text' className='py-6' />
+        <Input id='lastName' name='lastName' placeholder='Doe' labelText='Last name' type='text' className='py-6' />
         <Textarea
           name='comment'
           id='comment'
