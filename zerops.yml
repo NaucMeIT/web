@@ -1,23 +1,26 @@
 zerops:
   - setup: backend
     build:
-      base: bun@latest
+      base: bun@1.1
       os: ubuntu
       buildCommands:
-        - npm i --force
-        - nx build:executable backend
+        - bun i
+        - bun x nx build backend
       deployFiles:
-        - apps/dist
+        - apps/backend/dist
+        - node_modules
+        - package.json
       cache:
         - node_modules
         - bun.lockb
 
     run:
-      base: bun@latest
-      os: alpine
+      base: bun@1.1
+      os: ubuntu
       ports:
         - port: 3000
-      start: nx start:executable backend
+      start:
+        - bun x nx start backend
 
     deploy:
       readinessCheck:
