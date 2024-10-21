@@ -1,0 +1,26 @@
+zerops:
+  - setup: backend
+    build:
+      base: bun@latest
+      os: ubuntu
+      buildCommands:
+        - npm i --force
+        - nx build:executable backend
+      deployFiles:
+        - apps/dist
+      cache:
+        - node_modules
+        - bun.lockb
+
+    run:
+      base: bun@latest
+      os: alpine
+      ports:
+        - port: 3000
+      start: nx start:executable backend
+
+    deploy:
+      readinessCheck:
+        httpGet:
+          path: /swagger
+          port: 3000
