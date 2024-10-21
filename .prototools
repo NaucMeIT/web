@@ -1,6 +1,7 @@
-biome = "1.9.3"
-bun = "1.1.29"
+biome = "1.9.4"
+bun = "1.1.31"
 node = "~20"
+npm = "~10"
 
 [plugins]
 biome = "https://raw.githubusercontent.com/Phault/proto-toml-plugins/main/biome/plugin.toml"
