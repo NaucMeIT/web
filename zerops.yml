@@ -31,6 +31,7 @@ zerops:
       os: ubuntu
       ports:
         - port: 3000
+        httpSupport: true
       start: bun apps/backend/dist/index.js
 
     deploy:
