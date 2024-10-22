@@ -13,6 +13,9 @@ zerops:
         LEMON_SQUEEZY_STORE_ID: ${RUNTIME_LEMON_SQUEEZY_STORE_ID}
         NMIT_LIFETIME_PRODUCT_VARIANT_ID: ${RUNTIME_NMIT_LIFETIME_PRODUCT_VARIANT_ID}
         NEXTAUTH_URL: ${RUNTIME_NEXTAUTH_URL}
+      prepareCommands:
+        - echo "Upgrading bun to 1.1.32"
+        - bun upgrade
       buildCommands:
         - bun install
         - bun run postinstall
@@ -32,6 +35,9 @@ zerops:
       ports:
         - port: 3000
           httpSupport: true
+      prepareCommands:
+        - echo "Upgrading bun to 1.1.32"
+        - bun upgrade
       start: bun apps/backend/dist/index.js
 
     deploy:
