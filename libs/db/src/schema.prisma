@@ -83,6 +83,8 @@ model cas__organisation {
   billing_period_C          BigInt
   cas__organisation_api_key cas__organisation_api_key[]
   cas__user                 cas__user[]
+  shop__order               shop__order[]
+  shop__order_status        shop__order_status[]
 }
 
 model cas__organisation_api_key {
@@ -117,10 +119,12 @@ model cas__user {
   avatar_url                String?
   credit                    Int
   credit_alert_lower_then   Int?
+  lifetime_subscribe        Boolean
   cas__organisation_api_key cas__organisation_api_key[]
   cas__organisation         cas__organisation           @relation(fields: [organisation_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "cas__user_cas__organisation_id_fk")
   cas__user_credit          cas__user_credit[]
   cas__user_identity        cas__user_identity[]
+  shop__order               shop__order[]
 }
 
 model core__api_key_usage {
@@ -158,6 +162,105 @@ model cas__user_credit {
   cas__user     cas__user @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "cas__user_credit_cas__user_id_fk")
 
   @@index([user_id], map: "cas__user_credit_user_id_index")
+}
+
+model shop__order {
+  id                  BigInt                @id(map: "shop__order_pk") @default(autoincrement())
+  order_number        String                @unique(map: "shop__order_order_number_uindex") @db.VarChar(48)
+  user_id             BigInt
+  price               Decimal               @db.Decimal
+  currency_id         Int
+  inserted_date       DateTime              @db.Timestamp(6)
+  updated_date        DateTime              @db.Timestamp(6)
+  organisation_id     Int
+  cas__organisation   cas__organisation     @relation(fields: [organisation_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "shop__order_cas__organisation_id_fk")
+  cas__user           cas__user             @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "shop__order_cas__user_id_fk")
+  shop__currency      shop__currency        @relation(fields: [currency_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "shop__order_shop__currency_id_fk")
+  shop__order_item    shop__order_item[]
+  shop__order_log     shop__order_log[]
+  shop__order_payment shop__order_payment[]
+
+  @@index([user_id], map: "shop__order_user_id_index")
+  @@index([organisation_id], map: "shop__order_organisation_id_index")
+}
+
+model shop__order_item {
+  id              BigInt      @id(map: "shop__order_item_pk") @default(autoincrement())
+  order_id        BigInt
+  label           String
+  price           Decimal     @db.Decimal
+  credit_amount   Int
+  special_actions String?
+  inserted_date   DateTime    @db.Timestamp(6)
+  shop__order     shop__order @relation(fields: [order_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "shop__order_item_shop__order_id_fk")
+
+  @@index([order_id], map: "shop__order_item_order_id_index")
+}
+
+model shop__order_payment {
+  id                                 Int                                  @id(map: "shop__order_payment_pk") @default(autoincrement())
+  order_id                           BigInt
+  gateway_id                         String                               @db.VarChar(64)
+  price                              Decimal                              @db.Decimal
+  status                             String?                              @db.VarChar(64)
+  inserted_date                      DateTime                             @db.Timestamp(6)
+  last_checked_date                  DateTime?                            @db.Timestamp(6)
+  gateway_provider_id                Int                                  @db.SmallInt
+  shop__order                        shop__order                          @relation(fields: [order_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "shop__order_payment_shop__order_id_fk")
+  shop__order_payment_gateway        shop__order_payment_gateway          @relation(fields: [gateway_provider_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "shop__order_payment_shop__order_payment_gateway_id_fk")
+  shop__order_payment_status_history shop__order_payment_status_history[]
+
+  @@index([gateway_id], map: "shop__order_payment_gateway_id_index")
+  @@index([gateway_provider_id], map: "shop__order_payment_gateway_provider_id_index")
+  @@index([order_id], map: "shop__order_payment_order_id_index")
+  @@index([status], map: "shop__order_payment_status_index")
+}
+
+model shop__order_payment_gateway {
+  id                  Int                   @id(map: "shop__order_payment_gateway_pk") @default(autoincrement()) @db.SmallInt
+  code                String                @unique(map: "shop__order_payment_gateway_code_uindex") @db.VarChar(64)
+  name                String
+  shop__order_payment shop__order_payment[]
+}
+
+model shop__order_payment_status_history {
+  id                  Int                 @id(map: "shop__order_payment_status_history_pk") @default(autoincrement())
+  payment_id          Int
+  status              String              @db.VarChar(64)
+  inserted_date       DateTime            @db.Timestamp(6)
+  shop__order_payment shop__order_payment @relation(fields: [payment_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "shop__order_payment_status_history_shop__order_payment_id_fk")
+
+  @@index([payment_id], map: "shop__order_payment_status_history_payment_id_index")
+}
+
+model shop__currency {
+  id          Int           @id(map: "shop__currency_pk") @default(autoincrement())
+  code        String        @unique(map: "shop__currency_code_uindex") @db.Char(3)
+  shop__order shop__order[]
+}
+
+model shop__order_log {
+  id            BigInt      @id(map: "shop__order_log_pk") @default(autoincrement())
+  order_id      BigInt
+  message       String
+  level         Int         @db.SmallInt
+  inserted_date DateTime    @db.Timestamp(6)
+  shop__order   shop__order @relation(fields: [order_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "shop__order_log_shop__order_id_fk")
+
+  @@index([order_id], map: "shop__order_log_order_id_index")
+}
+
+model shop__order_status {
+  id                Int               @id(map: "shop__order_status_pk") @default(autoincrement())
+  organisation_id   Int
+  status_code       String            @db.VarChar(32)
+  public_label      String            @db.VarChar(128)
+  system_code       String            @db.VarChar(32)
+  cas__organisation cas__organisation @relation(fields: [organisation_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "shop__order_status_cas__organisation_id_fk")
+
+  @@unique([organisation_id, system_code], map: "shop__order_status_organisation_id_system_code_uindex")
+  @@unique([status_code, organisation_id], map: "shop__order_status_status_code_organisation_id_uindex")
+  @@index([organisation_id], map: "shop__order_status_organisation_id_index")
 }
 
 enum PaymentStatus {

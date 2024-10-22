@@ -97,6 +97,7 @@ export async function updateUser(userData: User, organisationId: number): Promis
         synced_date: new Date(),
         workos_id: userData.id,
         credit: 0,
+        lifetime_subscribe: false,
       },
     }))
 

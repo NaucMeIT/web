@@ -4,6 +4,7 @@ import { apiDev } from '@nmit-coursition/api/dev'
 import { apiV1 } from '@nmit-coursition/api/v1'
 import * as Sentry from '@sentry/bun'
 import { Elysia } from 'elysia'
+import { apiPayment } from '../../../libs/payments/src/api-payment'
 
 new Elysia()
   .use(
@@ -30,6 +31,7 @@ new Elysia()
     Sentry.captureException(error)
   })
   .use(apiAuth)
+  .use(apiPayment)
   .use(apiV1)
   .use(apiDev)
   .listen(3000)
