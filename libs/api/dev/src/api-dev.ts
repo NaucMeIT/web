@@ -3,7 +3,7 @@ import { Elysia } from 'elysia'
 
 export const apiDev = new Elysia({ prefix: '/dev', tags: ['dev'] })
   .use(apiCommonGuard)
-  .get('/ping', () => ({ status: 'PONG' }), {
+  .get('/ping', () => ({ status: 'ZEROPS' }), {
     afterResponse: ({ request }) => reportSpend({ request }),
   })
   .get('/fail', () => {
