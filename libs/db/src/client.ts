@@ -1,4 +1,12 @@
+import { secretsEnv } from '@nmit-coursition/env'
 import { PrismaClient } from '@prisma/client'
+import { Redacted } from 'effect'
+
+process.env = {
+  ...process.env,
+  DATABASE_URL: Redacted.value(secretsEnv.DATABASE_URL).href,
+  DIRECT_URL: Redacted.value(secretsEnv.DIRECT_URL).href,
+}
 
 const prismaClientSingleton = () => {
   return new PrismaClient()

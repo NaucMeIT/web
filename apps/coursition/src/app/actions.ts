@@ -3,7 +3,7 @@
 import { prisma } from '@nmit-coursition/db'
 import { GetInTouchEmailTemplate, ResetPasswordEmailTemplate, send } from '@nmit-coursition/email'
 import { typedEnv } from '@nmit-coursition/env'
-import { createCheckoutSession } from '@nmit-coursition/payments'
+import { createCheckoutSession } from '@nmit-coursition/order'
 import type { PasswordReset } from '@prisma/client'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
 import bcrypt from 'bcryptjs'
