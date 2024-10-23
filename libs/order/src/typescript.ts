@@ -34,6 +34,12 @@ export interface OrderLogProps {
   level: keyof typeof ORDER_LOG_LEVEL
 }
 
+export const LS_PAYMENT_STATUS = {
+  paid: 'paid',
+  unpaid: 'unpaid',
+  pending: 'pending',
+} as const
+
 export const ORDER_LOG_LEVEL = {
   info: 1,
   success: 2,
@@ -41,4 +47,4 @@ export const ORDER_LOG_LEVEL = {
   error: 4,
 }
 
-export const LS_DEFAULT_PAYMENT_STATUS = 'pending'
+export const LS_DEFAULT_PAYMENT_STATUS = LS_PAYMENT_STATUS.pending

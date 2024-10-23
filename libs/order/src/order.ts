@@ -32,7 +32,7 @@ export async function createOrder({ userId, currency, items }: OrderDescription)
 
   // Create items by for-loop for keep serial insert order
   for (const item of items) {
-    // eslint-disable-next-line order items must keep original position
+    // eslint-disable-next-line no-await-in-loop order items must keep original position
     await prisma.shop__order_item.create({
       data: {
         order_id: order.id,
@@ -111,12 +111,14 @@ export function yearPrefixIncrementStrategy(options?: OrderNumberGeneratorStrate
 
 export async function processOrderPaid(orderId: bigint) {
   const order = await prisma.shop__order.findFirstOrThrow({ where: { id: orderId } })
+  if (order.order_pay_date) {
+    // order has been paid in past
+    return
+  }
   const items = await prisma.shop__order_item.findMany({
     where: { order_id: order.id },
     orderBy: [{ inserted_date: 'asc' }],
   })
-
-  // TODO: Mark order status as paid (shop__order table)
 
   await Promise.all(
     items.map(async (item) => {
@@ -128,6 +130,11 @@ export async function processOrderPaid(orderId: bigint) {
       }
     }),
   )
+
+  await prisma.shop__order.update({
+    data: { order_pay_date: new Date() },
+    where: { id: order.id },
+  })
 
   await writeOrderLog({
     orderId: order.id,

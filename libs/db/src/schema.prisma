@@ -173,6 +173,7 @@ model shop__order {
   inserted_date       DateTime              @db.Timestamp(6)
   updated_date        DateTime              @db.Timestamp(6)
   organisation_id     Int
+  order_pay_date      DateTime?             @db.Timestamp(6)
   cas__organisation   cas__organisation     @relation(fields: [organisation_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "shop__order_cas__organisation_id_fk")
   cas__user           cas__user             @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "shop__order_cas__user_id_fk")
   shop__currency      shop__currency        @relation(fields: [currency_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "shop__order_shop__currency_id_fk")

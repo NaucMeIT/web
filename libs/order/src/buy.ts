@@ -1,5 +1,6 @@
 import { createOrder } from './order'
 import { createPayment } from './payment'
+import { PRODUCT_LIST } from './product'
 
 export async function buySubscribe(userId: bigint): Promise<string> {
   const order = await createOrder({
@@ -8,7 +9,7 @@ export async function buySubscribe(userId: bigint): Promise<string> {
     items: [
       {
         label: 'Lifetime subscriptions',
-        price: 5000, // TODO: Check pricing
+        price: PRODUCT_LIST.lifetimeSubscriptions.price,
         specialActions: 'lifetimeSubscriptions',
       },
     ],

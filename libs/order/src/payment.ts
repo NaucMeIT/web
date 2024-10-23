@@ -1,7 +1,7 @@
 import { prisma } from '@nmit-coursition/db'
 import type { shop__order } from '@prisma/client'
 import { processOrderPaid, writeOrderLog } from './order'
-import { LS_DEFAULT_PAYMENT_STATUS } from './typescript'
+import { LS_DEFAULT_PAYMENT_STATUS, LS_PAYMENT_STATUS } from './typescript'
 
 // Create online payment and return redirect link with details
 export async function createPayment(order: shop__order): Promise<string> {
@@ -44,8 +44,7 @@ export async function createPayment(order: shop__order): Promise<string> {
 
 export async function checkPayment(paymentId: number) {
   const payment = await prisma.shop__order_payment.findFirstOrThrow({ where: { id: paymentId } })
-  // TODO: Check if this status really exist
-  if (payment.status === 'paid') return
+  if (payment.status === LS_PAYMENT_STATUS.paid) return
 
   await writeOrderLog({
     orderId: payment.order_id,
