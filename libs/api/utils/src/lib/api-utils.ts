@@ -41,7 +41,7 @@ export const apiCommonGuard = new Elysia().guard({
     const errorCode: ApiErrorCode | undefined = await validateApiKey(apiKey)
     if (errorCode) {
       set.headers['Content-Type'] = 'application/json; charset=utf8'
-      throw error(ERROR_LIST[errorCode].code, formatApiErrorResponse(request, errorCode))
+      return error(ERROR_LIST[errorCode].code, formatApiErrorResponse(request, errorCode))
     } else {
       Sentry.setTag('authorizedKey', 'true')
     }

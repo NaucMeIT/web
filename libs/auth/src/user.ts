@@ -46,7 +46,7 @@ export async function validateSessionToken(sessionToken: string): Promise<string
   if (!sessionToken) return ''
   const userIdentityRecord = await prisma.cas__user_identity.findFirst({
     select: { user_id: true },
-    where: { session: sessionToken, expired: false, expiration_date: { lte: new Date() } },
+    where: { session: sessionToken, expired: false, expiration_date: { gte: new Date() } },
   })
   if (!userIdentityRecord) return ''
 

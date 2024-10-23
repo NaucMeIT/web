@@ -44,6 +44,7 @@ export const apiAuth = new Elysia({ prefix: '/auth' })
       })
 
       const { user, sealedSession } = authenticateResponse
+      const internalUser = await updateUser(user, organisationId)
 
       cookie[AUTH_COOKIES_NAME]?.set({
         value: sealedSession || '',
@@ -53,14 +54,13 @@ export const apiAuth = new Elysia({ prefix: '/auth' })
         sameSite: 'lax',
       })
 
-      const internalUser = await updateUser(user, organisationId)
       await storeUserSession(internalUser.id, sealedSession || '')
 
       return redirect('/')
     } catch (error) {
       // eslint-disable-next-line no-console debug info
       console.log('dump error', error)
-      return redirect('/login')
+      throw error
     }
   })
   .get('/logout', async ({ redirect, cookie }) => {

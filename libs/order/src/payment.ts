@@ -1,7 +1,13 @@
+import * as LS from '@lemonsqueezy/lemonsqueezy.js'
+import { parseError } from '@nmit-coursition/api/utils'
 import { prisma } from '@nmit-coursition/db'
+import { secretsEnv, typedEnv } from '@nmit-coursition/env'
 import type { shop__order } from '@prisma/client'
+import { Redacted } from 'effect'
 import { processOrderPaid, writeOrderLog } from './order'
 import { LS_DEFAULT_PAYMENT_STATUS, LS_PAYMENT_STATUS } from './typescript'
+
+LS.lemonSqueezySetup({ apiKey: Redacted.value(secretsEnv.LEMON_SQUEEZY_API_KEY) })
 
 // Create online payment and return redirect link with details
 export async function createPayment(order: shop__order): Promise<string> {
@@ -10,13 +16,36 @@ export async function createPayment(order: shop__order): Promise<string> {
     message: `Try to create online payment.`,
     level: 'info',
   })
+  const user = await prisma.cas__user.findFirstOrThrow({
+    select: { email: true, first_name: true, last_name: true, workos_id: true },
+    where: { id: order.user_id },
+  })
 
-  // TODO: Use LemonSqueezy and create payment request
+  const { data, error } = await LS.createCheckout(typedEnv.LEMON_SQUEEZY_STORE_ID, '568802', {
+    customPrice: Number(order.price) * 100,
+    checkoutData: {
+      email: user.email,
+      name: `${user.first_name || ''} ${user.last_name || ''}`.trim() || undefined,
+      custom: {
+        id: user.workos_id,
+        refId: order.order_number,
+      },
+    },
+  })
+
+  if (!data || error) {
+    await writeOrderLog({
+      orderId: order.id,
+      message: `Payment creation failed. Error: ${JSON.stringify(parseError(error))}, Data: ${JSON.stringify(data)}`,
+      level: 'error',
+    })
+    throw new Error('Payment creation failed')
+  }
 
   const payment = await prisma.shop__order_payment.create({
     data: {
       order_id: order.id,
-      gateway_id: '', // TODO
+      gateway_id: data.data.id,
       price: order.price,
       status: LS_DEFAULT_PAYMENT_STATUS,
       inserted_date: new Date(),
@@ -38,11 +67,10 @@ export async function createPayment(order: shop__order): Promise<string> {
     level: 'success',
   })
 
-  // TODO: Return redirect to gateway
-  return ''
+  return data.data.attributes.url
 }
 
-export async function checkPayment(paymentId: number) {
+export async function checkPayment(paymentId: number, newPaymentStatus: string) {
   const payment = await prisma.shop__order_payment.findFirstOrThrow({ where: { id: paymentId } })
   if (payment.status === LS_PAYMENT_STATUS.paid) return
 
@@ -51,9 +79,6 @@ export async function checkPayment(paymentId: number) {
     message: `Try to check payment status.`,
     level: 'info',
   })
-
-  // TODO: Load new payment status from API or webhook
-  const newPaymentStatus = LS_DEFAULT_PAYMENT_STATUS
 
   if (newPaymentStatus !== payment.status) {
     await writeOrderLog({

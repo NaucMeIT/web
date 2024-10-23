@@ -1,10 +1,9 @@
-import 'server-only'
-
 import * as crypto from 'node:crypto'
 import * as LS from '@lemonsqueezy/lemonsqueezy.js'
 import { secretsEnv, typedEnv } from '@nmit-coursition/env'
 import type { LooseAutocomplete } from '@nmit-coursition/utils'
 import { Redacted } from 'effect'
+
 const storeId = typedEnv.LEMON_SQUEEZY_STORE_ID
 
 interface LemonSqueezyData {
