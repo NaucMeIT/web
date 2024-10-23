@@ -2,6 +2,7 @@ import * as LS from '@lemonsqueezy/lemonsqueezy.js'
 import { parseError } from '@nmit-coursition/api/utils'
 import { prisma } from '@nmit-coursition/db'
 import { secretsEnv, typedEnv } from '@nmit-coursition/env'
+import { randomStringGenerator } from '@nmit-coursition/utils'
 import type { shop__order } from '@prisma/client'
 import { Redacted } from 'effect'
 import { processOrderPaid, writeOrderLog } from './order'
@@ -21,6 +22,7 @@ export async function createPayment(order: shop__order): Promise<string> {
     where: { id: order.user_id },
   })
 
+  const gateway_id = `${randomStringGenerator(32)}_${Date.now()}`
   const { data, error } = await LS.createCheckout(typedEnv.LEMON_SQUEEZY_STORE_ID, '568802', {
     customPrice: Number(order.price) * 100,
     checkoutData: {
@@ -28,7 +30,8 @@ export async function createPayment(order: shop__order): Promise<string> {
       name: `${user.first_name || ''} ${user.last_name || ''}`.trim() || undefined,
       custom: {
         id: user.workos_id,
-        refId: order.order_number,
+        ref_id: order.order_number,
+        gateway_id,
       },
     },
   })
@@ -45,7 +48,7 @@ export async function createPayment(order: shop__order): Promise<string> {
   const payment = await prisma.shop__order_payment.create({
     data: {
       order_id: order.id,
-      gateway_id: data.data.id,
+      gateway_id,
       price: order.price,
       status: LS_DEFAULT_PAYMENT_STATUS,
       inserted_date: new Date(),
@@ -63,7 +66,7 @@ export async function createPayment(order: shop__order): Promise<string> {
 
   await writeOrderLog({
     orderId: order.id,
-    message: `Payment has been created. ID: ${payment.gateway_id}`,
+    message: `Payment has been created. ID: ${payment.gateway_id}, Data: ${JSON.stringify(data)}`,
     level: 'success',
   })
 
@@ -78,6 +81,13 @@ export async function checkPayment(paymentId: number, newPaymentStatus: string) 
     orderId: payment.order_id,
     message: `Try to check payment status.`,
     level: 'info',
+  })
+  await prisma.shop__order_payment.update({
+    data: {
+      status: newPaymentStatus,
+      last_checked_date: new Date(),
+    },
+    where: { id: payment.id },
   })
 
   if (newPaymentStatus !== payment.status) {

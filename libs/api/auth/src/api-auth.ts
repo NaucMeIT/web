@@ -18,10 +18,14 @@ const workos = new WorkOS(Redacted.value(secretsEnv.WORKOS_API_KEY), {
 
 export const apiAuth = new Elysia({ prefix: '/auth', tags: ['auth'] })
   .get('/ping', () => ({ status: 'PONG' }))
-  .get('/login', ({ redirect }) => {
+  .get('/login', ({ request, redirect }) => {
+    const protocol = request.headers.get('x-forwarded-proto') || 'http'
+    const host = request.headers.get('host')
+    const baseUrl = host ? `${protocol}://${host}` : 'http://localhost:3000'
+
     const authorizationUrl = workos.userManagement.getAuthorizationUrl({
       provider: 'authkit',
-      redirectUri: 'http://localhost:3000/auth/callback',
+      redirectUri: `${baseUrl}/auth/callback`,
       clientId: Redacted.value(secretsEnv.WORKOS_CLIENT_ID),
     })
 
