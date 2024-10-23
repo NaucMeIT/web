@@ -1,15 +1,15 @@
 {
-  "name": "payments",
+  "name": "order",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/payments/src",
+  "sourceRoot": "libs/order/src",
   "projectType": "library",
   "tags": [],
-  "// targets": "to see all targets run: nx show project payments --web",
+  "// targets": "to see all targets run: nx show project order --web",
   "targets": {
     "typecheck": {
       "executor": "nx:run-commands",
       "options": {
-        "cwd": "libs/payments",
+        "cwd": "libs/order",
         "commands": ["bunx tsc --pretty --noEmit -p tsconfig.lib.json"],
         "forwardAllArgs": false,
         "description": "Type check with tsc"

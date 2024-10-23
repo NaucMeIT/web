@@ -1,5 +1,5 @@
 export interface OrderDescription {
-  userId: number
+  userId: bigint
   currency: string
   items: OrderItem[]
 }
