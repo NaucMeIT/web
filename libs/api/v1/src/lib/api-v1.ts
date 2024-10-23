@@ -11,7 +11,7 @@ import {
 import { Redacted } from 'effect'
 import { Elysia, t } from 'elysia'
 
-export const apiV1 = new Elysia({ prefix: '/v1' })
+export const apiV1 = new Elysia({ prefix: '/v1', tags: ['v1'] })
   .use(apiCommonGuard)
   .group('/parse', (parseApp) =>
     parseApp

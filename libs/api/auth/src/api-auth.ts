@@ -16,7 +16,7 @@ const workos = new WorkOS(Redacted.value(secretsEnv.WORKOS_API_KEY), {
   clientId: Redacted.value(secretsEnv.WORKOS_CLIENT_ID),
 })
 
-export const apiAuth = new Elysia({ prefix: '/auth' })
+export const apiAuth = new Elysia({ prefix: '/auth', tags: ['auth'] })
   .get('/ping', () => ({ status: 'PONG' }))
   .get('/login', ({ redirect }) => {
     const authorizationUrl = workos.userManagement.getAuthorizationUrl({
