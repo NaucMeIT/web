@@ -44,6 +44,7 @@ export const apiCommonGuard = new Elysia().guard({
       return error(ERROR_LIST[errorCode].code, formatApiErrorResponse(request, errorCode))
     } else {
       Sentry.setTag('authorizedKey', 'true')
+      return
     }
   },
 })
