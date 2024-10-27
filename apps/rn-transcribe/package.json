@@ -1,0 +1,18 @@
+{
+  "name": "rn-transcribe",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "metro-config": "*",
+    "react-native": "*",
+    "expo": "*",
+    "react-native-svg": "*",
+    "react-native-web": "*",
+    "react": "18.3.1"
+  },
+  "scripts": {
+    "eas-build-post-install": "cd ../../ && node tools/scripts/eas-build-post-install.mjs . apps/rn-transcribe",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
+  }
+}
