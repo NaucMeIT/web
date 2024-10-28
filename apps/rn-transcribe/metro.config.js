@@ -1,5 +1,6 @@
 const { withNxMetro } = require('@nx/expo')
 const { getDefaultConfig } = require('@expo/metro-config')
+const { withNativeWind } = require('nativewind/metro')
 const { mergeConfig } = require('metro-config')
 
 const defaultConfig = getDefaultConfig(__dirname)
@@ -14,7 +15,7 @@ const { assetExts, sourceExts } = defaultConfig.resolver
 const customConfig = {
   cacheVersion: 'rn-transcribe',
   transformer: {
-    babelTransformerPath: require.resolve('react-native-svg-transformer'),
+    hermesParser: true,
   },
   resolver: {
     assetExts: assetExts.filter((ext) => ext !== 'svg'),
@@ -22,7 +23,7 @@ const customConfig = {
   },
 }
 
-module.exports = withNxMetro(mergeConfig(defaultConfig, customConfig), {
+module.exports = withNxMetro(mergeConfig(defaultConfig, withNativeWind(customConfig, { input: './src/global.css' })), {
   // Change this to true to see debugging info.
   // Useful if you have issues resolving modules
   debug: false,
