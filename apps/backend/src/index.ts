@@ -2,6 +2,7 @@ import { swagger } from '@elysiajs/swagger'
 import { apiAuth } from '@nmit-coursition/api/auth'
 import { apiDev } from '@nmit-coursition/api/dev'
 import { apiV1 } from '@nmit-coursition/api/v1'
+import { apiOrder } from '@nmit-coursition/order'
 import * as Sentry from '@sentry/bun'
 import { Elysia } from 'elysia'
 
@@ -39,6 +40,7 @@ new Elysia()
     Sentry.captureException(error)
   })
   .use(apiAuth)
+  .use(apiOrder)
   .use(apiV1)
   .use(apiDev)
   .listen(3000)

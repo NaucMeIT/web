@@ -18,10 +18,14 @@ const workos = new WorkOS(Redacted.value(secretsEnv.WORKOS_API_KEY), {
 
 export const apiAuth = new Elysia({ prefix: '/auth', tags: ['auth'] })
   .get('/ping', () => ({ status: 'PONG' }))
-  .get('/login', ({ redirect }) => {
+  .get('/login', ({ request, redirect }) => {
+    const protocol = request.headers.get('x-forwarded-proto') || 'http'
+    const host = request.headers.get('host')
+    const baseUrl = host ? `${protocol}://${host}` : 'http://localhost:3000'
+
     const authorizationUrl = workos.userManagement.getAuthorizationUrl({
       provider: 'authkit',
-      redirectUri: 'http://localhost:3000/auth/callback',
+      redirectUri: `${baseUrl}/auth/callback`,
       clientId: Redacted.value(secretsEnv.WORKOS_CLIENT_ID),
     })
 
@@ -44,6 +48,7 @@ export const apiAuth = new Elysia({ prefix: '/auth', tags: ['auth'] })
       })
 
       const { user, sealedSession } = authenticateResponse
+      const internalUser = await updateUser(user, organisationId)
 
       cookie[AUTH_COOKIES_NAME]?.set({
         value: sealedSession || '',
@@ -53,14 +58,13 @@ export const apiAuth = new Elysia({ prefix: '/auth', tags: ['auth'] })
         sameSite: 'lax',
       })
 
-      const internalUser = await updateUser(user, organisationId)
       await storeUserSession(internalUser.id, sealedSession || '')
 
       return redirect('/')
     } catch (error) {
       // eslint-disable-next-line no-console debug info
       console.log('dump error', error)
-      return redirect('/login')
+      throw error
     }
   })
   .get('/logout', async ({ redirect, cookie }) => {

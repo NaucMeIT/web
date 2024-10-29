@@ -1,5 +1,5 @@
 import { prisma } from '@nmit-coursition/db'
-import { webhookEventHandler } from '@nmit-coursition/payments'
+import { webhookEventHandler } from '@nmit-coursition/order'
 import { PaymentStatus } from '@prisma/client'
 import { revalidatePath } from 'next/cache'
 import { type NextRequest, NextResponse } from 'next/server'
