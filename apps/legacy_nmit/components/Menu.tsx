@@ -49,7 +49,7 @@ function MenuItem({
 
 export function Menu({ items, logoLink, children, inApp }: MenuProps) {
     return (
-        <Disclosure as='nav' className='fixed top-32 sm:top-20 md:top-12 z-20 w-screen bg-background/90 transition-all print:hidden'>
+        <Disclosure as='nav' className='fixed top-20 md:top-12 z-20 w-screen bg-background/90 transition-all print:hidden'>
             {({ open, close }) => (
                 <>
                     <div className='mx-auto mt-4 max-w-screen-3xl px-6 lg:px-0'>

@@ -46,12 +46,12 @@ const Post: React.FC<PostProps> = ({ mdx, metaInformation, headings }) => {
             </Head>
             <InAppMenu />
             <div className='grid grid-cols-12 auto-rows-auto h-screen'>
-                <div className='print:hidden row-start-1 row-end-3 xl:row-end-7 xl:row-span-full col-span-full xl:col-span-2 mt-32 bg-secondary/5 overflow-auto'>
+                <div className='print:hidden row-start-1 row-end-2 xl:row-end-7 xl:row-span-full col-span-full xl:col-span-2 mt-20 bg-secondary/5 overflow-auto'>
                     <SideMenu>
                         <TreeToC headings={headings} />
                     </SideMenu>
                 </div>
-                <main className='flex flex-row justify-start items-start row-end-7 xl:col-start-3 col-span-full row-start-4 xl:row-start-1 row-span-full overflow-auto print:overflow-visible px-10 pt-10 xl:mt-20 pb-2 overscroll-none'>
+                <main className='flex flex-row justify-start items-start row-end-7 xl:col-start-3 col-span-full row-start-3 xl:row-start-1 row-span-full overflow-auto print:overflow-visible px-10 xl:mt-20 pb-2 overscroll-none'>
                     <article className='max-w-prose print:block'>
                         <Logo className='hidden print:block' width={120} />
                         <Typography
