@@ -1,24 +1,31 @@
-// components/GlobalModal.tsx
-import { useState, useEffect } from 'react';
-import * as Dialog from '@radix-ui/react-dialog';
+import { useRouter } from 'next/router'
+import { useState, useEffect } from 'react'
+import * as Dialog from '@radix-ui/react-dialog'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { Button } from './Button'
 
-const MODAL_COOKIE_KEY = 'global_modal_closed';
+const MODAL_COOKIE_KEY = 'global_modal_closed'
 
 export function GlobalModal() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
     const hasClosedModal = document.cookie
       .split('; ')
       .find(row => row.startsWith(MODAL_COOKIE_KEY))
-      ?.split('=')[1];
+      ?.split('=')[1]
 
     if (!hasClosedModal) {
-      setIsOpen(true);
+      setIsOpen(true)
     }
-  }, []);
+  }, [])
+
+  useEffect(() => {
+    if (router.asPath.startsWith("/kurz-ai")) {
+      setTimeout(handleClose, 500)
+    }
+  }, [router.asPath])
 
   const handleChange = (isOpen: boolean) => {
     if (isOpen) {
@@ -30,9 +37,9 @@ export function GlobalModal() {
 
   const handleClose = () => {
     // Set cookie to expire in 1 year
-    document.cookie = `${MODAL_COOKIE_KEY}=true; path=/; max-age=${60 * 60 * 24 * 365}; SameSite=Lax`;
-    setIsOpen(false);
-  };
+    document.cookie = `${MODAL_COOKIE_KEY}=true; path=/; max-age=${60 * 60 * 24 * 365}; SameSite=Lax`
+    setIsOpen(false)
+  }
 
   return (
     <Dialog.Root open={isOpen} onOpenChange={handleChange}>
@@ -53,9 +60,9 @@ export function GlobalModal() {
               <iframe className='w-full aspect-video' src="https://www.youtube.com/embed/ZXB3XTZRtdk" title="Pozvánka na AI kurz" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />
             </p>
           </div>
-          <div className='flex mt-3 justify-center w-full'><Button theme="main">Vzhůru na AI kurz!</Button></div>
+          <div className='flex mt-3 justify-center w-full'><Button theme="main" href="/kurz-ai">Vzhůru na AI kurz!</Button></div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
-  );
+  )
 }
