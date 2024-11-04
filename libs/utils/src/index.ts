@@ -8,4 +8,4 @@ export * from './string'
 // eslint-disable-next-line no-default-export -- // ! contains only type exports
 export * from './typescript'
 export * from './copy'
-export * from "./download"
+export * from './download'

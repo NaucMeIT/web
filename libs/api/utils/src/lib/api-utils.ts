@@ -1,6 +1,7 @@
 import { AUTH_COOKIES_NAME, validateSessionToken } from '@nmit-coursition/auth'
 import { Prisma, prisma } from '@nmit-coursition/db'
 import { generateRandomIdentifier, isDateBeforeNow } from '@nmit-coursition/utils'
+import type { cas__user } from '@prisma/client'
 import * as Sentry from '@sentry/bun'
 import { Elysia } from 'elysia'
 import { formatApiErrorResponse, parseApiKey } from '../api'
@@ -40,9 +41,10 @@ export const apiCommonGuard = new Elysia().guard({
     const errorCode: ApiErrorCode | undefined = await validateApiKey(apiKey)
     if (errorCode) {
       set.headers['Content-Type'] = 'application/json; charset=utf8'
-      throw error(ERROR_LIST[errorCode].code, formatApiErrorResponse(request, errorCode))
+      return error(ERROR_LIST[errorCode].code, formatApiErrorResponse(request, errorCode))
     } else {
       Sentry.setTag('authorizedKey', 'true')
+      return
     }
   },
 })
@@ -70,6 +72,26 @@ function initSentry(request: ExtendedRequest) {
 export function reportUsage(apiKey: string, duration: number, type: 'video' | 'document' | 'web') {
   // eslint-disable-next-line no-console -- will be replaced with real usage reporting
   console.log(`API Key ${apiKey} used ${duration} on ${type}.`)
+}
+
+export async function getLoggedUserOrThrow(request: Request): Promise<cas__user> {
+  const key = String('apiKey' in request ? request.apiKey : '')
+  if (!key) throw new Error(`User must be logged in.`)
+
+  const userRecords = await prisma.$queryRaw<cas__user[]>`
+    SELECT *
+    FROM cas__user u
+    WHERE u.id = (
+        SELECT k.user_id
+        FROM cas__organisation_api_key k
+        WHERE k.api_key = ${key}
+        LIMIT 1
+    )
+    LIMIT 1`
+
+  if (userRecords[0]) return userRecords[0]
+
+  throw new Error(`Invalid API key.`)
 }
 
 export async function reportSpend({
@@ -182,7 +204,7 @@ async function selectApiKey(apiKey: string): Promise<ApiKeyRecord | undefined> {
     WHERE k.api_key = ${apiKey}
     LIMIT 1`
 
-  return records?.[0] || undefined
+  return records?.[0]
 }
 
 async function incrementKeyUsage(keyId: bigint) {

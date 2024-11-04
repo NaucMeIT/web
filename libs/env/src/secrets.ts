@@ -79,16 +79,18 @@ const program = Effect.gen(function* (_) {
   return config
 })
 
-const secrets = program.pipe(
+export const secretsEffect = program.pipe(
   Effect.provide(SecretsConfig.Default),
   Effect.catchTag('EmptyError', () => Effect.die(`Empty PROJECT_ID or ACCESS_TOKEN.`)),
   Effect.catchTag('FetchError', (error) => Effect.die(`Fetching secrets failed. Details: ${error.details}`)),
-  Effect.catchTag('InfisicalError', (error) => Effect.die(`Initialization of Infisical failed. Details: ${error.details}`)),
+  Effect.catchTag('InfisicalError', (error) =>
+    Effect.die(`Initialization of Infisical failed. Details: ${error.details}`),
+  ),
 )
-type Secrets = Effect.Effect.Success<typeof secrets>
+type Secrets = Effect.Effect.Success<typeof secretsEffect>
 
 // * We use top-level await to wait for this module during build time.
 export let secretsEnv: Secrets
-await Effect.runPromise(secrets).then((secrets) => {
+await Effect.runPromise(secretsEffect).then((secrets) => {
   secretsEnv = secrets
 })

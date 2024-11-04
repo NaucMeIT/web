@@ -1,0 +1,49 @@
+zerops:
+  - setup: backend
+    build:
+      base:
+        - bun@1.1
+        - nodejs@latest
+      os: ubuntu
+      envVariables:
+        NODE_ENV: production
+        ACCESS_TOKEN: ${RUNTIME_ACCESS_TOKEN}
+        DATABASE_URL: ${RUNTIME_DATABASE_URL}
+        DIRECT_URL: ${RUNTIME_DIRECT_URL}
+        PROJECT_ID: ${RUNTIME_PROJECT_ID}
+        SITE_URL: ${RUNTIME_SITE_URL}
+        LEMON_SQUEEZY_STORE_ID: ${RUNTIME_LEMON_SQUEEZY_STORE_ID}
+        NMIT_LIFETIME_PRODUCT_VARIANT_ID: ${RUNTIME_NMIT_LIFETIME_PRODUCT_VARIANT_ID}
+        NEXTAUTH_URL: ${RUNTIME_NEXTAUTH_URL}
+      prepareCommands:
+        - echo "Upgrading bun to 1.1.32"
+        - bun upgrade
+      buildCommands:
+        - bun install
+        - bun run postinstall
+        - bun run validateEnv
+        - bun x nx build backend
+      deployFiles:
+        - apps/backend/dist
+        - node_modules
+        - package.json
+      cache:
+        - node_modules
+        - bun.lockb
+
+    run:
+      base: bun@1.1
+      os: ubuntu
+      ports:
+        - port: 3000
+          httpSupport: true
+      prepareCommands:
+        - echo "Upgrading bun to 1.1.32"
+        - bun upgrade
+      start: bun apps/backend/dist/index.js
+
+    deploy:
+      readinessCheck:
+        httpGet:
+          path: /swagger
+          port: 3000

@@ -1,5 +1,6 @@
 import { createClient, srt, webvtt } from '@deepgram/sdk'
-import { Config, Context, Data, Effect, Layer, Redacted } from 'effect'
+import { secretsEffect } from '@nmit-coursition/env'
+import { Context, Data, Effect, Layer, Redacted } from 'effect'
 
 interface TranscriptSuccess {
   srt: string
@@ -28,8 +29,8 @@ class TranscribeError extends Data.TaggedError('TranscribeError')<{}> {}
 class EmptyError extends Data.TaggedError('EmptyError')<{}> {}
 
 const deepgram = Effect.gen(function* () {
-  const apiKey = yield* Config.redacted('DEEPGRAM_API_KEY')
-  const deepgramClient = createClient(Redacted.value(apiKey))
+  const secrets = yield* secretsEffect
+  const deepgramClient = createClient(Redacted.value(secrets.DEEPGRAM_API_KEY))
   return {
     getTranscript: Effect.gen(function* () {
       const { language, keywords } = yield* Params

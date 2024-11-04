@@ -38,7 +38,7 @@
       "@nmit-coursition/db": ["libs/db/src/index.ts"],
       "@nmit-coursition/email": ["libs/email/src/index.ts"],
       "@nmit-coursition/env": ["libs/env/src/index.ts"],
-      "@nmit-coursition/payments": ["libs/payments/src/index.ts"],
+      "@nmit-coursition/order": ["libs/order/src/index.ts"],
       "@nmit-coursition/ui/design-system": ["libs/ui/design-system/src/index.ts"],
       "@nmit-coursition/ui/primitives": ["libs/ui/primitives/src/index.ts"],
       "@nmit-coursition/ui/primitives/*": ["libs/ui/primitives/src/*"],
