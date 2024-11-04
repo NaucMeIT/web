@@ -1,5 +1,7 @@
 'use client'
 
+import { Button, Tooltip } from '@nmit-coursition/ui/design-system'
+import { cn } from '@nmit-coursition/ui/utils'
 import { type FileFormat, useContentCopy, useContentDownload } from '@nmit-coursition/utils'
 import { CheckCircle, Copy, Download } from 'lucide-react'
 import {
@@ -41,20 +43,21 @@ interface ActionButtonProps {
 }
 
 const ActionButton = ({ onClick, icon, successIcon, isActive, title, className = '' }: ActionButtonProps) => (
-  <button
-    type='button'
-    onClick={onClick}
-    className={`
-      rounded-md hover:bg-gray-100 transition-colors
-      duration-200 focus:outline-none focus:ring-2
-      focus:ring-offset-2 focus:ring-blue-500 p-2
-      ${className}
-    `}
-    aria-label={title}
-    title={title}
-  >
-    {isActive && successIcon ? successIcon : icon}
-  </button>
+  <Tooltip
+    triggerAsChild
+    trigger={
+      <Button
+        size='icon'
+        variant='outline'
+        onClick={onClick}
+        className={cn('rounded-md transition-colors duration-200 p-2', className)}
+      >
+        <span className='sr-only'>{title}</span>
+        {isActive && successIcon ? successIcon : icon}
+      </Button>
+    }
+    content={title}
+  />
 )
 
 interface ActionsWrapperProps {
