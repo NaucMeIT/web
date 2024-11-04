@@ -50,17 +50,13 @@ const ActionButton = ({ onClick, icon, successIcon, isActive, title, className =
         size='icon'
         variant='outline'
         onClick={onClick}
-        className={cn(
-          'rounded-md hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 p-2',
-          className,
-        )}
+        className={cn('rounded-md transition-colors duration-200 p-2', className)}
       >
         <span className='sr-only'>{title}</span>
         {isActive && successIcon ? successIcon : icon}
       </Button>
     }
-    content={<p className=''>{title}</p>}
-    contentClassName='bg-black text-white'
+    content={title}
   />
 )
 
