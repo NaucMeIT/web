@@ -1,3 +1,4 @@
+import { unlink } from 'node:fs/promises'
 import FirecrawlApp from '@mendable/firecrawl-js'
 import { generateQuiz, getResult, getTranscript, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
 import { apiCommonGuard, formatApiErrorResponse, reportUsage } from '@nmit-coursition/api/utils'
@@ -5,6 +6,7 @@ import { secretsEnv } from '@nmit-coursition/env'
 import {
   allowedDeepgramLanguagesAsType,
   allowedLlamaParseLanguagesAsType,
+  downloadPublicMedia,
   languages,
   languagesAsType,
 } from '@nmit-coursition/utils'
@@ -17,8 +19,12 @@ export const apiV1 = new Elysia({ prefix: '/v1', tags: ['v1'] })
     parseApp
       .post(
         '/media',
-        async ({ body: { output, keywords, file, language } }) => {
+        async ({ body: { output, keywords, file, language }, error: errorFn, request }) => {
           const transcript = await getTranscript(file, keywords, language)
+
+          if ('error' in transcript) {
+            return errorFn(500, formatApiErrorResponse(request, `Failed to process public media: ${transcript.error}`))
+          }
 
           return {
             ...(output.includes('vtt') ? { vtt: transcript.vtt } : {}),
@@ -30,6 +36,60 @@ export const apiV1 = new Elysia({ prefix: '/v1', tags: ['v1'] })
         {
           body: t.Object({
             file: t.File(),
+            language: t.Optional(allowedDeepgramLanguagesAsType),
+            output: t.Array(t.Union([t.Literal('vtt'), t.Literal('srt'), t.Literal('text')]), {
+              default: ['text'],
+            }),
+            keywords: t.Array(t.String(), { default: [] }),
+          }),
+          transform({ body }) {
+            body.output &&= Array.isArray(body.output) ? body.output : [body.output]
+            body.keywords &&= Array.isArray(body.keywords) ? body.keywords : [body.keywords]
+          },
+          response: {
+            200: t.Object({
+              vtt: t.Optional(t.String()),
+              srt: t.Optional(t.String()),
+              text: t.Optional(t.String()),
+              duration: t.Optional(t.Number()),
+            }),
+          },
+          afterResponse({ response, headers }) {
+            if (response && !('duration' in response)) return
+            const duration = response?.duration || 0
+            duration >= 0 && reportUsage(headers['authorization'] || '', duration, 'video')
+          },
+        },
+      )
+      .post(
+        '/public-media',
+        async ({ body: { url, output, keywords, language }, error: errorFn, request }) => {
+          try {
+            const { path } = await downloadPublicMedia(url)
+            const audioFile = Buffer.from(await Bun.file(path).arrayBuffer())
+            const transcript = await getTranscript(audioFile, keywords, language)
+            await unlink(path)
+
+            if ('error' in transcript) {
+              return errorFn(
+                500,
+                formatApiErrorResponse(request, `Failed to process public media: ${transcript.error}`),
+              )
+            }
+
+            return {
+              ...(output.includes('vtt') ? { vtt: transcript.vtt } : {}),
+              ...(output.includes('srt') ? { srt: transcript.srt } : {}),
+              ...(output.includes('text') ? { text: transcript.raw } : {}),
+              duration: transcript.metadata?.duration,
+            }
+          } catch (error) {
+            return errorFn(500, formatApiErrorResponse(request, `Failed to process public media: ${error}`))
+          }
+        },
+        {
+          body: t.Object({
+            url: t.String({ format: 'uri' }),
             language: t.Optional(allowedDeepgramLanguagesAsType),
             output: t.Array(t.Union([t.Literal('vtt'), t.Literal('srt'), t.Literal('text')]), {
               default: ['text'],

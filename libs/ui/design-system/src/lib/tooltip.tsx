@@ -1,7 +1,7 @@
 'use client'
 
 import * as TooltipPrimitive from '@nmit-coursition/ui/primitives/tooltip'
-import { splitProps, type MixinProps } from '@nmit-coursition/utils'
+import { type MixinProps, splitProps } from '@nmit-coursition/utils'
 import type { ComponentProps } from 'react'
 
 interface TriggerProps extends ComponentProps<typeof TooltipPrimitive.TooltipTrigger> {}

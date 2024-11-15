@@ -2,7 +2,7 @@
 
 import { type RefObject, useCallback, useState } from 'react'
 
-export type FileFormat = 'txt' | 'html' | 'md'
+export type FileFormat = 'txt' | 'html' | 'md' | 'srt' | 'vtt'
 
 interface UseContentDownloadOptions {
   onSuccess?: () => void
@@ -14,6 +14,8 @@ interface UseContentDownloadOptions {
 const getMimeType = (format: FileFormat): string =>
   ({
     txt: 'text/plain',
+    srt: 'text/plain',
+    vtt: 'text/vtt',
     html: 'text/html',
     md: 'text/markdown',
   })[format]
@@ -21,6 +23,8 @@ const getMimeType = (format: FileFormat): string =>
 const getFileExtension = (format: FileFormat): string =>
   ({
     txt: '.txt',
+    srt: '.srt',
+    vtt: '.vtt',
     html: '.html',
     md: '.md',
   })[format]

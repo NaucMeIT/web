@@ -1,7 +1,7 @@
 'use client'
 
 import { getTranscript } from '@nmit-coursition/ai'
-import { Accordion, Button, Textarea } from '@nmit-coursition/ui/design-system'
+import { Button, Input, Tabs, Textarea } from '@nmit-coursition/ui/design-system'
 import { useSignal } from '@preact/signals-react/runtime'
 import { useActionState } from 'react'
 import { toast } from 'sonner'
@@ -14,6 +14,7 @@ import { TranscriptionResults } from '../../components/transcriptionResults'
 const fileSchema = zfd.formData({
   file: zfd.file(),
   keywords: z.string().optional(),
+  language: z.string().optional(),
 })
 
 const initialState = {
@@ -21,22 +22,6 @@ const initialState = {
   srt: '',
   vtt: '',
 }
-
-const accordionItems = [
-  {
-    title: 'Advanced Options',
-    content: (
-      <div className='flex gap-3 flex-col w-full'>
-        <Textarea
-          label='Difficult words'
-          placeholder='ChatGPT, Claude, Zig'
-          id='keywords'
-          subtext='Unusual words or phrases that may be difficult to transcribe. Separate with commas. Avoid putting common words.'
-        />
-      </div>
-    ),
-  },
-]
 
 const statusStates = [
   { key: 'upload', text: 'Uploading media' },
@@ -49,10 +34,10 @@ export default function Index() {
   const handleSubmit = async (formData: FormData) => {
     try {
       status.value = 'upload'
-      const { file, keywords } = fileSchema.parse(formData)
+      const { file, keywords, language = 'en' } = fileSchema.parse(formData)
       status.value = 'parse'
       const keywordsArray = keywords ? keywords.split(',').map((word) => `${word}:5`) : []
-      const result = await getTranscript(file, keywordsArray)
+      const result = await getTranscript(file, keywordsArray, language)
       if ('error' in result) throw new Error(result.error)
       const { raw, srt, vtt } = result
       status.value = 'done'
@@ -67,26 +52,54 @@ export default function Index() {
   const [state, formAction] = useActionState((_: unknown, formData: FormData) => handleSubmit(formData), initialState)
 
   return (
-    <div className='flex justify-center items-center h-screen'>
-      <div className='p-4 shadow rounded-md max-w-2xl w-full'>
+    <div className='flex justify-center h-screen'>
+      <div className='p-4 max-w-2xl w-full'>
         {status.value === 'idle' && (
           <>
             <h1 className='text-2xl font-bold mb-4'>Upload media</h1>
             <form className='space-y-4' action={formAction}>
-              <FileDropper
-                idleMessage="Drag 'n' drop some files here, or click to select files"
-                dropZoneMessage='Drop the files here ...'
-                className='border max-w-2xl mx-auto'
-                inputName='file'
-                maxFiles={1}
-                accept={{ 'video/*': [], 'audio/*': [] }}
+              <Tabs
+                values={[
+                  {
+                    value: 'file',
+                    displayText: 'File',
+                    children: (
+                      <FileDropper
+                        idleMessage="Drag 'n' drop some files here, or click to select files"
+                        dropZoneMessage='Drop the files here ...'
+                        inputName='file'
+                        maxFiles={1}
+                        accept={{ 'video/*': [], 'audio/*': [] }}
+                      />
+                    ),
+                  },
+                  {
+                    value: 'url',
+                    displayText: 'URL',
+                    children: (
+                      <Input type='url' id='url' name='url' placeholder='Enter media URL' labelText='URL' required />
+                    ),
+                  },
+                ]}
               />
-              <Accordion items={accordionItems} />
+              <div className='flex gap-3 flex-col w-full'>
+                <Input
+                  type='text'
+                  id='language'
+                  name='language'
+                  placeholder='en'
+                  labelText='Language'
+                  subText='What is main language of the video. Accepted is two letter keycode, e.g. en, cs.'
+                />
+                <Textarea
+                  label='Difficult words'
+                  placeholder='ChatGPT, Claude, Zig'
+                  id='keywords'
+                  subtext='Unusual words or phrases that may be difficult to transcribe. Separate with commas. Avoid putting common words.'
+                />
+              </div>
               <div className='flex gap-4'>
-                <Button
-                  type='submit'
-                  className='flex-1 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md'
-                >
+                <Button type='submit' className='w-full'>
                   Transcribe
                 </Button>
               </div>
@@ -96,7 +109,24 @@ export default function Index() {
         {status.value !== 'idle' && status.value !== 'done' && (
           <StatusDisplay states={statusStates} status={status.value} />
         )}
-        {status.value === 'done' && <TranscriptionResults raw={state.raw} srt={state.srt} vtt={state.vtt} />}
+        {status.value === 'done' && (
+          <Tabs
+            listClassName='h-auto'
+            triggerClassName='text-lg m-1'
+            values={[
+              {
+                value: 'video',
+                displayText: 'Video',
+                children: <div>Empty</div>,
+              },
+              {
+                value: 'text',
+                displayText: 'Text',
+                children: <TranscriptionResults raw={state.raw} srt={state.srt} vtt={state.vtt} />,
+              },
+            ]}
+          />
+        )}
       </div>
     </div>
   )
