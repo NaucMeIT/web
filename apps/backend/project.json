@@ -29,7 +29,7 @@
     "build": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "bun build --target bun --outdir ./apps/backend/dist apps/backend/src/index.ts"
+        "command": "bun build --target bun --minify --sourcemap --outdir ./apps/backend/dist apps/backend/src/index.ts"
       },
       "cache": true
     },
