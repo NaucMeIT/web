@@ -25,6 +25,7 @@ zerops:
         - bun x nx build:executable backend
       deployFiles:
         - apps/dist/backend
+        - node_modules
       cache:
         - node_modules
         - bun.lockb
