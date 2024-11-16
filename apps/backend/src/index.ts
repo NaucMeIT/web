@@ -1,3 +1,4 @@
+import { cors } from '@elysiajs/cors'
 import { swagger } from '@elysiajs/swagger'
 import { apiAuth } from '@nmit-coursition/api/auth'
 import { apiDev } from '@nmit-coursition/api/dev'
@@ -6,7 +7,7 @@ import { apiOrder } from '@nmit-coursition/order'
 import * as Sentry from '@sentry/bun'
 import { Elysia } from 'elysia'
 
-new Elysia()
+const app = new Elysia()
   .use(
     swagger({
       documentation: {
@@ -39,8 +40,11 @@ new Elysia()
     if (code === 'NOT_FOUND') return
     Sentry.captureException(error)
   })
+  .use(cors())
   .use(apiAuth)
   .use(apiOrder)
   .use(apiV1)
   .use(apiDev)
   .listen(3000)
+
+export type App = typeof app

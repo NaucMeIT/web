@@ -1,15 +1,18 @@
 'use client'
 
-import { getTranscript } from '@nmit-coursition/ai'
+import { treaty } from '@elysiajs/eden'
 import { Button, Input, Tabs, Textarea } from '@nmit-coursition/ui/design-system'
 import { useSignal } from '@preact/signals-react/runtime'
 import { useActionState } from 'react'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { zfd } from 'zod-form-data'
+import type { App } from '../../../../backend/src'
 import { FileDropper } from '../../components/fileDropper'
 import { StatusDisplay } from '../../components/statusDisplay'
 import { TranscriptionResults } from '../../components/transcriptionResults'
+
+const app = treaty<App>('http://localhost:3000')
 
 const fileSchema = zfd.formData({
   file: zfd.file(),
@@ -34,14 +37,26 @@ export default function Index() {
   const handleSubmit = async (formData: FormData) => {
     try {
       status.value = 'upload'
-      const { file, keywords, language = 'en' } = fileSchema.parse(formData)
+      const { file, keywords, language } = fileSchema.parse(formData)
       status.value = 'parse'
       const keywordsArray = keywords ? keywords.split(',').map((word) => `${word}:5`) : []
-      const result = await getTranscript(file, keywordsArray, language)
-      if ('error' in result) throw new Error(result.error)
-      const { raw, srt, vtt } = result
+      const { data, error } = await app.v1.parse.media.post(
+        {
+          file,
+          keywords: keywordsArray,
+          language: (language || 'en-GB') as any,
+          output: ['text', 'srt', 'vtt'],
+        },
+        {
+          headers: {
+            authorization: 'PRODPGrFxpGEtrOZfuWhnoJohUYBXuOE',
+          },
+        },
+      )
+      if (error) throw new Error(error.value.description)
+      const { text, srt, vtt } = data
       status.value = 'done'
-      return { raw, srt, vtt }
+      return { raw: text, srt, vtt }
     } catch (error) {
       toast.error(`Something went wrong. Reason: ${error instanceof Error ? error.message : 'Unknown.'}`)
       status.value = 'idle'
@@ -87,7 +102,7 @@ export default function Index() {
                   type='text'
                   id='language'
                   name='language'
-                  placeholder='en'
+                  placeholder='en-GB'
                   labelText='Language'
                   subText='What is main language of the video. Accepted is two letter keycode, e.g. en, cs.'
                 />
