@@ -23,7 +23,7 @@ export const FileDropper = ({ dropZoneMessage, idleMessage, className, inputName
 
       <ul className='grid grid-cols-1 gap-2'>
         {acceptedFiles.map((file) => (
-          <li key={file.name} className='h-8 w-full relative bg-blue-300 flex items-center justify-center'>
+          <li key={file.name} className='h-8 w-full relative flex items-center justify-center'>
             {file.name}
 
             <Button
