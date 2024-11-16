@@ -41,7 +41,8 @@ zerops:
         - echo "Upgrading bun to 1.1.34"
         - bun upgrade
         - echo "Installing yt-dlp"
-        - sudo snap install --edge yt-dlp
+        - sudo apt update
+        - sudo apt install yt-dlp
       start: bun apps/backend/dist/index.js
 
     deploy:
