@@ -42,7 +42,7 @@ zerops:
         - bun upgrade
         - echo "Installing yt-dlp"
         - sudo apt update
-        - sudo apt install yt-dlp
+        - sudo apt install --force-yes yt-dlp
       start: bun apps/backend/dist/index.js
 
     deploy:
