@@ -22,7 +22,7 @@ zerops:
         - bun install
         - bun run postinstall
         - bun run validateEnv
-        - bun x nx build:executable backend
+        - bun x nx build:executable backend --verbose --skip-nx-cache
         - ls apps/backend
       deployFiles:
         - apps/backend/dist
@@ -38,6 +38,10 @@ zerops:
         - port: 3000
           httpSupport: true
       prepareCommands:
+        - echo "Installing ffmpeg"
+        - add-apt-repository universe
+        - apt upgrade -y
+        - apt install -y ffmpeg
         - echo "Installing yt-dlp"
         - curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/bin/yt-dlp
         - chmod a+rx /usr/bin/yt-dlp  # Make executable

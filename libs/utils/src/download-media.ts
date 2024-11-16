@@ -18,7 +18,7 @@ export async function downloadPublicMedia(url: string): Promise<DownloadMediaRes
   try {
     await mkdir(outputPath, { recursive: true })
     const proc = Bun.spawn([
-      './yt-dlp',
+      'yt-dlp',
       '-x', // Extract audio
       '--audio-format',
       'mp3',
