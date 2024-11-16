@@ -1,20 +1,7 @@
-// @ts-ignore
-const { composePlugins, withNx } = require('@nx/next')
+import { composePlugins, withNx } from '@nx/next'
+import type { NextConfig } from 'next'
 
-/**
- * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
- **/
-const nextConfig = {
-  nx: {
-    // Set this to true if you would like to use SVGR
-    // See: https://github.com/gregberge/svgr
-    svgr: true,
-  },
-  experimental: {
-    serverActions: {
-      bodySizeLimit: '1GB',
-    },
-  },
+const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -29,7 +16,7 @@ const nextConfig = {
       fs: false,
     }
     config.plugins.push(
-      new webpack.NormalModuleReplacementPlugin(/^node:/, (resource) => {
+      new webpack.NormalModuleReplacementPlugin(/^node:/, (resource: { request: string }) => {
         resource.request = resource.request.replace(/^node:/, '')
       }),
     )
@@ -43,4 +30,4 @@ const plugins = [
   withNx,
 ]
 
-module.exports = composePlugins(...plugins)(nextConfig)
+export default composePlugins(...plugins)(nextConfig)
