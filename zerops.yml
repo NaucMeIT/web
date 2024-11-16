@@ -2,7 +2,7 @@ zerops:
   - setup: backend
     build:
       base:
-        - bun@1.1
+        - bun@nightly
         - nodejs@latest
       os: ubuntu
       envVariables:
@@ -32,7 +32,7 @@ zerops:
         - bun.lockb
 
     run:
-      base: bun@1.1
+      base: bun@nightly
       os: ubuntu
       ports:
         - port: 3000
