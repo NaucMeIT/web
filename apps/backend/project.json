@@ -43,9 +43,7 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "apps/backend",
-        "commands": [
-          "bunx tsc --pretty --noEmit -p tsconfig.json"
-        ],
+        "commands": ["bunx tsc --pretty --noEmit -p tsconfig.json"],
         "forwardAllArgs": false,
         "description": "Type check with tsc"
       },
