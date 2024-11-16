@@ -23,8 +23,9 @@ zerops:
         - bun run postinstall
         - bun run validateEnv
         - bun x nx build:executable backend
+        - ls apps/backend
       deployFiles:
-        - apps/dist/backend
+        - apps/backend/dist
         - node_modules
       cache:
         - node_modules
@@ -40,7 +41,7 @@ zerops:
         - echo "Installing yt-dlp"
         - curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/bin/yt-dlp
         - chmod a+rx /usr/bin/yt-dlp  # Make executable
-      start: apps/dist/backend
+      start: apps/backend/dist/main
 
     deploy:
       readinessCheck:

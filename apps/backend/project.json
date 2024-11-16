@@ -9,15 +9,15 @@
     "build:executable": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "bun build --compile --minify --sourcemap apps/backend/src/index.ts --outfile ./apps/dist/backend apps/backend/src/index.ts"
+        "command": "bun build --compile --minify --sourcemap apps/backend/src/index.ts --outfile ./apps/backend/dist/main apps/backend/src/index.ts"
       },
       "cache": true
     },
     "start:executable": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "backend",
-        "cwd": "apps/dist"
+        "command": "main",
+        "cwd": "apps/backend/dist"
       }
     },
     "dev": {
@@ -43,7 +43,9 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "apps/backend",
-        "commands": ["bunx tsc --pretty --noEmit -p tsconfig.json"],
+        "commands": [
+          "bunx tsc --pretty --noEmit -p tsconfig.json"
+        ],
         "forwardAllArgs": false,
         "description": "Type check with tsc"
       },
