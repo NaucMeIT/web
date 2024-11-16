@@ -23,7 +23,7 @@ export const apiV1 = new Elysia({ prefix: '/v1', tags: ['v1'] })
           const transcript = await getTranscript(file, keywords, language)
 
           if ('error' in transcript) {
-            return errorFn(500, formatApiErrorResponse(request, `Failed to process public media: ${transcript.error}`))
+            return errorFn(500, formatApiErrorResponse(request, `Failed to process media: ${transcript.error}`))
           }
 
           return {
