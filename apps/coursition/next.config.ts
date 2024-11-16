@@ -2,6 +2,9 @@ import { composePlugins, withNx } from '@nx/next'
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+  nx: {
+    svgr: false,
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },
