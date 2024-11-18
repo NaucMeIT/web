@@ -105,23 +105,5 @@
     "@nx/react": "20.1.2",
     "@nx/workspace": "20.1.2",
     "nx": "20.1.2"
-  },
-  "packageManager": "npm@10.9.0",
-  "engineStrict": true,
-  "engines": {
-    "npm": ">=10",
-    "pnpm": "please-use-npm",
-    "yarn": "please-use-npm",
-    "bun": "please-use-npm"
-  },
-  "devEngines": {
-    "runtime": {
-      "name": "bun",
-      "onFail": "error"
-    },
-    "packageManager": {
-      "name": "npm",
-      "onFail": "error"
-    }
   }
 }
