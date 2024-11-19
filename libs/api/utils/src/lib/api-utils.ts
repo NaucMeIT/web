@@ -24,6 +24,7 @@ export const apiCommonGuard = new Elysia().guard({
     401: errorResponseModel,
     402: errorResponseModel,
     404: errorResponseModel,
+    422: errorResponseModel,
     429: errorResponseModel,
     500: errorResponseModel,
   },
@@ -42,10 +43,10 @@ export const apiCommonGuard = new Elysia().guard({
     if (errorCode) {
       set.headers['Content-Type'] = 'application/json; charset=utf8'
       return error(ERROR_LIST[errorCode].code, formatApiErrorResponse(request, errorCode))
-    } else {
-      Sentry.setTag('authorizedKey', 'true')
-      return
     }
+
+    Sentry.setTag('authorizedKey', 'true')
+    return
   },
 })
 

@@ -55,8 +55,8 @@ export const apiV1 = new Elysia({ prefix: '/v1', tags: ['v1'] })
             }),
           },
           afterResponse({ response, headers }) {
-            if (response && !('duration' in response)) return
-            const duration = response?.duration || 0
+            if (!response || !('duration' in response) || !response.duration) return
+            const { duration } = response
             duration >= 0 && reportUsage(headers['authorization'] || '', duration, 'video')
           },
         },
@@ -109,8 +109,8 @@ export const apiV1 = new Elysia({ prefix: '/v1', tags: ['v1'] })
             }),
           },
           afterResponse({ response, headers }) {
-            if (response && !('duration' in response)) return
-            const duration = response?.duration || 0
+            if (!response || !('duration' in response) || !response.duration) return
+            const { duration } = response
             duration >= 0 && reportUsage(headers['authorization'] || '', duration, 'video')
           },
         },
@@ -149,8 +149,8 @@ export const apiV1 = new Elysia({ prefix: '/v1', tags: ['v1'] })
             }),
           },
           afterResponse({ response, headers }) {
-            if (response && !('credits' in response)) return
-            const credits = response?.credits || 0
+            if (!response || !('credits' in response) || !response.credits) return
+            const { credits } = response
             credits >= 0 && reportUsage(headers['authorization'] || '', credits, 'document')
           },
         },
@@ -191,8 +191,8 @@ export const apiV1 = new Elysia({ prefix: '/v1', tags: ['v1'] })
             }),
           },
           afterResponse({ response, headers }) {
-            if (response && !('credits' in response)) return
-            const credits = response?.credits || 0
+            if (!response || !('credits' in response) || !response.credits) return
+            const { credits } = response
             credits >= 0 && reportUsage(headers['authorization'] || '', credits, 'web')
           },
         },

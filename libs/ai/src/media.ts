@@ -54,6 +54,10 @@ const deepgram = Effect.gen(function* () {
         return yield* new TranscribeError()
       }
 
+      if (result.metadata.duration === 0) {
+        return yield* new EmptyError()
+      }
+
       try {
         // * Remove unnecessary metadata
         const vtt = webvtt(result).replace(/WEBVTT\s*\n(?:[\s\S]*?)(?=^(?:\d{2}:)?\d{2}:\d{2})/m, 'WEBVTT\n\n')

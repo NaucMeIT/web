@@ -93,7 +93,8 @@
     "postcss": "8.4.38",
     "tailwindcss": "3.4.13",
     "ts-node": "10.9.2",
-    "typescript": "~5.6.3"
+    "typescript": "~5.6.3",
+    "@sinclair/typebox": "0.34.3"
   },
   "": "// TODO: Remove this override when https://github.com/nrwl/nx/issues/28205 is fixed",
   "overrides": {
@@ -104,6 +105,7 @@
     "@nx/next": "20.1.2",
     "@nx/react": "20.1.2",
     "@nx/workspace": "20.1.2",
-    "nx": "20.1.2"
+    "nx": "20.1.2",
+    "@sinclair/typebox": "0.34.3"
   }
 }
