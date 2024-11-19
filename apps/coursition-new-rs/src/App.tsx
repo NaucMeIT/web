@@ -104,9 +104,6 @@ export default function Index() {
                   name='language'
                   placeholder='en-GB'
                   labelText='Language'
-                  {/*
-                    // TODO: Change this input into select with prepolated values, so that it enforces correct format.
-                  */}
                   subText='What is main language of the video. Accepted is language keycode, e.g. en-GB, cs.'
                 />
                 <Textarea
