@@ -98,6 +98,9 @@ export default function Index() {
                 ]}
               />
               <div className='flex gap-3 flex-col w-full'>
+                {/*
+                  // TODO: Change to switch, so that it's impossible to pick incorrect language.
+                */}
                 <Input
                   type='text'
                   id='language'
