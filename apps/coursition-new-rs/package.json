@@ -9,10 +9,11 @@
   },
   "dependencies": {
     "react": "^19.0.0-rc.1",
-    "react-dom": "^19.0.0-rc.1"
+    "react-dom": "^19.0.0-rc.1",
+    "@preact/signals-react": "^2.2.0"
   },
   "devDependencies": {
-    "@rsbuild/core": "^1.1.3",
+    "@rsbuild/core": "^1.1.4",
     "@rsbuild/plugin-node-polyfill": "^1.2.0",
     "@rsbuild/plugin-react": "^1.0.7",
     "@types/react": "^18.3.12",
