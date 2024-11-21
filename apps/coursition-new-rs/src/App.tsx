@@ -1,6 +1,7 @@
 import { treaty } from '@elysiajs/eden'
 import { Button, Input, Tabs, Textarea } from '@nmit-coursition/ui/design-system'
-import { useSignal } from '@preact/signals-react/runtime'
+import { convertSubtitlesToBlob } from '@nmit-coursition/utils'
+import { useSignal } from '@preact/signals-react'
 import { useActionState } from 'react'
 import { toast } from 'sonner'
 import { z } from 'zod'
@@ -9,21 +10,32 @@ import type { App } from '../../backend/src/index'
 import { FileDropper } from './components/fileDropper'
 import { StatusDisplay } from './components/statusDisplay'
 import { TranscriptionResults } from './components/transcriptionResults'
+import { VideoPlayer } from './components/videoPlayer'
 
 import './App.css'
 
 const app = treaty<App>('http://localhost:3000')
 
-const fileSchema = zfd.formData({
-  file: zfd.file(),
-  keywords: z.string().optional(),
-  language: z.string().optional(),
-})
+const fileSchema = z.discriminatedUnion('type', [
+  z.object({
+    type: z.literal('file'),
+    file: zfd.file(),
+    keywords: z.string().optional(),
+    language: z.string().optional(),
+  }),
+  z.object({
+    type: z.literal('url'),
+    url: z.string().url(),
+    keywords: z.string().optional(),
+    language: z.string().optional(),
+  }),
+])
 
 const initialState = {
   raw: '',
   srt: '',
   vtt: '',
+  videoSource: '',
 }
 
 const statusStates = [
@@ -37,26 +49,47 @@ export default function Index() {
   const handleSubmit = async (formData: FormData) => {
     try {
       status.value = 'upload'
-      const { file, keywords, language } = fileSchema.parse(formData)
+
+      const rawFormData = Object.fromEntries(formData.entries())
+      const type = formData.has('file') ? 'file' : 'url'
+      const parsedData = fileSchema.parse({ type, ...rawFormData })
+
+      const videoSource = parsedData.type === 'file' ? URL.createObjectURL(parsedData.file) : parsedData.url
+
       status.value = 'parse'
-      const keywordsArray = keywords ? keywords.split(',').map((word) => `${word}:5`) : []
-      const { data, error } = await app.v1.parse.media.post(
-        {
-          file,
-          keywords: keywordsArray,
-          language: (language || 'en-GB') as any,
-          output: ['text', 'srt', 'vtt'],
+      const keywordsArray = parsedData.keywords ? parsedData.keywords.split(',').map((word) => `${word}:5`) : []
+      const output: ('text' | 'vtt' | 'srt')[] = ['text', 'srt', 'vtt']
+
+      const options = {
+        headers: {
+          authorization: 'PRODPGrFxpGEtrOZfuWhnoJohUYBXuOE',
         },
-        {
-          headers: {
-            authorization: 'PRODPGrFxpGEtrOZfuWhnoJohUYBXuOE',
-          },
-        },
-      )
+      }
+      const { data, error } =
+        parsedData.type == 'file'
+          ? await app.v1.parse.media.post(
+              {
+                file: parsedData.file,
+                keywords: keywordsArray,
+                language: (parsedData.language || 'en-GB') as any,
+                output,
+              },
+              options,
+            )
+          : await app.v1.parse['public-media'].post(
+              {
+                url: parsedData.url,
+                keywords: keywordsArray,
+                language: (parsedData.language || 'en-GB') as any,
+                output,
+              },
+              options,
+            )
+
       if (error) throw new Error(error.value.description)
       const { text, srt, vtt } = data
       status.value = 'done'
-      return { raw: text, srt, vtt }
+      return { raw: text, srt, vtt, videoSource }
     } catch (error) {
       toast.error(`Something went wrong. Reason: ${error instanceof Error ? error.message : 'Unknown.'}`)
       status.value = 'idle'
@@ -133,14 +166,18 @@ export default function Index() {
             triggerClassName='text-lg m-1'
             values={[
               {
+                value: 'video',
+                displayText: 'Video',
+                children: (
+                  <div className='w-full aspect-video'>
+                    <VideoPlayer source={state.videoSource} subtitles={convertSubtitlesToBlob(state.vtt)} />
+                  </div>
+                ),
+              },
+              {
                 value: 'text',
                 displayText: 'Text',
                 children: <TranscriptionResults raw={state.raw} srt={state.srt} vtt={state.vtt} />,
-              },
-              {
-                value: 'video',
-                displayText: 'Video',
-                children: <div>Empty</div>,
               },
             ]}
           />

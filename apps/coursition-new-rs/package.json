@@ -10,7 +10,8 @@
   "dependencies": {
     "react": "^19.0.0-rc.1",
     "react-dom": "^19.0.0-rc.1",
-    "@preact/signals-react": "^2.2.0"
+    "@preact/signals-react": "^2.2.0",
+    "@vidstack/react": "^1.12.12"
   },
   "devDependencies": {
     "@rsbuild/core": "^1.1.4",
