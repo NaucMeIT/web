@@ -9,6 +9,12 @@ import { ProfileDetailsForm } from "../../components/ProfileDetailsForm"
 import { prisma } from "../../utils/prisma"
 import { PaymentStatus, Plan } from "@prisma/client"
 import { allowedStatus } from "../../utils/stripe"
+import { PostHog } from 'posthog-node'
+
+const client = new PostHog(
+    process.env["NEXT_PUBLIC_POSTHOG_KEY"] || "",
+    { host: 'https://eu.i.posthog.com' }
+)
 
 type PageProps = {
     readonly session: Session
@@ -98,6 +104,19 @@ export const getServerSideProps = handle<{}, UrlQuery, FormData>({
                     paymentStatus: isPaidPlan ? PaymentStatus.Awaiting : PaymentStatus.NotNecessary,
                 },
             })
+            const userEmail = session?.user?.email || ""
+            client.identify({ distinctId: userEmail, properties: {
+              name: body.name,
+            } })
+            client.capture({
+                distinctId: userEmail,
+                event: 'profile_edited',
+                properties: {
+                    subtotal: dbPlan.price,
+                    customer_email: userEmail,
+                },
+            })
+            await client.shutdown()
 
             return {
                 redirect: {

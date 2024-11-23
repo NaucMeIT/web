@@ -1,3 +1,4 @@
+import posthog from "posthog-js"
 import splitbee from "@splitbee/web"
 import { signIn, signOut, useSession } from "next-auth/react"
 import { useRouter } from "next/router"
@@ -16,6 +17,8 @@ export const useTrackedUser = () => {
         const data = await signOut({ redirect: false, callbackUrl: signUrl })
         splitbee.track("Sign out")
         splitbee.reset()
+        posthog.capture('Sign out')
+        posthog.reset()
         if (router && shouldRedirect(router.asPath)) {
             router.push(data.url)
         }
@@ -25,7 +28,11 @@ export const useTrackedUser = () => {
     async function sign(provider: AllowedOauth): Promise<void>
     async function sign(provider: AllowedProviders, email?: string): Promise<void> {
         try {
-            splitbee.track(`${provider} sign attempt`)
+            posthog.capture('sign_attempt', {
+              email,
+              provider,
+            })
+            splitbee.track(`${provider} sign attempt ${email ? `with email ${email}` : ""}`)
             const isEmail = provider === "email"
             setSignStatus("signing")
             const signInStatus = await signIn(provider, {
@@ -38,18 +45,30 @@ export const useTrackedUser = () => {
             }
             setSignStatus(isEmail ? "send" : "oauth")
         } catch (e) {
-            typeof e === "string" && splitbee.track("Sign error", { signError: e, email, provider })
+            posthog.capture('sign_failure', {
+              email,
+              provider,
+              error: JSON.stringify(e),
+            })
+            splitbee.track("Sign error", { signError: JSON.stringify(e), email, provider })
             setSignStatus("error")
         }
     }
 
     useEffect(() => {
         if (status === "authenticated" && data?.user.email) {
+            const { email, name, planId } = data.user
             splitbee.track("Sign success")
             splitbee.user.set({
-                userId: data.user.email,
-                name: data.user.name,
-                planId: data.user.planId,
+                userId: email,
+                name: name,
+                planId: planId,
+            })
+            posthog.identify(email, { name: name })
+            posthog.capture('sign_success', {
+              email,
+              name,
+              planId,
             })
         }
         // If status changes, we are sure that user data exist, should prevent duplicate calls
