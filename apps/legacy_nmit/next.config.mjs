@@ -28,8 +28,21 @@ export default withMDX(
             contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
         },
         pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+        skipTrailingSlashRedirect: true,
         async rewrites() {
             return [
+                {
+                    source: "/ingest/static/:path*",
+                    destination: "https://eu-assets.i.posthog.com/static/:path*",
+                },
+                {
+                    source: "/ingest/:path*",
+                    destination: "https://eu.i.posthog.com/:path*",
+                },
+                {
+                    source: "/ingest/decide",
+                    destination: "https://eu.i.posthog.com/decide",
+                },
                 {
                     source: "/bee.js",
                     destination: "https://cdn.splitbee.io/sb.js",

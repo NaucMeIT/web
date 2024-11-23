@@ -1,7 +1,8 @@
+import posthog from "posthog-js"
+import splitbee from "@splitbee/web"
 import { packages } from "../utils/packages"
 import { PackageBox } from "./PackageBox"
 import { Typography } from "./Typography"
-import splitbee from "@splitbee/web"
 
 type Props = {
     readonly selectedPackage: string
@@ -29,7 +30,10 @@ export function PickPackage({ selectedPackage, isEdit }: Props) {
                             href: `/profile/edit?startPlan=${p.title}${editParam}`,
                             replace: true,
                             scroll: false,
-                            onClick: () => splitbee.track("Package change", { package: p.title }),
+                            onClick: () => {
+                              splitbee.track("Package change", { package: p.title })
+                              posthog.capture('Package change', { package: p.title })
+                            }
                         }}
                         priority={selectedPackage === p.title}
                     />
