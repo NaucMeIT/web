@@ -13,7 +13,7 @@ import { StatusDisplay } from '../../components/statusDisplay'
 import { TranscriptionResults } from '../../components/transcriptionResults'
 import { VideoPlayer } from '../../components/videoPlayer'
 
-const app = treaty<App>('http://localhost:3000')
+const app = treaty<App>(process.env["NEXT_PUBLIC_BACKEND_URL"] || "http://localhost:3000")
 
 const fileSchema = z.discriminatedUnion('type', [
   z.object({
