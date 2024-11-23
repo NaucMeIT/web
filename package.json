@@ -42,6 +42,7 @@
     "@radix-ui/react-tooltip": "^1.1.4",
     "@react-email/components": "^0.0.28",
     "@sentry/bun": "^8.38.0",
+    "@vidstack/react": "0.6.15",
     "@workos-inc/node": "^7.32.0",
     "ai": "^3.4.33",
     "bcryptjs": "^2.4.3",

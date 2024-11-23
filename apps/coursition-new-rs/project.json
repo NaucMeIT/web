@@ -1,0 +1,20 @@
+{
+  "name": "coursition-new-rs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/coursition-new-rs",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project coursition --web",
+  "targets": {
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/coursition",
+        "commands": ["bunx tsc --pretty --noEmit -p tsconfig.json"],
+        "forwardAllArgs": false,
+        "description": "Type check with tsc"
+      },
+      "cache": true
+    }
+  }
+}
