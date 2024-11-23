@@ -1,3 +1,3 @@
 packages:
     - 'libs/**'
-    - 'apps/*'
+    - 'apps/[!legacy_]*'
