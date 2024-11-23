@@ -66,7 +66,7 @@ export default function Document() {
                 />
             </Head>
             <body className='h-full font-poppins accent-primary caret-primary'>
-                <div className="fixed top-0 w-full z-50 text-white py-1 text-xl text-center bg-primary"><Link href={"/kurz-api"}>Už jsme v kurzu! Můžeš se přihlásit na Kurz API zde.</Link></div>
+                <div className="fixed top-0 w-full z-50 text-white py-1 text-xl text-center bg-primary"><Link href={"/kurz-ai"}>Už jsme v kurzu! Můžeš se přihlásit na Kurz AI zde.</Link></div>
                 <Main />
                 <NextScript />
                 <Script
