@@ -54,7 +54,7 @@ export default function Document() {
                 <meta property='og:site_name' content={APP_NAME} />
 
                 <Partytown
-                    resolveUrl={function (url: Readonly<URL>) {
+                    resolveUrl={function (url: URL) {
                         if (url.hostname === "connect.facebook.net") {
                             var proxyUrl = new URL(`${process.env.NEXT_PUBLIC_SITE_URL}/fb${url.pathname}`)
                             return proxyUrl
