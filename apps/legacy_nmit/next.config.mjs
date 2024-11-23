@@ -21,7 +21,6 @@ export default withMDX(
             mdxRs: true,
             typedRoutes: true,
             webpackBuildWorker: true,
-            staticWorkerRequestDeduping: true,
         },
         images: {
             formats: ["image/avif", "image/webp"],
@@ -29,7 +28,6 @@ export default withMDX(
             contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
         },
         pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
-        swcMinify: true,
         async rewrites() {
             return [
                 {
