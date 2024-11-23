@@ -1,9 +1,10 @@
 import "../styles/global.css"
 import type { AppProps } from "next/app"
 import { SessionProvider } from "next-auth/react"
-import { Session } from "next-auth"
+import type { Session } from "next-auth"
 import splitbee from "@splitbee/web"
 import { useEffect } from "react"
+import { GlobalModal } from "../components/GlobalModal"
 
 function MyApp({ Component, pageProps }: Readonly<AppProps<{ readonly session: Session }>>) {
     useEffect(() => {
@@ -17,7 +18,8 @@ function MyApp({ Component, pageProps }: Readonly<AppProps<{ readonly session: S
     return (
         <SessionProvider session={pageProps.session}>
             <Component {...pageProps} />
-            <div id='calendly'></div>
+            <GlobalModal />
+            <div id='calendly' />
         </SessionProvider>
     )
 }
