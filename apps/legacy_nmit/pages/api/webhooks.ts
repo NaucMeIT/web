@@ -3,7 +3,13 @@ import createStripe from "stripe"
 import bodyParser from "body-parser"
 import { log } from "next-axiom"
 import { PaymentStatus } from "@prisma/client"
+import { PostHog } from 'posthog-node'
 import { prisma } from "../../utils/prisma"
+
+const client = new PostHog(
+    process.env["NEXT_PUBLIC_POSTHOG_KEY"] || "",
+    { host: 'https://eu.i.posthog.com' }
+)
 
 const stripe = new createStripe(process.env.STRIPE_SECRET_KEY || "", { apiVersion: "2024-11-20.acacia", typescript: true })
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET || ""
@@ -72,6 +78,18 @@ async function handlePaymentIntentSucceeded(id: string, email: string) {
         where: { email },
         data: { credits: user.credits + plan.credits, paymentStatus: PaymentStatus.Done },
     })
+
+    client.identify({ distinctId: user.id })
+    client.capture({
+        distinctId: user.id,
+        event: 'order_paid',
+        properties: {
+            subtotal: plan.price,
+            customer_email: user.email,
+        },
+    })
+
+    await client.shutdown()
 }
 
 async function handlePaymentIntentInProgress(email: string) {
@@ -82,6 +100,15 @@ async function handlePaymentIntentInProgress(email: string) {
         where: { email },
         data: { paymentStatus: PaymentStatus.InProgress },
     })
+
+    client.identify({ distinctId: user.id })
+    client.capture({
+        distinctId: user.id,
+        event: 'order_in_progress',
+        properties: {
+            customer_email: user.email,
+        },
+    })
 }
 
 async function handlePaymentIntentFailed(email: string) {
@@ -91,5 +118,14 @@ async function handlePaymentIntentFailed(email: string) {
     await prisma.user.update({
         where: { email },
         data: { paymentStatus: PaymentStatus.Failed },
+    })
+
+    client.identify({ distinctId: user.id })
+    client.capture({
+        distinctId: user.id,
+        event: 'order_failed',
+        properties: {
+            customer_email: user.email,
+        },
     })
 }

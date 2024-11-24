@@ -50,6 +50,7 @@
     "next-runtime": "^2.4.2",
     "nodemailer": "^6.9.16",
     "posthog-js": "^1.188.0",
+    "posthog-node": "^4.2.3",
     "react": "^18.3.1",
     "react-calendly": "^4.3.1",
     "react-dom": "^18.3.1",
