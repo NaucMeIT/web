@@ -19,14 +19,13 @@ zerops:
         - echo "Upgrading bun to 1.1.38"
         - bun upgrade
       buildCommands:
-        - pnpm install
+        - pnpm install --frozen-lockfile --prefer-offline --prod=false
         - bun run postinstall
         - bun run validateEnv
-        - bun x nx build:executable backend --verbose --skip-nx-cache
-        - ls apps/backend
+        - pnpm nx build:executable backend --verbose --skip-nx-cache
       deployFiles:
         - apps/backend/dist
-        - node_modules/.prisma
+        - node_modules/.prisma/client
       cache:
         - node_modules
         - package.json

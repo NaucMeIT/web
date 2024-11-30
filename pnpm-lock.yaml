@@ -35,9 +35,6 @@ importers:
       '@mendable/firecrawl-js':
         specifier: ^1.8.4
         version: 1.8.4(ws@8.17.1)
-      '@preact/signals-react':
-        specifier: ^2.2.0
-        version: 2.2.0(react@19.0.0-rc.1)
       '@prisma/client':
         specifier: ^5.22.0
         version: 5.22.0(prisma@5.22.0)
@@ -2145,14 +2142,6 @@ packages:
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
-
-  '@preact/signals-core@1.8.0':
-    resolution: {integrity: sha512-OBvUsRZqNmjzCZXWLxkZfhcgT+Fk8DDcT/8vD6a1xhDemodyy87UJRJfASMuSD8FaAIeGgGm85ydXhm7lr4fyA==}
-
-  '@preact/signals-react@2.2.0':
-    resolution: {integrity: sha512-EPYlhXqqcOUxz2gTQGt4rtK6X7Jr04517DcJVZ4I5a7Gxy39haK24uFeVWtiU/tnEReRFcxpQN6poYra1jf68A==}
-    peerDependencies:
-      react: ^16.14.0 || 17.x || 18.x
 
   '@prisma/client@5.22.0':
     resolution: {integrity: sha512-M0SVXfyHnQREBKxCgyo7sffrKttwE6R8PMq330MIUF0pTwjUhLbW84pFDlf06B27XyCR++VtjugEnIHdr07SVA==}
@@ -9709,14 +9698,6 @@ snapshots:
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
-
-  '@preact/signals-core@1.8.0': {}
-
-  '@preact/signals-react@2.2.0(react@19.0.0-rc.1)':
-    dependencies:
-      '@preact/signals-core': 1.8.0
-      react: 19.0.0-rc.1
-      use-sync-external-store: 1.2.2(react@19.0.0-rc.1)
 
   '@prisma/client@5.22.0(prisma@5.22.0)':
     optionalDependencies:

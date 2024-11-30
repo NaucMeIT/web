@@ -1,8 +1,7 @@
 import { treaty } from '@elysiajs/eden'
 import { Button, Input, Tabs, Textarea } from '@nmit-coursition/ui/design-system'
 import { convertSubtitlesToBlob } from '@nmit-coursition/utils'
-import { useSignal } from '@preact/signals-react'
-import { useActionState } from 'react'
+import { useActionState, useState } from 'react'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { zfd } from 'zod-form-data'
@@ -44,11 +43,11 @@ const statusStates = [
 ]
 
 export default function Index() {
-  const status = useSignal<'idle' | 'upload' | 'parse' | 'done'>('idle')
+  const [status, setStatus] = useState<'idle' | 'upload' | 'parse' | 'done'>('idle')
 
   const handleSubmit = async (formData: FormData) => {
     try {
-      status.value = 'upload'
+      setStatus('upload')
 
       const rawFormData = Object.fromEntries(formData.entries())
       const type = formData.has('file') ? 'file' : 'url'
@@ -56,7 +55,7 @@ export default function Index() {
 
       const videoSource = parsedData.type === 'file' ? URL.createObjectURL(parsedData.file) : parsedData.url
 
-      status.value = 'parse'
+      setStatus('parse')
       const keywordsArray = parsedData.keywords ? parsedData.keywords.split(',').map((word) => `${word}:5`) : []
       const output: ('text' | 'vtt' | 'srt')[] = ['text', 'srt', 'vtt']
 
@@ -88,11 +87,11 @@ export default function Index() {
 
       if (error) throw new Error(error.value.description)
       const { text, srt, vtt } = data
-      status.value = 'done'
+      setStatus('done')
       return { raw: text, srt, vtt, videoSource }
     } catch (error) {
       toast.error(`Something went wrong. Reason: ${error instanceof Error ? error.message : 'Unknown.'}`)
-      status.value = 'idle'
+      setStatus('idle')
       return initialState
     }
   }
@@ -102,7 +101,7 @@ export default function Index() {
   return (
     <div className='flex justify-center h-screen'>
       <div className='p-4 max-w-2xl w-full'>
-        {status.value === 'idle' && (
+        {status === 'idle' && (
           <>
             <h1 className='text-2xl font-bold mb-4'>Upload media</h1>
             <form className='space-y-4' action={formAction}>
@@ -157,10 +156,8 @@ export default function Index() {
             </form>
           </>
         )}
-        {status.value !== 'idle' && status.value !== 'done' && (
-          <StatusDisplay states={statusStates} status={status.value} />
-        )}
-        {status.value === 'done' && (
+        {status !== 'idle' && status !== 'done' && <StatusDisplay states={statusStates} status={status} />}
+        {status === 'done' && (
           <Tabs
             listClassName='h-auto'
             triggerClassName='text-lg m-1'

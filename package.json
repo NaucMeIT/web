@@ -30,7 +30,6 @@
     "@infisical/sdk": "^3.0.3",
     "@lemonsqueezy/lemonsqueezy.js": "^4.0.0",
     "@mendable/firecrawl-js": "^1.8.4",
-    "@preact/signals-react": "^2.2.0",
     "@prisma/client": "^5.22.0",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-checkbox": "^1.1.2",
@@ -108,5 +107,8 @@
     "@nx/workspace": "20.1.2",
     "nx": "20.1.2",
     "@sinclair/typebox": "0.34.3"
+  },
+  "prisma": {
+    "schema": "./libs/db/src/schema.prisma"
   }
 }
