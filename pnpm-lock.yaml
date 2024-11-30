@@ -12,6 +12,9 @@ catalogs:
     react-dom:
       specifier: 19.0.0-rc.1
       version: 19.0.0-rc.1
+    typescript:
+      specifier: 5.7.2
+      version: 5.7.2
 
 importers:
 
@@ -232,7 +235,7 @@ importers:
         specifier: 10.9.2
         version: 10.9.2(@swc/core@1.5.25(@swc/helpers@0.5.11))(@types/node@20.14.2)(typescript@5.7.2)
       typescript:
-        specifier: ~5.7.2
+        specifier: 'catalog:'
         version: 5.7.2
 
   apps/coursition-new-rs:
@@ -269,7 +272,7 @@ importers:
         specifier: ^3.4.15
         version: 3.4.15(ts-node@10.9.2(@swc/core@1.5.25(@swc/helpers@0.5.15))(@types/node@20.17.9)(typescript@5.7.2))
       typescript:
-        specifier: ^5.7.2
+        specifier: 'catalog:'
         version: 5.7.2
 
   apps/legacy_nmit:

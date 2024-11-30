@@ -93,7 +93,7 @@
     "postcss": "8.4.38",
     "tailwindcss": "3.4.13",
     "ts-node": "10.9.2",
-    "typescript": "calatog:",
+    "typescript": "catalog:",
     "@sinclair/typebox": "0.34.9"
   },
   "": "// TODO: Remove this override when https://github.com/nrwl/nx/issues/28205 is fixed",
