@@ -1,3 +1,9 @@
 packages:
     - 'libs/**'
-    - 'apps/[!legacy_]*'
+    - 'apps/**'
+
+# Define a catalog of version ranges.
+catalog:
+  react: 19.0.0-rc.1
+  react-dom: 19.0.0-rc.1
+  typescript: 5.7.2
