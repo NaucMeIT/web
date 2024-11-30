@@ -16,10 +16,10 @@ zerops:
         NMIT_LIFETIME_PRODUCT_VARIANT_ID: ${RUNTIME_NMIT_LIFETIME_PRODUCT_VARIANT_ID}
         NEXTAUTH_URL: ${RUNTIME_NEXTAUTH_URL}
       prepareCommands:
-        - echo "Upgrading bun to 1.1.36"
+        - echo "Upgrading bun to 1.1.38"
         - bun upgrade
       buildCommands:
-        - bun install
+        - pnpm install
         - bun run postinstall
         - bun run validateEnv
         - bun x nx build:executable backend --verbose --skip-nx-cache
@@ -29,7 +29,9 @@ zerops:
         - node_modules/.prisma
       cache:
         - node_modules
-        - bun.lockb
+        - package.json
+        - pnpm-lock.yaml
+        - pnpm-workspace.yaml
 
     run:
       base: ubuntu@latest
