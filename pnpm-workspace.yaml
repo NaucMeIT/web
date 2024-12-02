@@ -1,6 +1,7 @@
 packages:
     - 'libs/**'
     - 'apps/**'
+    - '!apps/legacy_**'
 
 # Define a catalog of version ranges.
 catalog:
