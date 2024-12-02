@@ -1,4 +1,4 @@
-import { NextPage } from "next"
+import type { NextPage } from "next"
 import { Menu } from "../components/Menu"
 import { DownArrow } from "../components/DownArrow"
 import { Footer } from "../components/Footer"
@@ -11,7 +11,7 @@ import { CompanyForm } from "../components/CompanyForm"
 import { Employees } from "../components/Employees"
 import { SideDecoration } from "../components/SideDecoration"
 
-const employeeFormLink = "https://calendly.com/naucme_it/30min"
+const employeeFormLink = "https://calendly.com/pavel-koudelka-naucme/15-minutova-seznamovacka"
 const links = [
     { title: "Jsem student", link: "/education" },
     { title: "Jak to funguje?", link: "#how" },
