@@ -2,13 +2,13 @@ import { Checkbox as CheckboxPrimitive } from '@nmit-coursition/ui/primitives/ch
 import { Label } from '@nmit-coursition/ui/primitives/label'
 import { cn } from '@nmit-coursition/ui/utils'
 import { type MixinProps, splitProps } from '@nmit-coursition/utils'
-import type { ComponentPropsWithRef } from 'react'
+import React from 'react'
 
 interface CheckboxProps
-  extends ComponentPropsWithRef<typeof CheckboxPrimitive>,
-    MixinProps<'container', Omit<ComponentPropsWithRef<'div'>, 'children'>>,
-    MixinProps<'label', Omit<ComponentPropsWithRef<typeof Label>, 'htmlFor' | 'children'>>,
-    MixinProps<'subtext', Omit<ComponentPropsWithRef<'p'>, 'children'>> {
+  extends React.ComponentPropsWithRef<typeof CheckboxPrimitive>,
+    MixinProps<'container', Omit<React.ComponentPropsWithRef<'div'>, 'children'>>,
+    MixinProps<'label', Omit<React.ComponentPropsWithRef<typeof Label>, 'htmlFor' | 'children'>>,
+    MixinProps<'subtext', Omit<React.ComponentPropsWithRef<'p'>, 'children'>> {
   id: string
   label: string
   subtext?: string

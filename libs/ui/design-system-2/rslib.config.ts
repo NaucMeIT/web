@@ -1,3 +1,4 @@
+import { pluginNodePolyfill } from '@rsbuild/plugin-node-polyfill'
 import { pluginReact } from '@rsbuild/plugin-react'
 import { defineConfig } from '@rslib/core'
 import { pluginTailwindCSS } from 'rsbuild-plugin-tailwindcss'
@@ -19,6 +20,7 @@ export default defineConfig({
     target: 'web',
   },
   plugins: [
+    pluginNodePolyfill(),
     pluginTailwindCSS({
       config: './tailwind.config.ts',
     }),
