@@ -23,10 +23,10 @@ function MyApp({ Component, pageProps }: Readonly<AppProps<{ readonly session: S
         if (process.env.NODE_ENV === 'development') posthog.debug()
       }
     })
-    window.fbq('track', 'PageView')
+    window.fbq?.('track', 'PageView')
 
     const handleRouteChange = () => {
-      window.fbq('track', 'PageView')
+      window.fbq?.('track', 'PageView')
       posthog?.capture('$pageview')
     }
 
