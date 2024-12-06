@@ -5,8 +5,6 @@ declare global {
         readonly turnstile: {
             readonly reset: () => undefined
         }
-        readonly fbq: {
-          readonly pageview: () => undefined
-        }
+        readonly fbq: (command: string, type: string) => undefined
     }
 }
