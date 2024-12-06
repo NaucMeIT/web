@@ -1,4 +1,5 @@
 export function Tracking() {
+    console.log(process.env)
     return (
         <>
             {/* eslint-disable-next-line @next/next/no-sync-scripts */}
@@ -32,7 +33,7 @@ export function Tracking() {
               t.src=v;s=b.getElementsByTagName(e)[0];
               s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '${process.env.NEXT_PUBLIC_FB_PIXEL}');
+              fbq('init', '337308535340134');
               fbq('track', 'PageView');
         `,
                 }}
