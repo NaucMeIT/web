@@ -1,3 +1,5 @@
+import Script from "next/script"
+
 export function Tracking() {
     console.log(process.env)
     return (
@@ -21,8 +23,7 @@ export function Tracking() {
         `,
                 }}
             />
-            <script
-                type='text/partytown'
+            <Script
                 dangerouslySetInnerHTML={{
                     __html: `
             !function(f,b,e,v,n,t,s)
@@ -33,7 +34,7 @@ export function Tracking() {
               t.src=v;s=b.getElementsByTagName(e)[0];
               s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '337308535340134');
+              fbq('init', '${process.env.NEXT_PUBLIC_FB_PIXEL}');
               fbq('track', 'PageView');
         `,
                 }}
