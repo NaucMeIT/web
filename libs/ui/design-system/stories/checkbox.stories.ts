@@ -31,3 +31,11 @@ export const Secondary: Story = {
     subtext: 'This is explanation subtext.',
   },
 }
+
+export const Disabled: Story = {
+  args: {
+    id: 'test',
+    label: 'Disabled Checkbox',
+    disabled: true,
+  },
+}

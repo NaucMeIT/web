@@ -5,8 +5,9 @@ import {
   AccordionTrigger,
 } from '@nmit-coursition/ui/primitives'
 import { type MixinProps, createSafeKey, splitProps } from '@nmit-coursition/utils'
+// @ts-ignore
+import React from 'react'
 import type { ComponentPropsWithoutRef, ReactNode } from 'react'
-
 interface TAccordionItem {
   title: string
   content: ReactNode

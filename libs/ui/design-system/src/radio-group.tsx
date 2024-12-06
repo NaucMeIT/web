@@ -1,6 +1,8 @@
 import { Label } from '@nmit-coursition/ui/primitives'
 import * as RadioGroupPrimitive from '@nmit-coursition/ui/primitives/radio-group'
 import { createSafeKey } from '@nmit-coursition/utils'
+// @ts-ignore
+import React from 'react'
 
 interface RadioGroupPrpps {
   defaultValue?: string

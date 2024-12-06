@@ -2,6 +2,8 @@ import { Label } from '@nmit-coursition/ui/primitives/label'
 import { Textarea as TextareaPrimitive } from '@nmit-coursition/ui/primitives/textarea'
 import { cn } from '@nmit-coursition/ui/utils'
 import { type MixinProps, type OverrideProps, splitProps } from '@nmit-coursition/utils'
+// @ts-ignore
+import React from 'react'
 import type { ComponentPropsWithRef } from 'react'
 
 interface TextareaProps

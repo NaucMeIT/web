@@ -1,5 +1,7 @@
 import * as TabsPrimitive from '@nmit-coursition/ui/primitives/tabs'
 import { type MixinProps, createSafeKey, splitProps } from '@nmit-coursition/utils'
+// @ts-ignore
+import React from 'react'
 import type { ComponentPropsWithRef, ReactNode } from 'react'
 
 interface TabsProps

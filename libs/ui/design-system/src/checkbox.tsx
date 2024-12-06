@@ -4,15 +4,14 @@ import { cn } from '@nmit-coursition/ui/utils'
 import { type MixinProps, splitProps } from '@nmit-coursition/utils'
 import React from 'react'
 
-interface CheckboxProps
-  extends React.ComponentPropsWithRef<typeof CheckboxPrimitive>,
-    MixinProps<'container', Omit<React.ComponentPropsWithRef<'div'>, 'children'>>,
-    MixinProps<'label', Omit<React.ComponentPropsWithRef<typeof Label>, 'htmlFor' | 'children'>>,
-    MixinProps<'subtext', Omit<React.ComponentPropsWithRef<'p'>, 'children'>> {
-  id: string
-  label: string
-  subtext?: string
-}
+export type CheckboxProps = React.ComponentPropsWithRef<typeof CheckboxPrimitive> &
+  MixinProps<'container', Omit<React.ComponentPropsWithRef<'div'>, 'children'>> &
+  MixinProps<'label', Omit<React.ComponentPropsWithRef<typeof Label>, 'htmlFor' | 'children'>> &
+  MixinProps<'subtext', Omit<React.ComponentPropsWithRef<'p'>, 'children'>> & {
+    id: string
+    label: string
+    subtext?: string
+  }
 
 export function Checkbox({ id, label: labelText, subtext: description, ...mixProps }: CheckboxProps) {
   const { container, label, subtext, rest } = splitProps(mixProps, 'container', 'label', 'subtext')

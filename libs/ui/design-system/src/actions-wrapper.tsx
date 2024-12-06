@@ -1,9 +1,10 @@
 'use client'
-
 import { Button, Tooltip } from '@nmit-coursition/ui/design-system'
 import { cn } from '@nmit-coursition/ui/utils'
 import { type FileFormat, useContentCopy, useContentDownload } from '@nmit-coursition/utils'
 import { CheckCircle, Copy, Download } from 'lucide-react'
+// @ts-ignore
+import React from 'react'
 import {
   Children,
   type FC,
