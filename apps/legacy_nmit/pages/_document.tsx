@@ -54,15 +54,7 @@ export default function Document() {
                 <meta property='og:site_name' content={APP_NAME} />
 
                 <Partytown
-                    resolveUrl={function (url: URL) {
-                        if (url.hostname === "connect.facebook.net") {
-                            var proxyUrl = new URL(`${process.env.NEXT_PUBLIC_SITE_URL}/fb${url.pathname}`)
-                            return proxyUrl
-                        }
-                        return url
-                    }}
-                    debug={true}
-                    forward={["gtag", "dataLayer.push", "fbq"]}
+                    forward={["gtag", "dataLayer.push"]}
                 />
             </Head>
             <body className='h-full font-poppins accent-primary caret-primary'>
