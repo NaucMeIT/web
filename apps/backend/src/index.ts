@@ -37,8 +37,13 @@ const app = new Elysia()
     }),
   )
   .onError(({ error, code }) => {
-    if (code === 'NOT_FOUND') return
     Sentry.captureException(error)
+    if (code === "VALIDATION") {
+      return error.message
+    }
+    if (code === 'NOT_FOUND') {
+      return error.message
+    }
   })
   .use(cors())
   .use(apiAuth)
