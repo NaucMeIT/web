@@ -1,4 +1,4 @@
-import { join } from 'node:path'
+import { join } from 'path'
 import { createGlobPatternsForDependencies } from '@nx/react/tailwind'
 import TailwindAnimate from 'tailwindcss-animate'
 
