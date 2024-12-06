@@ -28,8 +28,6 @@ const Dashboard: React.FC = () => {
         },
     ]
 
-    const isLoggedOut = !user || !user.name || !user.email
-
     return (
         <>
             <Head
@@ -75,7 +73,7 @@ const Dashboard: React.FC = () => {
                                 loading='lazy'
                             />
                         </ContentCard>
-                        {!isLoggedOut && (
+                        {user && (
                             <ContentCard title='Další'>
                                 <div className='w-full h-full'>
                                     <ActionSidebar />
