@@ -8,6 +8,7 @@ import posthog from "posthog-js"
 import { PostHogProvider } from 'posthog-js/react'
 
 import "../styles/global.css"
+import Script from "next/script"
 
 function MyApp({ Component, pageProps }: Readonly<AppProps<{ readonly session: Session }>>) {
   const oldUrlRef = useRef('')
@@ -22,8 +23,12 @@ function MyApp({ Component, pageProps }: Readonly<AppProps<{ readonly session: S
         if (process.env.NODE_ENV === 'development') posthog.debug()
       }
     })
+    window.fbq.pageview();
 
-    const handleRouteChange = () => posthog?.capture('$pageview')
+    const handleRouteChange = () => {
+      window.fbq.pageview();
+      posthog?.capture('$pageview')
+    }
 
     const handleRouteChangeStart = () => posthog?.capture('$pageleave', {
       $current_url: oldUrlRef.current
@@ -47,12 +52,31 @@ function MyApp({ Component, pageProps }: Readonly<AppProps<{ readonly session: S
     }, [])
 
     return (
-      <PostHogProvider client={posthog}>
-        <SessionProvider session={pageProps.session}>
-            <Component {...pageProps} />
-            <div id='calendly' />
-        </SessionProvider>
-      </PostHogProvider>
+      <>
+        <Script
+          id="fb-pixel"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '${process.env.NEXT_PUBLIC_FB_PIXEL});
+            `,
+          }}
+        />
+        <PostHogProvider client={posthog}>
+          <SessionProvider session={pageProps.session}>
+              <Component {...pageProps} />
+              <div id='calendly' />
+          </SessionProvider>
+        </PostHogProvider>
+      </>
     )
 }
 
