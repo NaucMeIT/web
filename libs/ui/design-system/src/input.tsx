@@ -1,19 +1,17 @@
-import type * as React from 'react'
-
 import { Input as InputPrimitive, type InputProps as InputPrimitiveProps } from '@nmit-coursition/ui/primitives/input'
 import { Label } from '@nmit-coursition/ui/primitives/label'
 import { cn } from '@nmit-coursition/ui/utils'
 import type { MixinProps, OverrideProps } from '@nmit-coursition/utils'
 import { splitProps } from '@nmit-coursition/utils'
+import React from 'react'
 
-interface InputProps
-  extends OverrideProps<InputPrimitiveProps, { id: string; name: string; type: string }>,
-    MixinProps<'label', Omit<React.ComponentProps<'label'>, 'children'>>,
-    MixinProps<'container', React.ComponentProps<'div'>>,
-    MixinProps<'subText', Omit<React.ComponentProps<'p'>, 'children'>> {
-  labelText: string
-  subText?: string
-}
+type InputProps = OverrideProps<InputPrimitiveProps, { id: string; name: string; type: string }> &
+  MixinProps<'label', Omit<React.ComponentProps<'label'>, 'children'>> &
+  MixinProps<'container', React.ComponentProps<'div'>> &
+  MixinProps<'subText', Omit<React.ComponentProps<'p'>, 'children'>> & {
+    labelText: string
+    subText?: string
+  }
 
 export function Input({ labelText, subText, ...mixProps }: InputProps) {
   const props = splitProps(mixProps, 'label', 'container', 'subText')

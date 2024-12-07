@@ -35,9 +35,58 @@ export const Secondary: Story = {
   },
 }
 
+export const Ghost: Story = {
+  args: {
+    variant: 'ghost',
+    children: 'Button',
+  },
+}
+
+export const Link: Story = {
+  args: {
+    variant: 'link',
+    children: 'Button',
+  },
+}
+
+export const Destructive: Story = {
+  args: {
+    variant: 'destructive',
+    children: 'Button',
+  },
+}
+
 export const Outline: Story = {
   args: {
     variant: 'outline',
     children: 'Button',
+  },
+}
+
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+    children: 'Button',
+  },
+}
+
+export const LargeButton: Story = {
+  args: {
+    size: 'lg',
+    children: 'Button',
+  },
+}
+
+export const SmallButton: Story = {
+  args: {
+    size: 'sm',
+    children: 'Button',
+  },
+}
+
+export const IconButton: Story = {
+  args: {
+    size: 'icon',
+    children: 'ico',
   },
 }
