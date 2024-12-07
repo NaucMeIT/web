@@ -4,7 +4,7 @@ import { cn } from '@nmit-coursition/ui/utils'
 import { type MixinProps, splitProps } from '@nmit-coursition/utils'
 import React from 'react'
 
-export type CheckboxProps = React.ComponentPropsWithRef<typeof CheckboxPrimitive> &
+type CheckboxProps = React.ComponentPropsWithRef<typeof CheckboxPrimitive> &
   MixinProps<'container', Omit<React.ComponentPropsWithRef<'div'>, 'children'>> &
   MixinProps<'label', Omit<React.ComponentPropsWithRef<typeof Label>, 'htmlFor' | 'children'>> &
   MixinProps<'subtext', Omit<React.ComponentPropsWithRef<'p'>, 'children'>> & {

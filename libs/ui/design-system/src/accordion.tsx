@@ -8,16 +8,16 @@ import { type MixinProps, createSafeKey, splitProps } from '@nmit-coursition/uti
 // @ts-ignore
 import React from 'react'
 import type { ComponentPropsWithoutRef, ReactNode } from 'react'
+
 interface TAccordionItem {
   title: string
   content: ReactNode
 }
 
-interface AccordionDemoProps
-  extends MixinProps<'trigger', Omit<ComponentPropsWithoutRef<typeof AccordionTrigger>, 'children'>>,
-    MixinProps<'content', Omit<ComponentPropsWithoutRef<typeof AccordionContent>, 'children'>> {
-  items: TAccordionItem[]
-}
+type AccordionDemoProps = MixinProps<'trigger', Omit<ComponentPropsWithoutRef<typeof AccordionTrigger>, 'children'>> &
+  MixinProps<'content', Omit<ComponentPropsWithoutRef<typeof AccordionContent>, 'children'>> & {
+    items: TAccordionItem[]
+  }
 
 export function Accordion({ items, ...mixProps }: AccordionDemoProps) {
   const { trigger, content } = splitProps(mixProps, 'trigger', 'content')

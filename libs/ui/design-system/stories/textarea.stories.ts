@@ -1,13 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { fn } from '@storybook/test'
 import { Textarea } from '../../design-system/src/textarea'
-
-interface TextareaProps {
-  id: string
-  placeholder: string
-  subtext?: string
-  label: string
-  disabled?: boolean
-}
 
 const meta = {
   title: 'Primitives/Textarea',
@@ -22,10 +15,13 @@ const meta = {
     subtext: { control: 'text' },
     disabled: { control: 'boolean' },
   },
-} satisfies Meta<TextareaProps>
+  args: {
+    onChange: fn(),
+  },
+} satisfies Meta<typeof Textarea>
 
 export default meta
-type Story = StoryObj<TextareaProps>
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {

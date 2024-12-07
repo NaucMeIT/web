@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { fn } from '@storybook/test'
 import { Switch } from '../../design-system/src/switch'
 
 const meta = {
@@ -12,6 +13,9 @@ const meta = {
   argTypes: {
     disabled: { control: 'boolean' },
     defaultChecked: { control: 'boolean' },
+  },
+  args: {
+    onClick: fn(),
   },
 } satisfies Meta<typeof Switch>
 
@@ -31,12 +35,5 @@ export const Checked: Story = {
 export const Disabled: Story = {
   args: {
     disabled: true,
-  },
-}
-
-export const DisabledChecked: Story = {
-  args: {
-    disabled: true,
-    defaultChecked: true,
   },
 }

@@ -9,13 +9,12 @@ interface TriggerProps extends ComponentProps<typeof TooltipPrimitive.TooltipTri
 
 interface ContentProps extends ComponentProps<typeof TooltipPrimitive.TooltipContent> {}
 
-interface Props
-  extends ComponentProps<typeof TooltipPrimitive.Tooltip>,
-    MixinProps<'trigger', Omit<TriggerProps, 'children'>>,
-    MixinProps<'content', Omit<ContentProps, 'children'>> {
-  trigger: TriggerProps['children']
-  content: ContentProps['children']
-}
+type Props = ComponentProps<typeof TooltipPrimitive.Tooltip> &
+  MixinProps<'trigger', Omit<TriggerProps, 'children'>> &
+  MixinProps<'content', Omit<ContentProps, 'children'>> & {
+    trigger: TriggerProps['children']
+    content: ContentProps['children']
+  }
 
 export const Tooltip = ({ trigger, content, ...mixProps }: Props) => {
   const forwardedProps = splitProps(mixProps, 'trigger', 'content')

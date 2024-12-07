@@ -4,13 +4,12 @@ import { type MixinProps, createSafeKey, splitProps } from '@nmit-coursition/uti
 import React from 'react'
 import type { ComponentPropsWithRef, ReactNode } from 'react'
 
-interface TabsProps
-  extends ComponentPropsWithRef<typeof TabsPrimitive.Tabs>,
-    MixinProps<'list', Omit<ComponentPropsWithRef<typeof TabsPrimitive.TabsList>, 'value'>>,
-    MixinProps<'trigger', Omit<ComponentPropsWithRef<typeof TabsPrimitive.TabsTrigger>, 'value'>>,
-    MixinProps<'content', Omit<ComponentPropsWithRef<typeof TabsPrimitive.TabsContent>, 'value' | 'children'>> {
-  values: { value: string; displayText: string; children: ReactNode }[]
-}
+type TabsProps = ComponentPropsWithRef<typeof TabsPrimitive.Tabs> &
+  MixinProps<'list', Omit<ComponentPropsWithRef<typeof TabsPrimitive.TabsList>, 'value'>> &
+  MixinProps<'trigger', Omit<ComponentPropsWithRef<typeof TabsPrimitive.TabsTrigger>, 'value'>> &
+  MixinProps<'content', Omit<ComponentPropsWithRef<typeof TabsPrimitive.TabsContent>, 'value' | 'children'>> & {
+    values: { value: string; displayText: string; children: ReactNode }[]
+  }
 
 export const Tabs = ({ values, ...mixProps }: TabsProps) => {
   const { trigger, content, list, rest } = splitProps(mixProps, 'trigger', 'content', 'list')

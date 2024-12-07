@@ -1,13 +1,11 @@
-// @ts-ignore
-import React from 'react'
 import { Input as InputPrimitive, type InputProps as InputPrimitiveProps } from '@nmit-coursition/ui/primitives/input'
 import { Label } from '@nmit-coursition/ui/primitives/label'
 import { cn } from '@nmit-coursition/ui/utils'
 import type { MixinProps, OverrideProps } from '@nmit-coursition/utils'
 import { splitProps } from '@nmit-coursition/utils'
+import React from 'react'
 
-
-export type InputProps = OverrideProps<InputPrimitiveProps, { id: string; name: string; type: string }> &
+type InputProps = OverrideProps<InputPrimitiveProps, { id: string; name: string; type: string }> &
   MixinProps<'label', Omit<React.ComponentProps<'label'>, 'children'>> &
   MixinProps<'container', React.ComponentProps<'div'>> &
   MixinProps<'subText', Omit<React.ComponentProps<'p'>, 'children'>> & {

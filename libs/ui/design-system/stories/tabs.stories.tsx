@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { fn } from '@storybook/test'
 import React from 'react'
 import { Tabs } from '../../design-system/src/tabs'
 
@@ -11,11 +12,16 @@ const meta = {
   },
   argTypes: {
     values: { control: 'object' },
+    content: { control: 'object' },
+    trigger: { control: 'object' },
+  },
+  args: {
+    onValueChange: fn(),
   },
 } satisfies Meta<typeof Tabs>
 
 export default meta
-type Story = StoryObj<typeof Tabs>
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import React from 'react'
-import { Input, type InputProps } from '../../design-system/src/input'
+import { fn } from '@storybook/test'
+import { Input } from '../src/input'
 
 const meta = {
   title: 'Primitives/Input',
@@ -18,10 +18,13 @@ const meta = {
     alt: { control: 'boolean' },
     autocomplete: { control: 'text' },
   },
-} satisfies Meta<InputProps>
+  args: {
+    onChange: fn(),
+  },
+} satisfies Meta<typeof Input>
 
 export default meta
-type Story = StoryObj<InputProps>
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {

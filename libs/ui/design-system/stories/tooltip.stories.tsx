@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { fn } from '@storybook/test'
 import React from 'react'
-import { Button } from '../../design-system/src/button'
-import { Tooltip } from '../../design-system/src/tooltip'
+import { Button } from '../src/button'
+import { Tooltip } from '../src/tooltip'
 
 const meta = {
   title: 'Primitives/Tooltip',
@@ -13,6 +14,9 @@ const meta = {
   argTypes: {
     trigger: { control: 'text' },
     content: { control: 'text' },
+  },
+  args: {
+    onOpenChange: fn(),
   },
 } satisfies Meta<typeof Tooltip>
 
