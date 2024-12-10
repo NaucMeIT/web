@@ -50,6 +50,7 @@ const app = new Elysia()
   .use(apiOrder)
   .use(apiV1)
   .use(apiDev)
+  .get('/', ({ request }) => ({ message: 'Welcome to Coursition API!', documentationUrl: `${request.url}swagger` }))
   .listen(3000)
 
 export type App = typeof app
