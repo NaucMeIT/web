@@ -74,9 +74,21 @@ We use Nx to manage our monorepo, which provides powerful tools for building and
 bunx nx [COMMAND] [PROJECT]
 ```
 
-For example, to start the development server for a specific project:
+### Commond commands
+
+To start the development server for backend:
 ```bash
 bunx nx dev backend
+```
+
+To build a project:
+```bash
+bunx nx build backend
+```
+
+If you need to run one command (e.g. typecheck) over more projects use:
+```bash
+bunx nx run-many --target=typecheck --all
 ```
 
 Need more detailed output? Add the `--verbose` flag:
