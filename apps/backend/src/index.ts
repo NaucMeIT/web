@@ -38,7 +38,7 @@ const app = new Elysia()
   )
   .onError(({ error, code }) => {
     Sentry.captureException(error)
-    if (code === "VALIDATION") {
+    if (code === 'VALIDATION') {
       return error.message
     }
     if (code === 'NOT_FOUND') {
@@ -50,6 +50,7 @@ const app = new Elysia()
   .use(apiOrder)
   .use(apiV1)
   .use(apiDev)
+  .get('/', ({ request }) => ({ message: 'Welcome to Coursition API!', documentationUrl: `${request.url}swagger` }))
   .listen(3000)
 
 export type App = typeof app
