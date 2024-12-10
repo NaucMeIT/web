@@ -1,4 +1,3 @@
-// app/routes/index.tsx
 import * as fs from 'node:fs'
 import { createFileRoute, useRouter } from '@tanstack/react-router'
 import { createServerFn } from '@tanstack/start'
@@ -35,6 +34,7 @@ function Home() {
 
   return (
     <button
+      className='bg-black text-white'
       type="button"
       onClick={() => {
         updateCount({ data: 1 }).then(() => {
