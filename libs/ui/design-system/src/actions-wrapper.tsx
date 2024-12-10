@@ -1,6 +1,5 @@
 'use client'
 
-import { Button, Tooltip } from '@nmit-coursition/ui/design-system'
 import { cn } from '@nmit-coursition/ui/utils'
 import { type FileFormat, useContentCopy, useContentDownload } from '@nmit-coursition/utils'
 import { CheckCircle, Copy, Download } from 'lucide-react'
@@ -16,6 +15,8 @@ import {
   useRef,
 } from 'react'
 import { toast } from 'sonner'
+import { Button } from './button'
+import { Tooltip } from './tooltip'
 
 type Position = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left'
 

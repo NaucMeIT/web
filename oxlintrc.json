@@ -3,6 +3,7 @@
     "browser": true
   },
   "settings": {},
+  "plugins": ["nursery", "typescript-eslint"],
   "rules": {
     "import/no-cycle": "error",
     "react-perf/jsx-no-new-function-as-prop": "off",
@@ -21,9 +22,9 @@
     "no-null": "off",
     "no-unexpected-multiline": "off",
     "max-classes-per-file": "off",
+    "consistent-type-imports": "warn",
     "typescript/no-unsafe-function-type": "error",
     "typescript/no-wrapper-object-types": "error",
-    "typescript/no-unsafe-declaration-merging": "error",
-    "@typescript-eslint/ban-types": "off"
+    "typescript/no-unsafe-declaration-merging": "error"
   }
 }
