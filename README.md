@@ -1,4 +1,4 @@
-# Project Name
+# Education Monorepo
 
 Welcome to our project! This document will guide you through setting up your development environment and getting started with our monorepo architecture. We've designed our setup process to be straightforward and consistent across team members, prioritizing reproducible development environments.
 
