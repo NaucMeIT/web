@@ -9,7 +9,7 @@
     "typecheck": {
       "executor": "nx:run-commands",
       "options": {
-        "cwd": "apps/coursition",
+        "cwd": "apps/coursition-new-rs",
         "commands": ["bunx tsc --pretty --noEmit -p tsconfig.json"],
         "forwardAllArgs": false,
         "description": "Type check with tsc"
