@@ -1,0 +1,35 @@
+{
+  "name": "coursition",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vinxi dev",
+    "build": "vinxi build",
+    "start": "vinxi start"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.62.3",
+    "@tanstack/react-query-devtools": "^5.62.3",
+    "@tanstack/react-router": "^1.87.1",
+    "@tanstack/react-router-with-query": "^1.87.1",
+    "@tanstack/router-devtools": "^1.87.1",
+    "@tanstack/start": "^1.87.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "lucide-react": "^0.468.0",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss-animate": "^1.0.7",
+    "vinxi": "^0.5.1"
+  },
+  "devDependencies": {
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "autoprefixer": "^10.4.20",
+    "globals": "^15.13.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.16",
+    "typescript": "catalog:",
+    "vite-tsconfig-paths": "^5.1.4"
+  }
+}
