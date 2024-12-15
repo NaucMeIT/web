@@ -1,22 +1,16 @@
-import { defineConfig } from "@tanstack/start/config";
-import tsConfigPaths from "vite-tsconfig-paths";
+import { defineConfig } from '@tanstack/start/config'
+import tsConfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
   vite: {
-    plugins: [
-      tsConfigPaths({
-        projects: ["./tsconfig.json"],
-      }),
-    ],
+    plugins: [tsConfigPaths({})],
     ssr: {
-      noExternal: [
-        'react-dropzone'
-      ]
-    }
+      noExternal: ['react-dropzone'],
+    },
   },
 
   server: {
     // https://tanstack.com/router/latest/docs/framework/react/start/hosting#deployment
     // preset: "vercel",
   },
-});
+})

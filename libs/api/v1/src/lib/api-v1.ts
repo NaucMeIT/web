@@ -1,12 +1,11 @@
 import { unlink } from 'node:fs/promises'
 import FirecrawlApp from '@mendable/firecrawl-js'
 import { generateQuiz, getResult, getTranscript, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
-import { apiCommonGuard, formatApiErrorResponse, reportUsage } from '@nmit-coursition/api/utils'
+import { apiCommonGuard, downloadPublicMedia, formatApiErrorResponse, reportUsage } from '@nmit-coursition/api/utils'
 import { secretsEnv } from '@nmit-coursition/env'
 import {
   allowedDeepgramLanguagesAsType,
   allowedLlamaParseLanguagesAsType,
-  downloadPublicMedia,
   languages,
   languagesAsType,
 } from '@nmit-coursition/utils'

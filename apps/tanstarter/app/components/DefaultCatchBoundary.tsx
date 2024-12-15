@@ -1,3 +1,4 @@
+import { Button } from '@nmit-coursition/ui/design-system'
 import {
   ErrorComponent,
   type ErrorComponentProps,
@@ -5,41 +6,40 @@ import {
   rootRouteId,
   useMatch,
   useRouter,
-} from "@tanstack/react-router";
-import { Button } from "./ui/button";
+} from '@tanstack/react-router'
 
 export function DefaultCatchBoundary({ error }: Readonly<ErrorComponentProps>) {
-  const router = useRouter();
+  const router = useRouter()
   const isRoot = useMatch({
     strict: false,
     select: (state) => state.id === rootRouteId,
-  });
+  })
 
-  console.error(error);
+  console.error(error)
 
   return (
-    <div className="flex min-w-0 flex-1 flex-col items-center justify-center gap-6 p-4">
+    <div className='flex min-w-0 flex-1 flex-col items-center justify-center gap-6 p-4'>
       <ErrorComponent error={error} />
-      <div className="flex flex-wrap items-center gap-2">
+      <div className='flex flex-wrap items-center gap-2'>
         <Button
-          type="button"
+          type='button'
           onClick={() => {
-            router.invalidate();
+            router.invalidate()
           }}
         >
           Try Again
         </Button>
         {isRoot ? (
-          <Button asChild variant="secondary">
-            <Link to="/">Home</Link>
+          <Button asChild variant='secondary'>
+            <Link to='/'>Home</Link>
           </Button>
         ) : (
-          <Button asChild variant="secondary">
+          <Button asChild variant='secondary'>
             <Link
-              to="/"
+              to='/'
               onClick={(e) => {
-                e.preventDefault();
-                window.history.back();
+                e.preventDefault()
+                window.history.back()
               }}
             >
               Go Back
@@ -48,5 +48,5 @@ export function DefaultCatchBoundary({ error }: Readonly<ErrorComponentProps>) {
         )}
       </div>
     </div>
-  );
+  )
 }
