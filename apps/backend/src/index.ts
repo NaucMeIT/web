@@ -38,7 +38,7 @@ const app = new Elysia()
   )
   .onError(({ error, code }) => {
     Sentry.captureException(error)
-    if (code === "VALIDATION") {
+    if (code === 'VALIDATION') {
       return error.message
     }
     if (code === 'NOT_FOUND') {

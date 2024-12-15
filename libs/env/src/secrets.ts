@@ -35,18 +35,22 @@ class InfisicalClient extends Effect.Service<InfisicalClient>()('env/InfisicalCl
           }),
         catch: (e) => new FetchError({ details: parseError(e).message || 'Unknown error during fetching secrets' }),
       })
+    const getSecrets = () =>
+      Effect.gen(function* () {
+        const secrets = yield* fetchSecrets()
+        return secrets.secrets
+          .map((secret) => ({ [secret.secretKey]: secret.secretValue }))
+          .reduce((acc, curr) => Object.assign(acc, curr), {})
+      })
 
-    return { client, fetchSecrets } as const
+    return { getSecrets } as const
   }),
 }) {}
 
 class SecretsConfig extends Effect.Service<SecretsConfig>()('env/SecretsConfig', {
   effect: Effect.gen(function* () {
-    const { fetchSecrets } = yield* InfisicalClient
-    const allSecrets = yield* fetchSecrets()
-    const secretsObj = allSecrets.secrets
-      .map((secret) => ({ [secret.secretKey]: secret.secretValue }))
-      .reduce((acc, curr) => Object.assign(acc, curr), {})
+    const { getSecrets } = yield* InfisicalClient
+    const secretsObj = yield* getSecrets()
 
     const jsonConfigProvider = ConfigProvider.fromJson(secretsObj)
     const jsonConfigLayer = Layer.setConfigProvider(jsonConfigProvider)
