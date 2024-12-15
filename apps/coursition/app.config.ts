@@ -10,7 +10,6 @@ export default defineConfig({
   },
 
   server: {
-    // https://tanstack.com/router/latest/docs/framework/react/start/hosting#deployment
-    // preset: "vercel",
+    preset: "vercel",
   },
 })
