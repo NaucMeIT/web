@@ -30,6 +30,7 @@
     "@storybook/react": "^8.4.6",
     "@storybook/test": "^8.4.6",
     "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
     "react": "catalog:",
     "rsbuild-plugin-tailwindcss": "^0.0.3",
     "storybook": "^8.4.6",
