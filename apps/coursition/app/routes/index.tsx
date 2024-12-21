@@ -51,8 +51,7 @@ function Media() {
 
   const handleSubmit = async (formData: FormData) => {
 if (!localStorage.getItem('token')) {
-        toast.error('You must be logged in to use the transcription feature.');
-        setStatus('idle');
+        window.location.href = `${process.env.BACKEND_URL || `http://localhost:${process.env.BACKEND_PORT || '3000'}`}/auth/login`;
         return initialState;
       }
     try {
