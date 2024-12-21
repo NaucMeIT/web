@@ -11,5 +11,6 @@ export default defineConfig({
 
   server: {
     preset: 'vercel',
+    port: parseInt(process.env.FRONTEND_PORT || '3001', 10),
   },
 })

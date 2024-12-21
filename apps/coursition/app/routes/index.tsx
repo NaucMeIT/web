@@ -16,7 +16,8 @@ export const Route = createFileRoute('/')({
   component: Media,
 })
 
-const app = treaty<App>('http://localhost:3000')
+const backendUrl = `http://localhost:${process.env.BACKEND_PORT || '3000'}`;
+const app = treaty<App>(backendUrl)
 
 const fileSchema = z.discriminatedUnion('type', [
   z.object({
@@ -49,6 +50,11 @@ function Media() {
   const [status, setStatus] = useState<'idle' | 'upload' | 'parse' | 'done'>('idle')
 
   const handleSubmit = async (formData: FormData) => {
+if (!localStorage.getItem('token')) {
+        toast.error('You must be logged in to use the transcription feature.');
+        setStatus('idle');
+        return initialState;
+      }
     try {
       setStatus('upload')
 
@@ -64,7 +70,7 @@ function Media() {
 
       const options = {
         headers: {
-          authorization: 'PRODPGrFxpGEtrOZfuWhnoJohUYBXuOE',
+          authorization: localStorage.getItem('token') ? `Bearer ${localStorage.getItem('token')}` : undefined,
         },
       }
       const { data, error } =
