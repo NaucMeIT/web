@@ -7,10 +7,10 @@ import { toast } from 'sonner'
 import { z } from 'zod'
 import { zfd } from 'zod-form-data'
 import type { App } from '../../../backend/src/index'
-import { FileDropper } from '../components/fileDropper'
-import { StatusDisplay } from '../components/statusDisplay'
-import { TranscriptionResults } from '../components/transcriptionResults'
-import { VideoPlayer } from '../components/videoPlayer'
+import { FileDropper } from '../components/file-dropper'
+import { StatusDisplay } from '../components/status-display'
+import { TranscriptionResults } from '../components/transcription-results'
+import { VideoPlayer } from '../components/video-player'
 
 export const Route = createFileRoute('/')({
   component: Media,
