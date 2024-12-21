@@ -16,7 +16,7 @@ export const Route = createFileRoute('/')({
   component: Media,
 })
 
-const backendUrl = `http://localhost:${process.env.BACKEND_PORT || '3000'}`;
+const backendUrl = process.env.BACKEND_URL || `http://localhost:${process.env.BACKEND_PORT || '3000'}`;
 const app = treaty<App>(backendUrl)
 
 const fileSchema = z.discriminatedUnion('type', [
