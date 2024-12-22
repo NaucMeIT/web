@@ -1,4 +1,3 @@
-import { treaty } from '@elysiajs/eden'
 import { Button, Input, Tabs, Textarea } from '@nmit-coursition/ui/design-system'
 import { convertSubtitlesToBlob } from '@nmit-coursition/utils'
 import { createFileRoute } from '@tanstack/react-router'
@@ -6,17 +5,15 @@ import { useActionState, useState } from 'react'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { zfd } from 'zod-form-data'
-import type { App } from '../../../backend/src/index'
 import { FileDropper } from '../components/fileDropper'
 import { StatusDisplay } from '../components/statusDisplay'
 import { TranscriptionResults } from '../components/transcriptionResults'
 import { VideoPlayer } from '../components/videoPlayer'
+import { app } from '../lib/backend'
 
 export const Route = createFileRoute('/')({
   component: Media,
 })
-
-const app = treaty<App>('http://localhost:3000')
 
 const fileSchema = z.discriminatedUnion('type', [
   z.object({

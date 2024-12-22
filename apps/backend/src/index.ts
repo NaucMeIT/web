@@ -51,6 +51,6 @@ const app = new Elysia()
   .use(apiV1)
   .use(apiDev)
   .get('/', ({ request }) => ({ message: 'Welcome to Coursition API!', documentationUrl: `${request.url}swagger` }))
-  .listen(3000)
+  .listen(parseInt(process.env['BACKEND_PORT'] || '3000', 10))
 
 export type App = typeof app
