@@ -11,7 +11,7 @@ import {
   type RefObject,
   createContext,
   isValidElement,
-  useContext,
+  use,
   useRef,
 } from 'react'
 import { toast } from 'sonner'
@@ -27,7 +27,7 @@ interface ActionsContextValue {
 const ActionsContext = createContext<ActionsContextValue | null>(null)
 
 const useActions = () => {
-  const context = useContext(ActionsContext)
+  const context = use(ActionsContext)
   if (!context) {
     throw new Error('Action components must be used within an ActionsWrapper')
   }
@@ -92,7 +92,7 @@ export const ActionsWrapper: FC<PropsWithChildren<ActionsWrapperProps>> = ({
   const actions = childrenArray.filter((child) => isValidElement(child) && child.type !== ActionsContent)
 
   return (
-    <ActionsContext.Provider value={{ contentRef }}>
+    <ActionsContext.Provider value={{ contentRef: contentRef as RefObject<HTMLDivElement> }}>
       <div className={`relative ${className}`}>
         {content}
 

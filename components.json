@@ -3,8 +3,8 @@
   "style": "default",
   "rsc": false,
   "tailwind": {
-    "config": "libs\\ui\\utils\\tailwind.config.js",
-    "css": "libs\\ui\\utils\\global.css",
+    "config": "libs\\ui\\utils\\src\\tailwind.config.ts",
+    "css": "libs\\ui\\utils\\src\\global.css",
     "baseColor": "neutral",
     "cssVariables": true
   },
