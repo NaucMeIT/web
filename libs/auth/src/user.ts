@@ -1,6 +1,5 @@
 import { prisma } from '@nmit-coursition/db'
 import { randomStringGenerator } from '@nmit-coursition/utils'
-import type { cas__user } from '@prisma/client'
 import type { User, UserProfileRawRecord, UserProfileResponse } from './typescript'
 
 export async function getUserProfile(apiKey: string): Promise<UserProfileResponse> {
@@ -81,56 +80,23 @@ export async function createApiKey(userId: bigint): Promise<string> {
   return apiKey.api_key
 }
 
-export async function updateUser(userData: User, organisationId: number): Promise<cas__user> {
-  const user =
-    (await prisma.cas__user.findFirst({
-      where: {
-        AND: [{ OR: [{ workos_id: userData.id }, { email: userData.email }] }, { organisation_id: organisationId }],
-      },
-    })) ||
-    (await prisma.cas__user.create({
-      data: {
-        organisation_id: organisationId,
-        email: userData.email,
-        inserted_date: new Date(userData.createdAt),
-        updated_date: new Date(userData.updatedAt),
-        synced_date: new Date(),
-        workos_id: userData.id,
-        credit: 0,
-        lifetime_subscribe: false,
-      },
-    }))
-
-  return prisma.cas__user.update({
-    where: { id: user.id },
-    data: {
-      workos_id: userData.id,
+export async function createBrjMagicAuth(userData: User): Promise<string> {
+  const request = await fetch(`https://brj.app/api/v1/customer/magic-auth?apiKey=${process.env['BRJ_API_KEY']}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      apiKey: process.env['BRJ_API_KEY'],
       email: userData.email,
-      inserted_date: new Date(userData.createdAt),
-      updated_date: new Date(userData.updatedAt),
-      synced_date: new Date(),
-      first_name: userData.firstName || null,
-      last_name: userData.lastName || null,
-      avatar_url: userData.profilePictureUrl || null,
-    },
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+    }),
   })
-}
 
-export async function storeUserSession(internalUserId: bigint, session: string) {
-  if (!session) return
-  await prisma.cas__user_identity.create({
-    data: {
-      user_id: internalUserId,
-      session: session,
-      expired: false,
-      inserted_date: new Date(),
-      expiration_date: (() => {
-        const date = new Date()
-        date.setHours(date.getHours() + 2)
-        return date
-      })(),
-    },
-  })
+  const response = (await request.json()) as { identityId?: string }
+  if ('identityId' in response && response.identityId) return String(response.identityId)
+  throw new Error(`User registration failed.`)
 }
 
 export async function invalidateSession(session: string) {

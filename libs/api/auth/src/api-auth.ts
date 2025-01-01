@@ -1,10 +1,10 @@
 import { formatApiErrorResponse } from '@nmit-coursition/api/utils'
 import {
+  AUTH_BRJ_COOKIES_NAME,
   AUTH_COOKIES_NAME,
+  createBrjMagicAuth,
   getUserProfile,
   invalidateSession,
-  storeUserSession,
-  updateUser,
   validateSessionToken,
 } from '@nmit-coursition/auth'
 import { secretsEnv } from '@nmit-coursition/env'
@@ -32,7 +32,6 @@ export const apiAuth = new Elysia({ prefix: '/auth', tags: ['auth'] })
     return redirect(authorizationUrl)
   })
   .get('/callback', async ({ request, query, error, redirect, cookie }) => {
-    const organisationId = 1 // TODO
     const code = String(query['code'] || '')
 
     if (!code) throw error(400, formatApiErrorResponse(request, 'No code provided.'))
@@ -48,7 +47,7 @@ export const apiAuth = new Elysia({ prefix: '/auth', tags: ['auth'] })
       })
 
       const { user, sealedSession } = authenticateResponse
-      const internalUser = await updateUser(user, organisationId)
+      const brjIdentity = await createBrjMagicAuth(user)
 
       cookie[AUTH_COOKIES_NAME]?.set({
         value: sealedSession || '',
@@ -58,7 +57,15 @@ export const apiAuth = new Elysia({ prefix: '/auth', tags: ['auth'] })
         sameSite: 'lax',
       })
 
-      await storeUserSession(internalUser.id, sealedSession || '')
+      if (brjIdentity) {
+        cookie[AUTH_BRJ_COOKIES_NAME]?.set({
+          value: brjIdentity,
+          path: '/',
+          httpOnly: true,
+          secure: true,
+          sameSite: 'lax',
+        })
+      }
 
       return redirect('/')
     } catch (error) {
