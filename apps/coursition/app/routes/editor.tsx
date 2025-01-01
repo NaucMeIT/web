@@ -31,7 +31,7 @@ const insertQuiz = (editor: typeof schema.BlockNoteEditor) => ({
   icon: <MdQuiz className='text-blue-500' />,
 })
 
-function Editor() {
+function EditorContent() {
   const editor = useCreateBlockNote({
     schema,
     initialContent: [
@@ -71,4 +71,8 @@ function Editor() {
       />
     </BlockNoteView>
   )
+}
+
+function Editor() {
+  return <EditorContent />
 }
