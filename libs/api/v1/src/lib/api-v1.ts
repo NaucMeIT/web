@@ -2,6 +2,7 @@ import { unlink } from 'node:fs/promises'
 import FirecrawlApp from '@mendable/firecrawl-js'
 import { generateQuiz, getResult, getTranscript, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
 import { apiCommonGuard, downloadPublicMedia, formatApiErrorResponse, reportUsage } from '@nmit-coursition/api/utils'
+import { AUTH_BRJ_COOKIES_NAME } from '@nmit-coursition/auth'
 import { secretsEnv } from '@nmit-coursition/env'
 import {
   allowedDeepgramLanguagesAsType,
@@ -53,10 +54,11 @@ export const apiV1 = new Elysia({ prefix: '/v1', tags: ['v1'] })
               duration: t.Optional(t.Number()),
             }),
           },
-          afterResponse({ response, headers }) {
+          afterResponse({ response, cookie }) {
             if (!response || !('duration' in response) || !response.duration) return
             const { duration } = response
-            duration >= 0 && reportUsage(headers['authorization'] || '', duration, 'video')
+            const brjSessionData = cookie[AUTH_BRJ_COOKIES_NAME]?.toString() || ''
+            duration >= 0 && reportUsage(brjSessionData, duration, 'video')
           },
         },
       )
@@ -107,10 +109,11 @@ export const apiV1 = new Elysia({ prefix: '/v1', tags: ['v1'] })
               duration: t.Optional(t.Number()),
             }),
           },
-          afterResponse({ response, headers }) {
+          afterResponse({ response, cookie }) {
             if (!response || !('duration' in response) || !response.duration) return
             const { duration } = response
-            duration >= 0 && reportUsage(headers['authorization'] || '', duration, 'video')
+            const brjSessionData = cookie[AUTH_BRJ_COOKIES_NAME]?.toString() || ''
+            duration >= 0 && reportUsage(brjSessionData, duration, 'video')
           },
         },
       )
@@ -147,10 +150,11 @@ export const apiV1 = new Elysia({ prefix: '/v1', tags: ['v1'] })
               credits: t.Number(),
             }),
           },
-          afterResponse({ response, headers }) {
+          afterResponse({ response, cookie }) {
             if (!response || !('credits' in response) || !response.credits) return
             const { credits } = response
-            credits >= 0 && reportUsage(headers['authorization'] || '', credits, 'document')
+            const brjSessionData = cookie[AUTH_BRJ_COOKIES_NAME]?.toString() || ''
+            credits >= 0 && reportUsage(brjSessionData, credits, 'document')
           },
         },
       )
@@ -189,10 +193,11 @@ export const apiV1 = new Elysia({ prefix: '/v1', tags: ['v1'] })
               credits: t.Number(),
             }),
           },
-          afterResponse({ response, headers }) {
+          afterResponse({ response, cookie }) {
             if (!response || !('credits' in response) || !response.credits) return
             const { credits } = response
-            credits >= 0 && reportUsage(headers['authorization'] || '', credits, 'web')
+            const brjSessionData = cookie[AUTH_BRJ_COOKIES_NAME]?.toString() || ''
+            credits >= 0 && reportUsage(brjSessionData, credits, 'web')
           },
         },
       ),

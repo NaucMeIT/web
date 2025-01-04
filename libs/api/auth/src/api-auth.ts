@@ -1,11 +1,11 @@
 import { formatApiErrorResponse } from '@nmit-coursition/api/utils'
 import {
+  AUTH_BRJ_COOKIES_NAME,
   AUTH_COOKIES_NAME,
-  getUserProfile,
+  createBrjMagicAuth,
+  getBrjIdentity,
   invalidateSession,
-  storeUserSession,
-  updateUser,
-  validateSessionToken,
+  logoutBrj,
 } from '@nmit-coursition/auth'
 import { secretsEnv } from '@nmit-coursition/env'
 import { WorkOS } from '@workos-inc/node'
@@ -32,7 +32,6 @@ export const apiAuth = new Elysia({ prefix: '/auth', tags: ['auth'] })
     return redirect(authorizationUrl)
   })
   .get('/callback', async ({ request, query, error, redirect, cookie }) => {
-    const organisationId = 1 // TODO
     const code = String(query['code'] || '')
 
     if (!code) throw error(400, formatApiErrorResponse(request, 'No code provided.'))
@@ -48,7 +47,7 @@ export const apiAuth = new Elysia({ prefix: '/auth', tags: ['auth'] })
       })
 
       const { user, sealedSession } = authenticateResponse
-      const internalUser = await updateUser(user, organisationId)
+      const brjIdentity = await createBrjMagicAuth(user)
 
       cookie[AUTH_COOKIES_NAME]?.set({
         value: sealedSession || '',
@@ -58,7 +57,15 @@ export const apiAuth = new Elysia({ prefix: '/auth', tags: ['auth'] })
         sameSite: 'lax',
       })
 
-      await storeUserSession(internalUser.id, sealedSession || '')
+      if (brjIdentity) {
+        cookie[AUTH_BRJ_COOKIES_NAME]?.set({
+          value: brjIdentity,
+          path: '/',
+          httpOnly: true,
+          secure: true,
+          sameSite: 'lax',
+        })
+      }
 
       return redirect('/')
     } catch (error) {
@@ -69,7 +76,8 @@ export const apiAuth = new Elysia({ prefix: '/auth', tags: ['auth'] })
   })
   .get('/logout', async ({ redirect, cookie }) => {
     const sessionData = cookie[AUTH_COOKIES_NAME]?.toString()
-    if (!sessionData) return redirect('/login')
+    const brjSessionData = cookie[AUTH_BRJ_COOKIES_NAME]?.toString()
+    if (!sessionData || !brjSessionData) return redirect('/auth/login')
 
     try {
       const session = workos.userManagement.loadSealedSession({
@@ -78,20 +86,20 @@ export const apiAuth = new Elysia({ prefix: '/auth', tags: ['auth'] })
       })
 
       const url = await session.getLogoutUrl()
-      cookie[AUTH_COOKIES_NAME]?.remove()
       await invalidateSession(sessionData)
+      await logoutBrj(brjSessionData)
+      cookie[AUTH_COOKIES_NAME]?.remove()
+      cookie[AUTH_BRJ_COOKIES_NAME]?.remove()
 
       return redirect(url)
     } catch (error) {
       // eslint-disable-next-line no-console debug info
       console.error(error)
-      return redirect('/login')
+      return redirect('/auth/login')
     }
   })
-  .get('/profile', async ({ headers, cookie }) => {
-    const session = cookie[AUTH_COOKIES_NAME]?.toString() || ''
-    const apiKeyRaw = headers['authorization'] || ''
-    const apiKey = apiKeyRaw || (await validateSessionToken(session))
+  .get('/profile', async ({ cookie }) => {
+    const brjSessionData = cookie[AUTH_BRJ_COOKIES_NAME]?.toString() || ''
 
-    return getUserProfile(apiKey)
+    return getBrjIdentity(brjSessionData)
   })
