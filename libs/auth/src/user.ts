@@ -99,6 +99,24 @@ export async function createBrjMagicAuth(userData: User): Promise<string> {
   throw new Error(`User registration failed.`)
 }
 
+export async function logoutBrj(session: string) {
+  const res = await fetch(`https://brj.app/api/v1/customer/logout?apiKey=${process.env['BRJ_API_KEY']}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ apiKey: process.env['BRJ_API_KEY'], identityId: session }),
+  })
+  console.log(res)
+}
+
+export async function getBrjIdentity(session: string) {
+  const res = await fetch(
+    `https://brj.app/api/v1/customer/get-account-info?apiKey=${process.env['BRJ_API_KEY']}&identityId=${session}`,
+  )
+  return res.json()
+}
+
 export async function invalidateSession(session: string) {
   await prisma.cas__user_identity.updateMany({
     where: { session },

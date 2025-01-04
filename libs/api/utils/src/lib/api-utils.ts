@@ -70,9 +70,21 @@ function initSentry(request: ExtendedRequest) {
   Sentry.setTag('url', request.url || 'CLI')
 }
 
-export function reportUsage(apiKey: string, duration: number, type: 'video' | 'document' | 'web') {
-  // eslint-disable-next-line no-console -- will be replaced with real usage reporting
-  console.log(`API Key ${apiKey} used ${duration} on ${type}.`)
+export async function reportUsage(identityId: string, duration: number, type: 'video' | 'document' | 'web') {
+  const apiKey = process.env['BRJ_API_KEY']
+  const amount = Math.ceil(duration)
+  await fetch(`https://brj.app/api/v1/customer/credit-spend?apiKey=${apiKey}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      apiKey,
+      identityId,
+      amount,
+      description: type,
+    }),
+  })
 }
 
 export async function getLoggedUserOrThrow(request: Request): Promise<cas__user> {
