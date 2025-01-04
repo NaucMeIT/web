@@ -16,7 +16,7 @@ zerops:
         NMIT_LIFETIME_PRODUCT_VARIANT_ID: ${RUNTIME_NMIT_LIFETIME_PRODUCT_VARIANT_ID}
         NEXTAUTH_URL: ${RUNTIME_NEXTAUTH_URL}
       prepareCommands:
-        - echo "Upgrading bun to 1.1.38"
+        - echo "Upgrading bun to 1.1.42"
         - bun upgrade
       buildCommands:
         - pnpm install --frozen-lockfile --prefer-offline --prod=false
