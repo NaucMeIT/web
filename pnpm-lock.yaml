@@ -234,6 +234,15 @@ importers:
       '@convex-dev/react-query':
         specifier: 0.0.0-alpha.8
         version: 0.0.0-alpha.8(@tanstack/react-query@5.62.8(react@19.0.0))(convex@1.17.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+      '@liveblocks/client':
+        specifier: ^2.15.1
+        version: 2.15.1
+      '@liveblocks/react':
+        specifier: ^2.15.1
+        version: 2.15.1(react@19.0.0)
+      '@liveblocks/yjs':
+        specifier: ^2.15.1
+        version: 2.15.1(yjs@13.6.21)
       '@tanstack/react-query':
         specifier: ^5.62.8
         version: 5.62.8(react@19.0.0)
@@ -276,6 +285,9 @@ importers:
       vinxi:
         specifier: ^0.5.1
         version: 0.5.1(@types/node@22.10.2)(db0@0.2.1)(ioredis@5.4.2)(jiti@2.4.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
+      yjs:
+        specifier: ^13.6.21
+        version: 13.6.21
     devDependencies:
       '@types/react':
         specifier: 'catalog:'
@@ -2264,6 +2276,22 @@ packages:
   '@lemonsqueezy/lemonsqueezy.js@4.0.0':
     resolution: {integrity: sha512-xcY1/lDrY7CpIF98WKiL1ElsfoVhddP7FT0fw7ssOzrFqQsr44HgolKrQZxd9SywsCPn12OTOUieqDIokI3mFg==}
     engines: {node: '>=20'}
+
+  '@liveblocks/client@2.15.1':
+    resolution: {integrity: sha512-R4zpISMYxQzMQxCbGWldVCDmvtz8I/32ihyqG/SYccK1UfJxrlFaHyy0Y8DvxYoKLnlmfddqJ6phkuSWodEEMg==}
+
+  '@liveblocks/core@2.15.1':
+    resolution: {integrity: sha512-/rVOTgE8ACFOSyIKJ8uMyF/NKANqB3bCymfa3yhB9vrQ7CPKfAkhjyD7TFfHiWqthyYQeOaio6084wijHnpV6w==}
+
+  '@liveblocks/react@2.15.1':
+    resolution: {integrity: sha512-mESv75dAKgPjwlZKtMe0TxSBnAJL+Wk/HU5w+F+rGC7tXQ9pm2xBH3usm10pbvpfC/1KVo2hDi6jDxxyYGxP3w==}
+    peerDependencies:
+      react: ^18 || ^19 || ^19.0.0-rc
+
+  '@liveblocks/yjs@2.15.1':
+    resolution: {integrity: sha512-zBIM+61KTGAfQMuwWw1c8CN9XvMHNEjNBiLMiRrzT0OzIuZJVU8WRVE89bKMGgdH7zZCFzVNxkSGahtD/HNyLQ==}
+    peerDependencies:
+      yjs: ^13.6.1
 
   '@mantine/core@7.15.2':
     resolution: {integrity: sha512-640ns0L/HZAXYjz3+FRffr8UNcH1fU7ENUVxKLzqNA311Dcx0qS3byVKTY/IVJYln6AkjoEfIJMiixT9fCZBiQ==}
@@ -6868,6 +6896,9 @@ packages:
   jose@5.6.3:
     resolution: {integrity: sha512-1Jh//hEEwMhNYPDDLwXHa2ePWgWiFNNUadVmguAAw2IJ6sj9mNxV5tGXJNqlMkJAybF6Lgw1mISDxTePP/187g==}
 
+  js-base64@3.7.7:
+    resolution: {integrity: sha512-7rCnleh0z2CkXhH67J8K1Ytz0b2Y+yxTPL+/KOJoa20hfnVQ/3/T6W/KflYI4bRHRagNeXeU2bkNGI3v1oS/lw==}
+
   js-beautify@1.15.1:
     resolution: {integrity: sha512-ESjNzSlt/sWE8sciZH8kBF8BPlwXPwhR6pWKAw8bw4Bwj+iZcnKW6ONWUutJ7eObuBZQpiIb8S7OYspWrKt7rA==}
     engines: {node: '>=14'}
@@ -9684,6 +9715,12 @@ packages:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
     engines: {node: '>=0.4'}
 
+  y-indexeddb@9.0.12:
+    resolution: {integrity: sha512-9oCFRSPPzBK7/w5vOkJBaVCQZKHXB/v6SIT+WYhnJxlEC61juqG0hBrAf+y3gmSMLFLwICNH9nQ53uscuse6Hg==}
+    engines: {node: '>=16.0.0', npm: '>=8.0.0'}
+    peerDependencies:
+      yjs: ^13.0.0
+
   y-prosemirror@1.2.13:
     resolution: {integrity: sha512-eW5/rJcYhqlrqyPLTaGIaPSt7YS6f2wwbV5wXlUkY8rERY0tSJPoumsPD7UWwtXk9C5TdTsvwaIrdOoD1QLbYA==}
     engines: {node: '>=16.0.0', npm: '>=8.0.0'}
@@ -11491,6 +11528,26 @@ snapshots:
       tslib: 2.8.1
 
   '@lemonsqueezy/lemonsqueezy.js@4.0.0': {}
+
+  '@liveblocks/client@2.15.1':
+    dependencies:
+      '@liveblocks/core': 2.15.1
+
+  '@liveblocks/core@2.15.1': {}
+
+  '@liveblocks/react@2.15.1(react@19.0.0)':
+    dependencies:
+      '@liveblocks/client': 2.15.1
+      '@liveblocks/core': 2.15.1
+      react: 19.0.0
+
+  '@liveblocks/yjs@2.15.1(yjs@13.6.21)':
+    dependencies:
+      '@liveblocks/client': 2.15.1
+      '@liveblocks/core': 2.15.1
+      js-base64: 3.7.7
+      y-indexeddb: 9.0.12(yjs@13.6.21)
+      yjs: 13.6.21
 
   '@mantine/core@7.15.2(@mantine/hooks@7.15.2(react@19.0.0))(@types/react@19.0.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
@@ -17064,6 +17121,8 @@ snapshots:
 
   jose@5.6.3: {}
 
+  js-base64@3.7.7: {}
+
   js-beautify@1.15.1:
     dependencies:
       config-chain: 1.1.13
@@ -20648,6 +20707,11 @@ snapshots:
   xmlbuilder@9.0.7: {}
 
   xtend@4.0.2: {}
+
+  y-indexeddb@9.0.12(yjs@13.6.21):
+    dependencies:
+      lib0: 0.2.99
+      yjs: 13.6.21
 
   y-prosemirror@1.2.13(prosemirror-model@1.24.1)(prosemirror-state@1.4.3)(prosemirror-view@1.37.1)(y-protocols@1.0.6(yjs@13.6.21))(yjs@13.6.21):
     dependencies:

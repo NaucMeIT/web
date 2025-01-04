@@ -11,9 +11,7 @@ interface Props {
 export function QuizComponent({ question, answers }: Props) {
   const isMultipleCorrect = answers.filter((answer) => answer.isCorrect).length > 1
 
-  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    const formData = new FormData(event.currentTarget)
+  async function submitAction(formData: FormData) {
     const selectedAnswers = Array.from(formData.getAll('answer'))
 
     const correctAnswers = answers.filter((answer) => answer.isCorrect).map((answer) => answer.text)
@@ -50,7 +48,7 @@ export function QuizComponent({ question, answers }: Props) {
           </div>
         )}
 
-        <form className='flex flex-col space-y-3' onSubmit={onSubmit}>
+        <form action={submitAction} className='flex flex-col space-y-3'>
           {isMultipleCorrect ? (
             <div className='grid grid-cols-1 gap-2'>
               {answers.map(({ text }) => (
@@ -70,11 +68,7 @@ export function QuizComponent({ question, answers }: Props) {
               ))}
             </div>
           )}
-
-          <button
-            type='submit'
-            className='mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50'
-          >
+          <button type='submit' className='mt-4 px-4 py-2 bg-blue-500 text-white rounded'>
             Submit
           </button>
         </form>

@@ -31,7 +31,7 @@ export const Quiz = createReactBlockSpec(
         default: '',
       },
       correctAnswer: {
-        default: '1',
+        default: 1,
       },
     },
     content: 'none',
@@ -58,8 +58,8 @@ export const Quiz = createReactBlockSpec(
                 <input
                   type='text'
                   className='mt-1 block w-full rounded-md border-gray-300 shadow-sm'
-                  value={props.block.props.question}
-                  onChange={(e) =>
+                  defaultValue={props.block.props.question}
+                  onBlur={(e) =>
                     props.editor.updateBlock(props.block, {
                       type: 'quiz',
                       props: { question: e.target.value },
@@ -72,8 +72,8 @@ export const Quiz = createReactBlockSpec(
                 <input
                   type='text'
                   className='mt-1 block w-full rounded-md border-gray-300 shadow-sm'
-                  value={props.block.props.answer1}
-                  onChange={(e) =>
+                  defaultValue={props.block.props.answer1}
+                  onBlur={(e) =>
                     props.editor.updateBlock(props.block, {
                       type: 'quiz',
                       props: { answer1: e.target.value },
@@ -86,8 +86,8 @@ export const Quiz = createReactBlockSpec(
                 <input
                   type='text'
                   className='mt-1 block w-full rounded-md border-gray-300 shadow-sm'
-                  value={props.block.props.answer2}
-                  onChange={(e) =>
+                  defaultValue={props.block.props.answer2}
+                  onBlur={(e) =>
                     props.editor.updateBlock(props.block, {
                       type: 'quiz',
                       props: { answer2: e.target.value },
@@ -100,8 +100,8 @@ export const Quiz = createReactBlockSpec(
                 <input
                   type='text'
                   className='mt-1 block w-full rounded-md border-gray-300 shadow-sm'
-                  value={props.block.props.answer3}
-                  onChange={(e) =>
+                  defaultValue={props.block.props.answer3}
+                  onBlur={(e) =>
                     props.editor.updateBlock(props.block, {
                       type: 'quiz',
                       props: { answer3: e.target.value },
@@ -114,8 +114,8 @@ export const Quiz = createReactBlockSpec(
                 <input
                   type='text'
                   className='mt-1 block w-full rounded-md border-gray-300 shadow-sm'
-                  value={props.block.props.answer4}
-                  onChange={(e) =>
+                  defaultValue={props.block.props.answer4}
+                  onBlur={(e) =>
                     props.editor.updateBlock(props.block, {
                       type: 'quiz',
                       props: { answer4: e.target.value },
@@ -128,11 +128,11 @@ export const Quiz = createReactBlockSpec(
                 <input
                   type='text'
                   className='mt-1 block w-full rounded-md border-gray-300 shadow-sm'
-                  value={props.block.props.correctAnswer}
-                  onChange={(e) =>
+                  defaultValue={props.block.props.correctAnswer}
+                  onBlur={(e) =>
                     props.editor.updateBlock(props.block, {
                       type: 'quiz',
-                      props: { correctAnswer: e.target.value },
+                      props: { correctAnswer: parseInt(e.target.value, 10) },
                     })
                   }
                 />
@@ -143,10 +143,10 @@ export const Quiz = createReactBlockSpec(
             <QuizComponent
               question={props.block.props.question}
               answers={[
-                { text: props.block.props.answer1, isCorrect: props.block.props.correctAnswer.includes('1') },
-                { text: props.block.props.answer2, isCorrect: props.block.props.correctAnswer.includes('2') },
-                { text: props.block.props.answer3, isCorrect: props.block.props.correctAnswer.includes('3') },
-                { text: props.block.props.answer4, isCorrect: props.block.props.correctAnswer.includes('4') },
+                { text: props.block.props.answer1, isCorrect: props.block.props.correctAnswer === 1 },
+                { text: props.block.props.answer2, isCorrect: props.block.props.correctAnswer === 2 },
+                { text: props.block.props.answer3, isCorrect: props.block.props.correctAnswer === 3 },
+                { text: props.block.props.answer4, isCorrect: props.block.props.correctAnswer === 4 },
               ]}
             />
           </div>
