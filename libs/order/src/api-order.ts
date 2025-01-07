@@ -1,5 +1,5 @@
 import { apiCommonGuard } from '@nmit-coursition/api/utils'
-import { secretsEnv } from '@nmit-coursition/env'
+import { secretsEnv, typedEnv } from '@nmit-coursition/env'
 import { Elysia } from 'elysia'
 
 export const apiOrder = new Elysia({ prefix: '/order' }).use(apiCommonGuard).post('/credit-order', async () => {
@@ -25,7 +25,7 @@ export const apiOrder = new Elysia({ prefix: '/order' }).use(apiCommonGuard).pos
         },
       ],
       // Tam budu přesměrován po úspěšném dokončení platby (děkovací stránky)
-      returnUrl: 'http://localhost:3000',
+      returnUrl: typedEnv.FRONTEND_URL.href,
     }),
   })
   // Vždy přesměřovat na response.redirectUrl
