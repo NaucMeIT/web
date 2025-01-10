@@ -1,1 +1,1 @@
-export * from './typed'
+export * from './secrets'
