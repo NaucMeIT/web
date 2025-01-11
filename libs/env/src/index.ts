@@ -1,2 +1,2 @@
 export * from './secrets'
-export * from './env'
+export * from './typed'
