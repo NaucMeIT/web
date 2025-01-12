@@ -1,11 +1,28 @@
 {
   "migrations": [
     {
-      "version": "20.0.0-beta.7",
-      "description": "Migration for v20.0.0-beta.7",
-      "implementation": "./src/migrations/update-20-0-0/move-use-daemon-process",
-      "package": "nx",
-      "name": "move-use-daemon-process"
+      "cli": "nx",
+      "version": "20.2.0-beta.2",
+      "description": "Update the ModuleFederationConfig import use @nx/module-federation.",
+      "factory": "./src/migrations/update-20-2-0/migrate-mf-imports-to-new-package",
+      "package": "@nx/react",
+      "name": "update-20-2-0-update-module-federation-config-import"
+    },
+    {
+      "cli": "nx",
+      "version": "20.2.0-beta.2",
+      "description": "Update the withModuleFederation import use @nx/module-federation/webpack.",
+      "factory": "./src/migrations/update-20-2-0/migrate-with-mf-import-to-new-package",
+      "package": "@nx/react",
+      "name": "update-20-2-0-update-with-module-federation-import"
+    },
+    {
+      "cli": "nx",
+      "version": "20.3.0-beta.2",
+      "description": "If workspace includes Module Federation projects, ensure the new @nx/module-federation package is installed.",
+      "factory": "./src/migrations/update-20-3-0/ensure-nx-module-federation-package",
+      "package": "@nx/react",
+      "name": "ensure-nx-module-federation-package"
     }
   ]
 }

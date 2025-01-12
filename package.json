@@ -62,35 +62,19 @@
     "zod-form-data": "^2.0.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.0",
-    "@babel/preset-react": "^7.26.3",
     "@biomejs/biome": "1.9.4",
     "@nx-extend/shadcn-ui": "^4.2.1",
-    "@nx/devkit": "20.1.2",
-    "@nx/js": "20.1.2",
-    "@nx/react": "20.1.2",
-    "@nx/workspace": "20.1.2",
+    "@nx/devkit": "20.3.1",
+    "@nx/js": "20.3.1",
+    "@nx/react": "20.3.1",
+    "@nx/workspace": "20.3.1",
     "@sinclair/typebox": "0.34.13",
     "@types/bun": "^1.1.16",
     "@types/node": "20.14.2",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "autoprefixer": "10.4.19",
-    "nx": "20.1.2",
-    "postcss": "8.4.38",
+    "nx": "20.3.1",
     "tailwindcss": "catalog:",
-    "ts-node": "10.9.2",
     "typescript": "catalog:"
-  },
-  "": "// TODO: Remove this override when https://github.com/nrwl/nx/issues/28205 is fixed",
-  "overrides": {
-    "@nx/devkit": "20.1.2",
-    "@nx/eslint": "20.1.2",
-    "@nx/js": "20.1.2",
-    "@nx/linter": "20.1.2",
-    "@nx/react": "20.1.2",
-    "@nx/workspace": "20.1.2",
-    "nx": "20.1.2",
-    "@sinclair/typebox": "0.34.13"
   }
 }
