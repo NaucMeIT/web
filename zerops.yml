@@ -33,7 +33,7 @@ zerops:
       base: ubuntu@latest
       os: ubuntu
       ports:
-        - port: 3000
+        - port: 3001
           httpSupport: true
       prepareCommands:
         - echo "Installing ffmpeg"
@@ -49,4 +49,4 @@ zerops:
       readinessCheck:
         httpGet:
           path: /swagger
-          port: 3000
+          port: 3001
