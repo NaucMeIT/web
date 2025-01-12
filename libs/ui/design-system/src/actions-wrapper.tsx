@@ -1,6 +1,7 @@
 'use client'
 
-import { cn } from '@nmit-coursition/ui/utils'
+import { Button, Tooltip } from '@douyinfe/semi-ui'
+import { cn } from '@nmit-coursition/utils'
 import { type FileFormat, useContentCopy, useContentDownload } from '@nmit-coursition/utils'
 import { CheckCircle, Copy, Download } from 'lucide-react'
 import {
@@ -15,8 +16,6 @@ import {
   useRef,
 } from 'react'
 import { toast } from 'sonner'
-import { Button } from './button'
-import { Tooltip } from './tooltip'
 
 type Position = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left'
 
@@ -44,21 +43,17 @@ interface ActionButtonProps {
 }
 
 const ActionButton = ({ onClick, icon, successIcon, isActive, title, className = '' }: ActionButtonProps) => (
-  <Tooltip
-    triggerAsChild
-    trigger={
-      <Button
-        size='icon'
-        variant='outline'
-        onClick={onClick}
-        className={cn('rounded-md transition-colors duration-200 p-2', className)}
-      >
-        <span className='sr-only'>{title}</span>
-        {isActive && successIcon ? successIcon : icon}
-      </Button>
-    }
-    content={title}
-  />
+  <Tooltip content={title} showArrow position='top'>
+    <Button
+      size='small'
+      theme='borderless'
+      onClick={onClick}
+      className={cn('rounded-md transition-colors duration-200 p-2', className)}
+    >
+      <span className='sr-only'>{title}</span>
+      {isActive && successIcon ? successIcon : icon}
+    </Button>
+  </Tooltip>
 )
 
 interface ActionsWrapperProps {
@@ -85,8 +80,6 @@ export const ActionsWrapper: FC<PropsWithChildren<ActionsWrapperProps>> = ({
   buttonGroupClassName = '',
 }) => {
   const contentRef = useRef<HTMLDivElement>(null)
-
-  // Split children into content and actions
   const childrenArray = Children.toArray(children)
   const content = childrenArray.find((child) => isValidElement(child) && child.type === ActionsContent)
   const actions = childrenArray.filter((child) => isValidElement(child) && child.type !== ActionsContent)
@@ -95,7 +88,6 @@ export const ActionsWrapper: FC<PropsWithChildren<ActionsWrapperProps>> = ({
     <ActionsContext.Provider value={{ contentRef: contentRef as RefObject<HTMLDivElement> }}>
       <div className={`relative ${className}`}>
         {content}
-
         {actions.length > 0 && (
           <div className={`${getPositionStyles(position)} ${buttonGroupClassName}`}>{actions}</div>
         )}
@@ -147,12 +139,7 @@ const DownloadAction: FC<DownloadActionProps> = ({
   onError,
 }) => {
   const { contentRef } = useActions()
-  const { download, isDownloaded } = useContentDownload(contentRef, {
-    filename,
-    format,
-    onSuccess,
-    onError,
-  })
+  const { download, isDownloaded } = useContentDownload(contentRef, { filename, format, onSuccess, onError })
 
   return (
     <ActionButton
@@ -207,7 +194,7 @@ const DefaultActionBar: FC<DefaultActionBarProps> = ({
 }
 
 export const Actions = {
-  DefaultActionBar: DefaultActionBar,
+  DefaultActionBar,
   Wrapper: ActionsWrapper,
   Content: ActionsContent,
   Copy: CopyAction,

@@ -1,4 +1,4 @@
-import { Button } from '@nmit-coursition/ui/design-system'
+import { Button } from '@douyinfe/semi-ui'
 import {
   ErrorComponent,
   type ErrorComponentProps,
@@ -22,7 +22,7 @@ export function DefaultCatchBoundary({ error }: Readonly<ErrorComponentProps>) {
       <ErrorComponent error={error} />
       <div className='flex flex-wrap items-center gap-2'>
         <Button
-          type='button'
+          htmlType='button'
           onClick={() => {
             router.invalidate()
           }}

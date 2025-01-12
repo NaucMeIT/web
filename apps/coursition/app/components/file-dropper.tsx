@@ -1,7 +1,7 @@
 'use client'
 
-import { Button } from '@nmit-coursition/ui/design-system'
-import { cn } from '@nmit-coursition/ui/utils'
+import { Button } from '@douyinfe/semi-ui'
+import { cn } from '@nmit-coursition/utils'
 import { X as DeleteIcon } from 'lucide-react'
 import { type DropzoneOptions, useDropzone } from 'react-dropzone'
 
@@ -28,7 +28,7 @@ export const FileDropper = ({ dropZoneMessage, idleMessage, className, inputName
 
             <Button
               variant='outline'
-              size='lg'
+              size='large'
               className='absolute p-0 top-0 -right-1 h-max rounded-full'
               onClick={(e) => {
                 /** prevents the button from triggering the input */

@@ -6,7 +6,11 @@ export default defineConfig({
   vite: {
     plugins: [tsConfigPaths({})],
     ssr: {
-      noExternal: ['react-dropzone'],
+      noExternal: ['react-dropzone', '@douyinfe/semi-ui'],
+      target: 'node',
+    },
+    optimizeDeps: {
+      include: ['@douyinfe/semi-ui']
     },
     build: {
       rollupOptions: {

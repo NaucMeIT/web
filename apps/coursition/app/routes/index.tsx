@@ -1,8 +1,7 @@
-import { Button, Input, Tabs, Textarea } from '@nmit-coursition/ui/design-system'
+import { Button, Form, TabPane, Tabs, Toast } from '@douyinfe/semi-ui'
 import { convertSubtitlesToBlob } from '@nmit-coursition/utils'
 import { createFileRoute } from '@tanstack/react-router'
 import { useActionState, useState } from 'react'
-import { toast } from 'sonner'
 import { z } from 'zod'
 import { zfd } from 'zod-form-data'
 import { FileDropper } from '../components/file-dropper'
@@ -90,7 +89,7 @@ function Media() {
       setStatus('done')
       return { raw: text, srt, vtt, videoSource }
     } catch (error) {
-      toast.error(`Something went wrong. Reason: ${error instanceof Error ? error.message : 'Unknown.'}`)
+      Toast.error(`Something went wrong. Reason: ${error instanceof Error ? error.message : 'Unknown.'}`)
       setStatus('idle')
       return initialState
     }
@@ -105,51 +104,42 @@ function Media() {
           <>
             <h1 className='text-2xl font-bold mb-4'>Upload media</h1>
             <form className='space-y-4' action={formAction}>
-              <Tabs
-                values={[
-                  {
-                    value: 'file',
-                    displayText: 'File',
-                    children: (
-                      <FileDropper
-                        idleMessage="Drag 'n' drop some files here, or click to select files"
-                        dropZoneMessage='Drop the files here ...'
-                        inputName='file'
-                        maxFiles={1}
-                        accept={{ 'video/*': [], 'audio/*': [] }}
-                      />
-                    ),
-                  },
-                  {
-                    value: 'url',
-                    displayText: 'URL',
-                    children: (
-                      <Input type='url' id='url' name='url' placeholder='Enter media URL' labelText='URL' required />
-                    ),
-                  },
-                ]}
-              />
+              <Tabs type='line'>
+                <TabPane tab='File' itemKey='file'>
+                  <FileDropper
+                    idleMessage="Drag 'n' drop some files here, or click to select files"
+                    dropZoneMessage='Drop the files here ...'
+                    inputName='file'
+                    maxFiles={1}
+                    accept={{ 'video/*': [], 'audio/*': [] }}
+                  />
+                </TabPane>
+                <TabPane tab='URL' itemKey='url'>
+                  <Form.Input field='url' id='url' name='url' placeholder='Enter media URL' helpText='URL' required />
+                </TabPane>
+              </Tabs>
               <div className='flex gap-3 flex-col w-full'>
                 {/*
                   // TODO: Change to switch, so that it's impossible to pick incorrect language.
                 */}
-                <Input
-                  type='text'
+                <Form.Input
+                  field='text'
                   id='language'
                   name='language'
                   placeholder='en-GB'
-                  labelText='Language'
-                  subText='What is main language of the video. Accepted is language keycode, e.g. en-GB, cs.'
+                  label='Language'
+                  helpText='What is main language of the video. Accepted is language keycode, e.g. en-GB, cs.'
                 />
-                <Textarea
+                <Form.TextArea
+                  field='text'
                   label='Difficult words'
                   placeholder='ChatGPT, Claude, Zig'
                   id='keywords'
-                  subtext='Unusual words or phrases that may be difficult to transcribe. Separate with commas. Avoid putting common words.'
+                  helpText='Unusual words or phrases that may be difficult to transcribe. Separate with commas. Avoid putting common words.'
                 />
               </div>
               <div className='flex gap-4'>
-                <Button type='submit' className='w-full'>
+                <Button htmlType='submit' className='w-full'>
                   Transcribe
                 </Button>
               </div>
@@ -158,26 +148,16 @@ function Media() {
         )}
         {status !== 'idle' && status !== 'done' && <StatusDisplay states={statusStates} status={status} />}
         {status === 'done' && (
-          <Tabs
-            listClassName='h-auto'
-            triggerClassName='text-lg m-1'
-            values={[
-              {
-                value: 'video',
-                displayText: 'Video',
-                children: (
-                  <div className='w-full aspect-video'>
-                    <VideoPlayer source={state.videoSource} subtitles={convertSubtitlesToBlob(state.vtt)} />
-                  </div>
-                ),
-              },
-              {
-                value: 'text',
-                displayText: 'Text',
-                children: <TranscriptionResults raw={state.raw} srt={state.srt} vtt={state.vtt} />,
-              },
-            ]}
-          />
+          <>
+            <Tabs type='line' className='mt-4'>
+              <TabPane tab='Video' itemKey='video'>
+                <VideoPlayer source={state.videoSource} subtitles={convertSubtitlesToBlob(state.vtt)} />
+              </TabPane>
+              <TabPane tab='Text' itemKey='text'>
+                <TranscriptionResults raw={state.raw} srt={state.srt} vtt={state.vtt} />
+              </TabPane>
+            </Tabs>
+          </>
         )}
       </div>
     </div>

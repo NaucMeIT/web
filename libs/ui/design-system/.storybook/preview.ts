@@ -1,6 +1,5 @@
 import type { Preview } from '@storybook/react'
 
-import '../src/nmit-colors.css'
 import '../src/main.css'
 
 const preview: Preview = {

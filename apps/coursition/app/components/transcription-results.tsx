@@ -1,4 +1,5 @@
-import { Actions, Tabs } from '@nmit-coursition/ui/design-system'
+import { TabPane, Tabs } from '@douyinfe/semi-ui'
+import { Actions } from '@nmit-coursition/ui/design-system'
 import type { FileFormat } from '@nmit-coursition/utils'
 import type { ReactNode } from 'react'
 
@@ -68,7 +69,13 @@ export const TranscriptionResults = ({ raw, srt, vtt }: Props) => {
   return (
     <div className='m-1'>
       <h2 className='text-xl font-bold mb-2'>Results:</h2>
-      <Tabs values={tabValues} />
+      <Tabs type='line'>
+        {tabValues.map((tab) => (
+          <TabPane tab={tab.displayText} itemKey={tab.value} key={tab.value}>
+            {tab.children}
+          </TabPane>
+        ))}
+      </Tabs>
     </div>
   )
 }
