@@ -36,7 +36,7 @@ const program = Effect.gen(function* (_) {
   return config
 })
 
-const secretsEffect = program.pipe(
+export const secretsEffect = program.pipe(
   Effect.provide(SecretsConfig.Default),
   Effect.catchTag('EmptyError', () => Effect.die(`Empty PROJECT_ID or ACCESS_TOKEN.`)),
   Effect.catchTag('FetchError', (error) => Effect.die(`Fetching secrets failed. Details: ${error.details}`)),

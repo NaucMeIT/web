@@ -26,8 +26,8 @@
     "lucide-react": "^0.468.0",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "tailwind-merge": "^2.5.5",
-    "tailwindcss-animate": "^1.0.7",
+    "tailwind-merge": "catalog:",
+    "tailwindcss-animate": "catalog:",
     "vinxi": "^0.5.1",
     "yjs": "^13.6.21"
   },
@@ -37,7 +37,7 @@
     "autoprefixer": "^10.4.20",
     "globals": "^15.14.0",
     "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17",
+    "tailwindcss": "catalog:",
     "typescript": "catalog:",
     "vite-tsconfig-paths": "^5.1.4"
   }

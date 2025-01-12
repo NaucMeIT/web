@@ -36,8 +36,8 @@
     "storybook": "^8.4.6",
     "storybook-addon-rslib": "^0.1.5",
     "storybook-react-rsbuild": "^0.1.5",
-    "tailwindcss": "^3.4.16",
-    "tailwindcss-animate": "^1.0.7",
+    "tailwindcss": "catalog:",
+    "tailwindcss-animate": "catalog:",
     "typescript": "catalog:"
   },
   "peerDependencies": {

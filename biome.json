@@ -5,7 +5,7 @@
     "clientKind": "git"
   },
   "files": {
-    "ignore": ["apps/legacy_nmit/**"]
+    "ignore": [".vercel", ".vinxi", ".nx", "apps/legacy_nmit/**"]
   },
   "formatter": {
     "enabled": true,
@@ -14,8 +14,7 @@
     "indentWidth": 2,
     "lineEnding": "lf",
     "lineWidth": 120,
-    "attributePosition": "auto",
-    "ignore": ["./dist", "./coverage", "./.nx/cache", "./.nx/workspace-data"]
+    "attributePosition": "auto"
   },
   "organizeImports": {
     "enabled": true

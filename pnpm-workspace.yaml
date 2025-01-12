@@ -5,6 +5,9 @@ packages:
 
 # Define a catalog of version ranges.
 catalog:
+  tailwindcss: 3.4.17
+  tailwindcss-animate: 1.0.7
+  tailwind-merge: 2.6.0
   react: 19.0.0
   react-dom: 19.0.0
   typescript: 5.7.2
