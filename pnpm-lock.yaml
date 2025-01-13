@@ -334,8 +334,8 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0(@rsbuild/core@1.1.13)
       '@rslib/core':
-        specifier: ^0.1.2
-        version: 0.1.5(typescript@5.7.2)
+        specifier: ^0.2.2
+        version: 0.2.2(typescript@5.7.2)
       '@storybook/addon-essentials':
         specifier: ^8.4.7
         version: 8.4.7(@types/react@18.3.12)(storybook@8.4.7(prettier@3.4.2))
@@ -363,27 +363,21 @@ importers:
       '@types/react-dom':
         specifier: 'catalog:'
         version: 18.3.1
-      autoprefixer:
-        specifier: 10.4.20
-        version: 10.4.20(postcss@8.4.38)
       postcss:
-        specifier: 8.4.38
-        version: 8.4.38
+        specifier: 8.5.0
+        version: 8.5.0
       react:
         specifier: 'catalog:'
         version: 18.3.1
-      rsbuild-plugin-tailwindcss:
-        specifier: ^0.1.1
-        version: 0.1.1(@rsbuild/core@1.1.13)(tailwindcss@4.0.0-beta.9)
       storybook:
         specifier: ^8.4.7
         version: 8.4.7(prettier@3.4.2)
       storybook-addon-rslib:
-        specifier: ^0.1.7
-        version: 0.1.7(@rsbuild/core@1.1.13)(@rslib/core@0.1.5(typescript@5.7.2))(storybook-builder-rsbuild@0.1.7(@rsbuild/core@1.1.13)(@rspack/core@1.1.8(@swc/helpers@0.5.15))(@types/react@18.3.12)(storybook@8.4.7(prettier@3.4.2))(typescript@5.7.2))(typescript@5.7.2)
+        specifier: ^0.1.8
+        version: 0.1.8(@rsbuild/core@1.1.13)(@rslib/core@0.2.2(typescript@5.7.2))(storybook-builder-rsbuild@0.1.8(@rsbuild/core@1.1.13)(@rspack/core@1.1.8(@swc/helpers@0.5.15))(@types/react@18.3.12)(storybook@8.4.7(prettier@3.4.2))(typescript@5.7.2))(typescript@5.7.2)
       storybook-react-rsbuild:
-        specifier: ^0.1.7
-        version: 0.1.7(@rsbuild/core@1.1.13)(@rspack/core@1.1.8(@swc/helpers@0.5.15))(@storybook/test@8.4.7(storybook@8.4.7(prettier@3.4.2)))(@types/react@18.3.12)(react-dom@19.0.0(react@18.3.1))(react@18.3.1)(rollup@4.30.1)(storybook@8.4.7(prettier@3.4.2))(typescript@5.7.2)(webpack@5.88.0(esbuild@0.24.2))
+        specifier: ^0.1.8
+        version: 0.1.8(@rsbuild/core@1.1.13)(@rspack/core@1.1.8(@swc/helpers@0.5.15))(@storybook/test@8.4.7(storybook@8.4.7(prettier@3.4.2)))(@types/react@18.3.12)(react-dom@19.0.0(react@18.3.1))(react@18.3.1)(rollup@4.30.1)(storybook@8.4.7(prettier@3.4.2))(typescript@5.7.2)(webpack@5.88.0(esbuild@0.24.2))
       tailwindcss:
         specifier: 'catalog:'
         version: 4.0.0-beta.9
@@ -2815,8 +2809,8 @@ packages:
       '@rsbuild/core':
         optional: true
 
-  '@rslib/core@0.1.5':
-    resolution: {integrity: sha512-m0OPJNy5ZZqqKDNWTdiG8GELgg++77Ndx3Op48mHMZ1aUSknqwKm59Rya/nZr/6fc3rvos1YM5FogXQ3/pt1/A==}
+  '@rslib/core@0.2.2':
+    resolution: {integrity: sha512-u4qKfoO2YAdtoga6NqCDcTfvqyaTZj/L0kZjDrbThMcD51qUb8HiCS8pX5Hwj5v4doGkk+rHeQnw0Ad7HyMPMQ==}
     engines: {node: '>=16.0.0'}
     hasBin: true
     peerDependencies:
@@ -7259,12 +7253,12 @@ packages:
     resolution: {integrity: sha512-yioayjNbHn6z1/Bywyb2Y4s3yvDAeXGOyxqD+LnVOinq6Mdmd++SW2wUNVzavyyHxd6+DxzWGIuosg6P1Rj8uA==}
     engines: {node: '>=6.0.0'}
 
-  postcss@8.4.38:
-    resolution: {integrity: sha512-Wglpdk03BSfXkHoQa3b/oulrotAkwrlLDRSOb9D0bN86FdRyE9lppSp33aHNPgBa0JKCoB+drFLZkQoRRYae5A==}
-    engines: {node: ^10 || ^12 || >=14}
-
   postcss@8.4.49:
     resolution: {integrity: sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==}
+    engines: {node: ^10 || ^12 || >=14}
+
+  postcss@8.5.0:
+    resolution: {integrity: sha512-27VKOqrYfPncKA2NrFOVhP5MGAfHKLYn/Q0mz9cNQyRAKYi3VNHwYU2qKKqPCqgBmeeJ0uAFB56NumXZ5ZReXg==}
     engines: {node: ^10 || ^12 || >=14}
 
   postgres-array@2.0.0:
@@ -7863,8 +7857,8 @@ packages:
   rope-sequence@1.3.4:
     resolution: {integrity: sha512-UT5EDe2cu2E/6O4igUr5PSFs23nvvukicWHx6GnOPlHAiiYbzNuCRQCuiUdHJQcqKalLKlrYJnjY0ySGsXNQXQ==}
 
-  rsbuild-plugin-dts@0.1.5:
-    resolution: {integrity: sha512-p5xN+Cxv59Pk7dHZJk3ca6ryycPfIbyVPk0KWuanLE0/c2s2A5KNJCB/Qyc/MZTYEXhcJNS8FTKxEMXXJGYwvA==}
+  rsbuild-plugin-dts@0.2.2:
+    resolution: {integrity: sha512-RwkVcMwig1+UHkVJFaD6tagjxZOQqIenbkLS+J85bEdKO/ra+YiLC1Gq3DItEv/hU02u5WPgJmQhaQWKb17T9w==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@microsoft/api-extractor': ^7
@@ -7880,15 +7874,6 @@ packages:
     resolution: {integrity: sha512-rbDLv+XmGeSQo9JWKSwBst3Qwx1opLqtQCnQ3t9Z0F0ZTxKOC1S/ypPv5tSn/S3GMHct5Yb76mMgh6p80hjOAQ==}
     peerDependencies:
       '@rsbuild/core': 1.x || ^1.0.1-beta.0
-    peerDependenciesMeta:
-      '@rsbuild/core':
-        optional: true
-
-  rsbuild-plugin-tailwindcss@0.1.1:
-    resolution: {integrity: sha512-WUn0NO2kjYn9o8ZZ4Zg+85YzOjyeDhqw9jjd0N0t3eUM7gzKquBf9nGiVfoMzDNU8Balp+EFOkKhP1fgYGYoHg==}
-    peerDependencies:
-      '@rsbuild/core': ^1.1.0
-      tailwindcss: ^3.1.0
     peerDependenciesMeta:
       '@rsbuild/core':
         optional: true
@@ -8239,8 +8224,8 @@ packages:
   std-env@3.8.0:
     resolution: {integrity: sha512-Bc3YwwCB+OzldMxOXJIIvC6cPRWr/LxOp48CdQTOkPyk/t4JWWJbrilwBd7RJzKV8QW7tJkcgAmeuLLJugl5/w==}
 
-  storybook-addon-rslib@0.1.7:
-    resolution: {integrity: sha512-rIlfjuEIFW6YhOcqtxUurkUVpL7qULr7rMJOSisdzL6ta1EwiTlooRD71Xk/HCVZGg3Begp6x2Hf2TC+w/sAvw==}
+  storybook-addon-rslib@0.1.8:
+    resolution: {integrity: sha512-2pz6/IDewn2jsQRuHDNKOEZdekxDaDJISpiPI8gP8Ybp/4IByZGiKqm3SRlOzKEeZ1qY1TkZaC+HHvl/kV9fKw==}
     peerDependencies:
       '@rsbuild/core': ^1.0.1
       '@rslib/core': '>= 0.1.1 || >= 0.2'
@@ -8250,8 +8235,8 @@ packages:
       typescript:
         optional: true
 
-  storybook-builder-rsbuild@0.1.7:
-    resolution: {integrity: sha512-BfeZvZRISr7T42iuMVT3h+wcofVBcSMBz5mqC0LGKZJV+T9L4KdyXH5aU/QXHW9uRDzr6b/L2TLkUwvKAzdxdg==}
+  storybook-builder-rsbuild@0.1.8:
+    resolution: {integrity: sha512-g+31+LGvhKbeZeM0c109GIyxMsJSCRcBZar6mkAVT7z+BAVbfEwMhITviNU2oP1dPFDxF9gKfrEsVRwdqNIsDQ==}
     peerDependencies:
       '@rsbuild/core': ^1.0.1
       storybook: ^8.2.1
@@ -8260,8 +8245,8 @@ packages:
       typescript:
         optional: true
 
-  storybook-react-rsbuild@0.1.7:
-    resolution: {integrity: sha512-NwSw6pbld8N9wre8/FdmCpi7if5Fycuv0Cw8I75xLWrwLGbwHj3xARn2Vp8aAR0JZ5FNtiQsGb1DHndxsI7AmA==}
+  storybook-react-rsbuild@0.1.8:
+    resolution: {integrity: sha512-FTCTl6Y7rOnRIKIfnB94gkRjAs+a5J23bo1vRUFKYGLNFRdncbrthY3qUnJCQdg1rPt01MSugZ+iFXrQZzmUSQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       '@rsbuild/core': ^1.0.1
@@ -11988,10 +11973,10 @@ snapshots:
       - '@rspack/core'
       - typescript
 
-  '@rslib/core@0.1.5(typescript@5.7.2)':
+  '@rslib/core@0.2.2(typescript@5.7.2)':
     dependencies:
       '@rsbuild/core': 1.1.13
-      rsbuild-plugin-dts: 0.1.5(@rsbuild/core@1.1.13)(typescript@5.7.2)
+      rsbuild-plugin-dts: 0.2.2(@rsbuild/core@1.1.13)(typescript@5.7.2)
       tinyglobby: 0.2.10
     optionalDependencies:
       typescript: 5.7.2
@@ -13347,7 +13332,7 @@ snapshots:
       '@vue/shared': 3.5.13
       estree-walker: 2.0.2
       magic-string: 0.30.17
-      postcss: 8.4.49
+      postcss: 8.5.0
       source-map-js: 1.2.1
 
   '@vue/compiler-ssr@3.5.13':
@@ -13676,16 +13661,6 @@ snapshots:
   at-least-node@1.0.0: {}
 
   attr-accept@2.2.5: {}
-
-  autoprefixer@10.4.20(postcss@8.4.38):
-    dependencies:
-      browserslist: 4.24.4
-      caniuse-lite: 1.0.30001692
-      fraction.js: 4.3.7
-      normalize-range: 0.1.2
-      picocolors: 1.1.1
-      postcss: 8.4.38
-      postcss-value-parser: 4.2.0
 
   autoprefixer@10.4.20(postcss@8.4.49):
     dependencies:
@@ -17667,13 +17642,13 @@ snapshots:
       picocolors: 0.2.1
       source-map: 0.6.1
 
-  postcss@8.4.38:
+  postcss@8.4.49:
     dependencies:
       nanoid: 3.3.8
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  postcss@8.4.49:
+  postcss@8.5.0:
     dependencies:
       nanoid: 3.3.8
       picocolors: 1.1.1
@@ -18395,7 +18370,7 @@ snapshots:
 
   rope-sequence@1.3.4: {}
 
-  rsbuild-plugin-dts@0.1.5(@rsbuild/core@1.1.13)(typescript@5.7.2):
+  rsbuild-plugin-dts@0.2.2(@rsbuild/core@1.1.13)(typescript@5.7.2):
     dependencies:
       '@rsbuild/core': 1.1.13
       magic-string: 0.30.17
@@ -18408,12 +18383,6 @@ snapshots:
     dependencies:
       '@types/html-minifier-terser': 7.0.2
       html-minifier-terser: 7.2.0
-    optionalDependencies:
-      '@rsbuild/core': 1.1.13
-
-  rsbuild-plugin-tailwindcss@0.1.1(@rsbuild/core@1.1.13)(tailwindcss@4.0.0-beta.9):
-    dependencies:
-      tailwindcss: 4.0.0-beta.9
     optionalDependencies:
       '@rsbuild/core': 1.1.13
 
@@ -18750,15 +18719,15 @@ snapshots:
 
   std-env@3.8.0: {}
 
-  storybook-addon-rslib@0.1.7(@rsbuild/core@1.1.13)(@rslib/core@0.1.5(typescript@5.7.2))(storybook-builder-rsbuild@0.1.7(@rsbuild/core@1.1.13)(@rspack/core@1.1.8(@swc/helpers@0.5.15))(@types/react@18.3.12)(storybook@8.4.7(prettier@3.4.2))(typescript@5.7.2))(typescript@5.7.2):
+  storybook-addon-rslib@0.1.8(@rsbuild/core@1.1.13)(@rslib/core@0.2.2(typescript@5.7.2))(storybook-builder-rsbuild@0.1.8(@rsbuild/core@1.1.13)(@rspack/core@1.1.8(@swc/helpers@0.5.15))(@types/react@18.3.12)(storybook@8.4.7(prettier@3.4.2))(typescript@5.7.2))(typescript@5.7.2):
     dependencies:
       '@rsbuild/core': 1.1.13
-      '@rslib/core': 0.1.5(typescript@5.7.2)
-      storybook-builder-rsbuild: 0.1.7(@rsbuild/core@1.1.13)(@rspack/core@1.1.8(@swc/helpers@0.5.15))(@types/react@18.3.12)(storybook@8.4.7(prettier@3.4.2))(typescript@5.7.2)
+      '@rslib/core': 0.2.2(typescript@5.7.2)
+      storybook-builder-rsbuild: 0.1.8(@rsbuild/core@1.1.13)(@rspack/core@1.1.8(@swc/helpers@0.5.15))(@types/react@18.3.12)(storybook@8.4.7(prettier@3.4.2))(typescript@5.7.2)
     optionalDependencies:
       typescript: 5.7.2
 
-  storybook-builder-rsbuild@0.1.7(@rsbuild/core@1.1.13)(@rspack/core@1.1.8(@swc/helpers@0.5.15))(@types/react@18.3.12)(storybook@8.4.7(prettier@3.4.2))(typescript@5.7.2):
+  storybook-builder-rsbuild@0.1.8(@rsbuild/core@1.1.13)(@rspack/core@1.1.8(@swc/helpers@0.5.15))(@types/react@18.3.12)(storybook@8.4.7(prettier@3.4.2))(typescript@5.7.2):
     dependencies:
       '@rsbuild/core': 1.1.13
       '@rsbuild/plugin-type-check': 1.2.0(@rsbuild/core@1.1.13)(@rspack/core@1.1.8(@swc/helpers@0.5.15))(typescript@5.7.2)
@@ -18787,7 +18756,7 @@ snapshots:
       - '@rspack/core'
       - '@types/react'
 
-  storybook-react-rsbuild@0.1.7(@rsbuild/core@1.1.13)(@rspack/core@1.1.8(@swc/helpers@0.5.15))(@storybook/test@8.4.7(storybook@8.4.7(prettier@3.4.2)))(@types/react@18.3.12)(react-dom@19.0.0(react@18.3.1))(react@18.3.1)(rollup@4.30.1)(storybook@8.4.7(prettier@3.4.2))(typescript@5.7.2)(webpack@5.88.0(esbuild@0.24.2)):
+  storybook-react-rsbuild@0.1.8(@rsbuild/core@1.1.13)(@rspack/core@1.1.8(@swc/helpers@0.5.15))(@storybook/test@8.4.7(storybook@8.4.7(prettier@3.4.2)))(@types/react@18.3.12)(react-dom@19.0.0(react@18.3.1))(react@18.3.1)(rollup@4.30.1)(storybook@8.4.7(prettier@3.4.2))(typescript@5.7.2)(webpack@5.88.0(esbuild@0.24.2)):
     dependencies:
       '@rollup/pluginutils': 5.1.4(rollup@4.30.1)
       '@rsbuild/core': 1.1.13
@@ -18801,7 +18770,7 @@ snapshots:
       react-dom: 19.0.0(react@18.3.1)
       resolve: 1.22.10
       storybook: 8.4.7(prettier@3.4.2)
-      storybook-builder-rsbuild: 0.1.7(@rsbuild/core@1.1.13)(@rspack/core@1.1.8(@swc/helpers@0.5.15))(@types/react@18.3.12)(storybook@8.4.7(prettier@3.4.2))(typescript@5.7.2)
+      storybook-builder-rsbuild: 0.1.8(@rsbuild/core@1.1.13)(@rspack/core@1.1.8(@swc/helpers@0.5.15))(@types/react@18.3.12)(storybook@8.4.7(prettier@3.4.2))(typescript@5.7.2)
       tsconfig-paths: 4.2.0
     optionalDependencies:
       typescript: 5.7.2
@@ -19605,7 +19574,7 @@ snapshots:
   vite@6.0.7(@types/node@22.10.5)(jiti@2.4.2)(lightningcss@1.29.1)(sass-embedded@1.83.1)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.0):
     dependencies:
       esbuild: 0.24.2
-      postcss: 8.4.49
+      postcss: 8.5.0
       rollup: 4.30.1
     optionalDependencies:
       '@types/node': 22.10.5
