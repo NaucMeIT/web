@@ -1,4 +1,4 @@
-import { Button, Tooltip } from '@douyinfe/semi-ui'
+import { Button, Toast, Tooltip } from '@douyinfe/semi-ui'
 import { cn } from '@nmit-coursition/utils'
 import { type FileFormat, useContentCopy, useContentDownload } from '@nmit-coursition/utils'
 import { CheckCircle, Copy, Download } from 'lucide-react'
@@ -13,7 +13,6 @@ import {
   useContext,
   useRef,
 } from 'react'
-import { toast } from 'sonner'
 
 type Position = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left'
 
@@ -178,14 +177,14 @@ const DefaultActionBar: FC<DefaultActionBarProps> = ({
     <Actions.Wrapper position={position} className={className}>
       <Actions.Content>{children}</Actions.Content>
       <Actions.Copy
-        onSuccess={() => toast.success('Copied to clipboard')}
-        onError={(error) => toast.error(`Copy failed. Reason: ${error.message}`)}
+        onSuccess={() => Toast.success('Copied to clipboard')}
+        onError={(error) => Toast.error(`Copy failed. Reason: ${error.message}`)}
       />
       <Actions.Download
         filename={filename}
         format={format}
-        onSuccess={() => toast.success('Downloaded successfully')}
-        onError={(error) => toast.error(`Download failed. Reason: ${error.message}`)}
+        onSuccess={() => Toast.success('Downloaded successfully')}
+        onError={(error) => Toast.error(`Download failed. Reason: ${error.message}`)}
       />
     </Actions.Wrapper>
   )
