@@ -16,7 +16,7 @@ const TranscribeResult = ({
 }: { children: ReactNode; format: FileFormat; filename: string }) => {
   return (
     <Actions.DefaultActionBar format={format} filename={filename}>
-      <pre className='w-full h-auto max-h-72 overflow-x-auto whitespace-pre-wrap bg-gray-100 p-2 rounded break-words break-keep'>
+      <pre className='w-full h-auto max-h-72 overflow-x-auto whitespace-pre-wrap bg-gray-100 p-2 rounded-sm break-words break-keep'>
         {children}
       </pre>
     </Actions.DefaultActionBar>

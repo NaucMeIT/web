@@ -16,9 +16,10 @@
     "@tanstack/router-plugin": "^1.95.3",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "tailwindcss": "3"
+    "tailwindcss": "4.0.0-beta.9"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "4.0.0-beta.9",
     "@tanstack/react-router": "^1.95.3",
     "@tanstack/router-devtools": "^1.95.3",
     "react": "catalog:",

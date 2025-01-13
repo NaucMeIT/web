@@ -57,7 +57,7 @@ export const Quiz = createReactBlockSpec(
                 <label className='block text-sm font-medium'>Question</label>
                 <input
                   type='text'
-                  className='mt-1 block w-full rounded-md border-gray-300 shadow-sm'
+                  className='mt-1 block w-full rounded-md border-gray-300 shadow-xs'
                   defaultValue={props.block.props.question}
                   onBlur={(e) =>
                     props.editor.updateBlock(props.block, {
@@ -71,7 +71,7 @@ export const Quiz = createReactBlockSpec(
                 <label className='block text-sm font-medium'>Answer 1</label>
                 <input
                   type='text'
-                  className='mt-1 block w-full rounded-md border-gray-300 shadow-sm'
+                  className='mt-1 block w-full rounded-md border-gray-300 shadow-xs'
                   defaultValue={props.block.props.answer1}
                   onBlur={(e) =>
                     props.editor.updateBlock(props.block, {
@@ -85,7 +85,7 @@ export const Quiz = createReactBlockSpec(
                 <label className='block text-sm font-medium'>Answer 2</label>
                 <input
                   type='text'
-                  className='mt-1 block w-full rounded-md border-gray-300 shadow-sm'
+                  className='mt-1 block w-full rounded-md border-gray-300 shadow-xs'
                   defaultValue={props.block.props.answer2}
                   onBlur={(e) =>
                     props.editor.updateBlock(props.block, {
@@ -99,7 +99,7 @@ export const Quiz = createReactBlockSpec(
                 <label className='block text-sm font-medium'>Answer 3</label>
                 <input
                   type='text'
-                  className='mt-1 block w-full rounded-md border-gray-300 shadow-sm'
+                  className='mt-1 block w-full rounded-md border-gray-300 shadow-xs'
                   defaultValue={props.block.props.answer3}
                   onBlur={(e) =>
                     props.editor.updateBlock(props.block, {
@@ -113,7 +113,7 @@ export const Quiz = createReactBlockSpec(
                 <label className='block text-sm font-medium'>Answer 4</label>
                 <input
                   type='text'
-                  className='mt-1 block w-full rounded-md border-gray-300 shadow-sm'
+                  className='mt-1 block w-full rounded-md border-gray-300 shadow-xs'
                   defaultValue={props.block.props.answer4}
                   onBlur={(e) =>
                     props.editor.updateBlock(props.block, {
@@ -127,7 +127,7 @@ export const Quiz = createReactBlockSpec(
                 <label className='block text-sm font-medium'>Correct Answer(s)</label>
                 <input
                   type='text'
-                  className='mt-1 block w-full rounded-md border-gray-300 shadow-sm'
+                  className='mt-1 block w-full rounded-md border-gray-300 shadow-xs'
                   defaultValue={props.block.props.correctAnswer}
                   onBlur={(e) =>
                     props.editor.updateBlock(props.block, {

@@ -105,7 +105,7 @@ function Media() {
   }
 
   return (
-    <div className='flex justify-center h-screen'>
+    <div className='flex justify-center h-screen bg-semi-color-black'>
       <div className='p-4 max-w-2xl w-full'>
         {status === 'idle' && (
           <>
