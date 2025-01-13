@@ -1,7 +1,7 @@
 import { BlockNoteSchema, defaultBlockSpecs, filterSuggestionItems, insertOrUpdateBlock } from '@blocknote/core'
 import { BlockNoteView } from '@blocknote/mantine'
 import { SuggestionMenuController, getDefaultReactSlashMenuItems, useCreateBlockNote } from '@blocknote/react'
-import { ClientSideSuspense, LiveblocksProvider, RoomProvider, useRoom } from '@liveblocks/react/suspense'
+import { ClientSideSuspense, LiveblocksProvider } from '@liveblocks/react/suspense'
 import { LiveblocksYjsProvider } from '@liveblocks/yjs'
 import { publicConfig } from '@nmit-coursition/env'
 import { createFileRoute } from '@tanstack/react-router'
@@ -9,7 +9,9 @@ import { Effect } from 'effect'
 import { useEffect, useState } from 'react'
 import { MdQuiz } from 'react-icons/md'
 import * as Y from 'yjs'
+
 import { Quiz } from '../components/quiz-block'
+import { RoomProvider, useRoom } from '../liveblocks.config'
 
 import '@blocknote/core/fonts/inter.css'
 import '@blocknote/mantine/style.css'
