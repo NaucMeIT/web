@@ -44,7 +44,3 @@ export const secretsEffect = program.pipe(
     Effect.die(`Initialization of Infisical failed. Details: ${error.details}`),
   ),
 )
-
-type Secrets = Effect.Effect.Success<typeof secretsEffect>
-
-export let secretsEnv: Secrets = await Effect.runPromise(secretsEffect)

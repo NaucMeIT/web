@@ -1,13 +1,12 @@
 import { cors } from '@elysiajs/cors'
 import { swagger } from '@elysiajs/swagger'
-import { apiAuth } from '@nmit-coursition/api/auth'
-import { apiDev } from '@nmit-coursition/api/dev'
-import { apiV1 } from '@nmit-coursition/api/v1'
-import { typedEnv } from '@nmit-coursition/env'
-import { apiOrder } from '@nmit-coursition/order'
+import { typedBe } from '@nmit-coursition/api/full'
+import { publicConfig } from '@nmit-coursition/env'
 import * as Sentry from '@sentry/bun'
+import { Effect } from 'effect'
 import { Elysia } from 'elysia'
 
+const typedEnv = Effect.runSync(publicConfig)
 const app = new Elysia()
   .use(
     swagger({
@@ -47,10 +46,7 @@ const app = new Elysia()
     }
   })
   .use(cors())
-  .use(apiAuth)
-  .use(apiOrder)
-  .use(apiV1)
-  .use(apiDev)
+  .use(typedBe)
   .get('/', ({ request }) => ({ message: 'Welcome to Coursition API!', documentationUrl: `${request.url}swagger` }))
   .listen(typedEnv.BACKEND_PORT)
 

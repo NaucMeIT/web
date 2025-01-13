@@ -1,7 +1,7 @@
 import { InfisicalSDK } from '@infisical/sdk'
-import { parseError } from '@nmit-coursition/api/utils'
+import { parseError } from '@nmit-coursition/api/utils/lib/error'
 import { Data, Effect } from 'effect'
-import { typedEnv } from './typed'
+import { privateConfig } from './typed'
 
 export class EmptyError extends Data.TaggedError('EmptyError')<{}> {}
 export class FetchError extends Data.TaggedError('FetchError')<{ details: string }> {}
@@ -13,7 +13,7 @@ export class InfisicalClient extends Effect.Service<InfisicalClient>()('env/Infi
       ACCESS_TOKEN,
       PROJECT_ID: projectId,
       SITE_URL: { href: siteUrl },
-    } = typedEnv
+    } = yield* privateConfig
 
     if (!ACCESS_TOKEN || !projectId) {
       yield* Effect.fail(new EmptyError())

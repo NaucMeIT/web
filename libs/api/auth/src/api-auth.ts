@@ -7,11 +7,13 @@ import {
   invalidateSession,
   logoutBrj,
 } from '@nmit-coursition/auth'
-import { secretsEnv } from '@nmit-coursition/env'
+import { secretsEffect } from '@nmit-coursition/env'
 import { WorkOS } from '@workos-inc/node'
+import { Effect } from 'effect'
 import { Redacted } from 'effect'
 import { Elysia } from 'elysia'
 
+const secretsEnv = await Effect.runPromise(secretsEffect)
 const workos = new WorkOS(Redacted.value(secretsEnv.WORKOS_API_KEY), {
   clientId: Redacted.value(secretsEnv.WORKOS_CLIENT_ID),
 })

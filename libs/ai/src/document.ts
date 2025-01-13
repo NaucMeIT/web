@@ -1,9 +1,9 @@
-'use server'
-
-import { secretsEnv } from '@nmit-coursition/env'
+import { secretsEffect } from '@nmit-coursition/env'
 import { delay } from '@nmit-coursition/utils'
+import { Effect } from 'effect'
 import { Redacted } from 'effect'
 
+const secretsEnv = await Effect.runPromise(secretsEffect)
 const parseApi = 'https://api.cloud.llamaindex.ai/api/parsing/'
 const llamaCloudApiKey = secretsEnv.LLAMA_CLOUD_API_KEY
 

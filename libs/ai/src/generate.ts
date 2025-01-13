@@ -1,10 +1,12 @@
-'use server'
 import { createOpenAI } from '@ai-sdk/openai'
-import { secretsEnv } from '@nmit-coursition/env'
+import { secretsEffect } from '@nmit-coursition/env'
 import { trim } from '@nmit-coursition/utils'
 import { generateObject } from 'ai'
+import { Effect } from 'effect'
 import { Redacted } from 'effect'
 import { z } from 'zod'
+
+const secretsEnv = await Effect.runPromise(secretsEffect)
 
 const getQuizSchema = (amountQuestions: number, amountAnswers: number) => {
   const answerSchema = z.object({

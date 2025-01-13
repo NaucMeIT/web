@@ -1,5 +1,3 @@
-'use client'
-
 import { Button, Tooltip } from '@douyinfe/semi-ui'
 import { cn } from '@nmit-coursition/utils'
 import { type FileFormat, useContentCopy, useContentDownload } from '@nmit-coursition/utils'
@@ -12,7 +10,7 @@ import {
   type RefObject,
   createContext,
   isValidElement,
-  use,
+  useContext,
   useRef,
 } from 'react'
 import { toast } from 'sonner'
@@ -26,7 +24,7 @@ interface ActionsContextValue {
 const ActionsContext = createContext<ActionsContextValue | null>(null)
 
 const useActions = () => {
-  const context = use(ActionsContext)
+  const context = useContext(ActionsContext)
   if (!context) {
     throw new Error('Action components must be used within an ActionsWrapper')
   }

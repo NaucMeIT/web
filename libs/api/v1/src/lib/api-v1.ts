@@ -3,16 +3,18 @@ import FirecrawlApp from '@mendable/firecrawl-js'
 import { generateQuiz, getResult, getTranscript, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
 import { apiCommonGuard, downloadPublicMedia, formatApiErrorResponse, reportUsage } from '@nmit-coursition/api/utils'
 import { AUTH_BRJ_COOKIES_NAME } from '@nmit-coursition/auth'
-import { secretsEnv } from '@nmit-coursition/env'
+import { secretsEffect } from '@nmit-coursition/env'
 import {
   allowedDeepgramLanguagesAsType,
   allowedLlamaParseLanguagesAsType,
   languages,
   languagesAsType,
 } from '@nmit-coursition/utils'
+import { Effect } from 'effect'
 import { Redacted } from 'effect'
 import { Elysia, t } from 'elysia'
 
+const secretsEnv = await Effect.runPromise(secretsEffect)
 export const apiV1 = new Elysia({ prefix: '/v1', tags: ['v1'] })
   .use(apiCommonGuard)
   .group('/parse', (parseApp) =>

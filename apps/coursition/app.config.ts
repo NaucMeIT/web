@@ -10,7 +10,7 @@ export default defineConfig({
       target: 'node',
     },
     optimizeDeps: {
-      include: ['@douyinfe/semi-ui']
+      include: ['@douyinfe/semi-ui'],
     },
     build: {
       rollupOptions: {

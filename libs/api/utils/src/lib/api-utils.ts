@@ -1,9 +1,10 @@
 import { AUTH_COOKIES_NAME, validateSessionToken } from '@nmit-coursition/auth'
 import { Prisma, prisma } from '@nmit-coursition/db'
-import { secretsEnv } from '@nmit-coursition/env'
+import { secretsEffect } from '@nmit-coursition/env'
 import { generateRandomIdentifier, isDateBeforeNow } from '@nmit-coursition/utils'
 import type { cas__user } from '@prisma/client'
 import * as Sentry from '@sentry/bun'
+import { Effect } from 'effect'
 import { Elysia } from 'elysia'
 import { formatApiErrorResponse, parseApiKey } from '../api'
 import type { ApiErrorCode } from '../errorList'
@@ -17,6 +18,7 @@ import type {
   ExtendedRequest,
 } from '../typescript'
 
+const secretsEnv = await Effect.runPromise(secretsEffect)
 let API_KEY_TO_ID_CACHE: { [key: string]: bigint } = {}
 
 export const apiCommonGuard = new Elysia().guard({
