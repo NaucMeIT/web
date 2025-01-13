@@ -105,7 +105,7 @@ function Media() {
   }
 
   return (
-    <div className='flex justify-center h-screen bg-semi-color-black'>
+    <div className='flex justify-center h-screen'>
       <div className='p-4 max-w-2xl w-full'>
         {status === 'idle' && (
           <>
@@ -152,7 +152,7 @@ function Media() {
                 />
               </div>
               <div className='flex gap-4'>
-                <Button htmlType='submit' className='w-full'>
+                <Button block htmlType='submit'>
                   Transcribe
                 </Button>
               </div>
