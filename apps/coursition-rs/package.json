@@ -11,9 +11,9 @@
   },
   "devDependencies": {
     "@douyinfe/semi-rspack-plugin": "^2.73.0",
-    "@rsbuild/core": "^1.1.13",
-    "@rsbuild/plugin-node-polyfill": "^1.2.0",
-    "@rsbuild/plugin-react": "^1.1.0",
+    "@rsbuild/core": "catalog:",
+    "@rsbuild/plugin-node-polyfill": "catalog:",
+    "@rsbuild/plugin-react": "catalog:",
     "@rsbuild/plugin-sass": "^1.1.2",
     "@tanstack/router-plugin": "^1.95.3",
     "@types/react": "catalog:",
