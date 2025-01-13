@@ -1,10 +1,13 @@
-import { Button, Form, TabPane, Tabs, Toast } from '@douyinfe/semi-ui'
+import Button from '@douyinfe/semi-ui/lib/es/button'
+import { Form } from '@douyinfe/semi-ui/lib/es/form'
+import Tabs from '@douyinfe/semi-ui/lib/es/tabs'
+import TabPane from '@douyinfe/semi-ui/lib/es/tabs/TabPane'
+import Toast from '@douyinfe/semi-ui/lib/es/toast'
 import { convertSubtitlesToBlob } from '@nmit-coursition/utils'
 import { createFileRoute } from '@tanstack/react-router'
-import { useActionState, useState } from 'react'
+import { useState } from 'react'
 import { z } from 'zod'
 import { zfd } from 'zod-form-data'
-import { FileDropper } from '../components/file-dropper'
 import { StatusDisplay } from '../components/status-display'
 import { TranscriptionResults } from '../components/transcription-results'
 import { VideoPlayer } from '../components/video-player'
@@ -43,26 +46,30 @@ const statusStates = [
 
 function Media() {
   const [status, setStatus] = useState<'idle' | 'upload' | 'parse' | 'done'>('idle')
+  const [state, setState] = useState<any>(initialState)
 
-  const handleSubmit = async (formData: FormData) => {
+  const handleSubmit = async (values: Record<string, unknown>) => {
     try {
       setStatus('upload')
 
-      const rawFormData = Object.fromEntries(formData.entries())
-      const type = formData.has('file') ? 'file' : 'url'
-      const parsedData = fileSchema.parse({ type, ...rawFormData })
+      const type = 'file' in values ? 'file' : 'url'
+      const parsedData = fileSchema.parse({ type, ...values, file: (values as any).file[0].fileInstance })
 
       const videoSource = parsedData.type === 'file' ? URL.createObjectURL(parsedData.file) : parsedData.url
+      console.log(videoSource)
 
       setStatus('parse')
       const keywordsArray = parsedData.keywords ? parsedData.keywords.split(',').map((word) => `${word}:5`) : []
       const output: ('text' | 'vtt' | 'srt')[] = ['text', 'srt', 'vtt']
+      console.log(keywordsArray)
+      console.log(output)
 
       const options = {
         headers: {
           authorization: 'PRODPGrFxpGEtrOZfuWhnoJohUYBXuOE',
         },
       }
+      console.log(options)
       const { data, error } =
         parsedData.type == 'file'
           ? await app.v1.parse.media.post(
@@ -83,19 +90,19 @@ function Media() {
               },
               options,
             )
+      console.log(data)
+      console.log(error)
 
       if (error) throw new Error(error.value.description)
       const { text, srt, vtt } = data
       setStatus('done')
-      return { raw: text, srt, vtt, videoSource }
+      setState({ raw: text, srt, vtt, videoSource })
     } catch (error) {
       Toast.error(`Something went wrong. Reason: ${error instanceof Error ? error.message : 'Unknown.'}`)
       setStatus('idle')
-      return initialState
+      setState(initialState)
     }
   }
-
-  const [state, formAction] = useActionState((_: unknown, formData: FormData) => handleSubmit(formData), initialState)
 
   return (
     <div className='flex justify-center h-screen'>
@@ -103,19 +110,25 @@ function Media() {
         {status === 'idle' && (
           <>
             <h1 className='text-2xl font-bold mb-4'>Upload media</h1>
-            <form className='space-y-4' action={formAction}>
-              <Tabs type='line'>
+            <Form className='space-y-4' onSubmit={handleSubmit}>
+              <Tabs type='line' keepDOM={false}>
                 <TabPane tab='File' itemKey='file'>
-                  <FileDropper
-                    idleMessage="Drag 'n' drop some files here, or click to select files"
-                    dropZoneMessage='Drop the files here ...'
-                    inputName='file'
-                    maxFiles={1}
-                    accept={{ 'video/*': [], 'audio/*': [] }}
+                  {/*
+                    // TODO: Extract audio with Remotion as part of customRequest.
+                  */}
+                  <Form.Upload
+                    customRequest={() => {}}
+                    action=''
+                    draggable
+                    dragMainText="Drag 'n' drop some files here, or click to select files"
+                    dragSubText='Only video and audio files are allowed'
+                    field='file'
+                    limit={1}
+                    accept='video/*, audio/*'
                   />
                 </TabPane>
                 <TabPane tab='URL' itemKey='url'>
-                  <Form.Input field='url' id='url' name='url' placeholder='Enter media URL' helpText='URL' required />
+                  <Form.Input field='url' id='url' name='url' placeholder='Enter media URL' required />
                 </TabPane>
               </Tabs>
               <div className='flex gap-3 flex-col w-full'>
@@ -143,7 +156,7 @@ function Media() {
                   Transcribe
                 </Button>
               </div>
-            </form>
+            </Form>
           </>
         )}
         {status !== 'idle' && status !== 'done' && <StatusDisplay states={statusStates} status={status} />}

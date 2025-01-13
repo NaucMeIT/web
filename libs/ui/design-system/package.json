@@ -18,30 +18,32 @@
     "storybook": "storybook dev"
   },
   "devDependencies": {
-    "@rsbuild/core": "~1.1.8",
-    "@rsbuild/plugin-react": "^1.0.7",
+    "@rsbuild/core": "~1.1.13",
+    "@rsbuild/plugin-react": "^1.1.0",
     "@rsbuild/plugin-node-polyfill": "^1.2.0",
     "@rslib/core": "^0.1.2",
-    "@storybook/addon-essentials": "^8.4.6",
-    "@storybook/addon-interactions": "^8.4.6",
-    "@storybook/addon-links": "^8.4.6",
-    "@storybook/addon-onboarding": "^8.4.6",
-    "@storybook/blocks": "^8.4.6",
-    "@storybook/react": "^8.4.6",
-    "@storybook/test": "^8.4.6",
+    "@storybook/addon-essentials": "^8.4.7",
+    "@storybook/addon-interactions": "^8.4.7",
+    "@storybook/addon-links": "^8.4.7",
+    "@storybook/addon-onboarding": "^8.4.7",
+    "@storybook/blocks": "^8.4.7",
+    "@storybook/react": "^8.4.7",
+    "@storybook/test": "^8.4.7",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "autoprefixer": "10.4.20",
+    "postcss": "8.4.38",
     "react": "catalog:",
-    "rsbuild-plugin-tailwindcss": "^0.0.3",
-    "storybook": "^8.4.6",
-    "storybook-addon-rslib": "^0.1.5",
-    "storybook-react-rsbuild": "^0.1.5",
+    "rsbuild-plugin-tailwindcss": "^0.1.1",
+    "storybook": "^8.4.7",
+    "storybook-addon-rslib": "^0.1.7",
+    "storybook-react-rsbuild": "^0.1.7",
     "tailwindcss": "catalog:",
     "tailwindcss-animate": "catalog:",
     "typescript": "catalog:"
   },
   "peerDependencies": {
-    "react": ">=19.0.0",
-    "react-dom": ">=19.0.0"
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   }
 }

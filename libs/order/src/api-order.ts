@@ -1,7 +1,10 @@
 import { apiCommonGuard } from '@nmit-coursition/api/utils'
-import { secretsEnv, typedEnv } from '@nmit-coursition/env'
+import { publicConfig, secretsEffect } from '@nmit-coursition/env'
+import { Effect } from 'effect'
 import { Elysia } from 'elysia'
 
+const secretsEnv = await Effect.runPromise(secretsEffect)
+const typedPublic = Effect.runSync(publicConfig)
 export const apiOrder = new Elysia({ prefix: '/order' }).use(apiCommonGuard).post('/credit-order', async () => {
   const response = await fetch(`https://brj.app/api/v1/shop/order/create?apiKey=${secretsEnv.BRJ_API_KEY}`, {
     method: 'POST',
@@ -25,7 +28,7 @@ export const apiOrder = new Elysia({ prefix: '/order' }).use(apiCommonGuard).pos
         },
       ],
       // Tam budu přesměrován po úspěšném dokončení platby (děkovací stránky)
-      returnUrl: typedEnv.FRONTEND_URL.href,
+      returnUrl: typedPublic.FRONTEND_URL.href,
     }),
   })
   // Vždy přesměřovat na response.redirectUrl

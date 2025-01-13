@@ -1,7 +1,10 @@
 import { prisma } from '@nmit-coursition/db'
-import { secretsEnv } from '@nmit-coursition/env'
+import { secretsEffect } from '@nmit-coursition/env'
 import { randomStringGenerator } from '@nmit-coursition/utils'
+import { Effect } from 'effect'
 import type { User, UserProfileRawRecord, UserProfileResponse } from './typescript'
+
+const secretsEnv = await Effect.runPromise(secretsEffect)
 
 export async function getUserProfile(apiKey: string): Promise<UserProfileResponse> {
   const profileRecords = await prisma.$queryRaw<UserProfileRawRecord[]>`
