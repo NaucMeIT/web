@@ -9,7 +9,7 @@ import { TranscriptionResults } from '../components/transcription-results'
 import { VideoPlayer } from '../components/video-player'
 import { app } from '../lib/backend'
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute('/media')({
   component: Media,
 })
 
