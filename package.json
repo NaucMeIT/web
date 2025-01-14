@@ -40,7 +40,6 @@
     "effect": "^3.12.1",
     "elysia": "^1.2.10",
     "lefthook": "^1.10.3",
-    "lucide-react": "^0.471.0",
     "prisma": "^5.22.0",
     "react": "catalog:",
     "react-dom": "catalog:",

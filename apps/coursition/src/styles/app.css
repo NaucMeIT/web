@@ -1,5 +1,6 @@
 @source '../../../../libs/**/*.{js,ts,jsx,tsx}';
 @plugin 'tailwindcss-animate';
+@plugin "@iconify/tailwind4";
 
 @layer semi {
   @import "tailwindcss/theme" layer(theme);
@@ -13,20 +14,20 @@
     --color-primary-hover: var(--semi-color-primary-hover);
     --color-primary-active: var(--semi-color-primary-active);
     --color-primary-disabled: var(--semi-color-primary-disabled);
-    --color-primary-light-default: var(--semi-color-primary-light-default);
+    --color-primary-light: var(--semi-color-primary-light-default);
     --color-primary-light-hover: var(--semi-color-primary-light-hover);
     --color-primary-light-active: var(--semi-color-primary-light-active);
     --color-secondary: var(--semi-color-secondary);
     --color-secondary-hover: var(--semi-color-secondary-hover);
     --color-secondary-active: var(--semi-color-secondary-active);
     --color-secondary-disabled: var(--semi-color-secondary-disabled);
-    --color-secondary-light-default: var(--semi-color-secondary-light-default);
+    --color-secondary-light: var(--semi-color-secondary-light-default);
     --color-secondary-light-hover: var(--semi-color-secondary-light-hover);
     --color-secondary-light-active: var(--semi-color-secondary-light-active);
     --color-tertiary: var(--semi-color-tertiary);
     --color-tertiary-hover: var(--semi-color-tertiary-hover);
     --color-tertiary-active: var(--semi-color-tertiary-active);
-    --color-tertiary-light-default: var(--semi-color-tertiary-light-default);
+    --color-tertiary-light: var(--semi-color-tertiary-light-default);
     --color-tertiary-light-hover: var(--semi-color-tertiary-light-hover);
     --color-tertiary-light-active: var(--semi-color-tertiary-light-active);
     --color-default: var(--semi-color-default);
@@ -36,26 +37,26 @@
     --color-info-hover: var(--semi-color-info-hover);
     --color-info-active: var(--semi-color-info-active);
     --color-info-disabled: var(--semi-color-info-disabled);
-    --color-info-light-default: var(--semi-color-info-light-default);
+    --color-info-light: var(--semi-color-info-light-default);
     --color-info-light-hover: var(--semi-color-info-light-hover);
     --color-info-light-active: var(--semi-color-info-light-active);
     --color-success: var(--semi-color-success);
     --color-success-hover: var(--semi-color-success-hover);
     --color-success-active: var(--semi-color-success-active);
     --color-success-disabled: var(--semi-color-success-disabled);
-    --color-success-light-default: var(--semi-color-success-light-default);
+    --color-success-light: var(--semi-color-success-light-default);
     --color-success-light-hover: var(--semi-color-success-light-hover);
     --color-success-light-active: var(--semi-color-success-light-active);
     --color-danger: var(--semi-color-danger);
     --color-danger-hover: var(--semi-color-danger-hover);
     --color-danger-active: var(--semi-color-danger-active);
-    --color-danger-light-default: var(--semi-color-danger-light-default);
+    --color-danger-light: var(--semi-color-danger-light-default);
     --color-danger-light-hover: var(--semi-color-danger-light-hover);
     --color-danger-light-active: var(--semi-color-danger-light-active);
     --color-warning: var(--semi-color-warning);
     --color-warning-hover: var(--semi-color-warning-hover);
     --color-warning-active: var(--semi-color-warning-active);
-    --color-warning-light-default: var(--semi-color-warning-light-default);
+    --color-warning-light: var(--semi-color-warning-light-default);
     --color-warning-light-hover: var(--semi-color-warning-light-hover);
     --color-warning-light-active: var(--semi-color-warning-light-active);
     --color-focus-border: var(--semi-color-focus-border);
@@ -107,10 +108,10 @@
     --color-data-19: var(--semi-color-data-19);
 
     --radius-*: initial;
-    --radius-extra-small: var(--semi-border-radius-extra-small);
-    --radius-small: var(--semi-border-radius-small);
-    --radius-medium: var(--semi-border-radius-medium);
-    --radius-large: var(--semi-border-radius-large);
+    --radius-xs: var(--semi-border-radius-extra-small);
+    --radius-sm: var(--semi-border-radius-small);
+    --radius-md: var(--semi-border-radius-medium);
+    --radius-lg: var(--semi-border-radius-large);
     --radius-circle: var(--semi-border-radius-circle);
     --radius-full: var(--semi-border-radius-full);
   }

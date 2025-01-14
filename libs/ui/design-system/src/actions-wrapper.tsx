@@ -1,7 +1,6 @@
 import { Button, Toast, Tooltip } from '@douyinfe/semi-ui'
 import { cn } from '@nmit-coursition/utils'
 import { type FileFormat, useContentCopy, useContentDownload } from '@nmit-coursition/utils'
-import { CheckCircle, Copy, Download } from 'lucide-react'
 import {
   Children,
   type FC,
@@ -42,10 +41,9 @@ interface ActionButtonProps {
 const ActionButton = ({ onClick, icon, successIcon, isActive, title, className = '' }: ActionButtonProps) => (
   <Tooltip content={title} showArrow position='top'>
     <Button
-      size='small'
       theme='borderless'
       onClick={onClick}
-      className={cn('rounded-md transition-colors duration-200 p-2', className)}
+      className={cn('rounded-md transition-colors duration-200 p-2 bg-primary-light', className)}
     >
       <span className='sr-only'>{title}</span>
       {isActive && successIcon ? successIcon : icon}
@@ -62,8 +60,8 @@ interface ActionsWrapperProps {
 const getPositionStyles = (position: Position): string => {
   const base = 'absolute flex gap-2 p-2'
   const positions = {
-    'top-right': `${base} -top-12 right-2`,
-    'top-left': `${base} -top-12 left-2`,
+    'top-right': `${base} top-0 right-2`,
+    'top-left': `${base} top-0 left-2`,
     'bottom-right': `${base} bottom-2 right-2`,
     'bottom-left': `${base} bottom-2 left-2`,
   }
@@ -111,8 +109,8 @@ const CopyAction: FC<CopyActionProps> = ({ className = '', onSuccess, onError })
   return (
     <ActionButton
       onClick={copy}
-      icon={<Copy className='w-5 h-5 text-gray-500' />}
-      successIcon={<CheckCircle className='w-5 h-5 text-green-500' />}
+      icon={<span className='icon-[material-symbols--content-copy-outline-sharp] size-6 bg-primary' />}
+      successIcon={<span className='icon-[material-symbols--check] size-6 bg-success' />}
       isActive={isCopied}
       title='Copy to clipboard'
       className={className}
@@ -141,8 +139,8 @@ const DownloadAction: FC<DownloadActionProps> = ({
   return (
     <ActionButton
       onClick={download}
-      icon={<Download className='w-5 h-5 text-gray-500' />}
-      successIcon={<CheckCircle className='w-5 h-5 text-green-500' />}
+      icon={<span className='icon-[material-symbols--download-2-outline] size-6 bg-primary' />}
+      successIcon={<span className='icon-[material-symbols--check-box-outline-sharp] size-6 bg-success' />}
       isActive={isDownloaded}
       title='Download content'
       className={className}

@@ -104,9 +104,6 @@ importers:
       lefthook:
         specifier: ^1.10.3
         version: 1.10.4
-      lucide-react:
-        specifier: ^0.471.0
-        version: 0.471.1(react@18.3.1)
       prisma:
         specifier: ^5.22.0
         version: 5.22.0
@@ -198,6 +195,12 @@ importers:
       '@convex-dev/react-query':
         specifier: 0.0.0-alpha.8
         version: 0.0.0-alpha.8(@tanstack/react-query@5.64.1(react@18.3.1))(convex@1.17.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+      '@iconify/json':
+        specifier: ^2.2.294
+        version: 2.2.294
+      '@iconify/tailwind4':
+        specifier: ^1.0.1
+        version: 1.0.1
       '@liveblocks/client':
         specifier: ^2.15.2
         version: 2.15.2
@@ -1671,6 +1674,15 @@ packages:
   '@humanwhocodes/retry@0.4.1':
     resolution: {integrity: sha512-c7hNEllBlenFTHBky65mhq8WD2kbN9Q6gk0bTk8lSBvc554jpXSkST1iePudpt7+A/AQvuHs9EMqjHDXMY1lrA==}
     engines: {node: '>=18.18'}
+
+  '@iconify/json@2.2.294':
+    resolution: {integrity: sha512-Vopidp3VQtscXYB6qUI8uJf15ihrzaJjwhvLnxHIMB3JYqvCKI1JHI+UMKaWkbOOJDsOg9b0rIXmRovShk8YrQ==}
+
+  '@iconify/tailwind4@1.0.1':
+    resolution: {integrity: sha512-mp8SJp4upbuHg3bYfK9QGA9Q6tfUP10qGtiNmTd+thM7L7GquvPDUMZPQbr3zNqzlTB7b/LO++qj9IpYpfigxQ==}
+
+  '@iconify/types@2.0.0':
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
 
   '@infisical/sdk@3.0.4':
     resolution: {integrity: sha512-B7j5VkeQ+CsFRJnd6eNNkbjrWrzafe0CRU6og3AoY9wBub1DUQpt6ThiS+PGcuC/186qRrPYJxuJBr1nKWW95w==}
@@ -5436,11 +5448,6 @@ packages:
 
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
-
-  lucide-react@0.471.1:
-    resolution: {integrity: sha512-syOxwPhf62gg2YOsz72HRn+CIpeudFy67AeKnSR8Hn/fIIF4ubhNbRF+pQ2CaJrl+X9Os4PL87z2DXQi3DVeDA==}
-    peerDependencies:
-      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   luxon@3.5.0:
     resolution: {integrity: sha512-rh+Zjr6DNfUYR3bPwJEnuwDdqMbxZW7LOQfUN4B54+Cl+0o5zaU9RJ6bcidfDtC1cWCZXQ+nvX8bf6bAji37QQ==}
@@ -9255,6 +9262,17 @@ snapshots:
   '@humanwhocodes/retry@0.3.1': {}
 
   '@humanwhocodes/retry@0.4.1': {}
+
+  '@iconify/json@2.2.294':
+    dependencies:
+      '@iconify/types': 2.0.0
+      pathe: 1.1.2
+
+  '@iconify/tailwind4@1.0.1':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify/types@2.0.0': {}
 
   '@infisical/sdk@3.0.4':
     dependencies:
@@ -13920,10 +13938,6 @@ snapshots:
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
-
-  lucide-react@0.471.1(react@18.3.1):
-    dependencies:
-      react: 18.3.1
 
   luxon@3.5.0: {}
 
