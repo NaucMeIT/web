@@ -1,13 +1,26 @@
 import { SemiRspackPlugin } from '@douyinfe/semi-rspack-plugin'
-import { defineConfig } from '@rsbuild/core'
+import { type RsbuildPlugin, defineConfig } from '@rsbuild/core'
 import { pluginNodePolyfill } from '@rsbuild/plugin-node-polyfill'
 import { pluginReact } from '@rsbuild/plugin-react'
 import { pluginSass } from '@rsbuild/plugin-sass'
 import { RsdoctorRspackPlugin } from '@rsdoctor/rspack-plugin'
 import { TanStackRouterRspack } from '@tanstack/router-plugin/rspack'
+import { withZephyr } from 'zephyr-webpack-plugin'
+
+const zephyrRsbuildPlugin = (): RsbuildPlugin => ({
+  name: 'zephyr-rsbuild-plugin',
+  setup: (api) => {
+    api.modifyRspackConfig(async (config, utils) => {
+      //@ts-expect-error
+      const zephyrConfig = await withZephyr()(config)
+      //@ts-expect-error
+      utils.mergeConfig(config, zephyrConfig)
+    })
+  },
+})
 
 export default defineConfig({
-  plugins: [pluginSass(), pluginNodePolyfill(), pluginReact()],
+  plugins: [pluginSass(), pluginNodePolyfill(), pluginReact(), zephyrRsbuildPlugin()],
   source: {
     entry: { index: './src/main.tsx' },
   },

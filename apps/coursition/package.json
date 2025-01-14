@@ -23,7 +23,8 @@
     "convex": "^1.17.4",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "yjs": "^13.6.21"
+    "yjs": "^13.6.21",
+    "zephyr-webpack-plugin": "^0.0.31"
   },
   "devDependencies": {
     "@douyinfe/semi-rspack-plugin": "^2.73.0",
