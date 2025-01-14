@@ -21,11 +21,26 @@
         "command": "rsbuild dev --port 3000"
       }
     },
+    "dev:rsdoctor": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/coursition",
+        "command": "cross-env RSDOCTOR=true rsbuild dev --port 3000"
+      }
+    },
     "build": {
       "executor": "nx:run-commands",
       "options": {
         "cwd": "apps/coursition",
         "command": "rsbuild build"
+      },
+      "cache": true
+    },
+    "build:rsdoctor": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/coursition",
+        "command": "cross-env RSDOCTOR=true rsbuild build"
       },
       "cache": true
     },
