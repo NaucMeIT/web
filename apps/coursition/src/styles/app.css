@@ -114,6 +114,16 @@
     --radius-lg: var(--semi-border-radius-large);
     --radius-circle: var(--semi-border-radius-circle);
     --radius-full: var(--semi-border-radius-full);
+
+    --spacing-space-3xs: clamp(0.3125rem, 0.3125rem + 0vw, 0.3125rem);
+    --spacing-space-2xs: clamp(0.5625rem, 0.5408rem + 0.1087vw, 0.625rem);
+    --spacing-space-xs: clamp(0.875rem, 0.8533rem + 0.1087vw, 0.9375rem);
+    --spacing-space-s: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+    --spacing-space-m: clamp(1.6875rem, 1.6223rem + 0.3261vw, 1.875rem);
+    --spacing-space-l: clamp(2.25rem, 2.163rem + 0.4348vw, 2.5rem);
+    --spacing-space-xl: clamp(3.375rem, 3.2446rem + 0.6522vw, 3.75rem);
+    --spacing-space-2xl: clamp(4.5rem, 4.3261rem + 0.8696vw, 5rem);
+    --spacing-space-3xl: clamp(6.75rem, 6.4891rem + 1.3043vw, 7.5rem);
   }
 }
 
