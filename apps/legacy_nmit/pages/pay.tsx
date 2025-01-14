@@ -3,10 +3,10 @@ import { loadStripe } from "@stripe/stripe-js"
 import { Elements } from "@stripe/react-stripe-js"
 import createStripe from "stripe"
 import CheckoutForm from "../components/CheckoutForm"
-import { NextPage } from "next"
+import { type NextPage } from "next"
 import { Typography } from "../components/Typography"
 import type { GetServerSideProps } from "next"
-import { PaymentStatus, Plan } from "@prisma/client"
+import { PaymentStatus, type Plan } from "@prisma/client"
 import { prisma } from "../utils/prisma"
 import { getServerSession } from "next-auth"
 import { authOptions } from "./api/auth/[...nextauth]"
@@ -42,7 +42,10 @@ const appRedirect = {
 } as const
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const stripe = new createStripe(process.env.STRIPE_SECRET_KEY || "", { apiVersion: "2024-11-20.acacia", typescript: true })
+    const stripe = new createStripe(process.env.STRIPE_SECRET_KEY || "", {
+        apiVersion: "2024-11-20.acacia",
+        typescript: true,
+    })
     const session = await getServerSession(context.req, context.res, authOptions)
     const planId = session?.user.planId
     const userEmail = session?.user.email

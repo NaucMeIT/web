@@ -1,47 +1,48 @@
 import type { AppProps } from "next/app"
-import { Router } from 'next/router'
+import { Router } from "next/router"
 import { SessionProvider } from "next-auth/react"
 import type { Session } from "next-auth"
 import splitbee from "@splitbee/web"
 import { useEffect, useRef } from "react"
 import posthog from "posthog-js"
-import { PostHogProvider } from 'posthog-js/react'
+import { PostHogProvider } from "posthog-js/react"
 
 import "../styles/global.css"
 import Script from "next/script"
 
 function MyApp({ Component, pageProps }: Readonly<AppProps<{ readonly session: Session }>>) {
-  const oldUrlRef = useRef('')
+    const oldUrlRef = useRef("")
 
-  useEffect(() => {
-    posthog.init(process.env["NEXT_PUBLIC_POSTHOG_KEY"] || "", {
-      api_host: "/ingest",
-      ui_host: 'https://eu.posthog.com',
-      person_profiles: 'always',
-      // Enable debug mode in development
-      loaded: (posthog) => {
-        if (process.env.NODE_ENV === 'development') posthog.debug()
-      }
-    })
-    window.fbq?.('track', 'PageView')
+    useEffect(() => {
+        posthog.init(process.env["NEXT_PUBLIC_POSTHOG_KEY"] || "", {
+            api_host: "/ingest",
+            ui_host: "https://eu.posthog.com",
+            person_profiles: "always",
+            // Enable debug mode in development
+            loaded: (posthog) => {
+                if (process.env.NODE_ENV === "development") posthog.debug()
+            },
+        })
+        window.fbq?.("track", "PageView")
 
-    const handleRouteChange = () => {
-      window.fbq?.('track', 'PageView')
-      posthog?.capture('$pageview')
-    }
+        const handleRouteChange = () => {
+            window.fbq?.("track", "PageView")
+            posthog?.capture("$pageview")
+        }
 
-    const handleRouteChangeStart = () => posthog?.capture('$pageleave', {
-      $current_url: oldUrlRef.current
-    })
+        const handleRouteChangeStart = () =>
+            posthog?.capture("$pageleave", {
+                $current_url: oldUrlRef.current,
+            })
 
-    Router.events.on('routeChangeComplete', handleRouteChange);
-    Router.events.on('routeChangeStart', handleRouteChangeStart);
+        Router.events.on("routeChangeComplete", handleRouteChange)
+        Router.events.on("routeChangeStart", handleRouteChangeStart)
 
-    return () => {
-      Router.events.off('routeChangeComplete', handleRouteChange);
-      Router.events.off('routeChangeStart', handleRouteChangeStart);
-    }
-  }, [])
+        return () => {
+            Router.events.off("routeChangeComplete", handleRouteChange)
+            Router.events.off("routeChangeStart", handleRouteChangeStart)
+        }
+    }, [])
 
     useEffect(() => {
         splitbee.init({
@@ -52,11 +53,9 @@ function MyApp({ Component, pageProps }: Readonly<AppProps<{ readonly session: S
     }, [])
 
     return (
-      <>
-        <Script
-          id="fb-pixel"
-        >
-          {`
+        <>
+            <Script id='fb-pixel'>
+                {`
             (function(f, b, e, v, n, t, s) {
                 if (f.fbq) return;
 
@@ -88,14 +87,14 @@ function MyApp({ Component, pageProps }: Readonly<AppProps<{ readonly session: S
 
             fbq('init', '${process.env.NEXT_PUBLIC_FB_PIXEL}');
           `}
-        </Script>
-        <PostHogProvider client={posthog}>
-          <SessionProvider session={pageProps.session}>
-              <Component {...pageProps} />
-              <div id='calendly' />
-          </SessionProvider>
-        </PostHogProvider>
-      </>
+            </Script>
+            <PostHogProvider client={posthog}>
+                <SessionProvider session={pageProps.session}>
+                    <Component {...pageProps} />
+                    <div id='calendly' />
+                </SessionProvider>
+            </PostHogProvider>
+        </>
     )
 }
 

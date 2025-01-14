@@ -31,9 +31,9 @@ export function PickPackage({ selectedPackage, isEdit }: Props) {
                             replace: true,
                             scroll: false,
                             onClick: () => {
-                              splitbee.track("Package change", { package: p.title })
-                              posthog.capture('Package change', { package: p.title })
-                            }
+                                splitbee.track("Package change", { package: p.title })
+                                posthog.capture("Package change", { package: p.title })
+                            },
                         }}
                         priority={selectedPackage === p.title}
                     />
