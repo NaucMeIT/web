@@ -1,3 +1,5 @@
+import { LocaleProvider } from '@douyinfe/semi-ui'
+import en_GB from '@douyinfe/semi-ui/lib/es/locale/source/en_GB'
 import type { QueryClient } from '@tanstack/react-query'
 import { Outlet, ScriptOnce, ScrollRestoration, createRootRouteWithContext } from '@tanstack/react-router'
 import { Suspense, lazy } from 'react'
@@ -44,7 +46,7 @@ function RootComponent() {
 
 function RootDocument({ children }: { readonly children: React.ReactNode }) {
   return (
-    <>
+    <LocaleProvider locale={en_GB}>
       {children}
       <ScrollRestoration />
       <Suspense>
@@ -65,6 +67,6 @@ function RootDocument({ children }: { readonly children: React.ReactNode }) {
           }
         `}
       </ScriptOnce>
-    </>
+    </LocaleProvider>
   )
 }
