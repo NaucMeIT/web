@@ -11,7 +11,7 @@ export default defineConfig({
     entry: { index: './src/main.tsx' },
   },
   html: {
-    template: './index.html',
+    template: './src/index.html',
   },
   tools: {
     rspack: {
@@ -21,6 +21,14 @@ export default defineConfig({
         }),
         TanStackRouterRspack(),
       ],
+    },
+  },
+  output: {
+    copy: [{ from: './src/favicon.ico' }, { from: './src/assets' }],
+
+    target: 'web',
+    distPath: {
+      root: 'dist',
     },
   },
 })

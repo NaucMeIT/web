@@ -3,12 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "scripts": {
-    "typecheck": "tsc --noEmit",
-    "dev": "rsbuild dev --port 3000",
-    "build": "rsbuild build",
-    "start": "rsbuild preview"
-  },
   "dependencies": {
     "@blocknote/core": "^0.22.0",
     "@blocknote/mantine": "^0.22.0",
