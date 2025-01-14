@@ -19,6 +19,7 @@ export class InfisicalClient extends Effect.Service<InfisicalClient>()('env/Infi
       yield* Effect.fail(new EmptyError())
     }
 
+    console.log('Creating Infisical client with', { ACCESS_TOKEN, projectId, siteUrl })
     const client = yield* Effect.tryPromise({
       try: async () => {
         const client = new InfisicalSDK({ siteUrl })
