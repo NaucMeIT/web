@@ -13,7 +13,7 @@ zerops:
         PROJECT_ID: ${RUNTIME_PROJECT_ID}
         SITE_URL: ${RUNTIME_SITE_URL}
       prepareCommands:
-        - echo "Upgrading bun to 1.1.42"
+        - echo "Upgrading bun to 1.1.43"
         - bun upgrade
       buildCommands:
         - pnpm install --frozen-lockfile --prefer-offline --prod=false
