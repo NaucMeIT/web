@@ -1,21 +1,18 @@
-node_modules
-package-lock.json
-yarn.lock
-
+# Local
 .DS_Store
-.cache
-.env
+*.local
+*.log*
 
-.vercel
-.output
+# Dist
+node_modules
+dist/
 .vinxi
-.wrangler
+.output
+.vercel
 .netlify
-dist
-/build/
-/api/
-/server/build
-/public/build
-.env.local
+.wrangler
 
-_generated
+# IDE
+.vscode/*
+!.vscode/extensions.json
+.idea

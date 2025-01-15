@@ -1,0 +1,55 @@
+{
+  "name": "coursition",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/coursition",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/coursition",
+        "command": "tsc --noEmit",
+        "description": "Type check with tsc"
+      },
+      "cache": true
+    },
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/coursition",
+        "command": "rsbuild dev --port 3000"
+      }
+    },
+    "dev:rsdoctor": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/coursition",
+        "command": "cross-env RSDOCTOR=true rsbuild dev --port 3000"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/coursition",
+        "command": "rsbuild build"
+      },
+      "cache": true
+    },
+    "build:rsdoctor": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/coursition",
+        "command": "cross-env RSDOCTOR=true rsbuild build"
+      },
+      "cache": true
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/coursition",
+        "command": "rsbuild preview"
+      }
+    }
+  }
+}

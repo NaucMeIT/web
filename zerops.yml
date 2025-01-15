@@ -11,9 +11,11 @@ zerops:
         DATABASE_URL: ${RUNTIME_DATABASE_URL}
         DIRECT_URL: ${RUNTIME_DIRECT_URL}
         PROJECT_ID: ${RUNTIME_PROJECT_ID}
+        PUBLIC_CONVEX_URL: ${RUNTIME_PUBLIC_CONVEX_URL}
+        PUBLIC_LIVEBLOCKS_PUBLIC_API_KEY: ${RUNTIME_PUBLIC_LIVEBLOCKS_PUBLIC_API_KEY}
         SITE_URL: ${RUNTIME_SITE_URL}
       prepareCommands:
-        - echo "Upgrading bun to 1.1.42"
+        - echo "Upgrading bun to 1.1.43"
         - bun upgrade
       buildCommands:
         - pnpm install --frozen-lockfile --prefer-offline --prod=false
