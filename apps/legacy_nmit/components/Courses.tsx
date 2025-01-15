@@ -23,6 +23,30 @@ export function Courses() {
                     Mrknout na AI kurz {">"}
                 </Typography>
                 <p className='mb-2'>
+                    Jsi v IT už nějakou dobu, ale API ti pořád připadá jako černá magie? Neboj, nejsi sám! Ať už jsi
+                    vývojář, tester nebo se chystáš na kariéru v IT, znalost API je klíčová.
+                </p>
+                <Typography
+                    variant='link'
+                    component={Link}
+                    componentProps={{ href: "/kurz-api" }}
+                    className='underline mb-5 block'
+                >
+                    Mrknout na kurz API {">"}
+                </Typography>
+                <p className='mb-2'>
+                    S Figmou můžeš navrhovat jako profesionál, ať už jsi úplný začátečník, nebo se chceš zorientovat v
+                    moderních designových procesech. Zapomeň na frustrující hodiny tápání a nevzhledné weby.
+                </p>
+                <Typography
+                    variant='link'
+                    component={Link}
+                    componentProps={{ href: "/kurz-figma" }}
+                    className='underline mb-5 block'
+                >
+                    Mrknout na kurz Figmy {">"}
+                </Typography>
+                <p className='mb-2'>
                     Git je magie! Aby ses ji naučil, nemusíš ukrást zakázanou knihu drakovi. Stačí pochopit základní
                     koncepty, které tě vystřelí rychle dál.
                 </p>
