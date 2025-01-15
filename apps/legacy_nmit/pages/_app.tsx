@@ -54,6 +54,10 @@ function MyApp({ Component, pageProps }: Readonly<AppProps<{ readonly session: S
 
     return (
         <>
+            <Script
+                src='https://widget.senja.io/widget/d32af028-dee5-4e42-a9c9-a5628527ef7b/platform.js'
+                strategy='lazyOnload'
+            />
             <Script id='fb-pixel'>
                 {`
             (function(f, b, e, v, n, t, s) {
