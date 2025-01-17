@@ -1,3 +1,5 @@
+import { Button, Form, Toast } from '@douyinfe/semi-ui'
+
 type Answer = {
   text: string
   isCorrect: boolean
@@ -11,9 +13,8 @@ interface Props {
 export function QuizComponent({ question, answers }: Props) {
   const isMultipleCorrect = answers.filter((answer) => answer.isCorrect).length > 1
 
-  async function submitAction(formData: FormData) {
-    const selectedAnswers = Array.from(formData.getAll('answer'))
-
+  const handleSubmit = (values: { answers: string | string[] }) => {
+    const selectedAnswers = Array.isArray(values.answers) ? values.answers : [values.answers]
     const correctAnswers = answers.filter((answer) => answer.isCorrect).map((answer) => answer.text)
 
     if (isMultipleCorrect) {
@@ -24,55 +25,54 @@ export function QuizComponent({ question, answers }: Props) {
         correctAnswersCount === selectedAnswersCount &&
         correctAnswers.every((answer) => selectedAnswers.includes(answer))
       ) {
-        alert('Correct!')
+        Toast.success('Correct!')
       } else {
-        alert('Incorrect!')
+        Toast.error('Incorrect. Please try again.')
       }
     } else {
-      if (correctAnswers.includes(selectedAnswers[0] as string)) {
-        alert('Correct!')
+      if (selectedAnswers[0] === correctAnswers[0]) {
+        Toast.success('Correct!')
       } else {
-        alert('Incorrect!')
+        Toast.error('Incorrect. Please try again.')
       }
     }
   }
 
   return (
-    <div className='relative flex justify-between gap-4 min-w-56'>
-      <div className='flex flex-col gap-1'>
-        <h3>{question}</h3>
+    <Form onSubmit={handleSubmit}>
+      <Form.Label>{question}</Form.Label>
 
-        {isMultipleCorrect && (
-          <div className='absolute top-16'>
-            <p>Select all that apply.</p>
-          </div>
-        )}
+      {isMultipleCorrect ? (
+        <Form.CheckboxGroup
+          field='answers'
+          noLabel
+          className='flex flex-col'
+          rules={[{ required: true, message: 'Please select at least one answer' }]}
+        >
+          {answers.map((answer) => (
+            <Form.Checkbox key={answer.text} value={answer.text}>
+              {answer.text}
+            </Form.Checkbox>
+          ))}
+        </Form.CheckboxGroup>
+      ) : (
+        <Form.RadioGroup
+          field='answers'
+          noLabel
+          className='flex flex-col'
+          rules={[{ required: true, message: 'Please select an answer' }]}
+        >
+          {answers.map((answer) => (
+            <Form.Radio key={answer.text} value={answer.text}>
+              {answer.text}
+            </Form.Radio>
+          ))}
+        </Form.RadioGroup>
+      )}
 
-        <form action={submitAction} className='flex flex-col space-y-3'>
-          {isMultipleCorrect ? (
-            <div className='grid grid-cols-1 gap-2'>
-              {answers.map(({ text }) => (
-                <div className='flex items-center gap-2' key={text.replaceAll(' ', '')}>
-                  <input type='checkbox' name='answer' value={text} id={text.replaceAll(' ', '')} />
-                  <label htmlFor={text.replaceAll(' ', '')}>{text}</label>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div>
-              {answers.map(({ text }) => (
-                <div className='flex items-center gap-2' key={text.replaceAll(' ', '')}>
-                  <input type='radio' name='answer' value={text} id={text.replaceAll(' ', '')} required />
-                  <label htmlFor={text.replaceAll(' ', '')}>{text}</label>
-                </div>
-              ))}
-            </div>
-          )}
-          <button type='submit' className='mt-4 px-4 py-2 bg-blue-500 text-white rounded-sm'>
-            Submit
-          </button>
-        </form>
-      </div>
-    </div>
+      <Button htmlType='submit' type='primary'>
+        Submit
+      </Button>
+    </Form>
   )
 }

@@ -1,15 +1,7 @@
 import { createReactBlockSpec } from '@blocknote/react'
-import { Menu } from '@mantine/core'
-import { MdSettings } from 'react-icons/md'
+import { IconSetting } from '@douyinfe/semi-icons'
+import { Button, Form, Modal } from '@douyinfe/semi-ui'
 import { QuizComponent } from './quiz-component'
-
-const quizType = {
-  title: 'Multiple Choice',
-  value: 'multipleChoice',
-  icon: MdSettings,
-  color: 'text-blue-500',
-  backgroundColor: 'bg-blue-100',
-}
 
 export const Quiz = createReactBlockSpec(
   {
@@ -30,126 +22,89 @@ export const Quiz = createReactBlockSpec(
       answer4: {
         default: '',
       },
-      correctAnswer: {
-        default: 1,
+      isCorrect1: {
+        default: true,
+      },
+      isCorrect2: {
+        default: false,
+      },
+      isCorrect3: {
+        default: false,
+      },
+      isCorrect4: {
+        default: false,
       },
     },
     content: 'none',
   },
   {
     render: (props) => {
-      const Icon = quizType.icon
+      const [modal, contextHolder] = Modal.useModal()
+      let manageModal: { destroy: () => void }
+      const openModal = () => {
+        manageModal = modal.info(config)
+      }
+      const config = {
+        title: 'Edit Quiz',
+        footer: null,
+        content: (
+          <Form
+            className='p-2'
+            initValues={{
+              question: props.block.props.question,
+              answer1: props.block.props.answer1,
+              answer2: props.block.props.answer2,
+              answer3: props.block.props.answer3,
+              answer4: props.block.props.answer4,
+              isCorrect1: props.block.props.isCorrect1,
+              isCorrect2: props.block.props.isCorrect2,
+              isCorrect3: props.block.props.isCorrect3,
+              isCorrect4: props.block.props.isCorrect4,
+            }}
+            onSubmit={(values) => {
+              props.editor.updateBlock(props.block, {
+                type: 'quiz',
+                props: values,
+              })
+              manageModal.destroy()
+            }}
+          >
+            <Form.Input
+              field='question'
+              label='Question'
+              rules={[{ required: true, message: 'Question is required' }]}
+            />
+
+            {[1, 2, 3, 4].map((num) => (
+              <div key={num} className='flex gap-2 mb-2'>
+                <Form.Input field={`answer${num}`} label={`Answer ${num}`} className='flex-1' />
+                <Form.Checkbox field={`isCorrect${num}`} noLabel>
+                  Correct
+                </Form.Checkbox>
+              </div>
+            ))}
+
+            <Button htmlType='submit' type='primary'>
+              Save Changes
+            </Button>
+          </Form>
+        ),
+      }
       return (
-        <div className={`flex items-start p-4 rounded-lg ${quizType.backgroundColor}`}>
-          <Menu withinPortal={false}>
-            <Menu.Target>
-              <div
-                className='flex items-center justify-center w-8 h-8 rounded-full bg-white cursor-pointer mr-4'
-                contentEditable={false}
-              >
-                <Icon className={`${quizType.color}`} size={20} />
-              </div>
-            </Menu.Target>
-            <Menu.Dropdown>
-              <Menu.Label className='px-2 py-1 text-sm font-semibold'>Quiz Configuration</Menu.Label>
-              <Menu.Divider />
-              <div className='px-2 py-1'>
-                <label className='block text-sm font-medium'>Question</label>
-                <input
-                  type='text'
-                  className='mt-1 block w-full rounded-md border-gray-300 shadow-xs'
-                  defaultValue={props.block.props.question}
-                  onBlur={(e) =>
-                    props.editor.updateBlock(props.block, {
-                      type: 'quiz',
-                      props: { question: e.target.value },
-                    })
-                  }
-                />
-              </div>
-              <div className='px-2 py-1'>
-                <label className='block text-sm font-medium'>Answer 1</label>
-                <input
-                  type='text'
-                  className='mt-1 block w-full rounded-md border-gray-300 shadow-xs'
-                  defaultValue={props.block.props.answer1}
-                  onBlur={(e) =>
-                    props.editor.updateBlock(props.block, {
-                      type: 'quiz',
-                      props: { answer1: e.target.value },
-                    })
-                  }
-                />
-              </div>
-              <div className='px-2 py-1'>
-                <label className='block text-sm font-medium'>Answer 2</label>
-                <input
-                  type='text'
-                  className='mt-1 block w-full rounded-md border-gray-300 shadow-xs'
-                  defaultValue={props.block.props.answer2}
-                  onBlur={(e) =>
-                    props.editor.updateBlock(props.block, {
-                      type: 'quiz',
-                      props: { answer2: e.target.value },
-                    })
-                  }
-                />
-              </div>
-              <div className='px-2 py-1'>
-                <label className='block text-sm font-medium'>Answer 3</label>
-                <input
-                  type='text'
-                  className='mt-1 block w-full rounded-md border-gray-300 shadow-xs'
-                  defaultValue={props.block.props.answer3}
-                  onBlur={(e) =>
-                    props.editor.updateBlock(props.block, {
-                      type: 'quiz',
-                      props: { answer3: e.target.value },
-                    })
-                  }
-                />
-              </div>
-              <div className='px-2 py-1'>
-                <label className='block text-sm font-medium'>Answer 4</label>
-                <input
-                  type='text'
-                  className='mt-1 block w-full rounded-md border-gray-300 shadow-xs'
-                  defaultValue={props.block.props.answer4}
-                  onBlur={(e) =>
-                    props.editor.updateBlock(props.block, {
-                      type: 'quiz',
-                      props: { answer4: e.target.value },
-                    })
-                  }
-                />
-              </div>
-              <div className='px-2 py-1'>
-                <label className='block text-sm font-medium'>Correct Answer(s)</label>
-                <input
-                  type='text'
-                  className='mt-1 block w-full rounded-md border-gray-300 shadow-xs'
-                  defaultValue={props.block.props.correctAnswer}
-                  onBlur={(e) =>
-                    props.editor.updateBlock(props.block, {
-                      type: 'quiz',
-                      props: { correctAnswer: parseInt(e.target.value, 10) },
-                    })
-                  }
-                />
-              </div>
-            </Menu.Dropdown>
-          </Menu>
+        <div className='flex items-start p-4 rounded-lg'>
           <div>
             <QuizComponent
               question={props.block.props.question}
               answers={[
-                { text: props.block.props.answer1, isCorrect: props.block.props.correctAnswer === 1 },
-                { text: props.block.props.answer2, isCorrect: props.block.props.correctAnswer === 2 },
-                { text: props.block.props.answer3, isCorrect: props.block.props.correctAnswer === 3 },
-                { text: props.block.props.answer4, isCorrect: props.block.props.correctAnswer === 4 },
+                { text: props.block.props.answer1, isCorrect: props.block.props.isCorrect1 },
+                { text: props.block.props.answer2, isCorrect: props.block.props.isCorrect2 },
+                { text: props.block.props.answer3, isCorrect: props.block.props.isCorrect3 },
+                { text: props.block.props.answer4, isCorrect: props.block.props.isCorrect4 },
               ]}
             />
           </div>
+          <Button icon={<IconSetting />} theme='borderless' onClick={openModal} aria-label='Open Quiz configuration' />
+          {contextHolder}
         </div>
       )
     },
