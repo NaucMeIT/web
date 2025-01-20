@@ -34,5 +34,13 @@
       "quoteStyle": "single",
       "attributePosition": "auto"
     }
+  },
+  "css": {
+    "formatter": {
+      "enabled": false
+    },
+    "linter": {
+      "enabled": true
+    }
   }
 }
