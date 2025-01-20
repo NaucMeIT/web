@@ -85,8 +85,8 @@ blockquote {
 span[id]:not([id^="radix"]) {
     content: "";
     display: block;
-    height: 75px;
-    margin-top: -75px;
+    height: 150px;
+    margin-top: -150px;
     visibility: hidden;
     position: relative;
     z-index: -1;
