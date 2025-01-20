@@ -12,6 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as EditorImport } from './routes/editor'
+import { Route as IndexImport } from './routes/index'
 import { Route as MediaImport } from './routes/media'
 
 // Create/Update Routes
@@ -28,10 +29,23 @@ const EditorRoute = EditorImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const IndexRoute = IndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
     '/editor': {
       id: '/editor'
       path: '/editor'
@@ -52,36 +66,41 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
   '/editor': typeof EditorRoute
   '/media': typeof MediaRoute
 }
 
 export interface FileRoutesByTo {
+  '/': typeof IndexRoute
   '/editor': typeof EditorRoute
   '/media': typeof MediaRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
+  '/': typeof IndexRoute
   '/editor': typeof EditorRoute
   '/media': typeof MediaRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/editor' | '/media'
+  fullPaths: '/' | '/editor' | '/media'
   fileRoutesByTo: FileRoutesByTo
-  to: '/editor' | '/media'
-  id: '__root__' | '/editor' | '/media'
+  to: '/' | '/editor' | '/media'
+  id: '__root__' | '/' | '/editor' | '/media'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
   EditorRoute: typeof EditorRoute
   MediaRoute: typeof MediaRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
   EditorRoute: EditorRoute,
   MediaRoute: MediaRoute,
 }
@@ -94,9 +113,13 @@ export const routeTree = rootRoute._addFileChildren(rootRouteChildren)._addFileT
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
+        "/",
         "/editor",
         "/media"
       ]
+    },
+    "/": {
+      "filePath": "index.tsx"
     },
     "/editor": {
       "filePath": "editor.tsx"
