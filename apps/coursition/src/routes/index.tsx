@@ -11,13 +11,13 @@ import {
   IconSafe,
   IconSearch,
   IconSync,
-  IconTypograph,
+  IconTextRectangle,
   IconUpload,
 } from '@douyinfe/semi-icons'
 import { Button, Form, Toast } from '@douyinfe/semi-ui'
 import type { ButtonProps } from '@douyinfe/semi-ui/lib/es/button'
 import { createSafeKey } from '@nmit-coursition/utils'
-import { createFileRoute } from '@tanstack/react-router'
+import { Link, createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({
   component: Index,
@@ -32,7 +32,7 @@ const BuyLifetime = ({ withIcon = true, ...rest }: BuyLifetimeProps) => {
     <Button
       {...rest}
       className='w-min h-16 text-2xl'
-      type='primary'
+      theme='solid'
       size='large'
       iconPosition='right'
       icon={withIcon && <IconArrowUpRight />}
@@ -137,134 +137,194 @@ const consequences = [
 const steps = [
   { text: '1. Sign up for our lifetime deal.', icon: IconExit },
   { text: '2. Upload any video or audio file', icon: IconUpload },
-  { text: '3. Get accurate transcripts instantly', icon: IconTypograph },
+  { text: '3. Get accurate transcripts instantly', icon: IconTextRectangle },
 ]
 
 export default function Index() {
   return (
-    <div className='w-screen h-screen mx-auto p-6 md:p-12 flex flex-col overflow-y-auto overflow-x-hidden'>
-      <header className='w-full max-w-7xl mx-auto'>
-        <ul className='w-full grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-2'>
-          {actions.map((it) => (
-            <li key={it.name} className='flex items-center justify-center sm:justify-start gap-2'>
-              <it.icon className='w-5 h-5' />
-              <span className='uppercase text-sm'>{it.name}</span>
-            </li>
-          ))}
-        </ul>
-      </header>
+    <div>
+      <main className='mx-auto p-6 md:p-12 flex flex-col'>
+        <header className='w-full max-w-7xl mx-auto'>
+          <ul className='w-full grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-2'>
+            {actions.map((it) => (
+              <li key={it.name} className='flex items-center justify-center sm:justify-start gap-2'>
+                <it.icon size='extra-large' />
+                <span className='uppercase text-sm'>{it.name}</span>
+              </li>
+            ))}
+          </ul>
+        </header>
 
-      <section className='mt-12 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2'>
-        <div className='flex flex-col gap-4'>
-          <b className='text-xl font-semibold text-purple-700'>For any video & audio</b>
-          <h3 className='font-semibold text-5xl'>Get best transcription in no time.</h3>
-          <p className='text-lg font-semibold'>
-            From podcasts to lectures, interviews to vlogs - we outperform competitors in speed and accuracy.
+        <section className='mt-12 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4'>
+          <div className='flex flex-col gap-4 justify-center'>
+            <b className='text-xl font-semibold'>For any video & audio</b>
+            <h3 className='font-semibold text-5xl'>Get best transcription in no time.</h3>
+            <p className='text-lg font-semibold'>
+              From podcasts to lectures, interviews to vlogs - we outperform competitors in speed and accuracy.
+            </p>
+            <p className='text-lg'>
+              Secure, cost-effective transcription. Your media, instantly processed, never stored.
+            </p>
+
+            <BuyLifetime />
+          </div>
+
+          <div className='h-full items-center justify-center hidden md:flex rotate-6'>
+            <img
+              decoding='sync'
+              alt="Media upload interface for transcription services. Contains a dropzone for video/audio files with drag-and-drop functionality. Below are two input fields: one for specifying video language using keycodes (e.g., en-GB), and another for listing difficult-to-transcribe words. A blue 'Transcribe' button appears at the bottom. Interface also includes a URL tab option alongside the File upload tab."
+              src='./transcribe.avif'
+            />
+          </div>
+        </section>
+
+        <section className='mt-12 text-black flex'>
+          <div className='max-w-5xl flex flex-col gap-5 mx-auto'>
+            <ul className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-8'>
+              {benefits.map((it) => (
+                <li key={it.text} className='flex flex-col gap-4 items-center text-center'>
+                  <it.icon size='extra-large' />
+                  <span className='font-semibold max-w-60'>{it.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className='semi-always-dark bg-bg-0 text-text-1 mt-8 -mx-12'>
+          <div className='flex items-center justify-center font-semibold text-2xl py-7 text-center px-8'>
+            Maximize the value of video content by making every word searchable.
+          </div>
+        </section>
+
+        <section>
+          <div className='w-full flex h-[40dvh] min-h-96 items-center justify-center mt-8'>
+            <iframe
+              className='w-full h-auto'
+              src='https://app.supademo.com/embed/cm6bcgyfj0cwm4jcqtqf1u7x0?embed_v=2'
+              loading='lazy'
+              title='Coursition - Transcription demo'
+              allow='clipboard-write'
+              frameBorder='0'
+              allowFullScreen
+            ></iframe>
+          </div>
+        </section>
+
+        <section className='py-8 px-4 sm:px-6 lg:px-8'>
+          <div className='max-w-7xl mx-auto'>
+            <h4 className='font-semibold text-2xl text-center mb-6'>Lacking transcription?</h4>
+            <div className='flex flex-col lg:justify-center lg:items-center space-y-4'>
+              {consequences.map((item) => (
+                <div key={createSafeKey(item.problem)} className='flex-1 flex-row text-sm lg:text-base'>
+                  <span className='font-medium'>{item.problem}</span>
+                  <span className='mt-1'>{item.consequence}</span>
+                </div>
+              ))}
+            </div>
+            <h4 className='font-semibold text-2xl text-center mt-8'>Time to unlock your content</h4>
+            <div className='flex justify-center mt-6'>
+              <BuyLifetime />
+            </div>
+          </div>
+        </section>
+
+        <section className='mt-12 py-6 text-black flex flex-col gap-4 items-center justify-center'>
+          <h4 className='font-semibold text-2xl'>Why us?</h4>
+          <p className='w-3/4 max-w-96'>
+            Simplify your media. Best AI transcription, under your control. User-friendly interface, flexible pricing.
+            Make videos searchable and AI-ready. For creators, businesses, and consumers.
           </p>
-          <p className='text-lg'>
-            Secure, cost-effective transcription. Your media, instantly processed, never stored.
-          </p>
 
-          <BuyLifetime />
-        </div>
+          <BuyLifetime className='mt-4' />
+        </section>
 
-        <div className='h-full items-center justify-center hidden md:flex'>Insert image here</div>
-      </section>
+        <section className='mt-12 container mx-auto grid grid-cols-1 md:grid-cols-2'>
+          <div className='h-full items-center justify-center hidden md:flex -rotate-6'>
+            <img
+              alt='Video subtitle editor interface showing four consecutive timestamps from 00:00:05 to 00:00:13, with their corresponding dialogue lines about AI hype and productivity. Tabs for SRT, VTT (selected), and Raw formats are visible, with copy and download buttons in the top right.'
+              src='./transcript.png'
+              decoding='async'
+              loading='lazy'
+            />
+          </div>
 
-      <section className='mt-12 bg-gray-50 text-black flex -mx-12'>
-        <div className='max-w-5xl flex flex-col gap-5 mx-auto'>
-          <ul className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-8'>
-            {benefits.map((it) => (
-              <li key={it.text} className='flex flex-col items-center text-center'>
-                <it.icon className='text-purple-700 w-12 h-12 mb-4' />
-                <span className='text-purple-700 font-semibold max-w-60'>{it.text}</span>
+          <div className='flex flex-col gap-6'>
+            <h3 className='font-semibold text-4xl'>Smart transcription on your terms</h3>
+
+            <p className='text-xl'>
+              Smart transcripts, your way. Easy to start, simple to use. We tackle the tough stuff - quality, speed, and
+              data safety. Made for real people, always improving. Your content changes? We change too.
+            </p>
+
+            <BuyLifetime />
+          </div>
+        </section>
+
+        <section className='mt-12 py-12 text-black flex flex-col gap-8 items-center justify-center -mx-6'>
+          <h4 className='font-semibold text-2xl text-center px-4'>Just 3 simple steps</h4>
+
+          <ul className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+            {steps.map((it) => (
+              <li key={it.text} className='flex flex-col items-center gap-2'>
+                <it.icon size='extra-large' />
+                <span className='font-semibold text-lg'>{it.text}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className='mt-12 container mx-auto flex flex-col gap-6'>
+          <h4 className='font-semibold text-2xl text-center'>Our Promise to You</h4>
+          <ul className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8'>
+            {promises.map((it) => (
+              <li key={it.header} className='grid grid-rows-[auto_auto_1fr] gap-y-2'>
+                <div className='justify-self-center mb-4'>
+                  <it.icon size='extra-large' />
+                </div>
+                <h3 className='text-center text-lg font-bold'>{it.header}</h3>
+                <p className='text-lg'>{it.description}</p>
               </li>
             ))}
           </ul>
 
-          <div className='w-full flex items-center justify-center mt-8'>Interactive demo</div>
-        </div>
-      </section>
+          <h4 className='font-semibold text-xl text-center'>Curious about our transcription magic?</h4>
+          <GetInTouch />
+        </section>
+      </main>
 
-      <section className='bg-black text-white -mx-12'>
-        <div className='flex items-center justify-center font-semibold text-2xl py-7 text-center px-8'>
-          Maximize the value of video content by making every word searchable.
-        </div>
-      </section>
-
-      <section className='bg-white text-black py-8 px-4 sm:px-6 lg:px-8'>
-        <div className='max-w-7xl mx-auto'>
-          <h4 className='font-semibold text-2xl text-center mb-6'>Lacking transcription?</h4>
-          <div className='flex flex-col lg:justify-center lg:items-center space-y-4'>
-            {consequences.map((item) => (
-              <div key={createSafeKey(item.problem)} className='flex-1 flex-row text-sm lg:text-base'>
-                <span className='font-medium'>{item.problem}</span>
-                <span className='mt-1 text-gray-600'>{item.consequence}</span>
-              </div>
-            ))}
+      <footer className='semi-always-dark bg-bg-0 text-text-0 mt-8'>
+        <div className='max-w-6xl mx-auto px-4 py-8'>
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+            <div className='mb-8 md:mb-0'>
+              <h2 className='text-lg font-semibold mb-4'>Coursition s.r.o.</h2>
+              <p className='text-sm'>Empowering education through advanced video and audio transcription solutions.</p>
+            </div>
+            <div>
+              <h3 className='text-sm font-semibold mb-4'>Legal</h3>
+              <ul className='space-y-2'>
+                <li>
+                  <Link to='/tos'>Terms of Service</Link>
+                </li>
+                <li>
+                  <Link to='/pp'>Privacy Policy</Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className='text-sm font-semibold mb-4'>Company Details</h3>
+              <ul className='space-y-2 text-sm'>
+                <li>CIN: 21017069</li>
+                <li>TIN: CZ21017069</li>
+                <li>Email: info@coursition.com</li>
+              </ul>
+            </div>
           </div>
-          <h4 className='font-semibold text-2xl text-center mt-8'>Time to unlock your content</h4>
-          <div className='flex justify-center mt-6'>
-            <BuyLifetime />
+          <div className='mt-8 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center'>
+            <p className='text-sm'>© {new Date().getFullYear()} Coursition s.r.o. All rights reserved.</p>
           </div>
         </div>
-      </section>
-
-      <section className='mt-12 py-6 bg-gray-50 text-black flex flex-col gap-4 items-center justify-center -mx-12'>
-        <h4 className='font-semibold text-2xl'>Why us?</h4>
-        <p className='w-3/4 max-w-96'>
-          Simplify your media. Best AI transcription, under your control. User-friendly interface, flexible pricing.
-          Make videos searchable and AI-ready. For creators, businesses, and consumers.
-        </p>
-
-        <BuyLifetime className='mt-4' />
-      </section>
-
-      <section className='mt-12 container mx-auto grid grid-cols-1 md:grid-cols-2'>
-        <div className='h-full flex items-center justify-center'>Insert image here</div>
-
-        <div className='flex flex-col gap-6'>
-          <h3 className='font-semibold text-4xl'>Smart transcription on your terms</h3>
-
-          <p className='text-xl'>
-            Smart transcripts, your way. Easy to start, simple to use. We tackle the tough stuff - quality, speed, and
-            data safety. Made for real people, always improving. Your content changes? We change too.
-          </p>
-
-          <BuyLifetime />
-        </div>
-      </section>
-
-      <section className='mt-12 py-12 bg-gray-50 text-black flex flex-col gap-8 items-center justify-center w-screen -mx-6'>
-        <h4 className='font-semibold text-2xl text-center px-4'>Just 3 simple steps</h4>
-
-        <ul className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-          {steps.map((it) => (
-            <li key={it.text} className='flex flex-col items-center gap-2'>
-              <it.icon className='size-16 lg:size-24 text-purple-700' />
-              <span className='font-semibold text-lg'>{it.text}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className='mt-12 container mx-auto flex flex-col gap-6'>
-        <h4 className='font-semibold text-2xl text-center'>Our Promise to You</h4>
-        <ul className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8'>
-          {promises.map((it) => (
-            <li key={it.header} className='grid grid-rows-[auto_auto_1fr] gap-y-2'>
-              <div className='justify-self-center mb-4'>
-                <it.icon className='w-8 h-8 text-purple-700' />
-              </div>
-              <h3 className='text-center text-lg font-bold'>{it.header}</h3>
-              <p className='text-lg'>{it.description}</p>
-            </li>
-          ))}
-        </ul>
-
-        <h4 className='font-semibold text-xl text-center'>Curious about our transcription magic?</h4>
-        <GetInTouch />
-      </section>
+      </footer>
     </div>
   )
 }

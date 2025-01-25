@@ -29,6 +29,7 @@ export default defineConfig({
   },
   tools: {
     rspack: {
+      cache: true,
       plugins: [
         ...(process.env['RSDOCTOR'] === 'true' ? [new RsdoctorRspackPlugin()] : []),
         new SemiRspackPlugin({
@@ -36,6 +37,12 @@ export default defineConfig({
         }),
         TanStackRouterRspack(),
       ],
+      experiments: {
+        parallelCodeSplitting: true,
+        cache: {
+          type: 'persistent',
+        },
+      },
     },
   },
   output: {

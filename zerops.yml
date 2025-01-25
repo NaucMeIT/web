@@ -15,7 +15,7 @@ zerops:
         PUBLIC_LIVEBLOCKS_PUBLIC_API_KEY: ${RUNTIME_PUBLIC_LIVEBLOCKS_PUBLIC_API_KEY}
         SITE_URL: ${RUNTIME_SITE_URL}
       prepareCommands:
-        - echo "Upgrading bun to 1.1.43"
+        - echo "Upgrading bun to 1.2.0"
         - bun upgrade
       buildCommands:
         - pnpm install --frozen-lockfile --prefer-offline --prod=false
