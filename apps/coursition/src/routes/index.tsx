@@ -200,7 +200,7 @@ export default function Index() {
         <section>
           <div className='w-full flex h-[40dvh] min-h-96 items-center justify-center mt-8'>
             <iframe
-              className='w-full h-auto'
+              className='w-full h-full'
               src='https://app.supademo.com/embed/cm6bcgyfj0cwm4jcqtqf1u7x0?embed_v=2'
               loading='lazy'
               title='Coursition - Transcription demo'
