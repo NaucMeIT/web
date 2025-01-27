@@ -50,5 +50,5 @@ zerops:
     deploy:
       readinessCheck:
         httpGet:
-          path: /swagger
+          path: /api/swagger
           port: 3001
