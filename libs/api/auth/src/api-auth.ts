@@ -72,7 +72,7 @@ export const apiAuth = new Elysia({ prefix: '/auth', tags: ['auth'] })
         })
       }
 
-      return redirect('/')
+      return redirect(typedEnv.FRONTEND_URL.href)
     } catch (error) {
       // eslint-disable-next-line no-console debug info
       console.log('dump error', error)
