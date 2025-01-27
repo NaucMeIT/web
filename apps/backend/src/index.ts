@@ -45,7 +45,11 @@ const app = new Elysia()
       return error.message
     }
   })
-  .use(cors())
+  .use(
+    cors({
+      origin: /.*\.coursition\.com$/,
+    }),
+  )
   .use(typedBe)
   .get('/', ({ request }) => ({ message: 'Welcome to Coursition API!', documentationUrl: `${request.url}swagger` }))
   .listen(typedEnv.BACKEND_PORT)
