@@ -10,6 +10,7 @@ const typedEnv = Effect.runSync(publicConfig)
 const app = new Elysia()
   .use(
     swagger({
+      path: '/api/swagger',
       documentation: {
         info: {
           title: 'Coursition API',
