@@ -4,7 +4,7 @@ import { secretsEffect } from '@nmit-coursition/env'
 import { generateRandomIdentifier, isDateBeforeNow } from '@nmit-coursition/utils'
 import type { cas__user } from '@prisma/client'
 import * as Sentry from '@sentry/bun'
-import { Effect } from 'effect'
+import { Effect, Redacted } from 'effect'
 import { Elysia } from 'elysia'
 import { formatApiErrorResponse, parseApiKey } from '../api'
 import type { ApiErrorCode } from '../errorList'
@@ -74,15 +74,14 @@ function initSentry(request: ExtendedRequest) {
 }
 
 export async function reportUsage(identityId: string, duration: number, type: 'video' | 'document' | 'web') {
-  const apiKey = secretsEnv.BRJ_API_KEY
   const amount = Math.ceil(duration)
-  await fetch(`https://brj.app/api/v1/customer/credit-spend?apiKey=${apiKey}`, {
+  await fetch(`https://brj.app/api/v1/customer/credit-spend?apiKey=${Redacted.value(secretsEnv.BRJ_API_KEY)}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      apiKey,
+      apiKey: Redacted.value(secretsEnv.BRJ_API_KEY),
       identityId,
       amount,
       description: type,
