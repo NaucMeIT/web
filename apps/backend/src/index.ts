@@ -47,7 +47,10 @@ const app = new Elysia()
   })
   .use(
     cors({
-      origin: /.*\.coursition\.com$/,
+      origin: [
+        'https://coursition.com',
+        'https://api.coursition.com'
+      ],
     }),
   )
   .use(typedBe)
