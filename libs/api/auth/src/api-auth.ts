@@ -23,10 +23,12 @@ export const apiAuth = new Elysia({ prefix: '/auth', tags: ['auth'] })
   .get('/ping', () => ({ status: 'PONG' }))
   .get('/login', ({ redirect }) => {
     const baseUrl = typedEnv.BACKEND_URL.href
+    const redirectUri = `${baseUrl}/auth/callback`.replaceAll('//', '/').replaceAll(':/', '://')
+    console.log('redirectUri', redirectUri)
 
     const authorizationUrl = workos.userManagement.getAuthorizationUrl({
       provider: 'authkit',
-      redirectUri: `${baseUrl}/auth/callback`,
+      redirectUri: redirectUri,
       clientId: Redacted.value(secretsEnv.WORKOS_CLIENT_ID),
     })
 
