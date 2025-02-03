@@ -14,8 +14,22 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as EditorImport } from './routes/editor'
 import { Route as IndexImport } from './routes/index'
 import { Route as MediaImport } from './routes/media'
+import { Route as PpImport } from './routes/pp'
+import { Route as TosImport } from './routes/tos'
 
 // Create/Update Routes
+
+const TosRoute = TosImport.update({
+  id: '/tos',
+  path: '/tos',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PpRoute = PpImport.update({
+  id: '/pp',
+  path: '/pp',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const MediaRoute = MediaImport.update({
   id: '/media',
@@ -60,6 +74,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MediaImport
       parentRoute: typeof rootRoute
     }
+    '/pp': {
+      id: '/pp'
+      path: '/pp'
+      fullPath: '/pp'
+      preLoaderRoute: typeof PpImport
+      parentRoute: typeof rootRoute
+    }
+    '/tos': {
+      id: '/tos'
+      path: '/tos'
+      fullPath: '/tos'
+      preLoaderRoute: typeof TosImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -69,12 +97,16 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/editor': typeof EditorRoute
   '/media': typeof MediaRoute
+  '/pp': typeof PpRoute
+  '/tos': typeof TosRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/editor': typeof EditorRoute
   '/media': typeof MediaRoute
+  '/pp': typeof PpRoute
+  '/tos': typeof TosRoute
 }
 
 export interface FileRoutesById {
@@ -82,14 +114,16 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/editor': typeof EditorRoute
   '/media': typeof MediaRoute
+  '/pp': typeof PpRoute
+  '/tos': typeof TosRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/editor' | '/media'
+  fullPaths: '/' | '/editor' | '/media' | '/pp' | '/tos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/editor' | '/media'
-  id: '__root__' | '/' | '/editor' | '/media'
+  to: '/' | '/editor' | '/media' | '/pp' | '/tos'
+  id: '__root__' | '/' | '/editor' | '/media' | '/pp' | '/tos'
   fileRoutesById: FileRoutesById
 }
 
@@ -97,12 +131,16 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EditorRoute: typeof EditorRoute
   MediaRoute: typeof MediaRoute
+  PpRoute: typeof PpRoute
+  TosRoute: typeof TosRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EditorRoute: EditorRoute,
   MediaRoute: MediaRoute,
+  PpRoute: PpRoute,
+  TosRoute: TosRoute,
 }
 
 export const routeTree = rootRoute._addFileChildren(rootRouteChildren)._addFileTypes<FileRouteTypes>()
@@ -115,7 +153,9 @@ export const routeTree = rootRoute._addFileChildren(rootRouteChildren)._addFileT
       "children": [
         "/",
         "/editor",
-        "/media"
+        "/media",
+        "/pp",
+        "/tos"
       ]
     },
     "/": {
@@ -126,6 +166,12 @@ export const routeTree = rootRoute._addFileChildren(rootRouteChildren)._addFileT
     },
     "/media": {
       "filePath": "media.tsx"
+    },
+    "/pp": {
+      "filePath": "pp.tsx"
+    },
+    "/tos": {
+      "filePath": "tos.tsx"
     }
   }
 }

@@ -7,12 +7,13 @@ import {
   invalidateSession,
   logoutBrj,
 } from '@nmit-coursition/auth'
-import { secretsEffect } from '@nmit-coursition/env'
+import { publicConfig, secretsEffect } from '@nmit-coursition/env'
 import { WorkOS } from '@workos-inc/node'
 import { Effect } from 'effect'
 import { Redacted } from 'effect'
 import { Elysia } from 'elysia'
 
+const typedEnv = Effect.runSync(publicConfig)
 const secretsEnv = await Effect.runPromise(secretsEffect)
 const workos = new WorkOS(Redacted.value(secretsEnv.WORKOS_API_KEY), {
   clientId: Redacted.value(secretsEnv.WORKOS_CLIENT_ID),
@@ -20,14 +21,14 @@ const workos = new WorkOS(Redacted.value(secretsEnv.WORKOS_API_KEY), {
 
 export const apiAuth = new Elysia({ prefix: '/auth', tags: ['auth'] })
   .get('/ping', () => ({ status: 'PONG' }))
-  .get('/login', ({ request, redirect }) => {
-    const protocol = request.headers.get('x-forwarded-proto') || 'http'
-    const host = request.headers.get('host')
-    const baseUrl = host ? `${protocol}://${host}` : 'http://localhost:3000'
+  .get('/login', ({ redirect }) => {
+    const baseUrl = typedEnv.BACKEND_URL.href
+    const redirectUri = `${baseUrl}/auth/callback`.replaceAll('//', '/').replaceAll(':/', '://')
+    console.log('redirectUri', redirectUri)
 
     const authorizationUrl = workos.userManagement.getAuthorizationUrl({
       provider: 'authkit',
-      redirectUri: `${baseUrl}/auth/callback`,
+      redirectUri: redirectUri,
       clientId: Redacted.value(secretsEnv.WORKOS_CLIENT_ID),
     })
 
@@ -57,6 +58,7 @@ export const apiAuth = new Elysia({ prefix: '/auth', tags: ['auth'] })
         httpOnly: true,
         secure: true,
         sameSite: 'lax',
+        domain: 'coursition.com',
       })
 
       if (brjIdentity) {
@@ -66,10 +68,11 @@ export const apiAuth = new Elysia({ prefix: '/auth', tags: ['auth'] })
           httpOnly: true,
           secure: true,
           sameSite: 'lax',
+          domain: 'coursition.com',
         })
       }
 
-      return redirect('/')
+      return redirect(typedEnv.FRONTEND_URL.href)
     } catch (error) {
       // eslint-disable-next-line no-console debug info
       console.log('dump error', error)

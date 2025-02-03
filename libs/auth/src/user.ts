@@ -1,6 +1,6 @@
 import { prisma } from '@nmit-coursition/db'
 import { secretsEffect } from '@nmit-coursition/env'
-import { Effect } from 'effect'
+import { Effect, Redacted } from 'effect'
 import type { User } from './typescript'
 
 const secretsEnv = await Effect.runPromise(secretsEffect)
@@ -56,38 +56,41 @@ export async function createApiKey(identityId: string): Promise<string> {
 }
 
 export async function createBrjMagicAuth(userData: User): Promise<string> {
-  const request = await fetch(`https://brj.app/api/v1/customer/magic-auth?apiKey=${secretsEnv.BRJ_API_KEY}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
+  const res = await fetch(
+    `https://brj.app/api/v1/customer/magic-auth?apiKey=${Redacted.value(secretsEnv.BRJ_API_KEY)}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        apiKey: Redacted.value(secretsEnv.BRJ_API_KEY),
+        email: userData.email,
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+      }),
     },
-    body: JSON.stringify({
-      apiKey: secretsEnv.BRJ_API_KEY,
-      email: userData.email,
-      firstName: userData.firstName,
-      lastName: userData.lastName,
-    }),
-  })
+  )
+  const resParsed = (await res.json()) as { identityId?: string }
 
-  const response = (await request.json()) as { identityId?: string }
-  if ('identityId' in response && response.identityId) return String(response.identityId)
+  if ('identityId' in resParsed && resParsed.identityId) return String(resParsed.identityId)
   throw new Error(`User registration failed.`)
 }
 
 export async function logoutBrj(session: string) {
-  const res = await fetch(`https://brj.app/api/v1/customer/logout?apiKey=${secretsEnv.BRJ_API_KEY}`, {
+  const res = await fetch(`https://brj.app/api/v1/customer/logout?apiKey=${Redacted.value(secretsEnv.BRJ_API_KEY)}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ apiKey: secretsEnv.BRJ_API_KEY, identityId: session }),
+    body: JSON.stringify({ apiKey: Redacted.value(secretsEnv.BRJ_API_KEY), identityId: session }),
   })
   console.log(res)
 }
 
 export async function getBrjIdentity(session: string) {
   const res = await fetch(
-    `https://brj.app/api/v1/customer/get-account-info?apiKey=${secretsEnv.BRJ_API_KEY}&identityId=${session}`,
+    `https://brj.app/api/v1/customer/get-account-info?apiKey=${Redacted.value(secretsEnv.BRJ_API_KEY)}&identityId=${session}`,
   )
   return res.json()
 }
