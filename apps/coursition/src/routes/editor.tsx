@@ -40,7 +40,10 @@ const insertQuiz = (editor: typeof schema.BlockNoteEditor) => ({
         answer2: 'Answer 2',
         answer3: 'Answer 3',
         answer4: 'Answer 4',
-        correctAnswer: 1,
+        isCorrect1: false,
+        isCorrect2: true,
+        isCorrect3: false,
+        isCorrect4: false,
       },
     })
   },

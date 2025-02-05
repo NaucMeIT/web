@@ -18,6 +18,6 @@ export const mediaUrlSchema = zfd.formData({
   ...mediaInputBase,
 })
 
-export const mediaInputSchema = z.discriminatedUnion('type', [mediaFileSchema, mediaUrlSchema])
+export const mediaInputSchema = z.discriminatedUnion('type', [mediaFileSchema._def.schema, mediaUrlSchema._def.schema])
 
 export type MediaInput = z.infer<typeof mediaInputSchema>
