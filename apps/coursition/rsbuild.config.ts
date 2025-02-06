@@ -18,7 +18,15 @@ export default defineConfig({
     rspack: {
       cache: true,
       plugins: [
-        ...(process.env['RSDOCTOR'] === 'true' ? [new RsdoctorRspackPlugin()] : []),
+        ...(process.env['RSDOCTOR'] === 'true'
+          ? [
+              new RsdoctorRspackPlugin({
+                supports: {
+                  generateTileGraph: true,
+                },
+              }),
+            ]
+          : []),
         new SemiRspackPlugin({
           cssLayer: true,
         }),

@@ -1,4 +1,3 @@
-import { InfisicalSDK } from '@infisical/sdk'
 import { parseError } from '@nmit-coursition/api/utils/lib/error'
 import { Data, Effect } from 'effect'
 import { privateConfig } from './typed'
@@ -21,11 +20,35 @@ export class InfisicalClient extends Effect.Service<InfisicalClient>()('env/Infi
 
     const client = yield* Effect.tryPromise({
       try: async () => {
-        const client = new InfisicalSDK({ siteUrl })
-        await client.auth().accessToken(ACCESS_TOKEN)
-        return client
+        const normalizedSiteUrl = siteUrl.replace(/\/+$/, '')
+
+        return {
+          secrets: () => ({
+            listSecrets: async ({
+              environment,
+              projectId,
+            }: {
+              environment: string
+              projectId: string
+            }) => {
+              const url = `${normalizedSiteUrl}/api/v3/secrets/raw?workspaceId=${projectId}&environment=${environment}`
+              const response = await fetch(url, {
+                headers: {
+                  Authorization: `Bearer ${ACCESS_TOKEN}`,
+                },
+              })
+              if (!response.ok) {
+                throw new Error(`Error fetching secrets: ${response.statusText}`)
+              }
+              return response.json()
+            },
+          }),
+        }
       },
-      catch: (e) => new InfisicalError({ details: parseError(e).message || 'Unknown error during fetching secrets' }),
+      catch: (e) =>
+        new InfisicalError({
+          details: parseError(e).message || 'Unknown error during fetching secrets',
+        }),
     })
 
     const fetchSecrets = () =>
@@ -35,14 +58,18 @@ export class InfisicalClient extends Effect.Service<InfisicalClient>()('env/Infi
             environment: 'dev',
             projectId,
           }),
-        catch: (e) => new FetchError({ details: parseError(e).message || 'Unknown error during fetching secrets' }),
+        catch: (e) =>
+          new FetchError({
+            details: parseError(e).message || 'Unknown error during fetching secrets',
+          }),
       })
+
     const getSecrets = () =>
       Effect.gen(function* () {
         const { secrets } = yield* fetchSecrets()
         return secrets
-          .map((secret) => ({ [secret.secretKey]: secret.secretValue }))
-          .reduce((acc, curr) => Object.assign(acc, curr), {})
+          .map((secret: any) => ({ [secret.secretKey]: secret.secretValue }))
+          .reduce((acc: any, curr: any) => Object.assign(acc, curr), {}) as { [key: string]: string }
       })
 
     return { getSecrets } as const

@@ -28,7 +28,6 @@
     "@elysiajs/cors": "^1.2.0",
     "@elysiajs/eden": "^1.2.0",
     "@elysiajs/swagger": "^1.2.0",
-    "@infisical/sdk": "^3.0.4",
     "@mendable/firecrawl-js": "^1.15.7",
     "@prisma/client": "^5.22.0",
     "@sentry/bun": "^8.51.0",

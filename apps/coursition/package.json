@@ -9,7 +9,7 @@
     "@blocknote/react": "^0.23.0",
     "@convex-dev/react-query": "0.0.0-alpha.8",
     "@iconify/json": "^2.2.299",
-    "@iconify/tailwind4": "^1.0.1",
+    "@iconify/tailwind4": "1.0.1",
     "@liveblocks/client": "^2.16.1",
     "@liveblocks/react": "^2.16.1",
     "@liveblocks/yjs": "^2.16.1",

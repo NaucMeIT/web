@@ -7,7 +7,6 @@ export const zephyrRsbuildPlugin = (): RsbuildPlugin => ({
     api.modifyRspackConfig(async (config, utils) => {
       //@ts-expect-error
       const zephyrConfig = await withZephyr()(config)
-      console.log(JSON.stringify(zephyrConfig))
       //@ts-expect-error
       utils.mergeConfig(config, zephyrConfig)
     })
