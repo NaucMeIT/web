@@ -24,15 +24,15 @@
     "react": "catalog:",
     "react-dom": "catalog:",
     "yjs": "^13.6.23",
-    "zephyr-webpack-plugin": "^0.0.31"
+    "zephyr-webpack-plugin": "^0.0.34"
   },
   "devDependencies": {
     "@douyinfe/semi-rspack-plugin": "^2.73.0",
     "@rsbuild/core": "catalog:",
     "@rsbuild/plugin-node-polyfill": "catalog:",
     "@rsbuild/plugin-react": "catalog:",
-    "@rsbuild/plugin-sass": "^1.2.0",
-    "@rsdoctor/rspack-plugin": "1.0.0-alpha.2",
+    "@rsbuild/plugin-sass": "^1.2.1",
+    "@rsdoctor/rspack-plugin": "1.0.0-alpha.3",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "tailwindcss": "catalog:",

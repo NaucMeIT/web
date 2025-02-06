@@ -5,11 +5,11 @@ packages:
 
 # Define a catalog of version ranges.
 catalog:
-  "@rsbuild/core": 1.2.2
+  "@rsbuild/core": 1.2.4
   "@rsbuild/plugin-react": 1.1.0
-  "@rsbuild/plugin-node-polyfill": 1.2.0
-  tailwindcss: 4.0.0-beta.9
-  "@tailwindcss/postcss": 4.0.0-beta.9
+  "@rsbuild/plugin-node-polyfill": 1.3.0
+  tailwindcss: 4.0.3
+  "@tailwindcss/postcss": 4.0.3
   tailwindcss-animate: 1.0.7
   tailwind-merge: 2.6.0
   typescript: 5.7.3
