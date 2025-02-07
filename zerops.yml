@@ -3,7 +3,6 @@ zerops:
     build:
       base:
         - bun@nightly
-        - nodejs@latest
       os: alpine
       envVariables:
         NODE_ENV: production
@@ -19,7 +18,7 @@ zerops:
       prepareCommands:
         - apk update
         - apk add --no-cache python3 make g++ gcc git curl
-        - echo "Upgrading bun to 1.2.0"
+        - echo "Upgrading bun to 1.2.2"
         - bun upgrade
       buildCommands:
         - pnpm install --frozen-lockfile --prefer-offline --prod=false
