@@ -4,7 +4,7 @@ zerops:
       base:
         - bun@nightly
         - nodejs@latest
-      os: ubuntu  # Keep this as Ubuntu for build stage
+      os: alpine
       envVariables:
         NODE_ENV: production
         ACCESS_TOKEN: ${RUNTIME_ACCESS_TOKEN}
@@ -17,6 +17,8 @@ zerops:
         PUBLIC_LIVEBLOCKS_PUBLIC_API_KEY: ${RUNTIME_PUBLIC_LIVEBLOCKS_PUBLIC_API_KEY}
         SITE_URL: ${RUNTIME_SITE_URL}
       prepareCommands:
+        - apk update
+        - apk add --no-cache python3 make g++ gcc git curl
         - echo "Upgrading bun to 1.2.0"
         - bun upgrade
       buildCommands:
@@ -40,13 +42,10 @@ zerops:
         - port: 3001
           httpSupport: true
       prepareCommands:
-        - echo "Installing ffmpeg"
         - apk update
-        - apk add --no-cache ffmpeg
-        - echo "Installing yt-dlp"
-        - apk add --no-cache python3 curl
+        - apk add --no-cache ffmpeg python3 curl
         - curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
-        - chmod a+rx /usr/local/bin/yt-dlp  # Make executable
+        - chmod a+rx /usr/local/bin/yt-dlp
       start: apps/backend/dist/main
 
     deploy:
