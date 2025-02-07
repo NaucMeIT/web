@@ -4,7 +4,7 @@ zerops:
       base:
         - bun@nightly
         - nodejs@latest
-      os: ubuntu
+      os: ubuntu  # Keep this as Ubuntu for build stage
       envVariables:
         NODE_ENV: production
         ACCESS_TOKEN: ${RUNTIME_ACCESS_TOKEN}
@@ -34,19 +34,19 @@ zerops:
         - pnpm-workspace.yaml
 
     run:
-      base: ubuntu@latest
-      os: ubuntu
+      base: alpine@latest
+      os: alpine
       ports:
         - port: 3001
           httpSupport: true
       prepareCommands:
         - echo "Installing ffmpeg"
-        - add-apt-repository universe
-        - apt upgrade -y
-        - apt install -y ffmpeg
+        - apk update
+        - apk add --no-cache ffmpeg
         - echo "Installing yt-dlp"
-        - curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/bin/yt-dlp
-        - chmod a+rx /usr/bin/yt-dlp  # Make executable
+        - apk add --no-cache python3 curl
+        - curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
+        - chmod a+rx /usr/local/bin/yt-dlp  # Make executable
       start: apps/backend/dist/main
 
     deploy:
