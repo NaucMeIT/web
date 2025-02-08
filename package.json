@@ -24,7 +24,7 @@
   "dependencies": {
     "@ai-sdk/openai": "^0.0.72",
     "@deepgram/sdk": "^3.9.0",
-    "@douyinfe/semi-ui": "^2.72.3",
+    "@douyinfe/semi-ui": "^2.74.0",
     "@elysiajs/cors": "^1.2.0",
     "@elysiajs/eden": "^1.2.0",
     "@elysiajs/swagger": "^1.2.0",

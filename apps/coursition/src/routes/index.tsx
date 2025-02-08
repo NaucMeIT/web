@@ -16,12 +16,16 @@ import {
 } from '@douyinfe/semi-icons'
 import { Button, Form, Toast } from '@douyinfe/semi-ui'
 import type { ButtonProps } from '@douyinfe/semi-ui/lib/es/button'
+import { publicConfig } from '@nmit-coursition/env'
 import { createSafeKey } from '@nmit-coursition/utils'
 import { Link, createFileRoute } from '@tanstack/react-router'
+import { Effect } from 'effect'
 
 export const Route = createFileRoute('/')({
   component: Index,
 })
+
+const typedPublic = Effect.runSync(publicConfig)
 
 type BuyLifetimeProps = ButtonProps & {
   withIcon?: boolean
@@ -29,16 +33,18 @@ type BuyLifetimeProps = ButtonProps & {
 
 const BuyLifetime = ({ withIcon = true, ...rest }: BuyLifetimeProps) => {
   return (
-    <Button
-      {...rest}
-      className='w-min h-16 text-2xl'
-      theme='solid'
-      size='large'
-      iconPosition='right'
-      icon={withIcon && <IconArrowUpRight />}
-    >
-      Get lifetime deal
-    </Button>
+    <a href={`${typedPublic.BACKEND_URL.href}/auth/login`} className='w-min'>
+      <Button
+        {...rest}
+        className='w-min h-16 text-2xl'
+        theme='solid'
+        size='large'
+        iconPosition='right'
+        icon={withIcon && <IconArrowUpRight />}
+      >
+        Get lifetime deal
+      </Button>
+    </a>
   )
 }
 
