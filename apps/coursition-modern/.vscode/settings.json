@@ -13,12 +13,12 @@
     "**/.git": true,
     "**/node_modules": true
   },
-  //
+
   "editor.rulers": [80, 120],
   "files.eol": "\n",
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
-  //
+
   "cSpell.diagnosticLevel": "Hint",
   "javascript.validate.enable": false,
   "typescript.validate.enable": true,
@@ -51,7 +51,7 @@
       "quickfix.biome": "explicit",
       "source.organizeImports": "never",
       "source.organizeImports.biome": "explicit"
-    },
+    }
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "biomejs.biome",
@@ -59,7 +59,7 @@
       "quickfix.biome": "explicit",
       "source.organizeImports": "never",
       "source.organizeImports.biome": "explicit"
-    },
+    }
   },
   "[json]": {
     "editor.defaultFormatter": "biomejs.biome"
@@ -73,7 +73,7 @@
       "quickfix.biome": "explicit",
       "source.organizeImports": "never",
       "source.organizeImports.biome": "explicit"
-    },
+    }
   },
   "[javascript]": {
     "editor.defaultFormatter": "biomejs.biome",
@@ -81,7 +81,7 @@
       "quickfix.biome": "explicit",
       "source.organizeImports": "never",
       "source.organizeImports.biome": "explicit"
-    },
+    }
   },
   "emmet.triggerExpansionOnTab": true,
   "typescript.tsdk": "node_modules/typescript/lib"

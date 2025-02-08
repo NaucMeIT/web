@@ -1,3 +1,3 @@
-import { defineRuntimeConfig } from '@modern-js/runtime';
+import { defineRuntimeConfig } from '@modern-js/runtime'
 
-export default defineRuntimeConfig({});
+export default defineRuntimeConfig({})
