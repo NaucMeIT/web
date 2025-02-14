@@ -23,22 +23,28 @@
   },
   "dependencies": {
     "@modern-js/runtime": "2.64.1",
+    "@rsbuild/plugin-image-compress": "^1.1.0",
+    "postcss": "8.5.0",
+    "postcss-loader": "^8.1.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "rsbuild-plugin-tailwindcss": "^0.1.2"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@douyinfe/semi-rspack-plugin": "^2.73.0",
     "@modern-js/app-tools": "2.64.1",
     "@modern-js/plugin-tailwindcss": "2.64.1",
     "@modern-js/tsconfig": "2.64.1",
-    "@biomejs/biome": "1.9.4",
-    "typescript": "~5.7.3",
+    "@tailwindcss/postcss": "catalog:",
     "@types/jest": "~29.2.4",
     "@types/node": "~18.11.9",
     "@types/react": "^18.3.11",
     "@types/react-dom": "~18.3.1",
     "lint-staged": "~15.4.0",
-    "simple-git-hooks": "^2.11.1",
     "rimraf": "^6.0.1",
-    "tailwindcss": "3.4.17"
+    "simple-git-hooks": "^2.11.1",
+    "tailwindcss": "catalog:",
+    "typescript": "~5.7.3"
   }
 }
