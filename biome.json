@@ -5,7 +5,7 @@
     "clientKind": "git"
   },
   "files": {
-    "ignore": [".vercel", ".vinxi", ".nx", "apps/legacy_nmit/**"]
+    "ignore": [".vercel", ".vinxi", ".nx", "apps/legacy_nmit/**", "_generated"]
   },
   "formatter": {
     "enabled": true,
