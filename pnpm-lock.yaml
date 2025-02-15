@@ -284,6 +284,19 @@ importers:
         specifier: 'catalog:'
         version: 1.0.7(tailwindcss@4.0.3)
 
+  apps/parse-engine:
+    dependencies:
+      convex:
+        specifier: ^1.19.2
+        version: 1.19.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      typescript:
+        specifier: 'catalog:'
+        version: 5.7.3
+    devDependencies:
+      '@types/bun':
+        specifier: latest
+        version: 1.2.2
+
   libs/ui/design-system:
     dependencies:
       react-dom:
@@ -4360,6 +4373,25 @@ packages:
 
   convex@1.18.2:
     resolution: {integrity: sha512-a9VVy9Ss7Z5Twt80t0yekyB4CWUWB3EpH5aru5MxqD8EX2QLnu9lNtsTc+eKM1V1CTVvC3LuYaBWBdcvFqMsYQ==}
+    engines: {node: '>=18.0.0', npm: '>=7.0.0'}
+    hasBin: true
+    peerDependencies:
+      '@auth0/auth0-react': ^2.0.1
+      '@clerk/clerk-react': ^4.12.8 || ^5.0.0
+      react: ^17.0.2 || ^18.0.0 || ^19.0.0-0 || ^19.0.0
+      react-dom: ^17.0.2 || ^18.0.0 || ^19.0.0-0 || ^19.0.0
+    peerDependenciesMeta:
+      '@auth0/auth0-react':
+        optional: true
+      '@clerk/clerk-react':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
+  convex@1.19.2:
+    resolution: {integrity: sha512-rwhg5uVxFKVWf9zM8+QmpQ0MONE6FfeRoy8I/F2lZ7MIjtZyHVaIqpzmQ5ZvZFduseuBMrNy/Y9H4Olq1FlazQ==}
     engines: {node: '>=18.0.0', npm: '>=7.0.0'}
     hasBin: true
     peerDependencies:
@@ -13348,6 +13380,15 @@ snapshots:
   convert-source-map@2.0.0: {}
 
   convex@1.18.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      esbuild: 0.23.0
+      jwt-decode: 3.1.2
+      prettier: 3.4.2
+    optionalDependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+
+  convex@1.19.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       esbuild: 0.23.0
       jwt-decode: 3.1.2

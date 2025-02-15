@@ -1,0 +1,14 @@
+{
+  "name": "parse-engine",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "catalog:"
+  },
+  "dependencies": {
+    "convex": "^1.19.2"
+  }
+}
