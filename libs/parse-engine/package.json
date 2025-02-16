@@ -9,6 +9,8 @@
     "typescript": "catalog:"
   },
   "dependencies": {
-    "convex": "catalog:"
+    "convex": "catalog:",
+    "@convex-dev/workflow": "0.1.5",
+    "openai": "4.85.1"
   }
 }
