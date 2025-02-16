@@ -16,5 +16,6 @@
       },
       "cache": true
     }
-  }
+  },
+  "dependencies": ["parse-engine"]
 }

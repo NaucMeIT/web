@@ -47,6 +47,7 @@
       "@nmit-coursition/db": ["libs/db/src/index.ts"],
       "@nmit-coursition/env": ["libs/env/src/index.ts"],
       "@nmit-coursition/order": ["libs/order/src/index.ts"],
+      "@nmit-coursition/parse-engine/*": ["libs/parse-engine/convex/*"],
       "@nmit-coursition/ui/design-system": ["libs/ui/design-system/src/index.ts"],
       "@nmit-coursition/ui/utils": ["libs/ui/utils/src/index.ts"],
       "@nmit-coursition/utils": ["libs/utils/src/index.ts"]

@@ -9,6 +9,6 @@
     "typescript": "catalog:"
   },
   "dependencies": {
-    "convex": "^1.19.2"
+    "convex": "catalog:"
   }
 }
