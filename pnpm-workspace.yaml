@@ -17,6 +17,7 @@ catalog:
   react-dom: 18.3.1
   "@types/react": 18.3.12
   "@types/react-dom": 18.3.5
+  convex: 1.19.2
   effect: 3.14.2
   "@effect/language-service": 0.4.0
   "@effect/experimental": 0.44.2

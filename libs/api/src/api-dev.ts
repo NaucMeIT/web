@@ -1,5 +1,12 @@
 import { Elysia } from 'elysia'
-import { apiCommonGuard, computeUsage, reportSpend } from './utils/api-utils'
+import { apiCommonGuard, computeUsage, formatApiErrorResponse, reportSpend } from './utils/api-utils'
+import { publicConfig } from '@nmit-coursition/env'
+import { api } from '@nmit-coursition/parse-engine/_generated/api'
+import { ConvexClient } from 'convex/browser'
+import { Effect } from 'effect'
+
+const { CONVEX_URL } = await Effect.runPromise(publicConfig)
+const convexClient = new ConvexClient(CONVEX_URL.href)
 
 export const apiDev = new Elysia({ prefix: '/dev', tags: ['dev'] })
   .use(apiCommonGuard)
@@ -14,3 +21,29 @@ export const apiDev = new Elysia({ prefix: '/dev', tags: ['dev'] })
   .get('/report-usage', async () => await computeUsage({ organisationId: 1 }), {
     afterResponse: ({ request }) => reportSpend({ request }),
   })
+  .group('/convex', (convexApp) =>
+    convexApp.get(
+      '/tasks',
+      async ({ error: errorFn, request }) => {
+        try {
+          const tasks = await convexClient.query(api.example.get, {})
+          return { tasks }
+        } catch (error) {
+          return errorFn(500, formatApiErrorResponse(request, `Failed to fetch tasks: ${error}`))
+        }
+      },
+      {
+        response: {
+          200: t.Object({
+            tasks: t.Array(
+              t.Object({
+                text: t.String(),
+                isCompleted: t.Boolean(),
+                _id: t.Any(),
+              }),
+            ),
+          }),
+        },
+      },
+    ),
+  )

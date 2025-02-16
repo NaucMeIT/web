@@ -50,6 +50,7 @@ certificates
 
 # Env
 .env
+.env.local
 coursition-storage.json
 
 # Prisma

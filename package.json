@@ -48,6 +48,7 @@
     "ai": "^3.4.33",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "convex": "catalog:",
     "cross-env": "^7.0.3",
     "effect": "catalog:",
     "elysia": "^1.2.25",

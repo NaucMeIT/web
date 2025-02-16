@@ -3,6 +3,7 @@ import { Config, ConfigProvider, Effect, Layer } from 'effect'
 // ! To make sure we don't leak any sensitive information, we have to add this to publicVars and validate in publicConfig
 const publicVars = ConfigProvider.fromJson({
   PUBLIC_CONVEX_URL: process.env['PUBLIC_CONVEX_URL'],
+  PUBLIC_CONVEX_DEPLOYMENT: process.env['PUBLIC_CONVEX_DEPLOYMENT'],
   PUBLIC_LIVEBLOCKS_PUBLIC_API_KEY: process.env['PUBLIC_LIVEBLOCKS_PUBLIC_API_KEY'],
   PUBLIC_BACKEND_PORT: process.env['PUBLIC_BACKEND_PORT'],
   PUBLIC_BACKEND_URL: process.env['PUBLIC_BACKEND_URL'],
@@ -13,6 +14,7 @@ const publicLayer = Layer.setConfigProvider(publicVars)
 export const publicConfig = Effect.provide(
   Config.all({
     CONVEX_URL: Config.url('PUBLIC_CONVEX_URL'),
+    CONVEX_DEPLOYMENT: Config.string('PUBLIC_CONVEX_DEPLOYMENT'),
     LIVEBLOCKS_PUBLIC_API_KEY: Config.string('PUBLIC_LIVEBLOCKS_PUBLIC_API_KEY'),
     BACKEND_PORT: Config.integer('PUBLIC_BACKEND_PORT').pipe(Config.withDefault(3001)),
     BACKEND_URL: Config.url('PUBLIC_BACKEND_URL'),
