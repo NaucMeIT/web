@@ -85,7 +85,7 @@ importers:
         version: 7.37.2(express@4.21.2)(koa@2.15.3)
       ai:
         specifier: ^3.4.33
-        version: 3.4.33(react@18.3.1)(sswr@2.1.0(svelte@5.19.8))(svelte@5.19.8)(vue@3.5.13(typescript@5.7.3))(zod@3.24.1)
+        version: 3.4.33(openai@4.85.1(encoding@0.1.13)(ws@8.18.0)(zod@3.24.1))(react@18.3.1)(sswr@2.1.0(svelte@5.19.8))(svelte@5.19.8)(vue@3.5.13(typescript@5.7.3))(zod@3.24.1)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -292,9 +292,15 @@ importers:
 
   libs/parse-engine:
     dependencies:
+      '@convex-dev/workflow':
+        specifier: 0.1.5
+        version: 0.1.5(convex@1.19.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       convex:
         specifier: 'catalog:'
         version: 1.19.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      openai:
+        specifier: 4.85.1
+        version: 4.85.1(encoding@0.1.13)(ws@8.18.0)(zod@3.24.1)
       typescript:
         specifier: 'catalog:'
         version: 5.7.3
@@ -1126,6 +1132,11 @@ packages:
     peerDependencies:
       '@tanstack/react-query': ^5.0.0
       convex: ^1.17.0
+
+  '@convex-dev/workflow@0.1.5':
+    resolution: {integrity: sha512-1M/AiEid8cPD/XxujDpPl9rX35/JBiKNh6PgLQ+8qTnukz7cQ87dhFrfI0d+ocv00xDnJ7EEClfjkzByXKBmHg==}
+    peerDependencies:
+      convex: ~1.16.5 || >=1.17.0 <1.25.0
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -3970,6 +3981,9 @@ packages:
     resolution: {integrity: sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg==}
     hasBin: true
 
+  async-channel@0.2.0:
+    resolution: {integrity: sha512-BJyjI/sfKlyijaBt2hbOSxT28xGNtLR0QLzAKO1Hlnv5BULY7sAoYoTPW3lfr1ZIC7y+FxabxO9T8GXpyoofGg==}
+
   async-validator@3.5.2:
     resolution: {integrity: sha512-8eLCg00W9pIRZSB781UUX/H6Oskmm8xloZfr09lz5bikRpBVDlJ3hRVuxxP1SxcwsEYfJ4IU8Q19Y8/893r3rQ==}
 
@@ -6690,6 +6704,18 @@ packages:
   open@8.4.2:
     resolution: {integrity: sha512-7x81NCL719oNbsq/3mh+hVrAWmFuEYUqrq/Iw3kUzH8ReypT9QQ0BLoJS7/G9k6N81XjW4qHWtjWwe/9eLy1EQ==}
     engines: {node: '>=12'}
+
+  openai@4.85.1:
+    resolution: {integrity: sha512-jkX2fntHljUvSH3MkWh4jShl10oNkb+SsCj4auKlbu2oF4KWAnmHLNR5EpnUHK1ZNW05Rp0fjbJzYwQzMsH8ZA==}
+    hasBin: true
+    peerDependencies:
+      ws: ^8.18.0
+      zod: ^3.23.8
+    peerDependenciesMeta:
+      ws:
+        optional: true
+      zod:
+        optional: true
 
   openapi-types@12.1.3:
     resolution: {integrity: sha512-N4YtSYJqghVu4iek2ZUvcN/0aqH1kRDuNqzcycDxhOUpg7GdvLa2F3DgS6yBNhInhv2r/6I0Flkn7CqL8+nIcw==}
@@ -9637,6 +9663,11 @@ snapshots:
     dependencies:
       '@tanstack/react-query': 5.66.0(react@18.3.1)
       convex: 1.18.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+
+  '@convex-dev/workflow@0.1.5(convex@1.19.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
+    dependencies:
+      async-channel: 0.2.0
+      convex: 1.19.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
@@ -12818,7 +12849,7 @@ snapshots:
     dependencies:
       humanize-ms: 1.2.1
 
-  ai@3.4.33(react@18.3.1)(sswr@2.1.0(svelte@5.19.8))(svelte@5.19.8)(vue@3.5.13(typescript@5.7.3))(zod@3.24.1):
+  ai@3.4.33(openai@4.85.1(encoding@0.1.13)(ws@8.18.0)(zod@3.24.1))(react@18.3.1)(sswr@2.1.0(svelte@5.19.8))(svelte@5.19.8)(vue@3.5.13(typescript@5.7.3))(zod@3.24.1):
     dependencies:
       '@ai-sdk/provider': 0.0.26
       '@ai-sdk/provider-utils': 1.0.22(zod@3.24.1)
@@ -12834,6 +12865,7 @@ snapshots:
       secure-json-parse: 2.7.0
       zod-to-json-schema: 3.24.1(zod@3.24.1)
     optionalDependencies:
+      openai: 4.85.1(encoding@0.1.13)(ws@8.18.0)(zod@3.24.1)
       react: 18.3.1
       sswr: 2.1.0(svelte@5.19.8)
       svelte: 5.19.8
@@ -12938,6 +12970,8 @@ snapshots:
       tslib: 2.8.1
 
   astring@1.9.0: {}
+
+  async-channel@0.2.0: {}
 
   async-validator@3.5.2: {}
 
@@ -16432,6 +16466,21 @@ snapshots:
       define-lazy-prop: 2.0.0
       is-docker: 2.2.1
       is-wsl: 2.2.0
+
+  openai@4.85.1(encoding@0.1.13)(ws@8.18.0)(zod@3.24.1):
+    dependencies:
+      '@types/node': 18.19.75
+      '@types/node-fetch': 2.6.12
+      abort-controller: 3.0.0
+      agentkeepalive: 4.6.0
+      form-data-encoder: 1.7.2
+      formdata-node: 4.4.1
+      node-fetch: 2.7.0(encoding@0.1.13)
+    optionalDependencies:
+      ws: 8.18.0
+      zod: 3.24.1
+    transitivePeerDependencies:
+      - encoding
 
   openapi-types@12.1.3: {}
 
