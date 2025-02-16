@@ -1,17 +1,12 @@
 import { Button, Form, TabPane, Tabs, Toast } from '@douyinfe/semi-ui'
 import { convertSubtitlesToBlob } from '@nmit-coursition/utils'
-import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import { z } from 'zod'
 import { zfd } from 'zod-form-data'
-import { StatusDisplay } from '../components/status-display'
-import { TranscriptionResults } from '../components/transcription-results'
-import { VideoPlayer } from '../components/video-player'
-import { app } from '../lib/backend'
-
-export const Route = createFileRoute('/media')({
-  component: Media,
-})
+import { StatusDisplay } from '../../components/status-display'
+import { TranscriptionResults } from '../../components/transcription-results'
+import { VideoPlayer } from '../../components/video-player'
+import { app } from '../../lib/backend'
 
 const fileSchema = z.discriminatedUnion('type', [
   z.object({
@@ -40,7 +35,7 @@ const statusStates = [
   { key: 'parse', text: 'Transcribing' },
 ]
 
-function Media() {
+export default function Media() {
   const [status, setStatus] = useState<'idle' | 'upload' | 'parse' | 'done'>('idle')
   const [state, setState] = useState<any>(initialState)
 

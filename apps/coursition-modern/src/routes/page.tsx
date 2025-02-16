@@ -22,7 +22,6 @@ import { createSafeKey } from '@nmit-coursition/utils'
 import { Effect } from 'effect'
 import transcribe from '../static/transcribe.avif'
 import transcript from '../static/transcript.png'
-import './index.css'
 
 const typedPublic = Effect.runSync(publicConfig)
 
