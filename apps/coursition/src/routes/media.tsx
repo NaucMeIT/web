@@ -6,7 +6,7 @@ import { z } from 'zod'
 import { zfd } from 'zod-form-data'
 import { StatusDisplay } from '../components/status-display'
 import { TranscriptionResults } from '../components/transcription-results'
-import { VideoPlayer } from '../components/video-player'
+import { type MediaSrc, VideoPlayer } from '../components/video-player'
 import { app } from '../lib/backend'
 
 export const Route = createFileRoute('/media')({
@@ -28,7 +28,7 @@ const fileSchema = z.discriminatedUnion('type', [
   }),
 ])
 
-const initialState = {
+const initialState: { raw: string; srt: string; vtt: string; videoSource: MediaSrc } = {
   raw: '',
   srt: '',
   vtt: '',
@@ -42,15 +42,18 @@ const statusStates = [
 
 function Media() {
   const [status, setStatus] = useState<'idle' | 'upload' | 'parse' | 'done'>('idle')
-  const [state, setState] = useState<any>(initialState)
+  const [state, setState] = useState(initialState)
 
   const handleSubmit = async (values: Record<string, unknown>) => {
     try {
       setStatus('upload')
 
       const type = 'file' in values ? 'file' : 'url'
-      const parsedData = fileSchema.parse({ type, ...values, file: (values as any).file[0].fileInstance })
-      const videoSource = parsedData.type === 'file' ? URL.createObjectURL(parsedData.file) : parsedData.url
+      const parsedData = fileSchema.parse({ type, ...values, file: (values as any).file?.[0].fileInstance })
+      const videoSource =
+        parsedData.type === 'file'
+          ? ({ src: URL.createObjectURL(parsedData.file), type: 'video/mp4' } as const)
+          : parsedData.url
 
       setStatus('parse')
       const keywordsArray = parsedData.keywords ? parsedData.keywords.split(',').map((word) => `${word}:5`) : []
@@ -83,7 +86,7 @@ function Media() {
             )
 
       if (error) throw new Error(error.value.description)
-      const { text, srt, vtt } = data
+      const { text = '', srt = '', vtt = '' } = data
       setStatus('done')
       setState({ raw: text, srt, vtt, videoSource })
     } catch (error) {
