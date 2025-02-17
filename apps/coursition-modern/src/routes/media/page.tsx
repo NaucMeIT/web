@@ -1,5 +1,5 @@
-import { Button, Form, TabPane, Tabs, Toast } from '@douyinfe/semi-ui'
-import { convertSubtitlesToBlob } from '@nmit-coursition/utils'
+import { Button, Form, Select, TabPane, Tabs, Toast } from '@douyinfe/semi-ui'
+import { allowedDeepgramLanguages, convertSubtitlesToBlob, deepgramLanguageNames } from '@nmit-coursition/utils'
 import { useState } from 'react'
 import { z } from 'zod'
 import { zfd } from 'zod-form-data'
@@ -13,13 +13,13 @@ const fileSchema = z.discriminatedUnion('type', [
     type: z.literal('file'),
     file: zfd.file(),
     keywords: z.string().optional(),
-    language: z.string().optional(),
+    language: z.enum(allowedDeepgramLanguages),
   }),
   z.object({
     type: z.literal('url'),
     url: z.string().url(),
     keywords: z.string().optional(),
-    language: z.string().optional(),
+    language: z.enum(allowedDeepgramLanguages),
   }),
 ])
 
@@ -97,7 +97,7 @@ export default function Media() {
         {status === 'idle' && (
           <>
             <h1 className='text-2xl font-bold mb-4'>Upload media</h1>
-            <Form className='space-y-4' onSubmit={handleSubmit}>
+            <Form className='space-y-4' onSubmit={handleSubmit} initValues={{ language: 'en' }}>
               <Tabs type='line' keepDOM={false}>
                 <TabPane tab='File' itemKey='file'>
                   {/*
@@ -119,15 +119,19 @@ export default function Media() {
                 </TabPane>
               </Tabs>
               <div className='flex gap-3 flex-col w-full'>
-                {/*
-                  // TODO: Change to switch, so that it's impossible to pick incorrect language.
-                */}
-                <Form.Input
+                <Form.Select
                   field='language'
-                  placeholder='en-GB'
                   label='Language'
-                  helpText='What is main language of the video. Accepted is language keycode, e.g. en-GB, cs.'
-                />
+                  filter
+                  helpText='Main language of the video'
+                  style={{ width: 180 }}
+                >
+                  {Object.entries(deepgramLanguageNames).map(([code, name]) => (
+                    <Select.Option key={code} value={code}>
+                      {name}
+                    </Select.Option>
+                  ))}
+                </Form.Select>
                 <Form.TextArea
                   field='keywords'
                   label='Difficult words'

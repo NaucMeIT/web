@@ -47,7 +47,12 @@ const app = new Elysia()
   })
   .use(
     cors({
-      origin: ['https://coursition.com', 'https://api.coursition.com', `http://localhost:${typedEnv.FRONTEND_PORT}`],
+      origin: [
+        'https://coursition.com',
+        'https://api.coursition.com',
+        'http://localhost:3000',
+        'http://localhost:8080',
+      ],
     }),
   )
   .use(typedBe)
