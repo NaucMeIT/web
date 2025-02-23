@@ -204,4 +204,93 @@ Hello <c.highlight>world</c>`
       expect(transformToHighlightedVTT(input, 'srt')).toBe(expected)
     })
   })
+
+  describe('VTT Transformation', () => {
+    describe('Input Validation', () => {
+      it('should throw error for invalid time format', () => {
+        const invalidInput = `WEBVTT
+
+00:00:07.359 --> 00:00:07.670.5714285714284
+Invalid time format`
+
+        expect(() => transformToHighlightedVTT(invalidInput, 'vtt')).toThrow('Invalid time format')
+      })
+
+      it('should throw error for empty content', () => {
+        expect(() => transformToHighlightedVTT('', 'vtt')).toThrow('No valid subtitle cues found')
+      })
+    })
+
+    describe('Time Format Handling', () => {
+      it('should correctly handle milliseconds', () => {
+        const input = `WEBVTT
+
+00:00:07.359 --> 00:00:09.540
+test word`
+
+        const output = transformToHighlightedVTT(input, 'vtt')
+        const lines = output.split('\n')
+
+        // Find the first timestamp line
+        const timestampLine = lines.find((line) => line.includes('-->'))
+        expect(timestampLine).toBeDefined()
+
+        // Verify timestamp format
+        const timeRegex = /^\d{2}:\d{2}:\d{2}\.\d{3} --> \d{2}:\d{2}:\d{2}\.\d{3}$/
+        expect(timestampLine).toMatch(timeRegex)
+      })
+
+      it('should evenly distribute time for word-by-word highlighting', () => {
+        const input = `WEBVTT
+
+00:00:00.000 --> 00:00:02.000
+test word example`
+
+        const output = transformToHighlightedVTT(input, 'vtt')
+        const lines = output.split('\n').filter((line) => line.includes('-->'))
+
+        expect(lines.length).toBe(3) // One line per word
+
+        // Each word should get ~666.667ms (2000ms / 3 words)
+        // Due to rounding, we accept both .666 and .667 as valid values
+        expect(lines[0]).toMatch(/00:00:00\.000 --> 00:00:00\.66[67]/)
+        expect(lines[1]).toMatch(/00:00:00\.66[67] --> 00:00:01\.33[34]/)
+        expect(lines[2]).toMatch(/00:00:01\.33[34] --> 00:00:02\.000/)
+      })
+    })
+
+    describe('Highlighting', () => {
+      it('should correctly highlight each word', () => {
+        const input = `WEBVTT
+
+00:00:00.000 --> 00:00:02.000
+test word`
+
+        const output = transformToHighlightedVTT(input, 'vtt')
+
+        expect(output).toContain('<c.highlight>test</c> word')
+        expect(output).toContain('test <c.highlight>word</c>')
+      })
+
+      it('should preserve original text while highlighting', () => {
+        const input = `WEBVTT
+
+00:00:00.000 --> 00:00:02.000
+Complex sentence with multiple words`
+
+        const output = transformToHighlightedVTT(input, 'vtt')
+
+        // Each line should contain all words, with only one highlighted
+        const textLines = output
+          .split('\n')
+          .filter((line) => !line.includes('-->') && line.trim() !== '' && line !== 'WEBVTT')
+
+        textLines.forEach((line) => {
+          expect(line.replace(/<[^>]*>/g, '')).toBe('Complex sentence with multiple words')
+          expect(line.match(/<c\.highlight>/g)?.length).toBe(1)
+          expect(line.match(/<\/c>/g)?.length).toBe(1)
+        })
+      })
+    })
+  })
 })

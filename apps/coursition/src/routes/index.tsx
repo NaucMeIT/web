@@ -49,7 +49,7 @@ const BuyLifetime = ({ withIcon = true, ...rest }: BuyLifetimeProps) => {
 }
 
 const GetInTouch = () => {
-  const handleSubmit = async (values: unknown) => {
+  const handleSubmit = async () => {
     try {
       // await getInTouch(formdata)
       Toast.success('Invitation successfully sent')

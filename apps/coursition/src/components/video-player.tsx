@@ -32,8 +32,6 @@ export function VideoPlayer({ source, subtitles, subtitlesLang = 'en', className
       .then((response) => response.text())
       .then((content) => {
         const highlighted = transformToHighlightedVTT(content, 'vtt')
-        console.log(content)
-        console.log(highlighted)
         const blob = new Blob([highlighted], { type: 'text/vtt' })
         const url = URL.createObjectURL(blob)
         setHighlightedSubtitles(url)

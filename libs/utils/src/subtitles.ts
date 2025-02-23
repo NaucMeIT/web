@@ -20,41 +20,41 @@ class SubtitleParseError extends Error {
  * Converts time in HH:MM:SS,mmm or HH:MM:SS.mmm format to milliseconds
  */
 const timeToMs = (timeStr: string): number => {
-  const parts = timeStr.replace(',', '.').split('.')
-  if (parts.length === 0) {
-    throw new SubtitleParseError(`Invalid time format: ${timeStr}`)
+  // First validate the format
+  const timeRegex = /^(\d{2}):(\d{2}):(\d{2})[,.](\d{3})$/
+  const match = timeStr.match(timeRegex)
+  if (!match) {
+    throw new SubtitleParseError('Invalid time format')
   }
 
-  const [time = ''] = parts
-  const ms = parts[1] || '0'
-
-  const timeParts = time.split(':')
-  if (timeParts.length !== 3) {
-    throw new SubtitleParseError(`Invalid time format: ${timeStr}`)
-  }
-
-  const [hoursStr = '0', minutesStr = '0', secondsStr = '0'] = timeParts
+  const [, hoursStr, minutesStr, secondsStr, msStr] = match
   const hours = Number(hoursStr)
   const minutes = Number(minutesStr)
   const seconds = Number(secondsStr)
+  const ms = Number(msStr)
 
-  if (isNaN(hours) || isNaN(minutes) || isNaN(seconds)) {
-    throw new SubtitleParseError(`Invalid time values: ${timeStr}`)
+  if (isNaN(hours) || isNaN(minutes) || isNaN(seconds) || isNaN(ms)) {
+    throw new SubtitleParseError('Invalid time format')
   }
 
-  return (hours * 3600 + minutes * 60 + seconds) * 1000 + Number(ms)
+  // Validate ranges
+  if (minutes >= 60 || seconds >= 60 || ms >= 1000) {
+    throw new SubtitleParseError('Invalid time format')
+  }
+
+  return (hours * 3600 + minutes * 60 + seconds) * 1000 + ms
 }
 
 /**
  * Converts milliseconds to VTT time format (HH:MM:SS.mmm)
  */
 const msToVttTime = (ms: number): string => {
-  const pad = (n: number, width: number) => String(n).padStart(width, '0')
+  const pad = (n: number, width: number) => String(Math.round(n)).padStart(width, '0')
 
   const hours = Math.floor(ms / 3600000)
   const minutes = Math.floor((ms % 3600000) / 60000)
   const seconds = Math.floor((ms % 60000) / 1000)
-  const milliseconds = ms % 1000
+  const milliseconds = Math.round(ms % 1000)
 
   return `${pad(hours, 2)}:${pad(minutes, 2)}:${pad(seconds, 2)}.${pad(milliseconds, 3)}`
 }
@@ -65,18 +65,18 @@ const msToVttTime = (ms: number): string => {
 const parseTimeLine = (line: string): [number, number] => {
   const parts = line.split(' --> ')
   if (parts.length !== 2) {
-    throw new SubtitleParseError(`Invalid time range format: ${line}`)
+    throw new SubtitleParseError('Invalid time format')
   }
 
   const [start, end] = parts
   if (!start || !end) {
-    throw new SubtitleParseError(`Invalid time range values: ${line}`)
+    throw new SubtitleParseError('Invalid time format')
   }
 
   // Validate time format (HH:MM:SS,mmm or HH:MM:SS.mmm)
   const timeRegex = /^\d{2}:\d{2}:\d{2}[,.]\d{3}$/
   if (!timeRegex.test(start) || !timeRegex.test(end)) {
-    throw new SubtitleParseError(`Invalid time format: ${line}`)
+    throw new SubtitleParseError('Invalid time format')
   }
 
   return [timeToMs(start), timeToMs(end)]
@@ -182,13 +182,20 @@ const createHighlightedCues = (cue: SubtitleCue): HighlightedCue[] => {
   const duration = cue.endTime - cue.startTime
   const timePerWord = duration / words.length
 
-  return words.map((word, index) => ({
-    startTime: cue.startTime + timePerWord * index,
-    endTime: cue.startTime + timePerWord * (index + 1),
-    text: words.join(' '),
-    highlightedWord: word,
-    position: index,
-  }))
+  return words.map((word, index) => {
+    // For the last word, use the exact end time to avoid rounding errors
+    const isLastWord = index === words.length - 1
+    const startTime = Math.round(cue.startTime + timePerWord * index)
+    const endTime = isLastWord ? cue.endTime : Math.round(cue.startTime + timePerWord * (index + 1))
+
+    return {
+      startTime,
+      endTime,
+      text: words.join(' '),
+      highlightedWord: word,
+      position: index,
+    }
+  })
 }
 
 /**
