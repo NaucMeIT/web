@@ -8,6 +8,7 @@ export * from './style'
 export * from './copy'
 export * from './download'
 export * from './media'
+export * from './subtitles'
 
 // eslint-disable-next-line no-default-export -- // ! contains only type exports
 export * from './typescript'
