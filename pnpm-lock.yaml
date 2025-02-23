@@ -216,6 +216,9 @@ importers:
       '@liveblocks/yjs':
         specifier: ^2.16.1
         version: 2.16.2(yjs@13.6.23)
+      '@remotion/media-parser':
+        specifier: ^4.0.267
+        version: 4.0.267
       '@tailwindcss/postcss':
         specifier: 'catalog:'
         version: 4.0.3
@@ -2531,6 +2534,9 @@ packages:
 
   '@remirror/core-constants@3.0.0':
     resolution: {integrity: sha512-42aWfPrimMfDKDi4YegyS7x+/0tlzaqwPQCULLanv3DMIlu96KTJR0fM5isWX2UViOqlGnX6YFgqWepcX+XMNg==}
+
+  '@remotion/media-parser@4.0.267':
+    resolution: {integrity: sha512-1noBvnGpCuBzt/zpxLnMAMumXJCk66hiSH5JridI21EDH7hW/g3FgU9dyggWAtKeWHl2m0a9kBEma+fbWMfKyQ==}
 
   '@rollup/pluginutils@5.1.4':
     resolution: {integrity: sha512-USm05zrsFxYLPdWWq+K3STlWiT/3ELn3RcV5hJMghpeAIhxfsUIg6mt12CBJBInWMV4VneoV7SfGv8xIwo2qNQ==}
@@ -11160,6 +11166,8 @@ snapshots:
       react-promise-suspense: 0.3.4
 
   '@remirror/core-constants@3.0.0': {}
+
+  '@remotion/media-parser@4.0.267': {}
 
   '@rollup/pluginutils@5.1.4':
     dependencies:

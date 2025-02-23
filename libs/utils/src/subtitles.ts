@@ -74,7 +74,7 @@ const parseTimeLine = (line: string): [number, number] => {
   }
 
   // Validate time format (HH:MM:SS,mmm or HH:MM:SS.mmm)
-  const timeRegex = /^\d{2}:\d{2}:\d{2}[,\.]\d{3}$/
+  const timeRegex = /^\d{2}:\d{2}:\d{2}[,.]\d{3}$/
   if (!timeRegex.test(start) || !timeRegex.test(end)) {
     throw new SubtitleParseError(`Invalid time format: ${line}`)
   }

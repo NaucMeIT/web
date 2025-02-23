@@ -13,6 +13,7 @@
     "@liveblocks/client": "^2.16.1",
     "@liveblocks/react": "^2.16.1",
     "@liveblocks/yjs": "^2.16.1",
+    "@remotion/media-parser": "^4.0.267",
     "@tailwindcss/postcss": "catalog:",
     "@tanstack/react-query": "^5.64.2",
     "@tanstack/react-query-devtools": "^5.64.2",

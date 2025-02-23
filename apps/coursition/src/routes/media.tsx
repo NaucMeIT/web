@@ -1,5 +1,7 @@
 import { Button, Form, TabPane, Tabs, Toast } from '@douyinfe/semi-ui'
 import { convertSubtitlesToBlob } from '@nmit-coursition/utils'
+import { parseMedia } from '@remotion/media-parser'
+import { webFileReader } from '@remotion/media-parser/web-file'
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import { z } from 'zod'
@@ -9,9 +11,27 @@ import { TranscriptionResults } from '../components/transcription-results'
 import { VideoPlayer } from '../components/video-player'
 import { app } from '../lib/backend'
 
-export const Route = createFileRoute('/media')({
-  component: Media,
-})
+interface VideoDimensions {
+  width: number
+  height: number
+  aspectRatio: number
+}
+
+interface AppMediaState {
+  raw: string
+  srt: string
+  vtt: string
+  videoSource: string
+  dimensions: VideoDimensions | null
+}
+
+const initialState: AppMediaState = {
+  raw: '',
+  srt: '',
+  vtt: '',
+  videoSource: '',
+  dimensions: null,
+}
 
 const fileSchema = z.discriminatedUnion('type', [
   z.object({
@@ -28,21 +48,18 @@ const fileSchema = z.discriminatedUnion('type', [
   }),
 ])
 
-const initialState = {
-  raw: '',
-  srt: '',
-  vtt: '',
-  videoSource: '',
-}
-
 const statusStates = [
   { key: 'upload', text: 'Uploading media' },
   { key: 'parse', text: 'Transcribing' },
 ]
 
+export const Route = createFileRoute('/media')({
+  component: Media,
+})
+
 function Media() {
   const [status, setStatus] = useState<'idle' | 'upload' | 'parse' | 'done'>('idle')
-  const [state, setState] = useState<any>(initialState)
+  const [state, setState] = useState<AppMediaState>(initialState)
 
   const handleSubmit = async (values: Record<string, unknown>) => {
     try {
@@ -52,20 +69,41 @@ function Media() {
       const parsedData = fileSchema.parse({ type, ...values, file: (values as any).file[0].fileInstance })
 
       const videoSource = parsedData.type === 'file' ? URL.createObjectURL(parsedData.file) : parsedData.url
-      console.log(videoSource)
+
+      try {
+        const metadata = await parseMedia({
+          src: parsedData.type === 'file' ? parsedData.file : videoSource,
+          fields: {
+            dimensions: true,
+          },
+          acknowledgeRemotionLicense: true,
+          reader: parsedData.type === 'file' ? webFileReader : undefined,
+        })
+        console.log(metadata)
+        const dimensions = metadata.dimensions
+        if (dimensions && dimensions.width && dimensions.height) {
+          setState((prev) => ({
+            ...prev,
+            dimensions: {
+              width: dimensions.width,
+              height: dimensions.height,
+              aspectRatio: dimensions.width / dimensions.height,
+            },
+          }))
+        }
+      } catch (err) {
+        console.warn('Failed to get video dimensions:', err)
+      }
 
       setStatus('parse')
       const keywordsArray = parsedData.keywords ? parsedData.keywords.split(',').map((word) => `${word}:5`) : []
       const output: ('text' | 'vtt' | 'srt')[] = ['text', 'srt', 'vtt']
-      console.log(keywordsArray)
-      console.log(output)
 
       const options = {
         headers: {
           authorization: 'PRODPGrFxpGEtrOZfuWhnoJohUYBXuOE',
         },
       }
-      console.log(options)
       const { data, error } =
         parsedData.type == 'file'
           ? await app.v1.parse.media.post(
@@ -92,7 +130,7 @@ function Media() {
       if (error) throw new Error(error.value.description)
       const { text, srt, vtt } = data
       setStatus('done')
-      setState({ raw: text, srt, vtt, videoSource })
+      setState((prev) => ({ ...prev, raw: text ?? '', srt: srt ?? '', vtt: vtt ?? '', videoSource }))
     } catch (error) {
       Toast.error(`Something went wrong. Reason: ${error instanceof Error ? error.message : 'Unknown.'}`)
       setStatus('idle')
@@ -160,7 +198,17 @@ function Media() {
           <>
             <Tabs type='line' className='mt-4'>
               <TabPane tab='Video' itemKey='video'>
-                <VideoPlayer source={state.videoSource} subtitles={convertSubtitlesToBlob(state.vtt)} />
+                <VideoPlayer
+                  source={state.videoSource}
+                  subtitles={convertSubtitlesToBlob(state.vtt)}
+                  aspectRatio={state.dimensions ? `${state.dimensions.width}/${state.dimensions.height}` : '16/9'}
+                />
+                {state.dimensions && (
+                  <div className='mt-2 text-sm text-gray-600'>
+                    Video dimensions: {state.dimensions.width}x{state.dimensions.height} (Aspect ratio:{' '}
+                    {state.dimensions.aspectRatio.toFixed(2)})
+                  </div>
+                )}
               </TabPane>
               <TabPane tab='Text' itemKey='text'>
                 <TranscriptionResults raw={state.raw} srt={state.srt} vtt={state.vtt} />

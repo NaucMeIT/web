@@ -12,9 +12,11 @@ interface VideoPlayerProps {
   source: string
   subtitles?: string
   subtitlesLang?: keyof typeof languages
+  className?: string
+  aspectRatio?: string
 }
 
-export function VideoPlayer({ source, subtitles, subtitlesLang = 'en' }: VideoPlayerProps) {
+export function VideoPlayer({ source, subtitles, subtitlesLang = 'en', className, aspectRatio }: VideoPlayerProps) {
   const player = useRef<MediaPlayerInstance>(null)
   const [highlightedSubtitles, setHighlightedSubtitles] = useState<string | undefined>()
 
@@ -26,21 +28,20 @@ export function VideoPlayer({ source, subtitles, subtitlesLang = 'en' }: VideoPl
   useEffect(() => {
     if (!subtitles) return
 
-    // Fetch and transform subtitles
     fetch(subtitles)
       .then((response) => response.text())
       .then((content) => {
         const highlighted = transformToHighlightedVTT(content, 'vtt')
+        console.log(content)
+        console.log(highlighted)
         const blob = new Blob([highlighted], { type: 'text/vtt' })
         const url = URL.createObjectURL(blob)
         setHighlightedSubtitles(url)
 
-        // Clean up the old URL when component unmounts or subtitles change
         return () => URL.revokeObjectURL(url)
       })
       .catch((error) => {
         console.error('Failed to transform subtitles:', error)
-        // Fall back to original subtitles if transformation fails
         setHighlightedSubtitles(subtitles)
       })
   }, [subtitles])
@@ -54,7 +55,13 @@ export function VideoPlayer({ source, subtitles, subtitlesLang = 'en' }: VideoPl
   }, [highlightedSubtitles])
 
   return (
-    <MediaPlayer ref={player} src={{ src: source, type: 'video/mp4' }} className='w-full aspect-video' load='visible'>
+    <MediaPlayer
+      ref={player}
+      src={{ src: source, type: 'video/mp4' }}
+      load='visible'
+      className={`h-full w-full ${className || ''}`}
+      aspectRatio={aspectRatio}
+    >
       <MediaProvider>
         {highlightedSubtitles && (
           <Track

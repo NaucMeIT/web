@@ -6,7 +6,7 @@
   /* Base caption styling */
   --media-captions-padding: 1%;
   --media-cue-backdrop: none;
-  --media-cue-bg: rgba(0, 0, 0, 0.45);
+  --media-cue-bg: rgba(0, 0, 0, 0.25);
   --media-cue-color: white;
   --media-cue-font-size: calc(var(--overlay-height) / 100 * 4.5);
   --media-cue-line-height: calc(var(--media-cue-font-size) * 1.2);
@@ -19,7 +19,7 @@
 
 /* Highlighted word style */
 .vds-captions .highlight {
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.45);
   color: #FFD700;
   border-radius: 8px;
   padding: 0.3em 0.6em;
