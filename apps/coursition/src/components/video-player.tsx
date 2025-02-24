@@ -16,7 +16,7 @@ interface VideoPlayerProps {
   aspectRatio?: string
 }
 
-export function VideoPlayer({ source, subtitles, subtitlesLang = 'en', className, aspectRatio }: VideoPlayerProps) {
+export function VideoPlayer({ source, subtitles, subtitlesLang = 'en-gb', className, aspectRatio }: VideoPlayerProps) {
   const player = useRef<MediaPlayerInstance>(null)
   const [highlightedSubtitles, setHighlightedSubtitles] = useState<string | undefined>()
 

@@ -29,7 +29,7 @@
 
 /* Ensure captions are positioned correctly */
 .vds-captions [data-part='cue-display'] {
-  --cue-top: 0 !important;
+  --cue-top: 80% !important;
 }
 
 :root {

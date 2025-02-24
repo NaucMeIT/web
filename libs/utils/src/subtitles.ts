@@ -20,7 +20,6 @@ class SubtitleParseError extends Error {
  * Converts time in HH:MM:SS,mmm or HH:MM:SS.mmm format to milliseconds
  */
 const timeToMs = (timeStr: string): number => {
-  // First validate the format
   const timeRegex = /^(\d{2}):(\d{2}):(\d{2})[,.](\d{3})$/
   const match = timeStr.match(timeRegex)
   if (!match) {
@@ -37,7 +36,6 @@ const timeToMs = (timeStr: string): number => {
     throw new SubtitleParseError('Invalid time format')
   }
 
-  // Validate ranges
   if (minutes >= 60 || seconds >= 60 || ms >= 1000) {
     throw new SubtitleParseError('Invalid time format')
   }
@@ -73,7 +71,6 @@ const parseTimeLine = (line: string): [number, number] => {
     throw new SubtitleParseError('Invalid time format')
   }
 
-  // Validate time format (HH:MM:SS,mmm or HH:MM:SS.mmm)
   const timeRegex = /^\d{2}:\d{2}:\d{2}[,.]\d{3}$/
   if (!timeRegex.test(start) || !timeRegex.test(end)) {
     throw new SubtitleParseError('Invalid time format')
@@ -86,7 +83,6 @@ const parseTimeLine = (line: string): [number, number] => {
  * Parses SRT format subtitles
  */
 const parseSRT = (content: string): SubtitleCue[] => {
-  // Split into blocks and normalize line endings
   const blocks = content
     .replace(/\r\n/g, '\n')
     .trim()
@@ -95,16 +91,13 @@ const parseSRT = (content: string): SubtitleCue[] => {
     .filter((block) => block)
 
   return blocks.map((block) => {
-    // Split into lines
     const lines = block.split('\n').map((line) => line.trim())
 
-    // Find the time line (should contain ' --> ')
     const timeLineIndex = lines.findIndex((line) => line.includes(' --> '))
     if (timeLineIndex === -1) {
       throw new SubtitleParseError(`Missing time line in block: ${block}`)
     }
 
-    // At this point we know the line exists because findIndex returned a valid index
     const timeLine = lines[timeLineIndex]!
     const textLines = lines.slice(timeLineIndex + 1)
 
@@ -118,10 +111,10 @@ const parseSRT = (content: string): SubtitleCue[] => {
       startTime,
       endTime,
       text: textLines
-        .filter((line) => line) // Filter empty lines
+        .filter((line) => line)
         .join(' ')
         .replace(/<[^>]*>/g, '')
-        .replace(/\s+/g, ' ') // Normalize whitespace
+        .replace(/\s+/g, ' ')
         .trim(),
     }
   })
@@ -135,7 +128,6 @@ const parseVTT = (content: string): SubtitleCue[] => {
   const cues: SubtitleCue[] = []
   let currentCue: Partial<SubtitleCue> | null = null
 
-  // Skip WEBVTT header if present
   const startIdx = lines[0]?.startsWith('WEBVTT') ? 1 : 0
 
   for (let i = startIdx; i < lines.length; i++) {
@@ -170,7 +162,8 @@ const parseVTT = (content: string): SubtitleCue[] => {
 }
 
 /**
- * Creates word-by-word highlighted cues from a subtitle cue
+ * Creates highlighted cues from a subtitle cue, showing 5 words at a time
+ * with highlighting moving through each word in the chunk before moving to next chunk
  */
 const createHighlightedCues = (cue: SubtitleCue): HighlightedCue[] => {
   const words = cue.text
@@ -180,22 +173,37 @@ const createHighlightedCues = (cue: SubtitleCue): HighlightedCue[] => {
   if (words.length === 0) return []
 
   const duration = cue.endTime - cue.startTime
-  const timePerWord = duration / words.length
+  const CHUNK_SIZE = 5
+  const chunks: string[][] = []
 
-  return words.map((word, index) => {
-    // For the last word, use the exact end time to avoid rounding errors
-    const isLastWord = index === words.length - 1
-    const startTime = Math.round(cue.startTime + timePerWord * index)
-    const endTime = isLastWord ? cue.endTime : Math.round(cue.startTime + timePerWord * (index + 1))
+  for (let i = 0; i < words.length; i += CHUNK_SIZE) {
+    chunks.push(words.slice(i, i + CHUNK_SIZE))
+  }
 
-    return {
-      startTime,
-      endTime,
-      text: words.join(' '),
-      highlightedWord: word,
-      position: index,
-    }
+  const highlightedCues: HighlightedCue[] = []
+  let currentTime = cue.startTime
+
+  chunks.forEach((chunk) => {
+    const chunkDuration = duration / chunks.length
+    const timePerWord = chunkDuration / chunk.length
+
+    chunk.forEach((word, wordIndex) => {
+      const startTime = Math.round(currentTime + timePerWord * wordIndex)
+      const endTime = Math.round(currentTime + timePerWord * (wordIndex + 1))
+
+      highlightedCues.push({
+        startTime,
+        endTime,
+        text: chunk.join(' '),
+        highlightedWord: word,
+        position: wordIndex,
+      })
+    })
+
+    currentTime += chunkDuration
   })
+
+  return highlightedCues
 }
 
 /**
@@ -204,6 +212,7 @@ const createHighlightedCues = (cue: SubtitleCue): HighlightedCue[] => {
 const formatHighlightedCue = (cue: HighlightedCue): string => {
   const words = cue.text.split(/\s+/)
   words[cue.position] = `<c.highlight>${cue.highlightedWord}</c>`
+
   return `${msToVttTime(cue.startTime)} --> ${msToVttTime(cue.endTime)}
 ${words.join(' ')}`
 }
@@ -217,17 +226,14 @@ ${words.join(' ')}`
  */
 export const transformToHighlightedVTT = (content: string, format: 'srt' | 'vtt'): string => {
   try {
-    // Parse the input based on format
     const cues = format === 'srt' ? parseSRT(content) : parseVTT(content)
 
-    // Create highlighted cues for each word
     const highlightedCues = cues.flatMap(createHighlightedCues)
 
     if (highlightedCues.length === 0) {
       throw new SubtitleParseError('No valid subtitle cues found')
     }
 
-    // Format the output as VTT
     return `WEBVTT
 
 ${highlightedCues.map(formatHighlightedCue).join('\n\n')}`
