@@ -1,6 +1,6 @@
 import { IconDelete, IconInfoCircle } from '@douyinfe/semi-icons'
 import { Button, Form, Modal, TabPane, Tabs, Toast } from '@douyinfe/semi-ui'
-import type { BeforeUploadProps, customRequestArgs } from '@douyinfe/semi-ui/lib/es/upload/interface'
+import type { BeforeUploadProps } from '@douyinfe/semi-ui/lib/es/upload/interface'
 import { convertSubtitlesToBlob } from '@nmit-coursition/utils'
 import { parseMedia } from '@remotion/media-parser'
 import { webFileReader } from '@remotion/media-parser/web-file'
@@ -386,14 +386,6 @@ function Media() {
     }
   }
 
-  const handleCustomRequest = ({ fileInstance, onSuccess }: customRequestArgs) => {
-    // We've already processed metadata in beforeUpload, so just report success
-    onSuccess({
-      name: fileInstance.name,
-      status: 'success',
-    })
-  }
-
   const handleUrlBlur = async (e: React.FocusEvent<HTMLInputElement>) => {
     const url = e.target.value.trim()
 
@@ -500,7 +492,7 @@ function Media() {
               <Tabs type='line' keepDOM={false}>
                 <TabPane tab='File' itemKey='file'>
                   <Form.Upload
-                    customRequest={handleCustomRequest}
+                    customRequest={() => {}}
                     beforeUpload={handleBeforeUpload}
                     action=''
                     draggable
