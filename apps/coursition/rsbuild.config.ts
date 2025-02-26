@@ -5,12 +5,11 @@ import { pluginReact } from '@rsbuild/plugin-react'
 import { pluginSass } from '@rsbuild/plugin-sass'
 import { RsdoctorRspackPlugin } from '@rsdoctor/rspack-plugin'
 import { TanStackRouterRspack } from '@tanstack/router-plugin/rspack'
-import { zephyrRsbuildPlugin } from './src/lib/zephyr-rspack'
 
 const { publicVars } = loadEnv({ cwd: '../..' })
 
 export default defineConfig({
-  plugins: [pluginSass(), pluginNodePolyfill(), pluginReact(), zephyrRsbuildPlugin()],
+  plugins: [pluginSass(), pluginNodePolyfill(), pluginReact()],
   source: {
     entry: { index: './src/main.tsx' },
     define: publicVars,
