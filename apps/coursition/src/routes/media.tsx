@@ -1,144 +1,36 @@
 import { IconDelete, IconInfoCircle } from '@douyinfe/semi-icons'
 import { Button, Form, Modal, TabPane, Tabs, Toast } from '@douyinfe/semi-ui'
 import type { BeforeUploadProps } from '@douyinfe/semi-ui/lib/es/upload/interface'
-import { convertSubtitlesToBlob } from '@nmit-coursition/utils'
-import { parseMedia } from '@remotion/media-parser'
-import { webFileReader } from '@remotion/media-parser/web-file'
+import {
+  type MediaMetadata,
+  convertSubtitlesToBlob,
+  extractMediaMetadata,
+  processMediaUrl,
+} from '@nmit-coursition/utils'
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import { z } from 'zod'
 import { zfd } from 'zod-form-data'
+import { MediaFileDetails } from '../components/media-file-details'
 import { StatusDisplay } from '../components/status-display'
 import { TranscriptionResults } from '../components/transcription-results'
 import { VideoPlayer } from '../components/video-player'
 import { app } from '../lib/backend'
 
-interface VideoDimensions {
-  width: number
-  height: number
-  aspectRatio: number
-}
-
-interface MediaMetadata {
-  dimensions: VideoDimensions | null
-  durationInSeconds: number | null
-  fps: number | null
-  videoCodec: string | null
-  audioCodec: string | null
-  fileSize: number | null
-  container: string | null
-  isHdr: boolean | null
-  sampleRate: number | null
-  numberOfAudioChannels: number | null
-  mimeType: string | null
-}
-
 interface AppMediaState {
-  raw: string
-  srt: string
-  vtt: string
-  videoSource: string
+  raw: string | undefined
+  srt: string | undefined
+  vtt: string | undefined
+  videoSource: string | undefined
   uploadedFile: File | null
   mediaMetadata: MediaMetadata | null
 }
 
-const isYouTubeUrl = (url: string): boolean => {
-  return /youtube\.com|youtu\.be/i.test(url)
-}
-
-const isVimeoUrl = (url: string): boolean => {
-  return /vimeo\.com/i.test(url)
-}
-
-interface ProcessUrlResult {
-  videoSource: string
-  mediaMetadata: MediaMetadata | null
-}
-
-const formatFileSize = (bytes: number | null): string => {
-  if (bytes === null) return 'Unknown'
-
-  if (bytes < 1024) return bytes + ' bytes'
-  else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB'
-  else if (bytes < 1073741824) return (bytes / 1048576).toFixed(1) + ' MB'
-  else return (bytes / 1073741824).toFixed(1) + ' GB'
-}
-
-const formatDuration = (seconds: number | null): string => {
-  if (seconds === null) return 'Unknown'
-
-  const minutes = Math.floor(seconds / 60)
-  const remainingSeconds = Math.floor(seconds % 60)
-  return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`
-}
-
-const processMediaUrl = async (url: string): Promise<ProcessUrlResult> => {
-  const result: ProcessUrlResult = {
-    videoSource: url,
-    mediaMetadata: null,
-  }
-
-  if (isYouTubeUrl(url) || isVimeoUrl(url)) {
-    console.log('YouTube or Vimeo URL detected, skipping metadata extraction')
-    return result
-  }
-
-  try {
-    const metadata = await parseMedia({
-      src: url,
-      fields: {
-        dimensions: true,
-        durationInSeconds: true,
-        fps: true,
-        videoCodec: true,
-        audioCodec: true,
-        size: true,
-        container: true,
-        isHdr: true,
-        sampleRate: true,
-        numberOfAudioChannels: true,
-        mimeType: true,
-      },
-      acknowledgeRemotionLicense: true,
-    })
-
-    const dimensions = metadata.dimensions
-    let dimensionsObj = null
-
-    if (dimensions && dimensions.width && dimensions.height) {
-      dimensionsObj = {
-        width: dimensions.width,
-        height: dimensions.height,
-        aspectRatio: dimensions.width / dimensions.height,
-      }
-    }
-
-    result.mediaMetadata = {
-      dimensions: dimensionsObj,
-      durationInSeconds: metadata.durationInSeconds || null,
-      fps: metadata.fps || null,
-      videoCodec: metadata.videoCodec || null,
-      audioCodec: metadata.audioCodec || null,
-      fileSize: metadata.size || null,
-      container: metadata.container || null,
-      isHdr: metadata.isHdr || null,
-      sampleRate: metadata.sampleRate || null,
-      numberOfAudioChannels: metadata.numberOfAudioChannels || null,
-      mimeType: metadata.mimeType || null,
-    }
-  } catch (err) {
-    console.warn('Failed to get media metadata from URL:', err)
-  }
-
-  console.log(result)
-  return result
-}
-
 const initialState: AppMediaState = {
-  raw: '',
-  srt: '',
-  vtt: '',
-  videoSource: '',
+  raw: undefined,
+  srt: undefined,
+  vtt: undefined,
+  videoSource: undefined,
   uploadedFile: null,
   mediaMetadata: null,
 }
@@ -177,92 +69,9 @@ function Media() {
   const showFileDetails = () => {
     if (!state.mediaMetadata) return
 
-    const metadata = state.mediaMetadata
-
     modal.info({
       title: 'Media File Details',
-      content: (
-        <div className='grid grid-cols-2 gap-x-6 gap-y-3 mt-4'>
-          {metadata.dimensions && (
-            <div>
-              <div className='font-medium text-gray-700'>Dimensions</div>
-              <div>
-                {metadata.dimensions.width}x{metadata.dimensions.height}
-              </div>
-            </div>
-          )}
-
-          {metadata.durationInSeconds !== null && metadata.durationInSeconds !== undefined && (
-            <div>
-              <div className='font-medium text-gray-700'>Duration</div>
-              <div>{formatDuration(metadata.durationInSeconds ?? null)}</div>
-            </div>
-          )}
-
-          {metadata.fps !== null && (
-            <div>
-              <div className='font-medium text-gray-700'>FPS</div>
-              <div>{metadata.fps.toFixed(2)}</div>
-            </div>
-          )}
-
-          {metadata.videoCodec && (
-            <div>
-              <div className='font-medium text-gray-700'>Video Codec</div>
-              <div>{metadata.videoCodec}</div>
-            </div>
-          )}
-
-          {metadata.audioCodec && (
-            <div>
-              <div className='font-medium text-gray-700'>Audio Codec</div>
-              <div>{metadata.audioCodec}</div>
-            </div>
-          )}
-
-          {metadata.fileSize !== null && metadata.fileSize !== undefined && (
-            <div>
-              <div className='font-medium text-gray-700'>File Size</div>
-              <div>{formatFileSize(metadata.fileSize ?? null)}</div>
-            </div>
-          )}
-
-          {metadata.container && (
-            <div>
-              <div className='font-medium text-gray-700'>Container</div>
-              <div>{metadata.container}</div>
-            </div>
-          )}
-
-          {metadata.isHdr !== null && (
-            <div>
-              <div className='font-medium text-gray-700'>HDR</div>
-              <div>{metadata.isHdr ? 'Yes' : 'No'}</div>
-            </div>
-          )}
-
-          {metadata.sampleRate !== null && (
-            <div>
-              <div className='font-medium text-gray-700'>Audio Sample Rate</div>
-              <div>{metadata.sampleRate} Hz</div>
-            </div>
-          )}
-
-          {metadata.numberOfAudioChannels !== null && (
-            <div>
-              <div className='font-medium text-gray-700'>Audio Channels</div>
-              <div>{metadata.numberOfAudioChannels}</div>
-            </div>
-          )}
-
-          {metadata.mimeType && (
-            <div>
-              <div className='font-medium text-gray-700'>MIME Type</div>
-              <div>{metadata.mimeType}</div>
-            </div>
-          )}
-        </div>
-      ),
+      content: <MediaFileDetails metadata={state.mediaMetadata} className='mt-4' />,
       width: 600,
       maskClosable: true,
     })
@@ -308,61 +117,15 @@ function Media() {
       if (!metaFile.fileInstance) return { shouldUpload: false, status: 'error' }
       const file = metaFile.fileInstance
 
-      const metadata = await parseMedia({
-        src: file,
-        fields: {
-          dimensions: true,
-          durationInSeconds: true,
-          fps: true,
-          videoCodec: true,
-          audioCodec: true,
-          size: true,
-          container: true,
-          isHdr: true,
-          sampleRate: true,
-          numberOfAudioChannels: true,
-          mimeType: true,
-        },
-        acknowledgeRemotionLicense: true,
-        reader: webFileReader,
-      })
-
-      console.log('File metadata:', metadata)
-
-      let dimensionsObj = null
-      const dimensions = metadata.dimensions
-
-      if (dimensions && dimensions.width && dimensions.height) {
-        dimensionsObj = {
-          width: dimensions.width,
-          height: dimensions.height,
-          aspectRatio: dimensions.width / dimensions.height,
-        }
-      }
+      const mediaMetadata = await extractMediaMetadata(file)
 
       setState((prev) => ({
         ...prev,
         uploadedFile: file,
         videoSource: URL.createObjectURL(file),
-        mediaMetadata:
-          dimensionsObj || metadata.durationInSeconds || metadata.size
-            ? {
-                dimensions: dimensionsObj,
-                durationInSeconds: metadata.durationInSeconds,
-                fps: metadata.fps,
-                videoCodec: metadata.videoCodec,
-                audioCodec: metadata.audioCodec,
-                fileSize: metadata.size,
-                container: metadata.container,
-                isHdr: metadata.isHdr,
-                sampleRate: metadata.sampleRate,
-                numberOfAudioChannels: metadata.numberOfAudioChannels,
-                mimeType: metadata.mimeType,
-              }
-            : null,
+        mediaMetadata,
       }))
 
-      // Return successful validation result
       return {
         shouldUpload: true,
         status: 'success',
@@ -378,7 +141,6 @@ function Media() {
         videoSource: URL.createObjectURL(file),
       }))
 
-      // Still allow the file, just without metadata
       return {
         shouldUpload: true,
         status: 'success',
@@ -474,7 +236,7 @@ function Media() {
       if (error) throw new Error(error.value.description)
       const { text, srt, vtt } = data
       setStatus('done')
-      setState((prev) => ({ ...prev, raw: text ?? '', srt: srt ?? '', vtt: vtt ?? '' }))
+      setState((prev) => ({ ...prev, raw: text, srt, vtt }))
     } catch (error) {
       Toast.error(`Something went wrong. Reason: ${error instanceof Error ? error.message : 'Unknown.'}`)
       setStatus('idle')
@@ -556,14 +318,12 @@ function Media() {
                 />
               </div>
 
-              <div className='flex flex-col gap-2'>
+              <div className='flex gap-4'>
                 <Button block htmlType='submit'>
                   Transcribe
                 </Button>
               </div>
             </Form>
-
-            {/* Modal context holder for Semi UI modals */}
             {contextHolder}
           </>
         )}
@@ -571,17 +331,15 @@ function Media() {
         {status === 'done' && (
           <>
             <Tabs type='line' className='mt-4'>
-              <TabPane tab='Video' itemKey='video'>
-                <VideoPlayer
-                  source={state.videoSource}
-                  subtitles={convertSubtitlesToBlob(state.vtt)}
-                  aspectRatio={
-                    state.mediaMetadata?.dimensions
-                      ? `${state.mediaMetadata.dimensions.width}/${state.mediaMetadata.dimensions.height}`
-                      : '16/9'
-                  }
-                />
-              </TabPane>
+              {state.videoSource && (
+                <TabPane tab='Video' itemKey='video'>
+                  <VideoPlayer
+                    source={state.videoSource}
+                    subtitles={convertSubtitlesToBlob(state.vtt)}
+                    aspectRatio={`${state.mediaMetadata?.dimensions?.aspectRatio}` || '16/9'}
+                  />
+                </TabPane>
+              )}
               <TabPane tab='Text' itemKey='text'>
                 <TranscriptionResults raw={state.raw} srt={state.srt} vtt={state.vtt} />
               </TabPane>
