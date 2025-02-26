@@ -12,11 +12,10 @@ interface VideoPlayerProps {
   source: string
   subtitles?: string
   subtitlesLang?: keyof typeof languages
-  className?: string
   aspectRatio?: string
 }
 
-export function VideoPlayer({ source, subtitles, subtitlesLang = 'en-gb', className, aspectRatio }: VideoPlayerProps) {
+export function VideoPlayer({ source, subtitles, subtitlesLang = 'en-gb', aspectRatio }: VideoPlayerProps) {
   const player = useRef<MediaPlayerInstance>(null)
   const [highlightedSubtitles, setHighlightedSubtitles] = useState<string | undefined>()
 
@@ -57,7 +56,7 @@ export function VideoPlayer({ source, subtitles, subtitlesLang = 'en-gb', classN
       ref={player}
       src={{ src: source, type: 'video/mp4' }}
       load='visible'
-      className={`h-full w-full ${className || ''}`}
+      className='h-full w-full'
       aspectRatio={aspectRatio}
     >
       <MediaProvider>
