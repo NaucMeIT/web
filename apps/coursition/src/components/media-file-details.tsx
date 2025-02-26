@@ -3,12 +3,11 @@ import type { MediaMetadata } from '@nmit-coursition/utils'
 
 interface MediaFileDetailsProps {
   metadata: MediaMetadata
-  className?: string
 }
 
-export function MediaFileDetails({ metadata, className = '' }: MediaFileDetailsProps) {
+export function MediaFileDetails({ metadata }: MediaFileDetailsProps) {
   return (
-    <div className={`grid grid-cols-2 gap-x-6 gap-y-3 ${className}`}>
+    <div className='grid grid-cols-2 gap-x-6 gap-y-3'>
       {metadata.dimensions && (
         <div>
           <div className='font-medium text-gray-700'>Dimensions</div>

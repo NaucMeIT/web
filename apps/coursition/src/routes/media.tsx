@@ -71,7 +71,7 @@ function Media() {
 
     modal.info({
       title: 'Media File Details',
-      content: <MediaFileDetails metadata={state.mediaMetadata} className='mt-4' />,
+      content: <MediaFileDetails metadata={state.mediaMetadata} />,
       width: 600,
       maskClosable: true,
     })
