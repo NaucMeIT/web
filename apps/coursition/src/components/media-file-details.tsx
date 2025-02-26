@@ -20,7 +20,7 @@ export function MediaFileDetails({ metadata }: MediaFileDetailsProps) {
       {metadata.durationInSeconds != null && (
         <div>
           <div className='font-medium text-gray-700'>Duration</div>
-          <div>{formatDuration(metadata.durationInSeconds ?? null)}</div>
+          <div>{formatDuration(metadata.durationInSeconds)}</div>
         </div>
       )}
 
@@ -48,7 +48,7 @@ export function MediaFileDetails({ metadata }: MediaFileDetailsProps) {
       {metadata.fileSize != null && (
         <div>
           <div className='font-medium text-gray-700'>File Size</div>
-          <div>{formatFileSize(metadata.fileSize ?? null)}</div>
+          <div>{formatFileSize(metadata.fileSize)}</div>
         </div>
       )}
 
