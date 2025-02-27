@@ -72,14 +72,14 @@ function Media() {
     modal.info({
       title: 'Media File Details',
       content: <MediaFileDetails metadata={state.mediaMetadata} />,
-      width: 600,
       maskClosable: true,
+      footer: null,
     })
   }
 
   const renderFileOperations = (fileItem: any) => {
     return (
-      <div style={{ display: 'flex', columnGap: 8, padding: '0 8px' }}>
+      <div className='flex column-gap-2 p-2'>
         {state.mediaMetadata && (
           <Button
             icon={<IconInfoCircle />}
@@ -185,9 +185,7 @@ function Media() {
       setStatus('upload')
 
       const type = 'file' in values ? 'file' : 'url'
-
       const dataToValidate = type === 'file' ? { type, ...values, file: state.uploadedFile } : { type, ...values }
-
       const parsedData = fileSchema.parse(dataToValidate)
 
       if (parsedData.type === 'url' && !state.mediaMetadata?.dimensions) {

@@ -22,6 +22,7 @@
     "@tanstack/router-devtools": "^1.97.14",
     "@tanstack/router-plugin": "^1.97.14",
     "convex": "^1.18.2",
+    "media-icons": "^1.1.5",
     "react": "catalog:",
     "react-dom": "catalog:",
     "yjs": "^13.6.23",

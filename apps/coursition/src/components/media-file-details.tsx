@@ -7,7 +7,7 @@ interface MediaFileDetailsProps {
 
 export function MediaFileDetails({ metadata }: MediaFileDetailsProps) {
   return (
-    <div className='grid grid-cols-2 gap-x-6 gap-y-3'>
+    <div className='grid grid-cols-2 gap-x-6 gap-y-3 pb-3'>
       {metadata.dimensions && (
         <div>
           <div className='font-medium text-gray-700'>Dimensions</div>
