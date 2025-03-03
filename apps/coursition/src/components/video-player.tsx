@@ -65,11 +65,6 @@ export function VideoPlayer({ source, subtitles, subtitlesLang = 'en-gb', aspect
     }
   }, [highlightingEnabled])
 
-  const handleHighlightToggle = (checked: boolean) => {
-    console.log('handleHighlightToggle', highlightingEnabled)
-    setHighlightingEnabled(checked)
-  }
-
   return (
     <MediaPlayer
       ref={player}
@@ -94,7 +89,7 @@ export function VideoPlayer({ source, subtitles, subtitlesLang = 'en-gb', aspect
         menuGroup='bottom'
         slots={{
           captionsMenuItemsStart: (
-            <HighlightSettings highlightEnabled={highlightingEnabled} handleHighlightToggle={handleHighlightToggle} />
+            <HighlightSettings highlightEnabled={highlightingEnabled} handleHighlightToggle={setHighlightingEnabled} />
           ),
         }}
       ></DefaultVideoLayout>
