@@ -89,6 +89,9 @@ export async function logoutBrj(session: string) {
 }
 
 export async function getBrjIdentity(session: string) {
+  console.log(
+    `https://brj.app/api/v1/customer/get-account-info?apiKey=${Redacted.value(secretsEnv.BRJ_API_KEY)}&identityId=${session}`,
+  )
   const res = await fetch(
     `https://brj.app/api/v1/customer/get-account-info?apiKey=${Redacted.value(secretsEnv.BRJ_API_KEY)}&identityId=${session}`,
   )

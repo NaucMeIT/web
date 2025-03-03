@@ -58,7 +58,7 @@ export const apiAuth = new Elysia({ prefix: '/auth', tags: ['auth'] })
         httpOnly: true,
         secure: true,
         sameSite: 'lax',
-        domain: 'coursition.com',
+        domain: typedEnv.FRONTEND_URL.hostname,
       })
 
       if (brjIdentity) {
@@ -68,7 +68,7 @@ export const apiAuth = new Elysia({ prefix: '/auth', tags: ['auth'] })
           httpOnly: true,
           secure: true,
           sameSite: 'lax',
-          domain: 'coursition.com',
+          domain: typedEnv.FRONTEND_URL.hostname,
         })
       }
 
@@ -104,6 +104,7 @@ export const apiAuth = new Elysia({ prefix: '/auth', tags: ['auth'] })
     }
   })
   .get('/profile', async ({ cookie }) => {
+    console.log(cookie)
     const brjSessionData = cookie[AUTH_BRJ_COOKIES_NAME]?.toString() || ''
 
     return getBrjIdentity(brjSessionData)

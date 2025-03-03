@@ -1,7 +1,7 @@
 import { Button, Form, TabPane, Tabs, Toast } from '@douyinfe/semi-ui'
 import { convertSubtitlesToBlob } from '@nmit-coursition/utils'
 import { createFileRoute } from '@tanstack/react-router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { z } from 'zod'
 import { zfd } from 'zod-form-data'
 import { StatusDisplay } from '../components/status-display'
@@ -43,6 +43,14 @@ const statusStates = [
 function Media() {
   const [status, setStatus] = useState<'idle' | 'upload' | 'parse' | 'done'>('idle')
   const [state, setState] = useState<any>(initialState)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await app.auth.profile.get()
+      console.log(data)
+    }
+    fetchData()
+  }, [])
 
   const handleSubmit = async (values: Record<string, unknown>) => {
     try {

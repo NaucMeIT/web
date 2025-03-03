@@ -5,4 +5,4 @@ import { Effect } from 'effect'
 
 const typedPublic = Effect.runSync(publicConfig)
 const backendUrl = typedPublic.BACKEND_URL.href || `http://localhost:${typedPublic.BACKEND_PORT}`
-export const app = treaty<TypedApp>(backendUrl)
+export const app = treaty<TypedApp>(backendUrl, { fetch: { credentials: 'include' } })
