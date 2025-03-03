@@ -256,6 +256,7 @@ function Media() {
                   <div className='relative'>
                     <Form.Input
                       field='url'
+                      type='url'
                       placeholder='Enter media URL'
                       required
                       label='URL'
