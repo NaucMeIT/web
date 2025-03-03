@@ -79,13 +79,11 @@ export function VideoPlayer({ source, subtitles, subtitlesLang = 'en-gb', aspect
           kind='subtitles'
           label={languages[subtitlesLang]}
           lang={subtitlesLang}
-          key={'normal'}
           default
         />
       </MediaProvider>
       <DefaultVideoLayout
         icons={defaultLayoutIcons}
-        thumbnails=''
         menuGroup='bottom'
         slots={{
           captionsMenuItemsStart: (
