@@ -268,8 +268,6 @@ function Media() {
                   <div className='relative'>
                     <Form.Input
                       field='url'
-                      id='url'
-                      name='url'
                       placeholder='Enter media URL'
                       required
                       label='URL'
@@ -300,18 +298,15 @@ function Media() {
                   // TODO: Change to switch, so that it's impossible to pick incorrect language.
                 */}
                 <Form.Input
-                  field='text'
-                  id='language'
-                  name='language'
+                  field='language'
                   placeholder='en-GB'
                   label='Language'
                   helpText='What is main language of the video. Accepted is language keycode, e.g. en-GB, cs.'
                 />
                 <Form.TextArea
-                  field='text'
+                  field='keywords'
                   label='Difficult words'
                   placeholder='ChatGPT, Claude, Zig'
-                  id='keywords'
                   helpText='Unusual words or phrases that may be difficult to transcribe. Separate with commas. Avoid putting common words.'
                 />
               </div>
