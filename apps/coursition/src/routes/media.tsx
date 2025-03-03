@@ -258,6 +258,7 @@ function Media() {
                       field='url'
                       type='url'
                       placeholder='Enter media URL'
+                      disabled={isProcessingUrl}
                       required
                       label='URL'
                       helpText={
