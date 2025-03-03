@@ -4,8 +4,8 @@ import type { BeforeUploadProps } from '@douyinfe/semi-ui/lib/es/upload/interfac
 import {
   type MediaMetadata,
   convertSubtitlesToBlob,
-  extractMediaMetadata,
-  processMediaUrl,
+  extractFileMetadata,
+  extractUrlMetadata,
 } from '@nmit-coursition/utils'
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
@@ -117,7 +117,7 @@ function Media() {
       if (!metaFile.fileInstance) return { shouldUpload: false, status: 'error' }
       const file = metaFile.fileInstance
 
-      const mediaMetadata = await extractMediaMetadata(file)
+      const mediaMetadata = await extractFileMetadata(file)
 
       setState((prev) => ({
         ...prev,
@@ -166,11 +166,10 @@ function Media() {
 
     try {
       setIsProcessingUrl(true)
-      const { videoSource, mediaMetadata } = await processMediaUrl(url)
+      const mediaMetadata = await extractUrlMetadata(url)
 
       setState((prev) => ({
         ...prev,
-        videoSource,
         mediaMetadata,
       }))
     } catch (error) {
@@ -187,17 +186,6 @@ function Media() {
       const type = 'file' in values ? 'file' : 'url'
       const dataToValidate = type === 'file' ? { type, ...values, file: state.uploadedFile } : { type, ...values }
       const parsedData = fileSchema.parse(dataToValidate)
-
-      if (parsedData.type === 'url' && !state.mediaMetadata?.dimensions) {
-        setStatus('upload')
-        const { videoSource, mediaMetadata } = await processMediaUrl(parsedData.url)
-
-        setState((prev) => ({
-          ...prev,
-          videoSource,
-          mediaMetadata,
-        }))
-      }
 
       setStatus('parse')
       const keywordsArray = parsedData.keywords ? parsedData.keywords.split(',').map((word) => `${word}:5`) : []

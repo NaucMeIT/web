@@ -54,20 +54,10 @@ export const formatDuration = (seconds: number | null): string => {
   return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`
 }
 
-interface ProcessUrlResult {
-  videoSource: string
-  mediaMetadata: MediaMetadata | null
-}
-
-export const processMediaUrl = async (url: string): Promise<ProcessUrlResult> => {
-  const result: ProcessUrlResult = {
-    videoSource: url,
-    mediaMetadata: null,
-  }
-
+export const extractUrlMetadata = async (url: string): Promise<MediaMetadata | null> => {
   if (isYouTubeUrl(url) || isVimeoUrl(url)) {
     console.log('YouTube or Vimeo URL detected, skipping metadata extraction')
-    return result
+    return null
   }
 
   try {
@@ -89,15 +79,14 @@ export const processMediaUrl = async (url: string): Promise<ProcessUrlResult> =>
       acknowledgeRemotionLicense: true,
     })
 
-    result.mediaMetadata = extractMediaMetadataFromParsedData(metadata)
+    return extractMediaMetadataFromParsedData(metadata)
   } catch (err) {
     console.warn('Failed to get media metadata from URL:', err)
+    return null
   }
-
-  return result
 }
 
-export const extractMediaMetadata = async (file: File): Promise<MediaMetadata | null> => {
+export const extractFileMetadata = async (file: File): Promise<MediaMetadata | null> => {
   try {
     const metadata = await parseMedia({
       src: file,
