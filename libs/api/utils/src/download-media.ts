@@ -22,8 +22,6 @@ export async function downloadPublicMedia(url: string): Promise<DownloadMediaRes
       '-x', // Extract audio
       '--audio-format',
       'mp3',
-      '--audio-quality',
-      '0', // Best quality
       '-o',
       outputFile,
       url,

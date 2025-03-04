@@ -9,15 +9,14 @@ import {
   extractFileMetadata,
   extractUrlMetadata,
 } from '@nmit-coursition/utils'
-import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import { z } from 'zod'
 import { zfd } from 'zod-form-data'
-import { MediaFileDetails } from '../components/media-file-details'
-import { StatusDisplay } from '../components/status-display'
-import { TranscriptionResults } from '../components/transcription-results'
-import { type MediaSrc, VideoPlayer } from '../components/video-player'
-import { app } from '../lib/backend'
+import { MediaFileDetails } from '../../components/media-file-details'
+import { StatusDisplay } from '../../components/status-display'
+import { TranscriptionResults } from '../../components/transcription-results'
+import { type MediaSrc, VideoPlayer } from '../../components/video-player'
+import { app } from '../../lib/backend'
 
 interface AppMediaState {
   raw: string | undefined
@@ -57,11 +56,7 @@ const statusStates = [
   { key: 'parse', text: 'Transcribing' },
 ]
 
-export const Route = createFileRoute('/media')({
-  component: Media,
-})
-
-function Media() {
+export default function Media() {
   const [status, setStatus] = useState<'idle' | 'upload' | 'parse' | 'done'>('idle')
   const [state, setState] = useState<AppMediaState>(initialState)
   const [isProcessingUrl, setIsProcessingUrl] = useState(false)
