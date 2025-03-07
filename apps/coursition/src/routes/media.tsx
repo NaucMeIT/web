@@ -224,6 +224,7 @@ function Media() {
             )
 
       if (error) throw new Error(error.value.description)
+      if (!data) throw new Error('No data returned from the server')
       const { text = '', srt = '', vtt = '' } = data
       setStatus('done')
       setState((prev) => ({ ...prev, raw: text, srt, vtt, videoSource }))
