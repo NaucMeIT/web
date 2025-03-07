@@ -24,7 +24,7 @@
   "dependencies": {
     "@modern-js/runtime": "2.65.3",
     "@rsbuild/plugin-image-compress": "^1.1.0",
-    "postcss": "8.5.0",
+    "postcss": "8.5.3",
     "postcss-loader": "^8.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -32,19 +32,19 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@douyinfe/semi-rspack-plugin": "^2.73.0",
+    "@douyinfe/semi-rspack-plugin": "^2.76.0",
     "@modern-js/app-tools": "2.65.3",
     "@modern-js/plugin-tailwindcss": "2.65.3",
     "@modern-js/tsconfig": "2.65.3",
     "@tailwindcss/postcss": "catalog:",
-    "@types/jest": "~29.2.4",
-    "@types/node": "~18.11.9",
+    "@types/jest": "~29.5.14",
+    "@types/node": "~22.13.9",
     "@types/react": "^18.3.11",
     "@types/react-dom": "~18.3.1",
-    "lint-staged": "~15.4.0",
+    "lint-staged": "~15.4.3",
     "rimraf": "^6.0.1",
     "simple-git-hooks": "^2.11.1",
     "tailwindcss": "catalog:",
-    "typescript": "~5.7.3"
+    "typescript": "catalog:"
   }
 }
