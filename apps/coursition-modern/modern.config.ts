@@ -16,7 +16,17 @@ export default defineConfig({
     define: publicVars,
   },
   runtime: {
-    router: true,
+    router: {
+      future: {
+        v7_startTransition: true,
+        // Other features are not typed in @modern-js/runtime, so we need to use any
+        v7_relativeSplatPath: true,
+        v7_fetcherPersist: true,
+        v7_normalizeFormMethod: true,
+        v7_partialHydration: true,
+        v7_skipActionErrorRevalidation: true,
+      } as any,
+    },
   },
   builderPlugins: [pluginNodePolyfill(), pluginImageCompress(['jpeg', 'png', 'ico', 'avif', 'svg'])],
   plugins: [
