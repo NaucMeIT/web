@@ -1,0 +1,12 @@
+---
+description: How to install dependencies and think about the codebase.
+globs: 
+alwaysApply: false
+---
+
+# Package install
+
+- Always use pnpm for package installations
+- We use pnpm workspaces, so install package in appropriate app / lib
+- We use Nx to share logic and separate it
+- Never call "npm", always call with pnpm
