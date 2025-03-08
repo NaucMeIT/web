@@ -4,6 +4,7 @@ import { tailwindcssPlugin } from '@modern-js/plugin-tailwindcss'
 import { loadEnv } from '@rsbuild/core'
 import { pluginImageCompress } from '@rsbuild/plugin-image-compress'
 import { pluginNodePolyfill } from '@rsbuild/plugin-node-polyfill'
+import { withZephyr } from 'zephyr-modernjs-plugin'
 
 const { publicVars } = loadEnv({ cwd: '../..' })
 
@@ -11,9 +12,16 @@ const { publicVars } = loadEnv({ cwd: '../..' })
 export default defineConfig({
   output: {
     polyfill: 'usage',
+    distPath: {
+      html: './',
+    },
+  },
+  html: {
+    outputStructure: 'flat',
   },
   source: {
     define: publicVars,
+    mainEntryName: 'index',
   },
   runtime: {
     router: {
@@ -34,6 +42,7 @@ export default defineConfig({
       bundler: 'rspack',
     }),
     tailwindcssPlugin(),
+    withZephyr(),
   ],
   tools: {
     rspack: {

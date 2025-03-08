@@ -31,7 +31,7 @@ type BuyLifetimeProps = ButtonProps & {
 
 const BuyLifetime = ({ withIcon = true, ...rest }: BuyLifetimeProps) => {
   return (
-    <a href={`${typedPublic.BACKEND_URL.href}/auth/login`} className='w-min'>
+    <a href={`${typedPublic.BACKEND_URL.href}auth/login`} className='w-min'>
       <Button
         {...rest}
         className='w-min h-16 text-2xl'
