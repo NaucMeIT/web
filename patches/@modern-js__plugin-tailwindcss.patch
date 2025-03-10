@@ -1,0 +1,104 @@
+diff --git a/dist/cjs/utils.js b/dist/cjs/utils.js
+index 37b927d237e55967f4fb6e17a9ae66cb59c52748..4eaaa0c9851c285a75fa07caee5c00267f6febf6 100644
+--- a/dist/cjs/utils.js
++++ b/dist/cjs/utils.js
+@@ -24,19 +24,19 @@ __export(utils_exports, {
+ module.exports = __toCommonJS(utils_exports);
+ function getTailwindPath(appDirectory) {
+   try {
+-    return require.resolve("tailwindcss", {
++    return require.resolve("@tailwindcss/postcss", {
+       paths: [
+         appDirectory,
+         __dirname
+       ]
+     });
+   } catch (err) {
+-    return "tailwindcss";
++    return "@tailwindcss/postcss";
+   }
+ }
+ function getTailwindVersion(appDirectory) {
+   try {
+-    const packageJsonPath = require.resolve("tailwindcss/package.json", {
++    const packageJsonPath = require.resolve("@tailwindcss/postcss/package.json", {
+       paths: [
+         appDirectory,
+         __dirname
+diff --git a/dist/esm/utils.js b/dist/esm/utils.js
+index 1b92dfd85d15008b16cebbe98c999190e69807b3..6188b63092e13579681cee1a772b21d368adf0cb 100644
+--- a/dist/esm/utils.js
++++ b/dist/esm/utils.js
+@@ -1,18 +1,18 @@
+ function getTailwindPath(appDirectory) {
+   try {
+-    return require.resolve("tailwindcss", {
++    return require.resolve("@tailwindcss/postcss", {
+       paths: [
+         appDirectory,
+         __dirname
+       ]
+     });
+   } catch (err) {
+-    return "tailwindcss";
++    return "@tailwindcss/postcss";
+   }
+ }
+ function getTailwindVersion(appDirectory) {
+   try {
+-    var packageJsonPath = require.resolve("tailwindcss/package.json", {
++    var packageJsonPath = require.resolve("@tailwindcss/postcss/package.json", {
+       paths: [
+         appDirectory,
+         __dirname
+diff --git a/dist/esm-node/utils.js b/dist/esm-node/utils.js
+index f50b6c3369b064532753ab8e50f29414a3f35dfb..8d14183c42b0747203fae4515fb9e958bb56217b 100644
+--- a/dist/esm-node/utils.js
++++ b/dist/esm-node/utils.js
+@@ -1,18 +1,18 @@
+ function getTailwindPath(appDirectory) {
+   try {
+-    return require.resolve("tailwindcss", {
++    return require.resolve("@tailwindcss/postcss", {
+       paths: [
+         appDirectory,
+         __dirname
+       ]
+     });
+   } catch (err) {
+-    return "tailwindcss";
++    return "@tailwindcss/postcss";
+   }
+ }
+ function getTailwindVersion(appDirectory) {
+   try {
+-    const packageJsonPath = require.resolve("tailwindcss/package.json", {
++    const packageJsonPath = require.resolve("@tailwindcss/postcss/package.json", {
+       paths: [
+         appDirectory,
+         __dirname
+diff --git a/package.json b/package.json
+index 6bce98d10d19230be0b6060ba412709cb767edc6..f3298763850846e32214cb11100f326198c60d1f 100644
+--- a/package.json
++++ b/package.json
+@@ -57,9 +57,9 @@
+     "@types/jest": "^29",
+     "@types/node": "^14",
+     "jest": "^29",
+-    "postcss": "^8.4.35",
++    "postcss": "^8.5.1",
+     "react": "^18.3.1",
+-    "tailwindcss": "^3.3.3",
++    "tailwindcss": "^4.0.5",
+     "typescript": "^5",
+     "@modern-js/core": "2.64.1",
+     "@modern-js/app-tools": "2.64.1",
+@@ -70,7 +70,7 @@
+     "@scripts/jest-config": "2.64.1"
+   },
+   "peerDependencies": {
+-    "tailwindcss": ">= 2.0.0 || >= 3.0.0",
++    "tailwindcss": ">= 2.0.0 || >= 3.0.0 || >= 4.0.0",
+     "@modern-js/runtime": "^2.64.1"
+   },
+   "peerDependenciesMeta": {
