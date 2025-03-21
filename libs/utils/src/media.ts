@@ -1,5 +1,4 @@
 import { parseMedia } from '@remotion/media-parser'
-import { webFileReader } from '@remotion/media-parser/web-file'
 
 interface VideoDimensions {
   width: number
@@ -104,7 +103,6 @@ export const extractFileMetadata = async (file: File): Promise<MediaMetadata | n
         mimeType: true,
       },
       acknowledgeRemotionLicense: true,
-      reader: webFileReader,
     })
 
     return extractMediaMetadataFromParsedData(metadata)

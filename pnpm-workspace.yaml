@@ -12,8 +12,14 @@ catalog:
   "@tailwindcss/postcss": 4.0.3
   tailwindcss-animate: 1.0.7
   tailwind-merge: 2.6.0
-  typescript: 5.7.3
+  typescript: 5.8.2
   react: 18.3.1
   react-dom: 18.3.1
   "@types/react": 18.3.12
   "@types/react-dom": 18.3.1
+  "@effect/language-service": 0.4.0
+  "@effect/experimental": 0.44.1
+  "@effect/platform-bun": 0.60.1
+  "@effect/platform": 0.80.1
+  "@effect/opentelemetry": 0.45.1
+  effect: 3.14.1
