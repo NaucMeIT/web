@@ -50,7 +50,12 @@
       "@nmit-coursition/ui/design-system": ["libs/ui/design-system/src/index.ts"],
       "@nmit-coursition/ui/utils": ["libs/ui/utils/src/index.ts"],
       "@nmit-coursition/utils": ["libs/utils/src/index.ts"]
-    }
+    },
+    "plugins": [
+      {
+        "name": "@effect/language-service"
+      }
+    ]
   },
   "exclude": ["node_modules", "tmp"]
 }

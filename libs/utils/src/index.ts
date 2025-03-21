@@ -1,5 +1,6 @@
 export * from './common'
 export * from './date'
+export * from './effect'
 export * from './languages'
 export * from './random'
 export * from './split-props'

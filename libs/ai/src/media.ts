@@ -1,17 +1,7 @@
 import { createClient, srt, webvtt } from '@deepgram/sdk'
 import { secretsEffect } from '@nmit-coursition/env'
+import { ServerRuntime } from '@nmit-coursition/utils'
 import { Context, Data, Effect, Layer, Redacted } from 'effect'
-
-interface TranscriptSuccess {
-  srt: string
-  vtt: string
-  raw?: string
-  metadata: { duration: number }
-}
-interface TranscriptError {
-  error: string
-}
-type TranscriptResult = TranscriptSuccess | TranscriptError
 
 export class Params extends Context.Tag('Params')<Params, { language: string; keywords: string[] }>() {
   static readonly Test = {
@@ -71,7 +61,7 @@ const deepgram = Effect.gen(function* () {
       } catch {
         return yield* new EmptyError()
       }
-    }),
+    }).pipe(Effect.withSpan('TranscribeApi.getTranscript.deepgram')),
   } as const
 })
 
@@ -88,6 +78,17 @@ const program = Effect.gen(function* () {
   return yield* transcribeApi.getTranscript
 })
 
+interface TranscriptSuccess {
+  srt: string
+  vtt: string
+  raw?: string
+  metadata: { duration: number }
+}
+interface TranscriptError {
+  error: string
+}
+type TranscriptResult = TranscriptSuccess | TranscriptError
+
 /**
  * @deprecated Use TranscribeApi instead, this is just compability layer for now.
  */
@@ -97,7 +98,7 @@ export function getTranscript(
   keywords: string[] = [],
   language: string = 'en',
 ): Promise<TranscriptResult> {
-  return Effect.runPromise(
+  return ServerRuntime.runPromise(
     program.pipe(
       Effect.provideService(Params, {
         language,
