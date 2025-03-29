@@ -1,6 +1,6 @@
 import { cors } from '@elysiajs/cors'
 import { swagger } from '@elysiajs/swagger'
-import { typedBe } from '@nmit-coursition/api/full/api-full'
+import { typedBe } from '@nmit-coursition/api'
 import { publicConfig } from '@nmit-coursition/env/typed'
 import * as Sentry from '@sentry/bun'
 import { Effect } from 'effect'

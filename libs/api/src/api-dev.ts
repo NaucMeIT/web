@@ -1,5 +1,5 @@
-import { apiCommonGuard, computeUsage, reportSpend } from '@nmit-coursition/api/utils/api-utils'
 import { Elysia } from 'elysia'
+import { apiCommonGuard, computeUsage, reportSpend } from './utils/api-utils'
 
 export const apiDev = new Elysia({ prefix: '/dev', tags: ['dev'] })
   .use(apiCommonGuard)

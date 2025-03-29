@@ -1,4 +1,4 @@
-import { apiCommonGuard } from '@nmit-coursition/api/utils/api-utils'
+import { apiCommonGuard } from '@nmit-coursition/api'
 import { secretsEffect } from '@nmit-coursition/env/secrets'
 import { publicConfig } from '@nmit-coursition/env/typed'
 import { Effect, Redacted } from 'effect'

@@ -1,4 +1,3 @@
-import { parseError } from '@nmit-coursition/api/utils/error'
 import { Data, Effect } from 'effect'
 import { privateConfig } from './typed'
 
@@ -45,9 +44,9 @@ export class InfisicalClient extends Effect.Service<InfisicalClient>()('env/Infi
           }),
         }
       },
-      catch: (e) =>
+      catch: (e: any) =>
         new InfisicalError({
-          details: parseError(e).message || 'Unknown error during fetching secrets',
+          details: e.message || 'Unknown error during fetching secrets',
         }),
     }).pipe(Effect.withSpan('InfisicalClient.createClient'))
 
@@ -58,9 +57,9 @@ export class InfisicalClient extends Effect.Service<InfisicalClient>()('env/Infi
             environment: 'dev',
             projectId,
           }),
-        catch: (e) =>
+        catch: (e: any) =>
           new FetchError({
-            details: parseError(e).message || 'Unknown error during fetching secrets',
+            details: e.message || 'Unknown error during fetching secrets',
           }),
       }).pipe(Effect.withSpan('InfisicalClient.fetchSecrets'))
 

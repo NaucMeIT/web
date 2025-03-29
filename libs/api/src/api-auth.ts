@@ -1,4 +1,3 @@
-import { formatApiErrorResponse } from '@nmit-coursition/api/utils/api'
 import { AUTH_BRJ_COOKIES_NAME, AUTH_COOKIES_NAME } from '@nmit-coursition/auth/constants'
 import { createBrjMagicAuth, getBrjIdentity, invalidateSession, logoutBrj } from '@nmit-coursition/auth/user'
 import { secretsEffect } from '@nmit-coursition/env/secrets'
@@ -7,6 +6,7 @@ import { WorkOS } from '@workos-inc/node'
 import { Effect } from 'effect'
 import { Redacted } from 'effect'
 import { Elysia } from 'elysia'
+import { formatApiErrorResponse } from './utils/api'
 
 const typedEnv = Effect.runSync(publicConfig)
 const secretsEnv = await Effect.runPromise(secretsEffect)

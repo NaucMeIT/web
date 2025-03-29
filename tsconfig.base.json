@@ -40,11 +40,7 @@
       "@nmit-coursition/ai/generate": ["libs/ai/src/generate.ts"],
       "@nmit-coursition/ai/media": ["libs/ai/src/media.ts"],
 
-      "@nmit-coursition/api/auth/*": ["libs/api/auth/src/*"],
-      "@nmit-coursition/api/dev/*": ["libs/api/dev/src/*"],
-      "@nmit-coursition/api/full/*": ["libs/api/full/src/*"],
-      "@nmit-coursition/api/utils/*": ["libs/api/utils/src/*"],
-      "@nmit-coursition/api/v1/*": ["libs/api/v1/src/*"],
+      "@nmit-coursition/api": ["libs/api/src/index.ts"],
 
       "@nmit-coursition/auth/user": ["libs/auth/src/user.ts"],
       "@nmit-coursition/auth/constants": ["libs/auth/src/constants.ts"],
