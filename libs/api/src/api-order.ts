@@ -1,12 +1,13 @@
-import { apiCommonGuard } from '@nmit-coursition/api'
 import { secretsEffect } from '@nmit-coursition/env/secrets'
 import { publicConfig } from '@nmit-coursition/env/typed'
 import { Effect, Redacted } from 'effect'
 import { Elysia } from 'elysia'
+import { apiCommonGuard } from './utils/api-utils'
 
-const secretsEnv = await Effect.runPromise(secretsEffect)
-const typedPublic = Effect.runSync(publicConfig)
 export const apiOrder = new Elysia({ prefix: '/order' }).use(apiCommonGuard).post('/credit-order', async () => {
+  const secretsEnv = await Effect.runPromise(secretsEffect)
+  const typedPublic = Effect.runSync(publicConfig)
+
   const response = await fetch(
     `https://brj.app/api/v1/shop/order/create?apiKey=${Redacted.value(secretsEnv.BRJ_API_KEY)}`,
     {

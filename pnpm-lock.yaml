@@ -117,7 +117,7 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0(elysia@1.2.25(@sinclair/typebox@0.34.13)(openapi-types@12.1.3)(typescript@5.8.2))
       '@elysiajs/swagger':
-        specifier: ^1.2.0
+        specifier: ^1.2.2
         version: 1.2.2(elysia@1.2.25(@sinclair/typebox@0.34.13)(openapi-types@12.1.3)(typescript@5.8.2))
       '@mendable/firecrawl-js':
         specifier: ^1.15.7
@@ -171,7 +171,7 @@ importers:
         specifier: 'catalog:'
         version: 3.14.2
       elysia:
-        specifier: ^1.2.10
+        specifier: ^1.2.25
         version: 1.2.25(@sinclair/typebox@0.34.13)(openapi-types@12.1.3)(typescript@5.8.2)
       lefthook:
         specifier: ^1.10.10
