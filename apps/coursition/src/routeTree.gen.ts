@@ -11,11 +11,11 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as TosImport } from './routes/tos'
-import { Route as PpImport } from './routes/pp'
-import { Route as MediaImport } from './routes/media'
 import { Route as EditorImport } from './routes/editor'
 import { Route as IndexImport } from './routes/index'
+import { Route as MediaImport } from './routes/media'
+import { Route as PpImport } from './routes/pp'
+import { Route as TosImport } from './routes/tos'
 
 // Create/Update Routes
 
@@ -143,9 +143,7 @@ const rootRouteChildren: RootRouteChildren = {
   TosRoute: TosRoute,
 }
 
-export const routeTree = rootRoute
-  ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+export const routeTree = rootRoute._addFileChildren(rootRouteChildren)._addFileTypes<FileRouteTypes>()
 
 /* ROUTE_MANIFEST_START
 {

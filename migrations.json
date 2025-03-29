@@ -2,27 +2,11 @@
   "migrations": [
     {
       "cli": "nx",
-      "version": "20.2.0-beta.2",
-      "description": "Update the ModuleFederationConfig import use @nx/module-federation.",
-      "factory": "./src/migrations/update-20-2-0/migrate-mf-imports-to-new-package",
+      "version": "20.4.0-beta.0",
+      "description": "Add NX_MF_DEV_REMOTES to inputs for task hashing when '@nx/webpack:webpack' or '@nx/rspack:rspack' is used for Module Federation.",
+      "factory": "./src/migrations/update-18-0-0/add-mf-env-var-to-target-defaults",
       "package": "@nx/react",
-      "name": "update-20-2-0-update-module-federation-config-import"
-    },
-    {
-      "cli": "nx",
-      "version": "20.2.0-beta.2",
-      "description": "Update the withModuleFederation import use @nx/module-federation/webpack.",
-      "factory": "./src/migrations/update-20-2-0/migrate-with-mf-import-to-new-package",
-      "package": "@nx/react",
-      "name": "update-20-2-0-update-with-module-federation-import"
-    },
-    {
-      "cli": "nx",
-      "version": "20.3.0-beta.2",
-      "description": "If workspace includes Module Federation projects, ensure the new @nx/module-federation package is installed.",
-      "factory": "./src/migrations/update-20-3-0/ensure-nx-module-federation-package",
-      "package": "@nx/react",
-      "name": "ensure-nx-module-federation-package"
+      "name": "add-mf-env-var-to-target-defaults"
     }
   ]
 }

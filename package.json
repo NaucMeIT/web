@@ -67,10 +67,10 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@nx/devkit": "20.3.3",
-    "@nx/js": "20.3.3",
-    "@nx/react": "20.3.3",
-    "@nx/workspace": "20.3.3",
+    "@nx/devkit": "20.6.4",
+    "@nx/js": "20.6.4",
+    "@nx/react": "20.6.4",
+    "@nx/workspace": "20.6.4",
     "@sinclair/typebox": "0.34.13",
     "@swc-node/register": "^1.10.9",
     "@swc/core": "^1.10.9",
@@ -79,7 +79,7 @@
     "@types/node": "22.13.14",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "nx": "20.3.3",
+    "nx": "20.6.4",
     "tailwindcss": "catalog:",
     "typescript": "catalog:"
   }
