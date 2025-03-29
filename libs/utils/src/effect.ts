@@ -16,7 +16,8 @@ const BunSdkLive = NodeSdk.layer(() => ({
 const MainLayer = Layer.mergeAll(
   DevTools.layer(),
   BunSdkLive,
-  BunHttpServer.layer({ port: process.env['BACKEND_PORT'] ?? 3001 }),
+  // Elysia start on BACKEND_PORT, Effect needs to run on another until we migrate
+  BunHttpServer.layer({ port: (Number(process.env['BACKEND_PORT']) ?? 3001) + 1 }),
 )
 
 export const ServerRuntime = ManagedRuntime.make(MainLayer)
