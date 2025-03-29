@@ -1,6 +1,6 @@
 import { createOpenAI } from '@ai-sdk/openai'
-import { secretsEffect } from '@nmit-coursition/env'
-import { trim } from '@nmit-coursition/utils'
+import { secretsEffect } from '@nmit-coursition/env/secrets'
+import { trim } from '@nmit-coursition/utils/string'
 import { generateObject } from 'ai'
 import { Effect } from 'effect'
 import { Redacted } from 'effect'

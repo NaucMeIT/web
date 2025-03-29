@@ -1,15 +1,19 @@
 import { unlink } from 'node:fs/promises'
 import FirecrawlApp from '@mendable/firecrawl-js'
-import { generateQuiz, getResult, getTranscript, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai'
-import { apiCommonGuard, downloadPublicMedia, formatApiErrorResponse, reportUsage } from '@nmit-coursition/api/utils'
-import { AUTH_BRJ_COOKIES_NAME } from '@nmit-coursition/auth'
-import { secretsEffect } from '@nmit-coursition/env'
+import { getResult, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai/document'
+import { generateQuiz } from '@nmit-coursition/ai/generate'
+import { getTranscript } from '@nmit-coursition/ai/media'
+import { formatApiErrorResponse } from '@nmit-coursition/api/utils/api'
+import { apiCommonGuard, reportUsage } from '@nmit-coursition/api/utils/api-utils'
+import { downloadPublicMedia } from '@nmit-coursition/api/utils/download-media'
+import { AUTH_BRJ_COOKIES_NAME } from '@nmit-coursition/auth/constants'
+import { secretsEffect } from '@nmit-coursition/env/secrets'
 import {
   allowedDeepgramLanguagesAsType,
   allowedLlamaParseLanguagesAsType,
   languages,
   languagesAsType,
-} from '@nmit-coursition/utils'
+} from '@nmit-coursition/utils/languages'
 import { Effect } from 'effect'
 import { Redacted } from 'effect'
 import { Elysia, t } from 'elysia'

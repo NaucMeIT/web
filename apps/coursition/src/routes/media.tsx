@@ -6,7 +6,7 @@ import {
   convertSubtitlesToBlob,
   extractFileMetadata,
   extractUrlMetadata,
-} from '@nmit-coursition/utils'
+} from '@nmit-coursition/utils/media'
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import { z } from 'zod'

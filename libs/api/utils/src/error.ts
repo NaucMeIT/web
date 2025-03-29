@@ -1,5 +1,5 @@
-import { isApiErrorCode } from '../api'
-import { type ApiErrorCode, type DocumentedErrorDescription, ERROR_LIST, type ErrorDefinition } from '../errorList'
+import { isApiErrorCode } from './api'
+import { type ApiErrorCode, type DocumentedErrorDescription, ERROR_LIST, type ErrorDefinition } from './errorList'
 
 interface ApiError {
   code?: number
