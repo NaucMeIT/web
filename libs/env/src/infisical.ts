@@ -1,4 +1,4 @@
-import { parseError } from '@nmit-coursition/api/utils/lib/error'
+import { parseError } from '@nmit-coursition/api/utils/error'
 import { Data, Effect } from 'effect'
 import { privateConfig } from './typed'
 

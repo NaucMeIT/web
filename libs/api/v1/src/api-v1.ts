@@ -4,9 +4,8 @@ import { getResult, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai/d
 import { generateQuiz } from '@nmit-coursition/ai/generate'
 import { getTranscript } from '@nmit-coursition/ai/media'
 import { formatApiErrorResponse } from '@nmit-coursition/api/utils/api'
+import { apiCommonGuard, reportUsage } from '@nmit-coursition/api/utils/api-utils'
 import { downloadPublicMedia } from '@nmit-coursition/api/utils/download-media'
-import { apiCommonGuard } from '@nmit-coursition/api/utils/lib/api-utils'
-import { reportUsage } from '@nmit-coursition/api/utils/lib/api-utils'
 import { AUTH_BRJ_COOKIES_NAME } from '@nmit-coursition/auth/constants'
 import { secretsEffect } from '@nmit-coursition/env/secrets'
 import {
