@@ -1,5 +1,6 @@
-import { apiCommonGuard } from '@nmit-coursition/api/utils'
-import { publicConfig, secretsEffect } from '@nmit-coursition/env'
+import { apiCommonGuard } from '@nmit-coursition/api/utils/lib/api-utils'
+import { secretsEffect } from '@nmit-coursition/env/secrets'
+import { publicConfig } from '@nmit-coursition/env/typed'
 import { Effect, Redacted } from 'effect'
 import { Elysia } from 'elysia'
 

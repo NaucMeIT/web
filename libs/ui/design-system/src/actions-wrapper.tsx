@@ -1,6 +1,7 @@
 import { Button, Toast, Tooltip } from '@douyinfe/semi-ui'
-import { cn } from '@nmit-coursition/utils'
-import { type FileFormat, useContentCopy, useContentDownload } from '@nmit-coursition/utils'
+import { useContentCopy } from '@nmit-coursition/utils/copy'
+import { type FileFormat, useContentDownload } from '@nmit-coursition/utils/download'
+import { cn } from '@nmit-coursition/utils/style'
 import {
   Children,
   type FC,

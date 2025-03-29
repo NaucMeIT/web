@@ -36,20 +36,40 @@
     "noFallthroughCasesInSwitch": true,
     "incremental": true,
     "paths": {
-      "@nmit-coursition/ai": ["libs/ai/src/index.ts"],
-      "@nmit-coursition/api/auth": ["libs/api/auth/src/index.ts"],
-      "@nmit-coursition/api/dev": ["libs/api/dev/src/index.ts"],
-      "@nmit-coursition/api/full": ["libs/api/full/src/index.ts"],
-      "@nmit-coursition/api/utils": ["libs/api/utils/src/index.ts"],
+      "@nmit-coursition/ai/document": ["libs/ai/src/document.ts"],
+      "@nmit-coursition/ai/generate": ["libs/ai/src/generate.ts"],
+      "@nmit-coursition/ai/media": ["libs/ai/src/media.ts"],
+
+      "@nmit-coursition/api/auth/*": ["libs/api/auth/src/*"],
+      "@nmit-coursition/api/dev/*": ["libs/api/dev/src/*"],
+      "@nmit-coursition/api/full/*": ["libs/api/full/src/*"],
       "@nmit-coursition/api/utils/*": ["libs/api/utils/src/*"],
-      "@nmit-coursition/api/v1": ["libs/api/v1/src/index.ts"],
-      "@nmit-coursition/auth": ["libs/auth/src/index.ts"],
-      "@nmit-coursition/db": ["libs/db/src/index.ts"],
-      "@nmit-coursition/env": ["libs/env/src/index.ts"],
-      "@nmit-coursition/order": ["libs/order/src/index.ts"],
-      "@nmit-coursition/ui/design-system": ["libs/ui/design-system/src/index.ts"],
-      "@nmit-coursition/ui/utils": ["libs/ui/utils/src/index.ts"],
-      "@nmit-coursition/utils": ["libs/utils/src/index.ts"]
+      "@nmit-coursition/api/v1/*": ["libs/api/v1/src/*"],
+
+      "@nmit-coursition/auth/user": ["libs/auth/src/user.ts"],
+      "@nmit-coursition/auth/constants": ["libs/auth/src/constants.ts"],
+      "@nmit-coursition/auth/typescript": ["libs/auth/src/typescript.ts"],
+
+      "@nmit-coursition/db/client": ["libs/db/src/client.ts"],
+
+      "@nmit-coursition/env/*": ["libs/env/src/*"],
+      "@nmit-coursition/order/*": ["libs/order/src/*"],
+      "@nmit-coursition/ui/design-system/*": ["libs/ui/design-system/src/*"],
+      "@nmit-coursition/ui/utils/*": ["libs/ui/utils/src/*"],
+
+      "@nmit-coursition/utils/common": ["libs/utils/src/common.ts"],
+      "@nmit-coursition/utils/copy": ["libs/utils/src/copy.ts"],
+      "@nmit-coursition/utils/date": ["libs/utils/src/date.ts"],
+      "@nmit-coursition/utils/download": ["libs/utils/src/download.ts"],
+      "@nmit-coursition/utils/effect": ["libs/utils/src/effect.ts"],
+      "@nmit-coursition/utils/languages": ["libs/utils/src/languages.ts"],
+      "@nmit-coursition/utils/media": ["libs/utils/src/media.ts"],
+      "@nmit-coursition/utils/random": ["libs/utils/src/random.ts"],
+      "@nmit-coursition/utils/split-props": ["libs/utils/src/split-props.ts"],
+      "@nmit-coursition/utils/string": ["libs/utils/src/string.ts"],
+      "@nmit-coursition/utils/style": ["libs/utils/src/style.ts"],
+      "@nmit-coursition/utils/subtitles": ["libs/utils/src/subtitles.ts"],
+      "@nmit-coursition/utils/typescript": ["libs/utils/src/typescript.ts"]
     },
     "plugins": [
       {

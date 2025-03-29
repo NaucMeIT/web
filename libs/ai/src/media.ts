@@ -1,6 +1,6 @@
 import { createClient, srt, webvtt } from '@deepgram/sdk'
-import { secretsEffect } from '@nmit-coursition/env'
-import { ServerRuntime } from '@nmit-coursition/utils'
+import { secretsEffect } from '@nmit-coursition/env/secrets'
+import { ServerRuntime } from '@nmit-coursition/utils/effect'
 import { Context, Data, Effect, Layer, Redacted } from 'effect'
 
 export class Params extends Context.Tag('Params')<Params, { language: string; keywords: string[] }>() {

@@ -16,8 +16,8 @@ import {
 } from '@douyinfe/semi-icons'
 import { Button, Form, Toast } from '@douyinfe/semi-ui'
 import type { ButtonProps } from '@douyinfe/semi-ui/lib/es/button'
-import { publicConfig } from '@nmit-coursition/env'
-import { createSafeKey } from '@nmit-coursition/utils'
+import { publicConfig } from '@nmit-coursition/env/typed'
+import { createSafeKey } from '@nmit-coursition/utils/string'
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { Effect } from 'effect'
 

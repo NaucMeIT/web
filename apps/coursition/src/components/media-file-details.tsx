@@ -1,5 +1,5 @@
-import { formatDuration, formatFileSize } from '@nmit-coursition/utils'
-import type { MediaMetadata } from '@nmit-coursition/utils'
+import { formatDuration, formatFileSize } from '@nmit-coursition/utils/media'
+import type { MediaMetadata } from '@nmit-coursition/utils/media'
 
 interface MediaFileDetailsProps {
   metadata: MediaMetadata

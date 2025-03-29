@@ -1,4 +1,4 @@
-import { ServerRuntime } from '@nmit-coursition/utils'
+import { ServerRuntime } from '@nmit-coursition/utils/typescript'
 import { secretsEffect } from './secrets'
 import { publicConfig } from './typed'
 

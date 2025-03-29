@@ -1,5 +1,5 @@
-import { languages } from '@nmit-coursition/utils'
-import { transformToHighlightedVTT } from '@nmit-coursition/utils'
+import { languages } from '@nmit-coursition/utils/languages'
+import { transformToHighlightedVTT } from '@nmit-coursition/utils/subtitles'
 import { MediaPlayer, type MediaPlayerInstance, MediaProvider, Track } from '@vidstack/react'
 import {
   DefaultMenuCheckbox,

@@ -1,6 +1,6 @@
 import { TabPane, Tabs } from '@douyinfe/semi-ui'
-import { Actions } from '@nmit-coursition/ui/design-system'
-import type { FileFormat } from '@nmit-coursition/utils'
+import { Actions } from '@nmit-coursition/ui/design-system/actions-wrapper'
+import type { FileFormat } from '@nmit-coursition/utils/download'
 import type { ReactNode } from 'react'
 
 interface Props {

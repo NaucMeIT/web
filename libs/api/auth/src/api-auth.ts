@@ -1,13 +1,8 @@
-import { formatApiErrorResponse } from '@nmit-coursition/api/utils'
-import {
-  AUTH_BRJ_COOKIES_NAME,
-  AUTH_COOKIES_NAME,
-  createBrjMagicAuth,
-  getBrjIdentity,
-  invalidateSession,
-  logoutBrj,
-} from '@nmit-coursition/auth'
-import { publicConfig, secretsEffect } from '@nmit-coursition/env'
+import { formatApiErrorResponse } from '@nmit-coursition/api/utils/api'
+import { AUTH_BRJ_COOKIES_NAME, AUTH_COOKIES_NAME } from '@nmit-coursition/auth/constants'
+import { createBrjMagicAuth, getBrjIdentity, invalidateSession, logoutBrj } from '@nmit-coursition/auth/user'
+import { secretsEffect } from '@nmit-coursition/env/secrets'
+import { publicConfig } from '@nmit-coursition/env/typed'
 import { WorkOS } from '@workos-inc/node'
 import { Effect } from 'effect'
 import { Redacted } from 'effect'

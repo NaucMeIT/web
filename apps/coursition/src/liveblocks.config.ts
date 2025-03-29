@@ -1,6 +1,6 @@
 import { createClient } from '@liveblocks/client'
 import { createRoomContext } from '@liveblocks/react'
-import { publicConfig } from '@nmit-coursition/env'
+import { publicConfig } from '@nmit-coursition/env/typed'
 import { Effect } from 'effect'
 
 const publicEnv = Effect.runSync(publicConfig)
