@@ -1,4 +1,3 @@
-import { parseError } from '@nmit-coursition/api/utils/lib/error'
 import { Data, Effect } from 'effect'
 import { privateConfig } from './typed'
 
@@ -45,11 +44,11 @@ export class InfisicalClient extends Effect.Service<InfisicalClient>()('env/Infi
           }),
         }
       },
-      catch: (e) =>
+      catch: (e: any) =>
         new InfisicalError({
-          details: parseError(e).message || 'Unknown error during fetching secrets',
+          details: e.message || 'Unknown error during fetching secrets',
         }),
-    })
+    }).pipe(Effect.withSpan('InfisicalClient.createClient'))
 
     const fetchSecrets = () =>
       Effect.tryPromise({
@@ -58,11 +57,11 @@ export class InfisicalClient extends Effect.Service<InfisicalClient>()('env/Infi
             environment: 'dev',
             projectId,
           }),
-        catch: (e) =>
+        catch: (e: any) =>
           new FetchError({
-            details: parseError(e).message || 'Unknown error during fetching secrets',
+            details: e.message || 'Unknown error during fetching secrets',
           }),
-      })
+      }).pipe(Effect.withSpan('InfisicalClient.fetchSecrets'))
 
     const getSecrets = () =>
       Effect.gen(function* () {
@@ -70,7 +69,7 @@ export class InfisicalClient extends Effect.Service<InfisicalClient>()('env/Infi
         return secrets
           .map((secret: any) => ({ [secret.secretKey]: secret.secretValue }))
           .reduce((acc: any, curr: any) => Object.assign(acc, curr), {}) as { [key: string]: string }
-      })
+      }).pipe(Effect.withSpan('InfisicalClient.getSecrets'))
 
     return { getSecrets } as const
   }),
