@@ -12,7 +12,7 @@ export interface MediaMetadata {
   fps: number | null
   videoCodec: string | null
   audioCodec: string | null
-  fileSize: number | null
+  size: number | null
   container: string | null
   isHdr: boolean | null
   sampleRate: number | null
@@ -78,7 +78,18 @@ export const extractUrlMetadata = async (url: string): Promise<MediaMetadata | n
       acknowledgeRemotionLicense: true,
     })
 
-    return extractMediaMetadataFromParsedData(metadata)
+    const fullMetadata: MediaMetadata =
+      metadata.dimensions && metadata.dimensions.width && metadata.dimensions.height
+        ? {
+            ...metadata,
+            dimensions: { ...metadata.dimensions, aspectRatio: metadata.dimensions.width / metadata.dimensions.height },
+          }
+        : {
+            ...metadata,
+            dimensions: null,
+          }
+
+    return fullMetadata
   } catch (err) {
     console.warn('Failed to get media metadata from URL:', err)
     return null
@@ -104,37 +115,20 @@ export const extractFileMetadata = async (file: File): Promise<MediaMetadata | n
       },
       acknowledgeRemotionLicense: true,
     })
+    const fullMetadata: MediaMetadata =
+      metadata.dimensions && metadata.dimensions.width && metadata.dimensions.height
+        ? {
+            ...metadata,
+            dimensions: { ...metadata.dimensions, aspectRatio: metadata.dimensions.width / metadata.dimensions.height },
+          }
+        : {
+            ...metadata,
+            dimensions: null,
+          }
 
-    return extractMediaMetadataFromParsedData(metadata)
+    return fullMetadata
   } catch (err) {
     console.warn('Failed to get video metadata:', err)
     return null
-  }
-}
-
-function extractMediaMetadataFromParsedData(metadata: any): MediaMetadata {
-  const dimensions = metadata.dimensions
-  let dimensionsObj = null
-
-  if (dimensions && dimensions.width && dimensions.height) {
-    dimensionsObj = {
-      width: dimensions.width,
-      height: dimensions.height,
-      aspectRatio: dimensions.width / dimensions.height,
-    }
-  }
-
-  return {
-    dimensions: dimensionsObj,
-    durationInSeconds: metadata.durationInSeconds || null,
-    fps: metadata.fps || null,
-    videoCodec: metadata.videoCodec || null,
-    audioCodec: metadata.audioCodec || null,
-    fileSize: metadata.size || null,
-    container: metadata.container || null,
-    isHdr: metadata.isHdr || null,
-    sampleRate: metadata.sampleRate || null,
-    numberOfAudioChannels: metadata.numberOfAudioChannels || null,
-    mimeType: metadata.mimeType || null,
   }
 }

@@ -45,10 +45,10 @@ export function MediaFileDetails({ metadata }: MediaFileDetailsProps) {
         </div>
       )}
 
-      {metadata.fileSize != null && (
+      {metadata.size != null && (
         <div>
           <div className='font-medium text-gray-700'>File Size</div>
-          <div>{formatFileSize(metadata.fileSize)}</div>
+          <div>{formatFileSize(metadata.size)}</div>
         </div>
       )}
 

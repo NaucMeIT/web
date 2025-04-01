@@ -4,21 +4,16 @@ import { SuggestionMenuController, getDefaultReactSlashMenuItems, useCreateBlock
 import { ClientSideSuspense, LiveblocksProvider } from '@liveblocks/react/suspense'
 import { LiveblocksYjsProvider } from '@liveblocks/yjs'
 import { publicConfig } from '@nmit-coursition/env/typed'
-import { createFileRoute } from '@tanstack/react-router'
 import { Effect } from 'effect'
 import { useEffect, useState } from 'react'
 import { MdQuiz } from 'react-icons/md'
 import * as Y from 'yjs'
 
-import { Quiz } from '../components/quiz-block'
-import { RoomProvider, useRoom } from '../liveblocks.config'
+import { Quiz } from '../../components/quiz-block'
+import { RoomProvider, useRoom } from '../../liveblocks.config'
 
 import '@blocknote/core/fonts/inter.css'
 import '@blocknote/mantine/style.css'
-
-export const Route = createFileRoute('/editor')({
-  component: EditorPage,
-})
 
 const typedPublic = Effect.runSync(publicConfig)
 
@@ -102,7 +97,7 @@ function EditorWrapper() {
   return <EditorContent doc={doc} provider={provider} />
 }
 
-function EditorPage() {
+export default function Page() {
   return (
     <LiveblocksProvider publicApiKey={typedPublic.LIVEBLOCKS_PUBLIC_API_KEY}>
       <RoomProvider id='my-room'>

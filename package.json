@@ -82,5 +82,10 @@
     "nx": "20.6.4",
     "tailwindcss": "catalog:",
     "typescript": "catalog:"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@modern-js/plugin-tailwindcss": "patches/@modern-js__plugin-tailwindcss.patch"
+    }
   }
 }

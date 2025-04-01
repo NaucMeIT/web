@@ -16,14 +16,12 @@ import {
 } from '@douyinfe/semi-icons'
 import { Button, Form, Toast } from '@douyinfe/semi-ui'
 import type { ButtonProps } from '@douyinfe/semi-ui/lib/es/button'
+import { Link } from '@modern-js/runtime/router'
 import { publicConfig } from '@nmit-coursition/env/typed'
 import { createSafeKey } from '@nmit-coursition/utils/string'
-import { Link, createFileRoute } from '@tanstack/react-router'
 import { Effect } from 'effect'
-
-export const Route = createFileRoute('/')({
-  component: Index,
-})
+import transcribe from '../static/transcribe.avif'
+import transcript from '../static/transcript.png'
 
 const typedPublic = Effect.runSync(publicConfig)
 
@@ -33,7 +31,7 @@ type BuyLifetimeProps = ButtonProps & {
 
 const BuyLifetime = ({ withIcon = true, ...rest }: BuyLifetimeProps) => {
   return (
-    <a href={`${typedPublic.BACKEND_URL.href}/auth/login`} className='w-min'>
+    <a href={`${typedPublic.BACKEND_URL.href}auth/login`} className='w-min'>
       <Button
         {...rest}
         className='w-min h-16 text-2xl'
@@ -179,7 +177,7 @@ export default function Index() {
             <img
               decoding='sync'
               alt="Media upload interface for transcription services. Contains a dropzone for video/audio files with drag-and-drop functionality. Below are two input fields: one for specifying video language using keycodes (e.g., en-GB), and another for listing difficult-to-transcribe words. A blue 'Transcribe' button appears at the bottom. Interface also includes a URL tab option alongside the File upload tab."
-              src='./transcribe.avif'
+              src={transcribe}
             />
           </div>
         </section>
@@ -249,7 +247,7 @@ export default function Index() {
           <div className='h-full items-center justify-center hidden md:flex -rotate-6'>
             <img
               alt='Video subtitle editor interface showing four consecutive timestamps from 00:00:05 to 00:00:13, with their corresponding dialogue lines about AI hype and productivity. Tabs for SRT, VTT (selected), and Raw formats are visible, with copy and download buttons in the top right.'
-              src='./transcript.png'
+              src={transcript}
               decoding='async'
               loading='lazy'
             />
