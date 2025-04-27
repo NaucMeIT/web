@@ -1,6 +1,6 @@
 import { treaty } from '@elysiajs/eden'
-import type { TypedApp } from '@nmit-coursition/api/full'
-import { publicConfig } from '@nmit-coursition/env'
+import type { TypedApp } from '@nmit-coursition/api'
+import { publicConfig } from '@nmit-coursition/env/typed'
 import { Effect } from 'effect'
 
 const typedPublic = Effect.runSync(publicConfig)

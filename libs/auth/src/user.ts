@@ -1,5 +1,5 @@
-import { prisma } from '@nmit-coursition/db'
-import { secretsEffect } from '@nmit-coursition/env'
+import { prisma } from '@nmit-coursition/db/client'
+import { secretsEffect } from '@nmit-coursition/env/secrets'
 import { Effect, Redacted } from 'effect'
 import type { User } from './typescript'
 

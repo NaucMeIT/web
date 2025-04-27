@@ -8,7 +8,7 @@ import {
   deepgramLanguageNames,
   extractFileMetadata,
   extractUrlMetadata,
-} from '@nmit-coursition/utils'
+} from '@nmit-coursition/utils/media'
 import { useState } from 'react'
 import { z } from 'zod'
 import { zfd } from 'zod-form-data'

@@ -27,7 +27,7 @@ class SecretsConfig extends Effect.Service<SecretsConfig>()('env/SecretsConfig',
     }).pipe(Effect.provide(jsonConfigLayer))
 
     return config
-  }),
+  }).pipe(Effect.withSpan('SecretsConfig')),
   dependencies: [InfisicalClient.Default],
 }) {}
 
