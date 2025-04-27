@@ -5,16 +5,29 @@ packages:
 
 # Define a catalog of version ranges.
 catalog:
-  "@rsbuild/core": 1.2.4
-  "@rsbuild/plugin-react": 1.1.0
+  "@rsbuild/core": 1.3.0
+  "@rsbuild/plugin-react": 1.1.1
   "@rsbuild/plugin-node-polyfill": 1.3.0
   tailwindcss: 4.0.3
   "@tailwindcss/postcss": 4.0.3
   tailwindcss-animate: 1.0.7
   tailwind-merge: 2.6.0
-  typescript: 5.7.3
+  typescript: 5.8.2
   react: 18.3.1
   react-dom: 18.3.1
   "@types/react": 18.3.12
   "@types/react-dom": 18.3.1
   convex: 1.19.2
+  effect: 3.14.2
+  "@effect/language-service": 0.4.0
+  "@effect/experimental": 0.44.2
+  "@effect/platform-bun": 0.60.5
+  "@effect/platform": 0.80.2
+  "@effect/opentelemetry": 0.45.2
+  "@opentelemetry/sdk-logs": "0.57.2"
+  "@opentelemetry/resources": "1.30.1"
+  "@opentelemetry/sdk-metrics": "1.30.1"
+  "@opentelemetry/sdk-trace-base": "1.30.1"
+  "@opentelemetry/sdk-trace-node": "1.30.1"
+  "@opentelemetry/sdk-trace-web": "1.30.1"
+  "@sentry/opentelemetry": "^9.8.0"

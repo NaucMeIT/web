@@ -5,7 +5,7 @@ import { routerWithQueryClient } from '@tanstack/react-router-with-query'
 import { ConvexProvider } from 'convex/react'
 import { Effect } from 'effect'
 
-import { publicConfig } from '@nmit-coursition/env'
+import { publicConfig } from '@nmit-coursition/env/typed'
 import { DefaultCatchBoundary } from './components/default-catch-boundary'
 import { NotFound } from './components/not-found'
 import { routeTree } from './routeTree.gen'

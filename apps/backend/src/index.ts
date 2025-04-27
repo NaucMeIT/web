@@ -1,7 +1,7 @@
 import { cors } from '@elysiajs/cors'
 import { swagger } from '@elysiajs/swagger'
-import { typedBe } from '@nmit-coursition/api/full'
-import { publicConfig } from '@nmit-coursition/env'
+import { typedBe } from '@nmit-coursition/api'
+import { publicConfig } from '@nmit-coursition/env/typed'
 import * as Sentry from '@sentry/bun'
 import { Effect } from 'effect'
 import { Elysia } from 'elysia'
@@ -47,7 +47,7 @@ const app = new Elysia()
   })
   .use(
     cors({
-      origin: ['https://coursition.com', 'https://api.coursition.com'],
+      origin: ['https://coursition.com', 'https://api.coursition.com', 'http://localhost:3000'],
     }),
   )
   .use(typedBe)

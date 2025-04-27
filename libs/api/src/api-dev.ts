@@ -1,5 +1,5 @@
 import { apiCommonGuard, computeUsage, formatApiErrorResponse, reportSpend } from '@nmit-coursition/api/utils'
-import { publicConfig } from '@nmit-coursition/env'
+import { publicConfig } from '@nmit-coursition/env/typed'
 import { api } from '@nmit-coursition/parse-engine/_generated/api'
 import { ConvexClient } from 'convex/browser'
 import { Effect } from 'effect'

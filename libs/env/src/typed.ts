@@ -16,7 +16,7 @@ export const publicConfig = Effect.provide(
     CONVEX_URL: Config.url('PUBLIC_CONVEX_URL'),
     CONVEX_DEPLOYMENT: Config.string('PUBLIC_CONVEX_DEPLOYMENT'),
     LIVEBLOCKS_PUBLIC_API_KEY: Config.string('PUBLIC_LIVEBLOCKS_PUBLIC_API_KEY'),
-    BACKEND_PORT: Config.integer('PUBLIC_BACKEND_PORT'),
+    BACKEND_PORT: Config.integer('PUBLIC_BACKEND_PORT').pipe(Config.withDefault(3001)),
     BACKEND_URL: Config.url('PUBLIC_BACKEND_URL'),
     FRONTEND_URL: Config.url('PUBLIC_FRONTEND_URL'),
   }),

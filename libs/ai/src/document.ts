@@ -1,5 +1,5 @@
-import { secretsEffect } from '@nmit-coursition/env'
-import { delay } from '@nmit-coursition/utils'
+import { secretsEffect } from '@nmit-coursition/env/secrets'
+import { delay } from '@nmit-coursition/utils/common'
 import { Effect } from 'effect'
 import { Redacted } from 'effect'
 
