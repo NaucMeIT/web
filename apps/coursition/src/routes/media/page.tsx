@@ -1,11 +1,10 @@
 import { IconDelete, IconInfoCircle } from '@douyinfe/semi-icons'
 import { Button, Form, Modal, Select, TabPane, Tabs, Toast } from '@douyinfe/semi-ui'
 import type { BeforeUploadProps } from '@douyinfe/semi-ui/lib/es/upload/interface'
+import { allowedDeepgramLanguages, deepgramLanguageNames } from '@nmit-coursition/utils/languages'
 import {
   type MediaMetadata,
-  allowedDeepgramLanguages,
   convertSubtitlesToBlob,
-  deepgramLanguageNames,
   extractFileMetadata,
   extractUrlMetadata,
 } from '@nmit-coursition/utils/media'
