@@ -1,10 +1,13 @@
 import { Outlet } from '@modern-js/runtime/router'
 import './index.css'
+import ConvexProviderWithClient from '../components/convex-provider.tsx'
 
 export default function Layout() {
   return (
     <div>
-      <Outlet />
+      <ConvexProviderWithClient>
+        <Outlet />
+      </ConvexProviderWithClient>
     </div>
   )
 }

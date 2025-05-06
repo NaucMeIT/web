@@ -8,8 +8,9 @@
  * @module
  */
 
-import type * as example from "../example.js";
-import type * as index from "../index.js";
+import type * as admin from "../admin.js";
+import type * as media from "../media.js";
+import type * as transcription from "../transcription.js";
 
 import type {
   ApiFromModules,
@@ -25,8 +26,9 @@ import type {
  * ```
  */
 declare const fullApi: ApiFromModules<{
-  example: typeof example;
-  index: typeof index;
+  admin: typeof admin;
+  media: typeof media;
+  transcription: typeof transcription;
 }>;
 declare const fullApiWithMounts: typeof fullApi;
 
