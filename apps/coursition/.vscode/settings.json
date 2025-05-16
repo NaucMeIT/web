@@ -19,23 +19,10 @@
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
 
-  "cSpell.diagnosticLevel": "Hint",
   "javascript.validate.enable": false,
   "typescript.validate.enable": true,
   "css.validate": false,
-  "scss.validate": false,
-  "less.validate": false,
   "[css]": {
-    "editor.formatOnType": true,
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true
-  },
-  "[scss]": {
-    "editor.formatOnType": true,
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true
-  },
-  "[less]": {
     "editor.formatOnType": true,
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true
@@ -83,6 +70,5 @@
       "source.organizeImports.biome": "explicit"
     }
   },
-  "emmet.triggerExpansionOnTab": true,
   "typescript.tsdk": "node_modules/typescript/lib"
 }

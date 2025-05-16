@@ -1,37 +1,29 @@
 # Modern.js App
 
-## Setup
-
-Install the dependencies:
-
-```bash
-pnpm install
-```
-
 ## Get Started
 
 Start the dev server:
 
 ```bash
-pnpm dev
+bunx nx run coursition:dev
 ```
 
 Enable optional features or add a new entry:
 
 ```bash
-pnpm new
+bunx nx run coursition:new
 ```
 
 Build the app for production:
 
 ```bash
-pnpm build
+bunx nx run coursition:build
 ```
 
 Preview the production build locally:
 
 ```bash
-pnpm serve
+bunx nx run coursition:serve
 ```
 
 For more information, see the [Modern.js documentation](https://modernjs.dev/en).
