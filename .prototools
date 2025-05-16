@@ -1,7 +1,7 @@
 biome = "1.9.4"
 bun = "1.2.10"
 node = "~22"
-npm = "~10"
+npm = "~11"
 pnpm = "~10"
 
 [plugins]

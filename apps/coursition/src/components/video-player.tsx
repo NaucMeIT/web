@@ -1,6 +1,6 @@
 import { languages } from '@nmit-coursition/utils/languages'
 import { transformToHighlightedVTT } from '@nmit-coursition/utils/subtitles'
-import { MediaPlayer, type MediaPlayerInstance, MediaProvider, Track } from '@vidstack/react'
+import { MediaPlayer, type MediaPlayerInstance, MediaProvider, type MediaSrc, Track } from '@vidstack/react'
 import {
   DefaultMenuCheckbox,
   DefaultMenuItem,
@@ -13,8 +13,10 @@ import '@vidstack/react/player/styles/default/theme.css'
 import '@vidstack/react/player/styles/default/layouts/video.css'
 import './video-player.css'
 
+export type { MediaSrc } from '@vidstack/react'
+
 interface VideoPlayerProps {
-  source: string
+  source: MediaSrc
   subtitles?: string
   subtitlesLang?: keyof typeof languages
   aspectRatio?: string
@@ -66,13 +68,7 @@ export function VideoPlayer({ source, subtitles, subtitlesLang = 'en-gb', aspect
   }, [highlightingEnabled])
 
   return (
-    <MediaPlayer
-      ref={player}
-      src={{ src: source, type: 'video/mp4' }}
-      load='visible'
-      className='h-full w-full'
-      aspectRatio={aspectRatio}
-    >
+    <MediaPlayer ref={player} src={source} load='visible' className='h-full w-full' aspectRatio={aspectRatio}>
       <MediaProvider>
         <Track
           src={highlightingEnabled ? highlightedSubtitles : subtitles}

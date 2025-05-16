@@ -1,34 +1,57 @@
 {
   "name": "coursition",
-  "version": "0.0.0",
-  "private": true,
-  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "reset": "npx rimraf node_modules ./**/node_modules",
+    "dev": "modern dev",
+    "build": "modern build",
+    "start": "modern start",
+    "serve": "modern serve",
+    "new": "modern new",
+    "lint": "biome check",
+    "prepare": "simple-git-hooks",
+    "upgrade": "modern upgrade"
+  },
+  "engines": {
+    "node": ">=16.18.1"
+  },
+  "lint-staged": {
+    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": ["biome check --files-ignore-unknown=true"]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
   "dependencies": {
-    "@blocknote/core": "^0.23.0",
-    "@blocknote/mantine": "^0.23.0",
-    "@blocknote/react": "^0.23.0",
-    "@convex-dev/react-query": "0.0.0-alpha.8",
-    "@iconify/json": "^2.2.299",
-    "@iconify/tailwind4": "1.0.1",
-    "@liveblocks/client": "^2.16.1",
-    "@liveblocks/react": "^2.16.1",
-    "@liveblocks/yjs": "^2.16.1",
-    "@remotion/media-parser": "^4.0.267",
-    "@tailwindcss/postcss": "catalog:",
-    "@tanstack/react-query": "^5.64.2",
-    "@tanstack/react-query-devtools": "^5.64.2",
-    "@tanstack/react-router": "^1.97.14",
-    "@tanstack/react-router-with-query": "^1.97.14",
-    "@tanstack/router-devtools": "^1.97.14",
-    "@tanstack/router-plugin": "^1.97.14",
-    "convex": "^1.18.2",
-    "media-icons": "^1.1.5",
-    "react": "catalog:",
-    "react-dom": "catalog:",
-    "yjs": "^13.6.23",
-    "zephyr-webpack-plugin": "^0.0.34"
+    "@blocknote/core": "^0.25.1",
+    "@blocknote/mantine": "^0.25.1",
+    "@blocknote/react": "^0.25.1",
+    "@iconify/json": "^2.2.314",
+    "@iconify/tailwind4": "^1.0.6",
+    "@liveblocks/client": "^2.20.0",
+    "@liveblocks/react": "^2.20.0",
+    "@liveblocks/yjs": "^2.20.0",
+    "@modern-js/runtime": "2.67.5",
+    "@remotion/media-parser": "^4.0.273",
+    "@rsbuild/plugin-image-compress": "^1.1.0",
+    "postcss": "8.5.3",
+    "postcss-loader": "^8.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "rsbuild-plugin-tailwindcss": "^0.1.2",
+    "zephyr-modernjs-plugin": "^0.0.38",
+    "zephyr-rspack-plugin": "^0.0.38"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@modern-js/app-tools": "2.67.5",
+    "@modern-js/plugin-tailwindcss": "2.67.5",
+    "@modern-js/tsconfig": "2.67.5",
+    "@tailwindcss/postcss": "catalog:",
+    "@types/jest": "~29.5.14",
+    "@types/node": "~22.13.9",
+    "lint-staged": "~15.4.3",
+    "rimraf": "^6.0.1",
+    "simple-git-hooks": "^2.11.1",
     "@douyinfe/semi-rspack-plugin": "^2.77.1",
     "@rsbuild/core": "catalog:",
     "@rsbuild/plugin-node-polyfill": "catalog:",
@@ -38,6 +61,6 @@
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "tailwindcss": "catalog:",
-    "tailwindcss-animate": "catalog:"
+    "typescript": "catalog:"
   }
 }

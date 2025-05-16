@@ -1,27 +1,27 @@
 import { IconDelete, IconInfoCircle } from '@douyinfe/semi-icons'
-import { Button, Form, Modal, TabPane, Tabs, Toast } from '@douyinfe/semi-ui'
+import { Button, Form, Modal, Select, TabPane, Tabs, Toast } from '@douyinfe/semi-ui'
 import type { BeforeUploadProps } from '@douyinfe/semi-ui/lib/es/upload/interface'
+import { allowedDeepgramLanguages, deepgramLanguageNames } from '@nmit-coursition/utils/languages'
 import {
   type MediaMetadata,
   convertSubtitlesToBlob,
   extractFileMetadata,
   extractUrlMetadata,
 } from '@nmit-coursition/utils/media'
-import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import { z } from 'zod'
 import { zfd } from 'zod-form-data'
-import { MediaFileDetails } from '../components/media-file-details'
-import { StatusDisplay } from '../components/status-display'
-import { TranscriptionResults } from '../components/transcription-results'
-import { VideoPlayer } from '../components/video-player'
-import { app } from '../lib/backend'
+import { MediaFileDetails } from '../../components/media-file-details'
+import { StatusDisplay } from '../../components/status-display'
+import { TranscriptionResults } from '../../components/transcription-results'
+import { type MediaSrc, VideoPlayer } from '../../components/video-player'
+import { app } from '../../lib/backend'
 
 interface AppMediaState {
   raw: string | undefined
   srt: string | undefined
   vtt: string | undefined
-  videoSource: string | undefined
+  videoSource: MediaSrc | undefined
   uploadedFile: File | null
   mediaMetadata: MediaMetadata | null
 }
@@ -40,13 +40,13 @@ const fileSchema = z.discriminatedUnion('type', [
     type: z.literal('file'),
     file: zfd.file(),
     keywords: z.string().optional(),
-    language: z.string().optional(),
+    language: z.enum(allowedDeepgramLanguages),
   }),
   z.object({
     type: z.literal('url'),
     url: z.string().url(),
     keywords: z.string().optional(),
-    language: z.string().optional(),
+    language: z.enum(allowedDeepgramLanguages),
   }),
 ])
 
@@ -55,11 +55,7 @@ const statusStates = [
   { key: 'parse', text: 'Transcribing' },
 ]
 
-export const Route = createFileRoute('/media')({
-  component: Media,
-})
-
-function Media() {
+export default function Media() {
   const [status, setStatus] = useState<'idle' | 'upload' | 'parse' | 'done'>('idle')
   const [state, setState] = useState<AppMediaState>(initialState)
   const [isProcessingUrl, setIsProcessingUrl] = useState(false)
@@ -186,6 +182,10 @@ function Media() {
       const type = 'file' in values ? 'file' : 'url'
       const dataToValidate = type === 'file' ? { type, ...values, file: state.uploadedFile } : { type, ...values }
       const parsedData = fileSchema.parse(dataToValidate)
+      const videoSource =
+        parsedData.type === 'file'
+          ? ({ src: URL.createObjectURL(parsedData.file), type: 'video/mp4' } as const)
+          : parsedData.url
 
       setStatus('parse')
       const keywordsArray = parsedData.keywords ? parsedData.keywords.split(',').map((word) => `${word}:5`) : []
@@ -216,13 +216,11 @@ function Media() {
               },
               options,
             )
-      console.log(data)
-      console.log(error)
 
       if (error) throw new Error(error.value.description)
-      const { text, srt, vtt } = data
+      const { text = '', srt = '', vtt = '' } = data
       setStatus('done')
-      setState((prev) => ({ ...prev, raw: text, srt, vtt }))
+      setState((prev) => ({ ...prev, raw: text, srt, vtt, videoSource }))
     } catch (error) {
       Toast.error(`Something went wrong. Reason: ${error instanceof Error ? error.message : 'Unknown.'}`)
       setStatus('idle')
@@ -236,7 +234,7 @@ function Media() {
         {status === 'idle' && (
           <>
             <h1 className='text-2xl font-bold mb-4'>Upload media</h1>
-            <Form className='space-y-4' onSubmit={handleSubmit}>
+            <Form className='space-y-4' onSubmit={handleSubmit} initValues={{ language: 'en' }}>
               <Tabs type='line' keepDOM={false}>
                 <TabPane tab='File' itemKey='file'>
                   <Form.Upload
@@ -284,15 +282,19 @@ function Media() {
                 </TabPane>
               </Tabs>
               <div className='flex gap-3 flex-col w-full'>
-                {/*
-                  // TODO: Change to switch, so that it's impossible to pick incorrect language.
-                */}
-                <Form.Input
+                <Form.Select
                   field='language'
-                  placeholder='en-GB'
                   label='Language'
-                  helpText='What is main language of the video. Accepted is language keycode, e.g. en-GB, cs.'
-                />
+                  filter
+                  helpText='Main language of the video'
+                  style={{ width: 180 }}
+                >
+                  {Object.entries(deepgramLanguageNames).map(([code, name]) => (
+                    <Select.Option key={code} value={code}>
+                      {name}
+                    </Select.Option>
+                  ))}
+                </Form.Select>
                 <Form.TextArea
                   field='keywords'
                   label='Difficult words'
