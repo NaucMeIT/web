@@ -30,7 +30,7 @@
     "@liveblocks/client": "^2.20.0",
     "@liveblocks/react": "^2.20.0",
     "@liveblocks/yjs": "^2.20.0",
-    "@modern-js/runtime": "2.65.3",
+    "@modern-js/runtime": "2.67.5",
     "@remotion/media-parser": "^4.0.273",
     "@rsbuild/plugin-image-compress": "^1.1.0",
     "postcss": "8.5.3",
@@ -38,14 +38,14 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "rsbuild-plugin-tailwindcss": "^0.1.2",
-    "zephyr-modernjs-plugin": "^0.0.36",
-    "zephyr-rspack-plugin": "^0.0.36"
+    "zephyr-modernjs-plugin": "^0.0.38",
+    "zephyr-rspack-plugin": "^0.0.38"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@modern-js/app-tools": "2.65.3",
-    "@modern-js/plugin-tailwindcss": "2.65.3",
-    "@modern-js/tsconfig": "2.65.3",
+    "@modern-js/app-tools": "2.67.5",
+    "@modern-js/plugin-tailwindcss": "2.67.5",
+    "@modern-js/tsconfig": "2.67.5",
     "@tailwindcss/postcss": "catalog:",
     "@types/jest": "~29.5.14",
     "@types/node": "~22.13.9",
