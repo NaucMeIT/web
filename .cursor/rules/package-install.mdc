@@ -1,12 +1,15 @@
 ---
 description: How to install dependencies and think about the codebase.
-globs: 
+globs:
 alwaysApply: false
 ---
 
 # Package install
 
 - Always use pnpm for package installations
-- We use pnpm workspaces, so install package in appropriate app / lib
+- Avoid directly editing package.json for new deps
+- We use pnpm workspaces, so install package in appropriate app / lib with --filter
+  - Syntax `pnpm i --filter [PROJECT_NAME_FROM_PACKAGE.JSON] [PACKAGE_NAME]`
+  - Example for installing `@zag-js/checkbox` into project `ui` is following `pnpm i --filter ui @zag-js/checkbox`
 - We use Nx to share logic and separate it
 - Never call "npm", always call with pnpm
