@@ -22,6 +22,19 @@ export function Courses() {
                 >
                     Mrknout na AI kurz {">"}
                 </Typography>
+
+                <p className='mb-2'>
+                    Chceš rychle prototypovat a vyvíjet aplikace, aniž bys psal(a) řádky kódu? Náš kurz tě naučí, jak na
+                    to správně a efektivně.
+                </p>
+                <Typography
+                    variant='link'
+                    component={Link}
+                    componentProps={{ href: "/kurz-vibecoding" }}
+                    className='underline mb-5 block'
+                >
+                    Mrknout na kurz Vibecodingu {">"}
+                </Typography>
                 <p className='mb-2'>
                     Jsi v IT už nějakou dobu, ale API ti pořád připadá jako černá magie? Neboj, nejsi sám! Ať už jsi
                     vývojář, tester nebo se chystáš na kariéru v IT, znalost API je klíčová.
