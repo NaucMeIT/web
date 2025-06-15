@@ -21,7 +21,7 @@ const links: MenuItemProps[] = [
     { title: "Pro firmy", link: "/" },
     { title: "Kontakt", link: "#contact" },
     { title: "Přihlásit se", link: "/sign" },
-    { title: "AI Kurz", link: "/kurz-ai", isImportant: true },
+    { title: "Kurzy", link: "#courses", isImportant: true },
 ]
 
 const Home: NextPage = () => {
