@@ -9,6 +9,8 @@ import { PostHogProvider } from "posthog-js/react"
 
 import "../styles/global.css"
 import Script from "next/script"
+import Link from "next/link"
+import { CountdownTimer } from "../components/CountdownTimer"
 
 function MyApp({ Component, pageProps }: Readonly<AppProps<{ readonly session: Session }>>) {
     const oldUrlRef = useRef("")
@@ -94,6 +96,12 @@ function MyApp({ Component, pageProps }: Readonly<AppProps<{ readonly session: S
             </Script>
             <PostHogProvider client={posthog}>
                 <SessionProvider session={pageProps.session}>
+                    <div className='fixed top-0 w-full z-50 text-white py-1 text-xl text-center bg-primary'>
+                      <Link href={"/kurz-vibecoding"}>
+                          Kurz vibecodingu je tady, neváhej a přihlas se!
+                          Zbývá: <CountdownTimer targetDate={new Date('2025-07-21T23:59:59')} className="font-bold" />
+                      </Link>
+                    </div>
                     <Component {...pageProps} />
                     <div id='calendly' />
                 </SessionProvider>

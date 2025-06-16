@@ -3,8 +3,6 @@ import { Html, Head, Main, NextScript } from "next/document"
 import Script from "next/script"
 import { Partytown } from "@builder.io/partytown/react"
 import { Tracking } from "../components/Tracking"
-import Link from "next/link"
-import { CountdownTimer } from "../components/CountdownTimer"
 
 const APP_MAIN_COLOR = "#090c28"
 const APP_NAME = "Nauč mě IT"
@@ -57,12 +55,6 @@ export default function Document() {
                 <Partytown forward={["gtag", "dataLayer.push"]} />
             </Head>
             <body className='h-full font-poppins accent-primary caret-primary'>
-                <div className='fixed top-0 w-full z-50 text-white py-1 text-xl text-center bg-primary'>
-                  <Link href={"/kurz-vibecoding"}>
-                      Kurz vibecodingu je tady, neváhej a přihlas se!
-                      Zbývá: <CountdownTimer targetDate={new Date('2025-07-21T23:59:59')} className="font-bold" />
-                  </Link>
-                </div>
                 <Main />
                 <NextScript />
                 <Script
