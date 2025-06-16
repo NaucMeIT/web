@@ -15,8 +15,15 @@ interface TimeLeft {
 export function CountdownTimer({ targetDate, className = '' }: CountdownTimerProps) {
     const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 })
     const [isExpired, setIsExpired] = useState(false)
+    const [isClient, setIsClient] = useState(false)
 
     useEffect(() => {
+        setIsClient(true)
+    }, [])
+
+    useEffect(() => {
+        if (!isClient) return
+
         const calculateTimeRemaining = () => {
             const now = new Date()
             const difference = targetDate.getTime() - now.getTime()
@@ -42,7 +49,15 @@ export function CountdownTimer({ targetDate, className = '' }: CountdownTimerPro
         const timer = setInterval(calculateTimeRemaining, 1000)
 
         return () => clearInterval(timer)
-    }, [targetDate])
+    }, [targetDate, isClient])
+
+    if (!isClient) {
+        return (
+            <span className={className}>
+                načítání...
+            </span>
+        )
+    }
 
     if (isExpired) {
         return (
