@@ -64,7 +64,7 @@ export const useTrackedUser = () => {
                 name: name,
                 planId: planId,
             })
-            posthog.identify(email, { name: name })
+            posthog.identify(email, { name, email })
             posthog.capture("sign_success", {
                 email,
                 name,
