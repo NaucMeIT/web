@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react"
 
 interface CountdownTimerProps {
     targetDate: Date
@@ -12,7 +12,7 @@ interface TimeLeft {
     seconds: number
 }
 
-export function CountdownTimer({ targetDate, className = '' }: CountdownTimerProps) {
+export function CountdownTimer({ targetDate, className = "" }: CountdownTimerProps) {
     const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 })
     const [isExpired, setIsExpired] = useState(false)
     const [isClient, setIsClient] = useState(false)
@@ -52,19 +52,11 @@ export function CountdownTimer({ targetDate, className = '' }: CountdownTimerPro
     }, [targetDate, isClient])
 
     if (!isClient) {
-        return (
-            <span className={className}>
-                načítání...
-            </span>
-        )
+        return <span className={className}>načítání...</span>
     }
 
     if (isExpired) {
-        return (
-            <span className={className}>
-                Registrace ukončena!
-            </span>
-        )
+        return <span className={className}>Registrace ukončena!</span>
     }
 
     const formatTimeUnit = (value: number, singular: string, few: string, many: string) => {
@@ -77,20 +69,20 @@ export function CountdownTimer({ targetDate, className = '' }: CountdownTimerPro
         <span className={className}>
             {timeLeft.days > 0 && (
                 <>
-                    {timeLeft.days} {formatTimeUnit(timeLeft.days, 'den', 'dny', 'dní')}{' '}
+                    {timeLeft.days} {formatTimeUnit(timeLeft.days, "den", "dny", "dní")}{" "}
                 </>
             )}
             {timeLeft.hours > 0 && (
                 <>
-                    {timeLeft.hours} {formatTimeUnit(timeLeft.hours, 'hodina', 'hodiny', 'hodin')}{' '}
+                    {timeLeft.hours} {formatTimeUnit(timeLeft.hours, "hodina", "hodiny", "hodin")}{" "}
                 </>
             )}
             {timeLeft.minutes > 0 && (
                 <>
-                    {timeLeft.minutes} {formatTimeUnit(timeLeft.minutes, 'minuta', 'minuty', 'minut')}{' '}
+                    {timeLeft.minutes} {formatTimeUnit(timeLeft.minutes, "minuta", "minuty", "minut")}{" "}
                 </>
             )}
-            {timeLeft.seconds} {formatTimeUnit(timeLeft.seconds, 'sekunda', 'sekundy', 'sekund')}
+            {timeLeft.seconds} {formatTimeUnit(timeLeft.seconds, "sekunda", "sekundy", "sekund")}
         </span>
     )
 }
