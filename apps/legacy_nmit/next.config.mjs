@@ -110,7 +110,7 @@ export default withMDX(
                     permanent: true,
                 },
                 {
-                    source: "/companies",
+                    source: "/education",
                     destination: "/",
                     permanent: true,
                 },

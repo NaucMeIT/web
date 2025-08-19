@@ -36,6 +36,18 @@ export function Courses() {
                     Mrknout na kurz Vibecodingu {">"}
                 </Typography>
                 <p className='mb-2'>
+                    Chceš posunout své projekty na vyšší úroveň? React ti ukáže, jak psát přehledný kód, snadno pracovat
+                    s daty a stavět aplikace, na které můžeš být hrdý.
+                </p>
+                <Typography
+                    variant='link'
+                    component={Link}
+                    componentProps={{ href: "/kurz-react" }}
+                    className='underline mb-5 block'
+                >
+                    Mrknout na kurz Reactu {">"}
+                </Typography>
+                <p className='mb-2'>
                     Jsi v IT už nějakou dobu, ale API ti pořád připadá jako černá magie? Neboj, nejsi sám! Ať už jsi
                     vývojář, tester nebo se chystáš na kariéru v IT, znalost API je klíčová.
                 </p>
@@ -59,7 +71,7 @@ export function Courses() {
                 >
                     Mrknout na kurz Figmy {">"}
                 </Typography>
-                <p className='mb-2'>
+                {/* <p className='mb-2'>
                     Git je magie! Aby ses ji naučil, nemusíš ukrást zakázanou knihu drakovi. Stačí pochopit základní
                     koncepty, které tě vystřelí rychle dál.
                 </p>
@@ -70,7 +82,7 @@ export function Courses() {
                     className='underline mb-5 block'
                 >
                     Mrknout na kurz Gitu {">"}
-                </Typography>
+                </Typography> */}
             </CourseBox>
             <CourseBox image='/images/dev_illustration.svg' width={320} height={348} side='left' title='Samostudium'>
                 <p className='mb-2'>
