@@ -15,6 +15,7 @@ import { LearnEarn, PayConsultancy, Time, Worldwide } from "../components/icons"
 import { SideDecoration } from "../components/SideDecoration"
 
 const links: MenuItemProps[] = [
+    { title: "Jsem student", link: "/education" },
     { title: "Jak to funguje?", link: "#how" },
     { title: "Balíčky", link: "#packages" },
     { title: "O nás", link: "#about" },

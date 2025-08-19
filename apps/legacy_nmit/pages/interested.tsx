@@ -5,7 +5,7 @@ import { Head } from "../components/Head"
 const Interested: NextPage = () => {
     useEffect(() => {
         setTimeout(() => {
-            window && window?.location.replace("https://calendly.com/pavel-koudelka-naucme/15-minutova-seznamovacka")
+            window && window?.location.replace("https://calendly.com/pavel-koudelka-naucme/zlepsete-svuj-eshop")
         }, 3000)
     }, [])
 
@@ -24,7 +24,7 @@ const Interested: NextPage = () => {
                 <h1 className='mx-10 mb-10 text-5xl text-center text-white mt-80'>Přesměrovávám na formulář...</h1>
                 <span className='mx-10 text-center text-white '>
                     Přesměrování neproběhlo? Klikni prosím{" "}
-                    <a className='underline' href='https://calendly.com/pavel-koudelka-naucme/15-minutova-seznamovacka'>
+                    <a className='underline' href='https://calendly.com/pavel-koudelka-naucme/zlepsete-svuj-eshop'>
                         zde
                     </a>
                     .

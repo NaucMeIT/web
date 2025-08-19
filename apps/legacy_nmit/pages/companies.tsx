@@ -11,7 +11,7 @@ import { CompanyForm } from "../components/CompanyForm"
 import { Employees } from "../components/Employees"
 import { SideDecoration } from "../components/SideDecoration"
 
-const employeeFormLink = "https://calendly.com/pavel-koudelka-naucme/15-minutova-seznamovacka"
+const employeeFormLink = "https://calendly.com/pavel-koudelka-naucme/zlepsete-svuj-eshop"
 const links = [
     { title: "Jsem student", link: "/" },
     { title: "Jak to funguje?", link: "#how" },
