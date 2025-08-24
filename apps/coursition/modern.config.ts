@@ -4,7 +4,7 @@ import { tailwindcssPlugin } from '@modern-js/plugin-tailwindcss'
 import { loadEnv } from '@rsbuild/core'
 import { pluginImageCompress } from '@rsbuild/plugin-image-compress'
 import { pluginNodePolyfill } from '@rsbuild/plugin-node-polyfill'
-import { withZephyr } from 'zephyr-modernjs-plugin'
+// import { withZephyr } from 'zephyr-modernjs-plugin'
 
 const { publicVars } = loadEnv({ cwd: '../..' })
 
@@ -42,7 +42,7 @@ export default defineConfig({
       bundler: 'rspack',
     }),
     tailwindcssPlugin(),
-    withZephyr(),
+    //withZephyr(),
   ],
   tools: {
     rspack: {

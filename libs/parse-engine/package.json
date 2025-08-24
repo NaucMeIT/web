@@ -1,0 +1,16 @@
+{
+  "name": "parse-engine",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "catalog:"
+  },
+  "dependencies": {
+    "convex": "catalog:",
+    "@convex-dev/workflow": "0.1.5",
+    "openai": "4.85.1"
+  }
+}

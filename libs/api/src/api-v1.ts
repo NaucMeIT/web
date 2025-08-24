@@ -1,8 +1,6 @@
-import { unlink } from 'node:fs/promises'
 import FirecrawlApp from '@mendable/firecrawl-js'
 import { getResult, uploadFile, waitUntilJobIsDone } from '@nmit-coursition/ai/document'
 import { generateQuiz } from '@nmit-coursition/ai/generate'
-import { getTranscript } from '@nmit-coursition/ai/media'
 import { AUTH_BRJ_COOKIES_NAME } from '@nmit-coursition/auth/constants'
 import { secretsEffect } from '@nmit-coursition/env/secrets'
 import {
@@ -16,7 +14,7 @@ import { Redacted } from 'effect'
 import { Elysia, t } from 'elysia'
 import { formatApiErrorResponse } from './utils/api'
 import { apiCommonGuard, reportUsage } from './utils/api-utils'
-import { downloadPublicMedia } from './utils/download-media'
+import { persistNewMedia } from './utils/convex-client.ts'
 
 const secretsEnv = await Effect.runPromise(secretsEffect)
 export const apiV1 = new Elysia({ prefix: '/v1', tags: ['v1'] })
@@ -26,17 +24,22 @@ export const apiV1 = new Elysia({ prefix: '/v1', tags: ['v1'] })
       .post(
         '/media',
         async ({ body: { output, keywords, file, language }, error: errorFn, request }) => {
-          const transcript = await getTranscript(file, keywords, language)
+          const id = await persistNewMedia({
+            identityId: 'undefined_user',
+            output,
+            keywords,
+            file,
+            language,
+          })
+          // const transcript = await getTranscript(file, keywords, language)
+          const transcript = {}
 
           if ('error' in transcript) {
             return errorFn(500, formatApiErrorResponse(request, `Failed to process media: ${transcript.error}`))
           }
 
           return {
-            ...(output.includes('vtt') ? { vtt: transcript.vtt } : {}),
-            ...(output.includes('srt') ? { srt: transcript.srt } : {}),
-            ...(output.includes('text') ? { text: transcript.raw } : {}),
-            duration: transcript.metadata?.duration,
+            id,
           }
         },
         {
@@ -58,6 +61,7 @@ export const apiV1 = new Elysia({ prefix: '/v1', tags: ['v1'] })
               srt: t.Optional(t.String()),
               text: t.Optional(t.String()),
               duration: t.Optional(t.Number()),
+              id: t.String(),
             }),
           },
           afterResponse({ response, cookie }) {
@@ -72,23 +76,24 @@ export const apiV1 = new Elysia({ prefix: '/v1', tags: ['v1'] })
         '/public-media',
         async ({ body: { url, output, keywords, language }, error: errorFn, request }) => {
           try {
-            const { path } = await downloadPublicMedia(url)
-            const audioFile = Buffer.from(await Bun.file(path).arrayBuffer())
-            const transcript = await getTranscript(audioFile, keywords, language)
-            await unlink(path)
-
-            if ('error' in transcript) {
-              return errorFn(
-                500,
-                formatApiErrorResponse(request, `Failed to process public media: ${transcript.error}`),
-              )
-            }
+            const id = await persistNewMedia({
+              identityId: 'undefined_user',
+              output,
+              keywords,
+              publicMediaUrl: url,
+              language,
+            })
+            // const { path } = await downloadPublicMedia(url)
+            // const audioFile = Buffer.from(await Bun.file(path).arrayBuffer())
+            // const transcript = await getTranscript(audioFile, keywords, language)
+            // await unlink(path)
 
             return {
-              ...(output.includes('vtt') ? { vtt: transcript.vtt } : {}),
-              ...(output.includes('srt') ? { srt: transcript.srt } : {}),
-              ...(output.includes('text') ? { text: transcript.raw } : {}),
-              duration: transcript.metadata?.duration,
+              // ...(output.includes('vtt') ? { vtt: transcript.vtt } : {}),
+              // ...(output.includes('srt') ? { srt: transcript.srt } : {}),
+              // ...(output.includes('text') ? { text: transcript.raw } : {}),
+              // duration: transcript.metadata?.duration,
+              id,
             }
           } catch (error) {
             return errorFn(500, formatApiErrorResponse(request, `Failed to process public media: ${error}`))
@@ -113,6 +118,7 @@ export const apiV1 = new Elysia({ prefix: '/v1', tags: ['v1'] })
               srt: t.Optional(t.String()),
               text: t.Optional(t.String()),
               duration: t.Optional(t.Number()),
+              id: t.Optional(t.String()),
             }),
           },
           afterResponse({ response, cookie }) {

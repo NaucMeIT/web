@@ -4,11 +4,14 @@ import type { BeforeUploadProps } from '@douyinfe/semi-ui/lib/es/upload/interfac
 import { allowedDeepgramLanguages, deepgramLanguageNames } from '@nmit-coursition/utils/languages'
 import {
   type MediaMetadata,
+  // allowedDeepgramLanguages,
   convertSubtitlesToBlob,
+  // deepgramLanguageNames,
   extractFileMetadata,
   extractUrlMetadata,
 } from '@nmit-coursition/utils/media'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 import { zfd } from 'zod-form-data'
 import { MediaFileDetails } from '../../components/media-file-details'
@@ -61,6 +64,7 @@ export default function Media() {
   const [isProcessingUrl, setIsProcessingUrl] = useState(false)
   const [currentUrl, setCurrentUrl] = useState('')
   const [modal, contextHolder] = Modal.useModal()
+  const navigate = useNavigate()
 
   const showFileDetails = () => {
     if (!state.mediaMetadata) return
@@ -218,7 +222,11 @@ export default function Media() {
             )
 
       if (error) throw new Error(error.value.description)
-      const { text = '', srt = '', vtt = '' } = data
+      const { text = '', srt = '', vtt = '', id } = data
+
+      if (id) {
+        navigate(`/media/${id}`)
+      }
       setStatus('done')
       setState((prev) => ({ ...prev, raw: text, srt, vtt, videoSource }))
     } catch (error) {
