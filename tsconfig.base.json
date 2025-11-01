@@ -50,6 +50,7 @@
 
       "@nmit-coursition/env/*": ["libs/env/src/*"],
       "@nmit-coursition/order/*": ["libs/order/src/*"],
+      "@nmit-coursition/parse-engine/*": ["libs/parse-engine/convex/*"],
       "@nmit-coursition/ui/design-system/*": ["libs/ui/design-system/src/*"],
       "@nmit-coursition/ui/utils/*": ["libs/ui/utils/src/*"],
 

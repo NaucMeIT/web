@@ -34,6 +34,9 @@ export const apiCommonGuard = new Elysia().guard({
   },
   headers: headersModel,
   beforeHandle: async ({ headers, request: r, error, set, cookie }) => {
+    if (process.env['NODE_ENV'] === 'development' && r.url.includes('localhost')) {
+      return
+    }
     const session = cookie[AUTH_COOKIES_NAME]?.toString() || ''
     const identityId = cookie[AUTH_BRJ_COOKIES_NAME]?.toString() || ''
     const apiKeyRaw = headers['authorization'] || ''
