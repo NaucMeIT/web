@@ -57,9 +57,9 @@ export default withMDX(
                 },
             ]
         },
-        "redirects": [
+        redirects: [
                 { "source": "/(.*)", "destination": "https://entership.cz/$1", "permanent": true }
-            ]
+            ],
         },
-    }),
+    )
 )
