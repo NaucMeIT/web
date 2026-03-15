@@ -57,63 +57,8 @@ export default withMDX(
                 },
             ]
         },
-        async redirects() {
-            return [
-                {
-                    source: "/discord",
-                    destination: "https://discord.gg/SdHYjdJ9k3",
-                    permanent: true,
-                },
-                {
-                    source: "/slido",
-                    destination: "https://drp.li/nmit-slido",
-                    permanent: true,
-                },
-                {
-                    source: "/navit-stream/zvyseni-platu",
-                    destination: "https://drp.li/5EvLM",
-                    permanent: true,
-                },
-                {
-                    source: "/navit-stream/real-user-monitoring",
-                    destination: "https://drp.li/3b1vE",
-                    permanent: true,
-                },
-                {
-                    source: "/navit-stream/security-nepropalte-miliony",
-                    destination: "https://drp.li/wEEFV",
-                    permanent: true,
-                },
-                {
-                    source: "/navit-stream/programator-ai-svet",
-                    destination: "https://drp.li/w5zYC",
-                    permanent: true,
-                },
-                {
-                    source: "/navit-stream/remote-work",
-                    destination: "https://drp.li/PFmec",
-                    permanent: true,
-                },
-                {
-                    source: "/navit-stream/vzdelavani-vliv",
-                    destination: "https://drp.li/JWPiV",
-                    permanent: true,
-                },
-                {
-                    source: "/navit-stream/pohovor-nanecisto",
-                    destination: "https://drp.li/965Qd",
-                    permanent: true,
-                },
-                {
-                    source: "/navit-stream/junior-zisk-prace",
-                    destination: "https://drp.li/AwlWa",
-                    permanent: true,
-                },
-                {
-                    source: "/education",
-                    destination: "/",
-                    permanent: true,
-                },
+        "redirects": [
+                { "source": "/(.*)", "destination": "https://entership.cz/$1", "permanent": true }
             ]
         },
     }),
