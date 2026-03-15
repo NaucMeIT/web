@@ -46,7 +46,7 @@
     "next": "15.1.11",
     "next-auth": "^4.24.10",
     "next-axiom": "^0.18.1",
-    "next-mdx-remote": "^5.0.0",
+    "next-mdx-remote": "^6.0.0",
     "next-runtime": "^2.4.2",
     "nodemailer": "^6.9.16",
     "posthog-js": "^1.194.4",
