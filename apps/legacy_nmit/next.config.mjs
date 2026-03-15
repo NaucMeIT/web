@@ -57,9 +57,10 @@ export default withMDX(
                 },
             ]
         },
-        redirects: [
+        async redirects() {
+            return [
                 { "source": "/(.*)", "destination": "https://entership.cz/$1", "permanent": true }
-            ],
-        },
-    )
+            ]
+        }
+    })
 )
