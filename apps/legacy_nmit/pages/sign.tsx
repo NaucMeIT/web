@@ -1,6 +1,6 @@
 import Image from "next/image"
 import type { NextPage } from "next"
-import { handle, json } from "next-runtime"
+import { handle, json } from "next-runtime/lib"
 import { getServerSession } from "next-auth"
 import { FormEvent } from "react"
 import { Button, SocialButton } from "../components/Button"

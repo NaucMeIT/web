@@ -1,5 +1,5 @@
 import { GetServerSideProps } from "next"
-import { handle } from "next-runtime"
+import { handle } from "next-runtime/lib"
 import {
     CompanyFormData,
     ContactFormData,

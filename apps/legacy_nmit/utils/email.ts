@@ -1,6 +1,6 @@
 import sendgrid from "@sendgrid/mail"
 import { GetServerSideProps } from "next"
-import { handle, json } from "next-runtime"
+import { handle, json } from "next-runtime/lib"
 import { log } from "next-axiom"
 
 type PageProps = {}

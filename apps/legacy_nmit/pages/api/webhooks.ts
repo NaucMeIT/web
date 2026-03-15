@@ -3,13 +3,13 @@ import createStripe from "stripe"
 import bodyParser from "body-parser"
 import { log } from "next-axiom"
 import { PaymentStatus } from "@prisma/client"
-import { PostHog } from "posthog-node"
+import { createPostHogClient } from "../../utils/posthog"
 import { prisma } from "../../utils/prisma"
 
-const client = new PostHog(process.env["NEXT_PUBLIC_POSTHOG_KEY"] || "", { host: "https://eu.i.posthog.com" })
+const client = createPostHogClient()
 
 const stripe = new createStripe(process.env.STRIPE_SECRET_KEY || "", {
-    apiVersion: "2024-11-20.acacia",
+    apiVersion: "2025-02-24.acacia",
     typescript: true,
 })
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET || ""
@@ -79,8 +79,8 @@ async function handlePaymentIntentSucceeded(id: string, email: string) {
         data: { credits: user.credits + plan.credits, paymentStatus: PaymentStatus.Done },
     })
 
-    client.identify({ distinctId: user.id })
-    client.capture({
+    client?.identify({ distinctId: user.id })
+    client?.capture({
         distinctId: user.id,
         event: "order_paid",
         properties: {
@@ -89,7 +89,7 @@ async function handlePaymentIntentSucceeded(id: string, email: string) {
         },
     })
 
-    await client.shutdown()
+    await client?.shutdown()
 }
 
 async function handlePaymentIntentInProgress(email: string) {
@@ -101,8 +101,8 @@ async function handlePaymentIntentInProgress(email: string) {
         data: { paymentStatus: PaymentStatus.InProgress },
     })
 
-    client.identify({ distinctId: user.id })
-    client.capture({
+    client?.identify({ distinctId: user.id })
+    client?.capture({
         distinctId: user.id,
         event: "order_in_progress",
         properties: {
@@ -120,8 +120,8 @@ async function handlePaymentIntentFailed(email: string) {
         data: { paymentStatus: PaymentStatus.Failed },
     })
 
-    client.identify({ distinctId: user.id })
-    client.capture({
+    client?.identify({ distinctId: user.id })
+    client?.capture({
         distinctId: user.id,
         event: "order_failed",
         properties: {

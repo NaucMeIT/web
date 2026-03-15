@@ -1,7 +1,7 @@
 import { type NextPage } from "next"
 import { type Session, getServerSession } from "next-auth"
 import { log } from "next-axiom"
-import { handle, json } from "next-runtime"
+import { handle, json } from "next-runtime/lib"
 import { useRouter } from "next/router"
 import { authOptions } from "../api/auth/[...nextauth]"
 import { Head } from "../../components/Head"
@@ -9,9 +9,9 @@ import { ProfileDetailsForm } from "../../components/ProfileDetailsForm"
 import { prisma } from "../../utils/prisma"
 import { PaymentStatus, type Plan } from "@prisma/client"
 import { allowedStatus } from "../../utils/stripe"
-import { PostHog } from "posthog-node"
+import { createPostHogClient } from "../../utils/posthog"
 
-const client = new PostHog(process.env["NEXT_PUBLIC_POSTHOG_KEY"] || "", { host: "https://eu.i.posthog.com" })
+const client = createPostHogClient()
 
 type PageProps = {
     readonly session: Session
@@ -102,13 +102,13 @@ export const getServerSideProps = handle<{}, UrlQuery, FormData>({
                 },
             })
             const userEmail = session?.user?.email || ""
-            client.identify({
+            client?.identify({
                 distinctId: userEmail,
                 properties: {
                     name: body.name,
                 },
             })
-            client.capture({
+            client?.capture({
                 distinctId: userEmail,
                 event: "profile_edited",
                 properties: {
@@ -116,7 +116,7 @@ export const getServerSideProps = handle<{}, UrlQuery, FormData>({
                     customer_email: userEmail,
                 },
             })
-            await client.shutdown()
+            await client?.shutdown()
 
             return {
                 redirect: {

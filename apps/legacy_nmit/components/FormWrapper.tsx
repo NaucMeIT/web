@@ -1,4 +1,4 @@
-import { Form, useFormSubmit } from "next-runtime/form"
+import { Form, useFormSubmit } from 'next-runtime/lib/form';
 import { Button } from "./Button"
 import { Typography } from "./Typography"
 import { EmailLink } from "./EmailLink"

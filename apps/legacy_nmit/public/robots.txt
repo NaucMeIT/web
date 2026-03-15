@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://naucme.it
+Host: https://entership.cz
 
 # Sitemaps
-Sitemap: https://naucme.it/sitemap.xml
+Sitemap: https://entership.cz/sitemap.xml

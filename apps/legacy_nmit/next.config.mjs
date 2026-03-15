@@ -28,6 +28,9 @@ export default withMDX(
             contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
         },
         pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+        async generateBuildId() {
+            return process.env.BUILD_ID || "local-build"
+        },
         skipTrailingSlashRedirect: true,
         async rewrites() {
             return [
@@ -59,7 +62,7 @@ export default withMDX(
         },
         async redirects() {
             return [
-                { "source": "/(.*)", "destination": "https://entership.cz/$1", "permanent": true }
+                { source: "/:path*", destination: "https://entership.cz", permanent: true }
             ]
         }
     })
